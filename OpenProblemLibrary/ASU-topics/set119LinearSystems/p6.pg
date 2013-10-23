@@ -9,7 +9,7 @@
 ## DBsection(Systems with 2 variables)
 ## Institution(ASU)
 ## Level(2)
-## KEYWORDS('Algebra' 'Linear Equations')
+## KEYWORDS('Algebra','Linear Equations')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 

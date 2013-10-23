@@ -10,7 +10,7 @@
 ## Institution(ASU)
 ## MLT(multsystems)
 ## Level(2)
-## KEYWORDS('Algebra' 'Linear Equations')
+## KEYWORDS('Algebra','Linear Equations')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
