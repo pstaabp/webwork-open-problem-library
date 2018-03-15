@@ -1,10 +1,11 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Related rates)
 ## Institution(W.H.Freeman)
 ## Author(Keith Thompson)
 ## MLT(RelatedRate-FunctionGiven)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -13,10 +14,14 @@
 ## KEYWORDS('calculus', 'derivatives', 'implicit differentiation')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl"); loadMacros("freemanMacros.pl");
-loadMacros("PGauxiliaryFunctions.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 #$showPartialCorrectAnswers=1;
 Context()->variables->add(y=>'Real');
@@ -29,7 +34,6 @@ $f=Formula("x^($exp1)+$mult*x*y^($exp2)");
 $ans=Formula("(-D*$exp1*x ** ($exp1-1)-$mult*D*y**$exp2)/($mult*x*$exp2*y**($exp2-1))");
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \} 
 \{textbook_ref_exact("Rogawski ET 2e", "3.10","60") \} 
 
 $PAR Differentiate the equation \($f=$number\) with respect to the variable \(t\) and express \(\frac{dy}{dt}\) in terms of \(\frac{dx}{dt}\). (Use D for

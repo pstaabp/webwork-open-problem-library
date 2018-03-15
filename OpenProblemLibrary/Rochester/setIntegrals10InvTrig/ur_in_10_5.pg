@@ -2,31 +2,26 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS ('integration','trigonometric','substitution')
 ## Tagged by cmd6a 4/27/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Trigonometric Substitution')
-## Date('')
-## Author('Paul Pearson')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBchapter(Techniques of integration)
+## DBsection(Mixed techniques)
+## Institution(Indiana)
+## Author(Paul Pearson)
+## MLT(const_square_squared)
+## Level(3)
+## MO(1)
+## KEYWORDS('Substitution' 'Trig Substitution' 'Trigonometric Substitution')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-#"PGauxiliaryFunctions.pl"
-"MathObjects.pl",
-"parserFormulaUpToConstant.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "parserFormulaUpToConstant.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -54,5 +49,5 @@ ANS($answer->cmp() );
 #ANS(fun_cmp($ans, mode=>"antider"));
 
 
-COMMENT('MathObject version');
+COMMENT('Requires integrating cos(2 theta)');
 ENDDOCUMENT();

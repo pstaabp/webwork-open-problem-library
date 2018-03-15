@@ -1,20 +1,20 @@
 ##DESCRIPTION
-## DBsubject('Algebra')
-## DBchapter('Counting and Probability')
-## DBsection('Counting Principles')
+## DBsubject(Combinatorics)
+## DBchapter(Counting)
+## DBsection(Principles (addition, subtraction, multiplication))
+## Institution(NAU)
+## MLT(MultPrinc_clothes)
+## Level(2)
 ## KEYWORDS('probability')
-## Author('')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 DOCUMENT();        
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

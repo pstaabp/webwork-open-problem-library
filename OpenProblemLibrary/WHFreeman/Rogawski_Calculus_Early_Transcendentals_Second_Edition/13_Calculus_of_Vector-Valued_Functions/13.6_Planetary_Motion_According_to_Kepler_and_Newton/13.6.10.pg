@@ -1,19 +1,27 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Calculus of Vector-Valued Functions)
-## DBsection(Planetary Motion According to Kepler and Newton)
+## DBchapter(Calculus of vector valued functions)
+## DBsection(Frames, motions, and other applications)
 ## Institution(W.H.Freeman)
 ## Author(Nick Hamblet)
+## MLT(fma_keppler)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('13.6')
 ## Problem1('10')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $d = random(2, 5, 1);
 $t = Compute("$d*24*60*60");
@@ -26,7 +34,6 @@ $v = Compute("($G*$M/$a)^(1/2)");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "13.6","10") \}
 $PAR
 Fictional planet Hlipod has a day that lasts \($d\) Earth days, and a mass \(M\approx $m\times 10^{$mp}\ \text{kg}\). Hlipod has a satellite that is in "geosynchronous orbit," meaning its orbit is circular and the orbital period is the length of a day on Hlipod (so \($d\) Earth days). Use Kepler's Third Law to determine the semimajor axis \(a\) for the satellite, and thus its orbital radius. Then determine the orbital velocity, using the formula \[ v=\sqrt{\frac{GM}{R}}. \]

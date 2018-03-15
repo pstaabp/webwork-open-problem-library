@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -82,11 +82,13 @@ There are 10 sections and 4 of them are used for parking. $BR
 That means that \(\frac{4}{10}=\frac{2}{5}\) is used for parking.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 5')
-## DBsection('2006')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Interpreting fractions)
+## MLT(Which_represents_fraction)
+## Level(1)
 

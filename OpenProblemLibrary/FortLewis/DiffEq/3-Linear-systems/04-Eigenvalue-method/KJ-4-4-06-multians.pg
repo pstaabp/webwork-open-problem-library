@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Systems of Differential Equations)
+## DBchapter(Systems of differential equations)
+## DBsection(Matrix notation for systems)
 ## Date(01/31/2012)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
 ## AuthorText1('Kohler and Johnson')
 ## EditionText1('2006')
@@ -22,11 +24,12 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGmatrixmacros.pl",
-"parserMultiAnswer.pl",
-"unionLists.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGmatrixmacros.pl",
+  "parserMultiAnswer.pl",
+  "unionLists.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -131,6 +134,6 @@ Context()->normalStrings;
 
 ANS( $eigenvals->cmp() );
 
-COMMENT("MathObject version.  Distinct complex eigenvalues a +/- ai.  Uses parserMultiAnswer.pl and has fancy formatting of student answers.");
+COMMENT("Distinct complex eigenvalues a +/- ai.  Uses parserMultiAnswer.pl and has fancy formatting of student answers.");
 
 ENDDOCUMENT();

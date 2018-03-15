@@ -1,18 +1,20 @@
-## KEYWORDS('linear algebra','similar')
 
 ## DBsubject(Linear algebra)
 ## DBchapter(Linear transformations)
 ## DBsection(Associated matrices)
-## Date('11/7/2013')
-## Author('Nandor Sieben')
-## Institution('NAU')
+## Date(11/7/2013)
+## Institution(NAU)
+## Author(Nandor Sieben)
+## Level(4)
+## MO(1)
+## KEYWORDS('linear algebra','similar')
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 $showPartialCorrectAnswers = 1;
 TEXT(beginproblem()); 
@@ -97,7 +99,7 @@ ANS( $I->cmp(checker=>~~&mycheck1) );
 ANS( $Pi->cmp(checker=>~~&mycheck2) );
 ANS( $R->cmp(checker=>~~&mycheck3) );
 
-COMMENT('MathObject version.');
+;
 
 ENDDOCUMENT();
 

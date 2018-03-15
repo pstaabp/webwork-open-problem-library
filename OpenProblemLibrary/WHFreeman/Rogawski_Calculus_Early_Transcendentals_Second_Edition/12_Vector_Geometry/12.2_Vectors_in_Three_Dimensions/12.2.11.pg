@@ -1,8 +1,11 @@
-## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Vectors in Three Dimensions)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Vectors and vector arithmetic)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## MLT(va_base)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +14,15 @@
 ## KEYWORDS('calculus', 'parametric', 'vector', '3D', 'three dimensions')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 $context = Context("Vector");
 
 $p0 = Real(random(1, 10, 1));
@@ -41,7 +49,6 @@ $ans = $p;
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "12.2","11") \}
 $PAR
 Find the point P such that \( \mathbf{v} = \overrightarrow{PQ} \) has the components \( $v \).
@@ -56,8 +63,6 @@ ANS($ans->cmp);
 
 Context()->texStrings;
 SOLUTION(EV3(<<'END_SOLUTION'));
-$PAR
-$SOL
 \( P = Q - \mathbf{v} = \left< $q0 - $v0, $q1 - $v1, $q2 - $v2 \right> = $p \).
 END_SOLUTION
 

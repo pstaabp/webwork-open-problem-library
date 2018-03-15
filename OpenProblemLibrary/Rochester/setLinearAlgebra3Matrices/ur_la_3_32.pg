@@ -5,32 +5,37 @@
 ## Tagged by cmd6a 5/3/06
 
 ## DBsubject(Linear algebra)
-## DBchapter('Matrices')
+## DBchapter(Matrices)
 ## DBsection(Echelon form)
-## Institution('Rochester')
-## KEYWORDS('linear algebra','matrix','echelon')
+## Date(July 2013)
+## Institution(Rochester and Hope College)
+## Author(Paul Pearson)
+## MLT(reduce_to_reform)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Linear Algebra with Applications')
 ## AuthorText1('Jeffrey Holt')
 ## EditionText1('1')
 ## Section1('1.2')
 ## Problem1('')
+## KEYWORDS('linear algebra','matrix','echelon')
 
-DOCUMENT();        # This should be the first executable line in the problem.
+DOCUMENT() ;        
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGmatrixmacros.pl", 
-"PGnumericalmacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGmorematrixmacros.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
+$showPartialCorrectAnswers = 1 ;
+
+############
+
 TEXT(beginproblem());
-$showPartialCorrectAnswers = 1;
+
+Context('Matrix');
 
 $a = random(-4,4,1);
 $b = random(-4,4,1);
@@ -47,43 +52,30 @@ do {
   $s = random(-3,3,2);
   $t = random(-2,2,4);
 
-  $m1 = [[$k, $l, $p], [$m, $n, $q], [$t, $r, $s]];
-  $mm = Matrix->new(3,3);
-  for $i (0..2) {
-    for $j (0..2) {
-      $mm->assign($i+1, $j+1, $m1->[$i]->[$j]);
-   }}
-  $mm = $mm->decompose_LR();
-  $det = $mm->det_LR();
-} until ($det != 0);
+  $P = Matrix([[$k,$l,$m],[$n,$p,$q],[$r,$s,$t]]);
+} until ( ($P->det) != 0 ); 
 
-$a14 = $k*$a + $l*$b + $p*$c;
+# reduced row echelon form of A
 
-$a24 = $m*$a + $n*$b + $q*$c;
+$answer = Matrix([
+[1,0,0,$a],
+[0,1,0,$b],
+[0,0,1,$c],
+]);
 
-$a34 = $t*$a + $r*$b + $s*$c;
+$A = $P*$answer ;
 
-
+Context()->texStrings;
 BEGIN_TEXT
-\{ mbox( 'Reduce the matrix', display_matrix([[$k, $l, $p, $a14], [$m, $n, $q, $a24], [$t, $r, $s, $a34]]) ) \} 
+Reduce the matrix \[ A= $A\]
 to reduced row-echelon form. 
-$BR
-\{ answer_matrix(3,4,10) \} 
-
+$PAR
+$BCENTER
+\{ $answer->ans_array() \} 
+$ECENTER
 END_TEXT
+Context()->normalStrings;
 
-ANS(num_cmp(1));
-ANS(num_cmp(0));
-ANS(num_cmp(0));
-ANS(num_cmp($a));
-ANS(num_cmp(0));
-ANS(num_cmp(1));
-ANS(num_cmp(0));
-ANS(num_cmp($b));
-ANS(num_cmp(0));
-ANS(num_cmp(0));
-ANS(num_cmp(1));
-ANS(num_cmp($c));
+ANS( $answer->cmp() );
 
-ENDDOCUMENT();       # This should be the last executable line in the problem.
-
+ENDDOCUMENT();

@@ -4,10 +4,13 @@
 
 ## Tagged by cmd6a 4/4/06
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Exponents and Radicals')
-## Date('6/3/2002')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Exponentiation)
+## Date(6/3/2002)
+## MLT(Division_exponents_numbers)
+## MLTleader(1)
+## Level(2)
 ## TitleText1('College Algebra')
 ## AuthorText1('Stewart, Redlin, Watson')
 ## EditionText1('3')
@@ -18,11 +21,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

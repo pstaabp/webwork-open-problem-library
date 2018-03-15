@@ -4,18 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
-
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "contextLeadingZero.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -60,11 +52,14 @@ ANS(Real($ans4)->cmp);
 ANS(Real($ans5)->cmp);
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject(Middle school)
-## DBchapter('Multiplication_Division')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Integer division)
+## MLT(division_no_remainder)
+## Level(2)
+## MO(1)
 
 

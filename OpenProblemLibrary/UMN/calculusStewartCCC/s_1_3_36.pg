@@ -3,12 +3,15 @@
 ##ENDDESCRIPTION
 
 
-## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(New Functions from Old Functions)
+## DBsubject(Trigonometry)
+## DBchapter(Trigonometric functions)
+## DBsection(Combinations and compositions of functions)
 ## Date(08/29/2010)
 ## Institution(University of Minnesota)
 ## Author(Justin Sukiennik)
+## MLT(Compose_find_result)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Concepts and Contexts')
 ## AuthorText1('Stewart')
 ## EditionText1('4 Custom UMTYMP Ed.')
@@ -21,10 +24,9 @@
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   #"source.pl",        # allows code to be displayed on certain sites.
-   #"PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 ##############################################################
@@ -96,6 +98,9 @@ $BBOLD 7.$EBOLD \(g \circ g =\) \{ans_rule(30)\}$PAR
 $BBOLD 8.$EBOLD What is the domain of \(g \circ g\) ? $BR 
 Answer (in interval notation): \{ans_rule(30)\} $PAR 
 $HR
+$BR
+$BBOLD Note:$EBOLD
+Click here for information on \{helpLink('interval notation')\}.
 END_TEXT
 Context()->normalStrings;
 

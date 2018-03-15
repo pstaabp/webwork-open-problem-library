@@ -4,11 +4,16 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(The Chain Rule)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Chain rule)
 ## Date(10/15/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(chain3)
+## MLTleader(1)
+## Level(2)
+## Static(1)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -26,7 +31,7 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 
@@ -85,5 +90,5 @@ ANS($fv->cmp);
 $showPartialCorrectAnswers = 1;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

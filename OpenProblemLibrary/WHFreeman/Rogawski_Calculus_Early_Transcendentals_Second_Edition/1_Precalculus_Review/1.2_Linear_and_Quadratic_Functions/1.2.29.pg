@@ -1,8 +1,10 @@
 ## DBsubject(Algebra)
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Solving linear equations)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear functions)
 ## Institution(W.H.Freeman)
 ## Author(Brian Kell)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,9 +13,14 @@
 ## KEYWORDS('calculus', 'algebra', 'coordinates', 'linear equations')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 ($p, $r) = list_random_multi_uniq(2, -10..10);
 ($q, $s, $t) = list_random_multi_uniq(3, -10..10);
@@ -22,7 +29,6 @@ $b = bkell_simplify_fraction_string(($t-$q)*($p-$r)+$p*($q-$s), $q-$s, "[");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "1.2", "29") \}
 $PAR
 Find \(c\) such that \( ($p,$q) \), \( ($r,$s) \), and \( (c,$t) \) lie on a

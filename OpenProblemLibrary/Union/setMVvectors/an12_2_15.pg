@@ -4,11 +4,15 @@
 
 ## Tagged by nhamblet
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Vectors)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Dot product, length, and unit vectors)
 ## Date(8/23/07)
 ## Institution(Union College)
+## MLT(FindMultipleLengths)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Anton')
 ## EditionText1('7')
@@ -30,7 +34,7 @@ loadMacros(
   "contextLimitedVector.pl",
   "parserVectorUtils.pl",
   "alignedChoice.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 
@@ -119,5 +123,5 @@ $showPartialCorrectAnswers = 1;
 ##################################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

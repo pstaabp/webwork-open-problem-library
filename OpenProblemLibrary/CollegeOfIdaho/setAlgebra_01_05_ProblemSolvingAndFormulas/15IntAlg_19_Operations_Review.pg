@@ -2,17 +2,21 @@
 ##  Order of Operations
 ##
 ##ENDDESCRIPTION
-## DBsubject(Algebra)
-## DBchapter(Algebra, Mathematical Models and Problem Solving)
-## DBsection('Operations with Real Numbers and Simplifying Algebraic Expressions')
-## KEYWORDS('real numbers','operations with signed numbers','order of operations')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Multiple operations)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(MultiStep_OrderOfOps)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Essentials of Intermediate Algebra')
-## EditionText1('1')
 ## AuthorText1('Blitzer')
+## EditionText1('1')
 ## Section1('1.2')
 ## Problem1('')
-## Author('RA Cruz')
-## Institution('The College of Idaho')
+## KEYWORDS('real numbers','operations with signed numbers','order of operations')
 ## Date: 2007/09
 
 
@@ -21,7 +25,8 @@ DOCUMENT();        # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "contextLimitedNumeric.pl"
+  "contextLimitedNumeric.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -42,7 +47,7 @@ $h = random(2,5,1);
 #  Main text
 
 BEGIN_TEXT
-REVIEW:  Simplify \[ $a - $b($c($d-$e) - $f($g - $h)) \]
+Simplify \[ $a - $b($c($d-$e) - $f($g - $h)) \]
 $PAR
 Answer: \{ans_rule(15) \}
 END_TEXT
@@ -60,5 +65,5 @@ $showPartialCorrectAnswers = 1;
 ######################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

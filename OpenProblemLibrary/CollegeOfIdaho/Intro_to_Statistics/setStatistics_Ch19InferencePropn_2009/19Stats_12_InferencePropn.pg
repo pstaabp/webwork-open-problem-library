@@ -1,18 +1,21 @@
 ##DESCRIPTION
-##KEYWORDS('hypothesis testing', 'statistics')
 ##
 ##ENDDESCRIPTION
+
+## DBsubject(Statistics)
+## DBchapter(Hypothesis tests)
+## DBsection(One sample mean - z)
+## Level(3)
+## KEYWORDS('hypothesis testing', 'statistics')
 
 DOCUMENT(); # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -71,4 +74,3 @@ ANS(num_cmp($rej, tol=>.005));
 ANS(radio_cmp($mc->correct_ans));
 
 ENDDOCUMENT(); # This should be the last executable line in the problem.
-

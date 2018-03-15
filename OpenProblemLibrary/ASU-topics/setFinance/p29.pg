@@ -2,29 +2,21 @@
 ## Applied Mathematics
 ## ENDDESCRIPTION
 
-## KEYWORDS('percent', 'mathematics for business', 'algebraic expression')
 ## Tagged by XW
 
-## DBsubject('Financial Mathematics')
-## DBchapter('Introduction to Interest')
-## DBsection('Compound Interest')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Compound interest)
+## Institution(ASU)
+## Level(2)
+## KEYWORDS('percent', 'mathematics for business', 'algebraic expression')
 
 DOCUMENT();      
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGasu.pl",
-            "PGauxiliaryFunctions.pl"
-
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem(), $BR,$BBOLD, "True False Problem", $EBOLD, $BR,$BR);
 # Since this is a true questions, we do not usually wish to tell students which

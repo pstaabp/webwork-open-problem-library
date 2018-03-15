@@ -4,10 +4,12 @@
 
 ##Tagged by up2p
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Equations')
-## Date('6/3/2002')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear equations)
+## Date(6/3/2002)
+## MLT(x_both_multiple_operations)
+## Level(2)
 ## TitleText1('College Algebra')
 ## AuthorText1('Stewart, Redlin, Watson')
 ## EditionText1('3')
@@ -19,11 +21,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-	"PG.pl",
-	"PGbasicmacros.pl",
-	"PGchoicemacros.pl",
-	"PGanswermacros.pl",
-	"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

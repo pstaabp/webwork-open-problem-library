@@ -6,11 +6,14 @@
 ## BookTitle('Algebra: Form and Function')
 ## BookChapter('Rules for Equations and the Reasons For Them')
 ## DBsubject(Algebra)
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Solving linear equations)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear equations)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(Variable_intermsof_variables)
+## Level(3)
+## MO(1)
 ## TitleText1('Algebra: Form and Function')
 ## AuthorText1('McCallum, Connally, and Hughes-Hallett')
 ## EditionText1('1')
@@ -25,10 +28,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -76,5 +79,5 @@ $showPartialCorrectAnswers = 1;
 ANS($answer->cmp() );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -4,7 +4,7 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Related rates)
 ## Date(11/29/2010)
 ## Institution(University of Minnesota)
@@ -12,6 +12,7 @@
 ## MLT(RelatedRate-FlyAKite)
 ## MLTleader(1)
 ## Level(5)
+## MO(1)
 ## TitleText1('Calculus: Concepts and Contexts')
 ## AuthorText1('Stewart')
 ## EditionText1('4 Custom UMTYMP Ed.')
@@ -31,7 +32,7 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "answerHints.pl",
-  "PGcourse.pl", 
+  "PGcourse.pl"
 );
 #####################################################################
 

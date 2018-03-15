@@ -4,15 +4,18 @@
 
 
 ## DBsubject(Trigonometry)
-## DBchapter(Trigonometric functions)
+## DBchapter(Triangle trigonometry)
+## DBsection(Applications of special triangles & right triangles)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
-## Section1('6 Tools')
-## Problem1('18')
+## Section1(6.Tools)
+## Problem1(18)
 ## KEYWORDS('trig')
 
 ####################################
@@ -21,16 +24,11 @@
 DOCUMENT();  
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-#"PGgraphmacros.pl",
-"PGanswermacros.pl",
-"PGcourse.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-#"contextFraction.pl",
-#"alignedChoice.pl",
-"unionTables.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -304,5 +302,5 @@ ANS($ansB->cmp() );
 COMMENT("Redefines basic trig functions to be in degrees (instead of the default radians)");
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

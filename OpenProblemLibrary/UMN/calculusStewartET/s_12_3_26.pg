@@ -3,12 +3,15 @@
 ##ENDDESCRIPTION
 
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(The Dot Product)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Dot product, length, and unit vectors)
 ## Date(12/07/2011)
 ## Institution(University of Minnesota)
 ## Author(Justin Sukiennik)
+## MLT(FindParallelAndOrthogVecs)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Concepts and Contexts')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -23,8 +26,8 @@ DOCUMENT();        # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "PGcourse.pl",
   "parserVectorUtils.pl",
+  "PGcourse.pl"
 );
 ########################################################################
 
@@ -58,5 +61,14 @@ Context()->normalStrings;
 ANS(($ans)->cmp());
 
 ########################################################################
-
+BEGIN_SOLUTION
+$PAR SOLUTION $PAR
+The vectors are orthogonal if their dot product is zero. $BR
+\(\langle -$ab, b, $b \rangle \cdot  \langle b, b^2, b \rangle
+= -$ab b + b^3 + $b b 
+= -$a2 b + b^3 
+= b(b^2 - $a2)\)
+$BR
+Thus the vectors are orthogonal when \( b = 0, $a, -$a \).
+END_SOLUTION
 ENDDOCUMENT();        # This should be the last executable line in the problem.

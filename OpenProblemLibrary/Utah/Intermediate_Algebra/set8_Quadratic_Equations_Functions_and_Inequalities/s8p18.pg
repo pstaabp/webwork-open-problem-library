@@ -1,24 +1,22 @@
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Quadratic Equations')
-## AuthorText1('Ron Larson and Robert P. Hostetler')
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Completing the square)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## Level(2)
 ## TitleText1('Intermediate Algebra')
+## AuthorText1('Ron Larson and Robert P. Hostetler')
 ## EditionText1('4')
-## Section1(' Quadratic Equations, Functions, and Inequalities ')
+## Section1('.')
 ## Problem1('')
-
-##KEYWORDS('algebra')
+## KEYWORDS('algebra')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -27,7 +25,7 @@ TEXT(beginproblem());
 
 
 TEXT(EV2(<<EOT));
-This is like the preceding problem.
+Complete the square: $BR
 EOT
 
 $a=random(3,9,2);

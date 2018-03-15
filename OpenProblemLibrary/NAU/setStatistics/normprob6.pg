@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Probability')
-## DBchapter('Distributions')
-## DBsection('Normal Distribution')
-## KEYWORDS('')
-## Author('Michael Ratliff')
-## Institution('NAU')
+## DBsubject(Probability)
+## DBchapter(Continuous distributions)
+## DBsection(Application of a normal distribution)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## MLT(Zcompare)
+## Level(2)
 ##ENDDESCRIPTION
 
 # File Created: 7/5/05
@@ -14,19 +15,16 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl",
-"PGcommonFunctions.pl",
-"PGstandard.pl",           
-"PGnauBinpacking.pl",
-"unionMacros.pl",
-"unionTables.pl"   
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcommonFunctions.pl",
+  "PGnauBinpacking.pl",
+  "unionMacros.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

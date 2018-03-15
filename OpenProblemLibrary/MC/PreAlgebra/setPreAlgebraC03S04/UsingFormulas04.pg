@@ -2,30 +2,33 @@
 ##  Middle School problem:
 ##ENDDESCRIPTION
 
-##KEYWORDS('prealgebra','common core','formulas')
 
-## DBsubject(Middle school)
-## DBchapter('Decimals and Equations')
-## DBsection('Using Formulas')
-## Date('10/02/2012')
-## Author('John Travis')
-## Institution('Mississippi College')
 ## ProblemTester('Laura Travis')
-## TitleText1('Pre-Algebra')
 ## Publisher('Prentice Hall')
-## EditionText1('')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Date(10/02/2012)
+## Institution(Mississippi College)
+## Author(John Travis)
+## Level(4)
+## MO(1)
+## TitleText1('Pre-Algebra')
 ## AuthorText1('')
-## Section1('')
+## EditionText1('')
+## Section1('.')
 ## Problem1('')
+## KEYWORDS('prealgebra','common core','formulas')
 
 ########################################################################
 
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   "problemRandomize.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "problemRandomize.pl",
+  "PGcourse.pl"
 );
 
 # Print problem number and point value (weight) for the problem
@@ -57,7 +60,8 @@ $area = $length*$width;
 BEGIN_TEXT
 The area inside a rectangle is its length times the width.  A formula describing this relationship is \( A = L w \).
 $PAR
-Your friend has a basketball goal in his driveway with a rectangular concrete playing area with length $length feet and width $width feet.  The playing area for the game is \{ans_rule(10)\} seconds.
+Your friend has a basketball goal in his driveway with a rectangular concrete playing area with length $length feet and width $width feet.  
+The playing area for the game is \{ans_rule(10)\} square feet.
 
 END_TEXT
 

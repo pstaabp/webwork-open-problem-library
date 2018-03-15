@@ -1,20 +1,28 @@
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Inequalities')
-## KEYWORDS('calculus', 'inequalities')
+## DBsubject(Algebra)
+## DBchapter(Absolute value expressions and functions)
+## DBsection(Absolute value inequalities)
+## Institution(W.H.Freeman)
+## Author(Carol Panepinto)
+## MLT(simpleIneq)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('1.1')
 ## Problem1('23')
-## Author('Carol Panepinto')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'inequalities')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGchoicemacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $x = random(2,12);
 $y = random(2,10);
@@ -46,7 +54,6 @@ $ml ->choose(6);
 
 #Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "1.1","23") \}
 $PAR
 Match the inequalities $BBOLD 1. - 6. $EBOLD with the corresponding statements $BBOLD A - F $EBOLD:  $BR

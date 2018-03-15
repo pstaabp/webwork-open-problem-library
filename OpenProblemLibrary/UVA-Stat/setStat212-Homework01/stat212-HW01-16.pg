@@ -2,25 +2,27 @@
 ##  Statistics: Descriptive statistics
 ## ENDDESCRIPTION
 
-## KEYWORDS('statistics', 'descriptive statistics', 'interval', 'nominal', 'ordinal')
 ## JJH tagged this problem.
 
-## DBsubject('Statistics')
-## DBchapter('What is Statistics?')
-## DBsection('Introduction')
-## Date('5/25/2005')
-## Author('Jeff Holt')
-## Institution('UVA')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Classifying data)
+## Date(5/25/2005)
+## Institution(UVA)
+## Author(Jeff Holt)
+## Level(3)
 ## TitleText1('Statistics for Management and Economics')
-## EditionText1('6')
 ## AuthorText1('Keller, Warrack')
-## Section1()
-## Problem1()
+## EditionText1('6')
+## Section1('.')
+## Problem1('')
+## KEYWORDS('statistics', 'descriptive statistics', 'interval', 'nominal', 'ordinal')
 
 DOCUMENT();
-loadMacros("PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl"
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 $showPartialCorrectAnswers = 0;
@@ -83,4 +85,5 @@ END_TEXT
 
 ANS(str_cmp( $tf->ra_correct_ans )   ) ;
 
+COMMENT('Questions selected randomly from a larger set.  See source for full question list.');
 ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,22 +1,31 @@
 ## DBsubject(Algebra)
-## DBchapter(Conic Sections)
+## DBchapter(Conic sections)
+## DBsection(Ellipses)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(Ellipses_MLT1)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('11.5')
 ## Problem1('5')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl","PGchoicemacros.pl","PGauxiliaryFunctions.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
-
+TEXT(beginproblem());
 $b=random(2,8);
 $a=random($b1+1,9);
 $xt=-random(1,9);
@@ -38,7 +47,6 @@ $sol8=Formula("-$yt")->reduce();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "11.5","5") \}
 $PAR
 Find the vertices and foci of the conic section \(\left(\frac{x+$xt}{$b}\right)^2 - \left(\frac{y+$yt}{$a}\right)^2 = 1\)

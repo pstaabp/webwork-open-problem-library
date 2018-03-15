@@ -6,7 +6,7 @@
 ## lcao , PAID on 11-24-2003
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Linear approximation and differentials)
 ## Date(6/3/2002)
 ## MLT(Linearization_root)
@@ -26,9 +26,8 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGbasicmacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

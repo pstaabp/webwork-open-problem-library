@@ -6,7 +6,7 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Optimization - general)
 ## Date(6/3/2002)
 ## MLT(Optimization_ChoosePath)
@@ -31,11 +31,9 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 

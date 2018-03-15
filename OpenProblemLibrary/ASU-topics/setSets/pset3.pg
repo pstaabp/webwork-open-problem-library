@@ -4,21 +4,22 @@
 
 ## Tagged by ynw2d
 
-## DBsubject('Algebra')
-## DBchapter('Counting and Probability')
-## DBsection('Probability')
-## Institution('ASU')
+## DBsubject(Combinatorics)
+## DBchapter(Counting)
+## DBsection(Inclusion/exclusion)
+## Institution(ASU)
+## MLT(word3)
+## Level(3)
 ## KEYWORDS('Probability')
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

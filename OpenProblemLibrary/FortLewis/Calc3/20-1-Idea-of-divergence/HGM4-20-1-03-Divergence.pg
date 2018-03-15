@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Curl and Divergence)
+## DBchapter(Vector calculus)
+## DBsection(Curl and divergence)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(curl_div_2)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -25,12 +28,10 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"MathObjects.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 #####################################
@@ -84,7 +85,7 @@ Context()->texStrings;
 BEGIN_TEXT
 $BR
 $BR
-(@abc[$i]) \( \mathrm{div} ( \, $Fshuffled[$i] \, ) =  \) \{ ans_rule(20) \}
+($abc[$i]) \( \mathrm{div} ( \, $Fshuffled[$i] \, ) =  \) \{ ans_rule(20) \}
 END_TEXT
 Context()->normalStrings();
 ANS($answersshuffled[$i]->cmp());
@@ -98,5 +99,5 @@ $showPartialCorrectAnswers = 1;
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

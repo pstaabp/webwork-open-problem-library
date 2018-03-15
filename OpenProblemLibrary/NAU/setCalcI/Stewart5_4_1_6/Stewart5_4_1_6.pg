@@ -1,11 +1,12 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Summary of curve sketching)
 ## Institution(UCSB)
 ## Author(? modified by Nandor Sieben)
 ## MLT(SCS_graph_check_box)
 ## MLTleader(1)
 ## Level(2)
+## Static(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -16,11 +17,9 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);
@@ -63,8 +62,7 @@ $cmc3->qa(
                 "Check the boxes of the points where the graph has a local maximum",
                 "0",
                 "3",
-                "5",
-                "7"
+                "5"
     );
 
 $cmc3->makeLast(
@@ -79,7 +77,6 @@ $cmc3->makeLast(
 
 $cmc4->qa(
                 "Check the boxes of the points where the graph has a local minimum",
-                "-0.7",
                 "1",
                 "4",
                 "6"

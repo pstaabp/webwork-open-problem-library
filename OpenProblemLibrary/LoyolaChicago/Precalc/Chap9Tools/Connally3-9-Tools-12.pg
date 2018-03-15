@@ -1,23 +1,31 @@
 ## DESCRIPTION
 ## Polynomial and Rational Functions
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
-## DBchapter(Polynomial and rational functions)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Rational expressions: multiply, divide)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(RatExp4)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('9 Tools')
-## Problem1('11')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
-## Section2('11.')
-## Problem2('11')
+## EditionText3('5')
+## Section1(9.Tools)
+## Section2(11.Skills)
+## Section3('11.Skills')
+## Problem1(12)
+## Problem2(11)
+## Problem3('11')
 ## KEYWORDS('polynomial functions','rational functions')
 
 
@@ -27,11 +35,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGunion.pl",
-"parserMultiAnswer.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGunion.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -157,5 +165,5 @@ We have
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

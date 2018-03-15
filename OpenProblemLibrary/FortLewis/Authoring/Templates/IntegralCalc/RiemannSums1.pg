@@ -2,19 +2,15 @@
 ## Integral calculus: Interpreting Riemann sums in terms of area
 ## ENDDESCRIPTION
 
-## KEYWORDS('Integrals', 'Area and Distance','Riemann sum','area')
 
-## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('Fort Lewis Tutorial 2011')
-## Date('10/20/2010')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(WeBWorK)
+## DBchapter(WeBWorK tutorial)
+## DBsection(Fort Lewis tutorial 2011)
+## Date(10/20/2010)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MO(1)
+## KEYWORDS('Integrals', 'Area and Distance','Riemann sum','area')
 
 
 #################################
@@ -23,12 +19,13 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"PGgraphmacros.pl",
-"MathObjects.pl",
-"weightedGrader.pl",
-"unionTables.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "weightedGrader.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -146,7 +143,7 @@ NAMED_POP_UP_LIST('optional4',['?','overestimate of','equal to','underestimate o
 " the area of the region enclosed by \(\displaystyle y = f(x) \), the x-axis, and the vertical lines \(x = $a\) and \(x = $b\)."
 ,
 $BCENTER.
-BeginTable(1).
+BeginTable().
 AlignedRow( 
 [image( insertGraph($graphL), height=>250, width=>250, tex_size=>450 ),
  image( insertGraph($graphR), height=>250, width=>250, tex_size=>450 )]
@@ -201,6 +198,6 @@ $BR
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 
 ENDDOCUMENT();

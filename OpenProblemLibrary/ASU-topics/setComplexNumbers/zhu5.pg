@@ -5,10 +5,11 @@
 ## Tagged by YL
 
 
-## DBsubject(Numbers)
-## DBchapter(Complex numbers)
-## DBsection(Arithmetic)
+## DBsubject(Complex analysis)
+## DBchapter(Arithmetic)
+## DBsection(Multiple operations)
 ## Institution(ASU)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -17,7 +18,7 @@
 ## TitleText2('Calculus: Early Transcendentals')
 ## AuthorText2('Stewart')
 ## EditionText2('6')
-## Section2('G')
+## Section2('.')
 ## Problem2('')
 ## TitleText3('College Algebra')
 ## AuthorText3('Stewart, Redlin, Watson')
@@ -29,12 +30,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

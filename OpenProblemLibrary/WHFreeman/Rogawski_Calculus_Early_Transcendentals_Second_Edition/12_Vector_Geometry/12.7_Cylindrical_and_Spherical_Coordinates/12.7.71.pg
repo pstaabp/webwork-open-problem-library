@@ -1,19 +1,26 @@
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Geometry)
-## DBsection(Cylindrical and Spherical Coordinates)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Coordinate systems)
 ## Institution(W.H.Freeman)
 ## Author(Nick Hamblet)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('12.7')
 ## Problem1('71')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 sub str_helper {
   my ($deg, $min, $ltr) = @_;
@@ -89,7 +96,6 @@ $rect = Compute("($x,$y,$z)");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "12.7","71") \}
 $PAR
 Consider a rectangular coordinate system with origin at the center of the earth, \(z\)-axis through the North Pole, and \(x\)-axis through the prime-meridian. Find the rectangular coordinates of $city, $country ($ns_str, $ew_str). A minute is \(1/60^{\circ}\). Assume the earth is a sphere of radius \(R=$R \text{ km}\).

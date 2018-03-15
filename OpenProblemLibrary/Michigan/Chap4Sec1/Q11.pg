@@ -6,8 +6,10 @@
 ## Tagged by glr 02/08/09
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Increasing/decreasing functions and local extrema)
+## MLT(DCinc_dec_cp)
+## MLTleader(1)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
 ## Level(3)
@@ -23,13 +25,11 @@
 
 DOCUMENT();
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"extraAnswerEvaluators.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
  
 Context("Numeric");
@@ -109,5 +109,5 @@ Context()->normalStrings;
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

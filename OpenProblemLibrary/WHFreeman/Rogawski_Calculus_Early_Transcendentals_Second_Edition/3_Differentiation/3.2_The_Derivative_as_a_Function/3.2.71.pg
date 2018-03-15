@@ -5,6 +5,7 @@
 ## Author(Sam Hathaway)
 ## MLT(DifferentiabilityFormula)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -13,10 +14,15 @@
 ## KEYWORDS('calculus', 'derivatives', 'absolute value', 'limits')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 #$c = 1;
 $c = random(-4,4,1);
@@ -38,7 +44,6 @@ plot_functions($graph, "$f_for_graph for x in [$xmin,$xmax] using color:red and 
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "3.2","71") \}
 $PAR
 Find the points \( c \) (if any) such that \( f'(c) \) does not exist.

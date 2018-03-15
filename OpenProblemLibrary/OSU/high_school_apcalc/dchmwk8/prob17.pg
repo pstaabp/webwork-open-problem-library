@@ -6,7 +6,7 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Optimization - general)
 ## Date(1/17/2000)
 ## Institution(OSU)
@@ -32,12 +32,10 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraders.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraders.pl",
+  "PGcourse.pl"
 );
 
 

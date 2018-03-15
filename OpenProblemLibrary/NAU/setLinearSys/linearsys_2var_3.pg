@@ -1,21 +1,22 @@
 ##DESCRIPTION
-## DBsubject('Algebra')
-## DBchapter('Systems of Equations and Inequalities')
-## DBsection('Systems of Equations')
-## KEYWORDS('')
-## Author('Shafiu Jibrin')
-## Institution('NAU')
+## DBsubject(Linear algebra)
+## DBchapter(Systems of linear equations)
+## DBsection(Systems with 2 variables)
+## Institution(NAU)
+## Author(Shafiu Jibrin)
+## MLT(LikeThisA)
+## Level(2)
 ##ENDDESCRIPTION
 
 # File Created: 6/16/05
 # Location: Northern Arizona University
 
 DOCUMENT();     
-loadMacros("PGbasicmacros.pl",     
-           "PGchoicemacros.pl",     
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl"    
-);    
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(&beginproblem);
 $showPartialCorrectAnswers = 1;

@@ -1,11 +1,13 @@
 # DESCRIPTION
 # ENDDESCRIPTION
 
-## DBsubject(Financial Mathematics)
+## DBsubject(Financial mathematics)
 ## DBchapter(Annuities)
-## DBsection(Sinking Funds)
+## DBsection(Sinking funds)
 ## Institution(NAU)
 ## Author(Michael Ratliff)
+## MLT(Sinking_Funds_Find_R)
+## Level(5)
 ## KEYWORDS('percent')
 
 #File Created:  6/15/05
@@ -16,12 +18,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

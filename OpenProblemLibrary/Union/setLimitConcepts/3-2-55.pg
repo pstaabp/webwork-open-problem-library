@@ -5,7 +5,7 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Evaluating limits - factoring)
 ## Date(8/23/07)
 ## Institution(Union College)
@@ -13,15 +13,16 @@
 ## MLT(elf-k)
 ## MLTleader(1)
 ## Level(3)
+## MO(1)
 ## KEYWORDS('Limit', 'Difference Quotient')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -59,5 +60,5 @@ ANS($fprimeatpoint->cmp);
 
 ###################################
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

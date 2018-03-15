@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Statistics')
-## DBchapter('What is Statistics?')
-## DBsection('Characterizing a Set of Measurements: Numerical Methods')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Description of distributions)
+## Institution(NAU)
+## Author(N.Spencer Sitton)
+## Level(2)
 ## KEYWORDS('skew')
-## Author('N.Spencer Sitton')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 06/20/05
@@ -12,10 +13,11 @@
 # Course: Qauntitative Reasoning
 
 DOCUMENT();     
-loadMacros("PGstandard.pl",  
-           "PGauxiliaryFunctions.pl",
-           "PGchoicemacros.pl"          
-);     
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(&beginproblem);
 $showPartialCorrectAnswers = 0;

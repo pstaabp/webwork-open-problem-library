@@ -1,6 +1,6 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Integration)
-## DBsection(Applications to Economics)
+## DBchapter(Applications of integration)
+## DBsection(Economics)
 ## Institution(W.H.Freeman)
 ## Author(Justask)
 ## TitleText1('Calculus: Early Transcendentals')
@@ -11,15 +11,14 @@
 ## KEYWORDS('calculus', 'integrals', 'integration', 'net change', 'total change)
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-          );
- loadMacros("freemanMacros.pl");
- loadMacros("Parser.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "freemanMacros.pl",
+  "Parser.pl",
+  "PGcourse.pl"
+);
 
 
 TEXT(beginproblem());

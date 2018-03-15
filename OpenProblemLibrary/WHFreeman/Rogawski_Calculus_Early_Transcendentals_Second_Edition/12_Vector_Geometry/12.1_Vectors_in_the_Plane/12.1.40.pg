@@ -1,8 +1,11 @@
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Vectors)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Dot product, length, and unit vectors)
 ## Institution(W.H.Freeman)
 ## Author(Danny Glin)
+## MLT(CalcUnitVectorSameDirection)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +14,15 @@
 ## KEYWORDS('vector')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+
+TEXT(beginproblem());
 Context("Vector");
 
 #$v1=-2;
@@ -29,7 +37,6 @@ $ans=-$v->unit;
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "12.1","40") \}
 $PAR
 Find the unit vector in the direction opposite to \(\bf{v}=$v\).

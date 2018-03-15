@@ -2,40 +2,43 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"parserPopUp.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 ## Tagged by glr 05/08/09
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Graphs and Level Surfaces)
+## DBchapter(Concepts for multivariable functions)
+## DBsection(Traces, contours, and level sets)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('12.3')
-## Problem1('27')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('12.3')
 ## Section2('12.3')
+## Section3('12.3')
+## Problem1('27')
 ## Problem2('33')
+## Problem3('45')
 ## KEYWORDS('contour', 'graphs', 'multivariable', 'functions')
 
 ## Textbook tags
@@ -271,6 +274,6 @@ called increasing returns to scale.
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

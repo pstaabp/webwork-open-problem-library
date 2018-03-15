@@ -5,11 +5,12 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Four Ways to Represent a Function)
+## DBchapter(Rational equations and functions)
+## DBsection(Applications and models)
 ## Date(5/26/2005)
 ## Institution(UVA)
 ## Author(Jeff Holt)
+## Level(4)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -24,12 +25,12 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "extraAnswerEvaluators.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
+);
 
 $a = random(30,90,1);
 

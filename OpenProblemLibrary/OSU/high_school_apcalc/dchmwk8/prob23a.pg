@@ -6,7 +6,7 @@
 
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Differentiation)
-## DBsection(Chain rule (without trigonometric functions))
+## DBsection(Derivatives of exponential functions)
 ## Institution(OSU)
 ## Level(4)
 ## KEYWORDS('calculus','function','rotate','slope')
@@ -14,12 +14,10 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraders.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraders.pl",
+  "PGcourse.pl"
 );
 
 $pi = atan2(1,1)*4;

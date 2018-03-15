@@ -2,32 +2,31 @@
 ##  Statistics: Descriptive statistics
 ## ENDDESCRIPTION
 
-## KEYWORDS('statistics', 'descriptive statistics', 'stem and leaf')
 ## JJH tagged this problem.
 
-## DBsubject('Statistics')
-## DBchapter('What is Statistics?')
-## DBsection('Characterizing a Set of Measurements: Graphical Methods')
-## Date('5/25/2005')
-## Author('Jeff Holt')
-## Institution('UVA')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Graphical representations)
+## Date(5/25/2005)
+## Institution(UVA)
+## Author(Jeff Holt)
+## Level(2)
 ## TitleText1('Statistics for Management and Economics')
-## EditionText1('6')
 ## AuthorText1('Keller, Warrack')
-## Section1()
-## Problem1()
+## EditionText1('6')
+## Section1('.')
+## Problem1('')
+## KEYWORDS('statistics', 'descriptive statistics', 'stem and leaf')
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -125,12 +124,12 @@ $PAR
 
 END_TEXT
 
-ANS(str_cmp($ans[1]));
+ANS(str_cmp($ans[1],'remove_whitespace'));
 ANS(num_cmp($b1 + 1));
-ANS(str_cmp($ans[2]));
-ANS(str_cmp($ans[3]));
+ANS(str_cmp($ans[2],'remove_whitespace'));
+ANS(str_cmp($ans[3],'remove_whitespace'));
 ANS(num_cmp($b2 + 1));
 ANS(num_cmp($b2 + 2));
-ANS(str_cmp($ans[5]));
+ANS(str_cmp($ans[5],'remove_whitespace'));
 
 ENDDOCUMENT();       # This should be the last executable line in the problem.

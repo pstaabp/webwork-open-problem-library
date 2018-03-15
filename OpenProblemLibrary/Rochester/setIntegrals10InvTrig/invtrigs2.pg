@@ -2,35 +2,27 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS ('integration','trigonometric','substitution')
 ## Tagged by cmd6a 4/27/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Trigonometric Substitution')
-## Date('')
-## Author('Paul Pearson')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## TitleText2('Calculus: Early Transcendentals')
-## EditionText2('1')
-## AuthorText2('Rogawski')
-## Section2('5.7')
-## Problem2('47')
+## DBchapter(Techniques of integration)
+## DBsection(Mixed techniques)
+## Institution(Rochester)
+## Author(Paul Pearson)
+## Level(3)
+## MO(1)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Rogawski')
+## EditionText1('1')
+## Section1('5.7')
+## Problem1('47')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-#"PGchoicemacros.pl",
-"PGanswermacros.pl",
-#"PGauxiliaryFunctions.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -59,5 +51,5 @@ ANS($answer->cmp() );
 #ANS(num_cmp($ans));
 
 
-COMMENT('MathObject version');
+COMMENT('Requires integrating sec(theta)');
 ENDDOCUMENT();

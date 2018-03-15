@@ -10,6 +10,8 @@
 ## Institution(SDSU)
 ## Author(Amy Arita','Michael E. O'Sullivan','Tom Schmidt)
 ## Level(2)
+## Static(1)
+## MO(1)
 ## KEYWORDS('logic', 'predicate')
 
 
@@ -18,13 +20,13 @@
 
 DOCUMENT();       
 
-loadMacros("PGstandard.pl",
-		   "MathObjects.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-          );
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
  
 TEXT(beginproblem());
 
@@ -42,7 +44,7 @@ $answer = Compute($tmp);
 
 BEGIN_TEXT
 $PAR
-What are the common divisors of 48 and 60?
+List all of the positive common divisors of 48 and 60:
 $BR \{ans_rule(10)\} $BR $BR
 Note: Enter your answers as a comma-separated list. $BR
 [Hint: Your list should begin with 1,2,3]

@@ -5,7 +5,7 @@
 ## Tagged by cmd6a 4/20/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Summary of curve sketching)
 ## Institution(Rochester)
 ## Level(3)
@@ -19,13 +19,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraphmacros.pl",
-"PGcourse.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -2,29 +2,23 @@
 ## Algebra: Exponential and Logarithmic Functions
 ## ENDDESCRIPTION
 
-## KEYWORDS ('exponential')
 ## Tagged by cmd6a 4/4/06
 
-## DBsubject('Algebra')
-## DBchapter('Exponential and Logarithmic Functions')
-## DBsection('Exponential Functions')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Graphs)
+## Institution(Rochester)
+## MLT(Expo_match_graphs)
+## MLTleader(1)
+## Level(2)
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-                   "PGauxiliaryFunctions.pl"
-                   );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 
 $showPartialCorrectAnswers = 1;

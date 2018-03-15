@@ -2,19 +2,15 @@
 ## Multivariable differential calculus: answer is an equation for a plane
 ## ENDDESCRIPTION
 
-## KEYWORDS('multivariable differential calculus', 'answer is an equation for a plane')
 
-## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('Fort Lewis Tutorial 2011')
-## Date('01/30/2011')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(WeBWorK)
+## DBchapter(WeBWorK tutorial)
+## DBsection(Fort Lewis tutorial 2011)
+## Date(01/30/2011)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MO(1)
+## KEYWORDS('multivariable differential calculus', 'answer is an equation for a plane')
 
 
 ####################################
@@ -23,12 +19,13 @@
 DOCUMENT();   
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserImplicitPlane.pl",
-"parserVectorUtils.pl",
-"AnswerFormatHelp.pl",
-);     
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserImplicitPlane.pl",
+  "parserVectorUtils.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -43,7 +40,7 @@ $N = non_zero_vector3D(-5,5,1);
 
 $answer1 = ImplicitPlane($A,$N);
 
-Context()->variables->are(x=>"Real",y=>"Real");
+Context()->variables->are(x=>"Real",y=>"Real",z=>"Real");
 
 $answer2 = ImplicitPlane("4x+3y=12");
 
@@ -99,6 +96,6 @@ Solution explanation goes here.
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT("MathObject version.");
+;
 
 ENDDOCUMENT();

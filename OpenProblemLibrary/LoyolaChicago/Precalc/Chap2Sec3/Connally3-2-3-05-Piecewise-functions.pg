@@ -1,34 +1,42 @@
 ## DESCRIPTION
 ## Functions: Input and Output
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Piecewise Defined Functions)
+## DBsection(Piecewise functions)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(piecewise_find_domain)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('2.3')
-## Problem1('5')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1('2.3')
 ## Section2('2.3')
+## Section3('2.3')
+## Problem1('5')
 ## Problem2('5')
+## Problem3('9')
 ## KEYWORDS('functions','domain','range','input','output','interval notation')
 
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"contextInequalities.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "contextInequalities.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -98,5 +106,5 @@ $b\).
 END_SOLUTION
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

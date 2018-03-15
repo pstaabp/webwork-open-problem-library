@@ -1,14 +1,16 @@
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Function notation)
+## Level(3)
+## MO(1)
+## MLT(functionlintrans)
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-#"contextFraction.pl",
-#"PGgraphmacros.pl",
-#"contextInequalities.pl",
-#"PGchoicemacros.pl",
-"parserMultiAnswer.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -74,5 +76,5 @@ ANS($answer3->cmp() );
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

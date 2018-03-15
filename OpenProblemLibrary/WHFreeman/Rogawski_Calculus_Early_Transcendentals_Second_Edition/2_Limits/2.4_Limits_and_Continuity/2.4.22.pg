@@ -1,15 +1,15 @@
 #Problem: et2e 2.4.22
 
 DOCUMENT();      
-loadMacros("PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
 );
-loadMacros("freemanMacros.pl");
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Continuity - classifying discontinuities)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk!)
@@ -30,13 +30,13 @@ $solutionexits=1;
 $tf = new_select_list();
 
 $tf -> qa ( 
-"The function \(f(t)= \frac {1} {t^2-t} \) has an infinite discontinuity at \(t=1\).",
+"The function \(\displaystyle f(t)= \frac {1} {t^2-t} \) has an infinite discontinuity at \(t=1\).",
 "T",
-"The function \(f(t)= \frac {1} {t^2-t} \) has a jump discontinuity at \(t=1\).",
+"The function \(\displaystyle f(t)= \frac {1} {t^2-t} \) has a jump discontinuity at \(t=1\).",
 "F",
-"The function \(f(t)= \frac {1} {t^2-t} \) has an infinite discontinuity at \(t=-1\).",
+"The function \(\displaystyle f(t)= \frac {1} {t^2-t} \) has an infinite discontinuity at \(t=-1\).",
 "F",
-"The function \(f(t)= \frac {1} {t^2-t} \) has an infinite discontinuity at \(t=0\).",
+"The function \(\displaystyle f(t)= \frac {1} {t^2-t} \) has an infinite discontinuity at \(t=0\).",
 "T",
 );   
 
@@ -65,5 +65,4 @@ END_SOLUTION
 ANS(str_cmp( $tf->ra_correct_ans )   ) ;
 
 ENDDOCUMENT();        
-
 

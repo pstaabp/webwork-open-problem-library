@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Probability')
-## DBchapter('Discrete Probability')
-## DBsection('Conditional Probability')
+## DBsubject(Probability)
+## DBchapter(Sample Space)
+## DBsection(Conditional probability -- direct)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## Level(3)
 ## KEYWORDS('Bayes' , 'probability', 'conditional')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 6/28/05
@@ -15,13 +16,12 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

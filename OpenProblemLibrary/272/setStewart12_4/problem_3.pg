@@ -8,16 +8,17 @@
 
 ## Tagged by ynw2d
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Vectors)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Cross product)
 ## Author(Stewart)
+## Level(3)
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-           "Dartmouthmacros.pl"
+loadMacros(
+  "PGstandard.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
 );
  
 

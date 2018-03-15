@@ -2,35 +2,34 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS('calculus', 'integrals', 'Trigonometric')
 ## Tagged by YL
 
+
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Trigonometric Integrals')
-## Date('')
-## Author('')
-## Institution('ASU')
+## DBchapter(Techniques of integration)
+## DBsection(Approximation)
+## Institution(ASU)
+## MLT(approx_02)
+## Level(2)
+## Static(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('5')
 ## AuthorText1('Stewart')
+## EditionText1('5')
 ## Section1('7.2')
 ## Problem1('')
-
 ## TitleText2('Calculus: Early Transcendentals')
-## EditionText2('6')
 ## AuthorText2('Stewart')
+## EditionText2('6')
 ## Section2('7.2')
 ## Problem2('')
+## KEYWORDS('calculus', 'integrals', 'Trigonometric')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 $showPartialCorrectAnswers = 1;
@@ -66,7 +65,6 @@ if (defined($textbook)) {
    if ($textbook eq "EllisGulick5") {
 BEGIN_TEXT
 $PAR
-Note that this is Problem 10 in Section 5.1 in the text.
 END_TEXT
 }
 }

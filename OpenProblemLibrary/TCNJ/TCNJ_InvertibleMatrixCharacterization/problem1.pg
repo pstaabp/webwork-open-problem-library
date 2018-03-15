@@ -6,25 +6,26 @@
 
 ## DBsubject(Linear algebra)
 ## DBchapter(Linear transformations)
-## DBsection('Inverses')
-## Institution('TCNJ')
-## KEYWORDS('matrix' 'inverse')
+## DBsection(Inverses)
+## Institution(TCNJ)
+## Level(3)
 ## TitleText1('Linear Algebra with Applications')
 ## AuthorText1('Jeffrey Holt')
 ## EditionText1('1')
 ## Section1('3.1')
 ## Problem1('')
+## KEYWORDS('matrix' 'inverse')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "PGnumericalmacros.pl",
-           "PGmatrixmacros.pl"
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGmatrixmacros.pl",
+  "PGcourse.pl"
+);
 
 
 TEXT(beginproblem());
@@ -50,7 +51,6 @@ $y2 = non_zero_random(-6, -3, 1);
 $z2 = non_zero_random(-2, 2, 1);
 
 BEGIN_TEXT
-$BR
 a. The linear transformation \(T_1: R^2 \rightarrow R^2\) is given by:$BR$BR
 
 \(T_1(x, y) = ($ax x + $ay y, $bx x + $by y)\).$BR$BR

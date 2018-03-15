@@ -1,10 +1,12 @@
+## Static(1)
 ##Screen set header for Introduction to Statistics: Chapter 3
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-  "PGstandard.pl"
-  );
+  "PGstandard.pl",
+  "PGcourse.pl"
+);
 
 
 BEGIN_TEXT

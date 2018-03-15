@@ -1,19 +1,27 @@
-## DBsubject('Trigonometry')
-## DBchapter('Trigonometric Functions of Angles')
-## DBsection('Trigonometric Functions of Angles')
-## KEYWORDS('calculus', 'trigonometry', 'trigonometric functions')
+## DBsubject(Trigonometry)
+## DBchapter(Trigonometric functions)
+## DBsection(Trigonometric functions of non-special angles)
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## MLT(One_func_to_others_nonspec_exact)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('1.4')
 ## Problem1('19')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'trigonometry', 'trigonometric functions')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 ($num, $side, $denom) = @{ list_random(
     [3,4,5],
@@ -32,7 +40,6 @@ $a2 = Real("$side/$num");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "1.4","19") \}
 $PAR
 Find \( \sin \theta \) and \( \tan \theta \) if \( \cos \theta = \frac {$num}{$denom}\), assuming that \(0\leq\theta < \pi/2\).

@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -155,10 +155,12 @@ $PAR Solution $PAR
 Six of the ten squares in Picture 4 contain arrowheads.  \(\frac{6}{10}=\frac{3}{5}\) so Picture 4 is the answer.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 5')
-## DBsection('2005')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Interpreting fractions)
+## MLT(Which_represents_fraction)
+## Level(1)

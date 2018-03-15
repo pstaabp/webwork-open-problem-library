@@ -2,19 +2,21 @@
 ##  Algebra: Symmetries of polynomial functions
 ##ENDDESCRIPTION
 
-##KEYWORDS('algebra', 'graph', 'functions', 'polynomials', 'quartic', 'symmetries')
 
-## DBsubject('Algebra')
-## DBchapter(Polynomial and rational functions)
-## DBsection('Polynomial Functions and their Graphs')
-## Date('01/12/2010')
-## Author('Justin Sukiennik')
-## Institution('University of Minnesota')
+## DBsubject(Algebra)
+## DBchapter(Polynomial equations and functions)
+## DBsection(Graphs of polynomials)
+## Date(01/12/2010)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## Level(2)
+## MO(1)
 ## TitleText1('Algebra for College Students')
-## EditionText1('8')
 ## AuthorText1('Kaufmann, Schwitters')
+## EditionText1('8')
 ## Section1('9.6')
 ## Problem1('')
+## KEYWORDS('algebra', 'graph', 'functions', 'polynomials', 'quartic', 'symmetries')
 
 #####################################################################
 DOCUMENT();        # This should be the first executable line in the problem.
@@ -24,7 +26,7 @@ loadMacros(
   "MathObjects.pl",
   "parserPopUp.pl",
   "PGgraphmacros.pl",
-  "PGcourse.pl", 
+  "PGcourse.pl"
 );
 #####################################################################
 
@@ -71,9 +73,6 @@ $PAR
 \{$popup3->menu\} $BBOLD 3. $EBOLD   Is the equation symmetric with respect to the origin? 
 $HR
 $BBOLD Note: $EBOLD $BITALIC You can click on the graph to enlarge the image.$EITALIC
-$HR
-$BBOLD Note:$EBOLD  $BITALIC You only have two attempts at this problem.$EITALIC
-$HR
 END_TEXT
 Context()->normalStrings;
 

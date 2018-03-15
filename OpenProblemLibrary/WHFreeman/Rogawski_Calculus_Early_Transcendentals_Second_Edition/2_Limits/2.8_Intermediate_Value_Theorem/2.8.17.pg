@@ -1,9 +1,10 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Continuity - intermediate value theorem)
 ## Institution(W.H.Freeman)
 ## Author(Nick Hamblet)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -12,9 +13,14 @@
 ## KEYWORDS('calculus', 'intermediate value theorem')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $a = random(2,4,1);
 $lowestb = Compute("2*ln($a)/ln(2)");
@@ -59,7 +65,6 @@ $small = Compute("[$smalll, $smallr]");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "2.8","17") \}
 $PAR
 Carry out three steps of the Bisection Method for \(f(x)=$f\) as follows: $BR

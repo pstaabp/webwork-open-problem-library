@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Surface Integrals)
+## DBchapter(Vector calculus)
+## DBsection(Surface integrals of vector fields)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(flux_3)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -24,14 +27,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-#"PGchoicemacros.pl",
-"PGcourse.pl",
-"PGunion.pl",
-"MathObjects.pl",
-"LiveGraphics3D.pl",
-#"LiveGraphicsVectorField3D.pl",
-#"PGgraders.pl",
+  "PGstandard.pl",
+  "PGunion.pl",
+  "MathObjects.pl",
+  "LiveGraphics3D.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -123,7 +123,7 @@ ANS(Real($z)->cmp() );
 COMMENT("Uses interactive graphs generated on-the-fly");
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 

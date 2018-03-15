@@ -1,12 +1,12 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"contextFraction.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -70,9 +70,12 @@ b) One gallon equals 8 glasses.  \(\frac{3}{4}\) gallon is \(\frac{3}{4}\times 8
 So the family drank \(8+6=14\) glasses of water that day.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 6')
-## DBsection('2009')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Applications)
+## MLT(Shapes_and_Proportions)
+## Level(5)
+## MO(1)
 

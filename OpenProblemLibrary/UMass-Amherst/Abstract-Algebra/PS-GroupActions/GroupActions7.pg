@@ -1,30 +1,22 @@
-## DBsubject('Abstract Algebra')
-## DBchapter('Groups')
-## DBsection('Group actions')
-## KEYWORDS('group actions, conjugation, conjugacy classes')
+## DBsubject(Abstract algebra)
+## DBchapter(Groups)
+## DBsection(Group actions)
+## Institution(University of Massachusetts Amherst)
+## Author(Siman Wong, Patrick O'Brien, Dan Nichols)
 ## Level(4)
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Siman Wong, Patrick O'Brien, Dan Nichols')
-## Institution('University of Massachusetts Amherst')
+## MO(1)
+## KEYWORDS('group actions, conjugation, conjugacy classes')
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-#"parserRadioButtons.pl",
-"unionTables.pl",
-"algebraMacros.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "unionTables.pl",
+  "algebraMacros.pl",
+  "PGcourse.pl"
 );
 
 $bHTML = $eHTML = '';

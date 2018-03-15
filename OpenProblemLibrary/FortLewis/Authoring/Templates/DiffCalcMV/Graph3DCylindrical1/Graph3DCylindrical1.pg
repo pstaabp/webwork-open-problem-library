@@ -5,8 +5,8 @@
 ## KEYWORDS('multivariable differential calculus', '3D graph', 'cylindrical coordinates')
 
 ## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('Fort Lewis Tutorial 2011')
+## DBchapter(WeBWorK tutorial)
+## DBsection(Fort Lewis tutorial 2011)
 ## Date('01/30/2011')
 ## Author('Paul Pearson')
 ## Institution('Fort Lewis College')
@@ -23,9 +23,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"LiveGraphicsCylindricalPlot3D.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "LiveGraphicsCylindricalPlot3D.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -65,7 +66,7 @@ BEGIN_TEXT
 \{ 
 Live3Ddata(
 $plot,
-image => "wavy-surface.png", 
+image => alias("wavy-surface.png"), 
 size => [400,400],
 tex_size => 600,
 tex_center => 1,
@@ -93,6 +94,6 @@ Solution explanation goes here.
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT("MathObject version.");
+;
 
 ENDDOCUMENT();

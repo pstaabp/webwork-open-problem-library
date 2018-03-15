@@ -2,19 +2,22 @@
 ## Higher order ODEs: constant coefficient second order nonhomogeneous linear ODEs
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','second order linear ODE','constant coefficients','nonhomogeneous')
 
 ## DBsubject(Differential equations)
-## DBchapter('Higher Order Differential Equations')
-## DBsection('Second Order Linear Nonhomogeneous')
-## Date('03/01/2012')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Higher order differential equations)
+## DBsection(Applications)
+## Date(03/01/2012)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(spring_mass_a_b)
+## Level(5)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
-## EditionText1('2')
 ## AuthorText1('Kohler and Johnson')
+## EditionText1('2')
 ## Section1('3.10')
 ## Problem1('7')
+## KEYWORDS('differential equations','second order linear ODE','constant coefficients','nonhomogeneous')
 
 
 ##############################
@@ -23,11 +26,12 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"unionLists.pl",
-"weightedGrader.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "unionLists.pl",
+  "weightedGrader.pl",
+  "PGcourse.pl"
 );
 
 install_weighted_grader();
@@ -77,7 +81,8 @@ initially at rest and subjected to an applied
 force \( F(t) \), where the unit of force is the 
 Newton (N).  Assume that \( m = $m \) kilograms, 
 \( c = $c \) kilograms per second, \( k = $k \) 
-Newtons per meter, and \( F(t) = $F \) Newtons.  
+Newtons per meter, and \( F(t) = $F \) Newtons. 
+
 \{ BeginList("OL",type=>'a') \}
 
 $ITEM
@@ -100,6 +105,9 @@ For very large positive values of \( t \),
 \( y(t) \approx \)
 \{ ans_rule(50) \}
 \{ AnswerFormatHelp("formulas") \}
+
+\{ EndList("OL") \}
+
 END_TEXT
 Context()->normalStrings;
 
@@ -109,6 +117,6 @@ WEIGHTED_ANS( $y->cmp(), 75 );
 
 WEIGHTED_ANS( $yinfinity->cmp(), 25 );
 
-COMMENT("MathObject version");
+
 
 ENDDOCUMENT();

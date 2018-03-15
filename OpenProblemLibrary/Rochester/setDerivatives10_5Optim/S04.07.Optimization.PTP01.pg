@@ -3,13 +3,14 @@
 ## ENDDESCRIPTION
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Optimization - general)
 ## Date(05/10/2007)
 ## Institution(University of Rochester)
 ## Author(Paul Pearson)
 ## MLT(Optimization_Fence)
 ## Level(5)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5e')
@@ -24,13 +25,10 @@
 DOCUMENT();    
 
 loadMacros(
-#"PGbasicmacros.pl",
-#"PGchoicemacros.pl",
-#"PGanswermacros.pl",
-#"PGauxiliaryFunctions.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"parserNumberWithUnits.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -95,5 +93,5 @@ $showPartialCorrectAnswers = 1;
 ANS( $answer->cmp() );
 #ANS(num_cmp("$answer", units => 'ft*ft'));
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

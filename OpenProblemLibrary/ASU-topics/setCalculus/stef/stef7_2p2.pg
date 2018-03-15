@@ -2,35 +2,32 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS('calculus', 'integrals', 'Trigonometric')
 ## Tagged by YL
 
+
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Trigonometric Integrals')
-## Date('')
-## Author('')
-## Institution('ASU')
+## DBchapter(Techniques of integration)
+## DBsection(Trigonometric integrals)
+## MLT(odd_cos_power)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('5')
 ## AuthorText1('Stewart')
+## EditionText1('5')
 ## Section1('7.2')
 ## Problem1('')
-
 ## TitleText2('Calculus: Early Transcendentals')
-## EditionText2('6')
 ## AuthorText2('Stewart')
+## EditionText2('6')
 ## Section2('7.2')
 ## Problem2('')
+## KEYWORDS('calculus', 'integrals', 'Trigonometric', 'integration', 'trigonometric integrals')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 $showPartialCorrectAnswers = 1;
@@ -45,8 +42,10 @@ TEXT(beginproblem());
 
 BEGIN_TEXT
 Evaluate the indefinite integral.
-$BR \[ \int \sin^3($a x)\cos^{$l}($a x) dx \]
-$BR $BR \{ans_rule( 60) \}  \(+C\)
+$BR 
+$BR 
+\( \displaystyle\int \sin^3($a x)\cos^{$l}($a x)\, dx= \)
+\{ans_rule( 60) \}  \(+C\)
 END_TEXT
 
 ##set $PG_environment{'textbook'} in webworkCourse.ph

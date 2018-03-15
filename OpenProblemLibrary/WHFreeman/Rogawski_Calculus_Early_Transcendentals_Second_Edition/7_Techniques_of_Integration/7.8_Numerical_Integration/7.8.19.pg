@@ -1,8 +1,11 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Approximating Integrals')
-## Institution('W.H.Freeman')
-## Author('Christopher Sira')
+## DBchapter(Techniques of integration)
+## DBsection(Approximation)
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## MLT(approx_03)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,13 +14,16 @@
 ## KEYWORDS('calculus', 'integration', 'integral', 'numerical', 'numerical integration')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 $context = Context();
 
-
+TEXT(beginproblem());
 
 #($a, $b, $ans) = @{ list_random([],
 #                                []
@@ -105,7 +111,6 @@ for ($i = 0; $i < $N; $i++)
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "7.8","19") \}
 $PAR
 Calculate the integral approximation \( S_{$N} \) for

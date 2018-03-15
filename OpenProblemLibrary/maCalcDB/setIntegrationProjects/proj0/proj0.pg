@@ -1,11 +1,14 @@
 ##DESCRIPTION
 ## sbrummel tagged and PAID on 2-20-2004
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Approximating Integrals')
-## Date('6/3/2002')
-## Institution('rochester')
-## Author('Arnie Pizer')
+## DBchapter(Techniques of integration)
+## DBsection(Approximation)
+## Date(6/3/2002)
+## Institution(rochester)
+## Author(Arnie Pizer)
+## MLT(approx_06)
+## MLTleader(1)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -20,10 +23,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 #modify this for your own WeBWorK setup
@@ -84,23 +86,20 @@ for($i=0; $i<11; $i++) {
 	@z = (@z,&myf(-1+$i*0.2,$a));
 } 
 
-BEGIN_TEXT
-
-$PAR
-Consider the function \(y = f(x)\) specified by the following table:\newline
-\begin{tabular}{cc}
-
-END_TEXT
-
+$rows = '';
 for($i=0;$i<11;$i++) {
-BEGIN_TEXT
-$x[$i] &$z[$i]\\
-END_TEXT
+$rows .= "$x[$i] &$z[$i]\\ ";
 }
 
 BEGIN_TEXT
-\end{tabular}
-\newline
+
+Consider the function \(y = f(x)\) specified by the following table:
+\[
+\begin{array}{c|c}
+$rows
+\end{array}
+\]
+
 (The first column contains \(x\) values, while the second column contains the
 corresponding \(y\) values.)
 Find a numerical approximation to the function

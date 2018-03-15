@@ -5,9 +5,11 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Maximum and Minimum Values)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Lagrange multipliers and constrained optimization)
 ## Institution(Dartmouth)
+## MLT(RectangularBoxVolumeOptimization)
+## Level(5)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -21,11 +23,10 @@
 ## KEYWORDS('absolute' 'maximum' 'volume')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
  
 

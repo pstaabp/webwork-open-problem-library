@@ -4,15 +4,19 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Logarithmic functions)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Properties of logarithms)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(LogProperties_Expand_FreeResponse)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
-## Section1('4 Tools')
-## Problem1('28')
+## Section1(4.Tools)
+## Problem1(28c)
 ## KEYWORDS('logarithms')
 
 ####################################
@@ -21,10 +25,10 @@
 DOCUMENT();  
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -79,5 +83,5 @@ END_TEXT
 ANS($answer->cmp() );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

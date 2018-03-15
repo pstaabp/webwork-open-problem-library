@@ -1,12 +1,12 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"contextString.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "contextString.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("String")->strings->add(f=>{}, F=>{alias=>"f"});
@@ -108,12 +108,13 @@ If the last 20 minutes he went 3 kilometers (\(\frac{3}{20}\) kilometers per min
 Since \(\frac{3}{20}>\frac{1}{15}\), he went faster in the last 20 minutes.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 7')
-## DBsection('2005')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Level(5)
 

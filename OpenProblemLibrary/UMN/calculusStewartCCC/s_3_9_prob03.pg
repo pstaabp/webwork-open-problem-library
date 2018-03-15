@@ -4,13 +4,14 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Linear approximation and differentials)
 ## Date(11/17/2010)
 ## Institution(UCSB)
 ## Author(Justin Sukiennik)
 ## MLT(LinearApprox_EstimateNumber)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Concepts and Contexts')
 ## AuthorText1('Stewart')
 ## EditionText1('4 Custom UMTYMP Ed.')
@@ -30,7 +31,7 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "PGgraphmacros.pl",
-  "PGcourse.pl", 
+  "PGcourse.pl"
 );
 #####################################################################
 
@@ -54,11 +55,12 @@ BEGIN_TEXT
 Use a linear approximation to estimate the number \(\sqrt{$b}\) .
 $PAR
 Answer: \{ans_rule(20)\}
+(Make sure your answer is accurate to at least 6 decimal places.)
 END_TEXT
 Context()->normalStrings;
 
 #####################################################################
 
-ANS($ans->cmp(tolType=>'absolute',tolerance=>.000000001));
+ANS($ans->cmp(tolType=>'absolute',tolerance=>.0000005));
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.

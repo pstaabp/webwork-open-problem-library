@@ -1,39 +1,46 @@
 ## DESCRIPTION
 ## Functions: Piecewise defined functions
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Piecewise Defined Functions)
+## DBsection(Interpretation and applications)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(Function_wordProblem_DomainRangeAndMore)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('2.3')
-## Problem1('15')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1('2.3')
 ## Section2('2.3')
+## Section3('2.3')
+## Problem1('15')
 ## Problem2('15')
+## Problem3('26')
 ## KEYWORDS('functions','piecwise')
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGunion.pl",
-"PGgraphmacros.pl",
-"PGcourse.pl",
-"contextInequalities.pl",
-"AnswerFormatHelp.pl",
-"PGgraders.pl",
-"PGchoicemacros.pl",
-"parserPopUp.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGunion.pl",
+  "PGgraphmacros.pl",
+  "contextInequalities.pl",
+  "AnswerFormatHelp.pl",
+  "PGgraders.pl",
+  "PGchoicemacros.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 
@@ -208,5 +215,5 @@ range is all the even integers from $k to $max.
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

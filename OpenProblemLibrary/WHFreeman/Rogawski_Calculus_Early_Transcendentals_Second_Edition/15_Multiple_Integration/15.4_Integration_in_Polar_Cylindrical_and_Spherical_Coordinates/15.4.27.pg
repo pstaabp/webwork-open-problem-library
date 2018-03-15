@@ -1,20 +1,27 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Integration in Polar, Cylindrical, and Spherical Coordinates)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Triple integrals in cylindrical and spherical)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.4')
 ## Problem1('27')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $r=random(2,9);
 $z=random(2,18,2);
@@ -26,7 +33,6 @@ $answer=Real($PI*$z*($r**4)/2);
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.4","27") \}
 $PAR
 Use cylindrical coordinates to calculate :

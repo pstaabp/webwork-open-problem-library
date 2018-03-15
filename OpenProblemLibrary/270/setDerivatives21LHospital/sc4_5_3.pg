@@ -5,7 +5,7 @@
 ## Tagged by cmd6a 3/8/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Indeterminate forms and L'Hopital's rule)
 ## Date(5/29/2005)
 ## Institution(UVA)
@@ -32,11 +32,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

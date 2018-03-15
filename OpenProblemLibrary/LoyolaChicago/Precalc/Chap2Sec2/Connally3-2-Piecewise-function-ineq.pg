@@ -5,10 +5,13 @@
 
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Piecewise Defined Functions)
+## DBsection(Piecewise functions)
 ## Date(01/09/11)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson and Erich McAlister)
+## MLT(piecewise_find_domain)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
@@ -21,13 +24,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-#"PGunion.pl",
-"PGcourse.pl",
-"contextInequalities.pl",
-"AnswerFormatHelp.pl",
-
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextInequalities.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -127,6 +128,6 @@ Context()->normalStrings;
 
 ANS($range->cmp() );
 
-COMMENT('MathObject version.  Answers must be inequalities (not intervals).');
+COMMENT('Answers must be inequalities (not intervals).');
 
 ENDDOCUMENT();

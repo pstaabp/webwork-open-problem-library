@@ -4,10 +4,13 @@
 
 ## Tagged by tda2d
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Equations of Lines and Planes)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Lines)
 ## Institution(Dartmouth)
+## MLT(lin_classify_two_lines)
+## MLTleader(1)
+## Level(3)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -16,13 +19,13 @@
 ## KEYWORDS('intersection' 'plane')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

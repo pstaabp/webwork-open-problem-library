@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Line Integrals)
+## DBchapter(Vector calculus)
+## DBsection(Conservative vector fields)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(My_new_Conservative_vector_fields)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -24,12 +27,12 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserVectorUtils.pl",
-"PGcourse.pl",
-"weightedGrader.pl",
-"parserPopUp.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserVectorUtils.pl",
+  "weightedGrader.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 install_weighted_grader();
@@ -132,5 +135,5 @@ WEIGHTED_ANS($parabolaintegral->cmp(), 39 );
 WEIGHTED_ANS($popup->cmp(), 2 );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

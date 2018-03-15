@@ -4,11 +4,14 @@
 
 ## Tagged by cmd6a 5/8/06
 
-## DBsubject('Discrete Mathematics')
-## DBchapter('Set Theory')
-## DBsection('Basic Operations')
-## Institution('Rochester')
-## Author('Kenneth Rosen')
+## DBsubject(Set theory and logic)
+## DBchapter(Relations between sets)
+## DBsection(Subset)
+## Institution(Rochester)
+## Author(Kenneth Rosen)
+## MLT(ExprAsBit)
+## Level(2)
+## Static(1)
 ## TitleText1('Discrete Mathematics')
 ## AuthorText1('Rosen')
 ## EditionText1('4')
@@ -19,11 +22,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

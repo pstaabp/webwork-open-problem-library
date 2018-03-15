@@ -4,10 +4,12 @@
 
 ## hcao tagged and PAID on 2-20-2004
 
-## DBsubject(Numbers)
-## DBchapter(Complex numbers)
-## DBsection(Arithmetic)
+## DBsubject(Complex analysis)
+## DBchapter(Arithmetic)
+## DBsection(Multiplication)
 ## Date(6/3/2002)
+## Level(2)
+## MO(1)
 ## TitleText1('College Algebra')
 ## AuthorText1('Stewart, Redlin, Watson')
 ## EditionText1('3')
@@ -21,12 +23,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -36,8 +35,9 @@ do {
 $b = list_random(3,5,6,7,8,10,11,13);
 } until ($b>$a);
 
+$a=Real($a); $b=Real($b);
+
 $showPartialCorrectAnswers=0;
-install_problem_grader(~~$full_partial_grader);
 
 $ans = $a+$b;
 
@@ -53,9 +53,8 @@ $BR
 Your answers here have to be simplified so that they are just numbers.
 END_TEXT
 
-
-ANS(num_cmp($ans, mode=>'strict'));
-ANS(num_cmp(0, mode=>'strict'));
+ANS($ans->cmp());
+ANS(Real(0)->cmp());
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.
 

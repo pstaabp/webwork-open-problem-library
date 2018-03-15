@@ -2,27 +2,38 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 07/05/10
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Line Integrals)
+## DBchapter(Vector calculus)
+## DBsection(Line integrals)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('18.1')
-## Problem1('21')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## TitleText4('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## AuthorText4('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('4')
+## EditionText4('7')
+## Section1('18.1')
 ## Section2('18.1')
+## Section3(18.1)
+## Section4('18.1')
+## Problem1('21')
 ## Problem2('27')
-## KEYWORDS('line integral', 'integral', 'multivariable', 'calculus')
+## Problem3(32)
+## Problem4('32')
+## KEYWORDS('line integral', 'integral', 'multivariable', 'calculus','Line integrals','Path integrals')
 
 ## Textbook tags
 ## HHChapter1('Line Integrals')
@@ -30,15 +41,12 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"parserPopUp.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -96,7 +104,7 @@ for ( my $i=0; $i<3; $i++ ) {
 ## the correct ordering of the integrals is that which takes the index
 ##    pickem[i] from smallest to largest, so make an inverse mapping of
 ##    pickem[i] => i
-%invMap = { };
+%invMap = ( );
 
 ## add the curves to the graph
 for ( my $i=0; $i<3; $i++ ) {
@@ -200,16 +208,16 @@ if ( @whichNeg > 1 ) {
 	"field, the integral on \($largercurve\) is larger than that " .
 	"on \($smallercurve\).$PAR";
 } elsif ( @whichPos > 1 ) {
-    if ( $pickem[$whichNeg[0]] > $pickem[$whichNeg[1]] ) {
-	$largercurve = "C_" . ($whichNeg[0]+1);
-        $smallercurve = "C_" . ($whichNeg[1]+1);
+    if ( $pickem[$whichPos[0]] > $pickem[$whichPos[1]] ) {
+	$largercurve = "C_" . ($whichPos[0]+1);
+        $smallercurve = "C_" . ($whichPos[1]+1);
     } else {
-        $largercurve = "C_" . ($whichNeg[1]+1);
-	$smallercurve = "C_" . ($whichNeg[0]+1);
+        $largercurve = "C_" . ($whichPos[1]+1);
+	$smallercurve = "C_" . ($whichPos[0]+1);
     }
     $twosignexpl = "By similar logic, we note that both of " .
-        "\(\int_{C" . ($whichNeg[0]+1) . "}\vec F\cdot d\vec r\) and " .
-	"\(\int_{C" . ($whichNeg[1]+1) . "}\vec F\cdot d\vec r\) are " .
+        "\(\int_{C" . ($whichPos[0]+1) . "}\vec F\cdot d\vec r\) and " .
+	"\(\int_{C" . ($whichPos[1]+1) . "}\vec F\cdot d\vec r\) are " .
 	"positive.  However, because \($largercurve\) has a smaller " .
 	"component pointing in the same direction as the vector " .
 	"field, the integral on \($largercurve\) is larger than that " .

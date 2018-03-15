@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Apply source transformation to a dc circuit
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Additional Analysis Techniques')
-## DBsection('Maximum Power Transfer')
+## DBsubject(Electric circuits)
+## DBchapter(Additional analysis techniques)
+## DBsection(Maximum power transfer)
 ## KEYWORDS('source transformation','dc','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

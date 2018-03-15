@@ -1,20 +1,25 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Integrals of Hyperbolic and Inverse Hyperbolic Functions')
-## KEYWORDS('calculus', 'integration', 'integral', 'hyperbolic', 'inverse hyperbolic')
+## DBchapter(Techniques of integration)
+## DBsection(Hyperbolic functions)
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('7.4')
 ## Problem1('43')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'integration', 'integral', 'hyperbolic', 'inverse hyperbolic')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 $context = Context();
 
 $context->variables->add(C=>'Real');
@@ -22,6 +27,8 @@ $context->variables->add(C=>'Real');
 #($a, $b, $ans) = @{ list_random([],
 #                                []
 #) };
+
+TEXT(beginproblem());
 
 $a = Real(random(3, 8, 1));
 
@@ -31,7 +38,6 @@ $ans = Formula("$a * ((1/2) * x**2 * arctanh(x) - (1/2) * arctanh(x) + (1/2) * x
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "7.4","43") \}
 $PAR
 Calculate the integral \( \int $int \, dx \).

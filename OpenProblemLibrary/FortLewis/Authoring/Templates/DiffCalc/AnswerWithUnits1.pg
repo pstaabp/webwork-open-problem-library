@@ -2,19 +2,16 @@
 ## Differential calculus: answer is a number or formula with units
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential calculus', 'units')
 
-## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('Fort Lewis Tutorial 2011')
-## Date('01/30/2011')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(WeBWorK)
+## DBchapter(WeBWorK tutorial)
+## DBsection(Fort Lewis tutorial 2011)
+## Date(01/30/2011)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Static(1)
+## MO(1)
+## KEYWORDS('differential calculus', 'units')
 
 
 ##############################
@@ -22,12 +19,6 @@
 
 DOCUMENT(); 
 
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserNumberWithUnits.pl",
-"parserFormulaWithUnits.pl",
-);
 
 TEXT(beginproblem());
 
@@ -100,7 +91,7 @@ Solution explanation goes here.
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT("MathObject version.");
+;
 
 ENDDOCUMENT();
 
@@ -115,9 +106,12 @@ ENDDOCUMENT();
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserDifferenceQuotient.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserNumberWithUnits.pl",
+  "parserFormulaWithUnits.pl",
+  "parserDifferenceQuotient.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -175,6 +169,6 @@ Solution explanation goes here.
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version.');
+;
 
 ENDDOCUMENT();

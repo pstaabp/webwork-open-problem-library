@@ -9,16 +9,19 @@
 ## DBsection(Matrix-vector forms)
 ## Institution(Rochester)
 ## Level(2)
-## KEYWORDS('Matrix', 'System of Equations')
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('7.4')
+## Problem1('24')
+## KEYWORDS('Matrix', 'System of Equations','algebra', 'matrix operation', 'matrix')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

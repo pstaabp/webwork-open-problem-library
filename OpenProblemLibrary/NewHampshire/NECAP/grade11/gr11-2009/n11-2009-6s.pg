@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -133,8 +133,9 @@ In order to be a function a relation cannot have two points that are on the same
 at x values 2 and 5.  The answer that satisfies these conditions is "Q and R".
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 11')
-## DBsection('2009')
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Definition, concept)
+## Level(2)

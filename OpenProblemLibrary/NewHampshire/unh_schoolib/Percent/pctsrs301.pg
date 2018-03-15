@@ -4,16 +4,12 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-# "unionLists.pl",
-"unionMacros.pl",
-"unionTables.pl",
-#"contextLeadingZero.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "unionMacros.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -65,12 +61,15 @@ To convert this fraction to a percent we multiply by 100 and perform the divisio
 END_SOLUTION	
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
 
-## DBsubject(Middle school)
-## DBchapter('Percent')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Percents)
+## DBsection(Applications)
+## MLT(percents_from_table5)
+## Level(1)
+## MO(1)
 

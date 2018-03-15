@@ -3,17 +3,20 @@
 # WeBWorK problem written by Erich McAlister, <mcalister_e@fortlewis.edu>
 # ENDDESCRIPTION
 
-## DBsubject('Algebra')
-## DBchapter('Exponential Functions, Expressions, and Equations')
-## DBsection('Exponential Functions')
-## KEYWORDS('exponents')
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Applications and models - population growth)
+## Institution(Fort Lewis College)
+## Author(Erich McAlister)
+## MLT(Population_givenFunction)
+## Level(4)
+## MO(1)
 ## TitleText1('Algebra: Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum')
+## EditionText1('1')
 ## Section1('10.3')
 ## Problem1('10')
-## Author('Erich McAlister')
-## Institution('Fort Lewis College')
+## KEYWORDS('exponents')
 
 
 ############################
@@ -22,10 +25,10 @@
 DOCUMENT();       
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
        
 TEXT(beginproblem()); 
@@ -65,6 +68,6 @@ Context()->normalStrings;
 
 ANS( Real("$r")->cmp() );
 
-COMMENT('MathObject version');
+;
 
 ENDDOCUMENT();

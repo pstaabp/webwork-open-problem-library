@@ -1,12 +1,11 @@
-
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -79,8 +78,7 @@ $radio->qa("Which student group has the least number of members in eighth grade?
 #FIRST PAREN IS QUESTION, SECOND PAREN IS CORRECT ANSWER
 $radio->extra("Honor society ", "Jazz band ", "Recycling club  ");
 BEGIN_TEXT
- IF YOU ARE PRACTICING FOR THE NEAP EXAMINATION, DO THIS WITHOUT A CALCULATOR
-THIS IS A PROBLEM FROM FOR WHICH A CALCULATOR WOULD NOT BE ALLOWED.$PAR
+ 
   
 Look at this table
 $BR
@@ -103,11 +101,13 @@ The Chess club has 50% of 20 = 10 eighth graders $BR
 The Recycling club has 30% of 70 =21 eighth graders
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 8')
-## DBsection('2008')
+## DBsubject(Arithmetic)
+## DBchapter(Percents)
+## DBsection(Applications)
+## Level(3)
+## MLT(arithmetic_percents_calculation_people_table)
 

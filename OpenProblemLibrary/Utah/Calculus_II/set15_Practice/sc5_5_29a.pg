@@ -1,20 +1,22 @@
 ##DESCRIPTION
 ##ENDDESCRIPTION
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('Substitution')
-## Date('6/3/2002')
-## Institution('Univeristy of Utah')
-## Author('Utah ww group')
+## DBchapter(Techniques of integration)
+## DBsection(Substitution (without trigonometric functions))
+## Date(6/3/2002)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## MLT(Sub_indirect)
+## Level(2)
 ## TitleText1('Calculus')
 ## AuthorText1('Dale Varberg, Edwin J. Purcell, and Steve E. Rigdon')
 ## EditionText1('9')
-## Section1('Review')
+## Section1('.')
 ## Problem1('')
 ## TitleText2('Mathematical Applications')
 ## AuthorText2('Ronal J. Harshbarger and James J. Reynolds')
 ## EditionText2('8')
-## Section2('Indefinite Integrals')
+## Section2('.')
 ## Problem2('')
 ## TitleText3('Calculus: Early Transcendentals')
 ## AuthorText3('Stewart')
@@ -31,11 +33,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -50,7 +50,7 @@ TEXT(EV2(<<EOT));
 
 Evaluate the indefinite integral.
 $BR \[ \int \frac{x + $a}{x^2 + $b x +$c} \, dx \]
-$BR $BR \{ans_rule( 30) \}
+$BR $BR Answer: \{ans_rule( 30) \} \(+C\)
 $BR
 EOT
 

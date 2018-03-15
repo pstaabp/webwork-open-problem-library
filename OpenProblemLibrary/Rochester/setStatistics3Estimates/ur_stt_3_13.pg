@@ -2,30 +2,24 @@
 ##   Confidence Intervals
 ## ENDDESCRIPTION
 
-## KEYWORDS('Confidence Interval')
 ## Tagged by nhamblet
 
-## DBsubject('Statistics')
-## DBchapter('Estimation')
-## DBsection('Large-Sample Confidence Intervals')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Statistics)
+## DBchapter(Confidence intervals)
+## DBsection(One sample proportion)
+## Institution(Rochester)
+## MLT(CI_1p_03)
+## Level(1)
+## KEYWORDS('Confidence Interval')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

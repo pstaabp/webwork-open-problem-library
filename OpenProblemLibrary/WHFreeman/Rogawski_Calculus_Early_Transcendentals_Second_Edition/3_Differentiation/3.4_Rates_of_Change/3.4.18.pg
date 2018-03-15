@@ -1,9 +1,10 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Rates of change - engineering and physics)
 ## Institution(W.H.Freeman)
 ## Author(Keith Thompson)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -12,11 +13,15 @@
 ## KEYWORDS('calculus', 'derivatives', 'rates of change')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGauxiliaryFunctions.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 #$showPartialCorrectAnswers=1;
 #Context()->variables->add(r=>'Real');
@@ -26,7 +31,6 @@ $ans1= - 2 * 2.99 * 10**16 /( (6.77 * 10**6)**3 );
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "3.4","18") \}
 $PAR
 The earth exerts a  gravitational force of \(F(r)=\frac{2.99\times 10^{16}}{r^2}\) (in Newtons) on an object with a mass of 75 kg, where \(r\) is the distance (in meters) from the center of the earth. Find the rate of change of force with respect to distance at the surface of the earth, assuming the radius of the earth is \(6.77\times10^6\) m.

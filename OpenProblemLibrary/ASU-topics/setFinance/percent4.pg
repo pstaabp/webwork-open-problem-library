@@ -2,29 +2,21 @@
 ## Applied Mathematics
 ## ENDDESCRIPTION
 
-## KEYWORDS('percent', 'mathematics for business', 'algebraic expression')
 ## Tagged by XW
 
-## DBsubject('Financial Mathematics')
-## DBchapter('Introduction to Interest')
-## DBsection('Algebra Prerequisites')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Arithmetic)
+## DBchapter(Percents)
+## DBsection(Calculations)
+## Institution(ASU)
+## Level(3)
+## KEYWORDS('percent', 'mathematics for business', 'algebraic expression')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

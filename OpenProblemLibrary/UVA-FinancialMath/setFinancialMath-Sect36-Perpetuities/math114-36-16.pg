@@ -2,28 +2,29 @@
 ##  Financial mathematics: Perpetuities
 ## ENDDESCRIPTION
 
-## KEYWORDS('financial mathematics', 'perpetuities')
 ## JJH tagged this problem.
 
-## DBsubject('Financial Mathematics')
-## DBchapter('Annuities')
-## DBsection('Perpetuities')
-## Date('5/22/2005')
-## Author('Jeff Holt')
-## Institution('UVA')
+## DBsubject(Financial mathematics)
+## DBchapter(Annuities)
+## DBsection(Perpetuities)
+## Date(5/22/2005)
+## Institution(UVA)
+## Author(Jeff Holt)
+## MLT(Perpetuity_Geometric_Increase_Present_Value)
 ## TitleText1('Financial Mathematics')
-## EditionText1('1')
 ## AuthorText1('Holt')
+## EditionText1('1')
 ## Section1('3.6')
-## Problem1()
+## Problem1('')
+## KEYWORDS('financial mathematics', 'perpetuities')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 $ip = random(6,9,0.1);
 $ie = 0.01*$ip;

@@ -4,10 +4,14 @@
 # ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Logarithmic functions)
-## DBsection(The Logarithmic Functions)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Logarithmic functions)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## MLT(Domain)
+## MLTleader(1)
+## Level(1)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
@@ -17,17 +21,12 @@
 
 DOCUMENT();       
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-#           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-#           "PGgraphmacros.pl",
-#           "extraAnswerEvaluators.pl",
-#           "PGauxiliaryFunctions.pl",
-"contextInequalities.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "contextInequalities.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
+);
        
 TEXT(beginproblem()); # standard preamble to each problem.
 
@@ -84,5 +83,5 @@ $reason[$pick]
 $BR
 END_SOLUTION
       
-COMMENT('MathObject version.  Uses log = logten.');
+COMMENT('Uses log = logten.');
 ENDDOCUMENT();   # This should be the last executable line in the problem.

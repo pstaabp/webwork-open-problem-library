@@ -8,11 +8,13 @@
 ## Tagged by jjh2b
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Approximating Integrals')
-## Date('6/3/2002')
-## Institution('rochester')
-## Author('Arnie Pizer')
+## DBchapter(Techniques of integration)
+## DBsection(Computer algebra system)
+## Date(6/3/2002)
+## Institution(rochester)
+## Author(Arnie Pizer)
+## Level(3)
+## Static(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -23,11 +25,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 #modify this for your own WeBWorK setup

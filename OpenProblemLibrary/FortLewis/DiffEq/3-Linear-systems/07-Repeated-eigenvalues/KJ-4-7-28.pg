@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Systems of Differential Equations)
+## DBchapter(Systems of differential equations)
+## DBsection(Distinct real eigenvalues)
 ## Date(01/31/2012)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(4)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
 ## AuthorText1('Kohler and Johnson')
 ## EditionText1('2')
@@ -22,8 +24,9 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -82,6 +85,6 @@ $showPartialCorrectAnswers = 1;
 ANS( $A->cmp() );
 
 
-COMMENT("MathObject version.");
+;
 
 ENDDOCUMENT();

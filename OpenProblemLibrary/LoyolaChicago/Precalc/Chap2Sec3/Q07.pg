@@ -1,23 +1,30 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Piecewise Defined Functions)
+## DBsection(Piecewise functions)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## MLT(piecewise)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('2.3')
-## Problem1('7')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1('2.3')
 ## Section2('2.3')
+## Section3('2.3')
+## Problem1('7')
 ## Problem2('7')
+## Problem3('5')
 ## KEYWORDS('functions','domain','range','piecewise functions')
 
 ###################################
@@ -26,14 +33,14 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"PGgraphmacros.pl",
-"MathObjects.pl",
-"contextInequalities.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-"unionTables.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "contextInequalities.pl",
+  "AnswerFormatHelp.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -150,6 +157,7 @@ ANS($rightdom->cmp());
 ########################################
 #  Solution
 
+Context()->texStrings;
 BEGIN_SOLUTION
 
 ${BBOLD}Solution$EBOLD
@@ -175,10 +183,13 @@ so
 Thus, the second piece is \( y = $n x + $b2 \), and it is for the part of the function where \( x > $x_S \).
 $PAR
 Therefore, the function is:
-\[ y = \Bigg\lbrace \begin{array}{ll} $m x - $b1 & \mbox{ when } x < $x_Q \\ $n x - $b2 & \mbox{ when } x \geq $x_S. \end{array}  \]
+\[ y = \Bigg\lbrace \begin{array}{ll}
+	$left	& \mbox{ when } x\leq $x_Q \\
+	$right	& \mbox{ when } x > $x_S.
+\end{array}  \]
 
 END_SOLUTION
+Context()->normalStrings;
 
-
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

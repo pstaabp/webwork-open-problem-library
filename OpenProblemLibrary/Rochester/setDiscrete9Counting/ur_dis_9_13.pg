@@ -2,29 +2,26 @@
 ##   Counting Combinations
 ## ENDDESCRIPTION
 
-## KEYWORDS('Counting')
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
-## DBchapter('Counting and Probability')
-## DBsection('Permutations and Combinations')
-## Date('')
-## Author('')
-## Institution('Rochester')
+## DBsubject(Combinatorics)
+## DBchapter(Counting)
+## DBsection(Combinations)
+## Institution(Rochester)
+## Level(3)
 ## TitleText1('Discrete Mathematics')
-## EditionText1('4')
 ## AuthorText1('Rosen')
+## EditionText1('4')
 ## Section1('4.3')
 ## Problem1('30')
+## KEYWORDS('Counting')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -50,7 +47,7 @@ How many ways are there to select $council countries in the United Nations to
 serve on a council if $count1 is selected from a block of $block1, $count2 are selected
 from a block of $block2 and $count3 are selected from the remaining $block3
 countries? $BR 
-\{ ans_rule(30) \} $PAR
+\{ ans_rule(30) \}
 END_TEXT
 
 ANS(num_cmp( $ans ) );

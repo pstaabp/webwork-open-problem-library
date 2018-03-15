@@ -20,11 +20,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -68,4 +66,5 @@ ANS(str_cmp($ans1));
 ANS(fun_cmp($ans2,var=>'z'));
 ANS(fun_cmp($ans3,var=>'z'));
 
+COMMENT('This system is dependent.');
 ENDDOCUMENT();        # This should be the last executable line in the problem.

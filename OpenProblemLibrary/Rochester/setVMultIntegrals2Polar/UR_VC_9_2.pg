@@ -5,9 +5,11 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Double Integrals in Polar Coordinates)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Double integrals in polar)
 ## Date(6/3/2002)
+## MLT(BetweenCirclesCompleteSquare)
+## Level(4)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -18,11 +20,9 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

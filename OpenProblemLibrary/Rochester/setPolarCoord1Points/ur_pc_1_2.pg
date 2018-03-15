@@ -3,34 +3,34 @@
 ## ENDDESCRIPTION
 
 
-## KEYWORDS('Polar Coordinates')
 ## Tagged by tda2d
 
-## DBsubject(Calculus - single variable)
-## DBchapter('Parametric Equations and Polar Coordinates')
-## DBsection('Polar Coordinates')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Trigonometry)
+## DBchapter(Polar coordinates & vectors)
+## DBsection(Polar and rectangular coordinates)
+## Date(6/3/2002)
+## Institution(Rochester)
+## MLT(PolarToCart_Match)
+## MLTleader(1)
+## Level(2)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Rogawski')
+## EditionText1('1')
+## Section1('11.3')
+## Problem1('5')
 ## TitleText2('Calculus: Early Transcendentals')
-## EditionText2('1')
-## AuthorText2('Rogawski')
-## Section2('11.3')
-## Problem2('5')
+## AuthorText2('Stewart')
+## EditionText2('6')
+## Section2('10.3')
+## Problem2('1 2 3 4')
+## KEYWORDS('Polar Coordinates', 'Conversion')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -49,7 +49,7 @@ $r7 = $r2;
 
 $t1 = 1;
 $t15 = random(-3,3);
-$t2 = non_zero_random(-8,8,4) + 1;    #so t2 is odd (ne t1 mod4)
+$t2 = non_zero_random(-6,10,8) + 1;    #so t2 is odd (ne t1 mod4)
 $t3 = random(2,8) * random(-1,1,2);
 $t35 = non_zero_random(-4,3);
 $t4 = 3* $t35 + 1;                  #so t4 is 1 mod 3
@@ -75,7 +75,7 @@ $y5 = ($r5) * sin (($t5) * ($pi/3)) /sqrt(3) ;
 $y6 = ($r6) * sin (($t6) * ($pi/6)) ;
 $y7 = ($r7) * sin (($t7) * ($pi/6)) ;
 
-$questStr1 =EV2( " \(  ( $r1 , \frac{$t1 \pi}{4} ) \)"); 
+$questStr1 =EV2( " \(  ( $r1 , \frac{\pi}{4} ) \)");  # using t1=1
 $ansStr1 = EV2(   '\( ( \{spf($x1, "%5.0f")\} \sqrt{2},
                         \{spf($y1,"%5.0f") \} \sqrt{2} ) \)');
 

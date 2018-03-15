@@ -2,30 +2,34 @@
 ##  Middle School problem:
 ##ENDDESCRIPTION
 
-##KEYWORDS('prealgebra','common core','formulas','Farenheit','Celsuis')
 
-## DBsubject(Middle school)
-## DBchapter('Decimals and Equations')
-## DBsection('Using Formulas')
-## Date('10/01/2012')
-## Author('John Travis')
-## Institution('Mississippi College')
 ## ProblemTester('Laura Travis')
-## TitleText1('Pre-Algebra')
 ## Publisher('Prentice Hall')
-## EditionText1('')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Evaluating expressions)
+## MLT(Fahrenheit_Celsius)
+## MLTleader(1)
+## Date(10/01/2012)
+## Institution(Mississippi College)
+## Author(John Travis)
+## Level(3)
+## TitleText1('Pre-Algebra')
 ## AuthorText1('')
-## Section1('')
+## EditionText1('')
+## Section1('.')
 ## Problem1('')
+## KEYWORDS('prealgebra','common core','formulas','Farenheit','Celsuis')
 
 ########################################################################
 
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   "problemRandomize.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "problemRandomize.pl",
+  "PGcourse.pl"
 );
 
 # Print problem number and point value (weight) for the problem
@@ -60,9 +64,9 @@ $PAR
 Convert:
 $BCENTER
 $PAR
-$Farenheit1\(^o\) F = \{ans_rule(10)\}\(^o\)  C.
+$Farenheit1\(^\circ\) F = \{ans_rule(10)\}\(^\circ\)  C.
 $PAR
-$Celsius2\(^o\) C = \{ans_rule(10)\}\(^o\)  F.
+$Celsius2\(^\circ\) C = \{ans_rule(10)\}\(^\circ\)  F.
 $ECENTER
 
 END_TEXT

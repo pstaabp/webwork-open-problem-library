@@ -7,18 +7,19 @@
 ## DBsubject(Linear algebra)
 ## DBchapter(Euclidean spaces)
 ## DBsection(Linear combinations)
-## Institution('TCNJ')
+## Institution(TCNJ)
+## Level(2)
 ## KEYWORDS('matrix' 'equation' 'combination')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "PGnumericalmacros.pl",
-           "PGmatrixmacros.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGmatrixmacros.pl",
+  "PGcourse.pl"
 );
 
 

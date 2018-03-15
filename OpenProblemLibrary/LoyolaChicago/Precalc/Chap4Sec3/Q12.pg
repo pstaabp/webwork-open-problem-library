@@ -1,23 +1,29 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Logarithmic functions)
-## DBsection(The Logarithmic Functions)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Graphs)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('4.3')
-## Problem1('10')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(4.3)
 ## Section2('5.3')
+## Section3('5.3')
+## Problem1(12)
 ## Problem2('10')
+## Problem3('16')
 ## KEYWORDS('logarithms','log','ln','asymptote','graph of logarithms')
 
 ######################################
@@ -25,20 +31,17 @@
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "extraAnswerEvaluators.pl",
-           "PGauxiliaryFunctions.pl",
-"AnswerFormatHelp.pl",
-"unionTables.pl",
-"contextInequalities.pl",
-"PGcourse.pl",
-"parserImplicitPlane.pl",
-"parserVectorUtils.pl",,
-#           "MathObjects.pl",
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "extraAnswerEvaluators.pl",
+  "AnswerFormatHelp.pl",
+  "unionTables.pl",
+  "contextInequalities.pl",
+  "MathObjects.pl",
+  "parserAssignment.pl",
+  "PGcourse.pl"
 );
 
 
@@ -99,10 +102,13 @@ $y_int = "1-ln($k)";
 #$domain = "x<$k";
 $DOMAIN = Compute("x<$k");
 
-Context("ImplicitPlane")->variables->are(x=>"Real",y=>"Real");
+#Context("ImplicitPlane")->variables->are(x=>"Real",y=>"Real");
+Context("Vector2D")->variables->are(x=>"Real",y=>"Real");
 Context()->flags->set(useBaseTenLog=>1);
+parser::Assignment->Allow;
 
-$VA = ImplicitPlane("x=$k");
+#$VA = ImplicitPlane("x=$k");
+$VA = Compute("x=$k");
 $HA = Compute("NONE");
 
 $XINT = Compute("($x_int,0)");
@@ -179,7 +185,8 @@ $showPartialCorrectAnswers = 1;
 
 ANS($DOMAIN->cmp() );
 ANS($VA->cmp() );
-ANS($HA->cmp( typeMatch=>ImplicitPlane("x+y=1") ) );
+#ANS($HA->cmp( typeMatch=>ImplicitPlane("x+y=1") ) );
+ANS($HA->cmp( typeMatch=>Compute("y=1") ) );
 ANS($XINT->cmp( tolerance=>0.00000000001,tolType=>"absolute" ) );
 ANS($YINT->cmp( tolerance=>0.00000000001,tolType=>"absolute" ) );
 ANS(str_cmp($correct) );
@@ -219,5 +226,5 @@ The \(x\)-intercept is when \(y =0\).  Thus we solve the equation \( 0 = 1- \ln{
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version.  Uses log = logten.');
+COMMENT('Uses log = logten.');
 ENDDOCUMENT();

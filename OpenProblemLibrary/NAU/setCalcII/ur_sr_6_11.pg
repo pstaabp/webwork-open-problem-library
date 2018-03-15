@@ -3,11 +3,13 @@
 
 #DESCRIPTION
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Absolute Convergence and the Ratio and Root Tests')
+## DBchapter(Infinite sequences and series)
+## DBsection(Strategy for testing series)
+## Institution(NAU)
+## Author(Jim Swift)
+## MLT(First_reason)
+## Level(3)
 ## KEYWORDS('Series' , 'Sequences' )
-## Author('Jim Swift')
-## Institution('NAU')
 #  Series: Convergent, Absolutely Convergent,  or Divergent?
 # Very trivial change made by Jim.Swift@nau.edu.  No partial credit.
 ## copied from /usr/local/webwork2/problem_library/pl/setSeries6CompTests/ur_sr_6_11.pg
@@ -17,11 +19,9 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 COMMENT('trivial changes from setSeries6CompTests/ur_sr_6_11.pg: fixed formatting of p-series, and no partial credit.');
 

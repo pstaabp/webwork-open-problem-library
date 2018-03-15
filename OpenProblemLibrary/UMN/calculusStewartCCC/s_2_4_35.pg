@@ -4,13 +4,14 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Continuity - concept of)
 ## Date(09/15/2010)
 ## Institution(University of Minnesota)
 ## Author(Justin Sukiennik)
 ## MLT(cc-m3)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Concepts and Contexts')
 ## AuthorText1('Stewart')
 ## EditionText1('4 Custom UMTYMP Ed.')
@@ -26,7 +27,7 @@ loadMacros(
   "parserPopUp.pl",
   "MathObjects.pl",
   "PGgraphmacros.pl",
-  "PGcourse.pl", 
+  "PGcourse.pl"
 );
 #####################################################################
 
@@ -51,7 +52,7 @@ c x^2 + $a x, &x < 2\\
 x^3- c x, &x \ge 2\\
 \end{cases}
 \]
-Answer: \(c = \) \{ans_rule(20)\}
+\(c = \) \{ans_rule(20)\}
 END_TEXT
 
 Context()->normalStrings;

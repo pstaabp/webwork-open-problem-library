@@ -1,13 +1,16 @@
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Finding the slope)
+## Level(3)
+## MO(1)
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-#"contextFraction.pl",
-"PGgraphmacros.pl",
-"contextInequalities.pl",
-#"PGchoicemacros.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "contextInequalities.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -87,5 +90,5 @@ $showPartialCorrectAnswers = 0;
 ANS($answer->cmp());
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

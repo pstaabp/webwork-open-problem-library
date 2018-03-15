@@ -2,31 +2,23 @@
 ##   Joint Distributions
 ## ENDDESCRIPTION
 
-## KEYWORDS('Joint Distribution', 'Uniform')
 ## Tagged by nhamblet
 
-## DBsubject('Probability')
-## DBchapter('Theory')
-## DBsection('Joint Distributions')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Probability)
+## DBchapter(Continuous distributions)
+## DBsection(Uniform)
+## Institution(Rochester)
+## Level(3)
+## KEYWORDS('Joint Distribution', 'Uniform')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGnumericalmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -41,7 +33,7 @@ $ans = 1 - $b**2/2/$a**2;
 BEGIN_TEXT
 
 Two points are selected randomly on a line of length \( $l \) so as to be on opposite sides of the midpoint of the line. In
-other words, the two points \(X\) and \(Y\) are independent random variables such that \(X\) is uniformly distriuted over
+other words, the two points \(X\) and \(Y\) are independent random variables such that \(X\) is uniformly distributed over
 \( [0,$a) \) and \(Y\) is uniformly distributed over \( ($a,$l] \). Find the probability that the distance between the two
 points is greater than \($b\).
 

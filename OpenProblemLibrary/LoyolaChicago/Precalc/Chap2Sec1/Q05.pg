@@ -1,39 +1,43 @@
 ## DESCRIPTION
 ## Problem from Functions Modeling Change, Connally, et al., 3rd ed.
 ## WeBWorK problem written by Adam Spiegler <aspiegler@luc.edu>
-## ENDDESCRIPTION
 
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Input and Output)
+## DBsection(Function notation)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## MLT(solveFc)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('2.1')
-## Problem1('5')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
-## Section2('2.')
-## Problem2('5')
+## EditionText3('5')
+## Section1('2.1')
+## Section2(2.Review)
+## Section3('2.Review')
+## Problem1('5')
+## Problem2(5)
+## Problem3('5')
 ## KEYWORDS('functions','evaluating','solving','input','output')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "extraAnswerEvaluators.pl",
-           "PGgraphmacros.pl",
-           "MathObjects.pl",
-           "PGcourse.pl",
-	   "AnswerFormatHelp.pl",
-	   "contextFraction.pl",
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "extraAnswerEvaluators.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

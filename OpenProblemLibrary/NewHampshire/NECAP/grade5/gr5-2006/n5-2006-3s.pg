@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -81,11 +81,13 @@ $PAR Solution $PAR
 The important thing to notice is that \(\frac{2}{6}=\frac{1}{3}\) and that\(\frac{1}{3}<\frac{1}{2}<\frac{2}{3}\).
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 5')
-## DBsection('2006')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Inequalities)
+## MLT(Fraction_LeastToGreatest)
+## Level(1)
 

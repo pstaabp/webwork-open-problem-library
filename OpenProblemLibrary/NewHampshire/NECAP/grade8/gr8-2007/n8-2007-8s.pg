@@ -4,21 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextCurrency.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -32,7 +22,7 @@ $radio->qa("Which expression represents the amount of money each person pays? ",
 $radio->extra("\(d\div 4 +10\) ", "\(4\div(d+10)\) ", "\(d+10\div 4\)  ");
 
 BEGIN_TEXT
-Four people have dinner together at a restaurant.  They pay equal portions of the cost,$BR in dollars, of the dinner, \(d\), and the $DOLLAR 10 tip. 
+Four people have dinner together at a restaurant.  They pay equal portions of the cost, in dollars, of the dinner, \(d\), and the ${DOLLAR}10 tip. 
 $PAR 
 \{$radio->print_q()\}
 \{$radio->print_a()\}
@@ -49,11 +39,12 @@ When an expression is not parenthesized, multiplication and division are done$BR
 before addition and subtraction so  \(d+10\div 4= d+\frac{10}{4}\).
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 8')
-## DBsection('2007')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Algebraic expressions)
+## Level(2)
 

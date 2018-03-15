@@ -4,11 +4,12 @@
 
 ## Tagged by ynw2d
 
-## DBsubject('Algebra')
-## DBchapter('Sequences and Series')
-## DBsection('Arithmetic Sequences')
-## Date('6/3/2002')
-## Institution('ASU')
+## DBsubject(Algebra)
+## DBchapter(Finite sequences and series)
+## DBsection(Arithmetic)
+## Date(6/3/2002)
+## Institution(ASU)
+## Level(5)
 ## TitleText1('College Algebra')
 ## AuthorText1('Stewart, Redlin, Watson')
 ## EditionText1('3')
@@ -19,12 +20,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

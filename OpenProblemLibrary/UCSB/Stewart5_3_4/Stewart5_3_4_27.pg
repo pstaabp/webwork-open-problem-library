@@ -4,21 +4,22 @@
 ## Institution(UCSB)
 ## MLT(DerivPolyPlusTrig)
 ## Level(2)
+## Static(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
 ## Section1('3.4')
 ## Problem1('27')
 ## KEYWORDS('Differentiation','Trigonometric','Transcendental','Derivative')
+## MO(1)
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Apply Thevenin's Theorem to a dc circuit
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Additional Analysis Techniques')
-## DBsection('Thevenin's and Norton's Theorems')
+## DBsubject(Electric circuits)
+## DBchapter(Additional analysis techniques)
+## DBsection(Thevenin's and Norton's theorems)
 ## KEYWORDS('Thevenins Theorem','dc','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

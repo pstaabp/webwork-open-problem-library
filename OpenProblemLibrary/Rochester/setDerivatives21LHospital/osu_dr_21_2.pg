@@ -8,7 +8,7 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Indeterminate forms and L'Hopital's rule)
 ## Date(4/17/2000)
 ## Institution(Rochester)
@@ -33,12 +33,9 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcourse.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 $showPartialCorrectAnswers = 1;
@@ -70,7 +67,7 @@ END_TEXT
 }
 
 ANS(num_cmp(($aa/$bb)**2, strings=>['INF','MINF']));
-ANS(num_cmp(($b1*log($b1)-$bb*log($bb))/2, strings=>['INF','MINF']));
+ANS(num_cmp(($b1*ln($b1)-$bb*ln($bb))/2, strings=>['INF','MINF']));
 
 
 ENDDOCUMENT();

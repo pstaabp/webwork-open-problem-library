@@ -4,11 +4,12 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Double Integrals in Polar Coordinates)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Double integrals in polar)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(3)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -25,14 +26,11 @@
 DOCUMENT();        
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraphmacros.pl",
-"PGcourse.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -93,5 +91,5 @@ ANS(radio_cmp($mca->correct_ans()) );
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

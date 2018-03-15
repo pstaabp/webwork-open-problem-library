@@ -4,10 +4,12 @@
 
 ## Tagged by tda2d
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Equations of Lines and Planes)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Lines)
 ## Institution(Dartmouth)
+## MLT(lin_find_vec_eqn_point_vector)
+## Level(3)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -16,13 +18,13 @@
 ## KEYWORDS('vector' 'parametric' 'plane')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

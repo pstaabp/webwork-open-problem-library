@@ -4,22 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -33,8 +21,7 @@ $radio->extra("384 ", "24315 ","31524 ");
 
 
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATOR. 
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR
+
 A number has 24 ones, 3 hundreds, and 15 tens.$BR
 \{$radio->print_q()\}
 \{$radio->print_a()\}
@@ -49,11 +36,13 @@ If you think that the wording of the question was strange and $BR
 stilted, I have to agree.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 4')
-## DBsection('2009')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Multiple operations)
+## Level(2)
+## MO(1)
 
 \{ans_rule(10)\}
 \{Panic::Button(label => " Ask for a Hint", penalty => .00)\}

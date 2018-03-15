@@ -1,41 +1,47 @@
 # DESCRIPTION
 # Problem from Calculus, single variable, Hughes-Hallett et al., 4th ed.
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Parametric Equations and Polar Coordinates)
-## DBsection(Curves Defined by Parametric Equations)
+## DBchapter(Parametric)
+## DBsection(Tangents, velocity, and speed)
 ## Institution(UMich)
 ## Author(Gavin LaRose)
+## MLT(tangentLine_ParametricForm)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('4')
-## Section1('4.8')
-## Problem1('15')
 ## TitleText2('Calculus')
-## AuthorText2('Hughes-Hallett')
-## EditionText2('5')
-## Section2('4.8')
-## Problem2('15')
 ## TitleText3('Calculus')
+## TitleText4('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
 ## AuthorText3('Hughes-Hallett')
+## AuthorText4('Hughes-Hallett')
+## EditionText1('4')
+## EditionText2('5')
 ## EditionText3('6')
+## EditionText4('7')
+## Section1('4.8')
+## Section2('4.8')
 ## Section3('4.8')
+## Section4('4.8')
+## Problem1('15')
+## Problem2('15')
 ## Problem3('34')
+## Problem4('34')
 ## KEYWORDS('parametric equation')
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-"parserMultiAnswer.pl",
-"hhAdditionalMacros.pl",
-# "parserParametricLine.pl",
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "parserMultiAnswer.pl",
+  "hhAdditionalMacros.pl",
+  "PGcourse.pl"
 );
 
 # Context("Vector");
@@ -182,6 +188,6 @@ has the slope \({dy\over dx} = {$ysl\over $xsl} = $m\) in the
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

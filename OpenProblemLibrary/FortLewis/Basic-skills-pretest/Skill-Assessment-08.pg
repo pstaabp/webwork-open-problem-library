@@ -1,10 +1,15 @@
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Scientific notation)
+## Level(3)
+## MO(1)
+## MLT(Mult_scientific)
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-#"contextFraction.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -51,5 +56,5 @@ $showPartialCorrectAnswers = 0;
 ANS($answer->cmp());
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

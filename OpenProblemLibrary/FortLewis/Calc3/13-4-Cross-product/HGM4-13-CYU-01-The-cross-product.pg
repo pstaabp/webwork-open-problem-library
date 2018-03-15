@@ -3,12 +3,13 @@
 ## ENDDESCRIPTION
 
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(The Cross Product)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Cross product)
 ## Date(10/15/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(3)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -26,10 +27,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"PGcourse.pl",
-"PGgraders.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraders.pl",
+  "PGcourse.pl"
 );
 
 

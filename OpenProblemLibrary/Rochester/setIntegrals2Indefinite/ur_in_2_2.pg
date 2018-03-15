@@ -6,17 +6,18 @@
 
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Integrals)
-## DBsection(Antiderivatives)
+## DBsection(Indefinite integrals (without trigonometric functions))
 ## Institution(Rochester)
+## MLT(indefinite_simple_exponential_only)
+## MLTleader(1)
+## Level(2)
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -26,11 +27,12 @@ $a=random(2,9,1);
 
 BEGIN_TEXT
 Evaluate the indefinite integral
-\[ \int  $a e^x  dx \]
-$BR \{ans_rule(30)\}
+\[ \int  $a e^x \,  dx \]
+$BR 
+\(\int  $a e^x\,  dx = \) \{ans_rule(30)\} \(+C\)
 END_TEXT
 
-$answer="$a* $E**x";
+$answer="$a* e^x";
 
 ANS(fun_cmp($answer, mode=>"antider"));
 

@@ -1,37 +1,40 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Trigonometry)
-## DBchapter(Trigonometric functions)
-## DBsection(Other Trigonometric Functions)
+## DBchapter(Triangle trigonometry)
+## DBsection(Applications of special triangles & right triangles)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('6.6')
-## Problem1('30')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(6.6)
 ## Section2('7.4')
+## Section3('7.6')
+## Problem1(33)
 ## Problem2('30')
+## Problem3('34')
 ## KEYWORDS('tangent','cotangent','cosecant','secant')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-#           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-#           "PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -117,5 +120,5 @@ Context()->normalStrings;
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

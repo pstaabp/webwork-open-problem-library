@@ -1,21 +1,20 @@
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-          );
-loadMacros("freemanMacros.pl");
-loadMacros("Parser.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "freemanMacros.pl",
+  "Parser.pl",
+  "PGcourse.pl"
+);
 
 ## DBsubject(Algebra)
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Rate of Change)
+## DBchapter(Linear equations and functions)
+## DBsection(Finding the slope)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk!)
-## Level(2)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')

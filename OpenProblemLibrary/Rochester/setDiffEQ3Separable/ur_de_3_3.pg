@@ -5,9 +5,11 @@
 ## Tagged by tda2d
 
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Separable equations)
+## DBchapter(First order differential equations)
+## DBsection(Separable)
 ## Institution(Rochester)
+## MLT(Separable_Implicit)
+## Level(4)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -18,14 +20,12 @@
 
 DOCUMENT() ;
 loadMacros(
-        "PG.pl",
-        "PGbasicmacros.pl",
-        "PGchoicemacros.pl",
-        "PGanswermacros.pl",
-        "PGauxiliaryFunctions.pl",
-		"Parser.pl",
-		"answerHints.pl"
-) ;
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
+);
 
 Context('Numeric');
 

@@ -2,26 +2,33 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 01/11/10
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(The Chain Rule)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Chain rule)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(chain3)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('14.6')
-## Problem1('14')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('14.6')
 ## Section2('14.6')
+## Section3('14.6')
+## Problem1('14')
 ## Problem2('14')
+## Problem3('14')
 ## KEYWORDS('chain rule', 'multivariable', 'functions', 'calculus', 'derivatives ')
 
 ## Textbook tags
@@ -30,13 +37,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -60,13 +64,13 @@ if ( $whichu ) {
 	$zsimp = Compute( "cos(u^2)" );
 
         $dzdu = Compute( "-sin(u^2)*2*u" );
-        $dzdv = Compute( "0" );
+        $dzdv = Formula( "0" );
     } else {
         $zsub = Compute( "sin(($xfunc)^2 + ($yfunc)^2)" );
 	$zsimp = Compute( "sin(u^2)" );
 
         $dzdu = Compute( "cos(u^2)*2*u" );
-        $dzdv = Compute( "0" );
+        $dzdv = Formula( "0" );
     }
 } else {
     $xfunc = Compute( "v*cos(u)" );
@@ -76,13 +80,13 @@ if ( $whichu ) {
         $zsub = Compute( "cos(($xfunc)^2 + ($yfunc)^2)" );
 	$zsimp = Compute( "cos(v^2)" );
 
-        $dzdu = Compute( "0" );
+        $dzdu = Formula( "0" );
         $dzdv = Compute( "-sin(v^2)*2*v" );
     } else {
         $zsub = Compute( "sin(($xfunc)^2 + ($yfunc)^2)" );
 	$zsimp = Compute( "sin(v^2)" );
 
-        $dzdu = Compute( "0" );
+        $dzdu = Formula( "0" );
         $dzdv = Compute( "cos(v^2)*2*v" );
     }
 }
@@ -122,7 +126,7 @@ ANS($dzdu->cmp( checker=>sub {
         return 1;
     } else {
         return ( Compute("($dzdx)*($dxdu) + ($dzdy)*($dydu)") == $student ) ?
-	    n1 : 0;
+	    1 : 0;
     } } ) );
 ANS($dzdv->cmp( checker=>sub {
     my ( $correct, $student, $ansHash ) = @_;
@@ -168,6 +172,5 @@ it is  more difficult.
 END_SOLUTION
 Context()->normalStrings;
 
-
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

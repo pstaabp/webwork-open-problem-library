@@ -1,22 +1,24 @@
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter('Sequences and Series')                      
-## DBsection('Sequences and Series Notation')     
-## AuthorText1('Jerrold Marsden and Alan Weinstein')
+## DBsubject(Algebra)
+## DBchapter(Finite sequences and series)
+## DBsection(Summation formulas)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## Level(3)
+## Static(1)
 ## TitleText1('Calculus I')
+## AuthorText1('Jerrold Marsden and Alan Weinstein')
 ## EditionText1('2')
-## Section1('The Integral')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('algebra')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 

@@ -4,6 +4,7 @@
 ## Institution(W.H.Freeman)
 ## Author(Sam Hathaway)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -12,9 +13,14 @@
 ## KEYWORDS('calculus', 'derivatives', 'product rule', 'quotient rule')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 #$a = 1;
 #$b = 1;
@@ -27,7 +33,6 @@ $fp = Formula("(e^x($a*x+$a*$b-e^x-$a))/((e^x+$a)^2(x+$b)^2)")->reduce;
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "3.3","33") \}
 $PAR
 Calculate the derivative using the appropriate rule or combination of rules.

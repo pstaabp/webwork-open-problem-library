@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -161,8 +161,6 @@ $graph->arrowTo(.16 ,.1 ,'black',2);
 #NOTE  Actual size of box is in the image below
 TEXT(beginproblem());
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATOR. 
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR
 This graph shows a linear relationship between x and y.
 $BR
 
@@ -182,10 +180,12 @@ y increased another 5 units to 10, x would increase 4 units to 7.
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 11')
-## DBsection('2008')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Equations of lines: general)
+## Level(4)
+## MO(1)
 
 

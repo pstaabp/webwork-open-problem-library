@@ -5,10 +5,13 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Maximum and Minimum Values)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Extreme values and optimization)
 ## Date(8/23/07)
 ## Institution(Union College)
+## MLT(GiveAllCritPts)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('1')
@@ -23,7 +26,7 @@ loadMacros(
   "PGunion.pl",
   "MathObjects.pl",
   "parserVectorUtils.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 
@@ -79,5 +82,5 @@ $showPartialCorrectAnswers = 1;
 ##################################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

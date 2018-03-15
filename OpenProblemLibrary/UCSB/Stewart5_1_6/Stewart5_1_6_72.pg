@@ -1,7 +1,10 @@
-## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Inverse Functions and Logarithms)
+## DBsubject(Trigonometry)
+## DBchapter(Analytic trigonometry)
+## DBsection(Using and proving basic identities)
 ## Institution(UCSB)
+## MLT(KentMoreLike2)
+## Level(3)
+## Static(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -12,11 +15,9 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

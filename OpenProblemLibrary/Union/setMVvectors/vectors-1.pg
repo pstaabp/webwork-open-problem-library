@@ -4,11 +4,14 @@
 
 ## Tagged by nhamblet
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Vectors)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Dot product, length, and unit vectors)
 ## Date(8/23/07)
 ## Institution(Union College)
+## MLT(VectorLotsOfParts)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('1')
@@ -24,7 +27,7 @@ loadMacros(
   "MathObjects.pl",
   "contextLimitedVector.pl",
   "parserVectorUtils.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 
@@ -110,5 +113,5 @@ $showPartialCorrectAnswers = 1;
 ##################################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

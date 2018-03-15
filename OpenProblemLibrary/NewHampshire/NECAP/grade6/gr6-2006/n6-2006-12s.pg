@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -111,11 +111,13 @@ $PAR Solution $PAR
 In 1998 there were 200 black bears.  In 1999 there were 350.  Thus the increase was 150.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 6')
-## DBsection('2006')
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Plotting points)
+## Level(3)
+## MO(1)
 

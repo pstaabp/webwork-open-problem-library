@@ -1,21 +1,20 @@
 ##DESCRIPTION
-## DBsubject('Financial Mathematics')
-## DBchapter('Introduction to Interest')
-## DBsection('Simple Interest')
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Simple interest)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## Level(2)
 ## KEYWORDS('equation of value','time value of money', 'simple interest rate')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 

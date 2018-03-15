@@ -2,29 +2,22 @@
 ##   Card Probability Problem
 ## ENDDESCRIPTION
 
-## KEYWORDS('Card', 'Probability')
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
-## DBchapter('Counting and Probability')
-## DBsection('Probability')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Probability)
+## DBchapter(Sample Space)
+## DBsection(Probability: direct computation, inclusion/exclusion)
+## Institution(Rochester)
+## Level(2)
+## Static(1)
+## KEYWORDS('Card', 'Probability')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 #Numerical Answer

@@ -1,11 +1,13 @@
 ##DESCRIPTION
 ## sbrummel tagged and PAID on 2-20-2004
-## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Approximating Integrals')
-## Date('6/3/2002')
-## Institution('Ohio State')
-## Author('Zig Fiedorowicz')
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
+## Date(6/3/2002)
+## Institution(Ohio State)
+## Author(Zig Fiedorowicz)
+## Level(3)
+## Static(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -21,11 +23,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 $showPartialCorrectAnswers = 1;

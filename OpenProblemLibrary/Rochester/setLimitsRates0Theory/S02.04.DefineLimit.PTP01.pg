@@ -5,7 +5,7 @@
 ##ENDDESCRIPTION
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Definitions and existence (conceptual))
 ## Date(8/14/2007)
 ## Institution(University of Rochester)
@@ -23,9 +23,8 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGbasicmacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -33,10 +32,10 @@ $showPartialCorrectAnswers = 1;
 
 #$pi = arccos(-1);
 $area = random(800,1200,25);
-$idealradius = sqrt( $area / pi);
+$idealradius = "sqrt( $area / pi)";
 $epsilon = random(1,5,1);
 #$delta = min($idealradius - (($area - $epsilon)/pi)**(0.5), (($area + $epsilon)/pi)**(0.5) - $idealradius);
-$delta = (($area + $epsilon)/pi)**(0.5) - $idealradius;
+$delta = "(($area + $epsilon)/pi)**(0.5) - $idealradius";
 
 BEGIN_TEXT
 

@@ -6,17 +6,20 @@
 
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Integrals)
-## DBsection(Antiderivatives)
+## DBsection(Antiderivatives (with trigonometric functions))
 ## Institution(Indiana)
+## MLT(AntiSecSqEval)
+## MLTleader(1)
+## Level(2)
 ## KEYWORDS('derivatives' 'antiderivatives')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;

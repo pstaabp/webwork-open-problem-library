@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -190,7 +190,7 @@ $radio->qa("Which rectangle is colored blue to represent 0.4 ", "Rectangle I");
 #FIRST PAREN IS QUESTION, SECOND PAREN IS CORRECT ANSWER
 $radio->extra("Rectangle H ", "Rectangle K ", "Rectangle J  ");
 BEGIN_TEXT
-The top rectangle is coloreded blue to represent 1.
+The top rectangle is colored blue to represent 1.
 $BR
 \{ image( insertGraph($graph), tex_size=>$TEXSIZE,
     height=>$HEIGHT, width=>$WIDTH
@@ -206,9 +206,10 @@ $PAR Solution $PAR
 \(0.4=\frac{4}{10}=\frac{2}{5}\).  Notice that Rectangle I has 2 of its (equal-sized) 5 parts colored blue.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject('NECAP')
-## DBchapter('Grade 6')
-## DBsection('2007')
+## DBsubject(Arithmetic)
+## DBchapter(Decimals)
+## DBsection(Interpreting decimals)
+## Level(3)

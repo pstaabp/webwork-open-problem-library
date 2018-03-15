@@ -1,4 +1,4 @@
-## DBsubject('Abstract Algebra')
+## DBsubject(Abstract algebra)
 ## DBchapter('Groups')
 ## DBsection('Product of groups')
 ## KEYWORDS('product of groups, order of elements')
@@ -15,14 +15,11 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"algebraMacros.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "algebraMacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -56,6 +53,7 @@ if (gcd($m, $n)==1 || $m==$n) {
   $n = random(12,20);
 }
 $m2 = $m * 2;
+$n2  = $n * 2;
 
 $x = random(2, $m-2, 1);
 $y = random(2, $n-2, 1);
@@ -127,9 +125,9 @@ BEGIN_TEXT
 
 Determine the order of each of the following elements in the respective
 products of groups
-(\(\{ dihedral( $m ) \} \)
+(\(\{ dihedral( $n ) \} \)
   denotes
-the dihedral group of order \($m2\) ).
+the dihedral group of order \($n2\) ).
 
 
  $BR $BR

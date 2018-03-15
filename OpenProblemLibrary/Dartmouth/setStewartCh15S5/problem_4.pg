@@ -5,9 +5,11 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(The Chain Rule)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Chain rule)
 ## Institution(ASU)
+## MLT(chain3)
+## Level(2)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -26,13 +28,13 @@
 ## KEYWORDS('chain rule' 'partial' 'derivative','Multivariable', 'Chain Rule')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

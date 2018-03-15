@@ -1,9 +1,10 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Infinite Sequences and Series)
-## DBsection(Sequences)
+## DBchapter(Infinite sequences and series)
+## DBsection(Limit of a sequence)
 ## Institution(W.H.Freeman)
 ## Author(Keith Thompson)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -12,12 +13,15 @@
 ## KEYWORDS('calculus', 'derivatives', 'slope')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGauxiliaryFunctions.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 #$showPartialCorrectAnswers=1;
 
 $num=random(2,9);
@@ -25,7 +29,6 @@ $den=random(2,13);
 $ans=ln($num/$den);
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "10.1","51") \}
 $PAR
 

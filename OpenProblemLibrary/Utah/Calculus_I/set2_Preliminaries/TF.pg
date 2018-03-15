@@ -2,26 +2,24 @@
 ##  sample true-false question
 ##ENDDESCRIPTION
 
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Algebraic Expressions')
-## AuthorText1('Dale Varberg, Edwin J. Purcell, and Steven E. Rigdon')
+## DBsubject(WeBWorK)
+## DBchapter(WeBWorK tutorial)
+## DBsection(WeBWorK tutorial)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
 ## TitleText1('Calculus')
+## AuthorText1('Dale Varberg, Edwin J. Purcell, and Steven E. Rigdon')
 ## EditionText1('9')
-## Section1('Preliminaries')       
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

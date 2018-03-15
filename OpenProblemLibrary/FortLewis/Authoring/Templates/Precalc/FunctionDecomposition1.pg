@@ -5,8 +5,8 @@
 ## KEYWORDS('precalculus', 'function decomposition')
 
 ## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('Fort Lewis Tutorial 2011')
+## DBchapter(WeBWorK tutorial)
+## DBsection(Fort Lewis tutorial 2011)
 ## Date('01/30/2011')
 ## Author('Paul Pearson')
 ## Institution('Fort Lewis College')
@@ -24,10 +24,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"answerComposition.pl",
-"AnswerFormatHelp.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "answerComposition.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem()); 
@@ -82,6 +83,6 @@ Solution explanation goes here.
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version.');
+;
 
 ENDDOCUMENT();

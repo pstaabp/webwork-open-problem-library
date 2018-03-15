@@ -2,19 +2,15 @@
 ## Integral calculus: volume of solids of revolution
 ## ENDDESCRIPTION
 
-## KEYWORDS('Integrals', 'volume of solids of revolution')
 
-## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('Fort Lewis Tutorial 2011')
-## Date('10/20/2010')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(WeBWorK)
+## DBchapter(WeBWorK tutorial)
+## DBsection(Fort Lewis tutorial 2011)
+## Date(10/20/2010)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MO(1)
+## KEYWORDS('Integrals', 'volume of solids of revolution')
 
 
 ###############################
@@ -23,11 +19,12 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGunion.pl",
-"answerHints.pl",
-"weightedGrader.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGunion.pl",
+  "answerHints.pl",
+  "weightedGrader.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -139,6 +136,6 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version.  Weights each answer blank separately.');
+COMMENT('Weights each answer blank separately.');
 
 ENDDOCUMENT();

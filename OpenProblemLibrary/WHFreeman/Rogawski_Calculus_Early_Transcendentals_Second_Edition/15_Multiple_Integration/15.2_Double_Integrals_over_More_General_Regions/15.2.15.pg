@@ -1,21 +1,28 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Double Integrals over More General Regions)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Double integrals over general regions)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.2')
 ## Problem1('15')
-## KEYWORDS('calculus', '')
-## UsesAuxiliaryFiles('image_15_2_13_a.png','image_15_2_13_b.png')
+## KEYWORDS('calculus')
+## RESOURCES('image_15_2_13_a.png','image_15_2_13_b.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $a=random(2,10);
 ##$answer=Real(23*$a/60);
@@ -24,7 +31,6 @@ $answer=Real(11*$a/60);
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.2","15") \}
 $PAR
 Calculate the integral of \(f(x,y)=$a x\) over the region

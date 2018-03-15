@@ -2,26 +2,34 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 08/18/10
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Stokes Theorem)
+## DBchapter(Fundamental theorems)
+## DBsection(Stokes' theorem)
 ## Date(08/18/10)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(Stokes_circle)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('20.4')
-## Problem1('13')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('20.4')
 ## Section2('20.2')
+## Section3('20.2')
+## Problem1('13')
 ## Problem2('20')
+## Problem3('23')
 ## KEYWORDS('stokes theorem', 'circulation integral', 'curl', 'multivariable', 'calculus')
 
 ## Textbook tags
@@ -30,13 +38,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -54,7 +59,11 @@ $b = random(1,5,1);
 $c = random(1,5,1);
 $fx = Compute( "$a*y" )->reduce();
 $fy = Compute( "$b*x" )->reduce();
-$fz = Compute( "$c*(y-x)" )->reduce();
+$fz = Compute( "$c(y-x)" )->reduce();
+## formatting hack.  the MathObject wants to lose the parens when
+##    $c == 1, even if we take out the ->reduce()
+$fzbp = ( $c == 1 ) ? '(' : '';
+$fzep = ( $c == 1 ) ? ')' : '';
 
 $namb = -1*$a - $b;
 $circ = Compute( "(2*$c - $a - $b)*pi*$r*$r/sqrt(3)" );
@@ -68,7 +77,7 @@ Find \( \int_C\vec F\cdot d\vec r \) where \( C \)
 is a circle of radius \( $r \) in the plane \( x+y+z=$m \), centered at
 \( ($x0,$y0,$z0) \) and oriented clockwise when viewed from the origin,
 if
-\( \vec F = $fx\vec i - $fy\vec j + $fz\vec k \)
+\( \vec F = $fx\vec i - $fy\vec j + $fzbp$fz$fzep\vec k \)
 
 $PAR
 \( \int_C\vec F\cdot d\vec r = \) \{ ans_rule(35) \}
@@ -118,6 +127,6 @@ so \(\vec n = \frac1{\sqrt3}(\vec i + \vec j + \vec k)\), and
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

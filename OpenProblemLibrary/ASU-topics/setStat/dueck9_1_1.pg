@@ -4,22 +4,23 @@
 
 ## Tagged by dgt5v
 
-## DBsubject('Statistics')
-## DBchapter('Hypothesis Testing')
-## DBsection('One Population - Means')
-## Institution('ASU')
+## DBsubject(Statistics)
+## DBchapter(Hypothesis tests)
+## DBsection(Concepts)
+## Institution(ASU)
+## MLT(statethetest)
+## Level(2)
 ## KEYWORDS('Statistics','Hypothesis Testing')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

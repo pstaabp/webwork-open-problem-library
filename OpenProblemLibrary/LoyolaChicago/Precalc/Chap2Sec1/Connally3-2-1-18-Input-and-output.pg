@@ -1,36 +1,43 @@
 ## DESCRIPTION
 ## Functions: Input and Output
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Input and Output)
+## DBsection(Graphs)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(graphicEval)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('2.1')
-## Problem1('12')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
-## Section2('2.')
-## Problem2('12')
+## EditionText3('5')
+## Section1(2.1)
+## Section2(2.Review)
+## Section3('2.Review')
+## Problem1(18)
+## Problem2(12)
+## Problem3('12')
 ## KEYWORDS('functions','evaluating','solving','input','output')
 
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGgraphmacros.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"contextInequalities.pl",
-"PGcourse.pl",
-"unionTables.pl",
+  "PGstandard.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "contextInequalities.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -135,5 +142,5 @@ $PAR
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -5,6 +5,7 @@
 ## Author(Emily Price)
 ## MLT(Chain-PolyToPower)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -16,9 +17,14 @@ DOCUMENT();
 
 #Load Necessary Macros
 
-loadMacros("PG.pl", "PGbasicmacros.pl", "PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 #Book Values
 #$exponent1 = 2;
@@ -39,7 +45,6 @@ Context()->texStrings;
 
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "3.7", "11") \}
 
 $PAR

@@ -1,8 +1,11 @@
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Solving Differential Equations)
+## DBchapter(First order differential equations)
+## DBsection(Separable)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## MLT(Separable_Initial_Condition)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +14,14 @@
 ## KEYWORDS('calculus', 'differential equations', 'separation of variables')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 
 $a = Real(random(2,6,1));
 $b = Real(random(2,6,1));
@@ -36,7 +43,6 @@ $fp = Formula("$b * tan( ($b / $a) * arctan( t / $a ) + $C )")->reduce();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "9.1","23") \}
 $PAR
 Solve \( ( t^2 + $a_sqr )\,\frac{dx}{dt} = ( x^2 + $b_sqr ) \), using separation of variables, given the inital condition \( x(0) = $b  \).

@@ -2,18 +2,20 @@
 ##   Evaluation of a simple algebraic expression
 ##ENDDESCRIPTION
 
-## DBsubject(Financial Mathematics)
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Compound interest)
+## MLT(value_later)
+## Level(3)
 ## KEYWORDS('percent')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

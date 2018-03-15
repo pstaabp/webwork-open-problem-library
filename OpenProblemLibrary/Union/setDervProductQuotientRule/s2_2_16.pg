@@ -10,15 +10,16 @@
 ## Date(10/16/08)
 ## Institution(Union College)
 ## Level(3)
+## MO(1)
 ## KEYWORDS('derivative' 'product' 'quotient')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -60,7 +61,7 @@ ANS($fprimeatpoint->with(limits => [.1,2], tolerance => .001)->cmp);
 
 ###################################
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 

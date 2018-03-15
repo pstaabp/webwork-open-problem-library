@@ -2,20 +2,20 @@
 ##  Algebra - Function Domain/Range
 ## ENDDESCRIPTION
 
-## KEYWORDS('Algebra','Functions','Modeling')
 ## Tagged by dgt5v
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Modeling with Functions')
-## Date('')
-## Author('')
-## Institution('ASU')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Institution(ASU)
+## MLT(ProfitPredictionBreakEven)
+## Level(3)
 ## TitleText1('College Algebra')
-## EditionText1('3')
 ## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
 ## Section1('4.2')
 ## Problem1('75')
+## KEYWORDS('Algebra','Functions','Modeling')
 
 
 #
@@ -25,11 +25,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -96,9 +94,9 @@ END_TEXT
 # "answer evaluator" to use, and the correct answer.
 #
 
-ANS(fun_cmp($cost));
+ANS(fun_cmp($cost, test_points=>[0, 1, -1, 10000, -$a/$b+10]));
 ANS(fun_cmp($revenue));
-ANS(fun_cmp($profit, limits=> [$minimum-2, $minimum+2]));
+ANS(fun_cmp($profit, test_points=>[0, 1, -1, 10000, $a/($c-$b)-10]));
 ANS(num_cmp($minimum, tol=>0.001));
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.

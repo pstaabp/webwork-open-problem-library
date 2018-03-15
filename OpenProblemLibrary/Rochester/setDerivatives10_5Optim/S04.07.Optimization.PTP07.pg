@@ -5,7 +5,7 @@
 ## Tagged by cmd6a 5/26/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Optimization - general)
 ## Date(1/17/2000)
 ## Institution(OSU)
@@ -13,6 +13,7 @@
 ## MLT(Optimization_Box_MinMaterial)
 ## MLTleader(1)
 ## Level(5)
+## MO(1)
 ## TitleText1('')
 ## AuthorText1('Ellis & Gulick')
 ## EditionText1('')
@@ -40,14 +41,10 @@
 DOCUMENT();
 
 loadMacros(
-#"PGbasicmacros.pl",
-#"PGchoicemacros.pl",
-#"PGanswermacros.pl",
-#"PGauxiliaryFunctions.pl",
-#"PGgraders.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"parserNumberWithUnits.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -83,5 +80,5 @@ ANS( $length->cmp() );
 #ANS(num_cmp("$ans1", units => 'm'));
 #ANS(num_cmp("$ans2", units => 'm'));
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

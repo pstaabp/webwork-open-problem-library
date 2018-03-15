@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Discrete Mathematics')
-## DBchapter('Graph Theory')
-## DBsection('')
+## DBsubject(Graph theory)
+## DBchapter(Walks)
+## DBsection(Hamiltonian)
+## Institution(NAU)
+## Author(Edgar Fisher)
+## Level(3)
 ## KEYWORDS('graph', 'Hamilton')
-## Author('Edgar Fisher')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 6/22/05
@@ -13,9 +14,11 @@
 
 DOCUMENT();
 
-loadMacros("PGstandard.pl",
-	   "PGnauGraphtheory.pl",
-          );      
+loadMacros(
+  "PGstandard.pl",
+  "PGnauGraphtheory.pl",
+  "PGcourse.pl"
+);
 
 COMMENT('Please limit the number of trials.');
 

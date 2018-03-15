@@ -1,22 +1,25 @@
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter('Functions') 
-## DBsection('Inverse Functions')
-## AuthorText1('Dale Varberg, Edwin J. Purcell, and Steve E. Rigdon')
+## DBsubject(Algebra)
+## DBchapter(Inverse functions)
+## DBsection(Interpreting inverse functions)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## MLT(InverseAndReciprocal)
+## MLTleader(1)
+## Level(3)
 ## TitleText1('Calculus')
+## AuthorText1('Dale Varberg, Edwin J. Purcell, and Steve E. Rigdon')
 ## EditionText1('9')
-## Section1('Techniques of Integration')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 DOCUMENT();
 
-loadMacros('PG.pl',
-        'PGbasicmacros.pl',
-        'PGchoicemacros.pl',
-        'PGanswermacros.pl',
-        'PGauxiliaryFunctions.pl' );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -27,9 +30,6 @@ $C = random(6,9,1);
 
 
 BEGIN_TEXT
-
-$BBOLD Inverse Functions vs. Reciprocals $EBOLD
-$PAR
 
 Let  \( f(x) = $A +  ( $B  x + $C   ) ^3 \) .
 $PAR
@@ -46,7 +46,7 @@ $ans1 = "( ( x - $A )^(1/3) - $C ) / $B";
 
 $ans2 = "1 / ( $A + ( $B * x + $C )^3 )";
 
-ANS(fun_cmp($ans1, [[10,12]], vars=>["x"]));
+ANS(fun_cmp($ans1, limits=>[[10,12]], vars=>["x"]));
 ANS(fun_cmp($ans2, vars=>"x"));
 
 ENDDOCUMENT();

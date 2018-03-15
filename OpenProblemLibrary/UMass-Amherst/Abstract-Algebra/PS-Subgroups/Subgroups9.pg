@@ -1,29 +1,22 @@
-## DBsubject('Abstract Algebra')
-## DBchapter('Groups')
-## DBsection('Subgroups')
-## KEYWORDS('subgroups')
+## DBsubject(Abstract algebra)
+## DBchapter(Groups)
+## DBsection(Subgroups)
+## Institution(University of Massachusetts Amherst)
+## Author(Siman Wong and Patrick O'Brien)
 ## Level(3)
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Siman Wong and Patrick O'Brien')
-## Institution('University of Massachusetts Amherst')
+## MO(1)
+## KEYWORDS('subgroups')
 
 
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"algebraMacros.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "algebraMacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

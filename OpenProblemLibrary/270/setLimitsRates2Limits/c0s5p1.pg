@@ -2,28 +2,23 @@
 ##   Limits of Sequences
 ## ENDDESCRIPTION
 
-## KEYWORDS('Limit', 'Sequence')
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Sequences')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBchapter(Infinite sequences and series)
+## DBsection(Limit of a sequence)
+## Institution(ASU)
+## MLT(MultipleSeq)
+## Level(2)
+## KEYWORDS('Limit', 'Sequence')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers=1;

@@ -2,28 +2,21 @@
 ##  Sample of new style problem.
 ## ENDDESCRIPTION
 
-## KEYWORDS('sample','webwork','new')
 ## Tagged by jjh2b
 
-## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('AIM Tutorial: New Problems')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(WeBWorK)
+## DBchapter(WeBWorK tutorial)
+## DBsection(AIM tutorial: new problems)
+## Institution(Rochester)
+## MO(1)
+## KEYWORDS('sample','webwork','new')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGstandard.pl",
-"PGcourse.pl",
-"MathObjects.pl",
-# "source.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -78,5 +71,5 @@ ANS($A_U_B->cmp);
 ANS($B_U_C_Int_A->cmp);
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

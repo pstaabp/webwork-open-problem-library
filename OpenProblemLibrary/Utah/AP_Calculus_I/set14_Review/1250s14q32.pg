@@ -1,23 +1,25 @@
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')  
-## DBsection('Power Series')                               
-## AuthorText1('Jerrold Marsden and Alan Weinstein')
+## DBchapter(Infinite sequences and series)
+## DBsection(Interval of convergence of a power series)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## Level(3)
+## Static(1)
+## MO(1)
 ## TitleText1('Calculus II')
+## AuthorText1('Jerrold Marsden and Alan Weinstein')
 ## EditionText1('2')
-## Section1('Review')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"MathObjects.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

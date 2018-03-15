@@ -1,35 +1,41 @@
 ## DESCRIPTION
 ## Functions: Input and Output
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Domain and Range)
+## DBsection(Interpretation and applications)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(Function_wordProblem_DomainRange)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('2.2')
-## Problem1('25')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(2.2)
 ## Section2('2.2')
+## Section3('2.2')
+## Problem1(27)
 ## Problem2('25')
+## Problem3('29')
 ## KEYWORDS('functions','domain','range','input','output','interval notation')
 
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"contextInequalities.pl",
-"PGcourse.pl",,
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "contextInequalities.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -92,5 +98,5 @@ $a can fit inside, the range is \(0\le f(t)\le $a\).
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

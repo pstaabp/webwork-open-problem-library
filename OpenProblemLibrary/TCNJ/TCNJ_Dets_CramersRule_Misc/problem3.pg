@@ -5,9 +5,10 @@
 ## Tagged by tda2d
 
 ## DBsubject(Linear algebra)
-## DBchapter('Determinants')
-## DBsection('Applications')
-## Institution('TCNJ')
+## DBchapter(Determinants)
+## DBsection(Applications)
+## Institution(TCNJ)
+## Level(3)
 ## TitleText1('Linear Algebra with Applications')
 ## AuthorText1('Jeffrey Holt')
 ## EditionText1('1')
@@ -18,11 +19,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -4,10 +4,11 @@
 
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
-## DBchapter('Counting and Probability')
-## DBsection('Permutations and Combinations')
-## Institution('Rochester')
+## DBsubject(Combinatorics)
+## DBchapter(Counting)
+## DBsection(Principles (addition, subtraction, multiplication))
+## Institution(Rochester)
+## Level(3)
 ## TitleText1('Discrete Mathematics')
 ## AuthorText1('Rosen')
 ## EditionText1('4')
@@ -18,11 +19,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

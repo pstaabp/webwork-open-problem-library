@@ -2,7 +2,7 @@
 ## tcao tagged and PAID on 12-12-2003
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Increasing/decreasing functions and local extrema)
 ## MLT(incr_decr_local)
 ## Level(2)
@@ -23,11 +23,11 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers=1;

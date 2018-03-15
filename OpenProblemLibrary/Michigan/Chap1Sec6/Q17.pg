@@ -2,30 +2,36 @@
 # Problem from Calculus, single variable, Hughes-Hallett et al., 4th ed.
 # WeBWorK problem written by Aaron Wooton, <wootton@up.edu>
 # revised by Gavin LaRose, <glarose@umich.edu> 11/2008
-# ENDDESCRIPTION
 
 ## Tagged by glr 11/04/08
 
 ## Author('Gavin LaRose');
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Mathematical Models: A Catalog of Essential Functions)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Applications and models)
 ## Institution(University of Michigan)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('4')
-## Section1('1.6')
-## Problem1('17')
 ## TitleText2('Calculus')
-## AuthorText2('Hughes-Hallett')
-## EditionText2('5')
-## Section2('1.6')
-## Problem2('16')
 ## TitleText3('Calculus')
+## TitleText4('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
 ## AuthorText3('Hughes-Hallett')
+## AuthorText4('Hughes-Hallett')
+## EditionText1('4')
+## EditionText2('5')
 ## EditionText3('6')
+## EditionText4('7')
+## Section1('1.6')
+## Section2('1.6')
 ## Section3('1.6')
+## Section4('1.6')
+## Problem1('17')
+## Problem2('16')
 ## Problem3('32')
+## Problem4('52')
 ## KEYWORDS('calculus','derivative','polynomials','powers','functions','rational functions')
 
 ## Textbook tags
@@ -35,33 +41,17 @@
 
 DOCUMENT();
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"parserNumberWithUnits.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;
-
-# include javascript for pop-up explaining units
-HEADER_TEXT(<<EOF);
-<script language="javascript" type="text/javascript">
-<!-- //
-function unitspopup() {
-    var url = "/webwork2_files/units.html";
-    var opt = "height=625,width=600,location=no,menubar=no,status=no" +
-              "resizable=yes,scrollbars=yes,toolbar=no,";
-    window.open(url,'examdata_info',opt).focus();
-}
-// -->
-</script>
-EOF
 
 $a=random(15,65,5);
 $b=random(90,140,5);
@@ -81,11 +71,11 @@ required by an Alfa Romeo going at $a mph and at $b mph.
 
 $PAR
 At $a mph, stopping distance = \{ans_rule(35)\}
-(include \{ htmlLink("javascript:unitspopup()","units") \})
+(include \{ helpLink("units") \})
 
 $BR
 At $b mph, stopping distance = \{ans_rule(35)\}
-(include \{ htmlLink("javascript:unitspopup()","units") \})
+(include \{ helpLink("units") \})
 
 END_TEXT
 Context()->normalStrings;
@@ -114,5 +104,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

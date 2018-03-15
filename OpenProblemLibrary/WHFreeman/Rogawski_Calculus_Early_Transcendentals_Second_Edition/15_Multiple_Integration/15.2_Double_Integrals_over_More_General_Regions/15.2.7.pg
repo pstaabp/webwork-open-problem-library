@@ -1,21 +1,29 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Double Integrals over More General Regions)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Double integrals over general regions)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(CalculateDblIntegralOverGraphedRegion)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.2')
 ## Problem1('7')
-## KEYWORDS('calculus', '')
-## UsesAuxiliaryFiles('image_15_2_7.png','image_15_2_7_sol.png')
+## KEYWORDS('calculus')
+## RESOURCES('image_15_2_7.png','image_15_2_7_sol.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 Context()->flags->set(tolerance => 0.01, tolType => "absolute");
 
@@ -30,7 +38,6 @@ $answer=Real($solnom/$soldenom);
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.2","7") \}
 $PAR
 Compute the double integral of $SPACE \(f(x, y) = $x x^{$xdeg} y \)$SPACE over the given shaded domain in the following Figure :

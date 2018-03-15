@@ -1,26 +1,29 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('The Fundamental Theorem of Calculus')
-## KEYWORDS('calculus', 'integrals', 'integration', 'fundamental theorem of calculus')
+## DBchapter(Integrals)
+## DBsection(Definite integrals (with trigonometric functions))
+## Institution(W.H.Freeman)
+## Author(Justask)
+## MLT(DefAbsTrig)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('5.3')
 ## Problem1('47')
-## Author('Justask')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'integrals', 'integration', 'fundamental theorem of calculus')
 
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-          );
- loadMacros("freemanMacros.pl");
- loadMacros("Parser.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "freemanMacros.pl",
+  "Parser.pl",
+  "PGcourse.pl"
+);
 TEXT(beginproblem());
 $solutionexits=1;
 $showPartialCorrectAnswers = 0;

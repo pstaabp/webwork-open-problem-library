@@ -4,41 +4,40 @@
 # ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Transformations of functions and their graphs)
-## DBsection(Vertical and Horizontal Shifts)
+## DBchapter(Transformations of functions and graphs)
+## DBsection(Shifts: vertical and horizontal)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('5.1')
-## Problem1('53')
 ## TitleText2('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## Section1(5.1)
 ## Section2('6.1')
+## Problem1(42)
 ## Problem2('53')
 ## KEYWORDS('transformations','shifts','translations','graph')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-           "PGstandard.pl",
-           "extraAnswerEvaluators.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "MathObjects.pl",
-           "PGchoicemacros.pl",
-           "PGcourse.pl",
-	   "parserFunction.pl",
+loadMacros(
+  "PGstandard.pl",
+  "extraAnswerEvaluators.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "parserFunction.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
 
 Context("Numeric");
-parserFunction("t(x)" => "sin(3*x/12 - e)");
+#parserFunction("t(x)" => "sin(3*x/12 - e)");
 
 $showPartialCorrectAnswers = 1;
 
@@ -54,6 +53,9 @@ $h = $pick+1;
 $ans1 = "$bev x + $cover";
 $ans2 = "t(x) + $b";
 $ans3 = "t(x-$h) + $diff";
+
+# per bug 2827 enable different forms of correct answers in part (c)
+parserFunction("t(x)" => "$bev*x - 37.84"); # unlikely to guess this
 
 Context()->texStrings;
 BEGIN_TEXT
@@ -125,5 +127,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

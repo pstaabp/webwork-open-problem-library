@@ -1,19 +1,26 @@
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Quadratic Equations')
-## KEYWORDS('calculus', 'algebra', 'quadratic equations', 'roots')
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Solving equations)
+## Institution(W.H.Freeman)
+## Author(Brian Kell)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('1.2')
 ## Problem1('33')
-## Author('Brian Kell')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'algebra', 'quadratic equations', 'roots')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 ($a1, $b1, $c1) = @{list_random(  # coefficients that give rational roots
 	[-10,-9,-2], [-10,-9,1], [-10,-9,7], [-10,-9,9], [-10,-8,2], [-10,-7,-1],
@@ -781,7 +788,6 @@ $x2_minus = Formula("(-$b2-sqrt($d2))/(2*$a2)")->reduce;
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "1.2", "33") \}
 $PAR
 Find the roots of the quadratic polynomials:

@@ -5,9 +5,11 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(The Divergence Theorem)
+## DBchapter(Fundamental theorems)
+## DBsection(Divergence theorem)
 ## Institution(Dartmouth)
+## MLT(Divergence_cylinder)
+## Level(3)
 ## TitleText1('Basic Multivariable Calculus')
 ## AuthorText1('Marsden, Tromba, Weinstein')
 ## EditionText1('3')
@@ -16,13 +18,13 @@
 ## KEYWORDS('Gauss')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

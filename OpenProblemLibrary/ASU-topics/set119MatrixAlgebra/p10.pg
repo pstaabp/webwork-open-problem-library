@@ -2,33 +2,26 @@
 ## Matrix Algebra
 ## ENDDESCRIPTION
 
-## KEYWORDS('Algebra' 'Matrix' 'Matrices')
 ## Tagged by tda2d
 
-## DBsubject('Algebra')
-## DBchapter('Systems of Equations and Inequalities')
-## DBsection('The Algebra of Matrices')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Linear algebra)
+## DBchapter(Matrices)
+## DBsection(Matrix algebra)
+## Institution(ASU)
+## MLT(matrix_add_sub)
+## Level(2)
+## KEYWORDS('Algebra' 'Matrix' 'Matrices')
 
 DOCUMENT() ;        
 
 loadMacros(
-"PGasu.pl",
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGdiffeqmacros.pl",
-"PGmatrixmacros.pl"
-) ;
+  "PGstandard.pl",
+  "PGasu.pl",
+  "PGchoicemacros.pl",
+  "PGdiffeqmacros.pl",
+  "PGmatrixmacros.pl",
+  "PGcourse.pl"
+);
 ############
 
 TEXT(beginproblem());
@@ -52,13 +45,13 @@ If
 \{join("& ",@{$a[0]}[0..$#{$a[0]}])\} \cr
 \{join("& ",@{$a[1]}[0..$#{$a[1]}])\} \cr
 \{join("& ",@{$a[2]}[0..$#{$a[2]}])\} \cr
-\end{array}\right]
-\mbox{ \ \ and \ \ \ }
+\end{array}\right] \quad
+\mbox{  and  } \quad
 B = \left[\begin{array}{ccc}
 \{join("& ",@{$b[0]}[0..$#{$b[0]}])\} \cr
 \{join("& ",@{$b[1]}[0..$#{$b[1]}])\} \cr
 \{join("& ",@{$b[2]}[0..$#{$b[2]}])\} \cr
-\end{array}\right],
+\end{array}\right]
 \]
 
 then

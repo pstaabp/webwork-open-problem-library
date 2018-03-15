@@ -1,20 +1,17 @@
 ##DESCRIPTION
-## DBsubject('Algebra')
-## DBchapter('Exponential and Logarithmic Functions')
-## DBsection('Exponential and Logarithmic Equations')
-## KEYWORDS()
-## Author('')
-## Institution('NAU')
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Properties of logarithms)
+## Institution(NAU)
+## Level(2)
 ##ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

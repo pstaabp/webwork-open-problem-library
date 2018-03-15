@@ -2,20 +2,16 @@
 ## Precalculus: Trigonometry
 ## ENDDESCRIPTION
 
-## KEYWORDS('trigonometry','unit circle')
 ## Tagged by cmd6a 5/9/06
 
-## DBsubject('Trigonometry')
-## DBchapter('Trigonometric Functions of Real Numbers')
-## DBsection('The Unit Circle')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Trigonometry)
+## DBchapter(Trigonometric functions)
+## DBsection(Trigonometric functions of special angles)
+## Institution(Rochester)
+## MLT(Many_functions_of_given_angle)
+## Level(2)
+## MO(1)
+## KEYWORDS('trigonometry','unit circle')
 
 DOCUMENT(); # This should be the first executable line in the problem.
 
@@ -23,8 +19,7 @@ DOCUMENT(); # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-# "source.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -93,7 +88,7 @@ ANS($ans3->cmp);
 ANS($ans4->cmp);
 
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

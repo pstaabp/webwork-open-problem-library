@@ -2,29 +2,22 @@
 ##   Conditional Probability
 ## ENDDESCRIPTION
 
-## KEYWORDS('Conditional', 'Probability', 'Mutually Exclusive', 'Independant')
 ## Tagged by nhamblet
 
-## DBsubject('Probability')
-## DBchapter('Theory')
-## DBsection('Conditional Probability')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Probability)
+## DBchapter(Sample Space)
+## DBsection(Probability: direct computation, inclusion/exclusion)
+## Institution(Rochester)
+## Level(2)
+## KEYWORDS('Conditional', 'Probability', 'Mutually Exclusive', 'Independant')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

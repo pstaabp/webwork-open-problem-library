@@ -10,19 +10,18 @@
 ## Date(Winter 2002)
 ## Institution(Rochester)
 ## Author(Mark Schmitt)
+## MLT(AugRREFSolnWithParams)
 ## Level(3)
 ## KEYWORDS('Matrix', 'System of Equations')
 
 DOCUMENT() ;
 
 loadMacros(
-        "PG.pl",
-        "PGbasicmacros.pl",
-        "PGchoicemacros.pl",
-        "PGanswermacros.pl",
-        "PGauxiliaryFunctions.pl",
-        "PGmatrixmacros.pl",
-) ;
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGmatrixmacros.pl",
+  "PGcourse.pl"
+);
 #############################################
 ## Build a Reduced-Row Echelon Form Matrix ##
 #############################################

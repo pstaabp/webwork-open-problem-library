@@ -5,21 +5,22 @@
 ## Tagged by tda2d
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Higher Order Differential Equations)
+## DBchapter(Higher order differential equations)
+## DBsection(Linear, constant coefficients, homogeneous (distinct real roots))
 ## Institution(Rochester)
+## MLT(repeated_roots_third_order)
+## MLTleader(1)
+## Level(2)
 ## KEYWORDS('differential equation' 'higher order' 'third order')
 
 DOCUMENT() ;       
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGdiffeqmacros.pl",
-) ;
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGdiffeqmacros.pl",
+  "PGcourse.pl"
+);
 
 $a = random(2,9,1) ;
 

@@ -11,6 +11,7 @@
 ## Institution(ASU)
 ## MLT(xy_powers_eval_point)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -27,9 +28,9 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -76,5 +77,5 @@ ANS(Real($ans)->cmp);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

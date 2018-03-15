@@ -5,9 +5,11 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Functions)
-## DBsection(Arc Length and Curvature)
+## DBchapter(Calculus of vector valued functions)
+## DBsection(Parameterized curves)
 ## Institution(Dartmouth)
+## MLT(pc_intersections_parametrize)
+## Level(4)
 ## TitleText1('Basic Multivariable Calculus')
 ## AuthorText1('Marsden, Tromba, Weinstein')
 ## EditionText1('3')
@@ -17,13 +19,13 @@
 
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers
@@ -41,8 +43,6 @@ TEXT(beginproblem());
 
 
 BEGIN_TEXT
-$BR
-
 Consider the paraboloid \( z = x^2 + y^2 \).  The plane \( $a x + $b y
 + z + $c = 0 \) cuts the paraboloid, its intersection being a curve.
 $BR

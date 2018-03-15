@@ -8,10 +8,11 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"contextLeadingZero.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextLeadingZero.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -69,8 +70,10 @@ END_TEXT
 Context("LeadingZero");
 ANS(Real($ans)->cmp);
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Introduction to WeBWorK')
+## DBsubject(WeBWorK)
+## DBchapter(WeBWorK tutorial)
+## Static(1)
+## MO(1)
 ## KEYWORDS('algebra')

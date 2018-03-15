@@ -2,32 +2,31 @@
 ##  Statistics: Descriptive statistics
 ## ENDDESCRIPTION
 
-## KEYWORDS('statistics', 'descriptive statistics')
 ## naw tagged this problem.
 
-## DBsubject('Statistics')
-## DBchapter('What is Statistics?')
-## DBsection('Introduction')
-## Date('5/26/2005')
-## Author('Nolan A. Wages')
-## Institution('UVA')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Classifying data)
+## Date(5/26/2005)
+## Institution(UVA)
+## Author(Nolan A. Wages)
+## Level(3)
 ## TitleText1('Statistics for Management and Economics')
-## EditionText1('6')
 ## AuthorText1('Keller, Warrack')
-## Section1()
-## Problem1()
+## EditionText1('6')
+## Section1('.')
+## Problem1('')
+## KEYWORDS('statistics', 'descriptive statistics')
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -116,4 +115,5 @@ END_TEXT
 ANS(radio_cmp($mc[$a]->correct_ans));
 ANS(radio_cmp($mc[$b]->correct_ans));
 
+COMMENT('Questions selected randomly from a larger set.  See source for full question list.');
 ENDDOCUMENT();       # This should be the last executable line in the problem.

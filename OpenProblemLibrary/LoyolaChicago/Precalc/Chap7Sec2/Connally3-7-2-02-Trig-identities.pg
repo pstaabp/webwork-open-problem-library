@@ -1,24 +1,31 @@
 ## DESCRIPTION
 ## Trigonometric Identities
-## ENDDESCRIPTION
 
 
 ## DBsubject(Trigonometry)
-## DBchapter(Trigonometry)
-## DBsection(Trigonometric Identities)
+## DBchapter(Analytic trigonometry)
+## DBsection(Using and proving basic identities)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(KentMoreLike7)
+## Level(1)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('7.2')
-## Problem1('11')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(7.2)
 ## Section2('8.3')
+## Section3('7.7')
+## Problem1(2)
 ## Problem2('11')
+## Problem3('9')
 ## KEYWORDS('trig')
 
 
@@ -28,13 +35,13 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGcourse.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"contextString.pl",
-"parserAutoStrings.pl",
-"answerHints.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "contextString.pl",
+  "parserAutoStrings.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -91,5 +98,5 @@ END_SOLUTION
 COMMENT("Accepts only the string '1' as the correct answer.");
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

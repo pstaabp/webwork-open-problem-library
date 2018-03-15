@@ -2,29 +2,22 @@
 ##   Linear Inequalities and Feasible Regions
 ## ENDDESCRIPTION
 
-## KEYWORDS('Linear', 'Inequality', 'Region', 'Vertex')
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Linear Inequalities')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Systems of equations and inequalities)
+## DBsection(Inequalities)
+## Institution(Rochester)
+## Level(3)
+## KEYWORDS('Linear', 'Inequality', 'Region', 'Vertex')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

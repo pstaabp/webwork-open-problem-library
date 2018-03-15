@@ -1,21 +1,28 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Integration in Polar, Cylindrical, and Spherical Coordinates)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Triple integrals in cylindrical and spherical)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.4')
 ## Problem1('49')
-## KEYWORDS('calculus', '')
-## UsesAuxiliaryFiles('image_15_4_59_a.png','image_15_4_59_b.png')
+## KEYWORDS('calculus')
+## RESOURCES('image_15_4_59_a.png','image_15_4_59_b.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $r=random(1,9);
 $r2=$r*$r;
@@ -27,7 +34,6 @@ $answer=Real($PI*$r/4);
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.4","49") \}
 $PAR
 Evaluate the triple integral of \(f(x,y,z)=z(x^2+y^2+z^2)^{-3/2}\)

@@ -5,20 +5,20 @@
 ##Tagged by ynw2d
 
 ## DBsubject(Linear algebra)
-## DBchapter('Determinants')
-## DBsection('Properties')
-## Institution('Rochester')
+## DBchapter(Determinants)
+## DBsection(Properties)
+## Institution(Rochester and Hope College)
+## Author(Paul Pearson)
+## Level(3)
 ## KEYWORDS('algebra', 'matrix operation', 'matrix')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGmatrixmacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGmatrixmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -30,14 +30,14 @@ $c=random(-3,5,1);
 $d=random(-3,5,1);
 
 BEGIN_TEXT
-Given the matrix
-\{ mbox( display_matrix([[$a, $b], [$c, $d]]), "," ) \} 
+Consider the matrix
+\[ \{ display_matrix_mm([[$a, $b], [$c, $d]]) \}. \]
 $BR
-(a) find its determinant;
+(a) Find its determinant;
 $BR
 Your answer is : \{ans_rule(25) \}
 $BR
-(b) does the matrix have an inverse?
+(b) Does the matrix have an inverse?
 $BR
 Your answer is (input Yes or No) : \{ans_rule(25) \}
 $BR

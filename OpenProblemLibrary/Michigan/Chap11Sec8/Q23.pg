@@ -1,30 +1,32 @@
 # DESCRIPTION
 # Problem from Calculus, single variable, Hughes-Hallett et al., 4th ed.
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 02/04/09
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Systems of Differential Equations)
+## DBchapter(First order differential equations)
+## DBsection(Applications - other)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(FO-A-dydx_dydt_dxdt)
+## Level(5)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('4')
-## Section1('11.8')
-## Problem1('23')
 ## TitleText2('Calculus')
-## AuthorText2('Hughes-Hallett')
-## EditionText2('5')
-## Section2('11.8')
-## Problem2('26')
 ## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
 ## AuthorText3('Hughes-Hallett')
+## EditionText1('4')
+## EditionText2('5')
 ## EditionText3('6')
-## Section3('11.')
-## Problem3('51')
+## Section1('11.8')
+## Section2('11.8')
+## Section3(11.Review)
+## Problem1('23')
+## Problem2('26')
+## Problem3(51)
 ## KEYWORDS('calculus','differential equations', 'systems')
 
 ## Textbook tags
@@ -36,14 +38,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-"parserImplicitEquation.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "parserImplicitEquation.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -176,5 +175,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -1,22 +1,23 @@
 # Description
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('The Fundamental Theorem of Calculus')
-## Author('Jim Swift')
-## Institution('NAU')
+## DBchapter(Integrals)
+## DBsection(Fundamental theorem of calculus)
+## Institution(NAU)
+## Author(Jim Swift)
+## Level(2)
 
 # Simple integral with x as the upper limit, to get students used to it before the FTC.
 # EndDescription
 
 DOCUMENT(); 
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "PGnumericalmacros.pl"
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 $a = non_zero_random(-5,5);

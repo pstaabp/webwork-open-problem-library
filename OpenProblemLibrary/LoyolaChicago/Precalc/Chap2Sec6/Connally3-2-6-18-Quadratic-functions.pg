@@ -4,16 +4,18 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Functions)
-## DBsection(Quadratic Functions)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Solving equations)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
-## Section1('2.6')
-## Problem1('14')
+## Section1(2.6)
+## Problem1(18)
 ## KEYWORDS('functions','concavity','quadratic','zeros')
 
 
@@ -23,10 +25,10 @@
 DOCUMENT();       
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 #######################################
@@ -43,7 +45,7 @@ $c = $a + 2;
 # ($a x - $b)($b x - $c)
 $p2 = $a * $b;
 $p1 = -($a * $c + $b * $b);
-$p0 = $b * $b;
+$p0 = $b * $c;
 
 #  tex strings
 $x = "x";
@@ -80,5 +82,5 @@ $showPartialCorrectAnswers = 1;
 ANS($answer->cmp() );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -5,13 +5,14 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Limits at infinity, horizontal and oblique asymptotes)
 ## Date(5/26/2005)
 ## Institution(ASU)
 ## Author(Jeff Holt)
 ## MLT(liminfratexpinf)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -33,9 +34,9 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -71,5 +72,5 @@ ANS(Infinity->cmp);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

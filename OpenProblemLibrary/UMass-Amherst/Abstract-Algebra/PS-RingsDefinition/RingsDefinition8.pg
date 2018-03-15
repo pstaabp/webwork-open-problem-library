@@ -1,26 +1,20 @@
-## DBsubject('Abstract Algebra')
-## DBchapter('Rings')
+## DBsubject(Abstract algebra)
+## DBchapter(Rings)
 ## DBsection(Units and zero divisors)
-## KEYWORDS('zero-divisors')
+## Institution(University of Massachusetts Amherst)
+## Author(Daniel Nichols and Siman Wong)
 ## Level(3)
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Daniel Nichols and Siman Wong')
-## Institution('University of Massachusetts Amherst')
+## MO(1)
+## KEYWORDS('zero-divisors')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"algebraMacros.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "algebraMacros.pl",
+  "PGcourse.pl"
 );
 
 

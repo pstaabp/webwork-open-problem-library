@@ -6,11 +6,13 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Techniques of Integration)
-## DBsection(Trigonometric Substitution)
+## DBchapter(Techniques of integration)
+## DBsection(Mixed techniques)
 ## Date(2/19/2000)
 ## Institution(OSU)
 ## Author(Zig Fiedorowicz)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -31,13 +33,11 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraders.pl",
-"parserMultiAnswer.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraders.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 ##Note this uses Mike Gage's custom full_partial_grader

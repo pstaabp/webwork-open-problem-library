@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Convert circuit from time domain to frequency domain and calculate voltage in the time domain
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('AC Steady-State Analysis')
-## DBsection('Impedance and Admittance')
+## DBsubject(Electric circuits)
+## DBchapter(AC steady-state analysis)
+## DBsection(Impedance and admittance)
 ## KEYWORDS('ac','time domain','frequency domain','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,12 +16,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

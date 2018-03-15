@@ -1,8 +1,10 @@
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Linear equations)
+## DBchapter(First order differential equations)
+## DBsection(Integrating factor)
 ## Institution(The College of Idaho)
 ## Author(LA Danielson)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +13,16 @@
 ## KEYWORDS('calculus', 'differential equations', 'linear equation', 'first order')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl", "PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+
+TEXT(beginproblem());
 ##axy'+by=x^{-p}
 $a = Real(random(1,4,1));
 $m = Real(non_zero_random(1,5,1));
@@ -44,7 +52,6 @@ $ans2 = Formula("(x^{-$p} / {-$apm}) + ($C * x^($m))")->reduce();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "9.5","5") \}
 $PAR
 Solve \( $a x y' - $b y = x^{-$p}, \qquad y(1) = $y1 \).

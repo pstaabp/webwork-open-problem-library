@@ -2,30 +2,27 @@
 ##   Match up Trig Identities
 ## ENDDESCRIPTION
 
-## KEYWORDS('Trig', 'Identity', 'Identities', 'Matching')
 ## Tagged by nhamblet
 
-## DBsubject('Trigonometry')
-## DBchapter('Analytic Trigonometry')
-## DBsection('Trigonometric Identities')
-## Date('8/24/07')
-## Author('')
-## Institution('Union')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Trigonometry)
+## DBchapter(Analytic trigonometry)
+## DBsection(Using and proving basic identities)
+## Date(8/24/07)
+## Institution(Rochester)
+## MLT(KentMoreLike1)
+## MLTleader(1)
+## Level(1)
+## KEYWORDS('Trig', 'Identity', 'Identities', 'Matching','precalculus','trigonometry','identities','trigonometric identities')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
   "PGchoicemacros.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "choiceUtils.pl",        # for matching problems
-  "PGcourse.pl",           # Customization file for the course
+  "choiceUtils.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -72,5 +69,5 @@ $showPartialCorrectAnswers = 0;
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

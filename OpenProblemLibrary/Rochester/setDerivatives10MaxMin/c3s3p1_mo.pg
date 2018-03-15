@@ -5,10 +5,12 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Increasing/decreasing functions and local extrema)
 ## Institution(Rochester)
+## MLT(incr_decr_local)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('1')
@@ -20,10 +22,9 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   #"source.pl",         # used to display problem source button
-   "PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -114,7 +115,7 @@ $BR Since \(f'(x)\) changes from positive to negative at \($a\), \(f(x)\) has a 
 END_SOLUTION
 
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

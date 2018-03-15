@@ -1,7 +1,6 @@
 # DESCRIPTION
 # Problem from Calculus, single variable, Hughes-Hallett et al., 4th ed.
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 12/15/08
 
@@ -11,21 +10,27 @@
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('4')
-## Section1('3.8')
-## Problem1('11')
 ## TitleText2('Calculus')
-## AuthorText2('Hughes-Hallett')
-## EditionText2('5')
-## Section2('3.8')
-## Problem2('11')
 ## TitleText3('Calculus')
+## TitleText4('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
 ## AuthorText3('Hughes-Hallett')
+## AuthorText4('Hughes-Hallett')
+## EditionText1('4')
+## EditionText2('5')
 ## EditionText3('6')
+## EditionText4('7')
+## Section1('3.8')
+## Section2('3.8')
 ## Section3('3.8')
+## Section4('3.8')
+## Problem1('11')
+## Problem2('11')
 ## Problem3('11')
+## Problem4('11')
 ## KEYWORDS('calculus','derivative')
 
 ## Textbook tags
@@ -35,13 +40,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -54,7 +56,7 @@ TEXT(beginproblem());
 Context()->texStrings;
 BEGIN_TEXT
 
-Find the derivatives of the function
+Find the derivative of the function
 \( f(t)=\cosh^2($a t)-\sinh^2($a t) \).
 Simplify your answer completely.
 
@@ -82,6 +84,6 @@ expected since \(\cosh^2 t-\sinh^2 t=1\).
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

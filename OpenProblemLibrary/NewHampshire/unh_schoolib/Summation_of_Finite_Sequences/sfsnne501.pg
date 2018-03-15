@@ -2,15 +2,10 @@
 #ENDDESCRIPTION
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
- #"compoundProblem.pl",
-#"contextCurrency.pl",
- #"unionLists.pl",
-#"unionMacros.pl",
-
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 Context()->texStrings;
 
@@ -52,11 +47,12 @@ END_TEXT
 ANS(str_cmp($tf->ra_correct_ans));
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Summation_of_Finite_Sequences')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Finite sequences and series)
+## DBsection(Arithmetic)
+## Level(2)
 
 
 

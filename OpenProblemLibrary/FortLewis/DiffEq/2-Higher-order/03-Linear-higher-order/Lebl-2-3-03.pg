@@ -2,19 +2,21 @@
 ## Higher order ODEs: constant coefficient higher order homogeneous linear ODEs
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','second order linear ODE','constant coefficients')
 
 ## DBsubject(Differential equations)
-## DBchapter('Higher Order Differential Equations')
-## DBsection('Higher Order Linear')
-## Date('01/30/2011')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Higher order differential equations)
+## DBsection(Linear, constant coefficients, homogeneous (complex roots))
+## Date(01/30/2011)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Notes on Diffy Qs')
-## EditionText1('December 9, 2010')
 ## AuthorText1('Jiri Lebl')
+## EditionText1('December 9, 2010')
 ## Section1('2.3')
 ## Problem1('3')
+## KEYWORDS('differential equations','second order linear ODE','constant coefficients')
 
 
 ##############################
@@ -23,10 +25,11 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"parserAssignment.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "parserAssignment.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -152,6 +155,6 @@ ANS( $answer->cmp( checker => sub {
 }));
 
 
-COMMENT("MathObject version.  Characteristic polynomial r( (r+a)^2 + b^2 ).");
+COMMENT("Characteristic polynomial r( (r+a)^2 + b^2 ).");
 
 ENDDOCUMENT();

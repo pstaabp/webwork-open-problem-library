@@ -1,4 +1,4 @@
-## DBsubject('Abstract Algebra')
+## DBsubject(Abstract algebra)
 ## DBchapter('Groups')
 ## DBsection('Homomorphisms')
 ## KEYWORDS('group homomorphisms, cyclic groups, image')
@@ -15,14 +15,11 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"algebraMacros.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "algebraMacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

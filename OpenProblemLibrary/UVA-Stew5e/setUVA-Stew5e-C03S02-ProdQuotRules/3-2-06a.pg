@@ -3,7 +3,7 @@
 ##ENDDESCRIPTION
 
 ##Tagged by YJ
-
+## updated 12/2014
 
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Differentiation)
@@ -23,23 +23,25 @@
 ## Section2('3.2')
 ## Problem2('')
 ## KEYWORDS('calculus', 'differentiation','Differentiation' 'Product Rule' 'Quotient Rule')
+## MO(1)
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;
+Context('Numeric');
 
 $a = random(2,20,1);
 
-TEXT(EV2(<<EOT));
+BEGIN_TEXT
 
 Suppose that \[ f(x) = \frac{ e^{x} }{x^{2}+$a}. \]
 Find \(f'(1)\).
@@ -47,11 +49,25 @@ Find \(f'(1)\).
 $BR $BR
 
 \(f'(1)\) = \{ans_rule(30) \}
-$BR
+END_TEXT
 
-EOT
+$ans = Compute("exp(1)*($a-1)/(1+$a)**2");
+ANS($ans->cmp);
 
-$ans = exp(1)*($a-1)/(1+$a)**2;
-ANS(num_cmp($ans));
-
+Context("Fraction");
+$A=Compute("($a-1)/(1+$a)**2");
+Context()->texStrings;
+BEGIN_SOLUTION
+$PAR SOLUTION $PAR 
+The quotient rule gives
+\[ \begin{array}{rcl}f'(x) &=& \displaystyle\frac{( x^{2}+$a ) \frac{d}{dx} (e^x) - e^x \frac{d}{dx} ( x^{2}+$a )}
+{ (x^{2}+$a)^2} 
+\\ & =& \displaystyle  \frac{( x^{2}+$a ) e^x -  2 x e^x }
+{ (x^{2}+$a)^2} 
+\\ & =& \displaystyle \frac{ e^x ( x^{2} - 2 x +$a ) }
+{ (x^{2}+$a)^2} 
+\end{array}
+\]
+\[ f'(1) = $A e \approx $ans \]
+END_SOLUTION
 ENDDOCUMENT();

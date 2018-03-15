@@ -1,21 +1,29 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Integration in Polar, Cylindrical, and Spherical Coordinates)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Double integrals in polar)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(SimpleSubOverPortionOfDisc)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.4')
 ## Problem1('3')
-## KEYWORDS('calculus', '')
-## UsesAuxiliaryFiles('image_15_4_3.png')
+## KEYWORDS('calculus')
+## RESOURCES('image_15_4_3.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 Context()->flags->set(tolerance=>0.1, tolType=>"absolute");
 
@@ -31,7 +39,6 @@ $answer=Real(($a/8)*($r**4));
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.4","3") \}
 $PAR
 Sketch the \($d\) indicated and integrate \(f(x,y)\) over \($d\) using polar coordinates.$PAR

@@ -1,33 +1,40 @@
 ## DESCRIPTION
 ## Functions: Input and Output
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
-## DBchapter(Exponential functions)
-## DBsection(Introduction to the Family of Exponential Functions)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Applications and models - general)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(PercentFindRate)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('3.1')
-## Problem1('12')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(3.1)
 ## Section2('4.1')
+## Section3('4.1')
+## Problem1(3)
 ## Problem2('12')
+## Problem3('16')
 ## KEYWORDS('exponential functions','growth rate','growth factor')
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -82,5 +89,5 @@ resources are shrinking, the growth is \(-$rh\), giving \($b\).
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

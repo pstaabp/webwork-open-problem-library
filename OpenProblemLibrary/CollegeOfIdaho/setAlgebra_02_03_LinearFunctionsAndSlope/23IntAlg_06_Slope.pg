@@ -3,10 +3,13 @@
 ## 
 ##ENDDESCRIPTION
 ## DBsubject(Algebra)
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Equations for lines)
+## DBchapter(Linear equations and functions)
+## DBsection(Finding the slope)
 ## Institution(The College of Idaho)
 ## Author(RA Cruz)
+## MLT(Slope_from_two_points)
+## Level(2)
+## MO(1)
 ## TitleText1('Essentials of Intermediate Algebra')
 ## AuthorText1('Blitzer')
 ## EditionText1('1')
@@ -20,7 +23,7 @@ DOCUMENT(); # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "contextLimitedNumeric.pl"
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -41,7 +44,7 @@ $y2 = $n * ($x2 - $x1) + $y1;                #Get nice answer
 BEGIN_TEXT
 Find the slope, if possible, of the line passing through the points, \( ($x1, $y1) \) and \( ($x2, $y2) \) and describe the line.
 $PAR
-a)  m =  \{ ans_rule(15) \} 
+a)  \(m =\)  \{ ans_rule(15) \} 
 $PAR
 b) The line \{ pop_up_list(''=>'?',
                            'falls'=>'falls','rises'=>'rises',
@@ -52,6 +55,8 @@ END_TEXT
 #  Answer
 #  NOTES:  The slope is formatted to be a fraction in 
 #          reduced form.
+
+$showPartialCorrectAnswers = 1;
 
 Context("LimitedNumeric-Fraction"); 
 Context()->strings->add("Does not exist"=>{},
@@ -80,10 +85,19 @@ else {
 ANS($ans_a->cmp);
 ANS($ans_b->cmp);
 
-$showPartialCorrectAnswers = 1;
-
 ######################################
+#  Solution
 
+$sol_a = "is \(m = \frac{$y2-$y1}{$x2-$x1} = $ans_a\).";
+if ($x2-$x1 == 0){$sol_a = "does not exist.";}
 
-COMMENT('MathObject version');
+SOLUTION(EV3(<<'END_SOLUTION'));
+$PAR SOLUTION $PAR
+$BR
+a)The slope $sol_a
+$BR
+b) The line $ans_b.
+END_SOLUTION
+
+;
 ENDDOCUMENT();

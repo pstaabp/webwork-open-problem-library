@@ -1,8 +1,11 @@
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Linear equations)
+## DBchapter(First order differential equations)
+## DBsection(Applications - other)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## MLT(FO-A-fluids)
+## Level(5)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,12 +14,15 @@
 ## KEYWORDS('calculus', 'differential equations', 'linear equation', 'first order')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
 
-
+TEXT(beginproblem());
 $b = Real(random(5,10,1));
 $m = Real(random(5,10,1));
 $a = $m*$b; ##so integer time LAD
@@ -36,7 +42,6 @@ $ans2 = Formula("$a * ln(1 + $time) - $b * $time + $V0")->eval();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "9.5","33") \}
 $PAR
 Water flows into a tank at the variable rate \( R_{\scriptsize{\text{in}}} = \frac{$a}{1 + t} \) gal/min and out at the constant rate \( R_{\scriptsize{\text{out}}} = $b \) gal/min.  Let \( V(t) \) be the volume of water in the tank at time \( t \).

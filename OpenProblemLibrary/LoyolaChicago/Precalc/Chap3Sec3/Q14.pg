@@ -1,23 +1,28 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
-## DBsubject(Algebra)
-## DBchapter(Exponential functions)
-## DBsection(Graphs of  Exponential Functions)
+## DBsubject(Calculus - single variable)
+## DBchapter(Limits and continuity)
+## DBsection(Limits at infinity, horizontal and oblique asymptotes)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## Level(2)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('3.3')
-## Problem1('21')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(3.3)
 ## Section2('4.3')
+## Section3('4.3')
+## Problem1(14)
 ## Problem2('21')
+## Problem3('30')
 ## KEYWORDS('exponential functions','graphs of exponential functions')
 
 
@@ -26,16 +31,13 @@
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-#           "PGstandard.pl",
-#           "extraAnswerEvaluators.pl",
-"PGcourse.pl",
-"MathObjects.pl",
-"parserImplicitPlane.pl",
-"AnswerFormatHelp.pl",
-          );
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserImplicitPlane.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -102,5 +104,5 @@ END_SOLUTION
 #Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

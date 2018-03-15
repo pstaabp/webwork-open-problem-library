@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -109,9 +109,10 @@ Since there were actually infinitely many correct answers, we could not check al
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject('NECAP')
-## DBchapter('Grade 5')
-## DBsection('2005')
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Perimeter)
+## Level(1)

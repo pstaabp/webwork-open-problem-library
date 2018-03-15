@@ -4,21 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-"contextFraction.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -49,9 +39,12 @@ Now we know that we have a palindrome for the two digit numbers with first digit
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Miscellaneous_Contest_Problems')
-## DBsection('')
+## DBsubject(Probability)
+## DBchapter(Sample Space)
+## DBsection(Outcomes & events)
+## Level(2)
+## Static(1)
+## MO(1)
 

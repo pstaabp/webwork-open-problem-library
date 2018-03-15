@@ -1,4 +1,4 @@
-## DBsubject('Abstract Algebra')
+## DBsubject(Abstract algebra)
 ## DBchapter('Groups')
 ## DBsection(Group actions)
 ## KEYWORDS('conjugacy classes, centralizers')
@@ -14,14 +14,11 @@
 DOCUMENT();        
 
 loadMacros(
-"PG.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"algebraMacros.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "algebraMacros.pl",
+  "PGcourse.pl"
 );
 
 Context( )->strings->add( Y => {} );

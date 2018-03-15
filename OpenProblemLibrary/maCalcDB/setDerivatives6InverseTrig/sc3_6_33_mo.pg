@@ -12,6 +12,7 @@
 ## Institution(UVA)
 ## Author(Jeff Holt)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -31,10 +32,9 @@
 DOCUMENT();
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   #"source.pl",        # allows code to be displayed on certain sites.
-   "PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 # Print problem number and point value (weight) for the problem
@@ -81,9 +81,17 @@ Context()->normalStrings;
 
 ANS($dfdx->cmp);
 
+$bb=$b*$b;
+$abc=$a*$b*$c;
+BEGIN_SOLUTION
+$PAR SOLUTION $PAR
+\[ \begin{array}{rcl} f'(x) &=& \displaystyle\frac{$a}{1+ ($b \sin($c x))^2} \frac{d}{dx} ($b \sin($c x))
+\\ &=& \displaystyle\frac{$a}{1+ $bb \sin^2($c x)} ($b\cdot $c  \cos ($c x))
+\\ &=& \displaystyle \frac{$abc \cos ($c x)}{1+ $bb \sin^2($c x)} 
+\end{array}
+\]
+END_SOLUTION
+;
 
-
-COMMENT('MathObject version');
-
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

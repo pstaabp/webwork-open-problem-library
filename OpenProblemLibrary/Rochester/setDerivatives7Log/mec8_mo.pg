@@ -9,15 +9,15 @@
 ## DBsection(Chain rule (without trigonometric functions))
 ## Institution(Rochester)
 ## Level(3)
+## MO(1)
 ## KEYWORDS('derivatives', 'logarithmic functions')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   #"source.pl",         # used to display problem source button
-   "PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -66,7 +66,6 @@ ANS($fp->with(limits=>[10,15])->cmp);
 
 
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
 ENDDOCUMENT();

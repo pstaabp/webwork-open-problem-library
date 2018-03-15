@@ -1,27 +1,30 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Trigonometric Substitution')
-## KEYWORDS('calculus', 'integration', 'integral', 'trigonometric substitution', 'substitution', 'trigonometry', 'trigonometric', 'trig')
+## DBchapter(Techniques of integration)
+## DBsection(Trigonometric substitution)
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## MLT(Trig_tan)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('7.3')
 ## Problem1('18')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'integration', 'integral', 'trigonometric substitution', 'substitution', 'trigonometry', 'trigonometric', 'trig')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-$context = Context();
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "parserFormulaUpToConstant.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+Context();
 
-$context->variables->add(C=>'Real');
-
-#($a, $b, $ans) = @{ list_random([],
-#                                []
-#) };
+TEXT(beginproblem());
 
 $a = Real(random(2, 6, 1));
 $b = Real(random(2, 6, 1));
@@ -31,11 +34,10 @@ $ab = $a * $b;
 $ab2 = $a * $b**2;
 $sa = sqrt($a);
 
-$ans = Formula("($b/2) * x * sqrt(x**2 + $a) + ($ab/2) * ln(abs(sqrt(x**2 + $a) + x)) + C");
+$ans = FormulaUpToConstant("($b/2) * x * sqrt(x**2 + $a) + ($ab/2) * ln(abs(sqrt(x**2 + $a) + x))");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "7.3","18") \}
 $PAR
 Evaluate the integral \( \int \sqrt{$ab2 + $b2 x^2} \, dx \) using trigonometric substitution.

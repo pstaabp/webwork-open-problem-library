@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Partial Derivatives)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Double integrals over rectangles)
 ## Date(10/15/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(RiemannSumUsingTable)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -26,7 +29,7 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 
@@ -70,7 +73,7 @@ y \backslash x & 1.1 & 1.3 & 1.5 \\ \hline \hline
 \]
 $BR
 $BR
-  \( f(x,y) \approx \) \{ans_rule(30)\}
+  \( \int_R f(x,y) \, da \approx \) \{ans_rule(30)\}
 
 
 END_TEXT
@@ -83,5 +86,5 @@ Context()->normalStrings;
 
 ANS($est->cmp());
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

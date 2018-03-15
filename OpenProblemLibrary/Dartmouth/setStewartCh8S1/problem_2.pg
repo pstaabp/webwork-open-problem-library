@@ -2,28 +2,28 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS('integral' 'integration by parts')
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Integration by Parts')
-## Date('')
-## Author('')
-## Institution('Dartmouth')
+## DBchapter(Techniques of integration)
+## DBsection(Integration by parts (without trigonometric functions))
+## Institution(Dartmouth)
+## MLT(notrig_04)
+## Level(3)
+## Static(1)
 ## TitleText1('Calculus')
-## EditionText1('5')
 ## AuthorText1('Stewart')
+## EditionText1('5')
 ## Section1('8.1')
 ## Problem1('')
+## KEYWORDS('integral' 'integration by parts')
 
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
  
 

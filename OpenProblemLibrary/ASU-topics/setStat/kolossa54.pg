@@ -2,20 +2,15 @@
 ## Statistics: Hypothesis testing
 ##ENDDESCRIPTION
 
-##KEYWORDS('statistics','hypothesis testing','samples')
 ## Tagged by sawblade
 
-## DBsubject('Statistics')
-## DBchapter('Hypothesis Testing')
-## DBsection('Common Large-Sample Tests')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Statistics)
+## DBchapter(Hypothesis tests)
+## DBsection(One sample proportion)
+## Institution(ASU)
+## MLT(cokevspepsi)
+## Level(2)
+## KEYWORDS('statistics','hypothesis testing','samples')
 
 #
 # First comes some stuff that appears at the beginning of every problem
@@ -24,13 +19,11 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

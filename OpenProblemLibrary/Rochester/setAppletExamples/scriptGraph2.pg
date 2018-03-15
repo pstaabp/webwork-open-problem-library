@@ -15,33 +15,26 @@
 ################################################################################
 
 ##DESCRIPTION
-##KEYWORDS('Java applet example')
 ##ENDDESCRIPTION
 
 ## Tagged by jjh2b 9/19/07
 
-## DBsubject('WeBWorK')
-## DBchapter('Demos')
-## DBsection('JavaScript')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(WeBWorK)
+## DBchapter(Demos)
+## DBsection(JavaScript)
+## Institution(Rochester)
+## Static(1)
+## KEYWORDS('Java applet example')
 
 DOCUMENT();
 
 # Load whatever macros you need for the problem
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-          );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
  
 ## Do NOT show partial correct answers
 $showPartialCorrectAnswers = 0;

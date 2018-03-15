@@ -4,21 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -45,13 +34,14 @@ The customer may first choose his pasta in 5 ways.  For each of these choices
 $BR there are 2 sauce choices so the customer has \(5\times 2=10\) ways.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 7')
-## DBsection('2005')
+## DBsubject(Combinatorics)
+## DBchapter(Counting)
+## DBsection(Principles (addition, subtraction, multiplication))
+## Level(2)
 

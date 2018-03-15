@@ -1,34 +1,40 @@
 ## DESCRIPTION
 ## Exponent rules
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
-## DBchapter(Exponential functions)
-## DBsection(Introduction to the Family of Exponential Functions)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of rational exponents and radicals)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('3 Tools')
-## Problem1('36 38 44')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
-## Section2('4.')
-## Problem2('36 38 44')
+## EditionText3('5')
+## Section1(3.Tools)
+## Section2(4.Skills)
+## Section3('4.Skills')
+## Problem1(46 49 56)
+## Problem2(36 38 44)
+## Problem3('36 38 44')
 ## KEYWORDS('exponents')
 
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"contextLimitedPolynomial.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextLimitedPolynomial.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -137,5 +143,5 @@ $PAR
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

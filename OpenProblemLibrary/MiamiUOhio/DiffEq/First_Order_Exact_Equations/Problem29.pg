@@ -3,11 +3,14 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Exact equations)
+## DBchapter(First order differential equations)
+## DBsection(Exact)
 ## Date(06/08/2012)
 ## Institution(Cleveland State University)
 ## Author(Anna Ghazaryan, Fuli Zhang, Barbara Margolius)
+## Level(3)
+## MO(1)
+## Static(1)
 ## TitleText1('Differential equations Theory Technique and Practice')
 ## AuthorText1('George F. Simmons')
 ## EditionText1('')
@@ -20,16 +23,11 @@
 DOCUMENT();   
 
 loadMacros(
-   "PGstandard.pl",
-   "MathObjects.pl",
-   "AnswerFormatHelp.pl",
-#   "unionLists.pl",
- #  "parserPrime.pl",
-  # "parserPopUp.pl",
-  # "answerHints.pl",
- #  "parserImplicitPlane.pl",
-
- );
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
+);
 
 # Print problem number and point value (weight) for the problem
 TEXT(beginproblem());
@@ -113,9 +111,6 @@ ANS(  $answer->cmp(checker => sub {
     }
 ) );
 
-
-
-COMMENT('MathObject version  Not randomized');
 
 
 

@@ -4,22 +4,13 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-"contextFraction.pl",
-"answerHints.pl",
-"problemPanic.pl",
-
-#PGauxiliaryFunctions.pl, #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "answerHints.pl",
+  "problemPanic.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -51,11 +42,14 @@ $PAR Solution $PAR
 There are 10 ways to choose the first digit, 10 ways to choose the second digit$BR and 10 ways to choose the third digit so there are$BR \(10\times 10\times 10=1000\) ways to  pick the 3 digit number.$BR  You have one 3 digit number so your probability of winning is \(\frac{1}{1000}\)
 END_SOLUTION	
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject(Middle school)
-## DBchapter('Probability')
-## DBsection('')
+## DBsubject(Probability)
+## DBchapter(Sample Space)
+## DBsection(Probability: direct computation, inclusion/exclusion)
+## Level(2)
+## Static(1)
+## MO(1)
 
 

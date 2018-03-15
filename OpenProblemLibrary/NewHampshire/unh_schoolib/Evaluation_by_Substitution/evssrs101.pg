@@ -1,19 +1,14 @@
 #DESCRIPTION
 ##Type of
+## updated to format math display, RA Cruz, 2015-08-04
 #ENDDESCRIPTION
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLimitedNumeric.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "contextLimitedNumeric.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -27,15 +22,15 @@ $ans3=($x-12)+3*($y+$z);
 $ans4=100*$x+$y*$z;
 BEGIN_TEXT
 $PAR
-Evaluate each of the following expressions if x=$x, y=$y, z=$z.
+Evaluate each of the following expressions if \(x=$x,\) \(y=$y,\) \(z=$z.\)
 $PAR
-x+12=\{ans_rule(2)\}
+\(x+12=\) \{ans_rule(2)\}
 $PAR
-x+3y+z=\{ans_rule(2)\}
+\(x+3y+z=\) \{ans_rule(2)\}
 $PAR
-(x-12)+3(y+z)=\{ans_rule(2)\}
+\((x-12)+3(y+z)=\) \{ans_rule(2)\}
 $PAR
-100x+yz=\{ans_rule(2)\}
+\(100x+yz=\) \{ans_rule(2)\}
 END_TEXT
 Context("LimitedNumeric");
 ANS(Real($ans1)->cmp);
@@ -54,10 +49,13 @@ END_SOLUTION
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject(Middle school)
-## DBchapter(Evaluation by substitution)
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Evaluating expressions)
+## Level(2)
+## MO(1)
 

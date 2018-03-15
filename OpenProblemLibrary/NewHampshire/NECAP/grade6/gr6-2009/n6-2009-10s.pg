@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -75,11 +75,12 @@ looks just about right.$BR [In creating this problem I used mathematical techniq
  65% in the diagram.]
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 6')
-## DBsection('2009')
+## DBsubject(Arithmetic)
+## DBchapter(Decimals)
+## DBsection(Estimation)
+## Level(4)
 
 $graph->moveTo(,);
 $graph->lineTo( , ,'black');

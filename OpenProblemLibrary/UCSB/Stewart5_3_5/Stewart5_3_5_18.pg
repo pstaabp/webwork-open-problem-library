@@ -1,9 +1,9 @@
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Differentiation)
-## DBsection(Logarithmic differentiation)
+## DBsection(Derivatives involving multiple rules (all rules))
 ## Institution(UCSB)
 ## MLT(logDiffProdofPolys)
-## Level(2)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -15,11 +15,9 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

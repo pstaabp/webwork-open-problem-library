@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Determine the parameters of complex power for given combinations of I, V and Z
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Steady-State Power Analysis')
-## DBsection('Complex Power')
+## DBsubject(Electric circuits)
+## DBchapter(Steady-state power analysis)
+## DBsection(Complex power)
 ## KEYWORDS('complex power','ac','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,12 +16,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

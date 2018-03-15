@@ -1,43 +1,41 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Polynomial and rational functions)
-## DBsection(Power Functions)
+## DBchapter(Variation and power functions)
+## DBsection(Power functions)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## MLT(expressionToConstAndPower)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('9.1')
-## Problem1('6')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(9.1)
 ## Section2('11.1')
+## Section3('11.1')
+## Problem1(4)
 ## Problem2('6')
+## Problem3('8')
 ## KEYWORDS('power function','inversely proportional','proportional')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-#           "PGstandard.pl",
-#           "extraAnswerEvaluators.pl",
-#           "PGauxiliaryFunctions.pl",
-#           "PGgraphmacros.pl",
-           "MathObjects.pl",
-#           "PGchoicemacros.pl"
-          # "parserNumberWithUnits.pl",
-          # "parserFormulaWithUnits.pl",
-          # "parserFormulaUpToConstant.pl",
-           "PGcourse.pl",
-"AnswerFormatHelp.pl",
-"contextFraction.pl",
-          );
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -89,5 +87,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

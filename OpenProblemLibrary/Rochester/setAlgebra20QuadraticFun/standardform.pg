@@ -2,26 +2,23 @@
 ## Algebra
 ## ENDDESCRIPTION
 
-## KEYWORDS('quadratic', 'function' 'maximum' 'extreme value')
 ## Tagged by tda2d
 
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Quadratic Equations')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Graphs)
+## Institution(Rochester)
+## MLT(LikeThisI)
+## MLTleader(1)
+## MO(1)
+## KEYWORDS('quadratic', 'function' 'maximum' 'extreme value')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 #Math Objects version - replaced interval_cmp with Point math object, and accept strings 'max' or 'min' as well as maximum / minimum.
@@ -48,6 +45,9 @@ if ($A > 0) {
    $K2 = $K; 
    $K = Compute(-$K); 
    $minmax = String("minimum"); }
+   else {
+   $K2 = -$K; 
+   $minmax = String("maximum"); }
 
 #'correct answer' will show this expression with values filled in.
 $smallroot = Compute("$H - sqrt($K2/$A)");

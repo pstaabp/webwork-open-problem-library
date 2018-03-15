@@ -1,8 +1,10 @@
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(The Logistic Equation)
+## DBchapter(First order differential equations)
+## DBsection(Applications - logistic)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,9 +13,14 @@
 ## KEYWORDS('calculus', 'differential equations', 'logistic equation', 'population growth', 'exponential growth', 's-curve', 'sigmoid')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $A = Real(random(10000, 30000, 1000));
 $p0 = $A / 10;
@@ -30,7 +37,6 @@ $context = Context();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "9.4","7") \}
 $PAR
 Sunset Lake is stocked with $p0 rainbow trout and after 1 year the population has grown to $p1.  Assuming logistic growth with a carrying capacity of $A, find the growth constant \(k\), and determine when the population will increase to $p2.

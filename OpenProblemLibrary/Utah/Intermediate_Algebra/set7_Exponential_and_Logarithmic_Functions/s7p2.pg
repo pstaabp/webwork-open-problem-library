@@ -1,49 +1,50 @@
 ##DESCRIPTION
+## updated to randomize numbers, RA Cruz, 2015-08-03
 ##ENDDESCRIPTION
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Exponents and Radicals')
-## AuthorText1('Ron Larson and Robert P. Hostetler')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Evaluating expressions)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## Level(2)
+## MO(1)
 ## TitleText1('Intermediate Algebra')
+## AuthorText1('Ron Larson and Robert P. Hostetler')
 ## EditionText1('4')
-## Section1('Exponential and Logarithmic Functions'')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('algebra')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
 
-$a=random(1000000,2000000,1);
+$a=random(2,5,1);
+do {$b=random(2,5,1);} until {$b!=$a};
 
 TEXT(EV2(<<EOT)); 
-Evaluate the following 
-\{htmlLink("http://www.math.utah.edu/online/1010/powers",
-"powers")\}
-and enter them as 
-\{htmlLink("http://www.math.utah.edu/online/1010/numbers",
-"integers")\}.
+Evaluate the following powers and enter them as 
+integers.
 
 $BR
-\(3^2=\)  \{ ans_rule(4) \}
-EOT
-ANS(num_cmp(9, mode=>"strict"));
-
-TEXT(EV2(<<EOT)); 
+\($a^2=\)  \{ ans_rule(4) \}
 $BR
-\(2^3=\)  \{ ans_rule(4) \}
+\($b^3=\)  \{ ans_rule(4) \}
 EOT
-ANS(num_cmp(8, mode=>"strict"));
+
+Context("LimitedNumeric");
+
+$ans_a = $a**2;
+ANS(Compute("$ans_a")->cmp());
+
+$ans_b = $b**3;
+ANS(Compute("$ans_b")->cmp());
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.
 

@@ -2,22 +2,23 @@
 ## Functions and expressions
 ## ENDDESCRIPTION
 
-## KEYWORDS('functions')
 
-## DBsubject('Algebra') 
 ## BookTitle('Algebra: Form and Function')
-## DBchapter('Functions') 
 ## BookChapter('Functions, Expressions, and Equations')
-## DBsection('Expanding and Simplifying Functions') 
-## BookSection('Functions and Expressions')
-## Date('01/01/10')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBsubject(Algebra)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Simplify rational expressions)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Algebra: Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum, Connally, and Hughes-Hallett')
+## EditionText1('1')
 ## Section1('4.2')
 ## Problem1('16')
+## KEYWORDS('functions')
 
 
 ##############################################
@@ -26,12 +27,12 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGcourse.pl",
-"AnswerFormatHelp.pl",
-"contextLimitedPolynomial.pl",
-"answerHints.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "contextLimitedPolynomial.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -115,5 +116,5 @@ COMMENT("This is a multi-part problem in which the next part is revealed only af
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

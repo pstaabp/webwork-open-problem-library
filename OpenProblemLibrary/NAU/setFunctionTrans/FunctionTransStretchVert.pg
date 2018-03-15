@@ -1,21 +1,25 @@
 ##DESCRIPTION
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Transformations of Functions')
+## DBsubject(Algebra)
+## DBchapter(Transformations of functions and graphs)
+## DBsection(Reflect and scale change)
+## Institution(NAU)
+## Author(Edgar Fisher)
+## Level(3)
+## MO(1)
 ## KEYWORDS('function' , 'transformation')
-## Author('Edgar Fisher')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 7/13/05
 # Location: Northern Arizona University
 
 DOCUMENT();
-loadMacros("PGstandard.pl",
-	   "Parser.pl",
-	   "parserFunction.pl",
-	   "PGnauGraphics.pl"
-	  );
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "parserFunction.pl",
+  "PGnauGraphics.pl",
+  "PGcourse.pl"
+);
 
 COMMENT("Plots the graphs of the answer and goal functions.");
 

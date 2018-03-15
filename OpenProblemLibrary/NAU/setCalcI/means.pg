@@ -2,16 +2,20 @@
 # ENDDESCRIPTION
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('The Definite Integral')
+## DBchapter(Integrals)
+## DBsection(Definite integrals (without trigonometric functions))
+## Institution(NAU)
+## Author(Nandor Sieben)
+## Level(3)
+## Static(1)
+## MO(1)
 ## KEYWORDS('mean', 'power', 'integral')
-## Author('Nandor Sieben')
-## Institution('NAU')
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 COMMENT('The answers are the arithmetic, geometric and harmonic means of a and b');

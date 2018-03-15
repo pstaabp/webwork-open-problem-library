@@ -1,8 +1,8 @@
 DOCUMENT();        # This should be the first executable line in the problem.
-loadMacros("PGbasicmacros.pl",
-        "PGchoicemacros.pl",
-        "PGanswermacros.pl",
-
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 # Make a new multiple choice
@@ -31,8 +31,9 @@ END_SOLUTION
 
 
 ENDDOCUMENT();     
-## DBsubject(Middle school)
-## DBchapter('Geometry_Figures')
-## DBsection('')
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Properties of shapes)
+## Level(3)
 
 

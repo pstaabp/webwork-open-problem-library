@@ -1,29 +1,30 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Integration)
-## DBsection(Applications to Physics and Engineering)
+## DBchapter(Applications of integration)
+## DBsection(Center of gravity)
 ## Institution(W.H.Freeman)
 ## Author(Justask)
+## Level(5)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('8.3')
 ## Problem1('36')
 ## KEYWORDS('calculus', 'integrals', 'integration', 'center of mass')
-## UsesAuxiliaryFiles('figure8-20.png')
+## RESOURCES('figure8-20.png')
 
 DOCUMENT();
 
 
 # Load whatever macros you need for the problem
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-          );
- loadMacros("freemanMacros.pl");
- loadMacros("Parser.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "freemanMacros.pl",
+  "Parser.pl",
+  "PGcourse.pl"
+);
 
 ## Do NOT show partial correct answers
 $showPartialCorrectAnswers = 0;

@@ -8,12 +8,14 @@
 ## Author(Nandor Sieben)
 ## MLT(Chain-CompFuncAndTangentLine)
 ## Level(4)
+## MO(1)
 ## KEYWORDS('tangent', 'chain rule')
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");

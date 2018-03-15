@@ -4,22 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -33,8 +21,6 @@ $radio->extra("2 ", "3 ","4 ");
 
 
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATOR. 
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR
 Which value of \(n\) makes this sentence true. $BR
 \{$radio->print_q()\}
 \{$radio->print_a()\}
@@ -49,11 +35,13 @@ $PAR Solution $PAR
 no other solutions.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 7')
-## DBsection('2009')
+## DBsubject(Algebra)
+## DBchapter(Polynomial equations and functions)
+## DBsection(Polynomial equations)
+## Level(2)
+## MO(1)
 
 \{ans_rule(10)\}
 \{Panic::Button(label => " Ask for a Hint", penalty => .00)\}

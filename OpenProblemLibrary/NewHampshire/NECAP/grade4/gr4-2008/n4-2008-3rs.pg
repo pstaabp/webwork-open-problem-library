@@ -1,26 +1,13 @@
-
 #DESCRIPTION
 ##Type of
 #ENDDESCRIPTION
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -35,8 +22,7 @@ $radio->extra("\($a+$c=\square\) ", "\( $b-$a=\square\) ","\(65+27=\square\) ");
 
 
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATOR. 
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR
+
 Ms. Jaffe solved this problem.$PAR
 \($a+$b=$c\)$PAR
 \{$radio->print_q()\}
@@ -51,9 +37,11 @@ To check the number sentence \($a+$b=$c\), you can subtract one of the summands 
 see if you get the other summand.  So the answer would be \($c-$a=\square\).
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 4')
-## DBsection('2008')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Addition/subtraction)
+## MLT(Integer_Add_Subtract)
+## Level(3)
 

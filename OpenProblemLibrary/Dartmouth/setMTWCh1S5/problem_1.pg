@@ -5,25 +5,26 @@
 ## Tagged by tda2d
 
 ## DBsubject(Linear algebra)
-## DBchapter('Matrices')
+## DBchapter(Matrices)
 ## DBsection(Matrix algebra)
-## Institution('Dartmouth')
-## KEYWORDS('Matrix', 'matrix operation')
+## Institution(Dartmouth)
+## Level(2)
 ## TitleText1('Linear Algebra with Applications')
 ## AuthorText1('Jeffrey Holt')
 ## EditionText1('1')
 ## Section1('3.2')
 ## Problem1('')
+## KEYWORDS('Matrix', 'matrix operation')
 
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

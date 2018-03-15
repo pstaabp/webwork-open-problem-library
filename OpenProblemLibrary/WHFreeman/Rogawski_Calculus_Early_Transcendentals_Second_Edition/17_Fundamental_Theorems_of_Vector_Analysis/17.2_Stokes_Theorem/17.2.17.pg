@@ -1,24 +1,28 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Fundamental Theorems)
-## DBsection(Stokes Theorem)
+## DBchapter(Fundamental theorems)
+## DBsection(Stokes' theorem)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('17.2')
 ## Problem1('17')
 ## KEYWORDS('calculus')
-## UsesAuxiliaryFiles('image_17_2_17.png')
+## RESOURCES('image_17_2_17.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGauxiliaryFunctions.pl");
-loadMacros("PGgraphmacros.pl");
-loadMacros("PGchoicemacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 

@@ -5,7 +5,7 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Global extrema)
 ## Institution(ASU)
 ## MLT(GlobalExtremes_Cubic)
@@ -15,13 +15,11 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"extraAnswerEvaluators.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

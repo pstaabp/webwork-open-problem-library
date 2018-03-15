@@ -1,9 +1,12 @@
 ##DESCRIPTION
-## DBsubject('Algebra')
-## DBchapter('Systems of Equations and Inequalities')
-## DBsection('Systems of Equations')
-## Institution('NAU')
-## Author('Monika Keindl')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Institution(NAU)
+## Author(Monika Keindl)
+## MLT(SupplyDemand)
+## Level(3)
+## MO(1)
 ## KEYWORDS('supply', 'demand','business', 'supply','application')
 ##ENDDESCRIPTION
 
@@ -12,11 +15,11 @@
 # Course: MAT119 - Finite Mathematics
 
 DOCUMENT();     
-loadMacros("PGstandard.pl",  
-           "PGauxiliaryFunctions.pl",
-           "PGanswermacros.pl",
-	   "MathObjects.pl",
-);     
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
+);
 
 TEXT(&beginproblem);
 
@@ -57,7 +60,7 @@ How many snow blowers will be marketed when the unit price is $DOLLAR$m?
 $BR
 What is the lowest price at which a snow blower will be marketed? 
 (round UP to a whole dollar)
-\($DOLLAR\)\{ ans_rule(10) \}
+$DOLLAR\{ ans_rule(10) \}
 
 END_TEXT
 

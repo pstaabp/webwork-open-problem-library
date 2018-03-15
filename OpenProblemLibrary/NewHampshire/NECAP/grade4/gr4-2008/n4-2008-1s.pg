@@ -1,25 +1,12 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-# "compoundProblem.pl",
-"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "contextCurrency.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Currency");
@@ -91,11 +78,12 @@ There are 100 small boxes in the key to represent one dollar.  Thus each small b
 represents 1 cent and Megan's chart shows 10 cents which is $DOLLAR 0.10.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 4')
-## DBsection('2008')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Interpreting fractions)
+## Level(2)
 
 $graph->moveTo(,);
 $graph->lineTo( , ,'black');

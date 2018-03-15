@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Probability')
-## DBchapter('Discrete Probability')
-## DBsection('Events/Probability Calculation')
+## DBsubject(Probability)
+## DBchapter(Sample Space)
+## DBsection(Conditional probability -- direct)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## Level(3)
 ## KEYWORDS('probability')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 6/20/05
@@ -14,12 +15,10 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -39,7 +38,7 @@ $ans11 = 2/72;
 $ans12 = 1/72;
 
 @mult = (2,3,4,5,6);
-@rans = (36,24,15,13,6);
+@rans = (36,24,15,13,12);
 $ind = random(0,4,1);
 $remult = $mult[$ind];
 $ans13 = $rans[$ind]/72;

@@ -1,23 +1,26 @@
 ## DESCRIPTION
-## DBsubject('Statistics')
-## DBchapter('Part 1: Exploring Data')
-## DBsection('Chapter 1: Picturing Distributions with Graphs')
-## KEYWORDS('statistics', 'quantitative data', 'categorical data')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Classifying data)
+## Institution(The College of Idaho)
+## Author(R Cruz, L Danielson, J Guild)
+## Level(1)
+## MO(1)
 ## TitleText1('The Basic Practice of Statistics')
-## EditionText1('5e')
 ## AuthorText1('David Moore')
-## Section1('Chapter 1: Picturing Distributions with Graphs')
+## EditionText1('5e')
+## Section1('1')
 ## Problem1('')
-## Author('R Cruz, L Danielson, J Guild')
-## Institution('The College of Idaho')
+## KEYWORDS('statistics', 'quantitative data', 'categorical data')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "PGchoicemacros.pl"
-  );
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -33,7 +36,7 @@ TEXT(beginproblem());
 @ans = ("QUANTITATIVE", "CATEGORICAL", "CATEGORICAL", "QUANTITATIVE", "QUANTITATIVE",
 	"CATEGORICAL");
 
-@slice = NchooseK(4,4);
+@slice = NchooseK(6,4);
 @sevent = (@event[@slice]);
 @sans = (@ans[@slice]);
 
@@ -77,5 +80,6 @@ ANS(String($sans[1])->cmp);
 ANS(String($sans[2])->cmp);
 ANS(String($sans[3])->cmp);
 
+COMMENT('Questions selected randomly from a larger set.  See source for full question list.');
 ENDDOCUMENT();       # This should be the last executable line in the problem.
 

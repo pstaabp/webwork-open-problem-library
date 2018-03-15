@@ -1,9 +1,10 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Infinite Sequences and Series)
-## DBsection(Series)
+## DBchapter(Infinite sequences and series)
+## DBsection(Partial sums)
 ## Institution(The College of Idaho)
 ## Author(LA Danielson)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -12,12 +13,16 @@
 ## KEYWORDS('calculus', 'derivatives', 'slope')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 #loadMacros("PGauxiliaryFunctions.pl");
 #loadMacros("PGgraphmacros.pl");
 
+TEXT(beginproblem());
 #$showPartialCorrectAnswers=1;
 
 $n0 = Real(random(2,9,1));
@@ -56,12 +61,12 @@ $den3=$ns[6]*$ns[1];
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "10.2","11") \}
 $PAR
 
 Calculate \(S_3,S_{4}\), and \(S_{5}\) and then find the sum for the telescoping series 
 \[S=\sum_{n=$n0}^\infty \left(\frac{1}{n+1}-\frac{1}{n+2}\right)\]
+where \(S_k\) is the partial sum using the first \(k\) values of \(n\).
 
 $PAR \(S_3\) =  \{ans_rule()\} 
 $PAR \(S_{4}\) =  \{ans_rule()\} 

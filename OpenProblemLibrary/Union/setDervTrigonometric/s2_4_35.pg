@@ -10,16 +10,17 @@
 ## Date(8/23/07)
 ## Institution(Union College)
 ## Level(4)
+## MO(1)
 ## KEYWORDS('derivative' 'trig function' 'tangent line')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "alignedChoice.pl",      # for aligned answer blanks
-  "PGcourse.pl",           # Customization file for the course
+  "alignedChoice.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -63,5 +64,5 @@ ANS($al->correct_ans);
 
 ###################################
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

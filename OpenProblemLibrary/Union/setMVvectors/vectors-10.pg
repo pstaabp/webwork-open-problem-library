@@ -4,11 +4,14 @@
 
 ## Tagged by nhamblet
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(The Cross Product)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Cross product)
 ## Date(8/23/07)
 ## Institution(Union College)
+## MLT(Cross_Product_Compute)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('1')
@@ -23,7 +26,7 @@ loadMacros(
   "PGunion.pl",
   "MathObjects.pl",
   "parserVectorUtils.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 
@@ -68,5 +71,5 @@ $showPartialCorrectAnswers = 1;
 ##################################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

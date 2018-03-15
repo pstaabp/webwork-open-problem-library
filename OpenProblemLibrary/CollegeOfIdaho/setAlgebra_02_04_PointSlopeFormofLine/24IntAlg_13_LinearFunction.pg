@@ -3,16 +3,19 @@
 ## 
 ##ENDDESCRIPTION
 ## DBsubject(Algebra)
-## DBchapter(Functions and linear functions)
-## DBsection('Functions and Linear Functions')
-## KEYWORDS('linear function', 'slope-intercept form')
+## DBchapter(Linear equations and functions)
+## DBsection(Equations of lines: general)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(twopts)
+## Level(2)
+## MO(1)
 ## TitleText1('Essentials of Intermediate Algebra')
-## EditionText1('1')
 ## AuthorText1('Blitzer')
+## EditionText1('1')
 ## Section1('2.4')
 ## Problem1('')
-## Author('RA Cruz')
-## Institution('The College of Idaho')
+## KEYWORDS('linear function', 'slope-intercept form')
 ## Date: 2007/10
 
 DOCUMENT(); # This should be the first executable line in the problem.
@@ -20,7 +23,9 @@ DOCUMENT(); # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "CofIdaho_macros.pl"
+  "parserImplicitPlane.pl",
+  "parserOneOf.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -37,7 +42,9 @@ $y2 = $y1 + non_zero_random(-2,2,1);
 #  Main text
 
 BEGIN_TEXT
-Find the slope and the equation for the line passing through the points:  \( ($x1, $y1) \) and \( ($x2, $y2) \).
+Find the slope and the equation for the line passing through the points:  \( ($x1, $y1) \) and \( ($x2, $y2) \). 
+$BR
+${BITALIC}Note: If the slope does not exist, enter: ${BBOLD}Does not exist${EBOLD}$EITALIC
 $PAR
 a)  \( m =\)  \{ ans_rule(10) \} 
 $PAR
@@ -48,35 +55,41 @@ END_TEXT
 #  Answer
 
 Context()->strings->add("Does not exist"=>{},
-                        "Not defined"=>{alias=>'Does not exist'}
+                        "Not defined"=>{alias=>"Does not exist"}
                        );
  
-$ans_a = String("Does not exist");
+$ans_a = OneOf(String("Does not exist"),DNE);
 ANS($ans_a->cmp); 
 
-$answer = "x=$x1";
-ANS(SlopeIntercept_equation_cmp($answer)); 
+Context("ImplicitPlane");
+Context()->variables->are(x=>"Real",y=>"Real");
+
+$ans_b = ImplicitPlane("x=$x1");
+ANS($ans_b->cmp->withPostFilter(
+      sub { 
+        my $ans = shift;
+        if ($ans->{ans_message} =~ /left side|it looks like/) {
+          $ans->{ans_message} = "Your answer must be an equation: $BR \(y = m x + b\) or \(ax + by = c\)";
+        }
+        return $ans;
+      }
+    ));
 
 $showPartialCorrectAnswers = 1;
 
 ######################################
+#  Solution
 
+Context()->texStrings;
+BEGIN_SOLUTION
+$PAR Solution: $BR $BR
+a) Slope: \($ans_a\)
+$BR
+b) Equation: \($ans_b\)
+END_SOLUTION
+Context()->normalStrings;
 
-COMMENT('MathObject version');
 ENDDOCUMENT();
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

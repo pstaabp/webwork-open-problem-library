@@ -2,30 +2,22 @@
 ##   Counting
 ## ENDDESCRIPTION
 
-## KEYWORDS('Counting')
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
-## DBchapter('Counting and Probability')
-## DBsection('Permutations and Combinations')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Combinatorics)
+## DBchapter(Counting)
+## DBsection(Combinations)
+## Institution(Rochester)
+## Level(3)
+## KEYWORDS('Counting')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl", 
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -73,7 +65,6 @@ $ans = $ans1*$ans2;
 
 
 BEGIN_TEXT
-
 Suppose you are managing $a employees, and you need to form three teams to work on different
 projects.  Assume that all employees will work on a team, and that each employee has the same
 qualifications/skills so that everyone has the same probability of getting choosen.  In how many

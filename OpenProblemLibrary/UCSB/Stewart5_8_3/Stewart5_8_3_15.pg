@@ -1,23 +1,22 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Applications of Integration')
-## DBsection('Applications to Physics and Engineering')
-## KEYWORDS('integration', 'hydrostatic force')
+## DBchapter(Applications of integration)
+## DBsection(Hydrostatic pressure)
+## Institution(UCSB)
+## Level(5)
+## Static(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('5')
 ## AuthorText1('Stewart')
+## EditionText1('5')
 ## Section1('8.3')
 ## Problem1('15')
-## Author('')
-## Institution('UCSB')
+## KEYWORDS('integration', 'hydrostatic force')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

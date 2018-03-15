@@ -1,8 +1,11 @@
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Models involving y' = k(y - b))
+## DBchapter(First order differential equations)
+## DBsection(Applications - Newton's law of cooling)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## MLT(FO-AN-data)
+## Level(5)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +14,15 @@
 ## KEYWORDS('calculus', 'differential equations', 'exponential growth')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+
+TEXT(beginproblem());
 #further randomization LAD
 $room_temp = Real(random(20,24,1));# book 20 centigrade
 $temp_a = Real(random(70,80,1)); #book 80 C
@@ -40,7 +48,6 @@ $context = Context();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "9.2","8") \}
 $PAR
 A cup of coffee, cooling off in a room at temperature \( $room_temp^\circ \text{C} \), has cooling constant \( k = $k \, \text{min}^{-1} \).

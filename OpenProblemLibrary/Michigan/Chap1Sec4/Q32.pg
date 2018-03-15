@@ -2,30 +2,35 @@
 # Problem from Calculus, single variable, Hughes-Hallett et al., 4th ed.
 # WeBWorK problem written by Aaron Wooton, <wootton@up.edu>
 # revised by Gavin LaRose, <glarose@umich.edu> 10/2008
-# ENDDESCRIPTION
 
 ## Tagged by glr 10/24/08
 
 ## Author('Gavin LaRose');
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Inverse Functions and Logarithms)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Applications and models - population growth)
 ## Institution(University of Michigan)
+## Level(5)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('4')
-## Section1('1.4')
-## Problem1('32')
 ## TitleText2('Calculus')
-## AuthorText2('Hughes-Hallett')
-## EditionText2('5')
-## Section2('1.4')
-## Problem2('40')
 ## TitleText3('Calculus')
+## TitleText4('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
 ## AuthorText3('Hughes-Hallett')
+## AuthorText4('Hughes-Hallett')
+## EditionText1('4')
+## EditionText2('5')
 ## EditionText3('6')
+## EditionText4('7')
+## Section1('1.4')
+## Section2('1.4')
 ## Section3('1.4')
+## Section4('1.4')
+## Problem1('32')
+## Problem2('40')
 ## Problem3('32')
+## Problem4('38')
 ## KEYWORDS('calculus','logarithmic functions','logarithms','laws of logarithms')
 
 ## Textbook tags
@@ -35,20 +40,18 @@
 
 DOCUMENT();
 loadMacros(
-"PG.pl",
-"PGchoicemacros.pl",
-"PGbasicmacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"hhAdditionalMacros.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "hhAdditionalMacros.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
 Context()->variables->add( t=>'Real' );
 
 TEXT(beginproblem());
-$showPartialCorrectAnswers = 0;
+$showPartialCorrectAnswers = 1;
 
 $a=random(10,40,5);
 $b=random(50,80,5);
@@ -107,5 +110,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

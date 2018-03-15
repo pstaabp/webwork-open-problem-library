@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Triple Integrals in Cylindrical and Spherical Coordinates)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Triple integrals in cylindrical and spherical)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -24,12 +26,12 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGcourse.pl",
-"PGunion.pl",
-"answerHints.pl",
-"LiveGraphicsParametricSurface3D.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGunion.pl",
+  "answerHints.pl",
+  "LiveGraphicsParametricSurface3D.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -184,5 +186,5 @@ ANS(Compute("$density * 4 pi / 3 ($RR-$rr)^(3/2)")->cmp() );
 COMMENT("Uses interactive graphics generated on-the-fly.");
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

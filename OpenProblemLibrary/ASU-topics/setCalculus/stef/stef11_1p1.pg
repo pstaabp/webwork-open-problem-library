@@ -2,29 +2,25 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS('calculus','sequence','series')
 ## Tagged by cmd6a 3/12/06
 
-## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Sequences')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Finite sequences and series)
+## DBsection(Notation)
+## Institution(ASU)
+## MLT(GenTerm)
+## MLTleader(1)
+## Level(2)
+## KEYWORDS('calculus','sequence','series')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

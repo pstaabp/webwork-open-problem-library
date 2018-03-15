@@ -1,20 +1,27 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Convergence of Series with positive terms')
-## KEYWORDS('calculus', 'infinite series', 'series', 'converge', 'convergence', 'comparison test', 'integral test', 'limit')
+## DBchapter(Infinite sequences and series)
+## DBsection(Integral test)
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('10.3')
 ## Problem1('10')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'infinite series', 'series', 'converge', 'convergence', 'comparison test', 'integral test', 'limit')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 $context = Context();
 
 $context->variables->add(n=>'Real');
@@ -56,7 +63,6 @@ $mc->makeLast("diverges");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "10.3","10") \}
 $PAR
 Use the Integral Test to determine whether the infinite series is convergent.

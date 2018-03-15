@@ -1,13 +1,16 @@
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear inequalities)
+## Level(3)
+## MO(1)
+## MLT(SolveInequalities)
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-#"contextFraction.pl",
-#"PGgraphmacros.pl",
-"contextInequalities.pl",
-#"PGchoicemacros.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextInequalities.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -66,5 +69,5 @@ $showPartialCorrectAnswers = 0;
 ANS($answer->cmp());
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -1,14 +1,16 @@
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Function notation)
+## Level(3)
+## MO(1)
+## MLT(PolyNumInputOnly)
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-#"contextFraction.pl",
-#"PGgraphmacros.pl",
-#"contextInequalities.pl",
-#"PGchoicemacros.pl",
-"parserMultiAnswer.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -63,5 +65,5 @@ $showPartialCorrectAnswers = 0;
 ANS($answer->cmp() );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

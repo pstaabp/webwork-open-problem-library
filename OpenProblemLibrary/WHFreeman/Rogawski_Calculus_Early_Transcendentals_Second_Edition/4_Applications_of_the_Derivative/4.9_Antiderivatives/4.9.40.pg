@@ -1,8 +1,10 @@
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Integrals)
-## DBsection(Antiderivatives)
+## DBsection(Antiderivatives (without trigonometric functions))
 ## Institution(W.H.Freeman)
 ## Author(Brian Kell)
+## MLT(antideriv_identify_graph_of_antideriv)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,11 +13,16 @@
 ## KEYWORDS('calculus', 'antiderivatives', 'graphs')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGgraphmacros.pl");
-loadMacros("PGchoicemacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 # coefficients for function ($g is the constant added to the antiderivative)
 $a = non_zero_random(-2,2);
@@ -154,7 +161,6 @@ $mc->extra($b_image);
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "4.9", "40") \}
 $PAR
 \{ $mc->print_q() \}

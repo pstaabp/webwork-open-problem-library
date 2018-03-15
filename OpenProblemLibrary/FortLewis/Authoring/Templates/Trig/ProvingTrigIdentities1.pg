@@ -2,26 +2,24 @@
 ## Trigonometry: proving trig identities
 ## ENDDESCRIPTION
 
-## KEYWORDS('trigonometry', 'proving trig identities')
 
-## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('Fort Lewis Tutorial 2011')
-## Date('01/30/2011')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(WeBWorK)
+## DBchapter(WeBWorK tutorial)
+## DBsection(Fort Lewis tutorial 2011)
+## Date(01/30/2011)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Static(1)
+## MO(1)
+## KEYWORDS('trigonometry', 'proving trig identities')
 
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -157,7 +155,7 @@ ANS( $ans_eval[3] );
 }  # end if
 
 
-COMMENT("MathObject version.  This is a multi-part problem 
+COMMENT("This is a multi-part problem 
 in which the next part is revealed only after the previous 
 part is correct.  Prevents students from entering trivial 
 identities (entering what they were given)");

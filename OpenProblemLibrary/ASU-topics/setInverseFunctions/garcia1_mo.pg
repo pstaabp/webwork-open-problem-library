@@ -2,20 +2,16 @@
 ## Algebra
 ## ENDDESCRIPTION
 
-## KEYWORDS('algebra', 'graph', 'inverse functions', 'one to one function')
 ## Tagged by XW
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Inverse Functions')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Inverse functions)
+## DBsection(1-1 functions)
+## Institution(ASU)
+## MLT(MultipleGraphs)
+## MLTleader(1)
+## Level(2)
+## KEYWORDS('algebra', 'graph', 'inverse functions', 'one to one function')
 
 #
 # First comes some stuff that appears at the beginning of every problem
@@ -24,13 +20,13 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGasu.pl",
-"PGchoicemacros.pl",
-"extraAnswerEvaluators.pl",
-"PGcourse.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGasu.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
 
 
@@ -203,5 +199,5 @@ ANS(radio_cmp($mcs[4]->correct_ans));
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

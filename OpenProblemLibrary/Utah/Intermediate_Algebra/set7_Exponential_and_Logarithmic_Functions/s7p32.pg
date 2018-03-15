@@ -1,27 +1,28 @@
 ##DESCRIPTION
 ##Arithmetic
 ##ENDDESCRIPTION
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Problem Solving with Equations')
-## AuthorText1('Ron Larson and Robert P. Hostetler')
-## TitleText1('Intermediate Algebra')
-## EditionText1('4')
-## Section1('Graphs and Functions')
-## Problem1('')
 
-##KEYWORDS('algebra')
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Applications and models)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## MLT(quad_appl_UtahStatic)
+## Level(5)
+## Static(1)
+## TitleText1('Intermediate Algebra')
+## AuthorText1('Ron Larson and Robert P. Hostetler')
+## EditionText1('4')
+## Section1('.')
+## Problem1('')
+## KEYWORDS('algebra')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -2,19 +2,21 @@
 ## Higher order ODEs: constant coefficient second order homogeneous linear ODEs
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','second order linear ODE','constant coefficients')
 
 ## DBsubject(Differential equations)
-## DBchapter('Higher Order Differential Equations')
-## DBsection('Second Order Linear')
-## Date('01/30/2011')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Higher order differential equations)
+## DBsection(Linear, constant coefficients, homogeneous (repeated roots))
+## Date(01/30/2011)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Notes on Diffy Qs')
-## EditionText1('December 9, 2010')
 ## AuthorText1('Jiri Lebl')
+## EditionText1('December 9, 2010')
 ## Section1('2.2')
 ## Problem1('8')
+## KEYWORDS('differential equations','second order linear ODE','constant coefficients')
 
 
 ##############################
@@ -23,10 +25,11 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"parserAssignment.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "parserAssignment.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -64,6 +67,8 @@ $answerb = Compute("y = ($A + $B x) e^($a x)")->reduce;
 Context()->texStrings;
 BEGIN_TEXT
 (a) Find the general solution to \( $diffeq \).
+$BR
+Enter your answer as \(y = \dots\) .
 In your answer, use \( c_1 \) and \( c_2 \) to 
 denote arbitrary constants and \( x \) 
 the independent variable.  Enter \( c_1 \) as 
@@ -136,6 +141,6 @@ ANS( $answera->cmp( checker => sub {
 
 ANS( $answerb->cmp() );
 
-COMMENT("MathObject version.  Characteristic polynomial (r - a)^2");
+COMMENT("Characteristic polynomial (r - a)^2");
 
 ENDDOCUMENT();

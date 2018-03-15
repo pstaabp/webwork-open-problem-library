@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Solve a dc op amp circuit including power supply limitations
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Operational Amplifiers')
-## DBsection('Fundamental Op-Amp Circuits')
+## DBsubject(Electric circuits)
+## DBchapter(Operational amplifiers)
+## DBsection(Fundamental op-amp circuits)
 ## KEYWORDS('op amp','dc','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

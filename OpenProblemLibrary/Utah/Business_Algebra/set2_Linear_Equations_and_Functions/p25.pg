@@ -1,26 +1,26 @@
 ##DESCRIPTION
 ##  A simple algebra word problem involving solving a linear equation
 ##ENDDESCRIPTION
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Modeling with Equations')
-## AuthorText1('Ronald J. Harshbarger and James J. Reynolds')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## MLT(MixingPercentSolutions)
+## Level(3)
 ## TitleText1('Mathematical Applications')
+## AuthorText1('Ronald J. Harshbarger and James J. Reynolds')
 ## EditionText1('8')
-## Section1('Quadratic and Other Special Functions')
+## Section1('.')
 ## Problem1('')
-##KEYWORDS('algebra', 'word problem', 'percentage')
+## KEYWORDS('algebra', 'word problem', 'percentage')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

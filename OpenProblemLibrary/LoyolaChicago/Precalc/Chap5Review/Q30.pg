@@ -1,38 +1,41 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Transformations of functions and their graphs)
-## DBsection(Review Exercises and Problems)
+## DBchapter(Functions)
+## DBsection(Interpretation and applications)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('5.')
-## Problem1('26')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
-## Section2('6.')
-## Problem2('26')
+## EditionText3('5')
+## Section1(5.Review)
+## Section2(6.Review)
+## Section3('6.Review')
+## Problem1(30)
+## Problem2(26)
+## Problem3('26')
 ## KEYWORDS('transformations','shifts','translations','stretch','compression','table')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "extraAnswerEvaluators.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "parserPopUp.pl",
-           "MathObjects.pl",
-           "PGcourse.pl",
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "extraAnswerEvaluators.pl",
+  "parserPopUp.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

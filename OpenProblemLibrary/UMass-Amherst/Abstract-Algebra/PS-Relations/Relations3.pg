@@ -1,35 +1,28 @@
-## DBsubject('Set theory')
-## DBchapter('Relations')
-## DBsection('General relations')
-## KEYWORDS('equivalence relations')
+## DBsubject(Set theory and logic)
+## DBchapter(Relations between sets)
+## DBsection(Equivalence relations)
+## Institution(University of Massachusetts Amherst)
+## Author(Siman Wong and Patrick O'Brien)
 ## Level(2)
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Siman Wong and Patrick O'Brien')
-## Institution('University of Massachusetts Amherst')
+## KEYWORDS('equivalence relations')
 
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 0;
 
 
-$a = random(1,20,1);
-$b = random(1,20,1);
-$c = random(1,20,1);
+$a = random(2,20,1);
+$b = random(3,20,1);
+$c = random(2,20,1);
 
 
 

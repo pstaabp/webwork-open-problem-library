@@ -4,21 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -39,9 +28,12 @@ To find the largest, we must find the largest number whose square is less than $
 \(31^2 =30^2+2\times 30+1=961\).  So \(32^2\) is too large.  Thus the numbers whose$BR squares are between 101 and 1000 are 11...31 and there are 21 of them.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Miscellaneous_Contest_Problems')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Decimals)
+## DBsection(Inequalities)
+## Level(3)
+## Static(1)
+## MO(1)
 

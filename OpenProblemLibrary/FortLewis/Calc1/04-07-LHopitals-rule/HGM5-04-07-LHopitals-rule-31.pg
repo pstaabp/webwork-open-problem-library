@@ -5,13 +5,14 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Indeterminate forms and L'Hopital's rule)
 ## Institution(Fort Lewis College)
 ## Author(Erich McAlister)
 ## MLT(Indeterminate-ExponentialNoTrig)
 ## MLTleader(1)
 ## Level(3)
+## MO(1)
 ## KEYWORDS('calculus','derivative','limits','lhopitals rule')
 ## Problem('31')
 
@@ -23,13 +24,9 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-# "PGchoicemacros.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -72,5 +69,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

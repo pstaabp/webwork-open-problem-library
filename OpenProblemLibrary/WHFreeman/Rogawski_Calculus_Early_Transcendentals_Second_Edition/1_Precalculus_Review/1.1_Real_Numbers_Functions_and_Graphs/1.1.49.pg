@@ -1,21 +1,28 @@
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Average Rate of Change: Increasing and Decreasing Functions')
-## KEYWORDS('calculus', 'intervals', 'absolute value', 'functions')
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Graphs)
+## Institution(W.H.Freeman)
+## Author(Carol Panepinto)
+## MLT(incrFc)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('1.1')
 ## Problem1('49')
-## Author('Carol Panepinto')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'intervals', 'absolute value', 'functions')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 
 $x = random(1,10);
 $f1 = Formula("x+$x");
@@ -50,7 +57,6 @@ plot_functions($graph,
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "1.1","49") \}
 $PAR
 Find the interval on which the funtion \(f(x)=|x+$x|\) is increasing: 

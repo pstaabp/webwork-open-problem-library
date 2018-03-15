@@ -9,18 +9,19 @@
 ## Section1('3.1')
 ## Problem1('62')
 ## KEYWORDS('Product','Quotient','Differentiation')
+## MO(1)
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);
+Context("Numeric");
 $showPartialCorrectAnswers = 1;
 
 $a=random(1,6,1);
@@ -43,7 +44,9 @@ $PAR
 
 END_TEXT
 
-ANS(num_cmp($a));
-ANS(num_cmp(1/$a));
+$ans1 = Compute("$a");
+$ans2 = Compute("1/$a");
+ANS($ans1->cmp);
+ANS($ans2->cmp);
 
 ENDDOCUMENT();

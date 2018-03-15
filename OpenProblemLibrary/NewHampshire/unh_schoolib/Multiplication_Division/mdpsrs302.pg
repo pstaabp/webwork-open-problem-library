@@ -4,18 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
-
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "contextLeadingZero.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -68,9 +60,11 @@ All of the other problems give you a similar chance to check even if you were no
 told by WeBWorK whether you were right.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Multiplication_Division')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Applications)
+## Level(5)
+## MO(1)
 

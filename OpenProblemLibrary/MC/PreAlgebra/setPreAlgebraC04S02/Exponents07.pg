@@ -2,31 +2,34 @@
 ##  Middle School problem:
 ##ENDDESCRIPTION
 
-##KEYWORDS('prealgebra','common core','exponents')
 
-## DBsubject(Middle school)
-## DBchapter('Factors, Fractions, and Exponents')
-## DBsection('Exponents')
-## Date('10/31/2012')
-## Author('John Travis')
-## Institution('Mississippi College')
 ## ProblemTester('Laura Travis')
-## TitleText1('Pre-Algebra')
 ## Publisher('Prentice Hall')
-## EditionText1('')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Simplifying expressions)
+## Date(10/31/2012)
+## Institution(Mississippi College)
+## Author(John Travis)
+## Level(3)
+## MO(1)
+## TitleText1('Pre-Algebra')
 ## AuthorText1('')
-## Section1('')
+## EditionText1('')
+## Section1('.')
 ## Problem1('')
+## KEYWORDS('prealgebra','common core','exponents')
 
 ########################################################################
 
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   "problemRandomize.pl",
-   "PGchoicemacros.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "problemRandomize.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -74,7 +77,8 @@ $ans = Compute("$const*a^$powa*b^$powb");
 Context()->texStrings;
 
 BEGIN_TEXT
-Simplify the following by combining all constants and combining the a and b terms using exponential notation.
+Simplify the following by combining all constants and combining 
+the \(a\) and \(b\) terms using exponential notation.
 $PAR
 $BCENTER
 \( $exp \) =   \{ ans_rule(20) \}
@@ -94,7 +98,7 @@ ANS( $ans->cmp() );
 
 $showHint =3;
 BEGIN_HINT
-Remember aaa = a^3, for example.
+Remember \(aaa = a^3\), for example.
 END_HINT
 
 ENDDOCUMENT();        

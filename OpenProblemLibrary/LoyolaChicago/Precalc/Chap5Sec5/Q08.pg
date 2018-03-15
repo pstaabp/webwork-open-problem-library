@@ -1,23 +1,29 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Transformations of functions and their graphs)
-## DBsection(The Family of Quadratic Functions)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Forms: vertex, factored, general)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('5.5')
-## Problem1('8')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1('5.5')
 ## Section2('3.2')
+## Section3('3.2')
+## Problem1('8')
 ## Problem2('8')
+## Problem3('28')
 ## KEYWORDS('quadratic','vertex','axis of symmetry','zeros')
 
 ####################################
@@ -26,10 +32,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -91,5 +97,5 @@ pass through the point \(($x,$y)\), so
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

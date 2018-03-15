@@ -1,22 +1,25 @@
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')                      
-## DBsection('The Fundamental Theorem of Calculus')     
-## AuthorText1('Jerrold Marsden and Alan Weinstein')
+## DBchapter(Integrals)
+## DBsection(Fundamental theorem of calculus)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## MLT(FTC_03)
+## Level(3)
+## Static(1)
 ## TitleText1('Calculus I')
+## AuthorText1('Jerrold Marsden and Alan Weinstein')
 ## EditionText1('2')
-## Section1('The Integral')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 

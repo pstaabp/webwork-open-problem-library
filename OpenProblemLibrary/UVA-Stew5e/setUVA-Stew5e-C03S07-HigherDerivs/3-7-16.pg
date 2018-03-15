@@ -11,6 +11,7 @@
 ## Institution(UVA)
 ## Author(Jeff Holt)
 ## MLT(hod_1st_2nd_rational)
+## MLTleader(1)
 ## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
@@ -23,9 +24,8 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGanswermacros.pl",
+  "PGstandard.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

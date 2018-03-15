@@ -10,6 +10,7 @@
 ## Date(8/23/07)
 ## Institution(Union College)
 ## Level(2)
+## MO(1)
 ## KEYWORDS('derivative')
 
 
@@ -17,9 +18,9 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -90,5 +91,5 @@ ANS(Real($b*$c9 - $a*$c10 + $c12)->cmp);
 
 ###################################
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

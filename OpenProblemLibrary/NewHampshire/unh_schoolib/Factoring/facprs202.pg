@@ -4,18 +4,12 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"problemPanic.pl",
-"answerHints.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "problemPanic.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -84,9 +78,12 @@ ANS(List("$a2,$b2,$c2")->cmp);
 ANS(List(@lis)->cmp);
 ANS(List(@lit)->cmp);
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Factoring')
-## DBsection('')
-
+## DBsubject(Algebra)
+## DBchapter(Factoring)
+## DBsection(Factoring: common factors)
+## Level(2)
+## MO(1)
+## MLT(common_factors_numbers)
+## MLTleader(1)

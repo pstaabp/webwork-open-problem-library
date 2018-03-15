@@ -2,19 +2,22 @@
 ## Linear systems: Nonhomogeneous linear systems
 ## ENDDESCRIPTION
 
-## KEYWORDS('Nonhomogeneous linear systems')
 
 ## DBsubject(Differential equations)
-## DBchapter('Linear systems')
-## DBsection('Nonhomogeneous linear systems')
-## Date('04/12/2011')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Systems of differential equations)
+## DBsection(Nonhomogeneous systems)
+## Date(04/12/2011)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(SDE-NH-IVP)
+## Level(3)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
-## EditionText1('2006')
 ## AuthorText1('Kohler and Johnson')
+## EditionText1('2006')
 ## Section1('4.8')
 ## Problem1('5')
+## KEYWORDS('Nonhomogeneous linear systems')
 
 
 ##################################
@@ -24,11 +27,12 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGmatrixmacros.pl",
-"MathObjects.pl",
-"parserMultiAnswer.pl",
-"unionLists.pl"
+  "PGstandard.pl",
+  "PGmatrixmacros.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "unionLists.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -41,7 +45,7 @@ Context("Numeric");
 Context()->variables->are(
 t=>"Real"
 );
-Context()->variables->set(t=>{limits=>[-0.25,25]});
+Context()->variables->set(t=>{limits=>[-2,2]});
 
 # Eigenvectors:  <1,1>, <1,-1>
 # Eigenvalues:    -1,      1
@@ -203,9 +207,15 @@ $c2 = Real("0.5 * ( ($init1 + 1 / $den + 1) + ($init2 - $r / $den) )");
 
 #IVP solution
 
-$y1ivp = Compute(" $c1 e^t + $c2 e^(-t) - e^($r t) / $den - 1");
-$y2ivp = Compute("- $c1 e^t + $c2 e^(-t) + $r e^($r t) / $den + t");
-$y2ivp->{limits} = [0.25,0.75];
+$y1ivp = Compute(" $c1 e^t + $c2 e^(-t) - e^($r t) / $den - 1")->with(
+  tolType => 'absolute',
+  tolerance => .01,
+);
+$y2ivp = Compute("- $c1 e^t + $c2 e^(-t) + $r e^($r t) / $den + t")->with(
+  tolType => 'absolute',
+  tolerance => .01,
+);
+#$y2ivp->{limits} = [0.25,0.75];
 
 $multians3 = MultiAnswer( $y1ivp, $y2ivp )->with(
 
@@ -355,6 +365,6 @@ ANS( $multians1->cmp() );
 ANS( $multians2->cmp() );
 ANS( $multians3->cmp() );
 
-COMMENT('MathObject version.');
+;
 
 ENDDOCUMENT();

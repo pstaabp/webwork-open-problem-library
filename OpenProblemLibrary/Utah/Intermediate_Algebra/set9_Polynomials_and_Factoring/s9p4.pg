@@ -1,26 +1,25 @@
 ##DESCRIPTION
 ##ENDDESCRIPTION
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Quadratic Equations')
-## AuthorText1('Ron Larson and Robert P. Hostetler')
-## TitleText1('Intermediate Algebra')
-## EditionText1('4')
-## Section1(' Quadratic Equations, Functions, and Inequalities ')
-## Problem1('')
 
-##KEYWORDS('algebra')
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Applications and models)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## Level(3)
+## TitleText1('Intermediate Algebra')
+## AuthorText1('Ron Larson and Robert P. Hostetler')
+## EditionText1('4')
+## Section1('.')
+## Problem1('')
+## KEYWORDS('algebra')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -30,28 +29,21 @@ $v=32*$a;
 $t=$v/32;
 $h=16*$t*$t;
 
-TEXT(EV2(<<EOT)); 
+BEGIN_TEXT
 You fire a rifle straight up.  Your bullet leaves your gun at a
 velocity of $v feet per second. Ignore air resistance.
 Consider the muzzle of your gun to be at height zero.
 The bullet will reach its maximum altitude of  \{ ans_rule(10) \} feet
-EOT
+END_TEXT
+
 ANS(num_cmp($h));
-TEXT(EV2(<<EOT)); 
+
+BEGIN_TEXT
 after  \{ ans_rule(10) \} seconds.
-EOT
+END_TEXT
 ANS(num_cmp($t));
 
-TEXT(EV3(<<'EOT'));
-$BR Hint: Study the page on 
-\{htmlLink("http://www.math.utah.edu/online/1010/gravity",
-"throwing rocks.")\}
-EOT
-
-
-
-SOLUTION(EV3(<<'EOT'));
-$BR $BBOLD Solution:$EBOLD
+BEGIN_SOLUTION
 It's easier first to figure out at what time the bullet reaches its maximum altitude.
 At that time its speed is zero, so we solve 
 \(0 = $v - 32t \) which gives 
@@ -59,15 +51,6 @@ At that time its speed is zero, so we solve
 Substituting this value of \(t\) in the
 height formula gives 
 \(h($t) = 0+$v \times $t - 16 \times $t^2 = $h\) feet.
-EOT
-
-
-
-
+END_SOLUTION
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.
-
-
-
-
-

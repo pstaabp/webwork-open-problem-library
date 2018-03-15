@@ -9,10 +9,12 @@
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Differentiation)
 ## DBsection(Quotient rule (without trigonometric functions))
+## MLT(quotientruleNoTrigFuncConceptual)
 ## Date(10/25/2010)
 ## Institution(UCSB)
 ## Author(Justin Sukiennik)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -35,7 +37,7 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -52,7 +54,7 @@ Context()->texStrings;
 BEGIN_TEXT
 Consider the function \(h(x)\), for which
 \(h($c) = $a\) and \( h'($c) =$b \).
-$BR
+$BR$BR
 Find \( f'($c) \) for the function
 \( f(x) =\displaystyle{\frac{ h(x)}{x}} \).
 $BR

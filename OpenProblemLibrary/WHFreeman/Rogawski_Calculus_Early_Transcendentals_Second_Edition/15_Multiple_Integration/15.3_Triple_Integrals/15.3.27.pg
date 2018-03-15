@@ -1,20 +1,28 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Triple Integrals)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Triple integrals)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(Triple_Integral_Write_a_Triple_Integral)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.3')
 ## Problem1('27')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $a=random(2,6);
 $a=$a**2;
@@ -34,7 +42,6 @@ $answerdz2=Formula("$a-(y^2)")->reduce();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.3","27") \}
 $PAR
 Consider the triple integral

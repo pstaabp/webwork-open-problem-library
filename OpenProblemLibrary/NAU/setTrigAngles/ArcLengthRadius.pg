@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Trigonometry')
-## DBchapter('Trigonometric Functions of Angles')
-## DBsection('Trigonometric Functions of Angles')
+## DBsubject(Trigonometry)
+## DBchapter(Geometric and algebraic foundations for trigonometry)
+## DBsection(Arc length, sector area, angular and linear velocity)
+## Institution(NAU)
+## Author(Katie Louchart)
+## Level(2)
 ## KEYWORDS('angle measure', 'arc length', 'radius')
-## Author('Katie Louchart')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 6/7/05
@@ -13,11 +14,9 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

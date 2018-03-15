@@ -7,23 +7,21 @@
 ##Tagged by ynw2d
 
 ## DBsubject(Linear algebra)
-## DBchapter('Determinants')
+## DBchapter(Determinants)
 ## DBsection(Computing determinants)
-## Institution('Rochester')
+## Institution(Rochester)
+## Level(2)
 ## KEYWORDS('algebra', 'matrix operation', 'matrix')
 
 DOCUMENT() ;
 
 loadMacros(
-    "PG.pl",
-    "PGbasicmacros.pl",
-    "PGchoicemacros.pl",
-    "PGanswermacros.pl",
-    "PGauxiliaryFunctions.pl",
-    "PGmatrixmacros.pl",
-    "PGcomplexmacros.pl"
-
-) ;
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGmatrixmacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
+);
 ############
 #TEXT($BEGIN_ONE_COLUMN,beginproblem()) ;
 TEXT(beginproblem());

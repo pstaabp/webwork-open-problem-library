@@ -2,26 +2,33 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 06/17/10
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Parameterized Surfaces and Their Areas)
+## DBchapter(Concepts for multivariable functions)
+## DBsection(Parameterized surfaces)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(ps_planes)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('17.5')
-## Problem1('17')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('17.5')
 ## Section2('21.1')
+## Section3('21.1')
+## Problem1('17')
 ## Problem2('16')
+## Problem3('22')
 ## KEYWORDS('parametric surfaces', 'parametric equations', 'multivariable', 'functions')
 
 ## Textbook tags
@@ -30,14 +37,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"parserVectorUtils.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl",
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "parserVectorUtils.pl",
+  "PGcourse.pl"
 );
 
 Context("Vector");
@@ -61,7 +65,9 @@ $ppos = Vector( Compute( $p[0] ), Compute( $p[1] ), Compute( $p[2] ) );
 $dv1 = Vector( Compute( -1*$ncomp[1] ), Compute( $ncomp[0] ), Compute( 0 ) );
 $dv2 = Vector( Compute( -1*$ncomp[2] ), Compute( 0 ), Compute( $ncomp[0] ) );
 
-$rparam = Vector( "$ppos + $dv1*s + $dv2*t" );
+$rparam = Vector( "<$p[0] - $ncomp[1]*s - $ncomp[2]*t, " .
+		  "$p[1] + $ncomp[0]*s, $p[2] + $ncomp[0]*t>" )->reduce();
+
 
 Context()->texStrings;
 TEXT(beginproblem());
@@ -75,8 +81,9 @@ $PAR
 \( \vec r(s,t) = \) \{ ans_rule(55) \}
 $BR
 ${BITALIC}(Use \(s\) and \(t\) for the parameters in your
-parameterization, and enter your vector as a single vector, 
-with angle brackets: e.g., as $BBOLD${LTS}${SPACE}1 + s + t, s - t, 3 - t$SPACE$GTS$EBOLD.)$EITALIC
+parameterization, and ${BBOLD}enter your vector as a single vector,
+with angle brackets${EBOLD}: e.g., as
+$BBOLD${LTS}${SPACE}1 + s + t, s - t, 3 - t$SPACE$GTS$EBOLD.)$EITALIC
 
 END_TEXT
 Context()->normalStrings;
@@ -88,6 +95,7 @@ $chk = sub {
     ## the answer must be linear in s and t, contain the indicated point,
     ##    and be perpendicular to the indicated normal vector.
     my @stucoord = $s->value;
+    return 0 if ( @stucoord != 3 );
     my $dxds = $stucoord[0]->D('s');
     my $dyds = $stucoord[1]->D('s');
     my $dzds = $stucoord[2]->D('s');
@@ -170,6 +178,6 @@ $rparam.
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

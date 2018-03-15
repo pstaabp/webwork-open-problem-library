@@ -1,8 +1,11 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Line and Surface Integrals)
-## DBsection(Surface Integrals of Vector Fields)
+## DBchapter(Vector calculus)
+## DBsection(Surface integrals of vector fields)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(flux_5)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -12,12 +15,14 @@
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGauxiliaryFunctions.pl");
-loadMacros("PGgraphmacros.pl");
-loadMacros("PGchoicemacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 

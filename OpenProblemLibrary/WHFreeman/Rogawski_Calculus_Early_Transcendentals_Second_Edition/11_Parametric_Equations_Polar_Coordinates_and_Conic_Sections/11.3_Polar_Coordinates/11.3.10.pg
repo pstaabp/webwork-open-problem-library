@@ -1,21 +1,28 @@
-## DBsubject(Calculus - single variable)
-## DBchapter(Parametric Equations and Polar Coordinates)
-## DBsection(Polar Coordinates)
+## DBsubject(Trigonometry)
+## DBchapter(Polar coordinates & vectors)
+## DBsection(Curves)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('11.3')
 ## Problem1('10')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl","PGchoicemacros.pl","PGauxiliaryFunctions.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $type = random(1,2);
 
@@ -37,7 +44,6 @@ $tf_list_ptr -> choose(2);
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "11.3","10") \}
 $PAR
 Which of the following two equations

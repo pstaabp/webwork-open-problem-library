@@ -1,19 +1,19 @@
 ##DESCRIPTION
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Exponential Functions)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Applications and models - radioactive decay)
 ## Institution(NAU)
+## MLT(FindHalfLife)
+## Level(4)
 ## KEYWORDS('exponential model', 'decay')
 ##ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

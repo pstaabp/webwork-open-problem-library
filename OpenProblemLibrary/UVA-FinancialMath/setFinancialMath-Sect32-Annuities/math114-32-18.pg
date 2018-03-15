@@ -2,29 +2,29 @@
 ##  Financial mathematics: Annuities
 ## ENDDESCRIPTION
 
-## KEYWORDS('financial mathematics', 'annuities')
 ## JJH tagged this problem.
 
-## DBsubject('Financial Mathematics')
-## DBchapter('Annuities')
-## DBsection('Annuities')
-## Date('5/22/2005')
-## Author('Jeff Holt')
-## Institution('UVA')
+## DBsubject(Financial mathematics)
+## DBchapter(Annuities)
+## DBsection(Sinking funds)
+## Date(5/22/2005)
+## Institution(UVA)
+## Author(Jeff Holt)
+## MLT(Sinking_Funds_Funky)
+## Level(5)
 ## TitleText1('Financial Mathematics')
-## EditionText1('1')
 ## AuthorText1('Holt')
+## EditionText1('1')
 ## Section1('3.2')
-## Problem1()
+## Problem1('')
+## KEYWORDS('financial mathematics', 'annuities')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

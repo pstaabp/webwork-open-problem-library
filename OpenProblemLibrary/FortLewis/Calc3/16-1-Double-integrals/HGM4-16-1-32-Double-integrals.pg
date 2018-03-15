@@ -4,11 +4,12 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Double Integrals over General Regions)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Applications of double integrals)
 ## Date(10/15/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(3)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -27,9 +28,9 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "PGcourse.pl",
   "PGchoicemacros.pl",
   "weightedGrader.pl",
+  "PGcourse.pl"
 );
 
 install_weighted_grader();
@@ -164,5 +165,5 @@ WEIGHTED_ANS($partf -> cmp, 50);
 $showPartialCorrectAnswers = 0;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

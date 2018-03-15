@@ -7,17 +7,20 @@
 ## DBsubject(Linear algebra)
 ## DBchapter(Inner products)
 ## DBsection(Orthogonal and orthonormal sets)
-## Institution('TCNJ')
+## Institution(TCNJ)
+## MLT(TrueFalse)
+## MLTleader(1)
+## Level(3)
 ## KEYWORDS('mapping', 'orthonormal', 'orthogonal', 'projection')
 
 DOCUMENT();        # This should be the first executable line in the problem. 
-loadMacros( 
-        "PGbasicmacros.pl", 
-        "PGchoicemacros.pl", 
-        "PGanswermacros.pl", 
-        "PGgraphmacros.pl", 
-        "PGmatrixmacros.pl" 
-        ); 
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGmatrixmacros.pl",
+  "PGcourse.pl"
+);
 TEXT(beginproblem());       
 # Do not show which answers are incorrect. 
 $showPartialCorrectAnswers = 1;

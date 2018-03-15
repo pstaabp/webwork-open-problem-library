@@ -1,14 +1,16 @@
+## DBsubject(Calculus - multivariable)
+## DBchapter(Vector calculus)
+## DBsection(Surface integrals of vector fields)
+## Level(5)
+## Static(1)
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-#"parserVectorUtils.pl",
-"PGcourse.pl",
-"LiveGraphics3D.pl",
-#"LiveGraphicsParametricSurface3D.pl",
-#"LiveGraphicsVectorField3D.pl",
-"unionTables.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "LiveGraphics3D.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 
@@ -77,7 +79,7 @@ ANS(str_cmp("Zero") );
 COMMENT("Uses interactive graphics");
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 

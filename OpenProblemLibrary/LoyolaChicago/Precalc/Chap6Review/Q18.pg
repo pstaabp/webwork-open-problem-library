@@ -1,37 +1,39 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Trigonometry)
 ## DBchapter(Trigonometric functions)
-## DBsection(Review Exercises and Problems)
+## DBsection(Sine & cosine functions - definitions, graphs, & properties)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## Level(4)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('6.')
-## Problem1('17')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
-## Section2('8.')
-## Problem2('17')
+## EditionText3('5')
+## Section1(6.Review)
+## Section2(8.Review)
+## Section3('7.Review')
+## Problem1(18)
+## Problem2(17)
+## Problem3('39')
 ## KEYWORDS('sine','cosine','period','amplitude','midline','radians','degrees', 'tangent','arc length')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "extraAnswerEvaluators.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "MathObjects.pl",
-           "PGcourse.pl",
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "extraAnswerEvaluators.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -115,8 +117,6 @@ for ($m = 0; $m <= 3; $m++){
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ join(",", @perm1) \}; \{ join(",", @perm2) \} $PAR
-
 Without a calculator, match each of the equations below to one of the
 graphs by placing the corresponding letter of the equation under the
 appropriate graph.

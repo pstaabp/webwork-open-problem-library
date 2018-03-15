@@ -4,34 +4,32 @@
 # ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Transformations of functions and their graphs)
-## DBsection(Vertical and Horizontal Shifts)
+## DBchapter(Transformations of functions and graphs)
+## DBsection(Shifts: vertical and horizontal)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## Level(2)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('5.1')
-## Problem1('2')
 ## TitleText2('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## Section1(5.1)
 ## Section2('6.1')
+## Problem1(8)
 ## Problem2('2')
 ## KEYWORDS('transformations','shifts','translations','graph')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-#           "extraAnswerEvaluators.pl",
-#           "PGauxiliaryFunctions.pl",
-"unionTables.pl",
-"PGcourse.pl",,
-           "MathObjects.pl",
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "unionTables.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

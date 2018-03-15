@@ -4,21 +4,12 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-"contextFraction.pl",
-#"answerHints.pl",
-"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "problemPanic.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -51,19 +42,19 @@ Hint: You can either change all numbers to fractions or all numbers to decimals 
 END_TEXT 
 }; 
 Context()->texStrings; 
+
 BEGIN_TEXT 
-$PAR 
 Evaluate each expression if \(x= $x\), \(y=$y\), \(z=$z\). $BR 
 Your answer can be either a proper fraction or a mixed number.$PAR 
 a) \(x+y\) =\{ans_rule(5)\}$PAR 
 b) \(z+y-x\) =\{ans_rule(5)\} 
 END_TEXT 
+
 Context()->normalStrings; 
 ANS($ansa->cmp); 
 ANS($ansb->cmp); 
 $showPartialCorrectAnswers = 1;
-ANS($ansa->cmp);
-ANS($ansb->cmp);
+
 Context()->texStrings;
 BEGIN_SOLUTION
 $PAR Solution $PAR
@@ -73,9 +64,12 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Fractions')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Evaluating expressions)
+## MLT(eval_expression_using_fractions)
+## Level(2)
+## MO(1)
 

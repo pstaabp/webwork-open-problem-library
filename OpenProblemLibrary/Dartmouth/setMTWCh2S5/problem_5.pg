@@ -5,24 +5,26 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Directional Derivatives and the Gradient Vector)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Directional derivatives and the gradient)
 ## Institution(Dartmouth)
+## MLT(GiveGradient)
+## Level(4)
 ## TitleText1('Basic Multivariable Calculus')
 ## AuthorText1('Marsden, Tromba, Weinstein')
 ## EditionText1('3')
 ## Section1('2.6')
 ## Problem1('')
-## KEYWORDS('gradient' 'derivative')
+## KEYWORDS('gradient' 'derivative','Multivariable' 'gradient')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

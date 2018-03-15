@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -161,10 +161,12 @@ $PAR Solution $PAR
 Notice that for each box past the first, three toothpicks must be added, one at the top,$BR one at the bottom, and one at the right (the one at the left is already there).$BR Now to see the pattern, start with the toothpick at the very left. Each box, including$BR the first, is now obtained by adding 3 toothpicks, so the rule for n is 3n+1.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject('NECAP')
-## DBchapter('Grade 6')
-## DBsection('2007')
+## DBsubject(Set theory and logic)
+## DBchapter(Pattern matching)
+## DBsection(Non-numeric)
+## Level(3)
+## MO(1)
 

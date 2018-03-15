@@ -6,7 +6,7 @@
 ## tcao , PAID on 11-24-2003
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Limits at infinity, horizontal and oblique asymptotes)
 ## Date(6/3/2002)
 ## Level(3)
@@ -19,10 +19,10 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl"
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 $showHint=0;

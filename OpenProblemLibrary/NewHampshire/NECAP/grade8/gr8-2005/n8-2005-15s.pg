@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -87,11 +87,14 @@ The Sound Shop charges \(1-\frac{1}{4}=\frac{3}{4}\) =75% of the regular price $
 The Listening corner charges  \(\frac{2}{3}\) = \(66\frac{2}{3}\)% of the regular price
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 8')
-## DBsection('2005')
+## DBsubject(Arithmetic)
+## DBchapter(Percents)
+## DBsection(Applications)
+## Level(2)
+## MLT(arithmetic_percents_calculation_people_table)
+## MO(1)
 

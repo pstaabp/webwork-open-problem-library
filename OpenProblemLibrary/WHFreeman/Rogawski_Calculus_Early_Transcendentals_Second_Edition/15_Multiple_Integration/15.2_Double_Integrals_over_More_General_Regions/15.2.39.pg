@@ -1,21 +1,30 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Double Integrals over More General Regions)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Double integrals over general regions)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(CalculateDblIntegralOverGraphedRegion)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.2')
 ## Problem1('39')
-## KEYWORDS('calculus', '')
-## UsesAuxiliaryFiles('image_15_2_47_a.png','image_15_2_47_b.png')
+## KEYWORDS('calculus')
+## RESOURCES('image_15_2_47_a.png','image_15_2_47_b.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 Context()->flags->set(tolerance=>0.1,tolType=>"absolute");
 
@@ -27,7 +36,6 @@ $answer=Real((($c*16)-($b*3))*exp(4)-$b);
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.2","39") \}
 $PAR
 Calculate the double integral of \(f(x,y)\) over the triangle indicated in the following figure: $PAR

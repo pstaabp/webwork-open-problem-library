@@ -6,11 +6,12 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Inverse Functions and Logarithms)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Logarithmic functions)
 ## Date(5/26/2005)
 ## Institution(UVA)
 ## Author(Jeff Holt)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -27,10 +28,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -6,18 +6,17 @@
 
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Integrals)
-## DBsection(Antiderivatives)
+## DBsection(Antiderivatives (without trigonometric functions))
 ## Institution(Indiana)
+## Level(3)
 ## KEYWORDS('derivatives' 'antiderivatives')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

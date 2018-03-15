@@ -2,26 +2,28 @@
 ##  Algebra problem: Finding domain when combining functions 
 ##ENDDESCRIPTION
 
-##KEYWORDS('Algebra', 'Combining functions', 'Domain')
 
-## DBsubject('Algebra')
-## DBchapter('Compositions, inverses, and combinations of functions')
-## DBsection('Combinations Of Functions')
-## Date('7/13/2013')
-## Author('Bayliss')
-## Institution('SHS')
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Compositions and combinations of functions)
+## Date(7/13/2013)
+## Institution(SHS)
+## Author(Bayliss)
+## MLT(ccf-domain-only)
+## Level(2)
+## MO(1)
+## KEYWORDS('Algebra', 'Combining functions', 'Domain')
 
 ########################################################################
 
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   "unionTables.pl",
-   "AnswerFormatHelp.pl",
-   #"source.pl",        # allows code to be displayed on certain sites.
-   #"PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "unionTables.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 # Print problem number and point value (weight) for the problem
@@ -39,8 +41,10 @@ Context("Numeric");
 
 $a = random(1,8,1);
 $b = random(1,8,1);
-if( $a < $b ) {$c = non_zero_random(-8, $a-1, 1)}
+do {
+  if( $a < $b ) {$c = non_zero_random(-8, $a-1, 1)}
               else {$c = non_zero_random(-8, $b-1, 1)};
+} while($c==1);
 
 $f = Formula("(x-$a)/(x-$b)");
 $g = Formula("sqrt(x-$c)");
@@ -70,8 +74,6 @@ if (($a-$b*$c)/(1-$c) < $b) {$domain_gof = Union("(-inf,($a-$b*$c)/(1-$c)]U($b,i
 
 Context()->texStrings;
 BEGIN_TEXT
-$BR
-$BR
 Given the functions, \( \displaystyle f(x) = \frac{x-$a}{x-$b} \) and \( \displaystyle g(x) = \sqrt{x-$c} \), find the following domains.
 $BR
 $PAR

@@ -1,27 +1,29 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Trigonometric Substitution')
-## KEYWORDS('calculus', 'integration', 'integral', 'trigonometric substitution', 'substitution', 'trigonometry', 'trigonometric', 'trig')
+## DBchapter(Techniques of integration)
+## DBsection(Trigonometric substitution)
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## MLT(Trig_simplify)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('7.3')
 ## Problem1('37')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'integration', 'integral', 'trigonometric substitution', 'substitution', 'trigonometry', 'trigonometric', 'trig')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-$context = Context();
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "parserFormulaUpToConstant.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+Context("Numeric");
 
-$context->variables->add(C=>'Real');
-
-#($a, $b, $ans) = @{ list_random([],
-#                                []
-#) };
+TEXT(beginproblem());
 
 $a = Real(random(2, 4, 1));
 $a2 = $a**2;
@@ -31,19 +33,17 @@ $a5 = $a**5;
 
 $b = $a2 + 4;
 
-$ans = Formula("ln(abs(sqrt((x+2)**2 + $a2) + x + 2)) + C")->reduce();
+$ans = FormulaUpToConstant("ln(abs(sqrt((x+2)**2 + $a2) + x + 2)) + C")->reduce();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "7.3","37") \}
 $PAR
-Evaluate the integral \( \int \frac{dx}{\sqrt{x^2 + 4x + $b}} \) by completing the square and using trigonometric substitution.
-$PAR
-\{ans_rule()\}
-$PAR
-Note: Use C for an arbitrary constant, and be sure to absorb as much as possible into C.
-$PAR
+Evaluate the integral \( \displaystyle \int \frac{dx}{\sqrt{x^2 + 4x + $b}} \) by completing the square and using trigonometric substitution.
+$BR$BR
+Answer: \{ans_rule(50)\}
+$BR$BR
+Note: Use \(C\) for an arbitrary constant.
 END_TEXT
 Context()->normalStrings;
 

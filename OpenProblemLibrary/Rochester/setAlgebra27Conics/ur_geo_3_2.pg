@@ -2,29 +2,21 @@
 ##   Parabolas
 ## ENDDESCRIPTION
 
-## KEYWORDS('Conic', 'Parabola', 'Focus', 'Vertex', 'Directrix')
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
+## DBsubject(Algebra)
 ## DBchapter(Conic sections)
-## DBsection('Parabolas')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsection(Parabolas)
+## Institution(Rochester)
+## Level(2)
+## KEYWORDS('Conic', 'Parabola', 'Focus', 'Vertex', 'Directrix')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Partial Derivatives)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Partial derivatives)
 ## Date(10/15/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(2varfirstgraph)
+## Level(3)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -24,10 +26,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"unionTables.pl",
-"PGgraders.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "unionTables.pl",
+  "PGgraders.pl",
+  "PGcourse.pl"
 );
 
 
@@ -59,6 +62,24 @@ $tf -> qa (
 );
 
 # How many questions to use
+@explanations=("At the point P, the rate of change in the positive \(x\) direction is positive.
+ Thus \(f_x\) is positive",
+"At the point P, the rate of change in the positive \(y\) direction is positive.
+ Thus \(f_y\) is positive",
+"At the point Q, the rate of change in the positive \(x\) direction is negative.
+ Thus \(f_x\) is negative",
+"At the point Q, the rate of change in the positive \(y\) direction is positive. 
+ Thus \(f_y\) is positive",
+"At the point R, the rate of change in the positive \(x\) direction is negative.
+ Thus \(f_x\) is negative",
+"At the point R, the rate of change in the positive \(y\) direction is negative. 
+ Thus \(f_y\) is negative",
+"At the point S, the rate of change in the positive \(x\) direction is positive.
+ Thus \(f_x\) is positive",
+"At the point S, the rate of change in the positive \(y\) direction is negative. 
+ Thus \(f_y\) is negative",
+);
+
 $tf->choose(8);
 
 
@@ -101,4 +122,34 @@ $showPartialCorrectAnswers = 0;
 
 ANS(str_cmp($tf->ra_correct_ans));
 
+@askedQuestions = ();
+foreach $q ( @{$tf->selected_q} ) {
+  $i = 0;
+  foreach $mq ( @{$tf->questions} ) {
+    if ( $q eq $mq ) {
+      push(@askedQuestions, $i);
+      last;
+    }
+    $i++;
+  } 
+}
+
+BEGIN_SOLUTION
+$PAR SOLUTION $BR $BR
+$BBOLD 1. $EBOLD $explanations[$askedQuestions[0]].
+$BR 
+$BBOLD 2. $EBOLD $explanations[$askedQuestions[1]].
+$BR 
+$BBOLD 3. $EBOLD $explanations[$askedQuestions[2]].
+$BR 
+$BBOLD 4. $EBOLD $explanations[$askedQuestions[3]].
+$BR 
+$BBOLD 5. $EBOLD $explanations[$askedQuestions[4]].
+$BR 
+$BBOLD 6. $EBOLD $explanations[$askedQuestions[5]].
+$BR 
+$BBOLD 7. $EBOLD $explanations[$askedQuestions[6]].
+$BR 
+$BBOLD 8. $EBOLD $explanations[$askedQuestions[7]].
+END_SOLUTION
 ENDDOCUMENT(); 

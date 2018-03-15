@@ -5,21 +5,20 @@
 ## Tagged by tda2d
 
 ## DBsubject(Differential equations)
-## DBchapter(Second order)
-## DBsection(Second-Order Linear Equations)
+## DBchapter(Higher order differential equations)
+## DBsection(Linear, constant coefficients, homogeneous (distinct real roots))
 ## Institution(Rochester)
+## Level(3)
 ## KEYWORDS('differential equation' 'second order' 'linear')
 
 DOCUMENT() ;      
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGdiffeqmacros.pl"
-) ;
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGdiffeqmacros.pl",
+  "PGcourse.pl"
+);
 ################
 $aa = random(2,11,1) ;
 $a = $aa **2 ;

@@ -2,18 +2,21 @@
 #  Series: Ratio test
 #ENDDESCRIPTION
 
-## KEYWORDS('series','ratio test')
 
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Absolute Convergence and the Ratio and Root Tests')           
-## AuthorText1('')
+## DBchapter(Infinite sequences and series)
+## DBsection(Ratio test)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(2)
+## MO(1)
+## MLT(displayed_ratio_limit_conclusion)
 ## TitleText1('Calculus')
+## AuthorText1('')
 ## EditionText1('')
-## Section1('')
+## Section1('.')
 ## Problem1('')
+## KEYWORDS('series','ratio test')
 
 
 ###############################
@@ -22,13 +25,14 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"unionTables.pl",
-"parserPopUp.pl",
-"answerHints.pl",
-"PGgraders.pl",
-"parserMultiAnswer.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "unionTables.pl",
+  "parserPopUp.pl",
+  "answerHints.pl",
+  "PGgraders.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem);
@@ -164,37 +168,3 @@ ANS( $popup->cmp() );
 
 
 ENDDOCUMENT();
-
-
-
-ANS( $num1->cmp( checker=>~~&mychecknum )->withPostFilter(AnswerHints( 
-  [Formula("$b^2 * $a^(n+1) * n^2"),Formula("$a^(n+1) * n^2")] 
-  => "Simplify your answer further (factor and cancel)",
-)) 
-);
-
-sub mycheckden {
-  my ($correct, $student, $ansHash) = @_;
-  return $student == $correct || $student == $den2;
-}
-
-ANS( $den1->cmp( checker=>~~&mycheckden )
-->withPostFilter(AnswerHints( 
-  => "Simplify your answer further (factor and cancel)",
-))
-);
-
-#ANS( $num->cmp() 
-#->withPostFilter(AnswerHints( 
-#  [Formula("$b^2 * $a^(n+1) * n^2"),Formula("$a^(n+1) * n^2")] 
-#  => "Simplify your answer further (factor and cancel)",
-#))
-#);
-
-#ANS( $den1->cmp() 
-#->withPostFilter(AnswerHints( 
-#  [Formula("$b^2 * $a^n * (n+1)^2"),Formula("$a^n * (n+1)^2")] 
-#  => "Simplify your answer further (factor and cancel)",
-#))
-#);
-

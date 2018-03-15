@@ -1,9 +1,10 @@
 ##DESCRIPTION
-## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Exponential Functions)
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Compound interest)
 ## Institution(NAU)
 ## Author(N.Spencer Sitton)
+## Level(4)
 ## KEYWORDS('exponential model', 'inflation')
 ##ENDDESCRIPTION
 
@@ -12,9 +13,10 @@
 # Course:Quantitative Reasoning
 
 DOCUMENT();     
-loadMacros("PGstandard.pl",
-           "PGauxiliaryFunctions.pl"    
-);     
+loadMacros(
+  "PGstandard.pl",
+  "PGcourse.pl"
+);
 
 TEXT( beginproblem ( ) );
 $showPartialCorrectAnswers = 1;

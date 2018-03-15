@@ -1,8 +1,8 @@
 ##DESCRIPTION
 ## Calculate parameters to charge a capacitor
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Capacitance and Inductance')
+## DBsubject(Electric circuits)
+## DBchapter(Capacitance and inductance)
 ## DBsection('Capacitors')
 ## KEYWORDS('capacitor','energy','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

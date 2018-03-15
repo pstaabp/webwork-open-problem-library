@@ -5,6 +5,7 @@
 ## Author(Sam Hathaway)
 ## MLT(defDerFormulaGivenRepresent)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -13,9 +14,14 @@
 ## KEYWORDS('calculus', 'derivatives', 'limits', 'definition of derivative')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 ($op, $denom) = @{ list_random(
     ['sin', 1],
@@ -37,7 +43,6 @@ $form = Formula("($f_a_plus_h-$f_a)/(h)")->reduce;
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "3.1","53") \}
 $PAR
 The limit below represents a derivative \( f'(a) \). Find \( f(x) \) and \( a \).

@@ -2,19 +2,27 @@
 ##  Calculus: Series
 ##ENDDESCRIPTION
 
-##KEYWORDS('calculus', 'series', 'decimal expansion')
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Series')
-## Date('03/23/2010')
-## Author('Justin Sukiennik')
-## Institution('University of Minnesota')
+## DBchapter(Infinite sequences and series)
+## DBsection(Geometric)
+## Date(04/01/2010)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## MLT(RepeatedDecimals)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Concepts and Contexts')
-## EditionText1('4 Custom UMTYMP Ed.')
 ## AuthorText1('Stewart')
+## EditionText1('4 Custom UMTYMP Ed.')
 ## Section1('11.2')
 ## Problem1('36')
+## TitleText2('Algebra for College Students')
+## AuthorText2('Kaufmann, Schwitters')
+## EditionText2('8')
+## Section2('14.2')
+## Problem2('59')
+## KEYWORDS('calculus', 'series', 'decimal expansion','algebra', 'sequences', 'infinite series')
 
 
 #####################################################################
@@ -23,8 +31,8 @@ DOCUMENT();        # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "PGcourse.pl",
-  "contextFraction.pl"
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
 
 #####################################################################

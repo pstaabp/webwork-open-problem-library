@@ -1,34 +1,39 @@
 ## DESCRIPTION
 ## Functions: Input and Output
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Composite and Inverse Functions)
+## DBsection(Compositions and combinations of functions)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(ccf-app-problem)
+## MLTleader(1)
+## Level(2)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('2.4')
-## Problem1('1')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1('2.4')
 ## Section2('2.4')
+## Section3('2.5')
+## Problem1('1')
 ## Problem2('1')
+## Problem3('13')
 ## KEYWORDS('functions','domain','range','input','output','interval notation')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

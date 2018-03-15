@@ -2,38 +2,42 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 ## Tagged by glr 06/12/09
 
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(The Dot Product)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Dot product, length, and unit vectors)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(WorkProblem)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('13.3')
-## Problem1('25')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('13.3')
 ## Section2('13.3')
+## Section3('13.3')
+## Problem1('25')
 ## Problem2('49')
+## Problem3('65')
 ## KEYWORDS('vectors', 'dot product')
 
 ## Textbook tags
@@ -136,5 +140,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

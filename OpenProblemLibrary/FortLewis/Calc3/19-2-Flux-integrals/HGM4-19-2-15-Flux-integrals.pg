@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Surface Integrals)
+## DBchapter(Vector calculus)
+## DBsection(Surface integrals of vector fields)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -24,11 +26,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGcourse.pl",
-"MathObjects.pl",
-"answerHints.pl",
-"weightedGrader.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "answerHints.pl",
+  "weightedGrader.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -113,5 +115,5 @@ WEIGHTED_ANS(Formula("pi/2")->cmp(), 5 );
 WEIGHTED_ANS($answer->cmp(), 50 );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

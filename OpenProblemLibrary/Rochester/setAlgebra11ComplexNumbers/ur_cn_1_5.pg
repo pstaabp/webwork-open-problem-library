@@ -4,23 +4,22 @@
 
 ## Tagged by nhamblet
 
-## DBsubject(Numbers)
-## DBchapter(Complex numbers)
-## DBsection(Polar form)
+## DBsubject(Complex analysis)
+## DBchapter(Arithmetic)
+## DBsection(Conversion to a + bi form)
 ## Institution(Rochester)
 ## MLT(graph)
 ## MLTleader(1)
+## Level(2)
 ## KEYWORDS('Complex', 'Plane')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

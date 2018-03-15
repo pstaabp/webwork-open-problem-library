@@ -7,7 +7,11 @@
 # Recommended trials: 
 # Recommended value:
 #
-## DBsubject(Financial Mathematics)
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Effective and nominal rates of interest)
+## Level(3)
+## MO(1)
 ## KEYWORDS('finance', 'effective annual rate')
 ##
 
@@ -16,14 +20,12 @@
 DOCUMENT();
 
 loadMacros(
-           "PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGasu.pl",
-           "MathObjects.pl",
-);     
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
+);
 
 
 TEXT(&beginproblem);

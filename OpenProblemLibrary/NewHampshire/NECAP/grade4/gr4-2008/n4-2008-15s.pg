@@ -4,23 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -30,8 +17,7 @@ Context("Numeric");
 Context()->texStrings;
 
 BEGIN_TEXT
-IF YOU ARE PREPARING FOR A NECAP EXAMINATION, DO NOT USE A CALCULATOR ON THIS
-PROBLEM $BR SINCE CALCULATORS WERE NOT PERMITTED ON THIS PROBLEM IN THE NECAP EXAM.$PAR
+
 Harold is planning a party for 32 people.  He has some round tables and some $BR
 square tables.$PAR
 There are 6 chairs at each round table$PAR
@@ -50,8 +36,11 @@ The largest multiple of 6 less than 32 is 30 but if we cannot add a full table i
 ON THE NECAP EXAM YOU WOULD HAVE BEEN ASKED TO SHOW YOUR WORK OR EXPLAIN YOUR REASONING $BR  AN EXPLANATION SIMILAR TO THAT ABOVE WOULD BE APPROPRIATE
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 4')
-## DBsection('2008')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Multiple operations)
+## Level(2)
+## Static(1)
+## MO(1)

@@ -1,9 +1,10 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Global extrema)
 ## Institution(W.H.Freeman)
 ## Author(Keith Thompson)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -12,12 +13,16 @@
 ## KEYWORDS('calculus', 'derivatives', 'critical points')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGauxiliaryFunctions.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
+
+TEXT(beginproblem());
 #$showPartialCorrectAnswers=1;
 $b=random(2,6,1);
 $doubleb=2*$b;
@@ -36,7 +41,6 @@ $ans7=1-$doubleb+$c;
 $ans8=$c;
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "4.2","21") \}
 $PAR
 Let \(f(x)=$fx\). 

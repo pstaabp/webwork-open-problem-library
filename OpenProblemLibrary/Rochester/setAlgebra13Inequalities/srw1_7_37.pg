@@ -2,38 +2,35 @@
 ##  Algebra - Inequalities
 ## ENDDESCRIPTION
 
-## KEYWORDS('Algebra','Inequalities')
 ## Tagged by dgt5v
 
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Nonlinear Inequalities')
-## Date('')
-## Author('')
-## Institution('Rochester')
+
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Inequalities)
+## Institution(ASU)
+## Level(3)
 ## TitleText1('Precalculus')
-## EditionText1('3')
 ## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
 ## Section1('1.7')
 ## Problem1('29')
-
 ## TitleText2('College Algebra')
-## EditionText2('3')
 ## AuthorText2('Stewart, Redlin, Watson')
+## EditionText2('3')
 ## Section2('3.7')
 ## Problem2('13')
+## KEYWORDS('Algebra','Inequalities', 'nonlinear inequality')
 
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"extraAnswerEvaluators.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

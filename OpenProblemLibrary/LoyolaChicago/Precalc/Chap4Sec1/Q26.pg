@@ -4,32 +4,33 @@
 # ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Logarithmic functions)
-## DBsection(Logarithms and Their Properties)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Properties of logarithms)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## MLT(TrueFalse_LogProperties)
+## MLTleader(1)
+## Level(3)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('4.1')
-## Problem1('23')
 ## TitleText2('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## Section1(4.1)
 ## Section2('5.1')
+## Problem1(26)
 ## Problem2('23')
 ## KEYWORDS('logarithms','natural log','common log','log','ln','properties of logs')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGcourse.pl",
-"PGgraders.pl",,
-"MathObjects.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraders.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -122,7 +123,6 @@ foreach $q ( @{$tf->selected_q} ) {
 #    and can print the corresponding
 #    explanations for the solution
 #Context()->texStrings;
-SOLUTION(EV3(<<'END_SOLUTION'));
 BEGIN_SOLUTION
 $PAR SOLUTION $PAR
 

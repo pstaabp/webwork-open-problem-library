@@ -1,10 +1,12 @@
 ##DESCRIPTION
-## DBsubject('Discrete Mathematics')
-## DBchapter('Combinatorics')
-## DBsection('Counting')
+## DBsubject(Combinatorics)
+## DBchapter(Counting)
+## DBsection(Permutations)
+## Institution(NAU)
+## Author(Shafiu Jibrin)
+## MLT(norepeat)
+## Level(2)
 ## KEYWORDS('Permutation')
-## Author('Shafiu Jibrin ')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 7/07/05
@@ -14,12 +16,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGasu.pl",
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGasu.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

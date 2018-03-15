@@ -6,11 +6,12 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Inverse Functions and Logarithms)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Exponential and logarithmic equations)
 ## Date(5/26/2005)
 ## Institution(UVA)
 ## Author(Jeff Holt)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -26,12 +27,12 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "extraAnswerEvaluators.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
+);
 
 $a1 = random(5,11,1);
 $b1 = non_zero_random(-5,5,1);

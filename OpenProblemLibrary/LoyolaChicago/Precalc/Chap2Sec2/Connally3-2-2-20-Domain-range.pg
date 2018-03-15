@@ -5,25 +5,27 @@
 
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Domain and Range)
+## DBsection(Domain and range)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
 ## Section1('2.2')
 ## Problem1('20')
 ## KEYWORDS('functions','domain','range','input','output','interval notation')
-
+## MLT(algebra_functions_domain_range_high_root)
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"contextInequalities.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "contextInequalities.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem()); 
@@ -70,5 +72,5 @@ ANS($domain->cmp());
 ANS($range->cmp());
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

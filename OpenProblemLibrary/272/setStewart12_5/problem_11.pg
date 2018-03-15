@@ -7,19 +7,21 @@
 
 ## Tagged by ynw2d
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Equations of Lines and Planes)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Planes)
 ## Author(Stewart)
+## MLT(planes_eqn_given_point_and_plane)
+## Level(3)
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

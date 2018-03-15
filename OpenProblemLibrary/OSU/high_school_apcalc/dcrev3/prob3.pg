@@ -5,19 +5,19 @@
 ## Tagged by cmd6a 5/26/06
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Exponential Growth and Decay)
+## DBchapter(First order differential equations)
+## DBsection(Applications - exponential growth & decay)
 ## Institution(OSU)
+## MLT(applications_exponential_findY_findT_findYprime)
+## Level(5)
 ## KEYWORDS('calculus','differential equation','exponential growth,decay')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 
@@ -59,6 +59,6 @@ END_TEXT
 
 ANS(fun_cmp("$a2*$b**(t/$c)", vars=>"t"));
 ANS(num_cmp($c*log($d)/log($b)));
-ANS(num_cmp($a2*$b**($e/$c)*log($b)/$c));
+ANS(num_cmp($a2*$b**($e/$c)*ln($b)/$c));
 
 ENDDOCUMENT();

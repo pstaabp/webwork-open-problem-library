@@ -5,11 +5,13 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Four Ways to Represent a Function)
+## DBchapter(Functions)
+## DBsection(Piecewise functions)
 ## Date(5/26/2005)
 ## Institution(UVA)
 ## Author(Jeff Holt)
+## MLT(piecewise)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -24,13 +26,13 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "PGnumericalmacros.pl"
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;

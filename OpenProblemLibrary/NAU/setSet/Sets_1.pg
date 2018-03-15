@@ -1,20 +1,23 @@
 ##DESCRIPTION
-## DBsubject('Discrete Mathematics')
-## DBchapter('Set Theory')
-## DBsection('Basic Operations')
+## DBsubject(Set theory and logic)
+## DBchapter(Operations on sets)
+## DBsection(Boolean operations on sets)
+## Institution(NAU)
+## Author(Shafiu Jibrin)
+## MLT(tf)
+## MLTleader(1)
+## Level(2)
 ## KEYWORDS('set')
-## Author('Shafiu Jibrin')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 6/29/05
 # Location: Northern Arizona University
 
 DOCUMENT();      
-loadMacros("PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem(), $BR,$BBOLD, "True False Problem", $EBOLD, $BR,$BR);
 # Since this is a true questions, we do not usually wish to tell students which

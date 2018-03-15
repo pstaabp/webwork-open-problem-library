@@ -2,19 +2,22 @@
 ## Systems of ODEs: introduction to systems of ODEs
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','systems of ODEs')
 
 ## DBsubject(Differential equations)
-## DBchapter('Linear systems')
-## DBsection('Linear Systems')
-## Date('01/30/2012')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Systems of differential equations)
+## DBsection(Verification of solutions)
+## Date(01/30/2012)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(3)
+## Static(1)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
-## EditionText1('2006')
 ## AuthorText1('Kohler and Johnson')
+## EditionText1('2006')
 ## Section1('4.3')
 ## Problem1('10')
+## KEYWORDS('differential equations','systems of ODEs')
 
 
 ##############################
@@ -23,11 +26,12 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGmatrixmacros.pl",
-"parserMultiAnswer.pl",
-"unionLists.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGmatrixmacros.pl",
+  "parserMultiAnswer.pl",
+  "unionLists.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -146,7 +150,8 @@ $P[0][0] & $P[0][1] \\
 $P[1][0] & $P[1][1]
 \end{array}
 \right\rbrack,
-\ \ \
+\]
+\[
 \boldsymbol{\vec{y}_1}(t) =
 \left\lbrack
 \begin{array}{c}
@@ -245,6 +250,6 @@ ANS( $multians1->cmp() );
 ANS( $multians2->cmp() );
 
 
-COMMENT("MathObject version.  Uses parserMultiAnswer.pl and has fancy formatting of student answers.");
+COMMENT("Uses parserMultiAnswer.pl and has fancy formatting of student answers.");
 
 ENDDOCUMENT();

@@ -1,10 +1,16 @@
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Addition/subtraction)
+## Level(3)
+## MO(1)
+## MLT(subtract_fracs_diff_denom)
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"contextFraction.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -54,5 +60,5 @@ $showPartialCorrectAnswers = 0;
 ANS($answer->cmp());
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

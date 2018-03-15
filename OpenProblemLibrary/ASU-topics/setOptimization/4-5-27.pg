@@ -5,7 +5,7 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Optimization - general)
 ## Institution(ASU)
 ## MLT(Optimization_NumberProperties)
@@ -13,11 +13,11 @@
 ## KEYWORDS('Optimization' 'Maximum' 'Minimum')
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 $a = random(10,28,1);
 

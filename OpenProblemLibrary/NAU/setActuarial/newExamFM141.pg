@@ -1,22 +1,21 @@
 ##DESCRIPTION
-## DBsubject('Financial Mathematics')
-## DBchapter('Bonds')
-## DBsection('Book Value')
+## DBsubject(Financial mathematics)
+## DBchapter(Bonds)
+## DBsection(Book value)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## Level(4)
 ## KEYWORDS('coupon','par value')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 

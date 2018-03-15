@@ -1,25 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -128,11 +114,14 @@ $PAR Solution $PAR
 If six diamonds balance two batons then \(\frac{6}{2}=3\) diamonds balance 1 baton.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 4')
-## DBsection('2008')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Applications)
+## Level(3)
+## MLTleader(1)
+## MLT(arithmetic_integers_applications_scales)
 
 $graph->moveTo(,);
 $graph->lineTo( , ,'black');

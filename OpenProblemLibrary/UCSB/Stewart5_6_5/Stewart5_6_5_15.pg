@@ -1,23 +1,22 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Applications of Integration')
-## DBsection('Average Value of a Function')
-## KEYWORDS('integration', 'average value of a function')
+## DBchapter(Applications of integration)
+## DBsection(Average value of a function)
+## Institution(UCSB)
+## Level(4)
+## Static(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('5')
 ## AuthorText1('Stewart')
+## EditionText1('5')
 ## Section1('6.5')
 ## Problem1('15')
-## Author('')
-## Institution('UCSB')
+## KEYWORDS('integration', 'average value of a function')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);
@@ -28,14 +27,13 @@ $c=random(1,10,1)*random(-1,1,2);
 
 BEGIN_TEXT
 
-$PAR
 The table gives the values of a continuous function \(f\).
 
 \[
-\begin{tabular}{|c|c|c|c|c|c|c|c|}\hline
-{\it x}          & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\ \hline
-{\it f}\,({\it x}) & 42 & 38 & 31 & 29 & 35 & 48 & 60 \\ \hline
-\end{tabular}
+\begin{array}{|c|c|c|c|c|c|c|c|}\hline
+ x          & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\ \hline
+ f(x) & 42 & 38 & 31 & 29 & 35 & 48 & 60 \\ \hline
+\end{array}
 \]
 
 Use the Midpoint Rule to estimate the average value of \(f\) on [20, 50].

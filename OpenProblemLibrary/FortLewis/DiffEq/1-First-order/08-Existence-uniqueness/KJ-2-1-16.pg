@@ -2,19 +2,21 @@
 ## First order ODEs: slope fields and the uniqueness theorem
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','existence','uniqueness')
 
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection('Existence and Uniqueness')
-## Date('01/01/2012')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(First order differential equations)
+## DBsection(Existence and uniqueness)
+## Date(01/01/2012)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
-## EditionText1('2006')
 ## AuthorText1('Kohler and Johnson')
+## EditionText1('2006')
 ## Section1('2.1')
 ## Problem1('16')
+## KEYWORDS('differential equations','existence','uniqueness')
 
 
 ##############################
@@ -23,11 +25,12 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"unionLists.pl",
-"contextInequalities.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "unionLists.pl",
+  "contextInequalities.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -106,6 +109,6 @@ ANS( $answer->cmp() );
 ANS( $interval[0]->cmp() );
 ANS( $interval[1]->cmp() );
 
-COMMENT("MathObject version.");
+;
 
 ENDDOCUMENT();

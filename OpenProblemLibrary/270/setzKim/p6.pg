@@ -4,21 +4,20 @@
 
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Fractional Expressions')
-## Institution('ASU')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summary statistics)
+## Institution(ASU)
+## Level(2)
 ## KEYWORDS('Average','Averages')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

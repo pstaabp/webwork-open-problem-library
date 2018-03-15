@@ -3,14 +3,11 @@
 #ENDDESCRIPTION
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLimitedPolynomial.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextLimitedPolynomial.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;
@@ -46,10 +43,13 @@ $PAR Solution $PAR
 END_SOLUTION	
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Polynomials')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Simplifying expressions)
+## MLT(Expand_and_group)
+## Level(2)
+## MO(1)
 
 

@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Trigonometry')
-## DBchapter('Trigonometric Functions of Angles')
-## DBsection('Trigonometric Functions of Angles')
+## DBsubject(Trigonometry)
+## DBchapter(Trigonometric functions)
+## DBsection(Secant & cosecant functions - definitions, graphs, & properties)
+## Institution(NAU)
+## Author(Katie Louchart)
+## Level(2)
 ## KEYWORDS('tangent', 'secant', 'cosecant', 'cotangent', 'period')
-## Author('Katie Louchart')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 6/21/05
@@ -15,13 +16,11 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl",
-"extraAnswerEvaluators.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

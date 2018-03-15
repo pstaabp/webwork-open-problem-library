@@ -1,9 +1,15 @@
+## DBsubject(Algebra)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of exponents)
+## Level(3)
+## Static(1)
+## MO(1)
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -44,5 +50,5 @@ $showPartialCorrectAnswers = 0;
 ANS($answer->cmp());
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

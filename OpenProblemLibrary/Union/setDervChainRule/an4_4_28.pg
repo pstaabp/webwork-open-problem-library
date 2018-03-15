@@ -12,6 +12,7 @@
 ## MLT(Chain-ExpOfSqrt)
 ## MLTleader(1)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Anton')
 ## EditionText1('7')
@@ -23,9 +24,9 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -69,5 +70,5 @@ ANS($ansb->with(limits => [.1,2], tolerance => .001)->cmp);
 ##################################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

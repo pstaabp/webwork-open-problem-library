@@ -1,22 +1,31 @@
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Domain and Range')
-## KEYWORDS('calculus', 'functions', 'domain', )
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Domain and range)
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('1.3')
 ## Problem1('1')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'functions', 'domain')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGchoicemacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
+##loadMacros("freemanMacros.pl");
 
+TEXT(beginproblem());
+
+do {
 $exp = random(1, 10);
+} while (($exp == 4) || ($exp == 8));
+
 $f = Formula("x^($exp/4)");
 
 $mc = new_multiple_choice();
@@ -25,9 +34,6 @@ $mc->extra("\( x $LTE 0 \)", "all Real numbers");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
-\{ textbook_ref_exact("Rogawski ET 2e", "1.3","1") \}
-$PAR
 \{ $mc->print_q() \} 
 $PAR
 \( f(x) = $f \)

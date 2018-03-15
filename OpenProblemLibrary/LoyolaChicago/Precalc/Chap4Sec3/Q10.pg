@@ -1,47 +1,50 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Logarithmic functions)
-## DBsection(The Logarithmic Functions)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Graphs)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('4.3')
-## Problem1('8')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(4.3)
 ## Section2('5.3')
+## Section3('5.3')
+## Problem1(10)
 ## Problem2('8')
+## Problem3('14')
 ## KEYWORDS('logarithms','log','ln','asymptote','graph of logarithms')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-#           "extraAnswerEvaluators.pl",
-#           "PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-"unionTables.pl",
-"parserImplicitPlane.pl",
-"parserVectorUtils.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "unionTables.pl",
+  "parserAssignment.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
 #Context("Numeric");
-Context("ImplicitPlane")->variables->are(x=>"Real",y=>"Real");
-
+#Context("ImplicitPlane")->variables->are(x=>"Real",y=>"Real");
+Context("Vector2D")->variables->are(x=>"Real",y=>"Real");
+parser::Assignment->Allow;
 
 $refreshCachedImages = 1;
 
@@ -145,7 +148,8 @@ $ECENTER
 END_TEXT
 Context()->normalStrings;
 
-$HA = ImplicitPlane("x=$asym[$k]");
+#$HA = ImplicitPlane("x=$asym[$k]");
+$HA = Compute("x=$asym[$k]");
 $VA = Compute("None");
 
 $XINT = Point("($x_int[$k],0)");
@@ -161,7 +165,8 @@ if ($k==0) {
 
 
 ANS($HA->cmp() );
-ANS($VA->cmp( typeMatch=>ImplicitPlane("x+y=1") ) );
+#ANS($VA->cmp( typeMatch=>ImplicitPlane("x+y=1") ) );
+ANS($VA->cmp( typeMatch=>Compute("y=1") ) );
 ANS($XINT->cmp( typeMatch=>String("NONE") ) );
 ANS($YINT->cmp( typeMatch=>String("NONE") ) );
 ANS(str_cmp($correct) );
@@ -174,12 +179,12 @@ ANS(str_cmp($correct) );
 
 
 
-@reason = ("The correct graph is shown above.  There is no horizontal asymptote, and there is a vertical asymptote at \( y = $asym[$k] \).
+@reason = ("The correct graph is shown above.  There is no horizontal asymptote, and there is a vertical asymptote at \( x = $asym[$k] \).
 $BR
 The \(y\)-intercept is when \(x = 0\).  Plugging in  \(x = 0\) we get \( y = \ln{(0+$a)} = \ln{($a)} \).  Therefore we have a \(y\)-intercept at \( (0, \ln{($a)}) \).
 $BR
 The \(x\)-intercept is when \(y =0\).  Thus we solve the equation \( 0 = \ln{(x+$a)} \).  Rewriting this as an exponent, we need to solve \( e^0 = 1 = x + $a \), which gives an \(x\)-intercept at (1-$a,0).",
-"The correct graph is shown above.  There is no horizontal asymptote, and there is a vertical asymptote at \( y = $asym[$k] \).
+"The correct graph is shown above.  There is no horizontal asymptote, and there is a vertical asymptote at \( x = $asym[$k] \).
 $BR
 The \(y\)-intercept is when \(x = 0\).  Plugging in  \(x = 0\) we get \( y = \ln{(0-$a)} \) which is undefined since the log is only defined for positive values.  Therefore this graph has no \(y\)-intercept.
 $BR
@@ -200,5 +205,5 @@ $reason[$k]
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

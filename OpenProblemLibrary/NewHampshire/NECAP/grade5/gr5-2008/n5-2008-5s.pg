@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -82,9 +82,10 @@ $PAR Solution $PAR
 Only Shape 2 and Shape 4 have exactly four angles.$BR  But Shape 2 doe not have a pair of parallel sides.$BR  So the answer is Shape 4
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject('NECAP')
-## DBchapter('Grade 5')
-## DBsection('2008')
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Properties of shapes)
+## Level(3)

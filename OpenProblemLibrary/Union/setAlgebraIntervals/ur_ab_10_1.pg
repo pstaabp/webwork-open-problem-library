@@ -4,11 +4,14 @@
 
 ## Tagged by cmd6a 8/6/06
 
-## DBsubject(Set theory)
-## DBchapter(Basic properties and operations)
-## DBsection(Specifying sets)
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Inequalities and intervals)
 ## Date(8/24/07)
 ## Institution(Union College)
+## MLT(IntervalSetBuilder)
+## MLTleader(1)
+## Level(2)
 ## KEYWORDS('interval','set')
 
 DOCUMENT();        # This should be the first executable line in the problem.
@@ -16,10 +19,10 @@ DOCUMENT();        # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "PGchoicemacros.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "choiceUtils.pl",        # for matching problems
-  "PGcourse.pl",           # Customization file for the course
+  "choiceUtils.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -69,5 +72,5 @@ ANS(str_cmp($ml->ra_correct_ans));
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

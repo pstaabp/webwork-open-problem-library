@@ -8,6 +8,8 @@
 ## DBchapter(Divisibility)
 ## DBsection(GCDs and LCMs)
 ## Institution(Rochester)
+## MLT(FactorizationGiven)
+## MLTleader(1)
 ## Level(2)
 ## TitleText1('Discrete Mathematics')
 ## AuthorText1('Rosen')
@@ -19,11 +21,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

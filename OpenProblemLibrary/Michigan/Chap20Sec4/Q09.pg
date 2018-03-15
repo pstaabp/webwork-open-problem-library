@@ -7,11 +7,14 @@
 ## Tagged by glr 08/18/10
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Stokes Theorem)
+## DBchapter(Fundamental theorems)
+## DBsection(Stokes' theorem)
 ## Date(08/18/10)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(Stokes_circle)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('5')
@@ -20,7 +23,7 @@
 ## TitleText2('Calculus')
 ## AuthorText2('Hughes-Hallett')
 ## EditionText2('6')
-## Section2('20.')
+## Section2('20.Review')
 ## Problem2('22')
 ## KEYWORDS('stokes theorem', 'circulation integral', 'curl', 'multivariable', 'calculus')
 
@@ -30,13 +33,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -109,6 +109,6 @@ is \(\vec{k}\).  So
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

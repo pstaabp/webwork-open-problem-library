@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -290,8 +290,8 @@ $radio->qa("Which list gives the shapes in order from lightest to heaviest? ", "
 #FIRST PAREN IS QUESTION, SECOND PAREN IS CORRECT ANSWER
 $radio->extra("List 1 ", "List 3 ", "List 4  ");
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATO
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR 
+
+ 
 The two scales below are balanced.
 
 $BR
@@ -305,6 +305,7 @@ $PAR
 \{ image( insertGraph($grb), tex_size=>$TEXSIZE,
     height=>$HEIGHT, width=>640
     ) \}
+$PAR
 \{$radio->print_q()\}
 \{$radio->print_a()\}
 
@@ -319,9 +320,10 @@ means that two green cubes weigh the same amount as a red pyramid.  $BR
 That means that in order from lightest to heaviest we have List 2.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 6')
-## DBsection('2009')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Applications)
+## Level(5)
 

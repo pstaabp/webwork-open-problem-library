@@ -1,25 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -140,11 +126,13 @@ The domain of the function begins at -4 and extends rightward forever$BR
 Thus it is all real numbers greater than or equal to -4.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 11')
-## DBsection('2008')
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Domain and range)
+## Level(2)
+## MLT(algebra_functions_domain_range_graph_continuous)
 
 $graph->moveTo(,);
 $graph->lineTo( , ,'black');

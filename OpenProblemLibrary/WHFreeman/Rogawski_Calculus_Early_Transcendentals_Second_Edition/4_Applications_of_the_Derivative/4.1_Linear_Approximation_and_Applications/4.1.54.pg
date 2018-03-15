@@ -1,9 +1,10 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Linear approximation and differentials)
 ## Institution(W.H.Freeman)
 ## Author(Keith Thompson)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -12,11 +13,15 @@
 ## KEYWORDS('calculus', 'derivatives', 'linearization')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGauxiliaryFunctions.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 #$showPartialCorrectAnswers=1;
 
@@ -25,7 +30,6 @@ $ans1=Formula("exp($const1)*(x-1)");
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "4.1","54") \}
 $PAR
 Find the linearization \(L(x)\) of \(y=e^{$const1 x}\ln(x)\) at \(a=1\).

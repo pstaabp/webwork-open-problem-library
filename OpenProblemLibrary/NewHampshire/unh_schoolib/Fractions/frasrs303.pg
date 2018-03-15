@@ -4,22 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-"contextFraction.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -49,11 +38,10 @@ $num=$num1-$num2;
 Context()->flags->set(requireProperFractions =>1);
 
 BEGIN_TEXT
-Evaluate each expression if \( x =\frac{$a1}{$b1},\  y=\frac{$a2}{$b2},\  and\ 
- z=\frac{$a3}{$b3}\) 
-$BR Your answer should be a reduced fraction or a mixed number with the $BR
-faction part reduced (A mixed number can be entered in the form 2 3/4 to mean
-\(2\frac{3}{4}\) ).$PAR
+Evaluate each expression if \(x =\frac{$a1}{$b1},\)  \(y=\frac{$a2}{$b2}\) and \(z=\frac{$a3}{$b3}\). 
+$BR 
+Your answer should be a reduced fraction or a mixed number with the 
+faction part reduced (A mixed number can be entered in the form 2 3/4 to mean \(2\frac{3}{4}\) ).
 $PAR
 a)  \(x-y=\ \ \) \{ans_rule(6)\}
 $PAR
@@ -79,13 +67,17 @@ END_SOLUTION
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject(Middle school)
-## DBchapter('Fractions')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Evaluating expressions)
+## MLT(eval_expression_using_fractions)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 
 
 

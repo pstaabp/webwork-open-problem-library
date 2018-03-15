@@ -5,20 +5,20 @@
 ## Tagged by cmd6a 5/29/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Related rates)
 ## Institution(OSU)
+## MLT(lamplamplamps)
+## MLTleader(1)
 ## Level(5)
 ## KEYWORDS('calculus','related rates')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

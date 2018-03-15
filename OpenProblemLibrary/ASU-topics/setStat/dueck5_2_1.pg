@@ -2,30 +2,23 @@
 ##  Probability 
 ## ENDDESCRIPTION
 
-## KEYWORDS('Probability')
 ## Tagged by dgt5v
 
-## DBsubject('Probability')
-## DBchapter('Discrete Probability')
-## DBsection('Conditional Probability')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Probability)
+## DBchapter(Sample Space)
+## DBsection(Conditional probability -- direct)
+## Institution(ASU)
+## MLT(vendiag)
+## Level(3)
+## KEYWORDS('Probability')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

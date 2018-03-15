@@ -1,20 +1,20 @@
 ##DESCRIPTION
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Exponential Functions)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Applications and models - general)
 ## Institution(NAU)
 ## Author(C. Tyler Diggans)
+## MLT(Bacteria_doublingTimeGiven)
+## Level(4)
 ## KEYWORDS('exponential model', 'doubling')
 ##ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

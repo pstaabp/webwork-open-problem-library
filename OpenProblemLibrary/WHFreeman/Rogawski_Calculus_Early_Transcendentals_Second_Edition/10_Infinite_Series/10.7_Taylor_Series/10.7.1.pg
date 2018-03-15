@@ -1,25 +1,30 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Infinite Sequences and Series)
-## DBsection(Taylor and Maclaurin series)
+## DBchapter(Infinite sequences and series)
+## DBsection(Maclaurin series)
 ## Institution(W.H.Freeman)
 ## Author(Emily Price)
+## Level(1)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('10.7')
 ## Problem1('1')
-## KEYWORDS('')
 DOCUMENT();
 
 
 
 #Load Necessary Macros
 
-loadMacros("PG.pl", "PGbasicmacros.pl", "PGchoicemacros.pl", "PGanswermacros.pl", );
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
-
+TEXT(beginproblem());
 Context()->variables->add(n=>'Real');
 
 #Book Values
@@ -35,7 +40,6 @@ $maclaurin = Formula("$constant1 + $constant2*x + ($constant3*x^2)/2! + ($consta
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "10.7", "1") \}
 $PAR
 Write out the first four terms of the Maclaurin series of \( f(x) \) if 

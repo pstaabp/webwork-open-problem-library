@@ -6,8 +6,8 @@
 ## Tagged by jjh2b
 
 ## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('AIM Tutorial: Old Problems')
+## DBchapter(WeBWorK tutorial)
+## DBsection(AIM tutorial: old problems)
 ## Date('')
 ## Author('')
 ## Institution('Rochester')
@@ -20,12 +20,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGcourse.pl",
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 # No partial credit on this problem, so we say:

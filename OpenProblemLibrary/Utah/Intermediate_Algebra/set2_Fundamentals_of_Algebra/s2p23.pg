@@ -1,21 +1,28 @@
 ##DESCRIPTION Arithmetic ENDDESCRIPTION
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Fractional Expressions')
 
-## AuthorText1('Ron Larson and Robert P. Hostetler')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## MLT(MoreStaticUtah2)
+## MLTleader(1)
+## Level(5)
+## Static(1)
 ## TitleText1('Intermediate Algebra')
+## AuthorText1('Ron Larson and Robert P. Hostetler')
 ## EditionText1('4')
-## Section1('Fundamentals of Algebra')
+## Section1('.')
 ## Problem1('')
-##KEYWORDS('algebra')
+## KEYWORDS('algebra')
 
 DOCUMENT(); # This should be the first executable line in the problem.
 
-loadMacros( "PG.pl", "PGbasicmacros.pl", "PGchoicemacros.pl",
-"PGanswermacros.pl", "PGauxiliaryFunctions.pl" );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -45,10 +52,10 @@ $c=(12/(16-$a)-1)*100;
 ANS(num_cmp($c));
 
 TEXT(EV2(<<EOT)); 
-
+$BR 
 He responds wistfully that this is as it should be
 since now you can figure problems like the ones on this assignment!
-
+$BR 
 EOT
 
 

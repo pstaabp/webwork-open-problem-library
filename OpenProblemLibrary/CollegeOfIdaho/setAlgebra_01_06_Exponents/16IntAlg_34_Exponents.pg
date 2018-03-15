@@ -3,16 +3,25 @@
 ## 
 ##ENDDESCRIPTION
 ## DBsubject(Algebra)
-## DBchapter(Algebra, Mathematical Models and Problem Solving)
-## DBsection('Properties of Integral Exponents')
-## KEYWORDS('real numbers','algebraic expressions')
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of exponents)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(Quotient_in_power)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Essentials of Intermediate Algebra')
-## EditionText1('1')
 ## AuthorText1('Blitzer')
+## EditionText1('1')
 ## Section1('1.6')
 ## Problem1('')
-## Author('RA Cruz')
-## Institution('The College of Idaho')
+## TitleText2('Precalculus')
+## AuthorText2('Ron Larson and Robert  Hostetler')
+## EditionText2('7')
+## Section2('.1')
+## Problem2('')
+## KEYWORDS('real numbers','algebraic expressions','exponents','algebra','exponents review')
 ## Date: 2007/09
 
 DOCUMENT();        # This should be the first executable line in the problem.
@@ -22,7 +31,8 @@ loadMacros(
   "MathObjects.pl",
   "contextLimitedPowers.pl",
   "answerHints.pl",
-  "CofIdaho_macros.pl"
+  "CofIdaho_macros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -85,5 +95,5 @@ $showPartialCorrectAnswers = 1;
 ######################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

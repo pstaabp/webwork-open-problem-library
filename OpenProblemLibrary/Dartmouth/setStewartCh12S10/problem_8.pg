@@ -2,30 +2,30 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS('series' 'Taylor' 'find sum')
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Taylor and Maclaurin series')
-## Date('')
-## Author('')
-## Institution('Dartmouth')
+## DBchapter(Infinite sequences and series)
+## DBsection(Taylor series)
+## Institution(Dartmouth)
+## MLT(TaylorSeries_03)
+## Level(3)
 ## TitleText1('Calculus')
-## EditionText1('5')
 ## AuthorText1('Stewart')
+## EditionText1('5')
 ## Section1('12.10')
 ## Problem1('')
+## KEYWORDS('series' 'Taylor' 'find sum')
 
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

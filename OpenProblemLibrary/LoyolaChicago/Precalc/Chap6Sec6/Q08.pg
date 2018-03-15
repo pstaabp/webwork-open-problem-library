@@ -1,32 +1,39 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
-# ENDDESCRIPTION
 
 ## DBsubject(Trigonometry)
 ## DBchapter(Trigonometric functions)
-## DBsection(Other Trigonometric Functions)
+## DBsection(Trigonometric functions of special angles)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(One_function_one_angle)
+## Level(1)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('6.6')
-## Problem1('2')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
-## Section2('7.4')
-## Problem2('2')
+## EditionText3('5')
+## Section1(6.6)
+## Section2(7.4)
+## Section3('7.Review')
+## Problem1(8)
+## Problem2(23)
+## Problem3('24')
 ## KEYWORDS('tangent','cotangent','cosecant','secant')
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"contextFraction.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -99,5 +106,5 @@ END_SOLUTION
 
 COMMENT("Tangent in first quadrant");
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

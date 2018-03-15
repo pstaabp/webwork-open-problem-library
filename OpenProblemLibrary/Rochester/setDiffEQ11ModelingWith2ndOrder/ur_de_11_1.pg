@@ -5,21 +5,20 @@
 ## Tagged by tda2d
 
 ## DBsubject(Differential equations)
-## DBchapter(Second order)
-## DBsection(Applications of Second-Order Differential Equations)
+## DBchapter(Higher order differential equations)
+## DBsection(Applications)
 ## Institution(Rochester)
+## Level(5)
 ## KEYWORDS('differential equation' 'second order' 'linear' 'nonhomogeneous')
 
 DOCUMENT() ;        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGdiffeqmacros.pl",
-) ;
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGdiffeqmacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem()) ;
 $showPartialCorrectAnswers = 1 ;
@@ -51,14 +50,6 @@ $periodic_solution = FEQ("$v_avg+ ${A}*cos( ${freq}*t ) + ${B}*sin( ${freq}*t )"
 $initial_value_solution = FEQ(" ($initial_w - ${A} - ($v_avg) )*exp(-(k/m)t) +$v_avg+ ${v_amplitude}*cos(${freq}*t-$v_phaseShift ) " );
 
 BEGIN_TEXT
-Another "realistic" problem: $PAR
-
-The following problem is similar to the problem in an earlier assignment about the bank account growing with periodic deposits.
-The basic procedure for this problem is not too hard, but getting details of the calculation correct is NOT easy, and may take some time.
-
-$PAR
-
-
 A ping-pong ball is caught in a vertical plexiglass column in which the air flow alternates sinusoidally with a period of 60 seconds.  The air flow starts with a maximum upward flow at the rate of \($a1 m/s\) and
 at \(t = 30\) seconds the flow has a minimum (upward) flow of rate of \( $a2 m/s \). (To make this clear:  a flow of \( - 5m/s \) upward is the same as a flow downward of \( 5 m/s \).
 $PAR
@@ -81,7 +72,7 @@ Use the method of undetermined coefficients to find one periodic solution to thi
 
 $PAR
 Find the amplitude and phase shift of this solution. You do not need to enter units.$BR
-\(v(t) = \{tex_ans_rule(30) \} \cos(\{tex_ans_rule(30) \}*t-\{tex_ans_rule(30) \} ) \)
+\(v(t) = \)\{ans_rule(30) \} \(\cos(\)\{ans_rule(30) \}\(\cdot t-\)\{ans_rule(30) \}\( ) \)
 $PAR
 Find the general solution, by adding on a solution to the homogeneous equation.
 Notice that all of these solutions tend towards the periodically oscillating solution.

@@ -2,29 +2,22 @@
 ##  Sample of new style problem.
 ## ENDDESCRIPTION
 
-## KEYWORDS('sample','webwork','new')
 ## Tagged by jjh2b
 
-## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('AIM Tutorial: New Problems')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(WeBWorK)
+## DBchapter(WeBWorK tutorial)
+## DBsection(AIM tutorial: new problems)
+## Institution(Rochester)
+## MO(1)
+## KEYWORDS('sample','webwork','new')
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGstandard.pl",     # Standard macros for PG language
-"PGcourse.pl",      # Customization file for the course
-"MathObjects.pl",
-# "source.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -48,8 +41,8 @@ Context("Complex");
 $m = random(0,2,1);
 $n = random(3,7,1);
 
-$Num = @primes[$n];
-$Den = @primes[$m];
+$Num = $primes[$n];
+$Den = $primes[$m];
 
 # calculate linear factors:
 
@@ -126,5 +119,5 @@ ANS($c->cmp);
 # are checked as an unordered List where each entry is checked mod 2pi*i.
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

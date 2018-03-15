@@ -6,11 +6,12 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Exponential Functions)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of exponents)
 ## Date(5/26/2005)
 ## Institution(UVA)
 ## Author(Jeff Holt)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -22,15 +23,16 @@
 ## Section2('1.5')
 ## Problem2('')
 ## KEYWORDS('calculus', 'functions','models')
+## MLT(Algebra_PropExp_PropExp)
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 
 $b = random(2,10,1);

@@ -8,17 +8,18 @@
 ## Tagged by ynw2d
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Functions)
-## DBsection(Derivatives and Integrals of Vector Functions)
+## DBchapter(Calculus of vector valued functions)
+## DBsection(Arc length and curvature)
 ## Author(Stewart)
+## Level(5)
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "Dartmouthmacros.pl",
-           "extraAnswerEvaluators.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Dartmouthmacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

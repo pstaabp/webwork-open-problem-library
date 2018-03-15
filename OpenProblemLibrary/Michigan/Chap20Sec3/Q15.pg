@@ -7,11 +7,14 @@
 ## Tagged by glr 08/16/10
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Curl and Divergence)
+## DBchapter(Vector calculus)
+## DBsection(Curl and divergence)
 ## Date(08/16/10)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(curl_div_1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('5')
@@ -20,7 +23,7 @@
 ## TitleText2('Calculus')
 ## AuthorText2('Hughes-Hallett')
 ## EditionText2('6')
-## Section2('20.')
+## Section2('20.Review')
 ## Problem2('10')
 ## KEYWORDS('curl', 'vector field', 'multivariable', 'calculus')
 
@@ -30,15 +33,12 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"parserPopUp.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -143,6 +143,6 @@ at the marked point.
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

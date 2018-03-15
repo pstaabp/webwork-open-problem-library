@@ -2,19 +2,21 @@
 ## First order ODEs: linear ODEs and the integrating factor
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','first order','integrating factor')
 
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection('Linear ODEs and the Integrating Factor')
-## Date('02/07/2012')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(First order differential equations)
+## DBsection(Integrating factor)
+## Date(02/07/2012)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
-## EditionText1('')
 ## AuthorText1('')
-## Section1('')
+## EditionText1('')
+## Section1('.')
 ## Problem1('')
+## KEYWORDS('differential equations','first order','integrating factor')
 
 
 ##############################
@@ -23,10 +25,11 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"parserAssignment.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "parserAssignment.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -63,6 +66,8 @@ $PAR
 \[
 t \ln(t) \frac{dr}{dt} + r = $k t e^t.
 \]
+$BR
+Enter your answer as \(r = \dots\) .
 $BR
 Use \( C \) to denote the arbitrary constant in your answer.
 $BR
@@ -103,6 +108,6 @@ ANS( $answer->cmp( checker => sub {
 
 
 
-COMMENT("MathObject version.");
+;
 
 ENDDOCUMENT();

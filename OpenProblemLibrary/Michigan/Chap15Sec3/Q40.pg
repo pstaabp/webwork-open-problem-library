@@ -2,26 +2,33 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 02/12/10
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Lagrange Multipliers)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Lagrange multipliers and constrained optimization)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(MinDistance)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('15.3')
-## Problem1('40')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('15.3')
 ## Section2('15.3')
+## Section3('15.3')
+## Problem1('40')
 ## Problem2('42')
+## Problem3('48')
 ## KEYWORDS('lagrange multipliers', 'maximum', 'minimum', 'absolute maximum', 'absolute minimum', 'calculus', 'differentiation', 'multivariable', 'functions')
 
 ## Textbook tags
@@ -30,13 +37,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -126,13 +130,19 @@ Find the minimum distance from the point \( ($x0,$y0,$z0) \)
 to the paraboloid given by the equation \( z=x^2+y^2 \).
 
 $PAR
-minimum distance = \{ ans_rule(35) \}
+Minimum distance = \{ ans_rule(35) \}
 $BR
-${BITALIC}(Also be sure that you can give a geometric
-justification for your answer.)$EITALIC
+$BR
+$BBOLD Note:$EBOLD 
+If you need to find
+roots of a polynomial of degree \(\geq 3\),
+you may want to use a calculator of computer to do so numerically.
+Also be sure that you can give a geometric
+justification for your answer.
 
 END_TEXT
 Context()->normalStrings;
+
 
 ANS($minDist->cmp() );
 
@@ -142,6 +152,8 @@ $b = 2*$z0 - 1;
 
 $y0d = $y0 == 1 ? '' : $y0;
 $y0sqd = $y0sq == 1 ? '' : $y0sq;
+
+COMMENT('Leads to a cubic polynomial equation which is to be solved numerically.');
 
 Context()->texStrings;
 SOLUTION(EV3(<<'END_SOLUTION'));
@@ -221,6 +233,4 @@ to the point.
 END_SOLUTION
 Context()->normalStrings;
 
-
-COMMENT('MathObject version');
 ENDDOCUMENT();

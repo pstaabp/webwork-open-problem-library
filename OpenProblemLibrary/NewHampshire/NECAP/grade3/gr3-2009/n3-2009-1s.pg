@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -43,7 +43,6 @@ $radio->qa("What fraction of the figure is colored blue? ", "\(\ \frac{2 }{3}\) 
 #FIRST PAREN IS QUESTION, SECOND PAREN IS CORRECT ANSWER
 $radio->extra(" \(\frac{1 }{2}\)", "\(\ \frac{2 }{1}\) ", "\(\ \ \frac{ 3}{2}\)  ");
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATOR THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR 
 Look at this figure. 
 $BR
 \{ image( insertGraph($graph), tex_size=>$TEXSIZE,
@@ -61,8 +60,10 @@ $PAR Solution $PAR
 There are three triangles in the figure.  Two of them are colored blue.$BR  So the answer is \(\frac{2 }{3}\). 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 3')
-## DBsection('2009')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Applications)
+## MLT(Shapes_and_Proportions)
+## Level(3)

@@ -5,9 +5,12 @@
 ## Tagged by tda2d
 
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Separable equations)
+## DBchapter(First order differential equations)
+## DBsection(Separable)
 ## Institution(Rochester)
+## MLT(Separable_Initial_Condition)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('1')
@@ -18,8 +21,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

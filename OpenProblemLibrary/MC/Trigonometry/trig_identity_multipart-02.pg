@@ -2,27 +2,28 @@
 ## Trigonometry: proving trig identities
 ## ENDDESCRIPTION
 
-## KEYWORDS('trigonometry', 'proving trig identities')
 
-## DBsubject('Trigonometry')
-## DBchapter('Analytic Trigonometry')
-## DBsection('Proving Identities')
-## Date('2011')
-## Author('John Travis')
-## Institution('Mississippi College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Trigonometry)
+## DBchapter(Analytic trigonometry)
+## DBsection(Using and proving basic identities)
+## Date(2011)
+## Institution(Mississippi College)
+## Author(John Travis)
+## MLT(KentMoreLike4)
+## MLTleader(1)
+## Level(3)
+## Static(1)
+## MO(1)
+## KEYWORDS('trigonometry', 'proving trig identities')
 
 ## Using a multipart template created by Paul Pearson
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -144,7 +145,7 @@ ANS( $ans_eval[3] );
 }  # end if
 
 
-COMMENT("MathObject version.  This is a multi-part problem 
+COMMENT("This is a multi-part problem 
 in which the next part is revealed only after the previous 
 part is correct.  Prevents students from entering trivial 
 identities (entering what they were given)");

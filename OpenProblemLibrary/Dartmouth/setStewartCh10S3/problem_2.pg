@@ -5,9 +5,11 @@
 ## Tagged by tda2d
 
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Separable equations)
+## DBchapter(First order differential equations)
+## DBsection(Separable)
 ## Institution(Dartmouth)
+## MLT(Separable_Initial_Condition)
+## Level(4)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -16,13 +18,13 @@
 ## KEYWORDS('separable' 'differential equation')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers
@@ -38,7 +40,6 @@ TEXT(beginproblem());
 
 
 BEGIN_TEXT
-$BR
 Consider the differential equation 
 \(\displaystyle \frac{dy}{dx} = \frac{$coeff + x}{xy^{$k}}\), where \(x > 0\).
 $BR 
@@ -46,9 +47,8 @@ Find the solution to the differential equation when \(y(1) = 2\) in the form
 $BR
     \(y^{\{$k+1\}} = \)\{ans_rule(60)\}
 
-$PAR
 END_TEXT
-ANS(fun_cmp("$coeff*($k+1)*log(x) + ($k + 1)*x + 2**($k + 1) - ($k + 1)",  limits => [[1,4]]) );
+ANS(fun_cmp("$coeff*($k+1)*ln(x) + ($k + 1)*x + 2**($k + 1) - ($k + 1)",  limits => [[1,4]]) );
 ENDDOCUMENT();
 
 

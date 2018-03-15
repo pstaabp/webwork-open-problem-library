@@ -1,25 +1,31 @@
 # DESCRIPTION
 # Problem from Calculus, single variable, Hughes-Hallett et al.,
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 10/01/09
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Integration)
-## DBsection(Applications to Physics and Engineering)
+## DBchapter(Applications of integration)
+## DBsection(Hydrostatic pressure)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## Level(5)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('8.5')
-## Problem1('27')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('8.5')
 ## Section2('8.5')
+## Section3('8.5')
+## Problem1('27')
 ## Problem2('33')
+## Problem3('33')
 ## KEYWORDS('calculus', 'integral', 'definite integrals', 'work', 'water pressure')
 
 ## Textbook tags
@@ -28,32 +34,15 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-# "PGgraphmacros.pl",
-"parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
 $showPartialCorrectAnswers = 1;
-
-# include javascript for pop-up explaining units
-HEADER_TEXT(<<EOF);
-<script language="javascript" type="text/javascript">
-<!-- //
-function unitspopup() {
-    var url = "/webwork2_files/units.html";
-    var opt = "height=625,width=600,location=no,menubar=no,status=no" +
-              "resizable=yes,scrollbars=yes,toolbar=no,";
-    window.open(url,'examdata_info',opt).focus();
-}
-// -->
-</script>
-EOF
 
 $dep = random(11000,13000,500);
 $dia = random(3,7,1);
@@ -87,7 +76,7 @@ $dia feet standing vertically with its center at the depth of the Titanic?
 $PAR
 \{ ans_rule(35) \}
 $BR
-(include \{ htmlLink("javascript:unitspopup()","units") \})
+(include \{ helpLink("units") \})
 
 END_TEXT
 Context()->normalStrings;

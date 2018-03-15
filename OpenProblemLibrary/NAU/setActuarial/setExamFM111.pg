@@ -1,21 +1,20 @@
 ##DESCRIPTION
-## DBsubject('Financial Mathematics')
-## DBchapter('Annuities')
-## DBsection('Annuities')
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Force of interest)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## Level(4)
 ## KEYWORDS('continuous payments')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

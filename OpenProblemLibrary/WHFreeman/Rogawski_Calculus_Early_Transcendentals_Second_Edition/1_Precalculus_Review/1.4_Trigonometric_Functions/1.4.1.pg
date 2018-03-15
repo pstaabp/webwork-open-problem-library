@@ -1,19 +1,27 @@
-## DBsubject('Trigonometry')
-## DBchapter('Trigonometric Functions of Angles')
-## DBsection('Angle Measure')
-## KEYWORDS('calculus', 'trigonometry', 'angles', 'radians')
+## DBsubject(Trigonometry)
+## DBchapter(Geometric and algebraic foundations for trigonometry)
+## DBsection(Reference angles (using coterminal angles))
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## MLT(KentMoreLike5)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('1.4')
 ## Problem1('1')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'trigonometry', 'angles', 'radians')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $num = random(9, 30);
 $mod = $num % 8;
@@ -21,7 +29,6 @@ $ans = ($mod * pi) / 4;
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "1.4","1") \}
 $PAR
 Find the angle between \( 0 \) and \( 2 \pi \) that is equivalent to \( \frac{$num \pi}{4} \).

@@ -9,12 +9,13 @@
 ## tcao , PAID on 11-24-2003
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Rates of change - natural and social sciences)
 ## Date(6/3/2002)
 ## Institution(Univeristy of Utah)
 ## Author(Utah ww group)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -34,12 +35,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",   							# Now we can use math objects!
-"PGcourse.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -80,7 +78,7 @@ ANS($dfx->cmp);
 ########################################
 
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -3,28 +3,28 @@
 #ENDDESCRIPTION
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Squeeze theorem)
 ## Date(6/3/2002)
 ## MLT(limits_squeeze_linear_and_quadratic)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
 ## Section1('2.3')
 ## Problem1('34')
 ## KEYWORDS('limits', 'sequences', 'squeeze theorem','Calculus')
-
+## MO(1)-TF-12/18/2014
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   "PGchoicemacros.pl",
-   #"source.pl",         # used to display problem source button
-   "PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -83,9 +83,11 @@ $ans_eval = new AnswerEvaluator();
 $ans_eval->install_evaluator( sub {
 	my $rh_ans = shift;
 	my $student_answer = $rh_ans->{student_ans};
+        $student_answer = lc($student_answer);
 	my $score = ( $student_answer =~ /squeeze/  or 
 	              $student_answer =~ /pinch/  or 
-	              $student_answer =~/sandwich/ );
+	              $student_answer =~ /police/  or 
+	              $student_answer =~ /sandwich/ );
     $rh_ans->{score} = $score;   # correct if one of these words is mentioned in the answer.
     $rh_ans->{correct_ans} = "The squeeze theorem";
     $rh_ans->{ans_message} = "The functions limit is squeezed between values that are easier to calculate.";
@@ -95,5 +97,5 @@ $ans_eval->install_evaluator( sub {
 
 ANS($ans_eval);
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

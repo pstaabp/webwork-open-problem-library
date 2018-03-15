@@ -4,10 +4,11 @@
 
 ## Tagged by tda2d
 
-## DBsubject(Numbers)
-## DBchapter(Complex numbers)
-## DBsection(Arithmetic)
+## DBsubject(Complex analysis)
+## DBchapter(Arithmetic)
+## DBsection(Modulus/norm)
 ## Institution(Dartmouth)
+## Level(2)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -16,13 +17,13 @@
 ## KEYWORDS('complex numbers', 'conjugate', 'modulus')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

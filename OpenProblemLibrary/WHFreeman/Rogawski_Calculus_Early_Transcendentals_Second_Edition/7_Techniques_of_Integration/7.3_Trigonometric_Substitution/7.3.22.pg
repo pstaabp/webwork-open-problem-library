@@ -1,20 +1,27 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Trigonometric Substitution')
-## KEYWORDS('calculus', 'integration', 'integral', 'trigonometric substitution', 'substitution', 'trigonometry', 'trigonometric', 'trig')
+## DBchapter(Techniques of integration)
+## DBsection(Trigonometric substitution)
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## MLT(Trig_sin)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('7.3')
 ## Problem1('22')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'integration', 'integral', 'trigonometric substitution', 'substitution', 'trigonometry', 'trigonometric', 'trig')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl","parserFormulaUpToConstant.pl");
-loadMacros("PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "parserFormulaUpToConstant.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 $context = Context();
 
 #$context->variables->add(C=>'Real');
@@ -22,6 +29,8 @@ $context = Context();
 #($a, $b, $ans) = @{ list_random([],
 #                                []
 #) };
+
+TEXT(beginproblem());
 
 $a = Real(random(2, 4, 1));
 $a2 = $a**2;
@@ -34,7 +43,6 @@ $ans = FormulaUpToConstant("-($a2/3) * (sqrt($a2 - x**2))**3 + (1/5) * (sqrt($a2
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "7.3","22") \}
 $PAR
 Evaluate the integral \( \int x^3 \sqrt{$a2 - x^2} \, dx \) using trigonometric substitution.

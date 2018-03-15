@@ -4,10 +4,13 @@
 # ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Exponential functions)
-## DBsection(Comparing Exponential and Linear Functions)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Exponential functions)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## MLT(fit2PointsOnGraph)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
@@ -17,15 +20,11 @@
 
 DOCUMENT();
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-#"PGchoicemacros.pl",
-"PGanswermacros.pl",
-#"PGauxiliaryFunctions.pl",
-"PGgraphmacros.pl",
-"PGcourse.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
+  "PGstandard.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
  
 TEXT(beginproblem());
@@ -120,5 +119,5 @@ $BR
 END_SOLUTION
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

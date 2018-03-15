@@ -5,9 +5,12 @@
 ## Tagged by tda2d
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Systems of Differential Equations)
+## DBchapter(Systems of differential equations)
+## DBsection(Verification of solutions)
 ## Institution(Rochester)
+## MLT(SDE-VS-match)
+## MLTleader(1)
+## Level(3)
 ## KEYWORDS('differential equation' 'first order' 'matrices')
 
 
@@ -18,14 +21,14 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "PGnumericalmacros.pl",
-           "PGmatrixmacros.pl"
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGmatrixmacros.pl",
+  "PGcourse.pl"
+);
 
 # TEXT( ... , ... , )
 # Is the simplest way of printing text, each string in the input is immediately printed.

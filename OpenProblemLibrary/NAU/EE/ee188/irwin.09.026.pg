@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Determine load impedance for maximum power transfer
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Steady-State Power Analysis')
-## DBsection('Maximum Average Power Transfer')
+## DBsubject(Electric circuits)
+## DBchapter(Steady-state power analysis)
+## DBsection(Maximum average power transfer)
 ## Institution('Northern Arizona University')
 ## Author('Elizabeth J. Brauer')
 ## TitleText1('Basic Engineering Circuit Analysis')
@@ -16,12 +16,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

@@ -1,8 +1,11 @@
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Integrals)
-## DBsection(Antiderivatives)
+## DBsection(Indefinite integrals (without trigonometric functions))
 ## Institution(W.H.Freeman)
 ## Author(Brian Kell)
+## MLT(indefinite_neg_exponent_single_term_not_logs)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,9 +14,14 @@
 ## KEYWORDS('calculus', 'antiderivatives', 'indefinite integrals')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $a = random(1,10,1);
 $var = list_random('s', 't', 'x', 'z');
@@ -24,7 +32,6 @@ $ans = Formula("-($a/(".($exp-1)."$var^".($exp-1)."))")->reduce;
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "4.9", "27") \}
 $PAR
 Evaluate the following indefinite integral.

@@ -1,20 +1,28 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Applications of Taylor Polynomials')
-## KEYWORDS('calculus', 'taylor series', 'taylor polynomials', 'partial sums')
+## DBchapter(Infinite sequences and series)
+## DBsection(Taylor polynomials)
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## MLT(ExponentialFunctions)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('8.4')
 ## Problem1('25')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'taylor series', 'taylor polynomials', 'partial sums')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+
+TEXT(beginproblem());
 $a = random(0, 10) * .1;
 $x = random(-15, 15) * .1;
 $f = Formula("e^x");
@@ -33,7 +41,6 @@ $red_b = abs($ans_a->eval(x=>$x) - $f->eval(x=>$x));
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "8.4","25") \}
 $PAR
 Compute \( T_2(x) \) at \( x = $a \) for \( y = $f \) and use a calculator to compute the error \( |$f - T_2(x)| \) at \( x = $x \).

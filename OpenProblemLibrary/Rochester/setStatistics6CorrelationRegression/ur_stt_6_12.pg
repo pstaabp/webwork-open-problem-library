@@ -2,31 +2,24 @@
 ##   Curve Fitting
 ## ENDDESCRIPTION
 
-## KEYWORDS('Correlation', 'Curve')
 ## Tagged by nhamblet
 
-## DBsubject('Statistics')
-## DBchapter('Estimation')
-## DBsection('Correlation and Regression')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Statistics)
+## DBchapter(Simple linear regression)
+## DBsection(Diagnostics)
+## Institution(Rochester)
+## Level(3)
+## KEYWORDS('Correlation', 'Curve')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -84,7 +77,7 @@ $mc2 ->extra($ans[$gen-1],$ans[$gen],$ans[$gen+2],$ans[$gen+3]);
 BEGIN_TEXT
 
 For each paired data set, construct a scatterplot and identify the mathematical model that
-best fits the given data. 
+best fits the given data. $BR
 
 \( \begin{array}{c|ccccccc}
 x &  1 & 2 & 3 & 4 & 5 & 6 & 7\cr

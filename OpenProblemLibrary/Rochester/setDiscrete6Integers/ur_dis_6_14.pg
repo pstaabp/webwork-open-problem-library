@@ -4,9 +4,9 @@
 
 ## Tagged by nhamblet
 
-## DBsubject(Numbers)
-## DBchapter(Integers)
-## DBsection(Other bases)
+## DBsubject(Arithmetic)
+## DBchapter(Other bases)
+## DBsection(Converting)
 ## Institution(Rochester)
 ## Level(2)
 ## TitleText1('Discrete Mathematics')
@@ -19,11 +19,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

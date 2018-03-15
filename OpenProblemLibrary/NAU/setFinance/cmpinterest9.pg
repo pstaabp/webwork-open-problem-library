@@ -7,18 +7,22 @@
 # Recommended trials: 
 # Recommended value:
 #
-## DBsubject(Financial Mathematics)
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Continuous interest)
+## Level(3)
+## MO(1)
 ## KEYWORDS('finance', 'bond')
 ##
 
 ##ENDDESCRIPTION       
 
 DOCUMENT();     
-loadMacros("PGstandard.pl",  
-           "PGauxiliaryFunctions.pl",
-	   "PGanswermacros.pl",
-           "MathObjects.pl",
-);     
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
+);
 
 
 TEXT(&beginproblem);

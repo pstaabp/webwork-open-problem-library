@@ -4,21 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextCurrency.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -43,8 +33,6 @@ $radio->qa("What is the total amount Jason pays, including sales tax, for the sp
 $radio->extra("$bad1 ", "$bad2 ", "$bad3  ");
 
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT A CALCULATOR.
-THIS IS A PROBLEM FOR WHICH A CALCULATOR WOULD NOT BE ALLOWED.$PAR
 Jason buys sports equipment worth $DOLLAR $b and pays 5% sales tax.$PAR
 \{$radio->print_q()\}
 \{$radio->print_a()\}
@@ -57,11 +45,13 @@ $PAR Solution $PAR
 The sales tax, 5% of $b is $s. $BR Adding this to the price of $b gives a total of $d. 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 8')
-## DBsection('2007')
+## DBsubject(Arithmetic)
+## DBchapter(Percents)
+## DBsection(Applications)
+## MLT(percent_ncp_multchoice)
+## Level(2)
 

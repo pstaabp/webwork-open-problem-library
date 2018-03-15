@@ -1,25 +1,25 @@
 ##DESCRIPTION
 ##ENDDESCRIPTION
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Exponential Growth and Decay)
+## DBchapter(First order differential equations)
+## DBsection(Applications - logistic)
 ## Institution(Univeristy of Utah)
 ## Author(Utah ww group)
+## Level(5)
+## Static(1)
 ## TitleText1('Calculus II')
 ## AuthorText1('Jerrold Marsden and Alan Weinstein')
 ## EditionText1('2')
-## Section1('Futher Techniques and Applications of Integration')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -28,8 +28,9 @@ TEXT(EV2(<<EOT));
 In many population growth problems,
 there is an upper limit beyond which the population cannot grow.  Many
 scientists agree that the earth will not support a population of more
-than 16 billion.  There were 2 billion people on earth in 1925 and 4
-billion in 1975.  If \( y \) is the population \( t \) years after
+than 16 billion.  There were 2 billion people on earth at the start of 1925
+and 4 billion at the beginning of 1975.  If \( y \) is the population,
+measured in billions, \( t \) years after
 1925, an appropriate model is the differential equation \[
 \frac{dy}{dt} = ky(16-y). \] Note that the growth rate
 approaches zero as the population approaches its maximum size.  When
@@ -156,7 +157,7 @@ $BBOLD  (c)$EBOLD   Set \(y \) = 9 and solve for \( t  \)
 \end{array}
 \]
 
-The population will be 9 billions some time in 2055.
+The population will be 9 billion some time in 2054.
 
 EOT
 

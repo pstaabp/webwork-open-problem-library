@@ -2,28 +2,22 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS('polar' 'curve')
 ## Tagged by tda2d
 
-## DBsubject(Calculus - single variable)
-## DBchapter('Parametric Equations and Polar Coordinates')
-## DBsection('Polar Coordinates')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Trigonometry)
+## DBchapter(Polar coordinates & vectors)
+## DBsection(Curves)
+## Institution(Rochester)
+## MLT(LineInPolar)
+## Level(3)
+## KEYWORDS('polar' 'curve')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-            "PGauxiliaryFunctions.pl"
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

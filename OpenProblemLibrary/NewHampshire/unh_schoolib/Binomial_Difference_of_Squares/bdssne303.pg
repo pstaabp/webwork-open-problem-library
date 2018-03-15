@@ -3,15 +3,10 @@
 #ENDDESCRIPTION
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "contextLeadingZero.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -46,9 +41,15 @@ $PAR Solution $PAR
 \(1009\times 991=(1000=909)(1000-9)=1000000-81=999919\).
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject(Middle school)
-## DBchapter(Binomial difference of squares)
+## DBsubject(Algebra)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Polynomials: multiply)
+## MLT(ExpandDiffSquares)
+## MLTleader(1)
+## Level(2)
+## Static(1)
+## MO(1)
 

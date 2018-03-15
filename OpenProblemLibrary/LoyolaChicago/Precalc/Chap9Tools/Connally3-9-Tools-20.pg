@@ -4,15 +4,20 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Polynomial and rational functions)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Rational expressions: add, subtract)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(2)
+## MLT(SharedFactor)
+## MLTleader(1)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
-## Section1('9 Tools')
-## Problem1('20')
+## Section1(9.Tools)
+## Problem1(20)
 ## KEYWORDS('polynomial functions','rational functions')
 
 
@@ -22,11 +27,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl", 
-"MathObjects.pl", 
-"PGunion.pl",
-"parserMultiAnswer.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGunion.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -131,7 +136,7 @@ install_problem_grader(~~&std_problem_grader);
 ANS($multians->cmp() );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 

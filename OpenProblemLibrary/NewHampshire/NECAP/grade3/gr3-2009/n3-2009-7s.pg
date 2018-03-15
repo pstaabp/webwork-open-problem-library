@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -760,11 +760,12 @@ The small hand is the hour hand.  It should point to about a quarter of the $BR
 way from 7 to 8. That means that the answer is clock W.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 3')
-## DBsection('2009')
+## DBsubject(Arithmetic)
+## DBchapter(Units)
+## DBsection(Interpretation)
+## Level(2)
 
 $grapha->moveTo(,);
 $grapha->lineTo( , ,'black');

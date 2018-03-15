@@ -3,15 +3,11 @@
 #ENDDESCRIPTION
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- #"MathObjects.pl",
-# "compoundProblem.pl",
-"contextCurrency.pl",
- #"unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "contextCurrency.pl",
+  "contextLeadingZero.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -43,20 +39,22 @@ $PAR
 Find the answer to the nearest cent when you perform each division.  Your
 answer should include a dollar sign and a decimal point.
 $PAR
-\($a1\vert\overline{ $a2}\)= \{ans_rule(5)\}
+\($a1 \; \begin{array}{|l} \hline $a2 \end{array}\) = \{ans_rule(5)\}
+
 $PAR
 \($b1 \div $b2 =\)  \{ans_rule(5)\}
 END_TEXT
-Context()->texStrings;
+Context()->normalStrings;
 ANS(str_cmp($ans1));
 ANS(str_cmp($ans2));
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject(Middle school)
-## DBchapter('Multiplication_Division')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Decimals)
+## DBsection(Division)
+## Level(2)
 
 
 

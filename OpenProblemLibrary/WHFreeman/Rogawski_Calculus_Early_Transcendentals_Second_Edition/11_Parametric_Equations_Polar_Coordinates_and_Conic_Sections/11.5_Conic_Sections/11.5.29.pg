@@ -1,21 +1,29 @@
 ## DBsubject(Algebra)
-## DBchapter(Conic Sections)
+## DBchapter(Conic sections)
+## DBsection(Ellipses)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(Ellipses_MLT1)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('11.5')
 ## Problem1('29')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl","PGchoicemacros.pl","PGauxiliaryFunctions.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 $a=random(2,9);
 $a_2=$a**2;
 $a_4=$a**4;
@@ -43,7 +51,6 @@ $checkbox_mc5 -> extra("\((1,1)\)","\(($a,$a)\)","\(($a,$a_2)\)","\((-$a,-$a)\)"
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "11.5","29") \}
 $PAR
 Find the vertices, foci, axes, center (if an ellipse or a hyperbola) and

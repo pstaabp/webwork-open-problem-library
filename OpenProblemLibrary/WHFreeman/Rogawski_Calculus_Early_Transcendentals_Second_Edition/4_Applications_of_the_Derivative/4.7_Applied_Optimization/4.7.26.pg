@@ -1,9 +1,10 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Optimization - general)
 ## Institution(W.H.Freeman)
 ## Author(Ned W. Hummel)
 ## Level(5)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -13,12 +14,15 @@
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
-loadMacros("Parser.pl");
 
 # This is our macro file that provides the textbook_ref_exact() and
-loadMacros("freemanMacros.pl");
 
 # loadMacros("PGauxiliaryFunctions.pl");
 # loadMacros("PGgraphmacros.pl");
@@ -30,6 +34,8 @@ loadMacros("freemanMacros.pl");
 ### ans
 # area 1/2
 
+TEXT(beginproblem());
+
 $alpha = random(1,10,1);
 $area = Compute("1/(2*$alpha)");
 
@@ -37,7 +43,6 @@ $area = Compute("1/(2*$alpha)");
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "4.7","26") \}
 $PAR
 Find the maximum area of a triangle formed in the first quadrant by the \(x\)-axis, \(y\)-axis and a tangent line to the graph of \(f=(x + $alpha)^{-2}\).

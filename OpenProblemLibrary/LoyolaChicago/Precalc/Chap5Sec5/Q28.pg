@@ -4,39 +4,39 @@
 # ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Transformations of functions and their graphs)
-## DBsection(The Family of Quadratic Functions)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Graphs)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('5.5')
-## Problem1('42')
 ## TitleText2('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## Section1(5.5)
 ## Section2('6.1')
+## Problem1(28)
 ## Problem2('42')
 ## KEYWORDS('quadratic','vertex','axis of symmetry','zeros')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "extraAnswerEvaluators.pl",
-           "PGauxiliaryFunctions.pl",
-           "parserPopUp.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"unionTables.pl",
-"PGcourse.pl",
-"contextLimitedPolynomial.pl",
-"parserVectorUtils.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "extraAnswerEvaluators.pl",
+  "parserPopUp.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "unionTables.pl",
+  "contextLimitedPolynomial.pl",
+  "parserVectorUtils.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -235,5 +235,5 @@ Thus the coordinates of the point Q are (0, $q).  Notice this is also the value 
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

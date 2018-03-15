@@ -11,6 +11,7 @@
 ## Author(Arnie Pizer)
 ## MLT(usolelim)
 ## MLTleader(1)
+## Level(2)
 ## TitleText1('Elementary Linear Algebra')
 ## AuthorText1('Larson, Edwards, Falvo')
 ## EditionText1('5')
@@ -27,11 +28,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

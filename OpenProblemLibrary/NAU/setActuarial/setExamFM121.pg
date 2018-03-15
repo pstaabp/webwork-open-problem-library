@@ -1,21 +1,20 @@
 ##DESCRIPTION
-## DBsubject('Financial Mathematics')
-## DBchapter('Annuities')
-## DBsection('Loans')
+## DBsubject(Financial mathematics)
+## DBchapter(Annuities)
+## DBsection(Loans)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## Level(5)
 ## KEYWORDS('unknown interest rate', 'present value')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 

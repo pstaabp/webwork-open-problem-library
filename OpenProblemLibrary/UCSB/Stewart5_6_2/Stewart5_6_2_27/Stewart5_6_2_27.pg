@@ -1,23 +1,23 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Applications of Integration')
-## DBsection('Volumes')
-## KEYWORDS('integration', 'volumes')
+## DBchapter(Applications of integration)
+## DBsection(Volumes by washers)
+## Institution(UCSB)
+## MLT(likeThis1)
+## Level(4)
+## Static(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('5')
 ## AuthorText1('Stewart')
+## EditionText1('5')
 ## Section1('6.2')
 ## Problem1('27')
-## Author('')
-## Institution('UCSB')
+## KEYWORDS('integration', 'volumes')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

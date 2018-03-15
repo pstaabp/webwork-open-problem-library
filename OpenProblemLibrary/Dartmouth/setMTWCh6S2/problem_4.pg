@@ -5,9 +5,10 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Parametric Surfaces and Their Areas)
+## DBchapter(Concepts for multivariable functions)
+## DBsection(Surfaces in other coordinate systems)
 ## Institution(Dartmouth)
+## Level(3)
 ## TitleText1('Basic Multivariable Calculus')
 ## AuthorText1('Marsden, Tromba, Weinstein')
 ## EditionText1('3')
@@ -16,13 +17,13 @@
 ## KEYWORDS('parametrize' 'surface' 'level')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

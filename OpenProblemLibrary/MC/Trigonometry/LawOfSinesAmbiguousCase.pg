@@ -4,21 +4,23 @@
 ## ENDDESCRIPTION
 
 ## DBsubject(Trigonometry)
-## DBchapter(Trigonometric Functions of Angles)
-## DBsection(The Law of Sines)
+## DBchapter(Triangle trigonometry)
+## DBsection(Law of sines or law of cosines (side-side-angle))
 ## Institution(Mississippi College)
 ## Author(John Travis)
+## MLT(LawSinCos2)
+## Level(3)
 ## KEYWORDS('Trig', 'Law of Sines','Ambiguous case')
 
 DOCUMENT();
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "unorderedAnswer.pl",   # So that the two triangles can be listed in either order
-  "alignedChoice.pl",      # for aligned answer blanks
-  "PGcourse.pl",           # Customization file for the course
+  "unorderedAnswer.pl",
+  "alignedChoice.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -140,5 +142,5 @@ $PAR
 Finally, the Law of Sines again for each of the choices for \(C\) gives the two choices for \(c\).
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

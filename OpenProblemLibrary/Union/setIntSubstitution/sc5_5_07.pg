@@ -5,20 +5,23 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('Substitution')
-## Date('10/19/07')
-## Institution('Union')
-## Author('K. Lesh')
+## DBchapter(Techniques of integration)
+## DBsection(Substitution (without trigonometric functions))
+## Date(10/19/07)
+## Institution(Union)
+## Author(K. Lesh)
+## MLT(Sub_direct)
+## Level(2)
+## MO(1)
 ## KEYWORDS('Indefinite', 'Integral', 'Substitution')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -57,5 +60,5 @@ ANS($antideriv->cmp(upToConstant=>1));
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

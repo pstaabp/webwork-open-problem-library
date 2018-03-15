@@ -4,23 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-"contextScientificNotation.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextScientificNotation.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -41,11 +29,15 @@ Context()->texStrings;
 BEGIN_TEXT
 Choose the greater number in each pair. 
  Put a 1 in the answer box if the
-first is greater,$BR
- a 2 if the second is greater. $PAR
-a)  1)\(\ $a\) _____      2) \(\ $b\) __   \{ans_rule(1)\} is greater.$PAR
+first is greater,
+ a 2 if the second is greater. 
+ 
+$PAR
+a)  1)\(\ $a\) $SPACE$SPACE$SPACE$SPACE  2) \(\ $b\) $SPACE$SPACE$SPACE$SPACE      \{ans_rule(1)\} is greater.
+$PAR
 
-b)  1) \(\ $c\) _____      2) \(\ $d\) __   \{ans_rule(1)\} is greater.$PAR
+b)  1) \(\ $c\) $SPACE$SPACE$SPACE$SPACE   2) \(\ $d\) $SPACE$SPACE$SPACE$SPACE    \{ans_rule(1)\} is greater.
+$PAR
 END_TEXT
 Context()->normalStrings;
 Context("Numeric");
@@ -56,37 +48,15 @@ ANS(Real(1)->cmp);
 Context()->texStrings;
 BEGIN_SOLUTION
 $PAR Solution $PAR
-a)  To change \($b\) to decimal form just move the decimal point of $a1 three places
+a)  To change \($b\) to decimal form just move the decimal point of \($a1\) three places
 leftward to get \($b1\).$PAR
 b)  To change \($c \) to decimal form we must move the decimal point four places leftward to get \($c5\).  
 END_SOLUTION
 
-COMMENT('MathObject version');
+
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('ScientificNotation')
-## DBsection('')
-
-
-ANS(ScientificNotation($a->value)->cmp);
-\{Panic::Button(label => " Ask for a Hint", penalty => .00)\}
-END_TEXT
-if ($panicked) {
-BEGIN_TEXT
-   Hint: 
-
-END_TEXT
-};
-BEGIN_TEXT
-$PAR
-
-	ANS(Real( )->cmp->withPostFilter(AnswerHints(
-		"" => " ",
-		sub {
-			my ($correct,$student,$ans) = @_;
-			return $correct . $student == 0;
-		}
-	
-	)));
-
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Scientific notation)
+## MO(1)
 

@@ -6,8 +6,9 @@
 
 ## DBsubject(Linear algebra)
 ## DBchapter(Eigenvalues and eigenvectors)
-## DBsection('Properties')
-## Institution('TCNJ')
+## DBsection(Properties)
+## Institution(TCNJ)
+## Level(4)
 ## TitleText1('Linear Algebra with Applications')
 ## AuthorText1('Jeffrey Holt')
 ## EditionText1('1')
@@ -16,13 +17,13 @@
 ## KEYWORDS('determinant' 'characteristic polynomial' 'eigenvalues')
 
 DOCUMENT();        # This should be the first executable line in the problem. 
-loadMacros( 
-        "PGbasicmacros.pl", 
-        "PGchoicemacros.pl", 
-        "PGanswermacros.pl", 
-        "PGgraphmacros.pl", 
-        "PGmatrixmacros.pl" 
-        ); 
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGmatrixmacros.pl",
+  "PGcourse.pl"
+);
 TEXT(beginproblem());       
 # Do not show which answers are incorrect. 
 $showPartialCorrectAnswers = 1;

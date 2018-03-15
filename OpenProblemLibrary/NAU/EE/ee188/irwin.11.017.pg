@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Solve an ac three-phase circuit with wye-connected source and wye-connected load
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Polyphase Circuits')
-## DBsection('Source/Load Connections')
+## DBsubject(Electric circuits)
+## DBchapter(Polyphase circuits)
+## DBsection(Source/load connections)
 ## Institution('Northern Arizona University')
 ## Author('Elizabeth J. Brauer')
 ## TitleText1('Basic Engineering Circuit Analysis')
@@ -16,12 +16,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

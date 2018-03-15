@@ -1,12 +1,12 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-"contextFraction.pl",
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("LimitedFraction");
@@ -86,7 +86,8 @@ $graph = init_graph(0,0, 7,3, size=>[700,300]);
 TEXT(beginproblem());
 
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NEAP EXAMINATION, DO THIS WITHOUT A CALCULATOR $BR THIS IS A PROBLEM FROM FOR WHICH A CALCULATOR WOULD NOT BE ALLOWED.$PAR
+
+
 Look at the shapes in this chart.
 $PAR
 $BCENTER
@@ -113,11 +114,14 @@ c)  If R represents \(\frac{1}{6}\) then each small triangle in R represents \(\
 END_SOLUTION
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 6')
-## DBsection('2008')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Applications)
+## MLT(Shapes_and_Proportions)
+## Level(4)
+## MO(1)
 

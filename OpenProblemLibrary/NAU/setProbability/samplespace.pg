@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Probability')
-## DBchapter('Discrete Probability')
-## DBsection('Events/Probability Calculation')
+## DBsubject(Probability)
+## DBchapter(Sample Space)
+## DBsection(Probability: direct computation, inclusion/exclusion)
+## Institution(NAU)
+## Author(N. Spencer Sitton)
+## Level(3)
 ## KEYWORDS('probability')
-## Author('N. Spencer Sitton')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 06/04/05
@@ -14,12 +15,10 @@
 DOCUMENT();      
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl", 
-"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

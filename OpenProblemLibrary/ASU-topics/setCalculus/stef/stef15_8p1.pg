@@ -5,9 +5,10 @@
 ## Tagged by cmd6a 3/12/06
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Triple Integrals in Cylindrical and Spherical Coordinates)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Triple integrals in cylindrical and spherical)
 ## Institution(ASU)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -21,13 +22,13 @@
 ## KEYWORDS('calculus','iterated integral','volume','spherical')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

@@ -4,21 +4,20 @@
 
 ## Tagged by cmd6a 5/9/06
 
-## DBsubject('Trigonometry')
-## DBchapter('Trigonometric Functions of Real Numbers')
-## DBsection('The Unit Circle')
-## Institution('ASU')
+## DBsubject(Trigonometry)
+## DBchapter(Trigonometric functions)
+## DBsection(Unit circle)
+## Institution(ASU)
+## Level(2)
 ## KEYWORDS('trigonometry','unit circle','precalculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -33,7 +32,7 @@ $a = round(1000*($a/$d))/1000;
 $b = round(1000*($b/$d))/1000;
 
 TEXT(EV2(<<EOT));
-If \( P(t)\) has coordinates ($a,$b), find the coordinates of
+If \( P(t) = (\cos t, \sin t) \) has coordinates ($a,$b), find the coordinates of
 $PAR
 a.   \( P(t+ \pi) \)    
 $BR

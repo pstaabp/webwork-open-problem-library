@@ -2,31 +2,36 @@
 # Problem from Calculus, single variable, Hughes-Hallett et al., 4th ed.
 # WeBWorK problem written by Douglas Quinney, <d.a.quinney@maths.keele.ac.uk>
 # revised by Gavin LaRose, <glarose@umich.edu> 11/2008
-# ENDDESCRIPTION
 
 ## Tagged by glr 11/19/08
 
 ## Author('Gavin LaRose');
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Applications - tangent lines and slopes)
 ## Institution(University of Michigan)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('4')
-## Section1('2.1')
-## Problem1('7')
 ## TitleText2('Calculus')
-## AuthorText2('Hughes-Hallett')
-## EditionText2('5')
-## Section2('2.1')
-## Problem2('11')
 ## TitleText3('Calculus')
+## TitleText4('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
 ## AuthorText3('Hughes-Hallett')
+## AuthorText4('Hughes-Hallett')
+## EditionText1('4')
+## EditionText2('5')
 ## EditionText3('6')
+## EditionText4('7')
+## Section1('2.1')
+## Section2('2.1')
 ## Section3('2.1')
+## Section4('2.1')
+## Problem1('7')
+## Problem2('11')
 ## Problem3('14')
+## Problem4('15')
 ## KEYWORDS('calculus','derivative','rate of change','velocity','average velocity','instantaneous velocity')
 
 ## Textbook tags
@@ -38,12 +43,10 @@ DOCUMENT();
 
 # Load whatever macros you need for the problem
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -75,7 +78,7 @@ BEGIN_TEXT
 Estimate the following limit by substituting smaller and smaller values of
 \(h\).
 
-$PAR
+$BR
 
 \(\lim\limits_{h \rightarrow 0} \frac{($a+h)^3- $b  }{h} = \)
 \{ans_rule(8)\}
@@ -89,7 +92,7 @@ ANS(Compute($solution)->with(tolType=>'absolute', tolerance=>'.001')->cmp());
 
 Context()->texStrings;
 SOLUTION(EV3(<<'END_SOLUTION'));
-$PAR SOLUTION $PAR
+$BR SOLUTION $BR
 
 We try successively smaller values of \(h\):
 $BR
@@ -103,13 +106,12 @@ $BR
 $BR
 \(\frac{($a+0.00001)^3-$b}{0.00001}=$L5\)
 
-$PAR
+$BR
 These values suggest that the limit is $solution.
 
 END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
 ENDDOCUMENT();
 

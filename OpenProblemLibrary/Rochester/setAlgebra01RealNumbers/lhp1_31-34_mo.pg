@@ -9,9 +9,14 @@
 ## Modified('6/9/2008')
 ##ENDDESCRIPTION
 
-## DBsubject(Numbers)
-## DBchapter(Real numbers)
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Inequalities and intervals)
 ## Institution(Rochester)
+## MLT(InequalInterval)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## KEYWORDS('algebra, interval notation')
 
 DOCUMENT();
@@ -21,7 +26,7 @@ loadMacros(
   "extraAnswerEvaluators.pl",
   "MathObjects.pl",
   "contextInequalities.pl",
-  "PGcourse.pl" # Contains customization settings for the course, this should always be last
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -81,7 +86,7 @@ ANS($interval[2]->cmp );
 ANS($interval[3]->cmp );
 
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

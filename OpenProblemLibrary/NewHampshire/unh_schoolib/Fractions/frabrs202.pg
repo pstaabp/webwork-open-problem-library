@@ -4,22 +4,12 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "problemPanic.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -52,7 +42,7 @@ $radio=new_multiple_choice();
 $radio->qa("The three problems above all satisfy a rule. 
  It is ", "\(\frac{1}{a}-\frac{1}{a+1}= \frac{1}{a(a+1)}\) ");
 $radio->extra(" \(\frac{1}{a}-\frac{1}{a+1}=\frac{1}{2a+1} \)", 
-"\(\frac{1}{a}-\frac{1}{a+1}=\frac{a}{2a+1)}\)",
+"\(\frac{1}{a}-\frac{1}{a+1}=\frac{a}{2a+1}\)",
 "\(\frac{1}{a}-\frac{1}{a+1}=\frac{2a+1}{a (a+1)}\)");
  BEGIN_TEXT
 \{$radio->print_q()\}
@@ -74,12 +64,16 @@ $PAR Solution $PAR
 END_SOLUTION
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject(Middle school)
-## DBchapter('Fractions')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Addition/subtraction)
+## MLT(subtract_fractions_rule)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 
 
 

@@ -6,11 +6,14 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
-## DBsection(One-sided limits - concept of)
+## DBchapter(Limits and continuity)
+## DBsection(Rules of limits - basic)
 ## Date(6/3/2002)
 ## Institution(ASU)
-## Level(3)
+## MLT(lotsalimrulesleftrightcont)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5e')
@@ -25,12 +28,13 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
+);
 
 $showPartialCorrectAnswers=1;
 # define a broken graph f and a broken graph g:

@@ -4,10 +4,14 @@
 # ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Polynomial and rational functions)
-## DBsection(Power Functions)
+## DBchapter(Variation and power functions)
+## DBsection(Power functions)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## MLT(powerFnThroughTwoPoints)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
@@ -17,21 +21,12 @@
 
 DOCUMENT();
 
-loadMacros("PG.pl", 
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-#           "PGstandard.pl",
-#           "extraAnswerEvaluators.pl", 
-           "PGauxiliaryFunctions.pl", 
-#           "PGgraphmacros.pl", 
-           "MathObjects.pl", 
-#           "PGchoicemacros.pl" 
-          # "parserNumberWithUnits.pl",
-          # "parserFormulaWithUnits.pl", 
-          # "parserFormulaUpToConstant.pl",
-           "PGcourse.pl",
-"AnswerFormatHelp.pl",
-          );
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -86,5 +81,5 @@ $BR
 END_SOLUTION
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

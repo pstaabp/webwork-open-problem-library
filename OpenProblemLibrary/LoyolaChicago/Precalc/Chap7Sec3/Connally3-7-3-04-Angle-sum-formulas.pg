@@ -1,24 +1,31 @@
 ## DESCRIPTION
 ## Trigonometric Identities
-## ENDDESCRIPTION
 
 
 ## DBsubject(Trigonometry)
-## DBchapter(Trigonometry)
-## DBsection(Sum and Difference Formulas for Sine and Cosine)
+## DBchapter(Analytic trigonometry)
+## DBsection(Product-to-sum & sum-to-product formulas)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(KentMoreLike1)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('7.3')
-## Problem1('4')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1('7.3')
 ## Section2('9.2')
+## Section3('9.4')
+## Problem1('4')
 ## Problem2('4')
+## Problem3('4')
 ## KEYWORDS('trig')
 
 
@@ -28,12 +35,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGauxiliaryFunctions.pl",
-"PGcourse.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"answerHints.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -127,5 +133,5 @@ COMMENT("Prevents students from entering trivial identities (entering what they 
 #COMMENT("Redefines 'sin(x)' internally as 'exp(x/pi)'.");
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

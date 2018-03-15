@@ -1,18 +1,11 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
-#"answerHints.pl",
-
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextCurrency.pl",
+  "contextLeadingZero.pl",
+  "PGcourse.pl"
 );
 Context("Numeric");
 # set up for a multiple choice problem.
@@ -48,12 +41,14 @@ $PAR
 END_SOLUTION
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject(Middle school)
-## DBchapter('Inequalities')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear inequalities)
+## MLT(simplify)
+## Level(2)
 
  
   

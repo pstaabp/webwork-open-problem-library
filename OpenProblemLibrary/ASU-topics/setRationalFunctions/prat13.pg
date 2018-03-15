@@ -5,7 +5,7 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Optimization - general)
 ## Institution(ASU)
 ## MLT(Optimization_CylindricalCans)
@@ -17,13 +17,11 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl",
-"extraAnswerEvaluators.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -1,21 +1,22 @@
 ##DESCRIPTION
-## DBsubject('Financial Mathematics')
-## DBchapter('Annuities')
-## DBsection('Geometric Sums')
+## DBsubject(Financial mathematics)
+## DBchapter(Annuities)
+## DBsection(Income streams)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## MLT(Income_Streams_Geometric_Increase)
+## MLTleader(1)
+## Level(4)
 ## KEYWORDS('present value')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 DOCUMENT();  
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 

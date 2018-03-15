@@ -6,20 +6,20 @@
 ##Tagged by ynw2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Rules of limits - basic)
 ## MLT(lotsalimrules)
 ## Level(2)
+## MO(1)
 ## KEYWORDS('Calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   "PGchoicemacros.pl",
-   #"source.pl",         # used to display problem source button
-   "PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -100,8 +100,8 @@ Context()->normalStrings;
 ANS(@{ $selectList->ra_correct_ans }); # ra_... is a reference to an array
 
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 

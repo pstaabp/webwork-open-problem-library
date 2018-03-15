@@ -4,11 +4,15 @@
 
 
 ## DBsubject(Trigonometry)
-## DBchapter(Analytic Trigonometry)
-## DBsection(Proving Identities)
+## DBchapter(Analytic trigonometry)
+## DBsection(Using and proving basic identities)
 ## Date(9/11/2012)
 ## Institution(Mississippi College)
 ## Author(John Travis)
+## MLT(KentMoreLike6)
+## Level(3)
+## Static(1)
+## MO(1)
 ## KEYWORDS('trigonometry', 'identity','simplify')
 
 ########################################################################
@@ -16,8 +20,9 @@
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",    
-   "MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 # Print problem number and point value (weight) for the problem

@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Apply both mesh and nodal analysis to a dc circuit
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Nodal and Loop Analysis Techniques')
-## DBsection('Loop Analysis')
+## DBsubject(Electric circuits)
+## DBchapter(Nodal and loop analysis techniques)
+## DBsection(Loop analysis)
 ## KEYWORDS('dc','mesh analysis','loop analysis','nodal analysis','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

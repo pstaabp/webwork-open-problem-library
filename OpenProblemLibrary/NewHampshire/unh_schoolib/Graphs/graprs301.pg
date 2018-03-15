@@ -4,21 +4,15 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"PGgraphmacros.pl",
-"MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-"unionTables.pl",
-# "unionLists.pl",
-"unionMacros.pl",
-#"contextLeadingZero.pl",
-"contextFraction.pl",
-#"answerHints.pl",
-"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "unionTables.pl",
+  "unionMacros.pl",
+  "contextFraction.pl",
+  "problemPanic.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -125,11 +119,13 @@ END_TEXT
 	ANS(Real($ans4)->cmp);
  ANS(radio_cmp($radio->correct_ans()));
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Graphs')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Graphs of equations)
+## Level(2)
+## MO(1)
 
 
 

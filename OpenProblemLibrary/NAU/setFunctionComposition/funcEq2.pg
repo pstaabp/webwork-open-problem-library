@@ -2,17 +2,22 @@
 # ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Compositions, inverses, and combinations of functions)
-## DBsection(Composition Of Functions)
+## DBchapter(Functions)
+## DBsection(Compositions and combinations of functions)
+## Institution(NAU)
+## Author(Nandor Sieben)
+## MLT(ccf-solve-for-function)
+## MLTleader(1)
+## Level(4)
+## MO(1)
 ## KEYWORDS('function equation')
-## Author('Nandor Sieben')
-## Institution('NAU')
 ## date 9/26/2013
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 COMMENT('This is a bit tricky.');
@@ -23,7 +28,7 @@ Context("Numeric");
 $a = random(2,7,1);
 $b = random(2,7,1);
 }
-$answer = Compute("($b*x+$a*$b/x)/(1-$a*$a)");
+$answer = Compute("$b*x/(1-$a)");
 
 TEXT(beginproblem());
 

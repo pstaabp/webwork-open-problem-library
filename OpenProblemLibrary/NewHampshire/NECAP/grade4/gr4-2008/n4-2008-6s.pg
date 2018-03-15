@@ -1,23 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -82,8 +70,7 @@ $radio->qa("What is the length of the blue block in centimeters? ", "5 centimete
 #FIRST PAREN IS QUESTION, SECOND PAREN IS CORRECT ANSWER
 $radio->extra("4 centimeters ", "6 centimeters", " 7 centimeters    ");
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATO
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR 
+ 
  Look at the blue block.
 
 $BR
@@ -101,8 +88,9 @@ $PAR Solution $PAR
 On the ruler the beginning point of the block is at 2 centimeters and the end point$BR is at 7 centimeters.  Thus the length is \(7-2=5\) centimeters.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 4')
-## DBsection('2008')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Addition/subtraction)
+## Level(2)

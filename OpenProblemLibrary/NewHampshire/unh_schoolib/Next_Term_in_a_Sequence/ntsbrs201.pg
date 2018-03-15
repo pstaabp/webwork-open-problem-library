@@ -4,18 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-"problemPanic.pl",
-
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "problemPanic.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;
@@ -80,12 +73,14 @@ $PAR
 For $c1, $c2, $c3, $c4, $c5  the difference between successive terms is $d3. So the next term is \($c5+$d3=$ans3\).   
 END_SOLUTION	
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject(Middle school)
-## DBchapter('Next_Term_in_a_Sequence')
-## DBsection('')
+## DBsubject(Set theory and logic)
+## DBchapter(Pattern matching)
+## DBsection(Numeric)
+## Level(4)
+## MO(1)
 
 
 

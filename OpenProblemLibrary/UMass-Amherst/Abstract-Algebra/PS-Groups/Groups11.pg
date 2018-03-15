@@ -1,28 +1,22 @@
-## DBsubject('Abstract Algebra')
-## DBchapter('Groups')
-## DBsection('Group axioms')
-## KEYWORDS('group tables, commutativity')
+## DBsubject(Abstract algebra)
+## DBchapter(Groups)
+## DBsection(Group axioms)
+## Institution(University of Massachusetts Amherst)
+## Author(Siman Wong and Dan Nichols)
 ## Level(3)
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Siman Wong and Dan Nichols')
-## Institution('University of Massachusetts Amherst')
+## MO(1)
+## KEYWORDS('group tables, commutativity')
 
 
 
 DOCUMENT();        
 
 loadMacros(
-"PG.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"unionTables.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 $bHTML = $eHTML = '';

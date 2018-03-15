@@ -5,19 +5,21 @@
 ## Tagged by cmd6a 3/12/06
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Vector Fields)
+## DBchapter(Vector fields)
+## DBsection(Graphs, flows lines, and level surfaces)
 ## Institution(ASU)
+## MLT(consider)
+## Level(3)
 ## KEYWORDS('calculus','vector field','flow line')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

@@ -4,18 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-"unionMacros.pl",
-#"contextLeadingZero.pl",
-
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "unionMacros.pl",
+  "PGcourse.pl"
 );
 #for currency use context("Currency") then currency($A);
 
@@ -45,8 +38,10 @@ third number, the answer is $c4.
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Miscellaneous_Contest_Problems')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Level(3)
+## MO(1)

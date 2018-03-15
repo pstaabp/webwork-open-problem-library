@@ -1,9 +1,11 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Continuity - concept of)
 ## Institution(UCSB)
 ## MLT(cc-h)
 ## Level(4)
+## Static(1)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -14,12 +16,10 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);
@@ -31,9 +31,6 @@ $c=random(1,10,1)*random(-1,1,2);
 Context("Numeric");
 
 BEGIN_TEXT
-
-$PAR
-
 Find the numbers at which \(f\) is discontinuous. $PAR
 
 \[ f(x) = \begin{cases}

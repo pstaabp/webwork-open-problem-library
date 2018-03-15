@@ -3,17 +3,11 @@
 #ENDDESCRIPTION
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
- #"unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZeros.pl",
-"answerHints.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 
 
@@ -68,7 +62,10 @@ to the right than the other.
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter(Addition and subtraction)
+## DBsubject(Arithmetic)
+## DBchapter(Decimals)
+## DBsection(Addition/subtraction)
+## Level(2)
+## MO(1)

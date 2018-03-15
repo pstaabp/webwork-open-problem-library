@@ -2,29 +2,23 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS('algebra','inequalities')
 ## Tagged by YL
 
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Nonlinear Inequalities')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Rational equations and functions)
+## DBsection(Rational inequalities)
+## Institution(ASU)
+## Level(3)
+## KEYWORDS('algebra','inequalities')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-		"extraAnswerEvaluators.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
+);
 
 $a = random(2,8,1);
 $b = random(1,9,1);

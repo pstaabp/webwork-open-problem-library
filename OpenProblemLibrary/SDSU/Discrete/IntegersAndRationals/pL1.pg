@@ -10,6 +10,8 @@
 ## Institution(SDSU)
 ## Author(Amy Arita','Michael E. O'Sullivan','Tom Schmidt)
 ## Level(3)
+## Static(1)
+## MO(1)
 ## KEYWORDS('logic', 'predicate')
 
 
@@ -18,13 +20,13 @@
 
 DOCUMENT();        
 
-loadMacros("PGstandard.pl",
-		   "MathObjects.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-          );
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
  
 TEXT(beginproblem());
 

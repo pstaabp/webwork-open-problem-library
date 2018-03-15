@@ -8,8 +8,10 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Indeterminate forms and L'Hopital's rule)
+## MLT(DiffWithSqrt_LHopital_2015)
+## MLTleader(1)
 ## Date(4/17/2000)
 ## Institution(Rochester)
 ## Level(3)
@@ -33,11 +35,9 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 $showPartialCorrectAnswers = 1;

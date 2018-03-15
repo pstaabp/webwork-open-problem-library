@@ -2,26 +2,25 @@
 ##  Statistics: Descriptive statistics
 ## ENDDESCRIPTION
 
-## KEYWORDS('statistics', 'descriptive statistics', 'spread')
 ## Tagged by CTD
 
-## DBsubject('Statistics')
-## DBchapter('What is Statistics?')
-## DBsection('Characterizing a Set of Measurements: Numerical Methods')
-## Date('8/15/12')
-## Author('C. Tyler Diggans')
-## Institution('NAU')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summary statistics)
+## Date(8/15/12)
+## Institution(NAU)
+## Author(C. Tyler Diggans)
+## Level(2)
+## KEYWORDS('statistics', 'descriptive statistics', 'spread')
 
 DOCUMENT();    
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

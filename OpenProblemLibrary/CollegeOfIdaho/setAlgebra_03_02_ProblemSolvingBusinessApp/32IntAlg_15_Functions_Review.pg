@@ -4,10 +4,13 @@
 ##ENDDESCRIPTION
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Graphs of Functions)
+## DBsection(Definition, concept)
 ## Institution(The College of Idaho)
 ## Author(RA Cruz)
+## MLT(notlike2)
+## MLTleader(1)
 ## Level(2)
+## MO(1)
 ## TitleText1('Essentials of Intermediate Algebra')
 ## AuthorText1('Blitzer')
 ## EditionText1('1')
@@ -22,7 +25,8 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "PGgraphmacros.pl",
-  "PGnauGraphics.pl"
+  "PGnauGraphics.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -123,7 +127,7 @@ $x1 = random(-1,4,1);
 BEGIN_TEXT
 \{ Plot($graph, tex_size => 600) \}
 $BR
-REVIEW: The graph of \( f \) is shown in red, and the graph of \( g \) is shown in blue. Use the graphs to evaluate each quantity given below.
+The graph of \( f \) is shown in red, and the graph of \( g \) is shown in blue. Use the graphs to evaluate each quantity given below.
 $BR 
 NOTE: If only a blue section of graph shows up, that means the red
 graph is behind it.
@@ -158,5 +162,5 @@ $showPartialCorrectAnswers = 1;
 ######################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

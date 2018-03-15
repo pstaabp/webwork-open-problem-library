@@ -5,20 +5,21 @@
 ## Author(Utah ww group)
 ## MLT(diff_chr_trig_sqrt_of_mess)
 ## Level(3)
+## Static(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Dale Varberg, Edwin J. Purcell, and Steven E. Rigdon')
 ## EditionText1('9')
-## Section1('Applications of the Derivative')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 

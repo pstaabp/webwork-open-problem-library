@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Statistics')
-## DBchapter('What is Statistics?')
-## DBsection('Characterizing a Set of Measurements: Graphical Methods')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Graphical representations)
+## Institution(NAU)
+## Author(N.Spencer Sitton)
+## Level(3)
 ## KEYWORDS('histogram')
-## Author('N.Spencer Sitton')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 07/11/05
@@ -12,11 +13,12 @@
 # Location: Northern Arizona University
 
 DOCUMENT();     
-loadMacros("PGstandard.pl",  
-           "PGauxiliaryFunctions.pl",
-           "PGnauStats.pl",
-	   "PGstatisticsmacros.pl",
-	   "PGnumericalmacros.pl"
+loadMacros(
+  "PGstandard.pl",
+  "PGnauStats.pl",
+  "PGstatisticsmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGcourse.pl"
 );
 TEXT(&beginproblem);
 
@@ -43,7 +45,7 @@ university. The classes, in years of service, are 0\(-\)4.9, 5\(-\)9.9, etc., an
 number of faculty.
 $PAR
 
-(a) What percent of the department faculty have $dir[$ind] years of service?$BR
+What percent of the department faculty have $dir[$ind] years of service?$BR
 Answer: \{ans_rule( 15 )\}$PERCENT $PAR
 
 \{ Plot( Histogram( @list, bins => ( $max + 1 ) / 5, axislabel => 'Years of Service', 

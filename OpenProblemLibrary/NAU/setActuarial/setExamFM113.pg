@@ -1,21 +1,21 @@
 ##DESCRIPTION
-## DBsubject('Financial Mathematics')
-## DBchapter('Annuities')
-## DBsection('Annuities')
+## DBsubject(Financial mathematics)
+## DBchapter(Annuities)
+## DBsection(Mixed methods)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## MLT(Mixed_Sinking_Then_Annuity)
+## Level(5)
 ## KEYWORDS('payment amount')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 

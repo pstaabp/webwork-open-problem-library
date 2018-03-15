@@ -5,7 +5,7 @@
 ## Tagged by YL
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Optimization - general)
 ## Date(5/29/2005)
 ## Institution(UVA, Fort Lewis College)
@@ -13,6 +13,7 @@
 ## MLT(Optimization_Margins)
 ## MLTleader(1)
 ## Level(5)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
 ## EditionText1('5e')
@@ -25,13 +26,10 @@
 DOCUMENT();
 
 loadMacros(
-#"PGbasicmacros.pl",
-#"PGchoicemacros.pl",
-#"PGanswermacros.pl",
-#"PGauxiliaryFunctions.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"parserNumberWithUnits.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -85,5 +83,5 @@ ANS( $y->cmp() );
 
 #ANS(num_cmp([$x,$y], format=>"%0.5f", relTol=>1, units => 'cm'));
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT(); 

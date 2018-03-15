@@ -29,15 +29,15 @@
 ## Section3('3.6')
 ## Problem3('19')
 ## KEYWORDS('calculus', 'differentiation','derivatives', 'trigonometry','Trigonometry', 'Derivative')
+## MO(1)
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

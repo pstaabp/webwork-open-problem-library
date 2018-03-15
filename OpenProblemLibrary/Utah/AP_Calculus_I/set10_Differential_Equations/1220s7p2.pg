@@ -2,25 +2,25 @@
 ##TYPE('word problem')
 ##ENDDESCRIPTION
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Exact equations)
+## DBchapter(First order differential equations)
+## DBsection(Integrating factor)
 ## Institution(Univeristy of Utah)
 ## Author(Utah ww group)
+## Level(3)
+## Static(1)
 ## TitleText1('Calculus II')
 ## AuthorText1('Jerrold Marsden and Alan Weinstein')
 ## EditionText1('2')
-## Section1('Differntial Equations')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -37,7 +37,7 @@ $BR
 EOT
 
 $answer=".2*e**(2*x) + .8*e**(-3x)";
-ANS(fun_cmp($answer, [1,3], vars=>"x"));
+ANS(fun_cmp($answer, limits=>[1,3], vars=>"x"));
 
 TEXT(EV3(<<'EOT'));
 $BR

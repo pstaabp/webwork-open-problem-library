@@ -3,30 +3,33 @@
 ##  a tangent line
 ##ENDDESCRIPTION
 
-##KEYWORDS('secant lines', 'tangent line')
 ## tcao tagged and PAID on 2-20-2004
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Transformations of Functions')
-## Date('6/3/2002')
-## Author('')
-## Institution('')
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Graphs)
+## Date(8/24/07)
+## Institution(Union College)
+## Author(k. Lesh)
+## MLT(incrFc)
+## MLTleader(1)
+## MO(1)
+## Level(3)
 ## TitleText1('College Algebra')
-## EditionText1('3')
 ## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
 ## Section1('4.5')
 ## Problem1('13')
+## KEYWORDS('secant lines', 'tangent line','algebra','graph','decreasing')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-	"PG.pl",
-	"PGbasicmacros.pl",
-	"PGchoicemacros.pl",
-	"PGanswermacros.pl",
-	"PGauxiliaryFunctions.pl",
-	"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 $x1f = random(-5,-4,1);	# left end of f
@@ -59,47 +62,25 @@ $hermite_g1 = new Hermite( [ $x1g  , $x2,  $x4g, $x5 , $x6g ],
                    [ $y1g  , $y2,  $y4g, $y5 , $y6g ],
                    [  2   ,  1 ,   0   ,  -1 ,   -2 ]);
 
+Context('Numeric');
+$ans1 = Compute($hermite_f1->rf_f -> ($x1f));
+$ans2 = List("$x2, $x5");
+$ans3 = Compute($x6g);
+Context('Interval');
+$ans4 = Interval("[$x1f, $x4f]");
 
 @questions = ();
 @answers=();
 qa(~~@questions,~~@answers,
 "What is the value of \(f\) at $x1f?",
-num_cmp( $hermite_f1->rf_f -> ($x1f) ),
-qq!For what values of \(x\) is \(f(x) = g(x)\): Separate answers by spaces (e.g $LQ 5 7$RQ)!,
-sub {   my $input = shift;    # answer should a be a string "$x3  $x5"
-          
-          @ans = split(/~~s+/, $input);
-          @ans= num_sort(@ans);
-          my $ans_eval0 = num_cmp($x2); 
-          my $ans_eval1 = num_cmp($x5);
-          my $ans_hash0 = $ans_eval0->evaluate( defined($ans[0])?$ans[0]:''  );
-          my $ans_hash1 = $ans_eval1->evaluate( defined($ans[1])?$ans[1]:'' );
-          my $rh_ans = {
-          		score 		=> $ans_hash0->{score} && $ans_hash1 ->{score},
-          	 	correct_ans => $ans_hash0->{correct_ans} . " " . $ans_hash1->{correct_ans},
-          	 	student_ans => $input,
-         	 	ans_message => $ans_hash0->{ans_message} . " " . $ans_hash1->{ans_message}
-          };
-          $rh_ans;
-},
+$ans1->cmp,
+qq!For what values of \(x\) is \(f(x) = g(x)\): Separate answers with commas (e.g $LQ 5, 7$RQ)!, 
+$ans2->cmp,
 "Estimate the solution of the equation \(g(x) = " . $hermite_g1 ->rf_f-> ($x6g) ."\)",
-num_cmp($x6g),
-"On what interval is the function \( f\) decreasing? (Separate answers by a space: e.g. $LQ-2 4$RQ)",
- sub {   my $input = shift;    # answer should a be a string "$x3  $x5"
-          my @ans = split(/~~s+/, $input);
-          @ans= num_sort(@ans);
-          my ($ans_eval0) = num_cmp($x1f); 
-          my ($ans_eval1) = num_cmp($x4f);
-          my $ans_hash0 = $ans_eval0->evaluate( defined($ans[0])?$ans[0]:''  );
-          my $ans_hash1 = $ans_eval1->evaluate( defined($ans[1])?$ans[1]:'' );
-          my $rh_ans ={
-          		score 		=> $ans_hash0->{score} && $ans_hash1 ->{score},
-  	         	correct_ans => $ans_hash0->{correct_ans} . " " . $ans_hash1->{correct_ans},
-  	         	student_ans => $input,
-  	         	ans_message => $ans_hash0->{ans_message} . " " . $ans_hash1->{ans_message}
-  	      };
-         $rh_ans;
- },
+$ans3->cmp,
+"On what interval is the function \( f\) decreasing? Give your answer in ".
+EV3( helpLink('interval notation')),
+$ans4->cmp( requireParenMatch => 0 )
 ); # end  qa
 
 $graph = init_graph(-6,-6,6,6,grid =>[12,12], axes => [0,0]);

@@ -1,39 +1,41 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Transformations of functions and their graphs)
-## DBsection(Reflections and Symmetry)
+## DBchapter(Transformations of functions and graphs)
+## DBsection(Reflections and symmetry)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('5.2')
-## Problem1('23')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(5.2)
 ## Section2('6.2')
+## Section3('6.1')
+## Problem1(21)
 ## Problem2('23')
+## Problem3('22')
 ## KEYWORDS('reflection','odd function','even function','symmetry')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-#           "PGgraphmacros.pl",
-#           "extraAnswerEvaluators.pl",
-#           "PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"contextLimitedPolynomial.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextLimitedPolynomial.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -119,5 +121,5 @@ $reason
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

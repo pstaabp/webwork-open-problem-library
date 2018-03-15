@@ -6,10 +6,13 @@
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Differentiation)
 ## DBsection(Quotient rule (with trigonometric functions))
+## MLT(QuotientRuleWithTrig_SimpleRatioBinomials_2015)
+## MLTleader(1)
 ## Date(10/25/2010)
 ## Institution(UCSB)
 ## Author(Justin Sukiennik)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Concepts and Contexts')
 ## AuthorText1('Stewart')
 ## EditionText1('4 Custom UMTYMP Ed.')
@@ -28,7 +31,7 @@ DOCUMENT();        # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "PGcourse.pl", 
+  "PGcourse.pl"
 );
 #####################################################################
 
@@ -48,8 +51,8 @@ $ans = Compute("[1-$a+x*cos(x)+($a-1)*sin(x)]/[(x+cos(x))^2]");
 Context()->texStrings;
 BEGIN_TEXT
 Differentiate \(\displaystyle y = \frac{$a+\sin x}{x+\cos x}.\)
-$PAR
-Answer: \(\displaystyle y' = \) \{ans_rule(30)\}
+$BR $BR
+\(\displaystyle y' = \) \{ans_rule(30)\}
 END_TEXT
 Context()->normalStrings;
 

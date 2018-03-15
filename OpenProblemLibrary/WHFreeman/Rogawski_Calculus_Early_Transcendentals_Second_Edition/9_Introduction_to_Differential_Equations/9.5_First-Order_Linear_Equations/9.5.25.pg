@@ -1,8 +1,11 @@
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Linear equations)
+## DBchapter(First order differential equations)
+## DBsection(Integrating factor)
 ## Institution(The College of Idaho)
 ## Author(LA Danielson)
+## MLT(integrating_factor_trig)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +14,15 @@
 ## KEYWORDS('calculus', 'differential equations', 'linear equation', 'first order')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+
+TEXT(beginproblem());
 #y' + tan(x)y = a cos(x)
 $a =  Real(random(2,10,1));
 $y0 = Real(random(-9,9,1));
@@ -27,7 +35,6 @@ $fp = Formula("cos(x)*($a x + $C)")->reduce();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "9.5","25") \}
 $PAR
 Solve the initial value problem \( y^{'} + ( \tan x)y = $a \cos x, \qquad y(0) = $y0 \)

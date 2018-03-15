@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Systems of Differential Equations)
+## DBchapter(Systems of differential equations)
+## DBsection(Distinct real eigenvalues)
 ## Date(01/31/2012)
 ## Institution(Rochester and Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(SDE-DRE-LI)
+## Level(4)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
 ## AuthorText1('Kohler and Johnson')
 ## EditionText1('2006')
@@ -22,13 +25,14 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGmatrixmacros.pl",
-"MathObjects.pl",
-"parserMultiAnswer.pl",
-"unionLists.pl",
-"parserPopUp.pl",
-"weightedGrader.pl",
+  "PGstandard.pl",
+  "PGmatrixmacros.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "unionLists.pl",
+  "parserPopUp.pl",
+  "weightedGrader.pl",
+  "PGcourse.pl"
 );
 
 
@@ -202,6 +206,6 @@ $showPartialCorrectAnswers = 1;
 WEIGHTED_ANS( $multians2->cmp(), 98 );
 WEIGHTED_ANS( $popup->cmp(), 2 );
 
-COMMENT('MathObject version.  Randomized with distinct real eigenvalues and integral answers.');
+COMMENT('Randomized with distinct real eigenvalues and integral answers.');
 
 ENDDOCUMENT(); 

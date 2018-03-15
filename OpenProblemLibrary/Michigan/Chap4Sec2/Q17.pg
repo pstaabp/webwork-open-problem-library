@@ -6,11 +6,12 @@
 ## Tagged by glr 02/08/09
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Increasing/decreasing functions and local extrema)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -23,14 +24,11 @@
 
 DOCUMENT();
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-# "hhAdditionalMacros.pl",
-"MathObjects.pl",
-"extraAnswerEvaluators.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
  
 Context("Numeric");
@@ -276,6 +274,6 @@ $cpmovex the \(y\)-axis, and the values of \(p\) $cpmovey the
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

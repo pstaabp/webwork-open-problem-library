@@ -7,11 +7,13 @@
 ## Tagged by jjh2b
 
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Inverse Functions and Logarithms)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Applications and models - general)
 ## Date(6/3/2002)
 ## Institution(rochester)
 ## Author(Arnie Pizer)
+## Level(5)
+## Static(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -22,11 +24,9 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 #modify this for your own WeBWorK setup

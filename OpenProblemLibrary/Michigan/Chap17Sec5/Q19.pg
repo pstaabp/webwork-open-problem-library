@@ -2,26 +2,34 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 06/17/10
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Parameterized Surfaces and Their Areas)
+## DBchapter(Concepts for multivariable functions)
+## DBsection(Parameterized surfaces)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(ps_planes_app)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('17.5')
-## Problem1('19')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('17.5')
 ## Section2('21.1')
+## Section3('21.1')
+## Problem1('19')
 ## Problem2('17')
+## Problem3('23')
 ## KEYWORDS('parametric surfaces', 'parametric equations', 'multivariable', 'functions')
 
 ## Textbook tags
@@ -30,14 +38,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"parserPopUp.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 Context("Vector");
@@ -53,19 +58,15 @@ $showPartialCorrectAnswers = 0;
 @p = ( non_zero_random(-5,5,1), random(-5,5,1), random(-5,5,1) );
 $p[list_random(0,1,2)] = 0 if ( $p[0]*$p[1]*$p[2] != 0 );
 
-@sc = ( non_zero_random(-5,5,1), non_zero_random(-5,5,1), random(-5,5,1) );
-if ( $sc[0]*$sc[1]*$sc[2] != 0 ) {
-    $szero = list_random(0,1,2);
-    $sc[$szero] = 0;
-} else {
-    $szero = 2;
-}
+@sc = ( non_zero_random(-5,5,1), non_zero_random(-5,5,1),
+	non_zero_random(-5,5,1) );
+$szero = list_random(0,1,2);
+$sc[$szero] = 0;
 
-@tc = ( non_zero_random(-5,5,1), random(-5,5,1), random(-5,5,1) );
-if ( $tc[0]*$tc[1]*$tc[2] != 0 ) {
-    $tzero = (($szero + list_random(1, 2))%2);
-    $tc[$tzero] = 0;
-}
+@tc = ( non_zero_random(-5,5,1), non_zero_random(-5,5,1),
+	non_zero_random(-5,5,1) );
+$tzero = ($szero + random(1,2))%3;
+$tc[$tzero] = 0;
 
 $ppos = Vector( Compute( $p[0] ), Compute( $p[1] ), Compute( $p[2] ) );
 $dv1 = Vector( Compute( $sc[0] ), Compute( $sc[1] ), Compute( $sc[2] ) );
@@ -180,6 +181,6 @@ so, plugging into the \(z\)-component of the plane, we have
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

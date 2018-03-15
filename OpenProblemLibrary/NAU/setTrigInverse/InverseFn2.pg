@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Trigonometry')
-## DBchapter('Analytic Trigonometry')
-## DBsection('Inverse Trigonometric Functions')
+## DBsubject(Trigonometry)
+## DBchapter(Trigonometric functions)
+## DBsection(Inverse trigonometric functions - definitions, graphs, & properties)
+## Institution(NAU)
+## Author(Katie Louchart)
+## Level(2)
 ## KEYWORDS('inverse', 'trigonometry', 'domain')
-## Author('Katie Louchart')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 7/9/05
@@ -14,13 +15,11 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl",
-"extraAnswerEvaluators.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

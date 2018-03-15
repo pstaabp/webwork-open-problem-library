@@ -1,23 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -153,9 +141,7 @@ $graph->arrowTo(1.8 ,1.8 ,'red',2);
 #NOTE  Actual size of box is in the image below
 TEXT(beginproblem());
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATO
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR 
- A liquid solution is slowly leaking from a container.  This graph shows the $BR
+A liquid solution is slowly leaking from a container.  This graph shows the $BR
 milliters of solution \(y\) remaining in the container after \(x\) minutes.
 
 $BR
@@ -189,9 +175,11 @@ The solution will completely empty after 90 minutes.  The slope is -10 and the$B
 solution must decrease by 900 milliliters  so it will take  \(\frac{-900}{-10}=90\) minutes.  
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 11')
-## DBsection('2008')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Level(2)
+## MO(1)
 

@@ -1,23 +1,16 @@
 #DESCRIPTION
 ##Type of
+## updated to make formatting consistent, RA Cruz, 2015-08-04
 #ENDDESCRIPTION
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-"contextFraction.pl",
-"answerHints.pl",
-#PGauxiliaryFunctions.pl, #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -49,15 +42,19 @@ Context("LimitedFraction")->flags->set(
 );
 $ans1 = Compute("$k1"); 
 $ans2=  Compute("$k2");
+
+Context()->texStrings;
 BEGIN_TEXT
 $PAR Evaluate each of the following expressions. $BR
 Your answer must be in simplest form [ a proper fraction or mixed number]
 $PAR
-If \(p=$p1  \) and \(q=$qint1 \frac{ $qfnum1}{7} \) then \(p^2q=\) \{ans_rule(5)\}
+If \(p=$p1 \) and \(q=$qint1 \frac{ $qfnum1}{7} \) then \(p^2q=\) \{ans_rule(5)\}
 $PAR
-If \(s=$s1  \) and \(t=$tint1 \frac{ $tfnum1}{7} \) then \(t^2/s=\) \{ans_rule(5)\}
+If \(s=$s1 \) and \(t=$tint1 \frac{ $tfnum1}{7} \) then \(t^2/s=\) \{ans_rule(5)\}
 
 END_TEXT
+Context()->normalStrings;
+
 ANS($ans1->cmp);
 ANS($ans2->cmp);
 BEGIN_SOLUTION
@@ -66,9 +63,14 @@ $PAR Solution $PAR
 END_SOLUTION	
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter(Evaluation by substitution)
+
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Evaluating expressions)
+## MLT(eval_expression_using_fractions)
+## Level(2)
+## MO(1)
 
 

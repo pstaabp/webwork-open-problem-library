@@ -2,29 +2,30 @@
 ##  Financial mathematics: Geometric sums
 ## ENDDESCRIPTION
 
-## KEYWORDS('financial mathematics', 'geometric sums')
 ## JJH tagged this problem.
 
-## DBsubject('Financial Mathematics')
-## DBchapter('Annuities')
-## DBsection('Geometric sums')
-## Date('5/22/2005')
-## Author('Jeff Holt')
-## Institution('UVA')
+## DBsubject(Financial mathematics)
+## DBchapter(Annuities)
+## DBsection(Sinking funds)
+## Date(5/22/2005)
+## Institution(UVA)
+## Author(Jeff Holt)
+## MLT(Sinking_Funds_Future_Value_Deposit_Wait)
+## MLTleader(1)
+## Level(5)
 ## TitleText1('Financial Mathematics')
-## EditionText1('1')
 ## AuthorText1('Holt')
+## EditionText1('1')
 ## Section1('3.1')
-## Problem1()
+## Problem1('')
+## KEYWORDS('financial mathematics', 'geometric sums')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

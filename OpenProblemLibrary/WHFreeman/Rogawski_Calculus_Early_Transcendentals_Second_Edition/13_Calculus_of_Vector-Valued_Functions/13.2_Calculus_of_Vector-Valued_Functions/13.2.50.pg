@@ -1,21 +1,26 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Calculus of Vector-Valued Functions)
-## DBsection(Calculus of Vector-Valued Functions)
+## DBchapter(Calculus of vector valued functions)
+## DBsection(Integrals)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('13.2')
 ## Problem1('50')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
-
+TEXT(beginproblem());
 
 $rt1=random(2,9);
 $rt2=random(2,9);
@@ -38,13 +43,12 @@ $ans3=Formula("$c3+($rt3/2)*t^2");
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "13.2","50") \}
 $PAR
-Find the solution \(\bf r\it(t)\) of the differential equation with the given initial condition:
+Find the solution \({\bf r\it(t)}\) of the differential equation with the given initial condition:
 $PAR
-\[\bf r\it'(t)=\left<\sin $rt1 t,\sin $rt2 t,$rt3 t\right> , \bf r\it(0) = \left<$r1,$r2,$r3\right> \]
-\(\bf r\it(t)=\langle\)\{ans_rule()\}\(,\)\{ans_rule()\}\(,\)\{ans_rule()\}\(\rangle\)
+\[{\bf r\it'(t)}=\left<\sin $rt1 t,\sin $rt2 t,$rt3 t\right> , {\bf r\it(0)} = \left<$r1,$r2,$r3\right> \]
+\({\bf r\it(t)}=\langle\)\{ans_rule()\}\(,\)\{ans_rule()\}\(,\)\{ans_rule()\}\(\rangle\)
 $PAR
 
 END_TEXT

@@ -2,29 +2,21 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS('Series' 'Sequences' 'summation')
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Infinite Sequences and Series')
-## Date('')
-## Author('')
-## Institution('Indiana')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBchapter(Infinite sequences and series)
+## DBsection(Applications of Taylor polynomials)
+## Institution(Indiana)
+## Level(3)
+## KEYWORDS('Series' 'Sequences' 'summation')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

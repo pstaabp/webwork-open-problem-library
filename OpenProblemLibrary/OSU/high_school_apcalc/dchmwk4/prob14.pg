@@ -10,16 +10,15 @@
 ## Institution(OSU)
 ## MLT(same1)
 ## Level(3)
+## Static(1)
 ## KEYWORDS('calculus','derivative','exponential','trigonometric','chain rule')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

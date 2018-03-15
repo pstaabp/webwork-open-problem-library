@@ -1,10 +1,12 @@
 ##DESCRIPTION
-## DBsubject('Algebra')
-## DBchapter('Linear Programming')
-## DBsection('')
+## DBsubject(Operations research)
+## DBchapter(Linear programming)
+## DBsection(Constrained optimization - planar)
+## Institution(NAU)
+## Author(Shafiu Jibrin)
+## MLT(TrueFalseQuestions)
+## Level(4)
 ## KEYWORDS('Linear Programming')
-## Author('Shafiu Jibrin ')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 6/24/05
@@ -12,10 +14,10 @@
 # Location: Northern Arizona University
 
 DOCUMENT();      
-loadMacros("PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem(), $BR,$BBOLD, "True False Problem", $EBOLD, $BR,$BR);
 # Since this is a true questions, we do not usually wish to tell students which

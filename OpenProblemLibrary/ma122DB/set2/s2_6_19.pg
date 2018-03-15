@@ -6,7 +6,7 @@
 ## tcao , PAID on 11-24-2003
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Limits at infinity, horizontal and oblique asymptotes)
 ## Date(6/3/2002)
 ## MLT(liminfrootsrational)
@@ -21,9 +21,8 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGbasicmacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -40,4 +39,11 @@ Answer: \{ans_rule()\}
 END_TEXT
 ANS(num_cmp(-1));
 
+BEGIN_SOLUTION
+$PAR SOLUTION $PAR 
+We divide numerator and denominator by \(\sqrt{x}\):
+\[ \lim_{ x \rightarrow \infty } \frac {$a-\sqrt{ x }  }{$a + \sqrt{x}}
+=\lim_{ x \rightarrow \infty } \frac {\frac{$a}{\sqrt{x}}-1}{\frac{$a}{\sqrt{x}} + 1}  = \frac{0-1}{0+1} = -1 
+\]
+END_SOLUTION
 ENDDOCUMENT();        # This should be the last executable line in the problem.

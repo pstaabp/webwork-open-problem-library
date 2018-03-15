@@ -1,30 +1,38 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Parametric Equations and Polar Coordinates)
-## DBsection(Area and arc length in polar coordinates)
+## DBchapter(Polar)
+## DBsection(Arc length)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(t)
+## MLTleader(1)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('11.4')
 ## Problem1('26')
-## KEYWORDS('calculus', '')
-## UsesAuxiliaryFiles('image_11_4_25.png')
+## KEYWORDS('calculus')
+## RESOURCES('image_11_4_25.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl","PGchoicemacros.pl","PGauxiliaryFunctions.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 $a=random(2,9);
 $pi=Real(pi);
 $answer=Formula("($a/2)*sqrt(($a^2)+1)+(1/2)*ln($a+sqrt(($a^2)+1))")->reduce();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "11.4","26") \}
 $PAR
 Find the length of the spiral  \(r = \theta\)   for \(0\le

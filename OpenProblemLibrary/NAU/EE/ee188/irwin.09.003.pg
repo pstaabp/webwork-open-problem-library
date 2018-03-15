@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Calculate the average power of an ac circuit
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Steady-State Power Analysis')
-## DBsection('Average Power')
+## DBsubject(Electric circuits)
+## DBchapter(Steady-state power analysis)
+## DBsection(Average power)
 ## KEYWORDS('average power','ac','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,12 +16,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

@@ -1,39 +1,41 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Logarithmic functions)
-## DBsection(Logarithms and Their Properties)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Exponential and logarithmic equations)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('4.1')
-## Problem1('31')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(4.1)
 ## Section2('5.1')
+## Section3('5.1')
+## Problem1(32)
 ## Problem2('31')
+## Problem3('54')
 ## KEYWORDS('logarithms','natural log','common log','log','ln','properties of logs')
 # Modified to not include continuous terminology.
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-#           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-#           "extraAnswerEvaluators.pl",
-           "PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-"unionTables.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -140,5 +142,5 @@ t &= \frac{\ln{($quot)}}{-$dec}.
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

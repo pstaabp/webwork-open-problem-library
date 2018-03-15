@@ -4,15 +4,19 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Transformations of functions and their graphs)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Completing the square)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(cts_monic)
+## Level(1)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
-## Section1('5 Tools')
-## Problem1('2')
+## Section1(5.Tools)
+## Problem1(2)
 ## KEYWORDS('logarithms')
 
 ####################################
@@ -21,10 +25,10 @@
 DOCUMENT();  
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -76,5 +80,5 @@ ANS($ansa->cmp() );
 ANS($ansb->cmp() );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -5,9 +5,11 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Vector Fields)
+## DBchapter(Vector fields)
+## DBsection(Graphs, flows lines, and level surfaces)
 ## Institution(Dartmouth)
+## MLT(verbmatch)
+## Level(3)
 ## TitleText1('Basic Multivariable Calculus')
 ## AuthorText1('Marsden, Tromba, Weinstein')
 ## EditionText1('3')
@@ -16,13 +18,6 @@
 ## KEYWORDS('vector' 'field')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
  
 
 ## Do NOT show partial correct answers
@@ -118,3 +113,9 @@ ENDDOCUMENT();
 
 DOCUMENT();
 loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);

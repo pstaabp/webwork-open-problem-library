@@ -1,9 +1,10 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-);	
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 #THIS IS MORE RECENT VERSION INCLUDES STUFF FROM LAROSE PROBLEM #.
 #This is the initialization section of the problem. Note that we need to include#PGgraphmacros.pl to use graphs in the problem.
 
@@ -49,9 +50,11 @@ A quadrilateral has angle sum 360 degrees. So the angle measure of the remaining
 END_SOLUTION	
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Geometry_Figures')
-## DBsection('')
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Properties of shapes)
+## Level(3)
+## MO(1)
 

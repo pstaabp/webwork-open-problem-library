@@ -2,30 +2,29 @@
 # Probability: distribution functions
 # ENDDESCRIPTION
 
-## KEYWORDS('calculus', 'integral', 'probability distributions', 'probability')
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Applications of Integration')
-## DBsection('Probability, Mean and Median')
-## Date('01/31/2011')
-## Author('Laura Scull and Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Applications of integration)
+## DBsection(Probability and statistics)
+## Date(01/31/2011)
+## Institution(Fort Lewis College)
+## Author(Laura Scull and Paul Pearson)
+## Level(5)
 ## TitleText1('Calculus')
-## TitleText2('Calculus')
-## EditionText1('4')
-## EditionText2('5')
 ## AuthorText1('Hughes-Hallett')
-## AuthorText2('Hughes-Hallett')
+## EditionText1('4')
 ## Section1('8.8')
+## Problem1('-1')
+## TitleText2('Calculus')
+## AuthorText2('Hughes-Hallett')
+## EditionText2('5')
 ## Section2('8.8')
-## Problem1('')
 ## Problem2('8')
+## KEYWORDS('calculus', 'integral', 'probability distributions', 'probability')
 
 ## Textbook tags
 ## HHChapter1('Using the Definite Integral')
 ## HHChapter2('Using the Definite Integral')
-## HHSection1('Distribution Functions')
-## HHSection2('Distribution Functions')
 
 
 ########################
@@ -34,9 +33,10 @@
 DOCUMENT();     
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"unionLists.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "unionLists.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -73,9 +73,10 @@ $BR
 
 $ITEMSEP
 $ITEM
-At what distance \( y \) from home is the probability that you dropped it with \( y \) km of home equal to \(0.95\)?
+At what distance \( y \) from home is the probability that you dropped it
+within \( y \) km of home equal to \(0.95\)?
 $BR
-\{ ans_rule(25) \}
+\{ ans_rule(25) \} km
 
 \{ EndList('OL') \}
 END_TEXT
@@ -91,6 +92,6 @@ ANS( Compute("1-e^(-$a)") -> cmp() );
 ANS( Compute("ln(20) / $a") -> cmp() );
 
 
-COMMENT('MathObject version');
+;
 
 ENDDOCUMENT();       

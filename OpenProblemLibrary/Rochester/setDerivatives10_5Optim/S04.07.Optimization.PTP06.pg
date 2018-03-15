@@ -5,12 +5,15 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Optimization - general)
 ## Date(01/25/2011)
 ## Institution(University of Minnesota)
 ## Author(Justin Sukiennik)
+## MLTleader(1)
+## MLT(BoxOpenTopMaxVol)
 ## Level(5)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('1')
@@ -29,12 +32,12 @@
 ## TitleText4('Calculus I')
 ## AuthorText4('Jerrold Marsden and Alan Weinstein')
 ## EditionText4('2')
-## Section4('Graphing_and_Maximum-Minimum_Problems')
+## Section4('.')
 ## Problem4('')
 ## TitleText5('Calculus')
 ## AuthorText5('Dale Varberg, Edwin J. Purcell, and Steven E. Rigdon')
 ## EditionText5('9')
-## Section5('Applications of the Derivative')
+## Section5('.')
 ## Problem5('')
 ## TitleText6('Calculus: Concepts and Contexts')
 ## AuthorText6('Stewart')
@@ -49,13 +52,10 @@
 DOCUMENT(); 
 
 loadMacros(
-#"PGbasicmacros.pl",
-#           "PGchoicemacros.pl",
-#           "PGanswermacros.pl",
-#"PGauxiliaryFunctions.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"parserNumberWithUnits.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -141,5 +141,5 @@ the maximal volume of \(v(!{$width:%5.2f}) = !{$vol:%5.2f} \).
 EOF
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT(); 

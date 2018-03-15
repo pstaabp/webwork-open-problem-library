@@ -1,21 +1,28 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Integration in Polar, Cylindrical, and Spherical Coordinates)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Triple integrals in cylindrical and spherical)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.4')
 ## Problem1('31')
-## KEYWORDS('calculus', '')
-## UsesAuxiliaryFiles('image_15_4_35.png')
+## KEYWORDS('calculus')
+## RESOURCES('image_15_4_35.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $r=random(2,9);
 $r2=$r*$r;
@@ -29,7 +36,6 @@ $answer=Real($sol1*2*$PI);
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.4","31") \}
 $PAR
 Use cylindrical coordinates to calculate \($IIINT _{$w} f(x,y,z)\,dV\) for the given function and region:

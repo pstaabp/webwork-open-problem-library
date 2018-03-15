@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Apply Thevenin's Theorem to an ac circuit
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('AC Steady-State Analysis')
-## DBsection('Analysis Techniques')
+## DBsubject(Electric circuits)
+## DBchapter(AC steady-state analysis)
+## DBsection(Analysis techniques)
 ## KEYWORDS('Thevenins Theorem','ac','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,13 +16,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

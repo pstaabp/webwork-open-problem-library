@@ -6,9 +6,13 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Vector Fields)
+## DBchapter(Vector calculus)
+## DBsection(Conservative vector fields)
 ## Institution(ASU)
+## MLT(Conservative_1)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -24,12 +28,12 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-	   "MathObjects.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
+);
 
 TEXT( beginproblem() );
 # Do Not Show Partial Credit

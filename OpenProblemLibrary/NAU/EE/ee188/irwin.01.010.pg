@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ##  Calculate the power absorbed or supplied
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Basic Concepts')
-## DBsection('System of Units')
+## DBsubject(Electric circuits)
+## DBchapter(Basic concepts)
+## DBsection(System of units)
 ## Institution('Northern Arizona University')
 ## Author('Elizabeth J. Brauer')
 ## TitleText1('Basic Engineering Circuit Analysis')
@@ -18,11 +18,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

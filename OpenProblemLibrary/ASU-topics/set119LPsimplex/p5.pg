@@ -2,32 +2,26 @@
 ##   Simplex Method
 ## ENDDESCRIPTION
 
-## KEYWORDS('Simplex Method')
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
-## DBchapter('Linear Programming')
-## DBsection('Simplex Method')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Operations research)
+## DBchapter(Linear programming)
+## DBsection(Simplex method)
+## Institution(ASU)
+## MLT(onepivot)
+## MLTleader(1)
+## Level(2)
+## KEYWORDS('Simplex Method')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGmatrixmacros.pl",
-"LinearProgramming.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGmatrixmacros.pl",
+  "LinearProgramming.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -57,14 +51,14 @@ for $k (0..2) {
 BEGIN_TEXT
 For the tableau,
  \[ \{ lp_display_mm($A, box=>[$prow+1, $pcol+1],
-'top_labels'=>['P', 'x_1', 'x_2', 's_1', 's_2', '\mbox{\tiny RHS}']
+'top_labels'=>['P', 'x_1', 'x_2', 's_1', 's_2', '\scriptscriptstyle\text{RHS}']
 )\}  \]
 perform one pivot operation and enter the resulting matrix below.  The pivot
 element has a box around it.
 	$BR
 $BCENTER
 \{ lp_display($B,
-'top_labels'=>['P', 'x_1', 'x_2', 's_1', 's_2', '\mbox{\tiny RHS}']
+'top_labels'=>['P', 'x_1', 'x_2', 's_1', 's_2', '\scriptscriptstyle\text{RHS}']
 )\}
 $ECENTER
 END_TEXT

@@ -9,6 +9,7 @@
 ## Institution(Cleveland State University)
 ## Author(Barbara Margolius)
 ## Level(3)
+## MO(1)
 ## TitleText1('')
 ## AuthorText1('')
 ## EditionText1('2012')
@@ -27,6 +28,7 @@ loadMacros(
   "PGstandard.pl",
   "AppletObjects.pl",
   "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -1,30 +1,35 @@
 # DESCRIPTION
 # Problem from Calculus, single variable, Hughes-Hallett et al., 4th ed.
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 02/08/09
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Infinite Sequences and Series)
-## DBsection(The Comparison Tests)
+## DBchapter(Infinite sequences and series)
+## DBsection(Comparison tests)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## Level(3)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('4')
-## Section1('9.4')
-## Problem1('43 47 51 53')
 ## TitleText2('Calculus')
-## AuthorText2('Hughes-Hallett')
-## EditionText2('5')
-## Section2('9.4')
-## Problem2('57 65 70 72')
 ## TitleText3('Calculus')
+## TitleText4('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
 ## AuthorText3('Hughes-Hallett')
+## AuthorText4('Hughes-Hallett')
+## EditionText1('4')
+## EditionText2('5')
 ## EditionText3('6')
+## EditionText4('7')
+## Section1('9.4')
+## Section2('9.4')
 ## Section3('9.4')
+## Section4('9.4')
+## Problem1('43 47 51 53')
+## Problem2('57 65 70 72')
 ## Problem3('63 71 76 78')
+## Problem4('74 81 88 83')
 ## KEYWORDS('calculus', 'integral', 'series', 'convergence', 'ratio test', 'comparison test', 'limit comparison test', 'alternating series')
 
 ## Textbook tags
@@ -35,13 +40,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -95,8 +97,8 @@ $b = random(1,5,1);
 ##    reason for convergence or divergence ]
 @group3 = ( [ "{$a\over\ln n^$r}", 2, "diverges", "{1\over n}", ">",
 	      "because it is a \(p\)-series with \(p=1\)" ],
-	    [ "{$a + \sin(n)\over n^$r+$b}", 1, "converges", "{1\over n^$r}",
-	      "<", "because it is a \(p\)-series with \(p>1\)" ],
+	    [ "{$a + \sin(n)\over n^$r+$b}", 1, "converges", "{{$a+1}\over n^$r}",
+	      "<", "because it is a constant times a \(p\)-series with \(p>1\)" ],
 	  );
 ## group4 = limit comparison test series
 ##    terms in the group are [ a_n, starting index, convergence,
@@ -257,5 +259,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

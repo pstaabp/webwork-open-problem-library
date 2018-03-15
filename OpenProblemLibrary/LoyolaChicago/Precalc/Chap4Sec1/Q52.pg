@@ -4,10 +4,13 @@
 # ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Logarithmic functions)
-## DBsection(Logarithms and Their Properties)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Logarithmic functions)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## Level(4)
+## Static(1)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
@@ -17,20 +20,15 @@
 
 DOCUMENT();
 
-loadMacros("PG.pl", 
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-           "PGstandard.pl",
-           "extraAnswerEvaluators.pl", 
-           "PGauxiliaryFunctions.pl", 
-           "PGgraphmacros.pl", 
-           "MathObjects.pl", 
-           "PGchoicemacros.pl", 
-           "parserPopUp.pl"
-          # "parserFormulaWithUnits.pl", 
-          # "parserFormulaUpToConstant.pl",
-          # "PGcourse.pl",
-          );
+loadMacros(
+  "PGstandard.pl",
+  "extraAnswerEvaluators.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -99,5 +97,5 @@ END_SOLUTION
 
       
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

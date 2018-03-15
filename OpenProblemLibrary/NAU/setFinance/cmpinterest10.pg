@@ -2,20 +2,16 @@
 ## Applied Mathematics
 ## ENDDESCRIPTION
 
-## KEYWORDS('percent', 'mathematics for business', 'algebraic expression')
 ## Tagged by XW
 
-## DBsubject('Financial Mathematics')
-## DBchapter('Annuities')
-## DBsection('Annuities')
-## Date('')
-## Author('Unknown')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Financial mathematics)
+## DBchapter(Annuities)
+## DBsection(Sinking funds)
+## Institution(ASU)
+## Author(Unknown)
+## MLT(Sinking_Funds_Future_Value)
+## Level(5)
+## KEYWORDS('percent', 'mathematics for business', 'algebraic expression')
 
 ##Altered by C. Tyler Diggans at NAU 5/22/13
 ##deleted part B to make it fit MAT114 better
@@ -24,12 +20,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

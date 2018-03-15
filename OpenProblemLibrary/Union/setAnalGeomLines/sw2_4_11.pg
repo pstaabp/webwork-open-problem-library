@@ -5,22 +5,26 @@
 ## Tagged by cmd6a 8/6/06
 
 ## DBsubject(Algebra)
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Equations for lines)
+## DBchapter(Linear equations and functions)
+## DBsection(Equations of lines: slope-intercept form)
 ## Date(8/24/07)
 ## Institution(Union College)
 ## Author(K. Lesh)
+## MLT(MLT13)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## KEYWORDS('algebra','graph','line','slope')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "alignedChoice.pl",      # for aligned answer blanks
+  "alignedChoice.pl",
   "PGgraphmacros.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -71,5 +75,5 @@ ANS($al->correct_ans);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

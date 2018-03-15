@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Exact equations)
-## Date('02/07/2012')
-## Institution('Miami University and Hope College')
-## Author('Anna Ghazaryan, Fuli Zhang, Paul Pearson')
+## DBchapter(First order differential equations)
+## DBsection(Exact)
+## Date(02/07/2012)
+## Institution(Miami University and Hope College)
+## Author(Anna Ghazaryan, Fuli Zhang, Paul Pearson)
+## MLT(Exact_Verification)
+## Level(2)
+## MO(1)
 ## TitleText1('A First Course in Differential Equation')
 ## AuthorText1('Dennis G.Zill')
 ## EditionText1('9')
@@ -22,10 +25,11 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"parserPopUp.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -75,9 +79,9 @@ foreach my $i (0..1) {
 ANS( $answer[$i]->cmp(
   checker=>sub {
     my ( $correct, $student, $ansHash ) = @_;
-    if ( ($numOfAttempts < 1) && ($correct == $student) ) { 
+    if ( ($numOfAttempts < 2) && ($correct == $student) ) { 
        return 1; 
-    } elsif ( ($numOfAttempts > 0) && ($correct == $student) ) {
+    } elsif ( ($numOfAttempts > 1) && ($correct == $student) ) {
        Value->Error("Your answer is correct, but your score did not change since you used up the attempts allowed."); 
     } else {
        return 0;
@@ -91,6 +95,6 @@ ANS( $answer[$i]->cmp(
 #ANS( $answer[1]->cmp() );
 
 
-COMMENT('MathObject version.  Uses a custom answer checker to limit the number of attempts that count for credit to one.');
+COMMENT('Uses a custom answer checker to limit the number of attempts that count for credit to one.');
 
 ENDDOCUMENT();

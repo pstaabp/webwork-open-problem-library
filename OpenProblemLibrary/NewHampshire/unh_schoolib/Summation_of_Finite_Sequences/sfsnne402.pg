@@ -4,15 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "contextLeadingZero.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -163,11 +159,13 @@ ANS(Real($ans10)->cmp);
 ANS(Real($ans11)->cmp);
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Summation_of_Finite_Sequences')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Finite sequences and series)
+## DBsection(Arithmetic)
+## Level(4)
+## MO(1)
 
 
 

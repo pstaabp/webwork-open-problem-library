@@ -7,9 +7,11 @@
 
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Integrals)
-## DBsection(Antiderivatives)
+## DBsection(Fundamental theorem of calculus)
 ## Institution(University of Michigan, Fort Lewis College)
 ## Author(Gavin LaRose, Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -28,16 +30,11 @@
 
 DOCUMENT();
 loadMacros(
-#"PG.pl",
-#"PGbasicmacros.pl",
-#"PGchoicemacros.pl",
-#"PGanswermacros.pl",
-#"PGauxiliaryFunctions.pl",
-# "hhAdditionalMacros.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"PGunion.pl",
-"answerHints.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGunion.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
  
 Context("Numeric");
@@ -121,5 +118,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

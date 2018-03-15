@@ -4,10 +4,11 @@
 
 ## Tagged by tda2d
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Line Integrals)
+## DBsubject(Probability)
+## DBchapter(Continuous distributions)
+## DBsection(Gaussian normal)
 ## Institution(Dartmouth)
+## Level(3)
 ## TitleText1('Basic Multivariable Calculus')
 ## AuthorText1('Marsden, Tromba, Weinstein')
 ## EditionText1('3')
@@ -16,13 +17,13 @@
 ## KEYWORDS('Gaussian' 'distribution' 'integral')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers
@@ -37,7 +38,7 @@ TEXT(beginproblem());
 
 
 BEGIN_TEXT
-$BR
+
 Find the normalizing constant \( c \) so that 
    \( \int_{-\infty}^{\infty}ce^{-x^2/$sigma} \, dx = 1\).
 $BR

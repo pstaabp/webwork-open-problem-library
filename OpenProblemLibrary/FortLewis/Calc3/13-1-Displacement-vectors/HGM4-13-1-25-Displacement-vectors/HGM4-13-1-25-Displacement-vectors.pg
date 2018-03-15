@@ -3,12 +3,14 @@
 ## ENDDESCRIPTION
 
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Vectors)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Dot product, length, and unit vectors)
 ## Date(10/15/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -28,7 +30,7 @@ loadMacros(
   "PGunion.pl",
   "MathObjects.pl",
   "parserVectorUtils.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -121,7 +123,51 @@ ANS(($cdist)->cmp);
 
 
 ##################################################
+$d1= 13+$s*$s;
+$c1=$h+$s;
+$d2= 8+$h*$h;
+$d3= 17+$c1*$c1;
+
+BEGIN_SOLUTION
+$PAR SOLUTION $PAR
+
+\{BeginList()\}
+
+$ITEM
+The point \( B\)  has coordinates \( (3,4,0) \) and the point \( S\) has coordinates
+\(( 5,1 ,-$s)\). $BR
+The displacement vector from the submarine to the boat is given by $BR
+\( \vec{SB} = \langle 3-5, 4-1, 0-(-$s) \rangle = \langle -2, 3, $s \rangle \)
+$BR 
+The  distance from the submarine to the boat
+is given by the magnitude of the displacement vector: $BR
+Distance: \( \left| \vec{SB}\right| = \sqrt{(-2)^2+3^2 + $s^2} = \sqrt{$d1} \)
+$ITEMSEP
+
+$ITEM
+The point \(B\) has coordinates \( (3,4,0) \) and the point \( H\) has coordinates
+\(( 1,2, $h)\). $BR
+The displacement vector from the helicopter to the boat is given by $BR
+\( \vec{HB} = \langle 3-1, 4-2, -0-$h \rangle = \langle 2, 2, -$h \rangle \)
+$BR 
+The  distance from the submarine to the boat
+is given by the magnitude of the displacement vector: $BR
+Distance: \( \left| \vec{SB}\right| = \sqrt{(2)^2+(2)^2 + (-$h)^2} = \sqrt{$d2} \)
+$ITEMSEP
+
+$ITEM
+The point \(S\) has coordinates \( (5,1,-$s) \) and the point  \(H\) has coordinates
+\(( 1,2 $h)\). $BR
+The displacement vector from the submarine to the helicopter  is given by $BR
+\( \vec{SH} = \langle 1-5, 2-1, $h-(-$s) \rangle = \langle -4, 1, $c1 \rangle \)
+$BR 
+The distance from the submarine to the helicopter  
+is given by the magnitude of the displacement vector: $BR
+Distance: \( \left| \vec{SH}\right| = \sqrt{ (-4)^2+1^2 + {$c1}^2} = \sqrt{$d3} \)
+
+\{EndList()\}
+
+END_SOLUTION
 
 
-COMMENT('MathObject version');
 ENDDOCUMENT();

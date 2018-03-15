@@ -3,12 +3,13 @@
 ##ENDDESCRIPTION
 
 
-## DBsubject('Financial Mathematics')
-## DBchapter('Introduction to Interest')
-## DBsection('Simple Interest')
-## Date('5/21/2005')
-## Institution('UVA')
-## Author('Jeff Holt')
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Simple interest)
+## Date(5/21/2005)
+## Institution(UVA)
+## Author(Jeff Holt)
+## Level(2)
 ## TitleText1('Financial Mathematics')
 ## AuthorText1('Holt')
 ## EditionText1('1')
@@ -18,11 +19,11 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 0;

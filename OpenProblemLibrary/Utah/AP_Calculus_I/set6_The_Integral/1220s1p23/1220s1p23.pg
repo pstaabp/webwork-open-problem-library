@@ -1,26 +1,42 @@
 #DESCRIPTION
 #  Use integration to find Area of a parametric graph
 #ENDDESCRIPTION
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')                      
-## DBsection('The Definite Integral')     
-## AuthorText1('Jerrold Marsden and Alan Weinstein')
+## DBchapter(Applications of integration)
+## DBsection(Areas between curves)
+## Date(6/3/2002)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## MLT(AI-A-advanced)
+## Level(4)
 ## TitleText1('Calculus I')
+## AuthorText1('Jerrold Marsden and Alan Weinstein')
 ## EditionText1('2')
-## Section1('The Integral')
+## Section1('.')
 ## Problem1('')
-## KEYWORDS('calculus')
+## TitleText2('Calculus: Early Transcendentals')
+## AuthorText2('Rogawski')
+## EditionText2('1')
+## Section2('6.1')
+## Problem2('47')
+## TitleText3('Calculus: Early Transcendentals')
+## AuthorText3('Stewart')
+## EditionText3('6')
+## Section3('6.1')
+## Problem3('45')
+## TitleText4('Calculus II')
+## AuthorText4('Jerrold Marsden and Alan Weinstein')
+## EditionText4('2')
+## Section4('.')
+## Problem4('')
+## KEYWORDS('calculus','parametric', 'area', 'integration')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -31,7 +47,6 @@ $b = random(2,8,1);
 while ($b == $a) { $b = random(2,8,1) };
 
 TEXT(EV2(<<EOT));
-$BBOLD Yet More on Areas.$EBOLD
 There is a line through the origin that divides the region bounded by the parabola \( y = $a x - $b x^2 \) and the x-axis into two regions with equal area.  What is the slope of that line?
 $BR
 \{ans_rule(20)\}

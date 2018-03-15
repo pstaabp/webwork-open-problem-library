@@ -4,11 +4,14 @@
 
 ## Tagged by nhamblet
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Equations of Lines and Planes)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Lines)
 ## Date(8/23/07)
 ## Institution(Union College)
+## MLT(lin_find_vec_eqn_point_vector)
+## Level(3)
+## MO(1)
 ## KEYWORDS('Parametric', 'Line', 'Vector')
 
 DOCUMENT();        # This should be the first executable line in the problem.
@@ -19,7 +22,7 @@ loadMacros(
   "MathObjects.pl",
   "parserVectorUtils.pl",
   "parserParametricLine.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 
@@ -67,5 +70,5 @@ $showPartialCorrectAnswers = 1;
 ##################################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

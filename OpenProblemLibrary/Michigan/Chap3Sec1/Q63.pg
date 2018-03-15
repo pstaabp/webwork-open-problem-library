@@ -1,31 +1,36 @@
 # DESCRIPTION
 # Problem from Calculus, single variable, Hughes-Hallett et al., 4th ed.
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 12/04/08
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Rates of change - engineering and physics)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('4')
-## Section1('3.1')
-## Problem1('63')
 ## TitleText2('Calculus')
-## AuthorText2('Hughes-Hallett')
-## EditionText2('5')
-## Section2('3.1')
-## Problem2('65')
 ## TitleText3('Calculus')
+## TitleText4('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
 ## AuthorText3('Hughes-Hallett')
+## AuthorText4('Hughes-Hallett')
+## EditionText1('4')
+## EditionText2('5')
 ## EditionText3('6')
+## EditionText4('7')
+## Section1('3.1')
+## Section2('3.1')
 ## Section3('3.1')
+## Section4('3.1')
+## Problem1('63')
+## Problem2('65')
 ## Problem3('70')
+## Problem4('85')
 ## KEYWORDS('calculus','derivative','powers','polynomials')
 
 ## Textbook tags
@@ -35,13 +40,11 @@
 
 DOCUMENT();
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"parserNumberWithUnits.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -133,7 +136,7 @@ occurs when the velocity is zero and \( v(t) = -9.8t + $v0 = 0 \) when
 The maximum height is $ans3a meters.
 
 $PAR
-${BBOLD}B.$EBOLD
+${BBOLD}E.$EBOLD
 Again, we can use a graph of the height of the tomato to estimate when
 it hits the ground.  Alternately, we can find the
 answer analytically.  The tomato hits the ground when
@@ -146,5 +149,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -72,11 +72,13 @@ What should the student do when she recognizes this error.  This is a difficult
 decision.  $BR I would suggest that the student tell the person who is proctoring the exam of the problem $BR and then give the answer that the problem writer expected (I am almost certain that the$BR quadrilateral was meant to be a rectangle).  
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 8')
-## DBsection('2006')
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Volume)
+## Level(2)
+## MO(1)
 

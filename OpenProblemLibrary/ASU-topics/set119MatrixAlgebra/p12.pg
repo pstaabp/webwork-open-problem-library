@@ -2,32 +2,25 @@
 ## Matrix Algebra
 ## ENDDESCRIPTION
 
-## KEYWORDS('Algebra' 'Matrix' 'Matrices')
 ## Tagged by tda2d
 
-## DBsubject('Algebra')
-## DBchapter('Systems of Equations and Inequalities')
-## DBsection('The Algebra of Matrices')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Linear algebra)
+## DBchapter(Matrices)
+## DBsection(Matrix algebra)
+## Institution(ASU)
+## MLT(matrix_add_sub)
+## Level(2)
+## KEYWORDS('Algebra' 'Matrix' 'Matrices')
 
 DOCUMENT() ;        
 
 loadMacros(
-	"PG.pl",
-        "PGasu.pl",
-	"PGbasicmacros.pl",
-	"PGchoicemacros.pl",
-	"PGanswermacros.pl",
-	"PGauxiliaryFunctions.pl",
-	"PGmatrixmacros.pl"
-) ;
+  "PGstandard.pl",
+  "PGasu.pl",
+  "PGchoicemacros.pl",
+  "PGmatrixmacros.pl",
+  "PGcourse.pl"
+);
 ############
 
 TEXT(beginproblem());
@@ -50,7 +43,7 @@ $mult2 = random(3,6,1);
 BEGIN_TEXT
 
 If 
-\[ A = \{ display_matrix_mm($A)\} \mbox{ \ \ and \ \ } B = \{display_matrix_mm($B)\}, \]
+\[ A = \{ display_matrix_mm($A)\} \quad\mbox{  and  } \quad B = \{display_matrix_mm($B)\} \]
 
 then
 

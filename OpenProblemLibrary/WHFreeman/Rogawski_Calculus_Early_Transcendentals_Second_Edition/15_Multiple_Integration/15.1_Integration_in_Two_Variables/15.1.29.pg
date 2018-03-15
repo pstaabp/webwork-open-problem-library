@@ -1,20 +1,29 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Integration in Several Variables)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Double integrals over rectangles)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(EvaluateIteratedIntegralOverRectUSub)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.1')
 ## Problem1('29')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $ival1=0;
 $ival2=non_zero_random(1,9);
@@ -30,7 +39,6 @@ $answer=Real((1/15)*(($ival4+$ycoef*$ival2)**(5/2) -($ival3+$ycoef*$ival2)**(5/2
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.1","29") \}
 $PAR
 Evaluate the iterated integral:

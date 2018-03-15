@@ -2,19 +2,20 @@
 ##  Integration with substitution 
 ##ENDDESCRIPTION
 
-##KEYWORDS('integral', 'substitution','Flash applets','NSF-0941388')
 
-## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('Substitution')
-## Date('6/9/2011')
-## Author('Barbara Margolius')
-## Institution('Cleveland State University')
+## DBsubject(WeBWorK)
+## DBchapter(Demos)
+## DBsection(Flash)
+## Date(6/9/2011)
+## Institution(Cleveland State University)
+## Author(Barbara Margolius)
+## MO(1)
 ## TitleText1('')
-## EditionText1('2011')
 ## AuthorText1('')
-## Section1('')
+## EditionText1('2011')
+## Section1('.')
 ## Problem1('')
+## KEYWORDS('integral', 'substitution','Flash applets','NSF-0941388')
 
 ########################################################################
 # This work is supported in part by the National Science Foundation 
@@ -23,9 +24,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-  "PGbasicmacros.pl",
+  "PGstandard.pl",
   "extraAnswerEvaluators.pl",
   "AppletObjects.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;

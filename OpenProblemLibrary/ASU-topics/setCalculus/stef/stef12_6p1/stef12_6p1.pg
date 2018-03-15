@@ -5,9 +5,11 @@
 ## Tagged by cmd6a 3/12/06
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Parametric Surfaces and Their Areas)
+## DBchapter(Concepts for multivariable functions)
+## DBsection(Quadratic surfaces)
 ## Institution(ASU)
+## MLT(qs_graph_match)
+## Level(4)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -21,13 +23,13 @@
 ## KEYWORDS('calculus','parametric,'surface')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

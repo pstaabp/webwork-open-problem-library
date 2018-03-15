@@ -3,17 +3,11 @@
 #ENDDESCRIPTION
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
-"problemPanic.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "contextLeadingZero.pl",
+  "problemPanic.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;
@@ -59,10 +53,12 @@ c) \($b(x + $f)=$b x +$b*$f = $b x +$c2\).  $PAR
 If you are familiar with the associative law you may notice that we used it in a) and b)$BR [first the associative law for addition and then for multiplication]$BR and then the corresponding commutative laws.  In c) we used the distributive law.
 END_SOLUTION	
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject(Middle school)
-## DBchapter('Simplify_Expressions')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Simplifying expressions)
+## Level(2)
+## MO(1)
 

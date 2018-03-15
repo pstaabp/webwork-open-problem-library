@@ -4,23 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -45,11 +32,14 @@ She has only 24 cube head beads and must use 5 in each special necklace.  Thus s
 complete 4 necklaces.$BR  Whether she eats a fish sandwich or a banana before or after $BR making the necklaces is up to her.  The triangular beads can be used for her$BR next project.  Her mother will probably ask her to clean up her bedroom after $BR she makes the necklaces.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter(Word problems)
-## DBsection(Too much information)
+## DBsubject(Combinatorics)
+## DBchapter(Counting)
+## DBsection(Combinations)
+## Level(2)
+## Static(1)
+## MO(1)
 
 
 \{Panic::Button(label => " Ask for a Hint", penalty => .00)\}

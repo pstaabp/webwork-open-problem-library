@@ -5,7 +5,7 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Continuity - classifying discontinuities)
 ## Date(8/23/07)
 ## Institution(Union College)
@@ -18,11 +18,11 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
   "unionInclude.pl",
   "contextPiecewiseFunction.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -39,7 +39,7 @@ $ab = $a*$b;
 $c = random(1,10,1);
 
 $f = PiecewiseFunction(
-  "$b/x+(-${b1}x+$ab)/(x(x-$a)) if x != 0 and x != 4 else
+  "$b/x+(-${b1}x+$ab)/(x(x-$a)) if x != 0 and x != $a else
    $c if x = 0"
 );
 
@@ -77,5 +77,5 @@ ANS(num_cmp($ans));
 
 ###################################
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

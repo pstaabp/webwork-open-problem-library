@@ -6,10 +6,14 @@
 ## Tagged by glr 02/09/09
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Linear Equations)
+## DBchapter(Higher order differential equations)
+## DBsection(Applications)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(circuits)
+## MLTleader(1)
+## Level(5)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -30,14 +34,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-"hhAdditionalMacros.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "hhAdditionalMacros.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -139,5 +140,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -2,28 +2,33 @@
 ##  Algebra: Applications of exponential functions
 ##ENDDESCRIPTION
 
-##KEYWORDS('algebra', 'exponents', 'exponential functions', 'interest', 'compounded interest', 'compounded annually')
 
-## DBsubject('Algebra')
-## DBchapter('Exponential and Logarithmic Functions')
-## DBsection('Applications of Exponential and Logarithmic Functions')
-## Date('02/08/2010')
-## Author('Jonathan Rogness')
-## Institution('University of Minnesota')
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Compound interest)
+## Date(02/08/2010)
+## Institution(University of Minnesota)
+## Author(Jonathan Rogness)
+## MLT(Apnt)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Algebra for College Students')
-## EditionText1('8')
 ## AuthorText1('Kaufmann, Schwitters')
+## EditionText1('8')
 ## Section1('10.2')
 ## Problem1('4')
+## KEYWORDS('algebra', 'exponents', 'exponential functions', 'interest', 'compounded interest', 'compounded annually')
 
 ########################################################################
 
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   "contextCurrency.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextCurrency.pl",
+  "PGcourse.pl"
 );
 
 ##############################################################

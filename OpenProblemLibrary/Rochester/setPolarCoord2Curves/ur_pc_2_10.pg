@@ -5,20 +5,21 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Parametric Equations and Polar Coordinates)
-## DBsection(Area and arc length in polar coordinates)
+## DBchapter(Polar)
+## DBsection(Arc length)
 ## Institution(Rochester)
+## MLT(cExp)
+## MLTleader(1)
+## Level(4)
 ## KEYWORDS('polar' 'curve' 'length')
 
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

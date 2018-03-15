@@ -4,16 +4,12 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
-"contextLimitedPowers.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "contextLeadingZero.pl",
+  "contextLimitedPowers.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -121,7 +117,7 @@ $BR
  \(\ \ \sqrt{8}= \sqrt{4}*\sqrt{2}\)
  but 4 is a perfect square and \(\sqrt{4}=2\)
 $BR
-so \(\sqrt{8}=2*\(\sqrt{2}\).  [We will usually write this as \(2\sqrt{2}\)] and we can just double the value we have
+so \(\sqrt{8}=2*\sqrt{2}\).  [We will usually write this as \(2\sqrt{2}\)] and we can just double the value we have
 used to approximate the square root of 2.
 
 $PAR
@@ -178,7 +174,8 @@ $reducedSqrt = sub  {
       # check if equal when sqrt's are replaced by 1
       #
       Context()->flags->set(setSqrt => 1);
-      delete $correct->{test_values}, $student->{test_values};
+      delete $correct->{test_values};
+      delete $student->{test_values};
       my $OK = ($correct == $student);
       Context()->flags->set(setSqrt => 0);
       #
@@ -210,8 +207,10 @@ $PAR Solution $PAR
 \(27000=3^2\times 10^2\times 3\times 10\) so \(\sqrt{27000}=30\sqrt{30}\).
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Square_Root')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Irrational numbers)
+## DBsection(Simplify radical numbers)
+## Level(2)
+## MO(1)

@@ -1,21 +1,28 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Integration in Several Variables)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Double integrals over rectangles)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.1')
 ## Problem1('7')
-## KEYWORDS('calculus', '')
-## UsesAuxiliaryFiles('image_15_1_7.png')
+## KEYWORDS('calculus')
+## RESOURCES('image_15_1_7.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $a=random(2,10);
 $sol1=Real(($a*77)/72);
@@ -25,7 +32,6 @@ $answer=Real(($sol1+$sol2)/2);
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.1","7") \}
 $PAR
 Let \(\mathcal{R} = [0,1] \times [0,1]\) .  Estimate \(\iint_{\mathcal{R}}$a (x+y)\,dA\)

@@ -2,27 +2,32 @@
 ## Linear Algebra
 ## ENDDESCRIPTION
 
-## KEYWORDS('linear algebra','magic square','basis')
 
 ## DBsubject(Linear algebra)
 ## DBchapter(Abstract vector spaces)
 ## DBsection(Basis and dimension)
-## Date('10/12/2013')
-## Author('Nandor Sieben')
-## Institution('NAU')
+## Date(10/12/2013)
+## Institution(NAU)
+## Author(Nandor Sieben)
+## Level(2)
+## MO(1)
+## KEYWORDS('linear algebra','magic square','basis')
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserMultiAnswer.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "AnswerFormatHelp.pl",
+  "MatrixReduce.pl",
+  "rank.pl",
+  "PGcourse.pl"
 );
 $showPartialCorrectAnswers = 0;
 TEXT(beginproblem()); 
 
-Context('Matrix');
+Context("Fraction");
+Context() -> parens -> set ("[" => {formMatrix => 1});
 
 $A = Matrix([[1,0],[0,1]]);
 $B = Matrix([[0,1],[1,0]]);
@@ -39,6 +44,7 @@ return 0 if ($s5 != $s1);
 return 1;
 }
 
+Context() -> parens -> set ("[" => {formMatrix => 1});
 $multians = MultiAnswer($A, $B)->with(
 singleResult => 1,
 checker => sub {
@@ -48,18 +54,24 @@ my @c = @{$correct};
 $s0 = Matrix($s[0]); 
 $s1 = Matrix($s[1]);
 
-return 0 if (! magic($s0)); 
-return 0 if (! magic($s1)); 
-if (Matrix(
+if (! magic($s0)) {
+  $self->setMessage(1,"Not half-magic.");
+  return 0;
+}
+if (! magic($s1)) {
+  $self->setMessage(2,"Not half-magic.");
+  return 0;
+}
+if (rank(Matrix(
       [$s0->element(1,1),$s0->element(1,2),
        $s0->element(2,1),$s0->element(2,2)],
       [$s1->element(1,1),$s1->element(1,2),
-       $s1->element(2,1),$s1->element(2,2)],
-      [0,0,0,0],
-      [0,0,0,0],
-      )->order_LR==2) {
+       $s1->element(2,1),$s1->element(2,2)]
+      ))==2) {
   return 1;
 }
+$self->setMessage(1,"Not independent.");
+$self->setMessage(2,"Not independent.");
 return 0;
 }
 );
@@ -82,6 +94,6 @@ Context()->normalStrings;
 
 ANS( $multians->cmp() );
 
-COMMENT('MathObject version.');
+;
 
 ENDDOCUMENT();

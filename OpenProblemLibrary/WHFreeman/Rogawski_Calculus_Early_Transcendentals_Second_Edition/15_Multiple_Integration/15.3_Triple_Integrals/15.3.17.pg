@@ -1,21 +1,30 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Triple Integrals)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Triple integrals)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(Triple_Integrals_Type_1)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.3')
 ## Problem1('17')
-## KEYWORDS('calculus', '')
-## UsesAuxiliaryFiles('image_15_3_19.png')
+## KEYWORDS('calculus')
+## RESOURCES('image_15_3_19.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $a=random(2,10);
 $a=$a*2;
@@ -26,7 +35,6 @@ $answer=Real($a*(2**9)/21);
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.3","17") \}
 $PAR
 Integrate \(f(x,y,z)=$a xz\) over the region in the first octant

@@ -5,20 +5,21 @@
 ## Tagged by cmd6a 3/12/06
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Equations of Lines and Planes)
+## DBchapter(Concepts for multivariable functions)
+## DBsection(Parameterized surfaces)
 ## Institution(ASU)
+## Level(3)
 ## KEYWORDS('calculus','tangent plane','partial derivative')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl",
-           "extraAnswerEvaluators.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

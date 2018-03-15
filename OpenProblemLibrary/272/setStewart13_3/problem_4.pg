@@ -8,16 +8,18 @@
 ## Tagged by ynw2d
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Functions)
-## DBsection(Arc Length and Curvature)
+## DBchapter(Calculus of vector valued functions)
+## DBsection(Frames, motions, and other applications)
 ## Author(Stewart)
+## MLT(fma_find_TNk)
+## MLTleader(1)
+## Level(3)
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

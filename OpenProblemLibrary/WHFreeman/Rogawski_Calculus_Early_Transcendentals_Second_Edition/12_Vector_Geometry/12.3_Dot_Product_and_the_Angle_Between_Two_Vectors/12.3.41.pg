@@ -1,8 +1,11 @@
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Geometry)
-## DBsection(Dot Product and the Angle Between Two Vectors)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Dot product, length, and unit vectors)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## MLT(CalcExpressionsWithDotProd)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +14,16 @@
 ## KEYWORDS('calculus', 'parametric', 'vector', 'dot product', 'scalar product', 'angle', 'projection', 'proj')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+
+TEXT(beginproblem());
 $context = Context("Vector");
 
 sub vdot
@@ -125,7 +134,6 @@ $vstr = nicestring([$w1, $w2], ['u', 'v']);
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "12.3","41") \}
 $PAR
 Assume that \( u \cdotp v = $v0 \), \( \| u \| = $v1 \), and \( \| v \| = $v2 \).

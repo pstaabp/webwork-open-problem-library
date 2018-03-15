@@ -4,21 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-"contextFraction.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -45,11 +35,14 @@ Another way of thinking of it is that after computing the number of ways of gett
 $BR and that means that there must be 5 ways that tails exceed heads so we don't$BR really need to do anything more to know the denominator.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Probability')
-## DBsection('')
+## DBsubject(Probability)
+## DBchapter(Sample Space)
+## DBsection(Outcomes & events)
+## Level(2)
+## Static(1)
+## MO(1)
 
 
 \{Panic::Button(label => " Ask for a Hint", penalty => .00)\}

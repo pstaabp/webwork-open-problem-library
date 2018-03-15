@@ -2,27 +2,30 @@
 ## Functions: Input and Output
 ## ENDDESCRIPTION
 
-## KEYWORDS('exponential functions','growth rate','growth factor')
 
-## DBsubject('Algebra')
-## DBchapter('Logarithms')
-## DBsection('Solving Equations')
-## Date('12/05/10')
-## Author('Erich McAlister')
-## Institution('Fort Lewis College')
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Exponential and logarithmic equations)
+## Date(12/05/10)
+## Institution(Fort Lewis College)
+## Author(Erich McAlister)
+## MLT(ELEqMLT4J)
+## Level(3)
+## MO(1)
 ## TitleText1('Algebra: Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum')
+## EditionText1('1')
 ## Section1('11.2')
 ## Problem1('35')
+## KEYWORDS('exponential functions','growth rate','growth factor')
 
 DOCUMENT();  
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -36,7 +39,7 @@ Context()->flags->set(useBaseTenLog=>1);
 Context()->flags->set( tolerance => 0.01, tolType => "absolute");
 
 $b1 = random(1.1,1.9,.01);
-$b2 = random(1.51,1.81,.01);
+do    {$b2 = random(1.51,1.81,.01)}	until	(abs($b2-$b1) > 0.1) ;
 $a1 = random(80.1,90.1,.1);
 $a2 = random(50,100,1);
 $ans = Compute("log($a1/$a2) / log($b2/$b1)");
@@ -69,5 +72,5 @@ ANS( $ans->cmp() );
 
 
 
-COMMENT('MathObject version.  Uses log = log10.');
+COMMENT('Uses log = log10.');
 ENDDOCUMENT();

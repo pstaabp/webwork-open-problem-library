@@ -5,9 +5,10 @@
 ## Tagged by tda2d
 
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Separable equations)
+## DBchapter(First order differential equations)
+## DBsection(Applications - mixing problems)
 ## Institution(Dartmouth)
+## Level(5)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -16,13 +17,13 @@
 ## KEYWORDS('separable' 'differential equation' 'word problem')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers

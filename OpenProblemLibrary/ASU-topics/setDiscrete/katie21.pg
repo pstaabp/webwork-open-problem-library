@@ -4,9 +4,9 @@
 
 ## Tagged by YL
 
-## DBsubject(Set theory)
-## DBchapter(Relations)
-## DBsection(General relations)
+## DBsubject(Set theory and logic)
+## DBchapter(Relations between sets)
+## DBsection(Properties of relations)
 ## Institution(ASU)
 ## Level(4)
 ## KEYWORDS('relation', 'reflexive', 'symmetric', 'transitive')
@@ -14,11 +14,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

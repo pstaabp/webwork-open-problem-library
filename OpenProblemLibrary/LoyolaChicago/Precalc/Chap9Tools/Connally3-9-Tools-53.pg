@@ -1,23 +1,29 @@
 ## DESCRIPTION
 ## Polynomial and Rational Functions
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
-## DBchapter(Polynomial and rational functions)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Partial fractions)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
-## Section1('9 Tools')
-## Problem1('44')
+## Section1('9.')
+## Problem1('53')
 ## TitleText2('Functions Modeling Change')
 ## AuthorText2('Connally')
 ## EditionText2('4')
 ## Section2('11.')
 ## Problem2('44')
+## TitleText3('Functions Modeling Change')
+## AuthorText3('Connally')
+## EditionText3('5')
+## Section3('11.')
+## Problem3('44')
 ## KEYWORDS('polynomial functions','rational functions')
 
 
@@ -27,11 +33,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGunion.pl",
-"parserMultiAnswer.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGunion.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -108,5 +114,5 @@ We have
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

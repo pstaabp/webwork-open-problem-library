@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -136,11 +136,12 @@ $PAR
 ON THE NECAP EXAMINATION YOU WOULD HAVE BEEN ASKED TO SHOW YOUR WORK OR EXPLAIN HOW YOU KNOW IN THIS PROBLEM.  
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 7')
-## DBsection('2009')
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Properties of shapes)
+## Level(2)
 
 $graph->moveTo(,);
 $graph->lineTo( , ,'black');

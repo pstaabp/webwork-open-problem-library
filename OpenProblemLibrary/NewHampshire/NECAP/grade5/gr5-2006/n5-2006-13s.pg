@@ -1,12 +1,12 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"contextString.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "contextString.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 	Context("String")->strings->add(
@@ -117,10 +117,6 @@ $graph->lineTo(3.9 ,-.2 ,'black');
 TEXT(beginproblem());
 BEGIN_TEXT
 
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATOR 
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR 
-
-
 Jack and Diane each picked a mystery solid from the ones shown below.
 $BR
 
@@ -149,11 +145,12 @@ a)  There are two figures with 5 faces (N and P) but only P is a prism.$PAR
 b)  There are two figures with all faces the same shape (M and Q) but only M is a prism.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 5')
-## DBsection('2006')
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Properties of shapes)
+## Level(1)
 

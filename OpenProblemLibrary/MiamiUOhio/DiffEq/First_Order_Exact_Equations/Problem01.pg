@@ -4,11 +4,15 @@
 
 ## Edition('7')
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Exact equations)
-## Date('05/28/2012')
-## Institution('Muohio')
-## Author('Anna Ghazaryan, Fuli Zhang, Paul Pearson')
+## DBchapter(First order differential equations)
+## DBsection(Exact)
+## Date(05/28/2012)
+## Institution(Muohio)
+## Author(Anna Ghazaryan, Fuli Zhang, Paul Pearson)
+## MLT(Exact_Verification)
+## Level(2)
+## Static(1)
+## MO(1)
 ## TitleText1('Differential equations with Boundary-value problem')
 ## AuthorText1('Dennis G. Zill')
 ## EditionText1('')
@@ -21,13 +25,10 @@
 DOCUMENT();      
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-#"AnswerFormatHelp.pl",
-#"unionLists.pl",
-#"parserPrime.pl",
-"parserPopUp.pl",
-#"answerHints.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 # Print problem number and point value (weight) for the problem
@@ -86,9 +87,9 @@ foreach my $i (0..2) {
 ANS( $answer[$i]->cmp(
   checker=>sub {
     my ( $correct, $student, $ansHash ) = @_;
-    if ( ($numOfAttempts < 1) && ($correct == $student) ) { 
+    if ( ($numOfAttempts < 2) && ($correct == $student) ) { 
        return 1; 
-    } elsif ( ($numOfAttempts > 0) && ($correct == $student) ) {
+    } elsif ( ($numOfAttempts > 1) && ($correct == $student) ) {
        Value->Error("Your answer is correct, but your score did not change since you used up the attempts allowed."); 
     } else {
        return 0;
@@ -104,7 +105,7 @@ ANS( $answer[$i]->cmp(
 #ANS( $answer[2]->cmp() );
 
 
-COMMENT('MathObject version.  Uses a custom answer checker to 
+COMMENT('Uses a custom answer checker to 
 limit the number of attempts that count for credit to one.');
 
 ENDDOCUMENT();

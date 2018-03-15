@@ -1,20 +1,28 @@
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Algebraic Expressions')
-## KEYWORDS('calculus', 'functions', 'algebraic functions', 'polynomial functions', 'transcendental functions', 'rational functions')
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Function notation)
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## MLT(idFc)
+## MLTleader(1)
+## Level(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('1.3')
 ## Problem1('15')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'functions', 'algebraic functions', 'polynomial functions', 'transcendental functions', 'rational functions')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGchoicemacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $a = random(0, 10);
 $b = random(0, 10);
@@ -29,7 +37,6 @@ $mc->extra("rational", "polynomial", "transcendental");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "1.3","15") \}
 $PAR
 \{ $mc->print_q() \} 

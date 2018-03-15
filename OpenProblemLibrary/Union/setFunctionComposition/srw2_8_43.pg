@@ -2,29 +2,27 @@
 ## Algebra
 ## ENDDESCRIPTION
 
-## KEYWORDS('algebra','function','composition of functions')
 ## Tagged by cmd6a 8/6/06
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Combining Functions')
-## Date('9/16/08')
-## Author('K. Lesh')
-## Institution('Union College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Compositions and combinations of functions)
+## Date(9/16/08)
+## Institution(Union College)
+## Author(K. Lesh)
+## MLT(ccf-triple-comp)
+## Level(3)
+## MO(1)
+## KEYWORDS('algebra','function','composition of functions')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "unionTables.pl",        # macro to use BeginTable command
-  "PGcourse.pl",           # Customization file for the course
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -77,5 +75,5 @@ END_TEXT
 ANS($fogoh->cmp);
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

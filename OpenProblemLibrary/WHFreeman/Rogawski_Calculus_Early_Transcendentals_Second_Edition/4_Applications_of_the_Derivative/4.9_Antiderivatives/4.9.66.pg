@@ -1,8 +1,11 @@
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Integrals)
-## DBsection(Antiderivatives)
+## DBsection(Antiderivatives (without trigonometric functions))
 ## Institution(W.H.Freeman)
 ## Author(Brian Kell)
+## MLT(antideriv_poly_second_order_init_vals)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,9 +14,14 @@
 ## KEYWORDS('calculus', 'antiderivatives')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 Context()->flags->set(reduceConstants => 0);
 
@@ -45,7 +53,6 @@ $func = Formula("$func_a$func_b$func_c$func_d$func_e$func_f" || "0");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "4.9", "66") \}
 $PAR
 First find \( f' \) and then find \( f \).
@@ -56,9 +63,9 @@ $PAR
 $PAR
 \(f(1)=$q\).
 $PAR
-\( f'(x) = \) \{ans_rule()\}
+\( f'(x) = \) \{ans_rule(50)\}
 $PAR
-\( f(x) = \) \{ans_rule()\}
+\( f(x) = \) \{ans_rule(50)\}
 END_TEXT
 Context()->normalStrings;
 

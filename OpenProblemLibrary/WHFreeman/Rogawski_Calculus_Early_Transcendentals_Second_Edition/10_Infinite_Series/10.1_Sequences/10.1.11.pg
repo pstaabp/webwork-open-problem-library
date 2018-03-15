@@ -1,20 +1,27 @@
-## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Infinite Sequences and Series')
-## KEYWORDS('calculus', 'series')
+## DBsubject(Algebra)
+## DBchapter(Finite sequences and series)
+## DBsection(Notation)
+## Institution(W.H.Freeman)
+## Author(Danny Glin)
+## MLT(CalcTermRecur)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('10.1')
 ## Problem1('11')
-## Author('Danny Glin')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'series')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 Context()->texStrings;
 
 #$b1=2
@@ -39,7 +46,6 @@ $b41=$coeff1*$b3;
 $b42=$coeff2*$b2;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "10.1","11") \}
 $PAR
 Calculate the first four terms of the following sequence, starting with \(n=1\).

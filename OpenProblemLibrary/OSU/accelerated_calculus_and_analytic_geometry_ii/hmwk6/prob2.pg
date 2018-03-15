@@ -5,7 +5,8 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Conic Sections)
+## DBchapter(Conic sections)
+## DBsection(Ellipses)
 ## Date(1/12/2000)
 ## Institution(Rochester)
 ## Author(Zig Fiedorowicz)
@@ -24,11 +25,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 $showPartialCorrectAnswers = 1;

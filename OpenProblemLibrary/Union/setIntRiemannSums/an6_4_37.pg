@@ -2,30 +2,32 @@
 ## Calculus: Definition of the Definite Integral
 ## ENDDESCRIPTION
 
-## KEYWORDS('calculus','integration','riemann sums','definite integral')
 ## Tagged by cmd6a 8/9/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('The Definite Integral')
-## Date('8/23/07')
-## Author('K. Lesh')
-## Institution('Union College')
+## DBchapter(Integrals)
+## DBsection(Riemann sums)
+## Date(8/23/07)
+## Institution(Union College)
+## Author(K. Lesh)
+## MLT(Definition)
+## Level(2)
 ## TitleText1('Calculus')
-## EditionText1('7')
 ## AuthorText1('Anton')
+## EditionText1('7')
 ## Section1('6.4')
 ## Problem1('37')
+## KEYWORDS('calculus','integration','riemann sums','definite integral')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "unionInclude.pl",       # Utilities for included files
-  "weightedGrader.pl",     # Union College grading utility
-  "PGcourse.pl",           # Customization file for the course
+  "unionInclude.pl",
+  "weightedGrader.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -76,5 +78,5 @@ includePGfile("integrals-by-defn-text.pg");
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

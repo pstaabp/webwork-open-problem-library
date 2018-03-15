@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Statistics')
-## DBchapter('Estimation')
-## DBsection('Correlation and Regression')
+## DBsubject(Statistics)
+## DBchapter(Simple linear regression)
+## DBsection(Prediction)
+## Institution(NAU)
+## Author(N.Spencer Sitton)
+## Level(2)
 ## KEYWORDS('Confidence Intervals')
-## Author('N.Spencer Sitton')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 07/08/05
@@ -13,13 +14,13 @@
 
 DOCUMENT();     
 
-loadMacros("PGstandard.pl",
-           "PGnauStats.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGnumericalmacros.pl",
-	   "PGstatisticsmacros.pl",
-           	      
-);  
+loadMacros(
+  "PGstandard.pl",
+  "PGnauStats.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(&beginproblem);
 

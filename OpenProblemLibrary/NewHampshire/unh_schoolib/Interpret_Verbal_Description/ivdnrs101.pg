@@ -2,6 +2,7 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -84,12 +85,14 @@ ANS($ans3->cmp(checker=>$LimitedOperation));
 ANS($ans4->cmp(checker=>$LimitedOperation));
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject(Middle school)
-## DBchapter('Interpret_Verbal_Description')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Multiple operations)
+## Level(4)
+## MO(1)
 
 
 

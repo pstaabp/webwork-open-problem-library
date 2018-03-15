@@ -1,10 +1,13 @@
 ##DESCRIPTION
-## DBsubject('Probability')
-## DBchapter('Discrete Probability')
-## DBsection('Events/Probability Calculation')
+## DBsubject(Probability)
+## DBchapter(Sample Space)
+## DBsection(Bayes theorem -- inverse probability)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## Level(3)
+## Static(1)
+## MO(1)
 ## KEYWORDS('probability')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 6/21/05
@@ -14,13 +17,11 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -5,12 +5,13 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Optimization - general)
 ## Institution(Rochester)
 ## MLT(Optimization_ClosestPoint)
 ## MLTleader(1)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('1')
@@ -26,10 +27,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   #"source.pl",         # used to display problem source button
-   "PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -89,7 +89,7 @@ Context()->{format}{number}='%0.2g'; #limit answers to 2 significant places
 ANS($Q_ans->cmp);
 
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -96,8 +96,9 @@ length as the speed increased from 60 miles per hour to 70 miles per hour, $BR t
 pattern inicates that it will increase by 7 car lengths as the speed increases from 70 miles per hour to 80 miles per hour.$BR  Thus the answer is \(24+7=31\) car lengths.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 6')
-## DBsection('2005')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Applications)
+## Level(4)

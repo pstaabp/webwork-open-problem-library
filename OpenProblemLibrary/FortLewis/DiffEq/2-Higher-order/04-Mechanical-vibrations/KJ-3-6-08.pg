@@ -2,19 +2,21 @@
 ## Mechanical vibrations
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','mechanical vibrations')
 
 ## DBsubject(Differential equations)
-## DBchapter('Higher Order Differential Equations')
-## DBsection('Higher Order Linear')
-## Date('03/01/2012')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Higher order differential equations)
+## DBsection(Applications)
+## Date(03/01/2012)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(5)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
-## EditionText1('2')
 ## AuthorText1('Kohler and Johnson')
+## EditionText1('2')
 ## Section1('3.6')
 ## Problem1('8')
+## KEYWORDS('differential equations','mechanical vibrations')
 
 
 ##############################
@@ -23,11 +25,12 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"unionTables.pl",
-"answerHints.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "unionTables.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -174,6 +177,6 @@ ANS( $y->cmp()->withPostFilter(AnswerHints(
 ANS( $y0->cmp() );
 ANS( $yp0->cmp() );
 
-COMMENT("MathObject version");
+
 
 ENDDOCUMENT();

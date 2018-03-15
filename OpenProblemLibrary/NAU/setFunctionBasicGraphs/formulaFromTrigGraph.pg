@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Transformations of Functions')
+## DBsubject(Trigonometry)
+## DBchapter(Trigonometric functions)
+## DBsection(Sine & cosine functions - definitions, graphs, & properties)
+## Institution(NAU)
+## Author(Jim Swift)
+## Level(3)
 ## KEYWORDS('function','transformation','trigonometric')
-## Author('Jim Swift')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 8/31/05
@@ -12,10 +13,11 @@
 # Course: A precalculus problem for written for Calculus I review.
 
 DOCUMENT();
-loadMacros("PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl"
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
           
 TEXT(beginproblem()); 

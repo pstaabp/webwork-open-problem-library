@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -69,10 +69,9 @@ $radio->qa("a) Which town had the greatest average rainfall ", "Milton ");
 #FIRST PAREN IS QUESTION, SECOND PAREN IS CORRECT ANSWER
 $radio->extra("Fairview ", "Southport ", " Crawford ");
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATOR 
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR 
+ 
 
-The chart below shows the verage rainfull for April for four different towns.
+The chart below shows the average rainfull for April for four different towns.
 $PAR
 AVERAGE RAINFALL IN APRIL $BR
 \{ image( insertGraph($graph), tex_size=>$TEXSIZE,
@@ -102,9 +101,11 @@ IN THIS PROBLEM ON THE NECAP EXAM YOU WERE EXPECTED $BR
  ABOVE WOULD BE APPROPRIATE.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject('NECAP')
-## DBchapter('Grade 6')
-## DBsection('2007')
+## DBsubject(Arithmetic)
+## DBchapter(Decimals)
+## DBsection(Applications)
+## Level(4)
+## MO(1)

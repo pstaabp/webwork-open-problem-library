@@ -1,43 +1,48 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Logarithmic functions)
-## DBsection(Logarithms and Their Properties)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Properties of logarithms)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## MLT(LogsInTermsOfVariables)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('4.1')
-## Problem1('38')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
-## Section2('5.')
-## Problem2('38')
+## EditionText3('5')
+## Section1(4.1)
+## Section2(5.Review)
+## Section3('5.Review')
+## Problem1(28)
+## Problem2(38)
+## Problem3('30')
 ## KEYWORDS('logarithms','natural log','common log','log','ln','properties of logs')
 
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-#           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-#           "PGgraphmacros.pl",
-#           "extraAnswerEvaluators.pl",
-#           "PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
-Context("Numeric")->variables->are(x=>"Real",y=>"Real");
+Context('Numeric')->variables->are(
+        x=>['Real',limits=>[1.01,3]] ,
+        y=>['Real',limits=>[-1,0.99]]);
 
 $showPartialCorrectAnswers = 1;
 
@@ -122,5 +127,5 @@ $PAR
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -7,9 +7,12 @@
 
 ## Author('Gavin LaRose');
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Four Ways to Represent a Function)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
 ## Institution(University of Michigan)
+## MLT(InterpretSlopeRateOChange)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -22,13 +25,11 @@
 
 DOCUMENT();
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"PGasu.pl",  # get pc_evaluator
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -120,5 +121,5 @@ negative, then the metal would contract as the temperature rises.
 END_SOLUTION
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

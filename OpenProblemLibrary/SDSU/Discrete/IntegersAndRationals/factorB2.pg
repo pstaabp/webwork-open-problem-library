@@ -12,7 +12,8 @@
 ## Author(Thomas Schmidt','Michael E. O'Sullivan)
 ## MLT(enterfact)
 ## Level(2)
-## KEYWORDS('')
+## Static(1)
+## MO(1)
 
 
 ############################
@@ -21,8 +22,9 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

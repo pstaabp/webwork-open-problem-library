@@ -1,8 +1,10 @@
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(The Logistic Equation)
+## DBchapter(First order differential equations)
+## DBsection(Equilibrium points and phase lines)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +13,14 @@
 ## KEYWORDS('calculus', 'differential equations', 'logistic equation', 'population growth', 'exponential growth', 's-curve', 'sigmoid')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 $A = Real(random(2,8, 1));
 
 $init = $A * 2;
@@ -26,7 +32,6 @@ $context = Context();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "9.4","3") \}
 $PAR
 Let \( y(t) \) be a solution of \( \dot{y} = \frac{1}{$A} y (1 - \frac{y}{$A}) \) such that \( y(0) = $init \).  Determine \( \displaystyle \lim_{t \to \infty} y(t) \) without finding \( y(t) \) explicitly.

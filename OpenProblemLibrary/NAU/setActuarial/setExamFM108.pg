@@ -1,21 +1,20 @@
 ##DESCRIPTION
-## DBsubject('Financial Mathematics')
-## DBchapter('Introduction to Interest')
-## DBsection('Compound Interest')
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Present and future value of money)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## Level(5)
 ## KEYWORDS('annual interest rate')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 

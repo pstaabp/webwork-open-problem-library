@@ -1,13 +1,14 @@
+## DBsubject(Algebra)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Polynomials: multiply)
+## Level(3)
+## MO(1)
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-#"contextFraction.pl",
-#"PGgraphmacros.pl",
-#"contextInequalities.pl",
-#"PGchoicemacros.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -70,5 +71,5 @@ ANS($answer3->cmp());
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

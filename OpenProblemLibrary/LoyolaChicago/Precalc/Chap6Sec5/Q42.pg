@@ -1,42 +1,39 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Trigonometry)
 ## DBchapter(Trigonometric functions)
-## DBsection(Sinusoidal Functions)
+## DBsection(Modeling with trigonometric functions)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## Level(5)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('6.5')
-## Problem1('40')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(6.5)
 ## Section2('8.2')
+## Section3('7.5')
+## Problem1(42)
 ## Problem2('40')
+## Problem3('38')
 ## KEYWORDS('sine','cosine','period','amplitude',midline','phase shift')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-#           "PGstandard.pl",
-#           "extraAnswerEvaluators.pl",
-#           "PGauxiliaryFunctions.pl",
-#           "PGgraphmacros.pl",
-           "MathObjects.pl",
-#           "PGchoicemacros.pl",
-          # "parserNumberWithUnits.pl",
-          # "parserFormulaWithUnits.pl",
-          # "parserFormulaUpToConstant.pl",
-           "PGcourse.pl",
-"AnswerFormatHelp.pl",
-          );
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -89,5 +86,5 @@ Context()->normalStrings;
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

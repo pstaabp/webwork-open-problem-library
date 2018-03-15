@@ -4,10 +4,12 @@
 # ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Logarithmic functions)
-## DBsection(Logarithms and Exponential Models)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Graphs)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
@@ -17,17 +19,13 @@
 
 DOCUMENT();       
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-#           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-#           "extraAnswerEvaluators.pl",
-#           "PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
+);
        
 TEXT(beginproblem()); # standard preamble to each problem.
 
@@ -80,5 +78,5 @@ The figure shows that there is no point of intersection.  The concavity of the g
 $BR 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

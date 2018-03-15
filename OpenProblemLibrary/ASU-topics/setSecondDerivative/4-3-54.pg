@@ -5,7 +5,7 @@
 ## Tagged by cmd6a 2/9/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Increasing/decreasing functions and local extrema)
 ## Institution(ASU)
 ## MLT(average_local_inflection)
@@ -14,11 +14,11 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 $r1 = random(1,9,2);
 $r2 = random(-9,-3,2);

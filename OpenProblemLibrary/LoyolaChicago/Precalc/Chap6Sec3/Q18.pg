@@ -1,43 +1,42 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Trigonometry)
-## DBchapter(Trigonometric functions)
-## DBsection(Radians)
+## DBchapter(Geometric and algebraic foundations for trigonometry)
+## DBsection(Radians, converting radians & degrees)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## MLT(KentMoreLike10)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('6.3')
-## Problem1('18')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1('6.3')
 ## Section2('8.1')
+## Section3('7.3')
+## Problem1('18')
 ## Problem2('18')
+## Problem3('18')
 ## KEYWORDS('sine','cosine','radians','degrees')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-#           "PGstandard.pl",
-#           "extraAnswerEvaluators.pl",
-#           "PGauxiliaryFunctions.pl",
-#           "PGgraphmacros.pl",
-           "MathObjects.pl",
-#           "PGchoicemacros.pl",
-          # "parserNumberWithUnits.pl",
-          # "parserFormulaWithUnits.pl",
-          # "parserFormulaUpToConstant.pl",
-"PGcourse.pl",
-"AnswerFormatHelp.pl",
-"contextFraction.pl",
-          );
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -71,12 +70,12 @@ SOLUTION(EV3(<<'END_SOLUTION'));
 $PAR
 $BBOLD  SOLUTION $EBOLD
 $PAR
-@disp[$i]
+$disp[$i]
 $BR
 
 END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

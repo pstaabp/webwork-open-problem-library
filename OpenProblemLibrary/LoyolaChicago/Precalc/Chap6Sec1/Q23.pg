@@ -1,37 +1,40 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Trigonometry)
 ## DBchapter(Trigonometric functions)
-## DBsection(Introduction to Periodic Functions)
+## DBsection(Modeling with trigonometric functions)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## Level(5)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('6.1')
-## Problem1('24')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(6.1)
 ## Section2('7.1')
+## Section3('7.1')
+## Problem1(23)
 ## Problem2('24')
+## Problem3('30')
 ## KEYWORDS('periodic','period','amplitude','midline','spring')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "MathObjects.pl",
-	   "parserNumberWithUnits.pl",
-           "PGcourse.pl"
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -158,7 +161,7 @@ $PAR
 $PAR
 (c) The weight gets as close as $min cm to the ceiling.
 $PAR
-(d) The falls as far as $max cm from the ceiling.
+(d) The weight falls as far as $max cm from the ceiling.
 $PAR
 (e) The amplitude of the graph is the distance of the maximum (or minimum) \(y\) value from the midline.  In this case the midline is \(d=$m\) and the maximum value is \(d=$max\), so the amplitude is $a.
 

@@ -1,9 +1,10 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Rates of change - engineering and physics)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -12,9 +13,14 @@
 ## KEYWORDS('calculus', 'derivatives', 'rates of change', 'velocity')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $h = random(10, 40) * 10;
 
@@ -23,7 +29,6 @@ $ans = Real("$timehit*-9.8");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "3.4","26") \}
 $PAR
 What is the velocity of an object dropped from a height of $h m when it hits the ground?

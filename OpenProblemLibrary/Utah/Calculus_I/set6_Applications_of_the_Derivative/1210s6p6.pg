@@ -1,24 +1,25 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Newton's method)
 ## Institution(Univeristy of Utah)
 ## Author(Utah ww group)
 ## MLT(NMIterationsTrig)
 ## Level(2)
+## Static(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Dale Varberg, Edwin J. Purcell, and Steven E. Rigdon')
 ## EditionText1('9')
-## Section1('Applications of the Derivative')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 

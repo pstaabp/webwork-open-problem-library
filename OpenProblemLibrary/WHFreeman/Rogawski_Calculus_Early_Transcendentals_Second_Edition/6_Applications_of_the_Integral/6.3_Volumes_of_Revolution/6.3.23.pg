@@ -1,24 +1,28 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Applications of Integration')
-## DBsection('Solids of Revolution')
-## KEYWORDS('calculus', 'integrals', 'integration', 'volumes of revolution', 'revolution', 'area between curves', 'disk method')
+## DBchapter(Applications of integration)
+## DBsection(Volumes by washers)
+## Institution(W.H.Freeman)
+## Author(Justask)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('6.3')
 ## Problem1('23')
-## Author('Justask')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'integrals', 'integration', 'volumes of revolution', 'revolution', 'area between curves', 'disk method')
 
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGauxiliaryFunctions.pl");
-loadMacros("PGgraphmacros.pl");
-loadMacros("PGchoicemacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 

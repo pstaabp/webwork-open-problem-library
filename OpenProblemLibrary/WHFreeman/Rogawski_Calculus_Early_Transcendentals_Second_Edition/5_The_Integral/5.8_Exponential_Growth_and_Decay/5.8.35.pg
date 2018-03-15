@@ -1,19 +1,26 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Applications of Integration')
-## DBsection('Applications to Physics and Engineering')
-## KEYWORDS('calculus', 'integrals', 'integration', 'exponential decay/growth')
+## DBchapter(Applications of integration)
+## DBsection(Economics)
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('5.8')
 ## Problem1('35')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'integrals', 'integration', 'exponential decay/growth')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $rate = random(1, 10) * .01;
 $perc = $rate * 100;
@@ -24,10 +31,9 @@ $ans_c = Real("e^($rate)");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "5.8","35") \}
 $PAR
-A bank pays interest at a rate of $perc%.  What is the yearly multiplier if interest is compounded
+A bank pays interest at a rate of $perc$PERCENT.  What is the yearly multiplier if interest is compounded
 $PAR
 (a) yearly? \{ans_rule()\}
 $BR

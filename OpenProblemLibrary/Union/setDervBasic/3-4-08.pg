@@ -12,6 +12,7 @@
 ## MLT(Monomial_negative_exponent)
 ## MLTleader(1)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -29,9 +30,9 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -62,5 +63,4 @@ ANS(Formula($ans)->cmp);
 
 ###################################
 
-COMMENT('MathObject version');
 ENDDOCUMENT();

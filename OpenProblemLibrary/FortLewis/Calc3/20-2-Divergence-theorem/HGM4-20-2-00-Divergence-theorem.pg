@@ -4,11 +4,15 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(The Divergence Theorem)
+## DBchapter(Fundamental theorems)
+## DBsection(Divergence theorem)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(Divergence_segment_of_paraboloid_constant_div)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -25,13 +29,11 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"MathObjects.pl",
-"PGcourse.pl",
-"weightedGrader.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "weightedGrader.pl",
+  "PGcourse.pl"
 );
 
 install_weighted_grader();
@@ -100,5 +102,5 @@ WEIGHTED_ANS($fluxparaboloid->cmp(), 30);
 WEIGHTED_ANS($fluxplane->cmp(), 20);
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

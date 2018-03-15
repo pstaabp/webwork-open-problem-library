@@ -2,20 +2,13 @@
 ## Probability
 ## ENDDESCRIPTION
 
-## KEYWORDS('probability, 'conditional')
 ## Tagged by cmd6a 7/18/07
 
-## DBsubject('Probability')
-## DBchapter('Discrete Probability')
-## DBsection('Conditional Probability')
-## Date('')
-## Author('')
-## Institution('')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Probability)
+## DBchapter(Sample Space)
+## DBsection(Conditional probability -- direct)
+## Level(3)
+## KEYWORDS('probability, 'conditional')
 
 ###########################
 # Edited by Tyler Diggans at NAU on 1/2013
@@ -26,15 +19,13 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGasu.pl",
-"PGauxiliaryFunctions.pl",
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl"
+  "PGstandard.pl",
+  "PGasu.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT($BEGIN_ONE_COLUMN);

@@ -1,8 +1,11 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Parametric Equations and Polar Coordinates)
-## DBsection(Arc Length and Speed)
+## DBchapter(Parametric)
+## DBsection(Arc length)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## MLT(al-calculate-poly)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,11 +14,15 @@
 ## KEYWORDS('calculus', 'parametric', 'polar', 'conic')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGchoicemacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 $context = Context();
 
 
@@ -42,10 +49,9 @@ $ans = Compute("(2*$a2)/(3*$s2)*($up**(3/2) - $low**(3/2))");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "11.2","5") \}
 $PAR
-Use equation 4 to calculate the length of the path over the given interval.
+Calculate the length of the path over the given interval.
 \[ c(t) = ($a t^2, $b t^3), \, $sub \le t \le $sup \]
 $PAR
 \{ ans_rule() \}

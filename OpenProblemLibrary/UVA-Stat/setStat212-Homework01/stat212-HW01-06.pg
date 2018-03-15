@@ -2,25 +2,27 @@
 ##  Statistics: Descriptive statistics
 ## ENDDESCRIPTION
 
-## KEYWORDS('statistics', 'descriptive statistics')
 ## JJH tagged this problem.
 
-## DBsubject('Statistics')
-## DBchapter('What is Statistics?')
-## DBsection('Introduction')
-## Date('5/25/2005')
-## Author('Jeff Holt')
-## Institution('UVA')
+## DBsubject(Statistics)
+## DBchapter(Confidence intervals)
+## DBsection(Concepts)
+## Date(5/25/2005)
+## Institution(UVA)
+## Author(Jeff Holt)
+## Level(3)
 ## TitleText1('Statistics for Management and Economics')
-## EditionText1('6')
 ## AuthorText1('Keller, Warrack')
-## Section1()
-## Problem1()
+## EditionText1('6')
+## Section1('.')
+## Problem1('')
+## KEYWORDS('statistics', 'descriptive statistics')
 
 DOCUMENT();
-loadMacros("PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl"
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 $showPartialCorrectAnswers = 0;

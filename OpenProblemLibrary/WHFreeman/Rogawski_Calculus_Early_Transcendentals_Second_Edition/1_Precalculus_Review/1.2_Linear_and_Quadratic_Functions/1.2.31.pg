@@ -1,8 +1,10 @@
 ## DBsubject(Algebra)
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Solving linear equations)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear functions)
 ## Institution(W.H.Freeman)
 ## Author(Brian Kell)
+## MLT(Is_it_linear_from_table)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +13,15 @@
 ## KEYWORDS('calculus', 'algebra', 'arithmetic sequence', 'data fitting', 'experimental data', 'linear equations', 'nonlinear equations', 'slope', 'table question', 'true/false')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGchoicemacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $problem = random(1,6);  # choose a problem
 
@@ -200,7 +207,6 @@ $mc->makeLast('Yes', 'No');
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "1.2", "31") \}
 $PAR
 \{ $mc->print_q() \}

@@ -4,19 +4,12 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
-"answerHints.pl",
-"problemPanic.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "contextLeadingZero.pl",
+  "answerHints.pl",
+  "problemPanic.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -34,7 +27,7 @@ $ctd=$c*$d;
 $ans= ($a/$b)-$c*$d+($e/$f);
 
 BEGIN_TEXT
-compute $BR
+Compute: $BR
 \( $a \div $b- $c\times $d +$e\div $f =\) \{ans_rule(1)\}.
 $PAR
 \{Panic::Button(label => " Ask for a Hint", penalty => .00)\}
@@ -60,10 +53,13 @@ END_SOLUTION
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Order_of_Operations')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Multiple operations)
+## MLT(MultiStep_OrderOfOps)
+## Level(2)
+## MO(1)
 
 

@@ -1,8 +1,8 @@
 ##DESCRIPTION
 ## Determine period and frequency of a cosine
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('AC Steady-State Analysis')
+## DBsubject(Electric circuits)
+## DBchapter(AC steady-state analysis)
 ## DBsection('Sinusoids')
 ## Institution('Northern Arizona University')
 ## Author('Elizabeth J. Brauer')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

@@ -1,24 +1,23 @@
 ##DESCRIPTION
-## DBsubject('Discrete Mathematics')
-## DBchapter('Logic')
-## DBsection('')
+## DBsubject(Set theory and logic)
+## DBchapter(Propositional logic)
+## DBsection(Truth tables)
+## Institution(NAU)
+## Level(2)
+## Static(1)
 ## KEYWORDS('proposition')
-## Author('')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGmatrixmacros.pl", 
-"PGnumericalmacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGmatrixmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

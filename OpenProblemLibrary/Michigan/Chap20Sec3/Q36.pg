@@ -7,11 +7,13 @@
 ## Tagged by glr 08/16/10
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Curl and Divergence)
+## DBchapter(Vector calculus)
+## DBsection(Curl and divergence)
 ## Date(08/16/10)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('5')
@@ -30,14 +32,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"parserPopUp.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 Context("Vector");
@@ -72,7 +71,7 @@ TEXT(beginproblem());
 BEGIN_TEXT
 
 Let \( r=(x^2+y^2)^{1/2} \) and consider the vector field
-\(\vec F = r^A(x\vec i + y\vec j) \), where \(r\ne 0\) and \(A\)
+\(\vec F = r^A(-y\vec i + x\vec j) \), where \(r\ne 0\) and \(A\)
 is a constant.  \(\vec F\) has no \( z \)-component and is
 independent of \( z \).
 
@@ -203,6 +202,6 @@ about the circulation around a circle centered at \((0,0,0)\).
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

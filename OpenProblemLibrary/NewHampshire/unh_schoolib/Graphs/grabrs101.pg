@@ -1,12 +1,12 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-"problemPanic.pl",
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "problemPanic.pl",
+  "PGcourse.pl"
+);
 
 sub pairneq {
   my $p1 = shift;
@@ -177,9 +177,13 @@ above the \(x\) axis
 so its coordinates are ($x1,$y1). 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Graphs')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Plotting points)
+## MLT(id_points_from_graph)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 

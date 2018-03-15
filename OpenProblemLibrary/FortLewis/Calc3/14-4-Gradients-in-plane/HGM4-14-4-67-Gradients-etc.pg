@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Directional Derivatives and the Gradient Vector)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Directional derivatives and the gradient)
 ## Date(10/15/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(ChangeDirection)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -23,10 +26,11 @@
 
 DOCUMENT();
 
-loadMacros("PGstandard.pl",
-           "MathObjects.pl",
-           "parserVectorUtils.pl",
-           "PGcourse.pl",
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserVectorUtils.pl",
+  "PGcourse.pl"
 );
  
 
@@ -65,6 +69,18 @@ ANS($answer->cmp);
 
 $showPartialCorrectAnswers = 1;
 
+BEGIN_SOLUTION
+$PAR SOLUTION $BR $BR
+Let \(T\) be the temperature function and \(P\) the point. 
+ The value of the  greatest rate of increase is the magnitude of the gradient.
+Thus \( \left| \nabla T (P) \right| = $a \). $BR
+The gradient points in the northeast direction, so 
+\( \nabla T (P) = \left \langle $a \cos (45^o) , $a \sin (45^o) \right
+\rangle = \left \langle \frac{$a}{\sqrt{2}}, \frac{$a}{\sqrt{2}} \right \rangle
+\). $BR
+A unit vector in the north direction is \( \mathbf{u} = \langle 0, 1 \rangle \), so the rate of change of increase of the temperature in that direction is
+\[ D_{\mathbf u} T(P) = \nabla T (P) \cdot \mathbf{u} = \frac{$a}{\sqrt{2}} \]
+END_SOLUTION
 
-COMMENT('MathObject version');
+
 ENDDOCUMENT();

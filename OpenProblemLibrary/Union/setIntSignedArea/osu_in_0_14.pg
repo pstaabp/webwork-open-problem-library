@@ -2,28 +2,26 @@
 ##   Calculate a Definite Integral as an Area
 ## ENDDESCRIPTION
 
-## KEYWORDS('Definite Integral', 'Area')
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('The Definite Integral')
-## Date('8/23/07')
-## Author('Zig Fiedorowicz')
-## Institution('Union')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBchapter(Integrals)
+## DBsection(Conceptual understanding of integration)
+## Date(8/23/07)
+## Institution(Union)
+## Author(Zig Fiedorowicz)
+## MLT(integral_concept_ABCD)
+## Level(2)
+## MO(1)
+## KEYWORDS('Definite Integral', 'Area')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -77,5 +75,5 @@ ANS(Real($ans)->cmp);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

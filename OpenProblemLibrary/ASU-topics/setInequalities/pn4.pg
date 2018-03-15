@@ -2,33 +2,32 @@
 ## Algebra, Absolute Value
 ## ENDDESCRIPTION
 
-## KEYWORDS('algebra', 'absolute value')
 ## Tagged by jjh2b
 
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Absolute Value')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Absolute value expressions and functions)
+## DBsection(Solving equations with absolute values)
+## Institution(ASU)
+## MLT(AbsVal1)
+## MLTleader(1)
+## Level(2)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('3.6')
+## Problem1('27')
+## KEYWORDS('algebra', 'absolute value','Solve', 'Equation', 'equations','absolute value')
 
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl",
-"extraAnswerEvaluators.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

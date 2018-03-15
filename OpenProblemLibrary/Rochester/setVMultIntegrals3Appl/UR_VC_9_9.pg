@@ -2,30 +2,27 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-##KEYWORDS('probability', 'halflife', 'density')
 ## Tagged by tda2d
 
-## DBsubject(Calculus - single variable)
-## DBchapter('Applications of Integration')
-## DBsection('Applications to Physics and Engineering')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Calculus - multivariable)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Applications of double integrals)
+## Institution(Rochester)
+## Level(5)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Stewart')
+## EditionText1('6')
+## Section1('15.5')
+## Problem1('26')
+## KEYWORDS('probability', 'halflife', 'density')
 
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -40,7 +37,7 @@ BEGIN_TEXT
 $PAR
 A lamp has two bulbs, each of a type with an average lifetime of $a hours.  The
 probability density function for the lifetime of a bulb is \( f(t) = \frac{1}{$a}
-e^{-t/${a}}, t \leq 0 \).
+e^{-t/${a}}, t \geq 0 \).
 $BR
 What is the probability that both of the bulbs will fail within $c hours?
 $PAR

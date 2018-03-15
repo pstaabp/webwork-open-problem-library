@@ -4,21 +4,13 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-"contextFraction.pl",
-"answerHints.pl",
-"problemPanic.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "answerHints.pl",
+  "problemPanic.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -40,11 +32,14 @@ The most reasonable pattern to notice is that each term after the first is twice
 the term before it.$BR  Using this pattern, \(\frac{32}{3}\) is the most reasonble answer.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 8')
-## DBsection('2008')
+## DBsubject(Set theory and logic)
+## DBchapter(Pattern matching)
+## DBsection(Numeric)
+## Level(4)
+## Static(1)
+## MO(1)
 

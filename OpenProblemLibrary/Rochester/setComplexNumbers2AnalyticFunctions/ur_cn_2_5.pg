@@ -5,9 +5,10 @@
 ## Tagged by cmd6a 4/20/06
 
 ## DBsubject(Complex analysis)
-## DBchapter(Analytic functions)
+## DBchapter(Complex functions)
 ## DBsection(Limits)
 ## Institution(Rochester)
+## Level(2)
 ## TitleText1('Complex Analysis')
 ## AuthorText1('Saff, Snider')
 ## EditionText1('3')
@@ -17,12 +18,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

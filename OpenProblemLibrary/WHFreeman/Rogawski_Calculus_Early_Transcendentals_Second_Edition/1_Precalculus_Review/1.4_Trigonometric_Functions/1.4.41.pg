@@ -1,20 +1,26 @@
-## DBsubject('Trigonometry')
-## DBchapter('Trigonometric Functions of Angles')
-## DBsection('Angle Measure')
-## KEYWORDS('calculus', 'trigonometry', 'angles', 'radians')
+## DBsubject(Trigonometry)
+## DBchapter(Analytic trigonometry)
+## DBsection(Solving trigonometric equations numerically)
+## Institution(W.H.Freeman)
+## Author(Nick Hamblet)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('1.4')
 ## Problem1('41')
-## Author('Nick Hamblet')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'trigonometry', 'angles', 'radians')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGauxiliaryFunctions.pl"); # for gcd
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 # value(s, o, d, k) returns (2*k+o)*s*pi/d), as (s*(2k+o), d), in reduced terms
 sub value {
@@ -125,7 +131,6 @@ $anslist = List(@ansl);
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "1.4","41") \}
 $PAR
 Solve for \(0\leq \theta<2\pi\):

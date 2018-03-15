@@ -1,29 +1,44 @@
 ##DESCRIPTION
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('Indefinite Integrals')
-## AuthorText1('Ronal J. Harshbarger and James J. Reynolds')
+## DBchapter(Techniques of integration)
+## DBsection(Substitution (without trigonometric functions))
+## Date(6/5/2005)
+## Institution(UVA)
+## Author(Jeff Holt)
+## MLT(Sub_direct)
+## Level(2)
+## MO(1)
 ## TitleText1('Mathematical Applications')
+## AuthorText1('Ronal J. Harshbarger and James J. Reynolds')
 ## EditionText1('8')
-## Section1('Indefinite Integrals')
+## Section1('.')
 ## Problem1('')
-##KEYWORDS('integrals', 'substitution')
+## TitleText2('Calculus: Early Transcendentals')
+## AuthorText2('Stewart')
+## EditionText2('5')
+## Section2('5.5')
+## Problem2('2')
+## TitleText3('Calculus: Early Transcendentals')
+## AuthorText3('Stewart')
+## EditionText3('6')
+## Section3('5.5')
+## Problem3('')
+## KEYWORDS('integrals', 'substitution','calculus', 'integrals', 'substitution rule')
 ##ENDDESCRIPTION
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
+
 $showPartialCorrectAnswers = 1;
+
+Context("Numeric");
 
 $a = random(5,50,1);
 $b = random(3,6,1);
@@ -32,19 +47,31 @@ $d = random(1,11,1);
 $power = $a + 1;
 $coeff1 = 1 / $power;
 $coeff2 = 1 / $b;
-$funct = "(1/$power) * (1/$b) * (x^$b - $d)^$power";
 
-TEXT(EV2(<<EOT));
+Context()->texStrings;
+BEGIN_TEXT
 
 Evaluate the integral
 \[ \int x^$c (x^$b - $d)^{$a} dx ,  \]
 by making the substitution \( u = x^$b -$d \).
-$BR $BR \{ans_rule(30) \} + \(C\)
-$PAR
-NOTE:  Your answer should be in terms of x and not u.
-EOT
+$BR $BR 
+Answer: \{ans_rule(30) \} + \(C\)
+$BR$BR
+$BBOLD Note:$EBOLD  Your answer should be in terms of \(x\) and not \(u\).
+END_TEXT
+Context()->normalStrings;
 
-$ans = $funct;
-ANS(fun_cmp($ans, mode=>"antider"));
+$root = Compute("$d**(1/$b)");
+
+#ANS(fun_cmp("(1/$power) * (1/$b) * (x^$b - $d)^$power", mode=>"antider", limits=>[$root-1,$root+1]));
+
+$ans=Compute("(1/$power) * (1/$b) * (x^$b - $d)^$power");
+ANS($ans->cmp(
+  limits => [$root-1,$root+1],
+  checker => sub{
+    my ($correct,$student,$ansHash) = @_;
+    return $correct->D('x') == $student->D('x');
+  }
+));
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.

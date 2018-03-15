@@ -1,24 +1,30 @@
 ## DESCRIPTION
 ## Quadratic functions
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
-## DBchapter(Functions)
-## DBsection(Quadratic Functions)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Solving equations)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('2.6')
-## Problem1('12')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(2.6)
 ## Section2('3.1')
+## Section3('3.Review')
+## Problem1(14)
 ## Problem2('12')
+## Problem3('4')
 ## KEYWORDS('functions','concavity','quadratic','zeros')
 
 
@@ -28,10 +34,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 #######################################
@@ -96,5 +102,5 @@ Thus the zeros are \(x = -1/$a\) and \(x = -$a\).
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

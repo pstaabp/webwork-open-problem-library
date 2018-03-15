@@ -10,6 +10,7 @@
 ## DBsection(Definition of the derivative)
 ## Institution(ASU)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -25,9 +26,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",						
-"PGcourse.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -79,5 +80,5 @@ ANS($ddf->cmp);
 ########################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

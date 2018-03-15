@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Solving linear equations)
+## DBchapter(Linear equations and functions)
+## DBsection(Parallel and perpendicular lines)
 ## Date(12/01/2009)
 ## Institution(University of Minnesota)
 ## Author(Justin Sukiennik)
+## MLT(Line_given_point_parralel_given_line)
+## Level(3)
+## MO(1)
 ## TitleText1('Algebra for College Students')
 ## AuthorText1('Kaufmann, Schwitters')
 ## EditionText1('8')
@@ -21,9 +24,10 @@
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   "parserImplicitPlane.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserImplicitPlane.pl",
+  "PGcourse.pl"
 );
 
 ########################################################################

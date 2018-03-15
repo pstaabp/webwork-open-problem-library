@@ -6,10 +6,13 @@
 
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Combining Functions)
+## DBsection(Compositions and combinations of functions)
 ## Date(6/3/2002)
 ## Institution(Rochester)
 ## Author(K. Lesh)
+## MLT(ccf-graphs-evaluate-comp)
+## Level(2)
+## MO(1)
 ## TitleText1('College Algebra')
 ## AuthorText1('Stewart, Redlin, Watson')
 ## EditionText1('3')
@@ -21,11 +24,11 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "alignedChoice.pl",      # for aligned answer blanks
+  "alignedChoice.pl",
   "PGgraphmacros.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -94,5 +97,5 @@ ANS($al->correct_ans);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

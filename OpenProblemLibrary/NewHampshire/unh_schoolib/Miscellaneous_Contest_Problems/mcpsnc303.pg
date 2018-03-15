@@ -4,21 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-"contextFraction.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -38,9 +28,13 @@ $PAR Solution $PAR
 Suppose we call the amount that each friend gave to Jack by the letter M.  $BR Since M is one fifth of his money, he must have started with 5M.$BR  Similarly, Max must have started with 4M and Sam with 3M.$BR  Thus the total money in the group was 12M of which Jack now has 3M.$BR So Jack has \(\frac{3}{12}=\frac{1}{4}\) of the group's money.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Miscellaneous_Contest_Problems')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Applications)
+## MLT(FractionProportion)
+## Level(3)
+## Static(1)
+## MO(1)
 

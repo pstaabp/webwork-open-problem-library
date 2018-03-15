@@ -2,25 +2,26 @@
 ##Exponential Function
 ##ENDDESCRIPTION
 ## DBsubject(Calculus - single variable)
-## DBchapter(Integrals)
-## DBsection(Substitution)
+## DBchapter(Techniques of integration)
+## DBsection(Substitution (without trigonometric functions))
 ## Institution(Univeristy of Utah)
 ## Author(Utah ww group)
+## MLT(Sub_direct)
+## Level(2)
+## Static(1)
 ## TitleText1('Calculus I')
 ## AuthorText1('Jerrold Marsden and Alan Weinstein')
 ## EditionText1('2')
-## Section1('Exponentials and Logarithms')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

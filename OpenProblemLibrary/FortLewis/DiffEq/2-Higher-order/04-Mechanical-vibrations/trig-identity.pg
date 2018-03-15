@@ -2,19 +2,16 @@
 ## Higher order ODEs: constant coefficient higher order homogeneous linear ODEs
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','second order linear ODE','constant coefficients')
 
 ## DBsubject(Differential equations)
-## DBchapter('Higher Order Differential Equations')
-## DBsection('Higher Order Linear')
-## Date('01/30/2011')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBchapter(Higher order differential equations)
+## DBsection(Applications)
+## Date(01/30/2011)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(2)
+## MO(1)
+## KEYWORDS('differential equations','second order linear ODE','constant coefficients')
 
 
 ##############################
@@ -23,9 +20,10 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -127,7 +125,7 @@ ANS( $answer1->cmp() );
 ANS( $answer2->cmp() );
 ANS( $answer3->cmp() );
 
-COMMENT("MathObject version.  Redefines the sine function internally.");
+COMMENT("Redefines the sine function internally.");
 
 ENDDOCUMENT();
 

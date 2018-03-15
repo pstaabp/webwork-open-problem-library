@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -77,9 +77,6 @@ $radio->qa("Which two classes have the same number of girls  ", "science and soc
 #FIRST PAREN IS QUESTION, SECOND PAREN IS CORRECT ANSWER
 $radio->extra("science and math ", "math and reading ", "math and social studies  ");
 BEGIN_TEXT
-
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT A CALCULATOR.
-THIS IS A PROBLEM  FOR WHICH A CALCULATOR WOULD NOT BE ALLOWED.$PAR
 This chart shows the percentage of students who are girls in each of Crystal's four classes.
 $PAR
 \{ image( insertGraph($graph), tex_size=>100,
@@ -96,11 +93,14 @@ $PAR Solution $PAR
 50 % of 18 is 9.  30% of 30 is 9. So science and social studies have the same number of girls.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 8')
-## DBsection('2007')
+## DBsubject(Arithmetic)
+## DBchapter(Percents)
+## DBsection(Applications)
+## Level(3)
+## MLTleader(1)
+## MLT(arithmetic_percents_calculation_people_table)
 

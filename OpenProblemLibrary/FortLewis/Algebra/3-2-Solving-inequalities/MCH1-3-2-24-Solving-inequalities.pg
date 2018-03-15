@@ -2,22 +2,24 @@
 ## Solving Inequalities
 ## ENDDESCRIPTION
 
-## KEYWORDS('Solving Inequalities')
 
-## DBsubject('Algebra') 
 ## BookTitle('Algebra: Form and Function')
-## DBchapter('Equations and Inequalities') 
 ## BookChapter('Rules for Equations and the Reasons For Them')
-## DBsection('Linear Inequalities') 
-## BookSection('Solving Inequalities')
-## Date('01/01/10')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear inequalities)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(SaysToUseNotation)
+## Level(2)
+## MO(1)
 ## TitleText1('Algebra: Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum, Connally, and Hughes-Hallett')
+## EditionText1('1')
 ## Section1('3.2')
 ## Problem1('24')
+## KEYWORDS('Solving Inequalities')
 
 
 ##################################
@@ -26,12 +28,12 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"contextInequalities.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-"answerHints.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextInequalities.pl",
+  "AnswerFormatHelp.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -87,5 +89,5 @@ ANS($answer->cmp()
 );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

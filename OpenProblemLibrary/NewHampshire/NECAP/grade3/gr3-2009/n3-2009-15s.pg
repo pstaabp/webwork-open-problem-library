@@ -4,23 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextCurrency.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -31,9 +19,6 @@ $ans=Currency(0.35);
 Context()->texStrings;
 
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATO
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR 
-
 Lamar had $DOLLAR 1.00 for a snack.  He spend $DOLLAR 0.65 on an apple.$PAR
 Lamar now has \{ans_rule(3)\}.$BR  Use a dollar sign(DOLLAR$) and a decimal point(.) to write your answer. 
 
@@ -46,9 +31,12 @@ $PAR Solution $PAR
 A dollar($DOLLAR 1.00) minus 65 cents ($DOLLAR 0.65) is 35 cents ($DOLLAR 0.35). 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 3')
-## DBsection('2009')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Addition/subtraction)
+## Level(4)
+## Static(1)
+## MO(1)
 

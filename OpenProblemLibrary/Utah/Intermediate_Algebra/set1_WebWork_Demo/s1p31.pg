@@ -1,26 +1,20 @@
 ##DESCRIPTION
 ##Arithmetic
 ##ENDDESCRIPTION
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('WeBWorK')
-## DBchapter('Demos')
-## DBsection('Problem')
-## AuthorText1('')
-## TitleText1('')
-## EditionText1('')
-## Section1('')
-## Problem1('')
-##KEYWORDS('algebra')
+## DBsubject(WeBWorK)
+## DBchapter(Demos)
+## DBsection(Problem)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## Static(1)
+## KEYWORDS('algebra')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -2,19 +2,21 @@
 ## Higher order ODEs: constant coefficient second order homogeneous linear ODEs
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','second order linear ODE','constant coefficients')
 
 ## DBsubject(Differential equations)
-## DBchapter('Higher Order Differential Equations')
-## DBsection('Second Order Linear')
-## Date('01/01/2012')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Higher order differential equations)
+## DBsection(Applications)
+## Date(01/01/2012)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(5)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
-## EditionText1('2006')
 ## AuthorText1('Kohler and Johnson')
+## EditionText1('2006')
 ## Section1('1.2')
 ## Problem1('24')
+## KEYWORDS('differential equations','second order linear ODE','constant coefficients')
 
 
 ##############################
@@ -23,10 +25,11 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"parserNumberWithUnits.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -86,6 +89,6 @@ ANS( $acceleration->cmp() );
 ANS( $position->cmp() );
 
 
-COMMENT("MathObject version.");
+;
 
 ENDDOCUMENT();

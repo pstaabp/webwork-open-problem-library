@@ -3,30 +3,23 @@
 ##ENDDESCRIPTION
 
 
-## KEYWORDS('Equations and Inequalities')
 ## Tagged by ynw2d
 
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Algebraic and Graphical Solutions of Equations')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Functions with fractional exponents and radical functions)
+## DBsection(Equations)
+## Institution(ASU)
+## Level(2)
+## Static(1)
+## KEYWORDS('Equations and Inequalities')
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

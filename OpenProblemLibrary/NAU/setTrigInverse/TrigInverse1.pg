@@ -1,21 +1,20 @@
 ##DESCRIPTION
-## DBsubject('Trigonometry')
-## DBchapter('Analytic Trigonometry')
-## DBsection('Inverse Trigonometric Functions')
+## DBsubject(Trigonometry)
+## DBchapter(Trigonometric functions)
+## DBsection(Inverse trigonometric functions - definitions, graphs, & properties)
+## Institution(NAU)
+## MLT(trigoftriginv)
+## Level(2)
 ## KEYWORDS('inverse', 'trigonometry')
-## Author('')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 DOCUMENT(); 
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

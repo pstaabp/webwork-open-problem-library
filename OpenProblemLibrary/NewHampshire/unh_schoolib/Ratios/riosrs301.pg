@@ -4,18 +4,12 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-"contextCurrency.pl",
-#"contextInequalities.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-"contextFraction.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "contextCurrency.pl",
+  "contextLeadingZero.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 
@@ -87,10 +81,12 @@ $PAR Solution $PAR
 4) $a4 miles in $b4 hours: Divide $a4 by $b4.
 END_SOLUTION	
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject(Middle school)
-## DBchapter('Ratios')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Ratio/proportions)
+## Level(3)
+## MO(1)
 

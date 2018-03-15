@@ -1,23 +1,30 @@
 ## DESCRIPTION
 ## Problem from Functions Modeling Change, Connally, et al., 3rd ed.
 ## WeBWorK problem written by Adam Spiegler <aspiegler@luc.edu>
-## ENDDESCRIPTION
 
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Domain and Range)
+## DBsection(Interpretation and applications)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## MLT(Function_wordProblem_GraphMatch)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('2.2')
-## Problem1('27')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(2.2)
 ## Section2('2.2')
+## Section3('2.2')
+## Problem1(29)
 ## Problem2('27')
+## Problem3('31')
 ## KEYWORDS('functions','domain','range','input','output','interval notation')
 
 
@@ -27,16 +34,15 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"contextInequalities.pl",
-"PGcourse.pl",
-"PGchoicemacros.pl",
-"PGgraphmacros.pl",
-"PGcourse.pl",
-"unionTables.pl",
-"parserPopUp.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "contextInequalities.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "unionTables.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -179,7 +185,7 @@ Note:  The domain and range given here are for the ${BBOLD}graphed${EBOLD} funct
 END_SOLUTION
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 

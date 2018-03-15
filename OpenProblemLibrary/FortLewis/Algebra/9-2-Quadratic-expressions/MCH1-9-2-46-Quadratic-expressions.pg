@@ -2,21 +2,23 @@
 ## Quadratic functions, expressions, and equations
 ## ENDDESCRIPTION
 
-## KEYWORDS('quadratic functions')
 
-## DBsubject('Algebra') 
 ## BookTitle('Algebra: Form and Function')
-## DBchapter('Quadratic Functions') 
 ## BookChapter('Quadratic Functions, Expressions, and Equations')
-## DBsection(Quadratic expressions)
-## Date('01/01/10')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Graphs)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Algebra: Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum, Connally, and Hughes-Hallett')
+## EditionText1('1')
 ## Section1('9.2')
 ## Problem1('46')
+## KEYWORDS('quadratic functions')
 
 
 ##############################################
@@ -25,10 +27,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGcourse.pl",
-"AnswerFormatHelp.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -85,5 +87,5 @@ ANS(List(Compute("$p[0]"))->cmp() );
 ANS(List(Compute("sqrt($c)-$b"),Compute("-sqrt($c)-$b"))->cmp() );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

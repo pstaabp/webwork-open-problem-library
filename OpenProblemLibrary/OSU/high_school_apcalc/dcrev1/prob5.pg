@@ -6,7 +6,7 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Continuity - concept of)
 ## Date(5/16/2000)
 ## Institution(OSU)
@@ -27,11 +27,9 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 
@@ -64,11 +62,9 @@ $ansStr6 = EV2("\(f(x)=\left\lbrace\begin{array}{ll}$b x &\mbox{if }x<$a\\ 0   &
 TEXT(beginproblem());
 
 BEGIN_TEXT
-$BR
 Shown below are six statements about functions. Match each statement to one of
 the functions shown below which BEST matches that statement.
-$PAR
-
+$BR
 END_TEXT
 
 TEXT(
@@ -76,11 +72,7 @@ TEXT(
 &OL(@answers[@shuffle])
 );
 
-
 ANS(str_cmp([ @ALPHABET[&invert(@shuffle)] ] ) );
-
-
-
 
 ENDDOCUMENT();
 

@@ -7,23 +7,24 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 ## Tagged by glr 06/22/09
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Partial Derivatives)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Partial derivatives)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(2varapp)
+## MLTleader(1)
+## Level(5)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('5')
@@ -37,7 +38,7 @@ loadMacros(
 ## TitleText3('Applied Calculus')
 ## AuthorText3('Hughes-Hallett')
 ## EditionText3('4')
-## Section3('9.')
+## Section3('9.Review')
 ## Problem3('17')
 ## KEYWORDS('partial', 'derivative', 'multivariable', 'functions')
 
@@ -229,6 +230,6 @@ increases.
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT( 'Uses MathObjects' );
+
 
 ENDDOCUMENT();

@@ -1,19 +1,11 @@
 DOCUMENT();     
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"answerHints.pl",
-
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextCurrency.pl",
+  "PGcourse.pl"
 );
 Context("Numeric");
 $a=random(4,6,1); 
@@ -51,9 +43,11 @@ $PAR
 END_SOLUTION
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Inequalities')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear inequalities)
+## MLT(simplify)
+## Level(2)
 

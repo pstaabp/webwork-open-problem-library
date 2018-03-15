@@ -1,20 +1,29 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Calculus of Vector-Valued Functions)
-## DBsection(Planetary Motion According to Kepler and Newton)
+## DBchapter(Calculus of vector valued functions)
+## DBsection(Frames, motions, and other applications)
 ## Institution(W.H.Freeman)
 ## Author(Nick Hamblet)
+## MLT(fma_keppler)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('13.6')
 ## Problem1('1')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("parserPopUp.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "parserPopUp.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 @names = ('(Select One)', 'Snizbort', 'Woolat', 'Bingrel', 'Pevneq');
 @times = (.5, 1, 2, 6);
@@ -38,7 +47,6 @@ $showcorrectedt = int($correctedt*1000)/1000;
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "13.6","1") \}
 $PAR
 Kepler's Third Law states that \(T^2/a^3\) has the same value for each planetary orbit. One of the following orbit periods for the fictional planets below was measured incorrectly. Identify the planet with incorrect data, and determine what its orbital period should be.

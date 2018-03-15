@@ -5,11 +5,12 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Techniques of Integration)
-## DBsection(Trigonometric Substitution)
+## DBchapter(Techniques of integration)
+## DBsection(Trigonometric substitution)
 ## Date(2/19/2000)
 ## Institution(OSU)
 ## Author(Zig Fiedorowicz)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('1')
@@ -30,12 +31,10 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraders.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraders.pl",
+  "PGcourse.pl"
 );
 
 ##Note this uses Mike Gage's custom full_partial_grader
@@ -78,7 +77,7 @@ $BR
 \( \displaystyle \int f(t)\,dt\)  =  \{ ans_rule(40)\} \(+ C\)
 $BR
 
-After substituting back for \(t\)  in terms of \(x\)we obtain the following final form of the answer:
+After substituting back for \(t\) in terms of \(x\) we obtain the following final form of the answer:
 $BR
 \{ ans_rule(60)\} \(+ C\)
 END_TEXT

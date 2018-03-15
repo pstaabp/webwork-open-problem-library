@@ -3,12 +3,15 @@
 ##ENDDESCRIPTION
 
 
-## DBsubject('Algebra')
-## DBchapter('Exponential and Logarithmic Functions')
-## DBsection('Exponential and Logarithmic Equations')
-## Date('01/25/2010')
-## Institution('University of Minnesota')
-## Author('Justin Sukiennik')
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Exponential and logarithmic equations)
+## Date(01/25/2010)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## MLT(ELEqMLT4K)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Concepts and Contexts')
 ## AuthorText1('Stewart')
 ## EditionText1('4 Custom UMTYMP Ed.')
@@ -27,10 +30,9 @@
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   #"source.pl",        # allows code to be displayed on certain sites.
-   #"PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 # Print problem number and point value (weight) for the problem

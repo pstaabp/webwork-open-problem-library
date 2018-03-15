@@ -3,16 +3,20 @@
 ## 
 ##ENDDESCRIPTION
 ## DBsubject(Algebra)
-## DBchapter(Polynomials, polynomial functions, and factoring)
-## DBsection('Factoring Polynomials by Grouping')
-## KEYWORDS('functions')
+## DBchapter(Functions)
+## DBsection(Graphs)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(graphicEval)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Essentials of Intermediate Algebra')
-## EditionText1('1')
 ## AuthorText1('Blitzer')
+## EditionText1('1')
 ## Section1('5.3')
 ## Problem1('')
-## Author('RA Cruz')
-## Institution('The College of Idaho')
+## KEYWORDS('functions')
 ## Date: 2007/11
 
 DOCUMENT(); # This should be the first executable line in the problem.
@@ -23,7 +27,8 @@ loadMacros(
   "MathObjects.pl",
   "PGgraphmacros.pl",
   "PGnauGraphics.pl",
-  "contextPiecewiseFunction.pl"
+  "contextPiecewiseFunction.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -109,7 +114,7 @@ $input2 = random(1,$xnum[3],1);
 BEGIN_TEXT
 \{ Plot($graph,tex_size=>600) \} 
 $BR $BR
-REVIEW: Use the graph of \(g\), given above, to find each 
+Use the graph of \(g\), given above, to find each 
 indicated function value. 
 $PAR
 a) \( g($input1) \) = \{ans_rule(10)\}
@@ -131,5 +136,5 @@ $showPartialCorrectAnswers = 1;
 ######################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

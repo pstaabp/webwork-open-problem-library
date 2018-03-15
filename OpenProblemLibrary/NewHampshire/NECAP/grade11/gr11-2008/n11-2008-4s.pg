@@ -1,23 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -171,9 +159,6 @@ $radio->qa("Which transformations will show that Shape G is congruent to Shape H
 #FIRST PAREN IS QUESTION, SECOND PAREN IS CORRECT ANSWER
 $radio->extra("Translate Shape G right 8  units and reflect it across the  y-axis" , "Translate Shape G right 6  units and reflect it across the  x-axis ", "Translate Shape G up 6  units and reflect it across the  y-axis  ");
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATO
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR 
- 
 Look at Shape G and shape H on this grid.
 $BR
 \{ image( insertGraph($graph), tex_size=>$TEXSIZE,
@@ -193,9 +178,10 @@ the lower left vertex of Shape H.  The rest of  Shape G will move in the same wa
 cover shape H. 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 11')
-## DBsection('2008')
+## DBsubject(Geometry)
+## DBchapter(Transformations)
+## DBsection(Rotation and reflection)
+## Level(4)
 

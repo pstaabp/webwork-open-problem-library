@@ -4,15 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "contextLeadingZero.pl",
+  "PGcourse.pl"
 );
 Context()->texStrings;
 
@@ -208,12 +204,17 @@ ANS (Real("63/100")->cmp);
 Context("LeadingZero");
 ANS(Real(0.63)->cmp);
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject(Middle school)
-## DBchapter('Fractions')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Decimals)
+## DBsection(Converting between fractions and decimals)
+## MLT(FractOfXsInBoxes)
+## MLTleader(1)
+## Level(2)
+## Static(1)
+## MO(1)
 
 
 

@@ -5,7 +5,7 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Optimization - general)
 ## Date(6/3/2002)
 ## Institution(Indiana)
@@ -13,6 +13,7 @@
 ## MLT(Optimization_Ladder)
 ## MLTleader(1)
 ## Level(5)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -21,12 +22,12 @@
 ## TitleText2('Calculus I')
 ## AuthorText2('Jerrold Marsden and Alan Weinstein')
 ## EditionText2('2')
-## Section2('Graphing_and_Maximum-Minimum_Problems')
+## Section2('.')
 ## Problem2('')
 ## TitleText3('Calculus')
 ## AuthorText3('Dale Varberg, Edwin J. Purcell, and Steven E. Rigdon')
 ## EditionText3('9')
-## Section3('Applications of the Derivative')
+## Section3('.')
 ## Problem3('')
 ## TitleText4('Calculus: Early Transcendentals')
 ## AuthorText4('Rogawski')
@@ -39,9 +40,9 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -78,5 +79,5 @@ ANS(Real($ans)->cmp);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

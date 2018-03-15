@@ -2,31 +2,31 @@
 ## Algebra
 ## ENDDESCRIPTION
 
-## KEYWORDS('Algebra', 'logarithms')
 ## Tagged by LD
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Logarithmic')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Exponential and logarithmic equations)
+## Date(6/3/2002)
+## Institution(ASU)
+## MLT(ELEqn_MTL8)
+## MLTleader(1)
+## Level(2)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('6.5')
+## Problem1('46')
+## KEYWORDS('Algebra', 'logarithms', 'Exponential', 'Logarithmic', 'Applications','logarithms', 'exponentials')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl",
-"extraAnswerEvaluators.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

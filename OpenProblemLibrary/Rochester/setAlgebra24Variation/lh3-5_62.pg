@@ -2,29 +2,21 @@
 ##   Related Variables
 ## ENDDESCRIPTION
 
-## KEYWORDS('Equation', 'Variation')
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Applied Functions: Variation')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Variation and power functions)
+## DBsection(Inverse variation)
+## Institution(Rochester)
+## Level(2)
+## KEYWORDS('Equation', 'Variation')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

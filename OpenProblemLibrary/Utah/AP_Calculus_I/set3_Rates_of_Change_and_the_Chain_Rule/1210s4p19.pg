@@ -3,6 +3,7 @@
 ## DBsection(Higher-order derivatives)
 ## Institution(Univeristy of Utah)
 ## Author(Utah ww group)
+## MLT(hod_big_rational)
 ## Level(2)
 ## TitleText1('Calculus I')
 ## AuthorText1('Jerrold Marsden and Alan Weinstein')
@@ -19,11 +20,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

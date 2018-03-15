@@ -2,35 +2,41 @@
 # Problem from Calculus, single variable, Hughes-Hallett et al., 4th ed.
 # WeBWorK problem written by Aaron Wooton, <wootton@up.edu>
 # revised by Gavin LaRose, <glarose@umich.edu> 10/2008
-# ENDDESCRIPTION
 
 ## Tagged by glr 10/23/08
 
 ## Author('Gavin LaRose');
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(New Functions from Old Functions)
+## DBchapter(Functions)
+## DBsection(Compositions and combinations of functions)
 ## Institution(University of Michigan)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('4')
-## Section1('1.3')
-## Problem1('3')
 ## TitleText2('Calculus')
-## AuthorText2('Hughes-Hallett')
-## EditionText2('5')
-## Section2('1.3')
-## Problem2('10')
 ## TitleText3('Calculus')
-## AuthorText3('Hughes-Hallett')
-## EditionText3('6')
-## Section3('1.3')
-## Problem3('10')
 ## TitleText4('Applied Calculus')
+## TitleText5('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
 ## AuthorText4('Hughes-Hallett')
+## AuthorText5('Hughes-Hallett')
+## EditionText1('4')
+## EditionText2('5')
+## EditionText3('6')
 ## EditionText4('4')
+## EditionText5('7')
+## Section1('1.3')
+## Section2('1.3')
+## Section3('1.3')
 ## Section4('1.8')
+## Section5('1.3')
+## Problem1('3')
+## Problem2('10')
+## Problem3('10')
 ## Problem4('5')
+## Problem5('11')
 ## KEYWORDS('calculus','composition of functions','combining functions')
 
 ## Textbook tags
@@ -40,10 +46,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -114,5 +120,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

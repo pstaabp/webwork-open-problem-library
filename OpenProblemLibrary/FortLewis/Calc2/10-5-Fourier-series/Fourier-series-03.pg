@@ -2,31 +2,12 @@
 # Fourier Series
 # ENDDESCRIPTION
 
-## KEYWORDS('calculus','integral', 'fourier', 'series', 'approximation')
 ## Tagged by glr 02/03/09
 
-## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Fourier Series')
-## Date('')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
-## TitleText1('Calculus')
-## TitleText2('Calculus')
-## EditionText1('4')
-## EditionText2('5')
-## AuthorText1('Hughes-Hallett')
-## AuthorText2('Hughes-Hallett')
-## Section1('10.5')
-## Section2('10.5')
-## Problem1('')
-## Problem2('')
 
 ## Textbook tags
 ## HHChapter1('Approximating Functions Using Series')
 ## HHChapter2('Approximating Functions Using Series')
-## HHSection1('Fourier Series')
-## HHSection2('Fourier Series')
 
 
 #################################
@@ -35,12 +16,13 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-"PGgraphmacros.pl",
-"parserPopUp.pl",
-"unionTables.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "parserPopUp.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 $refreshCachedImages=1;
@@ -101,7 +83,7 @@ $gr[3]->lb(new Label(0.25,5.25,'y','black','center','middle'));
 for $i (0..3) {
   plot_functions( $gr[$i], $g[$i]); 
   $fig[$i]=image(insertGraph($gr[$i]),
-  width=>200,height=>200,tex_size=>450);
+  width=>200,height=>200,tex_size=>240);
 }
 
 $k = 0;
@@ -184,13 +166,14 @@ $popupc = PopUp(["?","f(x)","g(x)","h(x)","j(x)"], $functionname[$invc[$k]]);
 
 Context()->texStrings;
 BEGIN_TEXT
-(a) Suppose you're given the following Fourier coefficients: 
+(a) Suppose you're given the following Fourier coefficients for a function on the interval \([-\pi,\pi]\): 
 \( \displaystyle a_0 = \frac{$f}{2} \), 
 \( \displaystyle a_1 = \frac{$f2}{\pi} \), 
 \( \displaystyle a_3 = -\frac{$f2}{3 \pi} \), 
 \( \displaystyle a_5 = \frac{$f2}{5 \pi} \), 
 and \( a_2, a_4, b_1, b_2, b_3, b_4, b_5 \) are all zero.
-Find the following Fourier approximations.
+Find the following Fourier approximations to the Fourier series 
+\( \displaystyle a_0 + \sum_{n=1}^{\infty} (a_n\cos(nx) + b_n\sin(nx)) \).
 $BR
 $BR
 \( F_1(x) = \) \{ ans_rule(50) \}
@@ -244,7 +227,7 @@ ANS( $popup->cmp() );
 
 ANS( $popupc->cmp() );
 
-COMMENT('MathObject version');
+COMMENT('Uses the convention that the constant term is a0, not a0/2');
 ENDDOCUMENT();
 
 
@@ -252,31 +235,30 @@ ENDDOCUMENT();
 # Fourier Series
 # ENDDESCRIPTION
 
-## KEYWORDS('calculus','integral', 'fourier', 'series', 'approximation')
 ## Tagged by glr 02/03/09
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Fourier Series')
-## Date('')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Infinite sequences and series)
+## DBsection(Fourier series)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus')
-## TitleText2('Calculus')
-## EditionText1('4')
-## EditionText2('5')
 ## AuthorText1('Hughes-Hallett')
-## AuthorText2('Hughes-Hallett')
+## EditionText1('4')
 ## Section1('10.5')
-## Section2('10.5')
 ## Problem1('5')
+## TitleText2('Calculus')
+## AuthorText2('Hughes-Hallett')
+## EditionText2('5')
+## Section2('10.5')
 ## Problem2('5')
+## KEYWORDS('calculus','integral', 'fourier', 'series', 'approximation')
 
 ## Textbook tags
 ## HHChapter1('Approximating Functions Using Series')
 ## HHChapter2('Approximating Functions Using Series')
-## HHSection1('Fourier Series')
-## HHSection2('Fourier Series')
 
 
 #################################
@@ -284,14 +266,6 @@ ENDDOCUMENT();
 
 DOCUMENT();
 
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-"PGgraphmacros.pl",
-"parserPopUp.pl",
-"unionTables.pl",
-);
 
 $refreshCachedImages=1;
 
@@ -407,5 +381,5 @@ ANS($F5->cmp() );
 
 ANS( $popup->cmp() );
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

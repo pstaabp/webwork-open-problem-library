@@ -5,24 +5,30 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Approximating Integrals')
-## Institution('ASU')
+## DBchapter(Techniques of integration)
+## DBsection(Approximation)
+## Date(6/3/2002)
+## Institution(Indiana)
+## MLT(approx_01)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('1')
 ## Section1('5.1')
 ## Problem1('3')
-## KEYWORDS('integral' 'summation' 'area' 'riemann','Definite', 'Integral', 'Approximate', 'Midpoint Rule')
+## TitleText2('Calculus: Early Transcendentals')
+## AuthorText2('Stewart')
+## EditionText2('6')
+## Section2('5.2')
+## Problem2('9')
+## KEYWORDS('integral' 'summation' 'area' 'riemann','Definite', 'Integral', 'Approximate', 'Midpoint Rule','integrals', 'Riemann Sums','integrals' 'riemann sums')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -44,5 +50,19 @@ END_TEXT
 $ansA = .25*($l**4 + 2*$l**3 + $l**2 - $k**4 -2*$k**3 -$k**2);
 
 ANS(num_cmp($ansA));
+
+$x1=$lbound+1;
+$xm2=-$k+1;
+$nk=-$k;
+BEGIN_SOLUTION
+$PAR SOLUTION $PAR
+We have \( \Delta x = \frac{$ubound - $lbound}{$n} =1 \) 
+and \(x_0= $lbound,\,  x_1 = $x1, ... ,x_{$n} = $ubound \).
+$BR
+The midpoints are then
+\[ \bar{x}_1 = $nk, \, \bar{x}_2 = $xm2, ..., \bar{x}_7 = $l \] 
+Let \(f(x)= x^3 \). The midpoint approximation to the integral is
+\[ 1 \cdot (f($nk) + f($xm2) + .. +f($l)) = ($nk)^3+($xm2)^3+ ... +($l)^3 = $ansA \]
+END_SOLUTION
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.

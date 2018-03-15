@@ -1,19 +1,21 @@
 ##DESCRIPTION
-## DBsubject(Financial Mathematics)
+## DBsubject(Financial mathematics)
+## DBchapter(Options)
+## DBsection(Introduction to options)
 ## Institution(NAU)
 ## Author(Michael Ratliff)
-## KEYWORDS('', '')
+## MLT(fm214)
+## MLTleader(1)
+## Level(3)
 ##ENDDESCRIPTION
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

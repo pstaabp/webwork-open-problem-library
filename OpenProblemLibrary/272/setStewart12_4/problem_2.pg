@@ -8,19 +8,20 @@
 
 ## Tagged by ynw2d
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Cross Product)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Cross product)
 ## Author(Stewart)
+## Level(2)
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers
@@ -37,7 +38,7 @@ TEXT(beginproblem());
 BEGIN_TEXT 
 $BR 
 
-Think of the letter \(\Large\textsf X\) as
+Think of the letter \(\Large\mathsf X\) as
 four vectors starting from the center and pointing outward.  Label the
 four vectors starting from the top left and proceeding clockwise as
 \(\mathbf u\), \(\mathbf v\), \(\mathbf w\), \(\mathbf z\).

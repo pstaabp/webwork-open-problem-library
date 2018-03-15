@@ -2,31 +2,24 @@
 ##   Compute Discrete Probabilities
 ## ENDDESCRIPTION
 
-## KEYWORDS('Probability', 'Discrete')
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
-## DBchapter('Counting and Probability')
-## DBsection('Probability')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Probability)
+## DBchapter(Sample Space)
+## DBsection(Probability: direct computation, inclusion/exclusion)
+## Institution(Rochester)
+## Level(4)
+## KEYWORDS('Probability', 'Discrete')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

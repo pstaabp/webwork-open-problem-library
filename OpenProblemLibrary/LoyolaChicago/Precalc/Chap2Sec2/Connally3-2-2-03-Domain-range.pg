@@ -1,36 +1,41 @@
 ## DESCRIPTION
 ## Functions: Input and Output
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Domain and Range)
+## DBsection(Domain and range)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('2.2')
-## Problem1('3')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1('2.2')
 ## Section2('2.2')
+## Section3('2.2')
+## Problem1('3')
 ## Problem2('3')
+## Problem3('7')
 ## KEYWORDS('functions','domain','range','input','output','interval notation')
-
+## MLT(RangeQuadratic)
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"contextInequalities.pl",
-"PGcourse.pl",
-"PGgraphmacros.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "contextInequalities.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -100,5 +105,5 @@ on the domain \(-$a\leq x\leq $b\), the range is \($A\leq f(x)\leq $B\).
 
 END_SOLUTION
 
-COMMENT('Uses MathObjects');
+;
 ENDDOCUMENT();

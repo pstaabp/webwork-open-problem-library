@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Solve ac circuit
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('AC Steady-State Analysis')
-## DBsection('Basic Analysis Using Kirchhoff's Laws')
+## DBsubject(Electric circuits)
+## DBchapter(AC steady-state analysis)
+## DBsection(Basic analysis using Kirchhoff's laws)
 ## Institution('Northern Arizona University')
 ## Author('Elizabeth J. Brauer')
 ## TitleText1('Basic Engineering Circuit Analysis')
@@ -16,12 +16,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

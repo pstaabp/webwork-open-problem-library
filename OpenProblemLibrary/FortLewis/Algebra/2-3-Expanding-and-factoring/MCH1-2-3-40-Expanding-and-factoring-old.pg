@@ -2,22 +2,25 @@
 ## Algebraic equations
 ## ENDDESCRIPTION
 
-## KEYWORDS('Equations')
 
-## DBsubject('Algebra') 
 ## BookTitle('Algebra: Form and Function')
-## DBchapter('Basic Algebra') 
 ## BookChapter('Rules for Expressions and the Reasons for Them')
-## DBsection('Expanding and Factoring') 
-## BookSection('Expanding and Factoring')
-## Date('01/01/10')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBsubject(Algebra)
+## DBchapter(Factoring)
+## DBsection(Factoring: special forms)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(simpleDiffSq)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Algebra: Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum, Connally, and Hughes-Hallett')
+## EditionText1('1')
 ## Section1('2.3')
 ## Problem1('40')
+## KEYWORDS('Equations')
 
 
 ########################################
@@ -26,11 +29,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserMultiAnswer.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -99,5 +102,5 @@ $showPartialCorrectAnswers = 1;
 ANS($multians->cmp());
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

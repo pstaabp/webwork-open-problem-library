@@ -1,10 +1,11 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Optimization - general)
 ## Institution(W.H.Freeman)
 ## Author(Ned W. Hummel)
 ## MLT(Optimization_FenceCost)
 ## Level(5)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -14,12 +15,15 @@
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
-loadMacros("Parser.pl");
 
 # This is our macro file that provides the textbook_ref_exact() and
-loadMacros("freemanMacros.pl");
 
 # loadMacros("PGauxiliaryFunctions.pl");
 # loadMacros("PGgraphmacros.pl");
@@ -34,6 +38,8 @@ loadMacros("freemanMacros.pl");
 #brick_side 10 sqrt 5
 #metal_side 20 sqrt 5
 
+TEXT(beginproblem());
+
 $brick = random(20,60,10);
 $metal = random(10,$brick-10,10);
 $area = random(10,200,10)^2;
@@ -47,7 +53,6 @@ $c_prime = $c->D('x');
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "4.7","23") \}
 $PAR
 A landscape architect wished to enclose a rectangular garden on one side by a brick wall costing $DOLLAR$brick/ft and on the other three sides by a metal fence costing $DOLLAR$metal/ft. If the area of the garden is $area square feet, find the dimensions of the garden that minimize the cost.

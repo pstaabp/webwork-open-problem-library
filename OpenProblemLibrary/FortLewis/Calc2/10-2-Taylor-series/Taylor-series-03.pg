@@ -2,20 +2,17 @@
 ##   Approximating a Function with a Taylor Series
 ## ENDDESCRIPTION
 
-## KEYWORDS('Series', 'Taylor', 'Coefficient', 'Interval', 'Convergence')
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Taylor and Maclaurin series')
-## Date('')
-## Author('Anonymous and Paul Pearson')
-## Institution('Rochester and Fort Lewis College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBchapter(Infinite sequences and series)
+## DBsection(Taylor series)
+## Institution(Rochester and Fort Lewis College)
+## Author(Anonymous and Paul Pearson)
+## MLT(TaylorSeries_01)
+## Level(1)
+## MO(1)
+## KEYWORDS('Series', 'Taylor', 'Coefficient', 'Interval', 'Convergence')
 
 
 ##########################################
@@ -24,9 +21,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"unorderedAnswer.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "unorderedAnswer.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -86,6 +84,6 @@ UNORDERED_ANS(
 );
 
 
-COMMENT('MathObject version.  Answers can be entered in any order.');
+COMMENT('Answers can be entered in any order.');
 
 ENDDOCUMENT();

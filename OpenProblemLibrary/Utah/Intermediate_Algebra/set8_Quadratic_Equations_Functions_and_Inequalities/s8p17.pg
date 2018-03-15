@@ -1,24 +1,22 @@
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Quadratic Equations')
-## AuthorText1('Ron Larson and Robert P. Hostetler')
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Completing the square)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## Level(2)
 ## TitleText1('Intermediate Algebra')
+## AuthorText1('Ron Larson and Robert P. Hostetler')
 ## EditionText1('4')
-## Section1(' Quadratic Equations, Functions, and Inequalities ')
+## Section1('.')
 ## Problem1('')
-
-##KEYWORDS('algebra')
+## KEYWORDS('algebra')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -27,8 +25,7 @@ TEXT(beginproblem());
 
 
 TEXT(EV2(<<EOT));
-This is like the preceding problem, except that
-you have to factor out the leading coefficient.
+Complete the square; factor out the leading coefficient first.
 For example, in
 \[3x^2 + 3x + \underline{\phantom{aaa}} = 3(x+\underline{\phantom{aaa}})^2 \]
 fill in \(\frac{3}{4}\) and  \(\frac{1}{2} \)

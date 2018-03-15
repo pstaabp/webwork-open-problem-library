@@ -4,10 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
- "MathObjects.pl",
-"contextTF.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextTF.pl",
+  "PGcourse.pl"
 );
 
 #for currency use Context("Currency") then Currency($A);
@@ -57,10 +58,13 @@ viii) \( (a\times  b)\times c = a\times (b\times c)\)  is called the associative
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Order_of_Operations')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Evaluating expressions)
+## Level(3)
+## Static(1)
+## MO(1)
 
 

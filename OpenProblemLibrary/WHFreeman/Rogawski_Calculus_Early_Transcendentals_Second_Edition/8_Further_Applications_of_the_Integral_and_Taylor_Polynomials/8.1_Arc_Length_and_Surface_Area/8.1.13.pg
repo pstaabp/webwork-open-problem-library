@@ -1,26 +1,26 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Applications of Integration')
-## DBsection('Arc Length')
-## KEYWORDS('calculus', 'integrals', 'integration', 'arc length')
+## DBchapter(Applications of integration)
+## DBsection(Arc length)
+## Institution(W.H.Freeman)
+## Author(Justask)
+## MLT(AI-AL-approx)
+## Level(4)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('8.1')
- ## Problem1('13')
-## Author('Justask')
-## Institution('W.H.Freeman')
+## Problem1('13')
+## KEYWORDS('calculus', 'integrals', 'integration', 'arc length')
 DOCUMENT();
  
 # Load whatever macros you need for the problem
 loadMacros(
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-           );
-loadMacros("freemanMacros.pl");
-loadMacros("Parser.pl");
-loadMacros("PG.pl");
-loadMacros("PGauxiliaryFunctions.pl");
-loadMacros("PGgraphmacros.pl");
+  "PGstandard.pl",
+  "freemanMacros.pl",
+  "Parser.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
  
 ## Do NOT show partial correct answers
 $showPartialCorrectAnswers = 0;
@@ -29,10 +29,7 @@ TEXT(beginproblem());
 ## We can randomize a and b values, if we like.
 $a=random(1,4,1);
 
-$b=random(2,10,1);
-while ($b<$a) {$b  = random(2,10,1)}
-# $a=1;
-# $b=2;
+$b = random(2,10,1) until $b > $a;
 $I=$b-$a;
 
 $n=random(6,12,2);
@@ -40,8 +37,7 @@ $n=random(6,12,2);
 BEGIN_TEXT
 \{ textbook_ref_exact("Rogawski ET 2e", "8.1","13") \}$BR
 Approximate the arc length of the curve \(y=x^{-1}\) over the interval \([$a,$b]\) using 
-Simpson's Rule \(S_{$n}\). 
-$BR
+Simpson's rule and \($n\) subintervals (i.e., \(S_{$n}\)). 
 Your answer must be accurate to 8 decimal places.
 $PAR
 
@@ -141,8 +137,8 @@ foreach $i(1..($n/2-1)){
   $str=$str.'\cr & & + '.Real((4*myfunc($a+(2*$i-1)*$delta))).'+'.Real((2*myfunc($a+(2*$i)*$delta)));
 }
  $str=$str.'\cr & & + '.Real((4*myfunc($a+($n-1)*$delta))).'+'.Real((myfunc($a+($n)*$delta))).')';
-\}
-$str \cr
+$str\}
+\cr
 & = & $sum 
 \end{array} \] 
 

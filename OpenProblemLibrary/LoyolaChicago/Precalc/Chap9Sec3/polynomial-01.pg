@@ -4,10 +4,13 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Polynomial and rational functions)
-## DBsection(The Short-Run Behavior Of Polynomials)
+## DBchapter(Polynomial equations and functions)
+## DBsection(Zeros and multiplicities)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(MLT04)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
@@ -28,12 +31,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGgraphmacros.pl",
-# "unionTables.pl",
-# "problemRandomize.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 # ProblemRandomize(when=>"Always"); 
 
@@ -145,6 +147,6 @@ $showPartialCorrectAnswers = 1;
 ANS( $answer->cmp() );
 
 
-COMMENT('MathObject version');
+;
 
 ENDDOCUMENT();  

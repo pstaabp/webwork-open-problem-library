@@ -4,16 +4,13 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-# "unionLists.pl",
-"unionMacros.pl",
-"unionTables.pl",
-"contextLeadingZero.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "unionMacros.pl",
+  "unionTables.pl",
+  "contextLeadingZero.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;
@@ -64,7 +61,11 @@ END_SOLUTION
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter(Arithmetic word problems)
+## DBsubject(Arithmetic)
+## DBchapter(Percents)
+## DBsection(Applications)
+## Level(3)
+## MLT(percents_from_table5)
+## MO(1)

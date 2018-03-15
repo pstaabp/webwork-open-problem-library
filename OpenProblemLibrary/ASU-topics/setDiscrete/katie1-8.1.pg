@@ -2,30 +2,22 @@
 ## Preimages of a Floor Function
 ## ENDDESCRIPTION
 
-## KEYWORDS('set theory', 'floor', 'function', 'one-to-one', 'inverse')
 ## Tagged by YL
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Domain and Range')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Inverse functions)
+## DBsection(Interpreting inverse functions)
+## Institution(ASU)
+## Level(2)
+## KEYWORDS('set theory', 'floor', 'function', 'one-to-one', 'inverse')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"extraAnswerEvaluators.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

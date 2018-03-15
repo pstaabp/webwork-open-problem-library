@@ -6,18 +6,25 @@
 
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Integrals)
-## DBsection(Antiderivatives)
+## DBsection(Antiderivatives (without trigonometric functions))
+## Date(6/3/2002)
 ## Institution(Indiana)
-## KEYWORDS('derivatives' 'antiderivatives')
+## MLT(antideriv_poly_find_AN_antideriv)
+## MLTleader(1)
+## Level(2)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Stewart')
+## EditionText1('6')
+## Section1('4.9')
+## Problem1('3')
+## KEYWORDS('derivatives' 'antiderivatives','derivatives', 'antiderivatives')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

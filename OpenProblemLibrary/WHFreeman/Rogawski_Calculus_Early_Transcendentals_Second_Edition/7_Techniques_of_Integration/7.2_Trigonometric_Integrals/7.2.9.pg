@@ -1,20 +1,32 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Trigonometric Integrals')
-## KEYWORDS('calculus', 'integration', 'integral', 'trigonometry', 'trigonometric', 'trig')
+## DBchapter(Techniques of integration)
+## DBsection(Trigonometric integrals)
+## Date(8/23/07)
+## Institution(Union)
+## Author(K. Lesh)
+## MLT(cos_fourth)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('7.2')
 ## Problem1('9')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## TitleText2('Calculus')
+## AuthorText2('Anton')
+## EditionText2('7')
+## Section2('8.3')
+## Problem2('03')
+## KEYWORDS('calculus', 'integration', 'integral', 'trigonometry', 'trigonometric', 'trig','Indefinite', 'Trig Integral')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 $context = Context();
 
 $context->variables->add(C=>'Real');
@@ -22,6 +34,8 @@ $context->variables->add(C=>'Real');
 #($a, $b, $ans) = @{ list_random([],
 #                                []
 #) };
+
+TEXT(beginproblem());
 
 $a = Real(random(2, 9, 1));
 
@@ -35,7 +49,6 @@ $ans = Formula("$a/4*((cos(x))**3)*sin(x) +$a*3/8*cos(x)*sin(x) +$a*3/8 * x + C"
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "7.2","9") \}
 $PAR
 Calculate \( \int $a \cos^{4} x \, dx \).

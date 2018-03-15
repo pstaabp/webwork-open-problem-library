@@ -1,18 +1,21 @@
 ###DESCRIPTION
 ## REVIEW: Slope-intercept form of a line
-## 
+## updated -rac 12/2014
 ##ENDDESCRIPTION
 ## DBsubject(Algebra)
-## DBchapter(Polynomials, polynomial functions, and factoring)
-## DBsection('Factoring Trinomials')
-## KEYWORDS('slope-intercept','line')
+## DBchapter(Linear equations and functions)
+## DBsection(Equations of lines: slope-intercept form)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(MLT07)
+## Level(2)
+## MO(1)
 ## TitleText1('Essentials of Intermediate Algebra')
-## EditionText1('1')
 ## AuthorText1('Blitzer')
+## EditionText1('1')
 ## Section1('5.4')
 ## Problem1('')
-## Author('RA Cruz')
-## Institution('The College of Idaho')
+## KEYWORDS('slope-intercept','line')
 ## Date: 2007/11
 
 DOCUMENT(); # This should be the first executable line in the problem.
@@ -20,7 +23,8 @@ DOCUMENT(); # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "CofIdaho_macros.pl"
+  "parserAssignment.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -35,7 +39,7 @@ $m = random(2,4,1);
 #  Main text
 
 BEGIN_TEXT
-REVIEW: Rewrite the equation in slope-intercept form by solving for y. Find the
+Rewrite the equation in slope-intercept form by solving for y. Find the
 slope and the y-intercept. \[ $m x + y = $b \]
 $PAR
 a)  The equation is: \{ ans_rule(25) \} 
@@ -48,13 +52,25 @@ END_TEXT
 ######################################
 #  Answer
 
+Context('Numeric');
 Context()->strings->add("Does not exist"=>{},
                         "Not defined"=>{alias=>'Does not exist'}
                        );
+Context()->variables->are(x=>"Real",y=>"Real");
+parser::Assignment->Allow;
+Context()->noreduce('(-x)-y','(-x)+y');
+
+sub errMsg {
+  my $ans = shift; 
+  $ans->{ans_message} =  "Enter your answer in the form: ".
+                         "$BR y = mx+b, y = b or x = c"
+    if $ans->{ans_message} =~ / left side of an assignment/;
+  return $ans; 
+}
 
 $nm = -1*$m;
-$ans_a = "y=$nm*x+$b";
-ANS(SlopeIntercept_equation_cmp($ans_a)); 
+$ans_a = Formula("y=$nm*x+$b")->reduce;
+ANS($ans_a->cmp->withPostFilter(~~&errMsg)); 
 
 $ans_b = Real($nm);
 ANS($ans_b->cmp); 
@@ -66,6 +82,5 @@ $showPartialCorrectAnswers = 1;
 
 ######################################
 
-
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -1,24 +1,25 @@
 
-## UsesAuxiliaryFiles('figure20.png')
-## UsesAuxiliaryFiles('figtetra.png')
+## RESOURCES('figure20.png')
+## RESOURCES('figtetra.png')
 
 DOCUMENT();
 
 # Load whatever macros you need for the problem
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Parser.pl"
-          );
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Integration)
-## DBsection(Volumes)
+## DBchapter(Applications of integration)
+## DBsection(Volumes by slices)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk!)
+## Level(5)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')

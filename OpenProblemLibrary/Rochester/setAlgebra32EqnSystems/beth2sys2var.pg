@@ -20,12 +20,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"extraAnswerEvaluators.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -59,7 +57,7 @@ $BR
 $BR
 $BBOLD Note:$EBOLD If there is more than one point, type the points as a comma separated list
 (e.g.:  (1,2),(3,4)).
-If the system has no solutions, enter $BITALIC None$ETIALIC.
+If the system has no solutions, enter $BITALIC None$EITALIC.
 END_TEXT
 
 

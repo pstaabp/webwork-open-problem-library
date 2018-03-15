@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Systems of Differential Equations)
+## DBchapter(Systems of differential equations)
+## DBsection(Complex eigenvalues)
 ## Date(01/31/2012)
 ## Institution(Rochester and Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(4)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
 ## AuthorText1('Kohler and Johnson')
 ## EditionText1('2006')
@@ -22,10 +24,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGmatrixmacros.pl",
-"MathObjects.pl",
-"parserMultiAnswer.pl",
+  "PGstandard.pl",
+  "PGmatrixmacros.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 
@@ -167,6 +170,6 @@ $showPartialCorrectAnswers = 1;
 ANS( $multians1->cmp() );
 
 
-COMMENT('MathObject version.  Complex eigenvalues +/- ai and complex eigenvectors.');
+COMMENT('Complex eigenvalues +/- ai and complex eigenvectors.');
 
 ENDDOCUMENT(); 

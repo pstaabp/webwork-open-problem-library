@@ -2,27 +2,31 @@
 ##  Algebra: Logarithmic expressions
 ##ENDDESCRIPTION
 
-## KEYWORDS('algebra', 'logarithms', 'logarithmic equation')
 
-## DBsubject('Algebra')
-## DBchapter('Exponential and Logarithmic Functions')
-## DBsection('Logarithmic Functions')
-## Date('01/25/2010')
-## Author('Justin Sukiennik')
-## Institution('University of Minnesota')
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Exponential and logarithmic equations)
+## Date(01/25/2010)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## MLT(ELEqn_MTL7)
+## Level(3)
+## MO(1)
 ## TitleText1('Algebra for College Students')
-## EditionText1('8')
 ## AuthorText1('Kaufmann, Schwitters')
+## EditionText1('8')
 ## Section1('10.4')
 ## Problem1('90')
+## KEYWORDS('algebra', 'logarithms', 'logarithmic equation')
 
 ########################################################################
 
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

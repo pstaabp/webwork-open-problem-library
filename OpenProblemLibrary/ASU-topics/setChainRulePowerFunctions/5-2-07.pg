@@ -20,20 +20,22 @@
 ## EditionText2('6')
 ## Section2('3.4')
 ## Problem2('')
+## MO(1)
 ## KEYWORDS('differentiation', 'chain rule', 'power')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;
+
+Context("Numeric");
 
 $a = random(2,20,1);
 
@@ -48,7 +50,7 @@ $BR
 
 EOT
 
-$ans = $a*(log(2))**($a-1)/2 ;
-ANS(num_cmp($ans));
+$ans =Compute("$a*(log(2))**($a-1)/2");
+ANS($ans->cmp);
 
 ENDDOCUMENT();

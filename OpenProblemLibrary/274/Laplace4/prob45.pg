@@ -5,19 +5,23 @@
 ## Tagged by cmd6a 3/14/06
 
 ## DBsubject(Differential equations)
-## DBchapter(Laplace Transforms)
+## DBchapter(Laplace transforms)
+## DBsection(Basic transformations)
 ## Institution(ASU)
+## MO(1)
+## MLT(forward_01)
+## MLTleader(1)
+## Level(5)
 
 DOCUMENT() ;        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGasu.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem()) ;
@@ -49,7 +53,6 @@ $func = "\begin{cases}
              \end{cases}";
 
 BEGIN_TEXT
-
 Take the Laplace transform of the following initial value problem and 
 solve for \(Y(s) = \mathcal{L}$LBRACE y(t) $RBRACE \):
 
@@ -60,10 +63,14 @@ $PAR
 \(Y(s)= \) \{ans_rule(40) \}.
 $BR Graph of  \( T(t) \) (a triangular wave function):
 $BR $g
-
-
 END_TEXT
 
-ANS(fun_cmp($ans5,vars=>["s"] )) ;
+Context("Numeric")->variables->are('s'=>"Real");
+
+$ans = Compute("$ans5");
+$ans->{limits} = [1,2];
+
+ANS($ans->cmp());
+
 ENDDOCUMENT() ;        # This should be the last executable line in the problem.
 

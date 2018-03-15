@@ -2,40 +2,44 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"parserImplicitPlane.pl",
-# "parserImplicitEquation.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "parserImplicitPlane.pl",
+  "PGcourse.pl"
 );
 
 ## Tagged by glr 06/18/09
 
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(The Cross Product)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Planes)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(planes_eqn_three_points)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('13.4')
-## Problem1('13')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('13.4')
 ## Section2('13.4')
+## Section3('13.4')
+## Problem1('13')
 ## Problem2('15')
+## Problem3('15')
 ## KEYWORDS('cross product', 'vectors')
 
 ## Textbook tags
@@ -129,5 +133,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

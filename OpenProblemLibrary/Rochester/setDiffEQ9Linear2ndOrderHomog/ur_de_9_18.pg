@@ -5,22 +5,23 @@
 ## Tagged by tda2d
 
 ## DBsubject(Differential equations)
-## DBchapter(Second order)
-## DBsection(Second-Order Linear Equations)
+## DBchapter(Higher order differential equations)
+## DBsection(Euler equations)
 ## Institution(Rochester)
+## MLT(euler_02)
+## MLTleader(1)
+## Level(3)
 ## KEYWORDS('differential equation' 'second order' 'linear')
 
 
 DOCUMENT() ;       
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGdiffeqmacros.pl",
-) ;
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGdiffeqmacros.pl",
+  "PGcourse.pl"
+);
 ############
 
 

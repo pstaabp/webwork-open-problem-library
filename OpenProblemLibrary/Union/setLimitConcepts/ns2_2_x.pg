@@ -5,7 +5,7 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(One-sided limits - concept of)
 ## Date(6/3/2002)
 ## Institution(Univeristy of Utah)
@@ -13,6 +13,7 @@
 ## MLT(limits_one_sided_two_line_spline)
 ## MLTleader(1)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5e')
@@ -26,7 +27,7 @@
 ## TitleText3('Calculus')
 ## AuthorText3('Dale Varberg, Edwin J. Purcell, and Steven E. Rigdon')
 ## EditionText3('9')
-## Section3('Limits')
+## Section3('.')
 ## Problem3('')
 ## TitleText4('Calculus: Early Transcendentals')
 ## AuthorText4('Rogawski')
@@ -44,11 +45,11 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
   "contextPiecewiseFunction.pl",
   "alignedChoice.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -99,5 +100,5 @@ ANS($alignment->correct_ans);
 
 ###################################
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

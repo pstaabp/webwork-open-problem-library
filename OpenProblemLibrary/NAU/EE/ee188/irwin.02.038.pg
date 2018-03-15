@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ##  Solve single node-pair circuit
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Resistive Circuits')
-## DBsection('Single-Node-Pair Circuits')
+## DBsubject(Electric circuits)
+## DBchapter(Resistive circuits)
+## DBsection(Single-node-pair circuits)
 ## KEYWORDS('KCL','single node-pair circuits','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

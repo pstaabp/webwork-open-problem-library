@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Vector Fields)
+## DBchapter(Vector fields)
+## DBsection(Graphs, flows lines, and level surfaces)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(fieldmatch)
+## Level(3)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -25,14 +27,14 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGunion.pl",
-"MathObjects.pl",
-"imageChoice.pl",
-"PGcourse.pl",
-"PGgraphmacros.pl",
-"VectorField2D.pl",
-"PGgraders.pl",
+  "PGstandard.pl",
+  "PGunion.pl",
+  "MathObjects.pl",
+  "imageChoice.pl",
+  "PGgraphmacros.pl",
+  "VectorField2D.pl",
+  "PGgraders.pl",
+  "PGcourse.pl"
 );
 
 $refreshCachedImages=1;
@@ -211,5 +213,5 @@ $showPartialCorrectAnswers = 0;
 ANS(str_cmp($ml->ra_correct_ans));
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

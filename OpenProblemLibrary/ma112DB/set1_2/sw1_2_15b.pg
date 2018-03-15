@@ -4,9 +4,13 @@
 
 ## hcao tagged and PAID on 12-12-2003
 
-## DBsubject(Numbers)
-## DBchapter(Real numbers)
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Multiple operations)
+## MLT(DivFollowedBySubtract)
+## MLTleader(1)
 ## Date(6/3/2002)
+## Level(2)
 ## TitleText1('College Algebra')
 ## AuthorText1('Stewart, Redlin, Watson')
 ## EditionText1('3')
@@ -16,18 +20,16 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 $showCorrectPartialAnswers = 1;
 
 $n1 = random(2,10,1);
 $n2 = random(1,10,1);
-$d2 = random(2,10,1);
+do {$d2 = random(2,10,1)} until ($d2 != $n2);
 
 BEGIN_TEXT
 Combine the fractions, and reduce your answer. 

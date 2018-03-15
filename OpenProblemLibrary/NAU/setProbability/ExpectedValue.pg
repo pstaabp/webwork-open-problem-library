@@ -1,20 +1,20 @@
 ##DESCRIPTION
-## DBsubject('Probability')
-## DBchapter('Theory')
-## DBsection('Expected Value')
+## DBsubject(Probability)
+## DBchapter(Random variables)
+## DBsection(Expectation)
+## Institution(NAU)
+## Author(C. Tyler Diggans)
+## Level(2)
 ## KEYWORDS('probability', 'Expected Value')
-## Author('C. Tyler Diggans')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 DOCUMENT();        
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

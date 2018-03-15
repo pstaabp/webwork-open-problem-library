@@ -6,8 +6,8 @@
 ## Tagged by jjh2b
 
 ## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('AIM Tutorial: Old Problems')
+## DBchapter(WeBWorK tutorial)
+## DBsection(AIM tutorial: old problems)
 ## Date('')
 ## Author('')
 ## Institution('Rochester')
@@ -20,13 +20,9 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcourse.pl",
-# "source.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

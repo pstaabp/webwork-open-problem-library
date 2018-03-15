@@ -1,21 +1,20 @@
 ##DESCRIPTION
-## DBsubject('Financial Mathematics')
-## DBchapter('Annuities')
-## DBsection('Varying Payments')
+## DBsubject(Financial mathematics)
+## DBchapter(Annuities)
+## DBsection(Income streams)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## Level(1)
 ## KEYWORDS('arithmetic progression', 'decreasing payments')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 DOCUMENT();  
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

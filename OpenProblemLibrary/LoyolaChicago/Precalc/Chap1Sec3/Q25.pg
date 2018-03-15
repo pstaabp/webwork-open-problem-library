@@ -1,36 +1,41 @@
 ## DESCRIPTION
 ## Problem from Functions Modeling Change, Connally, et al., 3rd ed.
 ## WeBWorK problem written by Adam Spiegler <aspiegler@luc.edu>
-## ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Linear functions)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## MLT(InterpretSlopeRateOChange)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('1.3')
-## Problem1('26')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(1.3)
 ## Section2('1.3')
+## Section3('1.3')
+## Problem1(25)
 ## Problem2('26')
+## Problem3('30')
 ## KEYWORDS('rate of change','lines','linear functions','slope','intercept')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-	   "MathObjects.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -83,22 +88,22 @@ $mc2 -> makeLast('None of the above');
 ##############  
 $ml = new_match_list();
 $ml -> qa ( "\(f( $q )\) is",
-	    "How much area will be covered by glaciers in  $disp.",
+	    "How much area (in \(\mbox{km}^2\)) will be covered by glaciers in  $disp.",
             "If \( f(t) = $q \), then \(t\) is",
             "The number of years after 2000 that the total area covered by " .
 	    "glaciers will be \( $q \ \mbox{km}^2 \).");
 
 $ml ->extra("The number of years after 2000 that the amount of glacier area " .
 	      "that has disappeared is \( $q \ \mbox{km}^2 \).",
-            "The amount of glacier area that disappears in $q years.",
-            "How much area will be covered by glaciers in $q years.");
+            "The amount of glacier area (in \(\mbox{km}^2\)) that disappears in $q years.",
+            "How much area (in \(\mbox{km}^2\)) will be covered by glaciers in $q years.");
 
 $ml ->choose(2);
 $ml->choose_extra(3);
 
 BEGIN_TEXT
 
-A report by the US Geological Survey indicates that glaciers in Glacier National Park, Montana, are shrinking.  Recent estimates indicate the area covered by glaciers has decreased from over \( 25.5 \ \mbox{km}^2 \) in 1850 to about \( 25.5 \ \mbox{km}^2 \) in 1995.  Let \(A = f(t)\) give the area (in square km) \(t\) years after 2000, and assume \( f(t) = 16.2 - 0.062t \).
+A report by the US Geological Survey indicates that glaciers in Glacier National Park, Montana, are shrinking.  Recent estimates indicate the area covered by glaciers has decreased from over \( 25.5 \ \mbox{km}^2 \) in 1850 to about \( 16.5 \ \mbox{km}^2 \) in 1995.  Let \(A = f(t)\) give the area (in square km) \(t\) years after 2000, and assume \( f(t) = 16.2 - 0.062t \).
 $PAR
 a) \{ $mc1 -> print_q \}
 \{ $mc1 -> print_a \}

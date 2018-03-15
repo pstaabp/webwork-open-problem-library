@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Curl and Divergence)
+## DBchapter(Vector calculus)
+## DBsection(Curl and divergence)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -24,13 +26,13 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGcourse.pl",
-"MathObjects.pl",
-"parserVectorUtils.pl",
-"answerCustom.pl",
-"parserPopUp.pl",
-"weightedGrader.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserVectorUtils.pl",
+  "answerCustom.pl",
+  "parserPopUp.pl",
+  "weightedGrader.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -142,5 +144,5 @@ WEIGHTED_ANS($answerd->cmp(), 10 );
 WEIGHTED_ANS($popupd->cmp(), 4 );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -2,22 +2,25 @@
 ## Quadratic functions, expressions, and equations
 ## ENDDESCRIPTION
 
-## KEYWORDS('quadratic functions')
 
-## DBsubject('Algebra') 
 ## BookTitle('Algebra: Form and Function')
-## DBchapter('Quadratic Functions') 
 ## BookChapter('Quadratic Functions, Expressions, and Equations')
-## DBsection('Completing the Square') 
-## BookSection('Solving Quadratic Equations by Completing the Square')
-## Date('01/01/10')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Applications and models)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(Gravity)
+## MLTleader(1)
+## Level(5)
+## MO(1)
 ## TitleText1('Algebra: Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum, Connally, and Hughes-Hallett')
+## EditionText1('1')
 ## Section1('9.3')
 ## Problem1('54')
+## KEYWORDS('quadratic functions')
 
 
 ####################################
@@ -26,11 +29,11 @@
 DOCUMENT();  
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-"parserNumberWithUnits.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -79,5 +82,5 @@ ANS(NumberWithUnits("$h","ft")->cmp() );
 ANS(NumberWithUnits("sqrt($h/16)","s")->cmp() );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

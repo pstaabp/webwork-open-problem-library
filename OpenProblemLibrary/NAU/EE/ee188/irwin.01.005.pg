@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ##  Calculate the charge of a lightning bolt
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Basic Concepts')
-## DBsection('System of Units')
+## DBsubject(Electric circuits)
+## DBchapter(Basic concepts)
+## DBsection(System of units)
 ## KEYWORDS('charge','lightning','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

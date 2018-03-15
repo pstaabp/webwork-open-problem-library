@@ -2,31 +2,23 @@
 ##   Joint Distributions
 ## ENDDESCRIPTION
 
-## KEYWORDS('Joint Distribution', 'Conditional', 'Independant')
 ## Tagged by nhamblet
 
-## DBsubject('Probability')
-## DBchapter('Theory')
-## DBsection('Joint Distributions')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Probability)
+## DBchapter(Several variables)
+## DBsection(Marginal distributions)
+## Institution(Rochester)
+## Level(2)
+## KEYWORDS('Joint Distribution', 'Conditional', 'Independant')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGnumericalmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

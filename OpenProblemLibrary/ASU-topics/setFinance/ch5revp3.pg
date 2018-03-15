@@ -7,21 +7,20 @@
 ## DBsubject('Financial Mathematics');
 ## DBchapter('Introduction to Interest');
 ## DBsection('Compound Interest');
-## DBsubject(Financial Mathematics)
-## DBchapter(Introduction to Interest)
-## DBsection(Compound Interest)
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Present and future value of money)
 ## Institution(ASU)
+## Level(3)
 ## KEYWORDS('percent', 'mathematics for business', 'algebraic expression')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

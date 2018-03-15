@@ -1,38 +1,41 @@
 ##DESCRIPTION
 ##ENDDESCRIPTION
 
-##KEYWORDS('differential equations')
 
 ## DBsubject(Differential equations)
-## DBchapter('Introduction')
-## DBsection('Classification of Differential Equations')
-## Date('05/22/2012')
-## Author('Anna Ghazaryan,Fuli Zhang, Paul Pearson')
-## Institution('Muohio, Hope College')
+## DBchapter(Introductory concepts)
+## DBsection(Classifications of differential equations)
+## Date(05/22/2012)
+## Institution(Muohio, Hope College)
+## Author(Anna Ghazaryan,Fuli Zhang, Paul Pearson)
+## MLT(classify_order_linear)
+## Level(2)
+## MO(1)
 ## TitleText1('Differential equations An introduction to modern methods and applications')
 ## AuthorText1('James R. Brannan, William E. Boyce')
+## EditionText1('')
 ## Section1('1.4')
 ## Problem1('3')
+## KEYWORDS('differential equations')
 
 ########################################################################
 
 DOCUMENT();      
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-##"unionLists.pl",
-##"parserPrime.pl",
-"parserPopUp.pl",
-##"answerHints.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 # Print problem number and point value (weight) for the problem
 TEXT(beginproblem());
 
 # Show which answers are correct and which ones are incorrect
-$showPartialCorrectAnswers = 1;
+install_problem_grader(~~&std_problem_grader);
+$showPartialCorrectAnswers = 0;
 
 ##############################################################
 #
@@ -60,8 +63,6 @@ BEGIN_TEXT
 Determine the order of the given differential equation and state whether the equation is linear or nonlinear.
 
 \[\displaystyle\  \frac{d^{4}y}{dt^{4}}+\frac{d^{3}y}{dt^{3}}+\frac{d^{2}y}{dt^{2}}+\frac{dy}{dt}+y = $a\]
-${BBOLD}You have only one attempt for credit.${EBOLD}
-$BR
 $BR
 (a) The order of this differential equation is \{ ans_rule(10) \}. 
 $BR
@@ -81,23 +82,10 @@ Context()->normalStrings;
 $showPartialCorrectAnswers = 0;
 
 foreach my $i (0..1) {
-ANS( $answer[$i]->cmp(
-  checker=>sub {
-    my ( $correct, $student, $ansHash ) = @_;
-    if ( ($numOfAttempts < 1) && ($correct == $student) ) { 
-       return 1; 
-    } elsif ( ($numOfAttempts > 0) && ($correct == $student) ) {
-       Value->Error("Your answer is correct, but your score did not change since you used up the attempts allowed."); 
-    } else {
-       return 0;
-    };
-  }
-));
-
+  ANS( $answer[$i]->cmp );
 }
 
-COMMENT('MathObject version.  Uses a custom answer checker to 
-limit the number of attempts that count for credit to one.');
+;
 
 ENDDOCUMENT();    
 

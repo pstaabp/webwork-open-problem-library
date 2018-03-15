@@ -5,12 +5,13 @@
 ## Tagged by cmd6a 4/20/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Linear approximation and differentials)
 ## Institution(Rochester)
 ## MLT(LinearApprox_Sphere)
 ## MLTleader(1)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('1')
@@ -21,19 +22,21 @@
 ## EditionText2('6')
 ## Section2('3.10')
 ## Problem2('41')
-## KEYWORDS('derivatives', 'differentials','Calculus')
+## TitleText3('Calculus: Early Transcendentals')
+## AuthorText3('Stewart')
+## EditionText3('5')
+## Section3('3.10')
+## Problem3('')
+## KEYWORDS('derivatives', 'differentials','Calculus', 'derivatives','Differentiation','Product','Quotient')
 
 ## Modified ('6/25/2008')
 ## ModifiedBy('nbennett')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",   							
-"PGcourse.pl"         # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -77,7 +80,7 @@ ANS($rel_err->cmp);
 
 ########################################
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

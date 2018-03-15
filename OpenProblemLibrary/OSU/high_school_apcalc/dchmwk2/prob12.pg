@@ -5,20 +5,20 @@
 ## Tagged by cmd6a 5/29/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(One-sided limits - concept of)
 ## Institution(OSU)
 ## Level(2)
 ## KEYWORDS('calculus','limit')
+## MO(1)
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -35,17 +35,23 @@ $ans3 = ($a+$b)/($c-$d);
 $ans4 = "DNE";
 
 BEGIN_TEXT
-Consider the function
+Consider the function :
 \[g(x) = \frac{$a x + $b |x|}{$c x - $d |x|}
 \]
-Evaluate the following expressions. Write DNE if the expression is undefined.
-$BR \(\lim_{x\to 0^-}g(x) =\)\{ans_rule()\}
+Evaluate the following expressions. Write ${BBOLD}DNE${EBOLD} if the expression is undefined.
+$BR
+$BR \(\displaystyle\lim_{x\to 0^-}g(x) \) =\{ans_rule()\}
+$BR 
 $BR \(g(0)=\)\{ans_rule()\}
-$BR \(\lim_{x\to 0^+}g(x) =\)\{ans_rule()\}
-$BR \(\lim_{x\to 0}g(x) =\)\{ans_rule()\}
+$BR
+$BR \(\displaystyle \lim_{x\to 0^+}g(x) =\)\{ans_rule()\}
+$BR
+$BR \(\displaystyle\lim_{x\to 0}g(x) =\)\{ans_rule()\}
 $PAR
-This is similar to problem 80 of section 2.5 of the text.
+
 END_TEXT
+
+#This is similar to problem 80 of section 2.5 of the text.
 
 ANS(num_cmp($ans1));
 ANS(str_cmp($ans2));

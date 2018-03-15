@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ##  Apply Kirchhoff's Voltage Law
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Resistive Circuits')
-## DBsection('Kirchhoff's Law')
+## DBsubject(Electric circuits)
+## DBchapter(Resistive circuits)
+## DBsection(Kirchhoff's law)
 ## KEYWORDS('power','KVL','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

@@ -2,26 +2,24 @@
 ##   General Inverse Trig Evaluation
 ## ENDDESCRIPTION
 
-## KEYWORDS('Trig', 'Inverse')
 
-## DBsubject('Trigonometry')
-## DBchapter('Analytic Trigonometry')
-## DBsection('Inverse Trigonometric Functions')
-## Date('10/23/2012')
-## Author('John Travis')
-## Institution('Mississippi College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Trigonometry)
+## DBchapter(Analytic trigonometry)
+## DBsection(Solving trigonometric equations numerically)
+## Date(10/23/2012)
+## Institution(Mississippi College)
+## Author(John Travis)
+## MLT(KentMoreLike7)
+## Level(2)
+## MO(1)
+## KEYWORDS('Trig', 'Inverse')
 
 DOCUMENT();
 
 loadMacros(
   "PGstandard.pl",
-  "MathObjects.pl",        # the new parsers
-  "PGcourse.pl",           # Customization file for the course
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -36,6 +34,7 @@ TEXT(beginproblem());
 Context("Numeric");
 
 $tan = non_zero_random(-9.5,9.5,0.23);
+$tan = sprintf("%.2f", $tan);
 
 $ref_tan = Compute("atan(($tan))");
 $period = Compute("pi");

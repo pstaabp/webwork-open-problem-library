@@ -1,10 +1,12 @@
 ##DESCRIPTION
-## DBsubject('Discrete Mathematics')
-## DBchapter('Set Theory')
-## DBsection('Basic Operations')
+## DBsubject(Combinatorics)
+## DBchapter(Counting)
+## DBsection(Inclusion/exclusion)
+## Institution(NAU)
+## Author(Ty Thompson)
+## MLT(Venn_counting)
+## Level(2)
 ## KEYWORDS('set')
-## Author('Ty Thompson')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 6/24/05
@@ -12,9 +14,11 @@
 
 DOCUMENT(); 
     
-loadMacros("PGstandard.pl",
-           "PGnauSet.pl"
-);     
+loadMacros(
+  "PGstandard.pl",
+  "PGnauSet.pl",
+  "PGcourse.pl"
+);
 
 TEXT(&beginproblem);
 

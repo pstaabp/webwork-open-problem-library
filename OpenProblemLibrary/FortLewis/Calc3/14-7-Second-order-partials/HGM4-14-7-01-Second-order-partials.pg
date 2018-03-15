@@ -4,11 +4,15 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Partial Derivatives)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Partial derivatives)
 ## Date(10/15/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(2varFindSecondPartials)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -26,7 +30,7 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 
@@ -91,5 +95,5 @@ ANS($fyy->cmp);
 $showPartialCorrectAnswers = 1;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

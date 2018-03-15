@@ -1,4 +1,4 @@
-## DBsubject('Abstract Algebra')
+## DBsubject(Abstract algebra)
 ## DBchapter('Groups')
 ## DBsection('Cyclic groups')
 ## KEYWORDS('cyclic groups, subgroups, order of groups')
@@ -14,14 +14,11 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"answerHints.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

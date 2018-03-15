@@ -1,37 +1,42 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Polynomial and rational functions)
-## DBsection(Review Exercises And Problems)
+## DBchapter(Variation and power functions)
+## DBsection(Power functions)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## MLT(graphToOddOrEvenPower)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('9.')
-## Problem1('9')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
-## Section2('11.')
-## Problem2('9')
+## EditionText3('5')
+## Section1(9.Review)
+## Section2(11.Review)
+## Section3('11.Review')
+## Problem1(7)
+## Problem2(9)
+## Problem3('9')
 ## KEYWORDS('power function','polynomial','rational function')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "extraAnswerEvaluators.pl",
-           "parserPopUp.pl",
-           "MathObjects.pl",
-           "PGcourse.pl",
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "extraAnswerEvaluators.pl",
+  "parserPopUp.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

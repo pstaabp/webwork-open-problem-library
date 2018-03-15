@@ -2,26 +2,43 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 02/12/10
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Lagrange Multipliers)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Lagrange multipliers and constrained optimization)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(Hyperplane1Constraint)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('15.3')
-## Problem1('9')
 ## TitleText2('Calculus')
+## TitleText3('Calculus: Early Transcendentals')
+## TitleText4('Calculus: Early Transcendentals')
+## TitleText5('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Stewart')
+## AuthorText4('Rogawski')
+## AuthorText5('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('6')
+## EditionText4('1')
+## EditionText5('7')
+## Section1('15.3')
 ## Section2('15.3')
+## Section3('14.8')
+## Section4('14.8')
+## Section5('15.3')
+## Problem1('9')
 ## Problem2('9')
-## KEYWORDS('lagrange multipliers', 'extrema', 'constrained optimization', 'calculus', 'differentiation', 'multivariable', 'functions')
+## Problem3('')
+## Problem4('4 5 6 7 8 9 10 11 12 13')
+## Problem5('10')
+## KEYWORDS('lagrange multipliers', 'extrema', 'constrained optimization', 'calculus', 'differentiation', 'multivariable', 'functions','critical points' 'minimum' 'maximum' 'multivariable','Extrema', 'Lagrange Multiplier','Multivariable','Geometry')
 
 ## Textbook tags
 ## HHChapter1('Optimization: Local and Global Extrema')
@@ -29,13 +46,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -59,7 +73,7 @@ TEXT(beginproblem());
 BEGIN_TEXT
 
 Use Lagrange multipliers to find the maximum and minimum values of
-\( f(x,y) = $ad x + $bd y + $cd z \), subject to the constraint
+\( f(x,y,z) = $ad x + $bd y + $cd z \), subject to the constraint
 \( x^2 + y^2 + z^2 = $rsq \), if such values exist.
 
 $PAR
@@ -141,5 +155,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

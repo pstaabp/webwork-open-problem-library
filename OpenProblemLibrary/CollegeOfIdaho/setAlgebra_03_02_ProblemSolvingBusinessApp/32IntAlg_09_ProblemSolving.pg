@@ -9,6 +9,7 @@
 ## Author(RA Cruz)
 ## MLT(invest)
 ## Level(5)
+## MO(1)
 ## TitleText1('Essentials of Intermediate Algebra')
 ## AuthorText1('Blitzer')
 ## EditionText1('1')
@@ -24,7 +25,8 @@ loadMacros(
   "MathObjects.pl",
   "extraAnswerEvaluators.pl",
   "contextCurrency.pl",
-  "CofIdaho_macros.pl"
+  "CofIdaho_macros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -89,5 +91,5 @@ $showPartialCorrectAnswers = 1;
 ######################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -6,7 +6,7 @@
 ## Tagged by XW
 
 ## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
+## DBchapter(WeBWorK tutorial)
 ## DBsection('ASU')
 ## Date('')
 ## Author('')
@@ -21,11 +21,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

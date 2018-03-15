@@ -2,28 +2,30 @@
 ##  Integration with substitution 
 ##ENDDESCRIPTION
 
-##KEYWORDS('inflection points', 'inflection', ' critical points', 'critical', 'sketching', 'Flash applets','NSF-0941388')
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Increasing/decreasing functions and local extrema)
-## Date('8/27/2011')
-## Author('Dan Gries')
-## Institution('Hopkins School')
+## Date(8/27/2011)
+## Institution(Hopkins School)
+## Author(Dan Gries)
+## MO(1)
 ## TitleText1('')
-## EditionText1('2011')
 ## AuthorText1('')
-## Section1('')
+## EditionText1('2011')
+## Section1('.')
 ## Problem1('')
+## KEYWORDS('inflection points', 'inflection', ' critical points', 'critical', 'sketching', 'Flash applets','NSF-0941388')
 
 ########################################################################
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-  "PGbasicmacros.pl",
+  "PGstandard.pl",
   "extraAnswerEvaluators.pl",
   "AppletObjects.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;

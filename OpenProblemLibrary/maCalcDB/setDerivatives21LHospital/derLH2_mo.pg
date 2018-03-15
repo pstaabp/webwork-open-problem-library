@@ -2,7 +2,7 @@
 ## tcao tagged and PAID on 12-12-2003
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Indeterminate forms and L'Hopital's rule)
 ## Date(6/3/2002)
 ## Institution(UVA)
@@ -10,6 +10,7 @@
 ## MLT(Indeterminate-GoesToE)
 ## MLTleader(1)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -28,10 +29,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   #"source.pl",         # used to display problem source button
-   "PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -79,8 +80,30 @@ Context()->normalStrings;
 
 ANS($limit->cmp);
 
+Context("Fraction");
+$ab=Compute("$a/$b");
+Context()->texStrings;
+BEGIN_SOLUTION
+$PAR SOLUTION $PAR 
+The limit is indeterminate of the form  of type \( 1^\infty \). $BR
+Let 
+\[ y =  $fun \]
+Then 
+\[ \ln y = \ln\left( $fun \right) = \frac{x}{$b} \ln \left(1 + \frac{$a}{x}\right)  
+=  \frac{1}{$b} \frac{\ln \left(1 + \frac{$a}{x}\right) }{1/x}  \]
+So l'Hospital's rule gives
+\[ \lim_{ x \rightarrow \infty} \ln y  = 
+  \frac{1}{$b}   \lim_{ x \to \infty }  \frac{\ln \left(1 + \frac{$a}{x}\right) }{1/x}    = 
+  \frac{1}{$b}   \lim_{ x \to \infty } \frac{ \frac{1}{1+$a/x} 
+\left(-\frac{$a}{x^2}\right)}{-1/x^2}    
+ = $ab   \lim_{ x \to \infty } \frac{ 1 } {1+\frac{$a}{x}}= $ab 
+\]
+Therefore 
+\[ \lim_{ x \rightarrow 0^+ } $fun  = 
+\lim_{ x \rightarrow \infty } e^{\ln y } = e^{$ab}\] 
 
-COMMENT('MathObject version');
+END_SOLUTION
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

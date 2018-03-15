@@ -1,8 +1,8 @@
-## DBchapter(Additional Analysis Techniques)
+## DBchapter(Additional analysis techniques)
 ##DESCRIPTION
 ## Apply source transformation to a dc circuit
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
+## DBsubject(Electric circuits)
 ## DBsection()
 ## Institution('Northern Arizona University')
 ## Author('Elizabeth J. Brauer')
@@ -11,11 +11,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

@@ -4,18 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
-
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "contextLeadingZero.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -26,8 +18,8 @@ $a2=$a^2;
 $ans= 16*$a**2;
 
 BEGIN_TEXT
-The formula below is used to find the distance in feet  $BR
-that a falling object travels in  t seconds
+The formula below is used to find the distance in feet 
+that a falling object travels in  t seconds:
 $PAR
  \(d=16t^2\)
 $PAR
@@ -46,10 +38,12 @@ END_SOLUTION
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Interpret_Verbal_Description')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Evaluating expressions)
+## Level(3)
+## MO(1)
 
 

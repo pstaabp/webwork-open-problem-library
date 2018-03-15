@@ -2,32 +2,36 @@
 ##  Sketch autonomous solutions to polynomial differential equation
 ##ENDDESCRIPTION
 
-##KEYWORDS('logistic', 'population')
 
-## DBsubject('Differential Equations')
-## DBchapter('Introduction')
-## DBsection('Autonomous Differential Equations')
-## Date('8/8/2013')
-## Author('L. Felipe Martins')
-## Author('Barbara Margolius')
-## Institution('Cleveland State University')
-## TitleText1('Differential Equations')
-## EditionText1('2')
-## AuthorText1('Ricardo')
 ## Chapter('1')
-## Problem1('1_1')
+## DBsubject(Differential equations)
+## DBchapter(First order differential equations)
+## DBsection(Equilibrium points and phase lines)
+## Date(8/8/2013)
+## Institution(Cleveland State University)
+## Author(Barbara Margolius)
+## MLT(eq_pt_02)
+## Level(4)
+## MO(1)
+## TitleText1('Differential Equations')
+## AuthorText1('Ricardo')
+## EditionText1('2')
+## Section1('.')
+## Problem1('1 1')
+## KEYWORDS('logistic', 'population')
 
 ########################################################################
 
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   "parserPopUp.pl",
-   "AppletObjects.pl",
-   "AnswerFormatHelp.pl",
-   "PGasu.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserPopUp.pl",
+  "AppletObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 sub BPINK { 

@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Systems of Differential Equations)
+## DBchapter(Systems of differential equations)
+## DBsection(Distinct real eigenvalues)
 ## Date(03/19/2011)
 ## Institution(Rochester and Fort Lewis College)
 ## Author(Anonymous and Paul Pearson)
+## MLT(SDE-DRE-IVP)
+## Level(4)
+## MO(1)
 
 ## Original: Library/Rochester/setLinearAlgebra11Eigenvalues/ur_la_11_6.pg
 
@@ -18,12 +21,13 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGmatrixmacros.pl",
-"MathObjects.pl",
-"parserMultiAnswer.pl",
-"unionLists.pl",
-"answerHints.pl",
+  "PGstandard.pl",
+  "PGmatrixmacros.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "unionLists.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -273,6 +277,6 @@ ANS( $multians1->cmp() );
 ANS( $x1->cmp() );
 ANS( $x2->cmp() );
 
-COMMENT('MathObject version.  Randomized with distinct real eigenvalues and integral answers.');
+COMMENT('Randomized with distinct real eigenvalues and integral answers.');
 
 ENDDOCUMENT(); 

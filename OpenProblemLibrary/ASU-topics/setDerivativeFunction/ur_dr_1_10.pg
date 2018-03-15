@@ -23,14 +23,16 @@
 ## Section2('2.7')
 ## Problem2('')
 ## KEYWORDS('derivative', 'slope', 'rate', 'instantaneous', 'tangent line')
+## MO(1)
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
+);
 
 
 $a = non_zero_random(-8,8,1);

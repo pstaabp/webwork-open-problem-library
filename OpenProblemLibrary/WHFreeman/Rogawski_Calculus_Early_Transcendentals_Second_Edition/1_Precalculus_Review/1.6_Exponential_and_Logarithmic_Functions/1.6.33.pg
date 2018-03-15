@@ -1,8 +1,10 @@
 ## DBsubject(Algebra)
-## DBchapter(Functions)
-## DBsection(Logarithmic)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Exponential and logarithmic equations)
 ## Institution(W.H.Freeman)
 ## Author(Emily Price)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -14,15 +16,20 @@ DOCUMENT();
 
 #Load Necessary Macros
 
-loadMacros("PG.pl", "PGbasicmacros.pl", "PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
 
 #Book Values
 # $exponent1 = 4;
 # $exponent2 = 2;
 # $constant = 2;
+
+TEXT(beginproblem());
 
 #Randomized Values
 
@@ -34,7 +41,6 @@ Context()->texStrings;
 
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "1.6", "33") \}
 
 $PAR

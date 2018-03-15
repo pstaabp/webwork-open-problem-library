@@ -1,20 +1,26 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Infinite Sequences and Series')
-## KEYWORDS('calculus', 'series')
+## DBchapter(Infinite sequences and series)
+## DBsection(Limit of a sequence)
+## Institution(W.H.Freeman)
+## Author(Danny Glin)
+## MLT(RationalFunctions)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('10.1')
 ## Problem1('23')
-## Author('Danny Glin')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'series')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 Context()->texStrings;
 Context()->variables->add(n=>'Real');
 
@@ -78,7 +84,6 @@ We have \(a_n=f(n)\) where \(f(x)=$ax\).  Thus
 
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "10.1","23") \}
 $PAR
 Use Theorem 1 to determine the limit of the sequence or type DIV if the sequence diverges.$PAR

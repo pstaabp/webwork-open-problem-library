@@ -5,22 +5,22 @@
 #  # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
 #  # ENDDESCRIPTION
 
-##KEYWORDS('Calculus', 'Work', 'Pressure', 'Water Pressure', 'Hydrostatic pressure', 'Applications')
 
 ## DBsubject(Calculus - single variable)
-##DBchapter('Applications of Integration')
-##DBsection('Applications to Physics and Engineering')
-## Author('Jim Swift')
-## Institution('NAU')
+## DBchapter(Applications of integration)
+## DBsection(Hydrostatic pressure)
+## Institution(NAU)
+## Author(Jim Swift)
+## Level(5)
+## Static(1)
+## KEYWORDS('Calculus', 'Work', 'Pressure', 'Water Pressure', 'Hydrostatic pressure', 'Applications')
 
 DOCUMENT();
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"Parser.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "PGcourse.pl"
 );
 
 COMMENT('Not randomized, but answer is symbolic. Based on Library/Michigan/Chap8Sec2/Q35.pg');

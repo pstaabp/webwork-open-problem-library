@@ -3,24 +3,26 @@
 ## DBsection(Derivatives of polynomials and power functions)
 ## Institution(UCSB)
 ## Level(3)
+## Static(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
 ## Section1('3.1')
 ## Problem1('64')
 ## KEYWORDS('Product','Quotient','Differentiation')
+## MO(1)
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);
+Context("Numeric");
 $showPartialCorrectAnswers = 1;
 $a=random(1,10,1)*random(-1,1,2);
 $b=random(1,10,1)*random(-1,1,2);
@@ -31,9 +33,9 @@ $c=random(1,10,1)*random(-1,1,2);
 # just before the END_TEXT.
 
 BEGIN_TEXT
-
-$PAR
-Draw two perpendicular lines that cross the y-axis and are tangent to the parabola \( y=x^2 \). Where do these lines intersect? 
+Two perpendicular lines intersect the \(y\)-axis at the same
+point and are tangent 
+to the parabola \( y=x^2 \). Where do these lines intersect? 
 
 $PAR
 

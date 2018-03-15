@@ -1,15 +1,19 @@
 ##DESCRIPTION
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Change of Variables in Multiple Integrals)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Change of variable)
 ## Institution(NAU)
 ## Author(Nandor Sieben)
+## Level(3)
 ## KEYWORDS('calculus', 'double integral')
 ##ENDDESCRIPTION
 
 DOCUMENT();
 
-loadMacros("PGstandard.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGcourse.pl"
+);
 
 TEXT(&beginproblem);
 $showPartialCorrectAnswers = 1;

@@ -6,7 +6,7 @@
 ##Tagged by ynw2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Applications - tangent lines and slopes)
 ## Date(5/26/2005)
 ## Institution(UVA)
@@ -33,9 +33,8 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGbasicmacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -4,19 +4,21 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Squeeze theorem)
 ## Date(08/30/2010)
 ## Institution(University of Minnesota)
 ## Author(Justin Sukiennik)
 ## MLT(limits_squeeze_linear_and_quadratic)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Concepts and Contexts')
 ## AuthorText1('Stewart')
 ## EditionText1('4 Custom UMTYMP Ed.')
 ## Section1('2.3')
 ## Problem1('30')
 ## KEYWORDS('calculus', 'limit laws', 'limit', 'squeeze theorem')
+## MO(1)-TF-12/18/2014
 
 #####################################################################
 DOCUMENT();        # This should be the first executable line in the problem.
@@ -24,7 +26,7 @@ DOCUMENT();        # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "PGcourse.pl", 
+  "PGcourse.pl"
 );
 #####################################################################
 

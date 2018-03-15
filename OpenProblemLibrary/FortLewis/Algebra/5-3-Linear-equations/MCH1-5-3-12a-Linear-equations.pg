@@ -2,19 +2,22 @@
 ## Linear equations
 ## ENDDESCRIPTION
 
-## KEYWORDS('linear equations')
 
-## DBsubject('Algebra')
-## DBchapter('Linear functions, expressions, and equations')
-## DBsection('Solving linear equations')
-## Date('01/01/10')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear equations)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(LinearEquations_05)
+## Level(3)
+## MO(1)
 ## TitleText1('Algebra Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum, Connally, and Hughes-Hallett')
+## EditionText1('1')
 ## Section1('5.3')
 ## Problem1('12')
+## KEYWORDS('linear equations')
 
 ##############################################
 #  Initialization
@@ -22,11 +25,10 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGcourse.pl",
-"AnswerFormatHelp.pl",
-#"unorderedAnswer.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

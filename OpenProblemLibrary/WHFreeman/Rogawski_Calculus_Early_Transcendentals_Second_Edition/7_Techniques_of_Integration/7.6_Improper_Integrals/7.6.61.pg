@@ -1,23 +1,27 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Improper Integrals')
-## KEYWORDS('calculus')
+## DBchapter(Integrals)
+## DBsection(Improper integrals)
+## Institution(W.H.Freeman)
+## Author(JustAsk - Vladimir Finkelshtein)
+## MLT(improper_single_compare_thm_classify)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('7.6')
 ## Problem1('61')
-## Author('JustAsk - Vladimir Finkelshtein')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGauxiliaryFunctions.pl");
-loadMacros("PGgraphmacros.pl");
-loadMacros("PGchoicemacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 

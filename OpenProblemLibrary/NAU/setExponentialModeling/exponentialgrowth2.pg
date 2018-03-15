@@ -1,9 +1,11 @@
 ##DESCRIPTION
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Exponential Functions)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Applications and models - general)
 ## Institution(NAU)
 ## Author(N.Spencer Sitton)
+## MLT(PercentGrowthDecay)
+## Level(4)
 ## KEYWORDS('exponential model', 'growth')
 ##ENDDESCRIPTION
 
@@ -12,10 +14,10 @@
 # Course: Qauntitative Reasoning
 
 DOCUMENT();     
-loadMacros("PGstandard.pl",  
-           "PGauxiliaryFunctions.pl"
-          
-);     
+loadMacros(
+  "PGstandard.pl",
+  "PGcourse.pl"
+);
 
 TEXT(&beginproblem);
 

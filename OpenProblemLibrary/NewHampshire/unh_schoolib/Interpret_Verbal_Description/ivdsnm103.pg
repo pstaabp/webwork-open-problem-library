@@ -1,8 +1,8 @@
 DOCUMENT();        # This should be the first executable line in the problem.
-loadMacros("PGbasicmacros.pl",
-        "PGchoicemacros.pl",
-        "PGanswermacros.pl",
-
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 # Make a new multiple choice
@@ -35,8 +35,11 @@ If you look at any other answer the amounts are not in the proper ratio.
 END_SOLUTION
 ENDDOCUMENT();     
 
-## DBsubject(Middle school)
-## DBchapter('Interpret_Verbal_Description')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Ratio/proportions)
+## MLT(Application_DirectIntegerRatio)
+## MLTleader(1)
+## Level(4)
 
 

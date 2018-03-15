@@ -4,11 +4,12 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Partial Derivatives)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Partial derivatives)
 ## Date(10/15/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(3)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -24,13 +25,13 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"LiveGraphics3D.pl",
-#"LiveGraphicsRectangularPlot3D.pl",
-"unionTables.pl",
-"PGgraders.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "LiveGraphics3D.pl",
+  "unionTables.pl",
+  "PGgraders.pl",
+  "PGcourse.pl"
 );
 
 
@@ -173,5 +174,5 @@ ANS(str_cmp($tf2->ra_correct_ans));
 COMMENT("Uses an interactive graph");
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

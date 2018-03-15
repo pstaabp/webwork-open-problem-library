@@ -1,19 +1,27 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Calculus of Vector-Valued Functions)
-## DBsection(Vector-Valued Functions)
+## DBchapter(Calculus of vector valued functions)
+## DBsection(Parameterized curves)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Vladimir Finkelshtein)
+## MLT(pc_intersections)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('13.1')
 ## Problem1('30')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl","PGchoicemacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $intersect=random(0,1,1);
 
@@ -31,7 +39,7 @@ if($intersect==1)
     $corans='intersect';
     $wrong='do not intersect';}
 if($intersect==0) 
-   {$b=(-$a1*$t1+$s1)+non_zero_random(-5,5,1);
+   {$b=(-$a*$t1+$s1)+non_zero_random(-5,5,1);
     $expl="both solutions don't satisfy the first equation, hence the two paths do not intersect";
     $corans='do not intersect';
     $wrong='intersect';}
@@ -55,12 +63,11 @@ $z=$s1**3;
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "13.1","30") \}
 $PAR
-Determine whether \(\bf r_1\) and \(\bf r_2\) collide or intersect:
+Determine whether \({\bf r}_1\) and \({\bf r}_2\) collide or intersect:
 $BR
-\(\bf r\it_1(t)=\left< t,t^2,t^3 \right> \qquad \bf r\it_2(t)=\left< $x, $y, $z \right> \)
+\({\bf r}_1(t)=\left< t,t^2,t^3 \right> \qquad {\bf r}_2(t)=\left< $x, $y, $z \right> \)
 $PAR
 \{$mc -> print_q \}
 \{$mc -> print_a\}

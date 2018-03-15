@@ -2,23 +2,27 @@
 ## Linear Algebra
 ## ENDDESCRIPTION
 
-## KEYWORDS('linear algebra','transition matrix'')
 
 ## DBsubject(Linear algebra)
 ## DBchapter(Abstract vector spaces)
 ## DBsection(Coordinate vectors and change of basis)
-## Date('11/1/2013')
-## Author('Nandor Sieben')
-## Institution('NAU')
+## Date(11/1/2013)
+## Institution(NAU)
+## Author(Nandor Sieben)
+## MLT(trace0)
+## MLTleader(1)
+## Level(3)
+## MO(1)
+## KEYWORDS('linear algebra','transition matrix'')
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserMultiAnswer.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-"PGchoicemacros.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "AnswerFormatHelp.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 $showPartialCorrectAnswers = 1;
 TEXT(beginproblem()); 
@@ -77,7 +81,7 @@ ANS( $C2B->cmp() );
 ANS( $M_B->cmp() );
 ANS( $M->cmp() );
 
-COMMENT('MathObject version.');
+COMMENT('Easier.');
 
 ENDDOCUMENT();
 

@@ -5,10 +5,11 @@
 ## tsuda tagged and PAID on 2-20-2004
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Limits at infinity, horizontal and oblique asymptotes)
 ## Date(6/3/2002)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -19,11 +20,11 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-   "PGstandard.pl",      # Standard macros for PG language
-   "PGchoicemacros.pl",
-   "MathObjects.pl",
-   "unionTables.pl",        # for customized match set up
-   "PGcourse.pl",        # Customization file for the course
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 #install_problem_grader(~~&std_problem_grader);
@@ -93,8 +94,8 @@ ANS($ans4->cmp);
 ANS($ans5->cmp);
 
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 

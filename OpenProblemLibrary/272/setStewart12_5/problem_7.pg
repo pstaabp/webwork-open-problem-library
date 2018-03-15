@@ -9,19 +9,26 @@
 
 ## Tagged by ynw2d
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Equations of Lines and Planes)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Lines)
 ## Author(Stewart)
+## Level(3)
+## TitleText1('Calculus')
+## AuthorText1('Stewart')
+## EditionText1('5')
+## Section1('13.5')
+## Problem1('')
+## KEYWORDS('vector' 'intersection' 'plane')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do show partial correct answers

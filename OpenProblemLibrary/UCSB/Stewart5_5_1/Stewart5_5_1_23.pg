@@ -1,23 +1,21 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('Area and Distance')
-## KEYWORDS('areas and distances', 'left and right endpoint approximations')
+## DBchapter(Integrals)
+## DBsection(Riemann sums)
+## Institution(UCSB)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('5')
 ## AuthorText1('Stewart')
+## EditionText1('5')
 ## Section1('5.1')
 ## Problem1('23')
-## Author('')
-## Institution('UCSB')
+## KEYWORDS('areas and distances', 'left and right endpoint approximations')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);
@@ -34,7 +32,6 @@ Definition: The AREA A of the region S that lies under the graph of the continuo
 
 $PAR
 
-\(\vspace{1in}\)
 
 END_TEXT
 

@@ -1,23 +1,30 @@
 ## DESCRIPTION
 ## Polynomial and Rational Functions
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
-## DBchapter(Polynomial and rational functions)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Rational expressions: add, subtract)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(4)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('9 Tools')
-## Problem1('43')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
-## Section2('11.')
-## Problem2('43')
+## EditionText3('5')
+## Section1(9.Tools)
+## Section2(11.Skills)
+## Section3('11.Skills')
+## Problem1(52)
+## Problem2(43)
+## Problem3('43')
 ## KEYWORDS('polynomial functions','rational functions')
 
 
@@ -27,13 +34,12 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"PGunion.pl",
-"parserMultiAnswer.pl",
-"PGcourse.pl",
-"answerHints.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGunion.pl",
+  "parserMultiAnswer.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -134,5 +140,5 @@ We have
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -5,28 +5,27 @@
 ## Tagged by tda2d
 
 ## DBsubject(Linear algebra)
-## DBchapter(Euclidean spaces)
-## DBsection('Span')
-## Institution('TCNJ')
-## KEYWORDS('vector' 'linear' 'combination' 'span')
+## DBchapter(Abstract vector spaces)
+## DBsection(Span)
+## Institution(TCNJ)
+## Level(3)
 ## TitleText1('Linear Algebra with Applications')
 ## AuthorText1('Jeffrey Holt')
 ## EditionText1('1')
 ## Section1('2.2')
 ## Problem1('')
+## KEYWORDS('vector' 'linear' 'combination' 'span')
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGmatrixmacros.pl",
-"PGnumericalmacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGmorematrixmacros.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGmatrixmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGmorematrixmacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -160,5 +159,5 @@ ANS(checkbox_cmp( $cmc->correct_ans )   ) ;
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

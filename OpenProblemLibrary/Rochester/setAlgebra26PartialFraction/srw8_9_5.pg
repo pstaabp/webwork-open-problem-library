@@ -2,22 +2,21 @@
 ##  Algebra problem:  partial fractions
 ##ENDDESCRIPTION
 
-##KEYWORDS('algebra', 'partial fractions')
 ##Tagged by ynw2d
 
-##DBsubject('Algebra')
-##DBchapter('Systems of Equations and Inequalities')
-##DBsection('Partial Fractions')
-##Institution('Rochester')
+## DBsubject(Algebra)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Partial fractions)
+## Institution(Rochester)
+## Level(4)
+## KEYWORDS('algebra', 'partial fractions')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

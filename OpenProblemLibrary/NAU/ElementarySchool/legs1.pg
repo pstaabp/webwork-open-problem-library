@@ -1,17 +1,21 @@
 # DESCRIPTION
 # ENDDESCRIPTION
 
-## DBsubject('Elementary School')
-## DBchapter('Word Problems')
-## DBsection('Simple')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Applications)
+## Institution(NAU)
+## Author(Nandor Sieben)
+## MLT(Integer_Applications_LegsEyes)
+## Level(2)
+## MO(1)
 ## KEYWORDS('animals', 'legs')
-## Author('Nandor Sieben')
-## Institution('NAU')
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");

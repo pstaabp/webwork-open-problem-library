@@ -7,9 +7,12 @@
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Differentiation)
 ## DBsection(Derivatives involving multiple rules (all rules))
+## MLT(ProductWithTrigFuncAndChainRule_2015)
+## MLTleader(1)
 ## Date(8/23/07)
 ## Institution(Union College)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Anton')
 ## EditionText1('7')
@@ -22,12 +25,14 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
+
+Context('Numeric');
 
 ###################################
 # Setup
@@ -44,7 +49,7 @@ $f = Formula(" x^$a (sin($c x))^$b")->reduce;
 Context()->texStrings;
 BEGIN_TEXT
 Let \( f(x) =\displaystyle $f \).  Find \(f'(x)\).
-$PAR
+$BR$BR
 \(f'(x) =\) \{ans_rule(50) \}
 END_TEXT
 Context()->normalStrings;
@@ -59,5 +64,5 @@ ANS($ans->with(limits => [0,1], tolerance => .001)->cmp);
 
 ###################################
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

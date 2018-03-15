@@ -7,9 +7,10 @@
 ## BenBush tagged and PAID on 2-20-2004
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('The Fundamental Theorem of Calculus')
-## Institution('ASU')
+## DBchapter(Integrals)
+## DBsection(Fundamental theorem of calculus)
+## Institution(ASU)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -19,11 +20,11 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;

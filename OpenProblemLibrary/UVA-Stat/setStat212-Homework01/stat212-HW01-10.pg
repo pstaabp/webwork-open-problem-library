@@ -2,32 +2,31 @@
 ##  Statistics: Descriptive statistics
 ## ENDDESCRIPTION
 
-## KEYWORDS('statistics', 'descriptive statistics', 'chart')
 ## CMMK tagged this problem.
 
-## DBsubject('Statistics')
-## DBchapter('What is Statistics?')
-## DBsection('Characterizing a Set of Measurements: Graphical Methods')
-## Date('5/31/2005')
-## Author('Cristina Murray-Krezan')
-## Institution('UVA')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Graphical representations)
+## Date(5/31/2005)
+## Institution(UVA)
+## Author(Cristina Murray-Krezan)
+## Level(2)
 ## TitleText1('Statistics for Management and Economics')
-## EditionText1('6')
 ## AuthorText1('Keller, Warrack')
-## Section1()
-## Problem1()
+## EditionText1('6')
+## Section1('.')
+## Problem1('')
+## KEYWORDS('statistics', 'descriptive statistics', 'chart')
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -117,4 +116,5 @@ END_TEXT
 ANS(radio_cmp($mc[$a]->correct_ans));
 ANS(radio_cmp($mc[$b]->correct_ans));
 
+COMMENT('Questions selected randomly from a larger set.  See source for full question list.');
 ENDDOCUMENT();       # This should be the last executable line in the problem.

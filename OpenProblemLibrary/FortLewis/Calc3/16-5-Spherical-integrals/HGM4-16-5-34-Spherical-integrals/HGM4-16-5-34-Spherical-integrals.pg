@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Triple Integrals in Cylindrical and Spherical Coordinates)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Triple integrals in cylindrical and spherical)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -24,13 +26,13 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserVectorUtils.pl",
-"PGcourse.pl",
-"LiveGraphicsParametricSurface3D.pl",
-"unionTables.pl",
-"answerHints.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserVectorUtils.pl",
+  "LiveGraphicsParametricSurface3D.pl",
+  "unionTables.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 
 
@@ -229,5 +231,5 @@ ANS(Compute("pi/$dr * ($R^4-$r^4) + 2*pi/3 * ($d-2*$r/$dr) * ($R^3-$r^3)")->cmp(
 COMMENT("Uses interactive graphics generated on-the-fly");
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

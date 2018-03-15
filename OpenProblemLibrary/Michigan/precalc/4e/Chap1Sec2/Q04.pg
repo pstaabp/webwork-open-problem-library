@@ -6,15 +6,21 @@
 ## Tagged by ak 05/09/12
 
 ## DBsubject(Algebra)
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Rate of Change)
+## DBchapter(Functions)
+## DBsection(Interpretation and applications)
 ## Institution(University of Michigan)
 ## Author(Angela Kubena)
+## Level(5)
 ## TitleText1('Functions Modeling Change')
+## TitleText2('Functions Modeling Change')
 ## AuthorText1('Connally')
+## AuthorText2('Connally')
 ## EditionText1('4')
+## EditionText2('5')
 ## Section1('1.2')
+## Section2('1.2')
 ## Problem1('4')
+## Problem2('8')
 ## KEYWORDS('average rate of change')
 
 ## Textbook tags
@@ -23,16 +29,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-"PGauxiliaryFunctions.pl",
-"contextFraction.pl",
-# "PGgraphmacros.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");

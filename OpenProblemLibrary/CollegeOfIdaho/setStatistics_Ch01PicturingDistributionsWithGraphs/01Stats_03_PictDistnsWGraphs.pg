@@ -1,29 +1,17 @@
-## DESCRIPTION
-## DBsubject('Statistics')
-## DBchapter('Part 1: Exploring Data')
-## DBsection('Chapter 1: Picturing Distributions with Graphs')
-## KEYWORDS('statistics', 'quantitative data', 'categorical data')
-## TitleText1('The Basic Practice of Statistics')
-## EditionText1('5e')
-## AuthorText1('David Moore')
-## Section1('Chapter 1: Picturing Distributions with Graphs')
-## Problem1('')
-## Author('R Cruz, L Danielson, J Guild')
-## Institution('The College of Idaho')
-
-DOCUMENT();        # This should be the first executable line in the problem.
-
-loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl"
-  );
-
-TEXT(beginproblem());
-
-######################################
-#  Setup
 ##DESCRIPTION
-##KEYWORDS('statistics', 'producing data')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Classifying data)
+## Institution(The College of Idaho)
+## Author(R Cruz, L Danielson, J Guild)
+## Level(1)
+## MO(1)
+## TitleText1('The Basic Practice of Statistics')
+## AuthorText1('David Moore')
+## EditionText1('5e')
+## Section1('1')
+## Problem1('')
+## KEYWORDS('statistics', 'producing data')
 ##
 ##ENDDESCRIPTION
 
@@ -31,9 +19,10 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
+  "PGchoicemacros.pl",
   "MathObjects.pl",
-  "PGchoicemacros.pl"
-  );
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -48,7 +37,7 @@ TEXT(beginproblem());
 	  "The kinds of sports teams at the college.");
 @ans = ("QUANTITATIVE", "QUANTITATIVE", "QUANTITATIVE", "CATEGORICAL", "CATEGORICAL", "CATEGORICAL");
 
-@slice = NchooseK(4,4);
+@slice = NchooseK(6,4);
 @sevent = (@event[@slice]);
 @sans = (@ans[@slice]);
 
@@ -93,4 +82,5 @@ ANS(String($sans[1])->cmp);
 ANS(String($sans[2])->cmp);
 ANS(String($sans[3])->cmp);
 
+COMMENT('Questions selected randomly from a larger set.  See source for full question list.');
 ENDDOCUMENT();       # This should be the last executable line in the problem.

@@ -1,23 +1,24 @@
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')                      
-## DBsection('Trigonometric Integrals')     
-## AuthorText1('Jerrold Marsden and Alan Weinstein')
+## DBchapter(Techniques of integration)
+## DBsection(Trigonometric integrals)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## MLT(sin_cos_square)
+## Level(3)
+## Static(1)
 ## TitleText1('Calculus II')
+## AuthorText1('Jerrold Marsden and Alan Weinstein')
 ## EditionText1('2')
-## Section1('Review')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -33,31 +34,21 @@ trigonometric identities.
 
 
 $BR
-\(\int_0^{2\pi} \sin^2x \hbox{d} x = \) \{ans_rule(20)\}.
+\(\int_0^{2\pi} \sin^2x \hbox{d} x = \) \{ans_rule(20)\}
 
 $BR
 \(\int \sin^2 x \hbox{d} x = \)
-\{ans_rule(20)\},
+\{ans_rule(20)\} \(+C\)
 
 $BR
-\(\int\frac{1}{\tan x} \hbox{d} x= \) \{ans_rule(20)\}.
-
-
+\(\int\frac{1}{\tan x} \hbox{d} x= \) \{ans_rule(20)\} \(+C\)
 
 EOT
 
 
-
-$pi = 2.0*acos(0.0);
-ANS(num_cmp($pi));
+ANS(num_cmp("pi"));
 ANS(fun_cmp("-1/2*cos(x)*sin(x)+x/2", mode=>"antider", vars=>"x"));
-ANS(fun_cmp("log(sin(x))", limits=>[0.1,1], mode=>"antider", vars=>"x"));
-
-
-
-
-
-
+ANS(fun_cmp("ln(|sin(x)|)", limits=>[0.1,1], mode=>"antider", vars=>"x"));
 
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,21 +1,21 @@
 ##DESCRIPTION
-## DBsubject('Financial Mathematics')
-## DBchapter('Annuities')
-## DBsection('Loans')
+## DBsubject(Financial mathematics)
+## DBchapter(Annuities)
+## DBsection(Loans)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## MLT(Loan_Time_To_Pay_Off)
+## Level(4)
 ## KEYWORDS('present value')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 

@@ -5,9 +5,11 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Directional Derivatives and the Gradient Vector)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Differentiability, linearization and tangent planes)
 ## Institution(Dartmouth)
+## MLT(tangents)
+## Level(3)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -21,11 +23,10 @@
 ## KEYWORDS('directional' 'derivative')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
  
 

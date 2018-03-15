@@ -1,12 +1,12 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"contextCurrency.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "contextCurrency.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -57,7 +57,7 @@ $BR
     ) \}
 
 $PAR
-The average (mean) cost of a class is $DOLLAR22.  $PAR
+The average (mean) cost of a class is ${DOLLAR}22.  $PAR
 The pottery class at this community center costs $Dollar \{ans_rule(3 )\}.
 END_TEXT
 ANS(Real(25)->cmp);
@@ -73,10 +73,12 @@ IN THIS PROBLEM ON THE NEAP EXAM YOU WERE EXPECTED $BR
  ABOVE WOULD BE APPROPRIATE.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject('NECAP')
-## DBchapter('Grade 6')
-## DBsection('2006')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Applications)
+## Level(4)
+## MO(1)
 

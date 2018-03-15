@@ -4,11 +4,12 @@
 
 ## Tagged by nhamblet
 
-## DBsubject(Numbers)
-## DBchapter(Complex numbers)
-## DBsection(Polar form)
+## DBsubject(Complex analysis)
+## DBchapter(Arithmetic)
+## DBsection(Conversion to/from polar form)
 ## Date(6/3/2002)
 ## MLT(topolar)
+## Level(3)
 ## TitleText1('College Algebra')
 ## AuthorText1('Stewart, Redlin, Watson')
 ## EditionText1('3')
@@ -19,12 +20,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

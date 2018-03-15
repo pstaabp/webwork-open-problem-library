@@ -1,21 +1,28 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Calculus of Vector-Valued Functions)
-## DBsection(Motion in Three-Space)
+## DBchapter(Calculus of vector valued functions)
+## DBsection(Frames, motions, and other applications)
 ## Institution(W.H.Freeman)
 ## Author(Nick Hamblet)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('13.5')
 ## Problem1('9')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("parserPopUp.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "parserPopUp.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 Context()->variables->add(t=>'Real');
 
@@ -85,7 +92,6 @@ add_functions($graphD, "-(x^(2/3)) for x in <0,3]" . $grstr,
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "13.5","9") \}
 $PAR
 Consider the parametric curve \[ \mathbf{r}(t)=$r. \]
@@ -95,8 +101,8 @@ $BCENTER
 \{row(image(insertGraph($graphA)), image(insertGraph($graphB)),
             image(insertGraph($graphC)), image(insertGraph($graphD)),
             @firstrow)\}
-\{row("$BCENTER A $ECENTER", "$BCENTER B $ECENTER",
-      "$BCENTER C $ECENTER", "$BCENTER D $ECENTER", @secondrow)\}
+\{row("A ", "B ",
+      "C ", "D ", @secondrow)\}
 \{endtable()\}
 $ECENTER
 Also, compute the velocity and acceleration vectors at \(t=$t\), and use this information to determine the direction of motion for the curve.

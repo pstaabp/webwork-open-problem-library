@@ -1,6 +1,6 @@
-## DBsubject('Abstract Algebra')
+## DBsubject(Abstract algebra)
 ## DBchapter('Groups')
-## DBsection('Cosets, Lagrange theorem and Normality')
+## DBsection(Cosets, Lagrange's theorem, and normality)
 ## KEYWORDS('cosets')
 ## Level(3)
 ## TitleText1('')
@@ -15,15 +15,12 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"parserRadioButtons.pl",
-"algebraMacros.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "parserRadioButtons.pl",
+  "algebraMacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -126,16 +123,10 @@ $g = $dummy2[$rrd2];
 
 $a4 = N;
 
-$sw1 = 1;
-$sw2 = 1;
+$diff = $rrd2 - $rrd1;
 
-if($rrd1 < 3){
-    $sw1 = -1;
-}
-if($rrd2 < 3){
-    $sw2 = -1;
-}
-if($sw1*$sw2 < 0){
+
+if($diff==3 || $diff==-3){
     $a4 = Y;
 }
 

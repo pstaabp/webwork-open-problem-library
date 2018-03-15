@@ -2,29 +2,30 @@
 ##  Algebra: exponents and radicals 
 ##ENDDESCRIPTION
 
-##KEYWORDS('algebra', 'radicals', 'triangle')
 
-##DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Exponents and Radicals')
-## Date('10/27/2009')
-## Author('Justin Sukiennik')
-## Institution('University of Minnesota')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Evaluating expressions)
+## Date(10/27/2009)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## Level(3)
+## MO(1)
 ## TitleText1('Algebra for College Students')
-## EditionText1('8')
 ## AuthorText1('Kaufmann, Schwitters')
+## EditionText1('8')
 ## Section1('5.2')
 ## Problem1('79')
+## KEYWORDS('algebra', 'radicals', 'triangle')
 
 ########################################################################
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   #"source.pl",        # allows code to be displayed on certain sites.
-   #"PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 ########################################################################

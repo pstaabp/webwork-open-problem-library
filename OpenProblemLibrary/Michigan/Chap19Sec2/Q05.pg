@@ -2,26 +2,32 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 07/22/10
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Surface Integrals)
+## DBchapter(Vector calculus)
+## DBsection(Surface integrals of vector fields)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('19.2')
-## Problem1('5')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('19.2')
 ## Section2('19.2')
+## Section3('19.2')
+## Problem1('5')
 ## Problem2('32')
+## Problem3('32')
 ## KEYWORDS('flux integral', 'surface integral', 'integral', 'calculus')
 
 ## Textbook tags
@@ -30,13 +36,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -58,7 +61,7 @@ Compute the flux of the vector field
  \( \vec F(x,y,z) = $ad x\vec j + $bd y\vec k \)
 through the surface \( S \), where
 \( S \) is the part of the surface \( z=-y+$c \) above the
-square \( 0\le x\le $x0 \), \( 0\le y\le $y0 \), oriented upward.
+rectangle \( 0\le x\le $x0 \), \( 0\le y\le $y0 \), oriented upward.
 
 $PAR
 flux = \{ ans_rule(35) \}
@@ -108,6 +111,6 @@ Thus,
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

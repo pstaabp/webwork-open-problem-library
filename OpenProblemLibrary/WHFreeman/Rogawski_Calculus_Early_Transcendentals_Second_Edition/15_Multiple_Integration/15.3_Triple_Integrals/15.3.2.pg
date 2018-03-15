@@ -1,22 +1,30 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Triple Integrals)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Triple integrals)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(Triple_Integral_Rectangular_parallelopiped)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.3')
 ## Problem1('2')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
 Context()->flags->set(tolerance=>0.1, tolType=>"absolute");
+
+TEXT(beginproblem());
 
 $x1=0;
 $x2=random(2,10,2);
@@ -30,7 +38,6 @@ $answer=Real((($x2**2)/2)*($y2-$y1)*(($z2**3)-($z1**3))/3);
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.3","2") \}
 $PAR
 Evaluate \($IIINT _{$box} f(x,y,z) \,dV\) for the specified function \(f\) and \($box\):

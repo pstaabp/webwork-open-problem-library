@@ -1,24 +1,29 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Differentiation)
-## DBsection(Optimization in Several Variables)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Lagrange multipliers and constrained optimization)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Vladimir Finkelshtein)
+## MLT(OptimizeOverOpenRegion)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('14.7')
 ## Problem1('40')
 ## KEYWORDS('calculus')
-## UsesAuxiliaryFiles('14-7-39-image.png')
+## RESOURCES('14-7-39-image.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGauxiliaryFunctions.pl");
-loadMacros("PGgraphmacros.pl");
-loadMacros("PGchoicemacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 

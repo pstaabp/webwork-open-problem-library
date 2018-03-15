@@ -6,7 +6,7 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Continuity - concept of)
 ## Institution(ASU)
 ## MLT(cc-m2)
@@ -27,11 +27,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -47,24 +45,18 @@ Let \(f\) be defined by
             $a x+ m, & x < 2 \\
             -$b x^2 + 2m, & x \geq 2
           \end{cases} \]
+(a) Find (in terms of \(m\)) 
+$BR$BR
+\(\displaystyle{\lim_{x\rightarrow 2^{+}} f(x)}\) = \{ans_rule(10) \}
 $PAR
-(a) Find (in terms of \(m\)) \(\displaystyle{\lim_{x\rightarrow 2^{+}}
-f(x)}\)
-$BR
-Limit = \{ans_rule(10) \}
-$PAR
-$PAR
-(b) Find (in terms of \(m\)) \(\displaystyle{\lim_{x\rightarrow 2^{-}}
-f(x)}\)
-$BR
-Limit = \{ans_rule(10) \}
-$PAR
+(b) Find (in terms of \(m\)) 
+$BR$BR
+\(\displaystyle{\lim_{x\rightarrow 2^{-}} f(x)}\) = \{ans_rule(10) \}
 $PAR
 (c) Find the sum of all values of \(m\) such that
 \[
 \lim_{x\rightarrow 2^{-}} f(x) = \lim_{x\rightarrow 2^{+}} f(x)
 \]
-$BR
 Sum of values of \(m\) = \{ans_rule(15) \}
 EOT
 

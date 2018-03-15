@@ -1,10 +1,12 @@
+## Static(1)
 ##Screen set header for MAT 112
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  );
+  "PGcourse.pl"
+);
 
 BEGIN_TEXT
 Chapter 1: Picturing Distributions with Graphs  

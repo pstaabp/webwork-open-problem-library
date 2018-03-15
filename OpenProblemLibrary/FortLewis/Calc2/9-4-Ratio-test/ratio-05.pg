@@ -2,18 +2,22 @@
 #  Series: Ratio test
 #ENDDESCRIPTION
 
-## KEYWORDS('series','ratio test')
 
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Absolute Convergence and the Ratio and Root Tests')           
-## AuthorText1('')
+## DBchapter(Infinite sequences and series)
+## DBsection(Ratio test)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(2)
+## MO(1)
+## MLT(displayed_ratio_limit_conclusion)
+## MLTleader(1)
 ## TitleText1('Calculus')
+## AuthorText1('')
 ## EditionText1('')
-## Section1('')
+## Section1('.')
 ## Problem1('')
+## KEYWORDS('series','ratio test')
 
 
 ################################
@@ -22,12 +26,13 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"unionTables.pl",
-"parserPopUp.pl",
-"answerHints.pl",
-"PGgraders.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "unionTables.pl",
+  "parserPopUp.pl",
+  "answerHints.pl",
+  "PGgraders.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem);

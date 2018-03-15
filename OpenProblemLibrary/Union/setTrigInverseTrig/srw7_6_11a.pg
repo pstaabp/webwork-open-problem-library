@@ -2,29 +2,27 @@
 ##   Work with Inverse Trig Functions
 ## ENDDESCRIPTION
 
-## KEYWORDS('Trig', 'Inverse')
 ## Tagged by nhamblet
 
-## DBsubject('Trigonometry')
-## DBchapter('Analytic Trigonometry')
-## DBsection('Inverse Trigonometric Functions')
-## Date('8/23/07')
-## Author('N. Srivastava')
-## Institution('Union')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Trigonometry)
+## DBchapter(Trigonometric functions)
+## DBsection(Inverse trigonometric functions - definitions, graphs, & properties)
+## Date(8/23/07)
+## Institution(Union)
+## Author(N. Srivastava)
+## MLT(trigoftriginv)
+## Level(2)
+## MO(1)
+## KEYWORDS('Trig', 'Inverse')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
-  "MathObjects.pl",        # the new parsers
-  "alignedChoice.pl",      # better aligned parts
-  "PGcourse.pl",           # Customization file for the course
+  "PGunion.pl",
+  "MathObjects.pl",
+  "alignedChoice.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -75,5 +73,5 @@ ANS($al->correct_ans);
 
 ###################################
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

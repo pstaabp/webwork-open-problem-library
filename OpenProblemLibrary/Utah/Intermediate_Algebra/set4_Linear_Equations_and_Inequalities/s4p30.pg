@@ -1,26 +1,26 @@
 ##DESCRIPTION
 ##Arithmetic
 ##ENDDESCRIPTION
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Equations')
-## AuthorText1('Ron Larson and Robert P. Hostetler')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## Level(5)
+## Static(1)
 ## TitleText1('Intermediate Algebra')
+## AuthorText1('Ron Larson and Robert P. Hostetler')
 ## EditionText1('4')
-## Section1('Linear Equations and Inequalities')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('algebra')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -29,7 +29,7 @@ TEXT(beginproblem());
 TEXT(EV2(<<EOT));
 
 
-The last two problems are examples of "simple Hindu Algebra", quoted
+This problem is an example of "simple Hindu Algebra", quoted
 on page 528 of "The Story of Civilization", v.1., by Will Durant,
 Simon and Schuster, 1935.  The problems are approximately 1,800 years
 old.  (Mental pursuits by women were discouraged at that time. You

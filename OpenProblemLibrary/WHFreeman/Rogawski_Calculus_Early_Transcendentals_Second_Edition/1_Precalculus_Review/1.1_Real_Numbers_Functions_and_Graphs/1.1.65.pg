@@ -1,20 +1,28 @@
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Domain and Range')
-## KEYWORDS('calculus', 'intervals','domain', 'range', 'functions')
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Domain and range)
+## Institution(W.H.Freeman)
+## Author(Carol Panepinto)
+## MLT(algebra_functions_domain_range_graph_piecewise_linear_continuous)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('1.1')
 ## Problem1('65')
-## Author('Carol Panepinto')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'intervals','domain', 'range', 'functions')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 
 $start = random(-1,1); # one of -1, 0, 1
@@ -105,7 +113,6 @@ $vline->domain($lowest,$highest);
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "1.1","65") \}
 $PAR
 \{ image(insertGraph($graph)) \}

@@ -1,9 +1,10 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Rates of change - engineering and physics)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -12,9 +13,14 @@
 ## KEYWORDS('calculus', 'derivatives', 'rates of change', 'velocity', 'bucket')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $fl = random(7, 15);
 $ht = random(10, 20);
@@ -38,7 +44,6 @@ $ans = $fl+$extrafloors;
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "3.4","28") \}
 $PAR
 A man on the $fl\(\)th floor of a building sees a bucket (dropped by a window washer) pass his window 

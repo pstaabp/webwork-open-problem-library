@@ -4,10 +4,13 @@
 # ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Logarithmic functions)
-## DBsection(Logarithms and Their Properties)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Exponential and logarithmic equations)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## MLT(ELEqMLT4H)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
@@ -17,16 +20,11 @@
 
 DOCUMENT();       
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-#           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-#           "PGgraphmacros.pl",
-#           "extraAnswerEvaluators.pl",
-#           "PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
        
 TEXT(beginproblem()); # standard preamble to each problem.
@@ -79,5 +77,5 @@ $BR
 END_SOLUTION
 
 
-COMMENT('MathObject version.  Uses log = logten');
+COMMENT('Uses log = logten');
 ENDDOCUMENT();

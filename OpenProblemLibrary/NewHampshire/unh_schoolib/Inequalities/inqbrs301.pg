@@ -4,22 +4,13 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-"contextFraction.pl",
-#"answerHints.pl",
-"problemPanic.pl",
-"contextString.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "problemPanic.pl",
+  "contextString.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -39,7 +30,7 @@ Context()->strings->add(">" =>{},">=" =>{}, "<" => {}, "<=" => {}, "=" => {} );
 BEGIN_TEXT
 Solve the following inequalities.$BR
 Put either \(=, >, <, >=, or <=\) in the first answer box and a number in the
-second answer box for each part. $BR [WeBWorK will not accept \(\ge\ or \(\le\) so use >= for \(\ge\) and <= for \(\le\).]
+second answer box for each part. $BR [WeBWorK will not accept \(\ge\) or \(\le\) so use >= for \(\ge\) and <= for \(\le\).]
 $PAR
 a) If \(\frac {m}{$a}\ge $b\) then \(m\) \{ans_rule(1)\}\{ans_rule(3)\}$PAR
 \{Panic::Button(label => " Ask for a Hint", penalty => .00)\}
@@ -101,9 +92,11 @@ could also memorize $BR the rules
 multiplying or dividing by negative numbers.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Inequalities')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear inequalities)
+## Level(2)
+## MO(1)
 

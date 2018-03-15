@@ -1,35 +1,39 @@
 ## DESCRIPTION
 ## Problem from Functions Modeling Change, Connally, et al., 3rd ed.
 ## WeBWorK problem written by Adam Spiegler <aspiegler@luc.edu>
-## ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Equations for lines)
+## DBchapter(Linear equations and functions)
+## DBsection(Parallel and perpendicular lines)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## MLT(Determine_parall_perp)
+## MLTleader(1)
+## Level(2)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('Review')
-## Problem1('21')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
-## Section2('1.')
+## EditionText3('5')
+## Section1('1.Review')
+## Section2('1.Review')
+## Section3('1.Review')
+## Problem1('15')
 ## Problem2('21')
-## KEYWORDS('functions','average rate of change','rate of change')
+## Problem3('17')
+## KEYWORDS('functions','average rate of change','rate of change','lines','parallel','slope-intercept','perpendicular')
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "MathObjects.pl",
-           "PGcourse.pl"
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

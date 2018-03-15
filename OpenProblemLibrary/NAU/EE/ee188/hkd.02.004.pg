@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Calculate the energy stored in a battery
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Basic Components and Electric Circuits')
-## DBsection('Units and Scales')
+## DBsubject(Electric circuits)
+## DBchapter(Basic components and electric circuits)
+## DBsection(Units and scales)
 ## KEYWORDS('charge', 'battery','energy','circuits')
 ## TitleText1('Engineering Circuit Analysis')
 ## EditionText1('7e')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

@@ -5,9 +5,12 @@
 ## Tagged by tda2d
 
 ## DBsubject(Differential equations)
-## DBchapter(Second order)
-## DBsection(Second-Order Linear Equations)
+## DBchapter(Higher order differential equations)
+## DBsection(Linear, constant coefficients, homogeneous (distinct real roots))
 ## Institution(Dartmouth)
+## MLT(repeated_second_order_general)
+## MLTleader(1)
+## Level(3)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -16,12 +19,11 @@
 ## KEYWORDS('homogeneous' 'differential equation')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
  
 ##Hack around evaluation problem
 sub calleval {
@@ -90,8 +92,8 @@ if ( $rh_ans_hash->{score} == 1 )
 }
 else
 {
-    NAMED_ANS(second_fcn, fun_cmp($function2) );
-    NAMED_ANS(first_fcn, fun_cmp($function1) );
+    NAMED_ANS(first_fcn, fun_cmp($function2) );
+    NAMED_ANS(second_fcn, fun_cmp($function1) );
 }
 
 ENDDOCUMENT();

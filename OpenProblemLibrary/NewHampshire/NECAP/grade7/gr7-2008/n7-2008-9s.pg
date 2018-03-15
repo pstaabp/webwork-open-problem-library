@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -119,7 +119,7 @@ $xcen6=3.9; #coordinates of center
 $graph->im->arc(100*$xcen6,100*$ycen,100*$xrad,100*$yrad,0,360,$graph->{colors}{black});
 
 
- $graph->stamps(new Circle(3.4,2.45,.3,"black","white"));
+#$graph->stamps(new Circle(3.4,2.45,.3,"black","white"));
 #NOTE  Actual size of box is in the image below
 TEXT(beginproblem());
 $radio=new_multiple_choice();
@@ -146,11 +146,12 @@ On the right side are one cube and 4 balls (weight c +4s pounds)$BR
 The sides balance so 2c+2s=c+4s.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 7')
-## DBsection('2008')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Algebraic expressions)
+## Level(5)
 

@@ -1,22 +1,30 @@
 ## DBsubject(Algebra)
-## DBchapter(Conic Sections)
+## DBchapter(Conic sections)
+## DBsection(Ellipses)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(Ellipses_MLT1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('11.5')
 ## Problem1('1')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl","PGchoicemacros.pl","PGauxiliaryFunctions.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
-
+TEXT(beginproblem());
 $b=random(2,8);
 $a=random($b+1,9);
 
@@ -37,7 +45,6 @@ $sol12=Formula("0")->reduce();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "11.5","1") \}
 $PAR
 Find the vertices and foci of the conic section \(\left(\frac{x}{$a}\right)^2 + \left(\frac{y}{$b}\right)^2 = 1\)

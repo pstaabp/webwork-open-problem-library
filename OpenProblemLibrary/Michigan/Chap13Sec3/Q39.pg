@@ -7,24 +7,25 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"parserImplicitEquation.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "parserImplicitEquation.pl",
+  "PGcourse.pl"
 );
 
 ## Tagged by glr 06/12/09
 
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(The Dot Product)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Planes)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(planes_eqn_given_point_and_n)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('5')
@@ -33,7 +34,7 @@ loadMacros(
 ## TitleText2('Calculus')
 ## AuthorText2('Hughes-Hallett')
 ## EditionText2('6')
-## Section2('13.')
+## Section2('13.Review')
 ## Problem2('49')
 ## KEYWORDS('vectors', 'dot product')
 
@@ -120,5 +121,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

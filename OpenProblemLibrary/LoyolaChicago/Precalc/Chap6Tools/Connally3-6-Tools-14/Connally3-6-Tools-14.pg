@@ -1,18 +1,25 @@
 ## DESCRIPTION
 ## Trigonometric Functions
-## ENDDESCRIPTION
 
 
 ## DBsubject(Trigonometry)
-## DBchapter(Trigonometric functions)
+## DBchapter(Triangle trigonometry)
+## DBsection(Applications of special triangles & right triangles)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
+## TitleText2('Functions Modeling Change')
 ## AuthorText1('Connally')
+## AuthorText2('Connally')
 ## EditionText1('3')
-## Section1('6 Tools')
-## Problem1('14')
+## EditionText2('5')
+## Section1(6.Tools)
+## Section2('7.4')
+## Problem1(14)
+## Problem2('14')
 ## KEYWORDS('trig')
 
 ####################################
@@ -21,16 +28,12 @@
 DOCUMENT();  
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-#"PGgraphmacros.pl",
-"PGanswermacros.pl",
-"PGcourse.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-#"contextFraction.pl",
-"alignedChoice.pl",
-"unionTables.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "alignedChoice.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -289,5 +292,5 @@ COMMENT("Redefines basic trig functions to be in degrees (instead of the default
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

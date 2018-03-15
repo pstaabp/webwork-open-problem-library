@@ -5,10 +5,12 @@
 
 ## DBsubject(Trigonometry)
 ## DBchapter(Trigonometric functions)
-## DBsection(Sinusoidal Functions)
+## DBsection(Sine & cosine functions - definitions, graphs, & properties)
 ## Date(11/07/2011)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
@@ -22,14 +24,13 @@
 
 DOCUMENT();
 
-loadMacros(        
-"PGstandard.pl",
-"MathObjects.pl",
-"AppletObjects.pl",
-"alignedChoice.pl",
-"unionTables.pl",
-"PGcourse.pl",
-# "source.pl",
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AppletObjects.pl",
+  "alignedChoice.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -208,6 +209,6 @@ NAMED_ANS('answerBox'=>$answer->cmp()  );
 
 
 
-COMMENT('MathObject version.   Note: Uses GeoGebra and JavaScript, which might not be executed in the Library Browser.');
+COMMENT(' Note: Uses GeoGebra and JavaScript, which might not be executed in the Library Browser.');
 
 ENDDOCUMENT();  

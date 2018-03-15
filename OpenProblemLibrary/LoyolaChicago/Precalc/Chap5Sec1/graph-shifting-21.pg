@@ -4,11 +4,15 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Transformations of functions and their graphs)
-## DBsection(Vertical and Horizontal Shifts)
+## DBchapter(Transformations of functions and graphs)
+## DBsection(Shifts: vertical and horizontal)
 ## Date(11/07/2011)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(scale-V-H_5)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
@@ -23,14 +27,15 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"parserFunction.pl",
-"parserAssignment.pl",
-"PGgraphmacros.pl",
-"unionTables.pl",
-"parserPopUp.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "parserFunction.pl",
+  "parserAssignment.pl",
+  "PGgraphmacros.pl",
+  "unionTables.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -217,6 +222,6 @@ ANS( $vshift1_popup->cmp() );
 ANS( $g->cmp() );
 
 
-COMMENT('MathObject version');
+;
 
 ENDDOCUMENT();  

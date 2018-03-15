@@ -2,26 +2,33 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 06/02/10
 
 
-## DBsubject(Calculus - single variable)
-## DBchapter(Parametric Equations and Polar Coordinates)
-## DBsection(Curves Defined by Parametric Equations)
+## DBsubject(Calculus - multivariable)
+## DBchapter(Calculus of vector valued functions)
+## DBsection(Parameterized curves)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(pc_lines_2d)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('17.1')
-## Problem1('2')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('17.1')
 ## Section2('17.1')
+## Section3('17.1')
+## Problem1('2')
 ## Problem2('5')
+## Problem3('3')
 ## KEYWORDS('parametric curve', 'multivariable', 'calculus')
 
 ## Textbook tags
@@ -30,16 +37,13 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"parserParametricLine.pl",
-"parserMultiAnswer.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "parserParametricLine.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 Context("Vector2D");
@@ -109,7 +113,7 @@ BEGIN_TEXT
 Find a parameterization for the curve shown in the figure below.
 $BR
 $BCENTER
-\{ image( insertGraph($gr), tex_size=>250, height=>250, width=>250,
+\{ image( insertGraph($gr), tex_size=>500, height=>250, width=>250,
 	  extra_html_tags=>'alt="graph of the line segment from (' .
 	  $x0 . ', ' . $y0 . ') to (' . $x1 . ', ' . $y1 . ')."' ) \}
 $ECENTER
@@ -118,7 +122,8 @@ $BR
 $BR
 where
 \{ $pchk->ans_rule(15) \} \( \le t \le \) \{ $pchk->ans_rule(15) \}
-
+$BR
+(Note: you need to enter answers in all three answer blanks to receive feedback.)
 END_TEXT
 Context()->normalStrings;
 
@@ -157,6 +162,6 @@ parameterization is
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

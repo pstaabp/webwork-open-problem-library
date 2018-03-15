@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -51,7 +51,7 @@ $graph->lineTo(3 ,2.8 ,'red');
 #NOTE  Actual size of box is in the image below
 TEXT(beginproblem());
 BEGIN_TEXT
-look at \(\bigtriangleup PQR\).
+Look at \(\bigtriangleup PQR\).
 $BR
 
 \{ image( insertGraph($graph), tex_size=>$TEXSIZE,
@@ -68,9 +68,11 @@ $PAR Solution $PAR
 The coordinates are \( ( \frac{5+1}{2},\frac{4+-2}{2})=(3,1)\)
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 11')
-## DBsection('2008')
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Midpoint and distance formulas)
+## Level(2)
+## MO(1)
 

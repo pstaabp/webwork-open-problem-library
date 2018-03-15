@@ -1,22 +1,30 @@
-## DBsubject(Calculus - single variable)
-## DBchapter(Parametric Equations and Polar Coordinates)
-## DBsection(Polar Coordinates)
+## DBsubject(Trigonometry)
+## DBchapter(Polar coordinates & vectors)
+## DBsection(Curves)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(PolarEqToCartEq)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('11.3')
 ## Problem1('39')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl","PGchoicemacros.pl","PGauxiliaryFunctions.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 $a=random(2,9);
 $a2=$a*2;
 $a3=$a*3;
@@ -29,7 +37,6 @@ $answer=Formula("($b*(x^3))-3*$b*(y^2)*x")->reduce();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "11.3","39") \}
 $PAR
 Show that \(\cos $a3\theta= \cos^3 $a\theta - 3\cos $a\theta \sin^2 $a\theta\) 

@@ -2,30 +2,26 @@
 ## Algebra
 ## ENDDESCRIPTION
 
-## KEYWORDS('algebra','absolute value','inequality')
 ## Tagged by cmd6a 8/6/06
 
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Absolute Value')
-## Date('8/24/07')
-## Author('')
-## Institution('Union College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Absolute value expressions and functions)
+## DBsection(Absolute value inequalities)
+## Date(8/24/07)
+## Institution(Union College)
+## MLT(simpleIneq)
+## Level(3)
+## KEYWORDS('algebra','absolute value','inequality')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
   "PGchoicemacros.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
   "choiceUtils.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -80,5 +76,5 @@ $showPartialCorrectAnswers = 0;
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

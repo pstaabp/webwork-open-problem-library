@@ -5,19 +5,19 @@
 ## Tagged by jjh2b
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Line Integrals)
+## DBchapter(Vector calculus)
+## DBsection(Line integrals)
 ## Date(5/26/2005)
+## MLT(my_new_Line_Integrals)
+## Level(3)
 ## KEYWORDS('calculus', 'line integral')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

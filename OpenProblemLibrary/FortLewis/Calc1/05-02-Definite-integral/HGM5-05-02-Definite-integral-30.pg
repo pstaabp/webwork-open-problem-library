@@ -2,20 +2,26 @@
 ##   Definite integrals
 ## ENDDESCRIPTION
 
-## KEYWORDS('Definite integrals')
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('The Definite Integral')
-## Date('10/14/2010')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Integrals)
+## DBsection(Conceptual understanding of integration)
+## Date(10/14/2010)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## TitleText2('Calculus')
-## EditionText1('5')
 ## AuthorText1('Hughes-Hallett')
+## EditionText1('5')
 ## Section1('5.2')
 ## Problem1('30')
+## TitleText2('Calculus')
+## AuthorText2('')
+## EditionText2('')
+## Section2('.')
+## Problem2('')
+## KEYWORDS('Definite integrals')
 
 #######################################
 #  Initialization
@@ -23,10 +29,10 @@
 DOCUMENT();	
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGcourse.pl",
-);      
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -91,5 +97,5 @@ $showPartialCorrectAnswers = 1;
 ANS( $answer->cmp() );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -2,31 +2,24 @@
 ## Trigonometric functions
 ##ENDDESCRIPTION
 
-## KEYWORDS('trigonometry')
 ## Tagged by skm9b
 
-## DBsubject('Trigonometry')
-## DBchapter('Trigonometric Functions of Real Numbers')
-## DBsection('The Unit Circle')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Trigonometry)
+## DBchapter(Trigonometric functions)
+## DBsection(Sine & cosine functions - definitions, graphs, & properties)
+## Institution(ASU)
+## Level(2)
+## Static(1)
+## KEYWORDS('trigonometry')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl",
-"extraAnswerEvaluators.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

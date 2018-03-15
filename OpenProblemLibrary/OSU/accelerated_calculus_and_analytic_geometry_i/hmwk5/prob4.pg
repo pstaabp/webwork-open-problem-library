@@ -2,36 +2,41 @@
 ##   Indefinite Integral with Substitution
 ## ENDDESCRIPTION
 
-## KEYWORDS('Integral', 'Indefinite', 'Substitution')
 ## Tagged by nhamblet
 
+
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('Substitution')
-## Date('1/17/2000')
-## Author('Zig Fiedorowicz')
-## Institution('OSU')
+## DBchapter(Techniques of integration)
+## DBsection(Substitution (without trigonometric functions))
+## Date(1/17/2000)
+## Institution(ASU)
+## Author(Zig Fiedorowicz)
+## MLT(Sub_method_test)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('5')
 ## AuthorText1('Stewart')
+## EditionText1('5')
 ## Section1('5.5')
 ## Problem1('')
-
 ## TitleText2('Calculus: Early Transcendentals')
-## EditionText2('6')
 ## AuthorText2('Stewart')
+## EditionText2('6')
 ## Section2('5.5')
 ## Problem2('')
+## TitleText3('Calculus: Early Transcendentals')
+## AuthorText3('Rogawski')
+## EditionText3('1')
+## Section3('5.6')
+## Problem3('43')
+## KEYWORDS('Integral', 'Indefinite', 'Substitution','integral' 'substitution','Calculus', 'Riemann Integral')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraders.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraders.pl",
+  "PGcourse.pl"
 );
 
 install_problem_grader(~~&full_partial_grader);
@@ -81,8 +86,8 @@ END_TEXT
 ANS(fun_cmp("$a*sqrt(x)+$b", vars=>"x"));
 ANS(fun_cmp("2*sqrt(x)/$a", vars=>"x"));
 ANS(fun_cmp("2/($a*u)", vars=>"u"));
-ANS(fun_cmp("2*log(u)/$a", mode=>"antider", vars=>"u"));
-ANS(fun_cmp("2*log($a*sqrt(x)+$b)/$a", mode=>"antider", vars=>"x"));
+ANS(fun_cmp("2*ln(u)/$a", mode=>"antider", vars=>"u"));
+ANS(fun_cmp("2*ln($a*sqrt(x)+$b)/$a", mode=>"antider", vars=>"x"));
 
 ENDDOCUMENT();
 

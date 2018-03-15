@@ -1,15 +1,11 @@
-## DBsubject('Abstract Algebra')
-## DBchapter('Groups')
-## DBsection('Subgroups')
-## KEYWORDS('subgroups, generators')
+## DBsubject(Abstract algebra)
+## DBchapter(Groups)
+## DBsection(Subgroups)
+## Institution(University of Massachusetts Amherst)
+## Author(Siman Wong and Patrick O'Brien)
 ## Level(4)
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Siman Wong and Patrick O'Brien')
-## Institution('University of Massachusetts Amherst')
+## MO(1)
+## KEYWORDS('subgroups, generators')
 
 
 
@@ -18,9 +14,10 @@
 DOCUMENT();        
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserMultiAnswer.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

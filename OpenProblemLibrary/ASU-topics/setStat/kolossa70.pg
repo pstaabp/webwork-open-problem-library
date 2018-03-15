@@ -2,31 +2,25 @@
 ## Statistics: Analysis of Variance
 ##ENDDESCRIPTION
 
-##KEYWORDS('statistics', 'analysis of variance', 'ANOVA')
 ## Tagged by sawblade
 
-## DBsubject('Statistics')
-## DBchapter('Multivariate Techniques')
-## DBsection('Analysis of Variance')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Statistics)
+## DBchapter(Hypothesis tests)
+## DBsection(One-way ANOVA)
+## Institution(ASU)
+## MLT(FFromStats)
+## Level(3)
+## KEYWORDS('statistics', 'analysis of variance', 'ANOVA')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

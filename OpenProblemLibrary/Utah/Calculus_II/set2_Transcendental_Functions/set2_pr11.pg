@@ -1,25 +1,25 @@
 ##DESCRIPTION
 ##ENDDESCRIPTION
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Exponential Growth and Decay)
+## DBchapter(First order differential equations)
+## DBsection(Applications - exponential growth & decay)
 ## Institution(Univeristy of Utah)
 ## Author(Utah ww group)
+## Level(5)
+## Static(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Dale Varberg, Edwin J. Purcell, and Steve E. Rigdon')
 ## EditionText1('9')
-## Section1('The Transcendental Functions')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -37,7 +37,7 @@ $PAR
 
 (b) At \( 10 % \) interest compounded weekly.
 $BR 
-\{ans_rule(20)\} years and \{ans_rule(20)\} weaks.
+\{ans_rule(20)\} years and \{ans_rule(20)\} weeks.
 $PAR
 
 (c) At \( 10 % \) interest compounded continuously.

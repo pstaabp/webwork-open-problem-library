@@ -3,21 +3,10 @@
 #ENDDESCRIPTION
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -41,7 +30,8 @@ $ans7 =2*$a7 ;
 $a8 =random(91 ,99 ,1 );
 $ans8 =2*$a8 ;
 BEGIN_TEXT
-Doubling practice to recover from summer vacation.$PAR
+Compute:
+$BR$BR
 
 
 \(2\times $a1 \)=\{ans_rule(2)\}$PAR
@@ -66,9 +56,13 @@ ANS(Real($ans7 )->cmp);
 ANS(Real($ans8 )->cmp);
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter(September review)
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Multiplication)
+## MLT(single_times_double)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 

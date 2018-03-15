@@ -8,6 +8,9 @@
 ## DBchapter(Matrix factorizations)
 ## DBsection(Diagonalization)
 ## Institution(TCNJ)
+## MLT(diag3x3)
+## Level(4)
+## MO(1)
 ## TitleText1('Linear Algebra with Applications')
 ## AuthorText1('Jeffrey Holt')
 ## EditionText1('1')
@@ -18,16 +21,14 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGmatrixmacros.pl",
-"PGnumericalmacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGmorematrixmacros.pl",
-"parserMultiAnswer.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGmatrixmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGmorematrixmacros.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

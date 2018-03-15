@@ -4,21 +4,27 @@
 ## nsilva tagged and PAID on 9-27-2004
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Continuity - concept of)
 ## Date(6/3/2002)
 ## MLT(cc-p)
+## MLTleader(1)
 ## Level(4)
-## KEYWORDS('continuity')
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Rogawski')
+## EditionText1('1')
+## Section1('2.4')
+## Problem1('83')
+## KEYWORDS('continuity','Calculus', 'Piecewise')
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 0;

@@ -1,9 +1,10 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Increasing/decreasing functions and local extrema)
 ## Institution(W.H.Freeman)
 ## Author(Ned W. Hummel)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -13,17 +14,22 @@
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
-loadMacros("Parser.pl");
 
 # This is our macro file that provides the textbook_ref_exact() and
-loadMacros("freemanMacros.pl");
 
 # loadMacros("PGauxiliaryFunctions.pl");
 # loadMacros("PGgraphmacros.pl");
-loadMacros("PGchoicemacros.pl");
 
+
+TEXT(beginproblem());
 
 @label_concave = ("?", "Concave Down", "Concave Up");
 @label_positive_negative = ("?", "Positive", "Negative");
@@ -77,7 +83,6 @@ $cp2_max = "Test Fails";
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "4.4","35") \}
 $PAR
 

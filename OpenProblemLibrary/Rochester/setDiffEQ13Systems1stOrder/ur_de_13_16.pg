@@ -5,24 +5,23 @@
 ## Tagged by tda2d
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Systems of Differential Equations)
+## DBchapter(Systems of differential equations)
+## DBsection(Distinct real eigenvalues)
 ## Institution(Rochester)
+## Level(3)
 ## KEYWORDS('differential equation' 'first order' 'matrices')
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGmatrixmacros.pl", 
-"PGnumericalmacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGmorematrixmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGmatrixmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGmorematrixmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

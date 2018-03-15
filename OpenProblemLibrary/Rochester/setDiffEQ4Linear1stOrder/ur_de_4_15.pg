@@ -3,9 +3,12 @@
 ## tcao tagged and PAID on 3-22-2004
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Linear Equations)
+## DBchapter(First order differential equations)
+## DBsection(Integrating factor)
 ## Date(6/3/2002)
+## MLT(integrating_factor_trig)
+## MLTleader(1)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -23,15 +26,13 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGmatrixmacros.pl", 
-"PGnumericalmacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGmorematrixmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGmatrixmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGmorematrixmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

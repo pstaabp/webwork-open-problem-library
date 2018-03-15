@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Statistics')
-## DBchapter('Sampling Distributions and the Central Limit Theorem')
-## DBsection('Central Limit Theorem')
+## DBsubject(Statistics)
+## DBchapter(Sampling distributions)
+## DBsection(Sample proportion)
+## Institution(NAU)
+## Author(N.Spencer Sitton)
+## Level(3)
 ## KEYWORDS('central limit')
-## Author('N.Spencer Sitton')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 06/20/05
@@ -12,10 +13,10 @@
 # Course: Qauntitative Reasoning
 
 DOCUMENT();     
-loadMacros("PGstandard.pl",  
-           "PGauxiliaryFunctions.pl"
-          
-);     
+loadMacros(
+  "PGstandard.pl",
+  "PGcourse.pl"
+);
 
 TEXT(&beginproblem);
 $n = random( 50, 100, 1);
@@ -32,7 +33,7 @@ $ans =  round( ( ( $sd * 100 ) / $per3 ) ** 2 ) ;
 
 BEGIN_TEXT
 
-A survey of $n students found that $per1$PERCENT were in favor of raising tution to $job.
+A survey of $n students found that $per1$PERCENT were in favor of raising tuition to $job.
 The standard deviation of the sample proprortion is $per2$PERCENT. How large a sample (to the nearest person) would be required to reduce
 this standard deviation to $per3$PERCENT? $PAR
 Answer: \{ans_rule( 15 ) \} 

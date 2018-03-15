@@ -1,14 +1,13 @@
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-          );
-loadMacros("freemanMacros.pl");
-loadMacros("Parser.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "freemanMacros.pl",
+  "Parser.pl",
+  "PGcourse.pl"
+);
 
 
 ## DBsubject(Calculus - single variable)
@@ -18,6 +17,7 @@ loadMacros("Parser.pl");
 ## Author(JustAsk!)
 ## MLT(diff_chr_trig_fn_trig_and_power)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')

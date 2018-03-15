@@ -2,19 +2,21 @@
 ## First order ODEs: linear ODEs and the integrating factor
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','first order','integrating factor')
 
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection('Linear ODEs and the Integrating Factor')
-## Date('01/01/2012')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(First order differential equations)
+## DBsection(Integrating factor)
+## Date(01/01/2012)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
-## EditionText1('2006')
 ## AuthorText1('Kohler and Johnson')
+## EditionText1('2006')
 ## Section1('2.2')
 ## Problem1('22')
+## KEYWORDS('differential equations','first order','integrating factor')
 
 
 ##############################
@@ -23,10 +25,11 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"parserAssignment.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "parserAssignment.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -65,6 +68,8 @@ $PAR
 (t^2 + $kk) y^{\,\prime} + 2 t y = t^2 (t^2 + $kk).
 \]
 $BR
+Enter your answer as \(y = \dots\) .
+$BR
 Use \( C \) to denote the arbitrary constant in your answer.
 $BR
 $BR
@@ -88,21 +93,19 @@ ANS( $answer->cmp( checker => sub {
     #
     Value->Error("Is your answer the most general solution?") 
     if ( Formula($stu->D('C'))==Formula(0) );
-
+    return 0 if $stu->isConstant;
+    
     ########################################################
     #  Check that the student answer is a solution to the DE
     #
     my $stu_t  = Formula($stu->D('t'));
     my $t = Formula(t); # we can't just use 't' below, we need '$t'
 
-    my $stuDE = Formula( (($t**2+$kk)*$stu_t + 2*$t*$stu - $t**2*($t**2+$kk)) );
+    #my $stuDE = Formula( (($t**2+$kk)*$stu_t + 2*$t*$stu - $t**2*($t**2+$kk)) );
 
-    return ($stuDE==Formula(0));
+    #return ($stuDE==Formula(0));
+    return Formula( (($t**2+$kk)*$stu_t + 2*$t*$stu) ) == Formula( ($t**2*($t**2+$kk)) );
 
 }));
-
-
-
-COMMENT("MathObject version.");
 
 ENDDOCUMENT();

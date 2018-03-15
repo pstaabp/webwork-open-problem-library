@@ -1,23 +1,22 @@
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter('Systems of Equations and Inequalities')
-## DBsection('The Algebra of Determinants')
-## AuthorText1('Ron Larson and Robert  Hostetler')
+## DBsubject(Linear algebra)
+## DBchapter(Determinants)
+## DBsection(Computing determinants)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## Level(2)
 ## TitleText1('Precalculus')
+## AuthorText1('Ron Larson and Robert  Hostetler')
 ## EditionText1('7')
-## Section1('Matrices and Determinants')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('algebra')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 
@@ -42,11 +41,6 @@ $b31=random(-9,9,1);
 $b32=random(-9,9,1);
 
 
-
-
-
-
-
 TEXT(EV2(<<EOT)); 
 
 Let 
@@ -54,16 +48,14 @@ Let
 \left[\begin{array}{rrr}
 $a11 & $a12 & $a13 \\
 $a21 & $a22 & $a23  \\
-\end{array}\right]\]
- 
-and
-
-\[B = 
+\end{array}\right],
+\quad
+B = 
 \left[\begin{array}{rr}
 $b11 & $b12 \\
 $b21 & $b22 \\
 $b31 & $b32 \\
-\end{array}\right]\]
+\end{array}\right].\]
 
 Then \[
 C = AB =
@@ -74,7 +66,6 @@ c_{21} & c_{22}  \\
 \]
 
 and
-
 
 
 \[
@@ -174,9 +165,6 @@ TEXT(EV2(<<EOT));
 $BR
 The determinant of \(D\) is \{ ans_rule(10) \}.
 $BR
-Talk to your friends
-about this last item.  They have different matrices.  Maybe you'll
-discover something.  If you do drop me a note!
 EOT
 ANS(num_cmp(0));
 

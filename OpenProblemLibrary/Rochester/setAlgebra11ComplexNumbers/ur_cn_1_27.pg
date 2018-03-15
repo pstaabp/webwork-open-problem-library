@@ -5,7 +5,7 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Complex analysis)
-## DBchapter(Analytic functions)
+## DBchapter(Complex plane)
 ## DBsection(Regions and domains)
 ## Institution(Rochester)
 ## Level(6)
@@ -19,12 +19,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

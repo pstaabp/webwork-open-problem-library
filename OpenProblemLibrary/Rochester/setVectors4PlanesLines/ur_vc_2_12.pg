@@ -4,22 +4,23 @@
 
 ## Tagged by nhamblet
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Equations of Lines and Planes)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Lines with planes)
 ## Date(5/31/2000)
 ## Institution(Rochester)
 ## Author(Joseph Neisendorfer)
+## MLT(TwoPlanes)
+## Level(3)
 ## KEYWORDS('Intersect', 'Unit', 'Parallel', 'Vector Equation', 'Line', 'Plane')
            
 DOCUMENT();	# This should be the first executable line in the problem.
 
-loadMacros("PG.pl",      
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",      
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl"     
-          );      
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
               
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;

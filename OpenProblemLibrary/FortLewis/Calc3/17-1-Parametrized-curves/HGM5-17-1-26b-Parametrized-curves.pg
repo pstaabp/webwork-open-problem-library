@@ -4,11 +4,15 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Functions)
-## DBsection(Vector Functions and Space Curves)
+## DBchapter(Calculus of vector valued functions)
+## DBsection(Parameterized curves)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(pc_cartesian_to_parametric)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -25,10 +29,10 @@
 DOCUMENT();      
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGcourse.pl",
-"parserVectorUtils.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserVectorUtils.pl",
+  "PGcourse.pl"
 );
 
 TEXT( beginproblem() );
@@ -73,7 +77,13 @@ sub mycheck {
 
 ANS($answer->cmp( checker=>~~&mycheck) );
 
-
-
-COMMENT('MathObject version');
+Context()->texStrings;
+BEGIN_SOLUTION
+$PAR SOLUTION: $BR $BR
+Since the curve is in the \(xz\)- plane, it must be \(y = 0\). 
+Letting \( z = t\) yields \(x = $x\).
+$BR
+Thus a vector parametrization of the curve is 
+\[ \vec{r}(t) = \langle $x, 0, t \rangle \]
+END_SOLUTION
 ENDDOCUMENT();

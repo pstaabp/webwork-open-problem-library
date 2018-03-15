@@ -1,9 +1,9 @@
 # DESCRIPTION
 # Problem from Calculus, single variable, Hughes-Hallett et al., 4th ed.
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 12/04/08
+## Updated December 2014 at OPL Workshop by JDA
 
 ## Author('Gavin LaRose');
 ## DBsubject(Calculus - single variable)
@@ -12,21 +12,27 @@
 ## Institution(University of Michigan)
 ## MLT(prodruleNoTrigatoxSomething)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('4')
-## Section1('3.3')
-## Problem1('5')
 ## TitleText2('Calculus')
-## AuthorText2('Hughes-Hallett')
-## EditionText2('5')
-## Section2('3.3')
-## Problem2('5')
 ## TitleText3('Calculus')
+## TitleText4('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
 ## AuthorText3('Hughes-Hallett')
+## AuthorText4('Hughes-Hallett')
+## EditionText1('4')
+## EditionText2('5')
 ## EditionText3('6')
+## EditionText4('7')
+## Section1('3.3')
+## Section2('3.3')
 ## Section3('3.3')
+## Section4('3.3')
+## Problem1('5')
+## Problem2('5')
 ## Problem3('5')
+## Problem4('5')
 ## KEYWORDS('calculus','derivative','product rule', 'quotient rule')
 
 ## Textbook tags
@@ -36,12 +42,9 @@
 
 DOCUMENT();
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -62,7 +65,7 @@ advantage to simplify  first.
 $BR
 \(\displaystyle y = $root \cdot $b^x \)
 
-$PAR
+$BR $BR
 \( {dy\over dx} = \) \{ ans_rule(35) \}
 
 END_TEXT
@@ -74,8 +77,8 @@ ANS(Compute( "(1/$p)*x^(-1+1/$p)*$b^x + x^(1/$p)*ln($b)*$b^x" )->cmp() );
 $p1 = $p-1 . "/$p";
 
 Context()->texStrings;
-SOLUTION(EV3(<<'END_SOLUTION'));
-$PAR SOLUTION $PAR
+
+BEGIN_SOLUTION
 
 \[ {dy\over dx} = \frac{1}{$p} x^{-$p1} $b^x + x^{1/$p} \ln($b) $b^x \]
 
@@ -83,5 +86,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -7,24 +7,26 @@
 ## DBsubject(Linear algebra)
 ## DBchapter(Abstract vector spaces)
 ## DBsection(Linear independence)
-## Institution('TCNJ')
-## KEYWORDS('vectors' 'basis' 'linearly independent' 'dependent')
+## Institution(TCNJ)
+## Level(3)
+## MO(1)
 ## TitleText1('Linear Algebra with Applications')
 ## AuthorText1('Jeffrey Holt')
 ## EditionText1('1')
 ## Section1('2.3')
 ## Problem1('')
+## KEYWORDS('vectors' 'basis' 'linearly independent' 'dependent')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "PGnumericalmacros.pl",
-           "PGmatrixmacros.pl",
-	   "parserMultiAnswer.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGmatrixmacros.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 
@@ -65,7 +67,6 @@ $coef = MultiAnswer( Compute(0), Compute(0), Compute(0) )->with(
 	} );
 
 BEGIN_TEXT
-$BR
 Suppose \(  S= \left\{"\{"\} r, u, d\right\} \) is a set of linearly independent vectors.  
 $BR $BR
 If \(x = $string1 \),  determine whether \(T=

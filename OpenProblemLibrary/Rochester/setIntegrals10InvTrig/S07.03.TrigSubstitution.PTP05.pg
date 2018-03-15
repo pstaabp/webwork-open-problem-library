@@ -2,29 +2,25 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS ('integration','trigonometric','substitution')
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Trigonometric Substitution')
-## Date('May 17, 2008')
-## Author('Paul Pearson')
-## Institution('University of Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBchapter(Techniques of integration)
+## DBsection(Trigonometric substitution)
+## Date(May 17, 2008)
+## Institution(University of Rochester)
+## Author(Paul Pearson)
+## MLT(Trig_sec)
+## Level(3)
+## MO(1)
 
 DOCUMENT(); 
 
 loadMacros(
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-#"PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"parserFormulaUpToConstant.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "parserFormulaUpToConstant.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -87,5 +83,5 @@ END_SOLUTION
 
 
 
-COMMENT('MathObject version');
+COMMENT('Requires integrating tan^2(theta)');
 ENDDOCUMENT();

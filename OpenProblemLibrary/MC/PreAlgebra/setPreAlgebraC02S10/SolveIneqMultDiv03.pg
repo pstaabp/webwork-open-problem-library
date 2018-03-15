@@ -7,11 +7,15 @@
 ## ProblemTester('Laura Travis')
 ## Publisher('Prentice Hall')
 ## DBsubject(Algebra)
-## DBchapter(Equations and Inequalities)
-## DBsection(Linear Inequalities)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear inequalities)
 ## Date(9/18/2012)
 ## Institution(Mississippi College)
 ## Author(John Travis)
+## MLT(simplify)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Pre-Algebra')
 ## AuthorText1('')
 ## EditionText1('')
@@ -24,13 +28,14 @@
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   "PGgraphmacros.pl",
-   "contextInequalities.pl",
-   "AnswerFormatHelp.pl",
-   "PGchoicemacros.pl",
-   "problemRandomize.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "contextInequalities.pl",
+  "AnswerFormatHelp.pl",
+  "PGchoicemacros.pl",
+  "problemRandomize.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

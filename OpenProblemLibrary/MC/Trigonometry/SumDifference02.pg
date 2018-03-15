@@ -3,27 +3,30 @@
 ## when given one trig function
 ##ENDDESCRIPTION
 
-## DBsubject('Trigonometry')
-## DBchapter('Analytic Trigonometry')
-## DBsection('Double and Half Angle Formulas')
-## Date('November 2012')
-## Author('John Travis')
-## Institution('Mississippi College')
-## TitleText1('Trigonometry')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
 
+## DBsubject(Trigonometry)
+## DBchapter(Analytic trigonometry)
+## DBsection(Addition & subtraction formulas)
+## Date(November 2012)
+## Institution(Mississippi College)
+## Author(John Travis)
+## MLT(addCS)
+## Level(4)
+## MO(1)
+## TitleText1('Trigonometry')
+## AuthorText1('')
+## EditionText1('')
+## Section1('.')
+## Problem1('')
 ## KEYWORDS( 'double-angle','half-angle','trigonometry','analytic")
 
 DOCUMENT();       
 
 loadMacros(
-"PG.pl",
-"MathObjects.pl",
-"parserPopUp.pl",
-"PGbasicmacros.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

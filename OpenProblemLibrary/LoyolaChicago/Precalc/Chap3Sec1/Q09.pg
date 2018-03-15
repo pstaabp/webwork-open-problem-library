@@ -3,11 +3,13 @@
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
 # ENDDESCRIPTION
 
-## DBsubject(Algebra)
-## DBchapter(Exponential functions)
-## DBsection(Introduction to the Family of Exponential Functions)
+## DBsubject(Arithmetic)
+## DBchapter(Percents)
+## DBsection(Calculations)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
@@ -17,14 +19,12 @@
 
 DOCUMENT();       
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
+);
        
 TEXT(beginproblem()); # standard preamble to each problem.
 
@@ -65,5 +65,5 @@ Then for a $r${PERCENT} decrease, the decay factor is $BITALIC b $EITALIC = $dec
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

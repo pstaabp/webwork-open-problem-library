@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Triple Integrals in Cylindrical and Spherical Coordinates)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Triple integrals in cylindrical and spherical)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(VolumeBetweenConeAndSphere)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -24,12 +27,12 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserVectorUtils.pl",
-"PGcourse.pl",
-"LiveGraphicsParametricSurface3D.pl",
-"unionTables.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserVectorUtils.pl",
+  "LiveGraphicsParametricSurface3D.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 
@@ -176,6 +179,15 @@ ANS(Compute("$r")->cmp() );
 
 COMMENT("Uses interactive graphics generated on-the-fly");
 
+BEGIN_SOLUTION
+$PAR SOLUTION $BR $BR
+In spherical coordiantes, the cone has equation \(\phi = \frac{\pi}{4}\), while
+the sphere has equation \(\rho = $r \). Thus $BR
+\( \displaystyle
+\iiint\limits_W \, dV
+=
+\int_0^{2 \pi} \int_{0}^{\pi/4} \int_0^{$r}\rho^2 \sin(\phi) \, d\rho \, d\phi \, d\theta.
+\).
+END_SOLUTION
 
-COMMENT('MathObject version');
 ENDDOCUMENT();

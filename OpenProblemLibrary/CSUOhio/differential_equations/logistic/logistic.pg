@@ -1,17 +1,18 @@
-##KEYWORDS('Differential Equations','Flash applets','Flash applets','NSF-0941388')
 
-## DBsubject('Differential Equations')
-## DBchapter('Introduction')
-## DBsection('The Logistic Equation')
-## Date('8/16/2013')
-## Author('L. Felipe Martins')
-## Author('Barbara Margolius')
-## Institution('Cleveland State University')
+## DBsubject(Differential equations)
+## DBchapter(First order differential equations)
+## DBsection(Applications - logistic)
+## Date(8/16/2013)
+## Institution(Cleveland State University)
+## Author(Barbara Margolius)
+## Level(5)
+## MO(1)
 ## TitleText1('')
-## EditionText1('2012')
 ## AuthorText1('')
-## Section1('')
+## EditionText1('2012')
+## Section1('.')
 ## Problem1('')
+## KEYWORDS('Differential Equations','Flash applets','Flash applets','NSF-0941388')
 ########################################################################
 # This work is supported in part by the National Science Foundation 
 # under the grant DUE-0941388.
@@ -21,12 +22,12 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-    "PGanswermacros.pl",
-    "PGstandard.pl",
-    "AppletObjects.pl",
-    "MathObjects.pl",
-    "AnswerFormatHelp.pl",
-    "PGasu.pl",
+  "PGstandard.pl",
+  "AppletObjects.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;
@@ -180,7 +181,7 @@ ANS($ans3->cmp);
 #ANS(auto_right("All answers are marked correct.  Your instructor will grade your work after the due date."));
 
 COMMENT('This problem requires that Flash be enabled on your device.
-Click try it to see what students will see.  MathObjects version.');
+Click try it to see what students will see.  MathObject version.');
 
 ENDDOCUMENT();
 

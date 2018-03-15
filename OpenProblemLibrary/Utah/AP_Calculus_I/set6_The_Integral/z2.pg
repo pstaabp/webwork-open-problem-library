@@ -1,31 +1,31 @@
 ##DESCRIPTION
 ##ENDDESCRIPTION
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')                      
-## DBsection('The Definite Integral')     
-## AuthorText1('Jerrold Marsden and Alan Weinstein')
+## DBchapter(Applications of integration)
+## DBsection(Distance, velocity, acceleration)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## Level(5)
+## Static(1)
 ## TitleText1('Calculus I')
+## AuthorText1('Jerrold Marsden and Alan Weinstein')
 ## EditionText1('2')
-## Section1('The Integral')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
 
 TEXT(EV2(<<EOT));
-Suppose now you are driving along the highway at a speed \(v\) feet
+Suppose you are driving along the highway at a speed \(v\) feet
 per second. You apply the brakes which cause a constant deceleration
 \(A\) feet per second squared.  You come to a stop after \{ans_rule(
 25) \} seconds. (Enter an expression that assumes a positive value for

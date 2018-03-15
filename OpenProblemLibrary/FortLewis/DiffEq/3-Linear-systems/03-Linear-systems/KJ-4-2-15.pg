@@ -2,19 +2,22 @@
 ## Systems of ODEs: introduction to systems of ODEs
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','systems of ODEs')
 
 ## DBsubject(Differential equations)
-## DBchapter('Linear systems')
-## DBsection('Linear Systems')
-## Date('01/30/2012')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Systems of differential equations)
+## DBsection(Reduction to first order systems)
+## Date(01/30/2012)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(SDE-R1O-ICs)
+## Level(3)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
-## EditionText1('2006')
 ## AuthorText1('Kohler and Johnson')
+## EditionText1('2006')
 ## Section1('4.2')
 ## Problem1('15')
+## KEYWORDS('differential equations','systems of ODEs')
 
 
 ##############################
@@ -23,13 +26,13 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserImplicitEquation.pl",
-"AnswerFormatHelp.pl",
-"unionLists.pl",
-"weightedGrader.pl",
-#"problemRandomize.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserImplicitEquation.pl",
+  "AnswerFormatHelp.pl",
+  "unionLists.pl",
+  "weightedGrader.pl",
+  "PGcourse.pl"
 );
 
 #ProblemRandomize(when=>"Always");
@@ -179,6 +182,6 @@ WEIGHTED_ANS( $init->cmp(), 10 );
 WEIGHTED_ANS( $initder->cmp(), 10 );
 
 
-COMMENT("MathObject version");
+
 
 ENDDOCUMENT();

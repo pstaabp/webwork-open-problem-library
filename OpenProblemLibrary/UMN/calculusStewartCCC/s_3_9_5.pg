@@ -4,12 +4,13 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Linear approximation and differentials)
 ## Date(11/17/2010)
 ## Institution(University of Minnesota)
 ## Author(Justin Sukiennik)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Concepts and Contexts')
 ## AuthorText1('Stewart')
 ## EditionText1('4 Custom UMTYMP Ed.')
@@ -24,7 +25,7 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "PGgraphmacros.pl",
-  "PGcourse.pl", 
+  "PGcourse.pl"
 );
 #####################################################################
 

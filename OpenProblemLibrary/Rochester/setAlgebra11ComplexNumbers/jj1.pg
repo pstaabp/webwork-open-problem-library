@@ -4,10 +4,11 @@
 
 ## Tagged by nhamblet
 
-## DBsubject(Numbers)
-## DBchapter(Complex numbers)
-## DBsection(Arithmetic)
+## DBsubject(Complex analysis)
+## DBchapter(Arithmetic)
+## DBsection(Multiplication)
 ## Institution(ASU)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -16,20 +17,18 @@
 ## TitleText2('Calculus: Early Transcendentals')
 ## AuthorText2('Stewart')
 ## EditionText2('6')
-## Section2('G')
+## Section2('.')
 ## Problem2('')
 ## KEYWORDS('Complex', 'Imaginary', 'Conjugate')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraders.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraders.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

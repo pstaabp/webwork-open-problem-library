@@ -2,18 +2,21 @@
 #  Series: limit comparison test
 #ENDDESCRIPTION
 
-## KEYWORDS('series','limit comparison test')
 
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('The Comparison Tests')           
-## AuthorText1('')
+## DBchapter(Infinite sequences and series)
+## DBsection(Comparison tests)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(LCT_bit_by_bit)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
+## AuthorText1('')
 ## EditionText1('')
-## Section1('')
+## Section1('.')
 ## Problem1('')
+## KEYWORDS('series','limit comparison test')
 
 ######################################
 #  Initialization
@@ -21,13 +24,14 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"unionTables.pl",
-"parserPopUp.pl",
-"answerHints.pl",
-"PGgraders.pl",
-"parserMultiAnswer.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "unionTables.pl",
+  "parserPopUp.pl",
+  "answerHints.pl",
+  "PGgraders.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -151,6 +155,6 @@ ANS( $limit->cmp() );
 ANS( $popup->cmp() );
 
 
-COMMENT('MathObject version');
+;
 
 ENDDOCUMENT();

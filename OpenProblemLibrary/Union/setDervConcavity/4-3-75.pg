@@ -5,12 +5,13 @@
 ## Tagged by jjh2b 8/22/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Concavity and points of inflection)
 ## Date(8/23/07)
 ## Institution(ASU)
 ## Author(K. Lesh)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5e')
@@ -27,10 +28,10 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "alignedChoice.pl",      # for aligned answer blanks
-  "PGcourse.pl",           # Customization file for the course
+  "alignedChoice.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -90,5 +91,5 @@ ANS($al->correct_ans);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

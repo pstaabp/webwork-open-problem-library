@@ -1,23 +1,26 @@
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Integrals)
-## DBsection(Antiderivatives)
+## DBsection(Antiderivatives (without trigonometric functions))
 ## Institution(Univeristy of Utah)
 ## Author(Utah ww group)
+## MLT(antideriv_poly_initial_value)
+## Level(2)
+## Static(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Dale Varberg, Edwin J. Purcell, and Steven E. Rigdon')
 ## EditionText1('9')
-## Section1('The Definite Integral')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 

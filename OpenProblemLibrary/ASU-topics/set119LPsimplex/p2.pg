@@ -2,31 +2,24 @@
 ##   Simplex Method
 ## ENDDESCRIPTION
 
-## KEYWORDS('Simplex Method')
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
-## DBchapter('Linear Programming')
-## DBsection('Simplex Method')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Operations research)
+## DBchapter(Linear programming)
+## DBsection(Simplex method)
+## Institution(ASU)
+## MLT(up)
+## Level(2)
+## KEYWORDS('Simplex Method')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGmatrixmacros.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGmatrixmacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -61,7 +54,7 @@ $BCENTER
 'hline',
 [ans_rule(5), ans_rule(5),ans_rule(5),ans_rule(5),ans_rule(5),ans_rule(5),ans_rule(5)]],
 align=>'cccccc|c',
-'top_labels'=>['P', 'x_1','x_2','x_3','s_1','s_2','\mbox{\tiny RHS}']
+'top_labels'=>['P', 'x_1','x_2','x_3','s_1','s_2','\scriptscriptstyle\text{RHS}']
 ) \}
 $ECENTER
 

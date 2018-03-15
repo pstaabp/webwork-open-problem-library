@@ -4,28 +4,29 @@
 # ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Logarithmic functions)
-## DBsection(Review Exercises and Problems)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Exponential and logarithmic equations)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## MLT(ELEqMLT4D)
+## MLTleader(1)
+## Level(3)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
-## Section1('4.')
-## Problem1('20')
+## Section1(4.Review)
+## Problem1(20)
 ## KEYWORDS('logarithms','log','ln','half-life','double-time','continuous growth rate')
 
 DOCUMENT();       
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-           "extraAnswerEvaluators.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl"
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
+);
        
 TEXT(beginproblem()); # standard preamble to each problem.
 

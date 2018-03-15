@@ -4,15 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLimitedNumeric.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "contextLimitedNumeric.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -158,11 +154,15 @@ END_SOLUTION
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject(Middle school)
-## DBchapter(Binomial difference of squares)
+## DBsubject(Algebra)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Polynomials: multiply)
+## MLT(SquareBinomial)
+## Level(2)
+## MO(1)
 
 
 BEGIN_SOLUTION

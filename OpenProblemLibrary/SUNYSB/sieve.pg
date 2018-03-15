@@ -6,16 +6,16 @@
 
 ## DBsubject(Number theory)
 ## DBchapter(Divisibility)
-## DBsection(Prime factorization)
+## DBsection(Definitions)
 ## Institution(SUNYSB)
 ## Level(2)
 ## KEYWORDS('discrete mathematics','number theory','integers')
 
 DOCUMENT();
-loadMacros('PG.pl',
-           'PGbasicmacros.pl',
-           'PGchoicemacros.pl',
-           'PGanswermacros.pl'
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem()); 
 $showPartialCorrectAnswers = 0;

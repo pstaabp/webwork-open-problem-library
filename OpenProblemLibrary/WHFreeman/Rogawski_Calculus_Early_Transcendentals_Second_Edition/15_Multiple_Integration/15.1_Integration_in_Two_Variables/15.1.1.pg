@@ -1,21 +1,30 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Integration in Several Variables)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Double integrals over rectangles)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(RiemannSumSpecifyCorner)
+## MLTleader(1)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.1')
 ## Problem1('1')
-## KEYWORDS('calculus', '')
-## UsesAuxiliaryFiles('image_15_1_1.png')
+## KEYWORDS('calculus')
+## RESOURCES('image_15_1_1.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $a=random(2,10);
 
@@ -24,7 +33,6 @@ $answer=Real($a*(13.5));
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.1","1") \}
 $PAR
 Compute the Riemann sum \(S_{4,3}\) to estimate the double integral of \(f(x,y)=$a xy\)

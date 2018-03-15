@@ -1,9 +1,10 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Increasing/decreasing functions and local extrema)
 ## Institution(W.H.Freeman)
 ## Author(Keith Thompson)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -12,12 +13,15 @@
 ## KEYWORDS('calculus', 'derivatives', 'critical points')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGauxiliaryFunctions.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 #$showPartialCorrectAnswers=1;
 $a=random(3,8);
 $doublea=$a*2;
@@ -31,7 +35,6 @@ $rootsofdf=List((-2*$a+(4 * $a**2-12*$b) ** (1/2))/6,(-2*$a-(4 * $a**2-12*$b) **
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "4.2","4") \}
 $PAR
 Find all critical points of the function \(f(x)=$fx\). If there is more than one critical point, list them in descending order and separate them by commas.

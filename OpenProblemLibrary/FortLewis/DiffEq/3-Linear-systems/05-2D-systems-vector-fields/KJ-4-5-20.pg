@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Systems of Differential Equations)
+## DBchapter(Systems of differential equations)
+## DBsection(Phase planes)
 ## Date(01/31/2012)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(4)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
 ## AuthorText1('Kohler and Johnson')
 ## EditionText1('2')
@@ -22,14 +24,13 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGunion.pl",
-"PGchoicemacros.pl",
-"parserPopUp.pl",
-#"problemRandomize.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGunion.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 #ProblemRandomize(when=>"Always");
@@ -285,6 +286,6 @@ ANS( $popup->cmp() );
 
 ANS( radio_cmp( $mc->correct_ans() ) );
 
-COMMENT("MathObject version.");
+;
 
 ENDDOCUMENT();

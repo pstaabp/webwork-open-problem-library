@@ -5,13 +5,14 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Continuity - concept of)
 ## Date(6/3/2002)
 ## Institution(ASU)
 ## Author(K. Lesh)
 ## MLT(cc-m2)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5e')
@@ -33,10 +34,10 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
   "contextPiecewiseFunction.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -85,5 +86,5 @@ ANS(Real($ans)->cmp);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

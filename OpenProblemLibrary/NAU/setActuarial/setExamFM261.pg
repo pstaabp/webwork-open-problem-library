@@ -1,19 +1,19 @@
 ##DESCRIPTION
-## DBsubject(Financial Mathematics)
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 ## Institution(NAU)
 ## Author(Michael Ratliff)
-## KEYWORDS('', '')
+## Static(1)
 ##ENDDESCRIPTION
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

@@ -2,19 +2,14 @@
 ## True or False problem concerning combining relations.  Written by Andrew Bayliss <andrew.bayliss@sparta.org>
 ## ENDDESCRIPTION
 
-## KEYWORDS('multiple choice', 'template')
 
-## DBsubject('Algebra')
-## DBchapter('Compositions, inverses, and combinations of functions')
-## DBsection('Combinations Of Functions')
-## Date('07/12/2013')
-## Author('Andrew Bayliss')
-## Institution('Sparta High School')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Compositions and combinations of functions)
+## Date(07/12/2013)
+## Institution(Sparta High School)
+## Author(Andrew Bayliss)
+## Level(2)
 ## KEYWORDS('combining functions','domain and range','composition')
 
 
@@ -24,10 +19,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-"PGgraders.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGgraders.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -111,6 +107,6 @@ $ENV{'grader_message'} = "You can earn " .
 ANS( str_cmp( $tf->ra_correct_ans() ) );
 
 
-COMMENT("MathObject version.");
+;
 
 ENDDOCUMENT();

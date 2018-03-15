@@ -1,4 +1,4 @@
-## DBsubject('Abstract Algebra')
+## DBsubject(Abstract algebra)
 ## DBchapter('Groups')
 ## DBsection(Quotient groups)
 ## KEYWORDS('quotient groups, order of groups')
@@ -15,15 +15,12 @@
 DOCUMENT();        
 
 loadMacros(
-"PG.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"parserRadioButtons.pl",
-"algebraMacros.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "parserRadioButtons.pl",
+  "algebraMacros.pl",
+  "PGcourse.pl"
 );
 
 
@@ -86,7 +83,7 @@ $ans3 = 2 * gcd($m, $i);
 
 @element = ("-i", "-j", "-k", i, j, k);
 
-$z = random(0, 7, 1);
+$z = random(0, 5, 1);
 
 if ($z>6) {
   $e    = -1;

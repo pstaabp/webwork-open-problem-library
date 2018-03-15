@@ -5,9 +5,9 @@
 ## Tagged by tda2d
 
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Maximum and Minimum Values)
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 ## Institution(Dartmouth)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
@@ -23,11 +23,10 @@
 
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
  
 

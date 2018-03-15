@@ -1,32 +1,39 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Functions)
-## DBsection(Composite and Inverse Functions)
+## DBchapter(Inverse functions)
+## DBsection(Finding the inverse function)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## MLT(InverseFunctions_FindInverse_09)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('2.4')
-## Problem1('21')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(2.4)
 ## Section2('2.4')
+## Section3('2.5')
+## Problem1(23)
 ## Problem2('21')
+## Problem3('33')
 ## KEYWORDS('functions','composite functions','inverse','domain','range')
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -99,6 +106,6 @@ d) Solving \( f^{-1}(?)=0 \) means finding the \(y\)-value corresponding to \( x
 END_SOLUTION
 
 
-COMMENT('MathObject version');
+;
 
 ENDDOCUMENT();

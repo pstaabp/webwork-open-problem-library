@@ -4,17 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
- #"unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "contextLeadingZero.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -57,10 +50,13 @@ b) \(\ $c2 z+$a2=$b2\) subtract $a2 from both sides to get \($c2 z=$bma2\) then 
 END_SOLUTION	
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Solve_Equation')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Solving linear equations in one variable)
+## MLT(two_operations_not_one)
+## Level(2)
+## MO(1)
 
 

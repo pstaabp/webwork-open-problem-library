@@ -5,11 +5,13 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Conic sections)
+## DBchapter(Cartesian coordinate system)
 ## DBsection(Circles)
 ## Date(January 2012)
 ## Institution(Mississippi College)
 ## Author(John Travis)
+## MLT(Circle_from_center_and_point)
+## Level(3)
 ## TitleText1('Trigonometry')
 ## AuthorText1('')
 ## EditionText1('')
@@ -20,12 +22,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

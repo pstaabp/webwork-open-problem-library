@@ -1,23 +1,24 @@
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter(Polynomial and rational functions)
-## DBsection('Polynomial Functions and their Graphs')
-## AuthorText1('Ron Larson and Robert  Hostetler')
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Applications and models)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## MLT(quad_appl_UtahStatic)
+## Level(5)
+## Static(1)
 ## TitleText1('Precalculus')
+## AuthorText1('Ron Larson and Robert  Hostetler')
 ## EditionText1('7')
-## Section1('Polynomial and Rational Functions')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('algebra')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -26,7 +27,7 @@ $t=random(4,7,1);
 
 TEXT(EV2(<<EOT)); 
 
-Repeat the previous problem, but assume you are on a planet with a
+Assume you are on a planet with a
 gravity constant \(g\) (instead of 32 feet per second squared) and a
 speed of sound \(c\) (instead of 1100 feet per second), and that you
 hear the impact of the rock after \(t\) seconds.  Then the depth of

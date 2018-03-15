@@ -2,38 +2,42 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 ## Tagged by glr 06/09/09
 
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Vectors)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Vectors and vector arithmetic)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(va_ap)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('13.2')
-## Problem1('19')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('13.2')
 ## Section2('13.2')
+## Section3('13.2')
+## Problem1('19')
 ## Problem2('26')
+## Problem3('24')
 ## KEYWORDS('vectors', 'force')
 
 ## Textbook tags
@@ -77,9 +81,9 @@ BEGIN_TEXT
 
 There are five students in a class.  Their scores on the midterm (out
 of 100) are given by the vector
-\( \vec v = ($midscores) \).
+\( \vec v = ${LTS}$midscores$GTS \).
 Their scores on the final (out of 100) are given by
-\( \vec w = ($finscores) \).  If the final counts twice as much as the
+\( \vec w = $LTS$finscores$GTS \).  If the final counts twice as much as the
 midterm, find a vector \(\vec z\) giving the total scores (as a
 percentage) of the students.
 
@@ -107,6 +111,6 @@ To get the scores as a percentage, we divide by 3, giving
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

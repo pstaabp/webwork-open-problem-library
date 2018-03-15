@@ -4,12 +4,14 @@
 
 ## Tagged by nhamblet
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Vectors)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Vectors and vector arithmetic)
 ## Date(10/15/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(va_parallel_direction)
+## Level(2)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -24,12 +26,12 @@
 
 DOCUMENT();  
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGunion.pl",
-"parserVectorUtils.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGunion.pl",
+  "parserVectorUtils.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -162,5 +164,5 @@ ANS(checkbox_cmp($cmc1->correct_ans));
 ANS(checkbox_cmp($cmc2->correct_ans));
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

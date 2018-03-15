@@ -1,25 +1,32 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Integration by Parts')
-## KEYWORDS('calculus', 'integration', 'integration by parts')
+## DBchapter(Techniques of integration)
+## DBsection(Integration by parts (without trigonometric functions))
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## MLT(notrig_02)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('7.1')
 ## Problem1('5')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'integration', 'integration by parts')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl","parserFormulaUpToConstant.pl");
-loadMacros("PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "parserFormulaUpToConstant.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 $context = Context();
 
 #$context->variables->add(C=>'Real');
 
-$a = Real(random(2, 15, 1));
+$a = random(2, 15);
 $b=$a+1;
 $u = Formula("ln(x)");
 $du = Formula("1 / x");
@@ -28,10 +35,11 @@ $dv = Formula("x ** $a");
 $v = Formula("(1 / $b) * x ** $b");
 $iduv = Formula("(1 / ($b)**2) * x ** ($b)")->reduce();
 
-$ans = FormulaUpToConstant("$u * $v - $iduv + C")->reduce();
+$ans = FormulaUpToConstant("x^($b) ln(x)/$b  - x^$b/$b^2 ")->reduce();
 
 Context()->texStrings;
-beginproblem();
+
+TEXT(beginproblem());
 
 
 BEGIN_TEXT

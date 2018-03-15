@@ -2,36 +2,36 @@
 ## Calculus: The Fundamental Theorem of Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS('calculus', 'integrals', 'fundamental theorem of calculus')
 ## Tagged by XW
 
+
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('The Fundamental Theorem of Calculus')
-## Date('6/2/2005')
-## Author('Jeff Holt')
-## Institution('UVA')
+## DBchapter(Integrals)
+## DBsection(Fundamental theorem of calculus)
+## Date(6/2/2005)
+## Institution(UVA)
+## Author(Jeff Holt)
+## MLT(FTC_01)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('5')
 ## AuthorText1('Stewart')
+## EditionText1('5')
 ## Section1('5.3')
 ## Problem1('50')
-
 ## TitleText2('Calculus: Early Transcendentals')
-## EditionText2('6')
 ## AuthorText2('Stewart')
+## EditionText2('6')
 ## Section2('5.3')
 ## Problem2('')
+## KEYWORDS('calculus', 'integrals', 'fundamental theorem of calculus')
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -44,16 +44,26 @@ $p = random(2,9,1);
 TEXT(EV2(<<EOT));
 Use part I of the Fundamental Theorem of Calculus to
 find the derivative of
-\[ y = \int_{\cos x}^{$a x} {\cos u^$p} du \]
-$BR \( \frac{dy}{dx} \) = \{ans_rule(50)\} $BR
-[NOTE:  Enter a function as your answer.  Make sure that your
-syntax is correct, i.e. remember to put all the necessary (, ), etc. ]
+\[ y = \int_{\cos(x)}^{$a x} \cos \left(u^$p\right)\, du. \]
+$BR 
+\( \displaystyle\frac{dy}{dx} \) = \{ans_rule(50)\}
 EOT
 
+ANS(fun_cmp("$a*cos(($a*x)**$p)+sin(x)*cos((cos(x))**$p)"));
 
-@ans=(fun_cmp("$a*cos(($a*x)**$p)+sin(x)*cos((cos(x))**$p)", vars=>"x"));
-
-ANS(@ans);
+BEGIN_SOLUTION
+$PAR SOLUTION $PAR
+\[ y = \int_{\cos(x)}^{0} \cos \left(u^$p\right)\, du
++  \int_{0}^{$a x } \cos \left(u^$p\right)\, du
+ = - \int_{0}^{\cos(x)} \cos \left(u^$p\right)\, du
++  \int_{0}^{$a x } \cos \left(u^$p\right)\, du \]
+Using the Fundamental Theorem and the chain rule, we get:
+\[ \begin{array}{rcl}\displaystyle  \frac{dy}{dx} 
+&=& \displaystyle  - \cos \left(\cos^{$p}(x)\right) 
+\cdot \frac{d}{dx} (\cos x) + \cos \left(($a x)^$p\right) \cdot \frac{d}{dx} ($a x)
+\\ &=& \displaystyle  \sin x  \cos \left(\cos^{$p}(x)\right) + $a \cos \left(($a x)^$p\right) 
+\end{array}  \]
+END_SOLUTION
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.
 

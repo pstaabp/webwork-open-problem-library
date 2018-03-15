@@ -1,37 +1,41 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
-## DBsubject(Algebra)
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Fitting Linear Functions to Data)
+## DBsubject(Statistics)
+## DBchapter(Simple linear regression)
+## DBsection(Correlation)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## MLT(EstimateRFromPlot)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('1.6')
-## Problem1('7')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(1.6)
 ## Section2('1.6')
+## Section3('1.6')
+## Problem1(1)
 ## Problem2('7')
+## Problem3('7')
 ## KEYWORDS('linear functions','correlation coefficient','least squares','regression'')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraphmacros.pl",
-"Parser.pl",
-"MathObjects.pl",
-"PGcourse.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Parser.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 

@@ -5,13 +5,14 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Global extrema)
 ## Date(5/29/2005)
 ## Institution(UVA)
 ## Author(Jeff Holt)
 ## MLT(GlobalExtremes_PolyMulti)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -28,10 +29,10 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "alignedChoice.pl",      # for aligned answer blanks
-  "PGcourse.pl",           # Customization file for the course
+  "alignedChoice.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -131,5 +132,5 @@ ANS($a3->correct_ans);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

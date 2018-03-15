@@ -6,10 +6,12 @@
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Differentiation)
 ## DBsection(Chain rule (with trigonometric functions))
+## MLT(ChainRule_Trig_FindTangentLine_2015)
 ## Date(11/02/2010)
 ## Institution(University of Minnesota)
 ## Author(Justin Sukiennik)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Concepts and Contexts')
 ## AuthorText1('Stewart')
 ## EditionText1('4 Custom UMTYMP Ed.')
@@ -25,7 +27,7 @@ loadMacros(
   "MathObjects.pl",
   "parserImplicitPlane.pl",
   "PGgraphmacros.pl",
-  "PGcourse.pl", 
+  "PGcourse.pl"
 );
 #####################################################################
 

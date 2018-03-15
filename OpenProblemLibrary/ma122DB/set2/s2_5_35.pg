@@ -6,7 +6,7 @@
 ## tcao , PAID on 11-24-2003
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Continuity - concept of)
 ## Date(6/3/2002)
 ## Level(2)
@@ -20,9 +20,8 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGbasicmacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -47,7 +46,7 @@ $BR$BR
 $BR$BR
 \( f(3) = \) \{ans_rule(15) \}
 $BR$BR
-Is the function \(f(x)\) continuous at \(x=3\)? 
+Is the function \( f \) continuous at \( 3 \)? 
 \{pop_up_list(['?', 'Yes', 'No']) \} 
 END_TEXT
 

@@ -4,26 +4,25 @@
 
 ## Tagged by dgt5v
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('What is a Function?')
-## Date('6/3/2002')
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Domain and range)
+## Date(6/3/2002)
+## Level(3)
 ## TitleText1('College Algebra')
 ## AuthorText1('Stewart, Redlin, Watson')
 ## EditionText1('3')
 ## Section1('4.1')
 ## Problem1('51 47')
 ## KEYWORDS('Algebra','Functions','Domain','function', 'domain')
-
+## MLT(algebra_functions_domain_range_sqrt_in_denom)
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

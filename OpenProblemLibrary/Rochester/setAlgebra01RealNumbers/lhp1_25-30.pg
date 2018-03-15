@@ -4,9 +4,12 @@
 
 ## Tagged by cmd6a 4/4/06
 
-## DBsubject(Numbers)
-## DBchapter(Real numbers)
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Inequalities and intervals)
 ## Date(6/3/2002)
+## MLT(InequalInterval)
+## Level(2)
 ## TitleText1('College Algebra')
 ## AuthorText1('Stewart, Redlin, Watson')
 ## EditionText1('3')
@@ -15,12 +18,12 @@
 ## KEYWORDS('algebra, interval notation')
 
 DOCUMENT();     
-loadMacros("PGbasicmacros.pl",     
-           "PGchoicemacros.pl",     
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "extraAnswerEvaluators.pl"   
-);     
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 

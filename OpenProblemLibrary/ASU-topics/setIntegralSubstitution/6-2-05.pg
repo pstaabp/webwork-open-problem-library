@@ -2,56 +2,86 @@
 ## Integral with Substitution
 ## ENDDESCRIPTION
 
-## KEYWORDS('calculus', 'integrals', 'substitution', 'indefinite')
 ## Tagged by XW
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('Substitution')
-## Date('')
-## Author('')
-## Institution('ASU')
+## DBchapter(Techniques of integration)
+## DBsection(Substitution (without trigonometric functions))
+## Institution(ASU)
+## MLT(affine_indefinite)
+## MO(1)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('5')
 ## AuthorText1('Stewart')
+## EditionText1('5')
 ## Section1('5.5')
 ## Problem1('')
-
 ## TitleText2('Calculus: Early Transcendentals')
-## EditionText2('6')
 ## AuthorText2('Stewart')
+## EditionText2('6')
 ## Section2('5.5')
 ## Problem2('')
+## KEYWORDS('calculus', 'integrals', 'substitution', 'indefinite')
 
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "parserFormulaUpToConstant.pl",
+  "PGcourse.pl"
 );
+
+sub str {
+        my $x = shift;
+        return ( $x > 0 ? '' : '-' )
+        . ( ($x)**2 == 1 ? '' : abs($x) )
+}
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;
 
-$a = random(3,9,1);
-$b = random(3,6,1);
+$a = random(2, 9);
+$b = non_zero_random(-9, 9);
+$k = random(3, 9);
+$kp1 = $k + 1;
 
-TEXT(EV2(<<EOT));
+Context('Fraction');
+$coeff = Fraction($a, $k + 1);
 
-Evaluate the indefinite integral:
-$BR
-$PAR
-   \( \displaystyle{ \int (x-$a)^{$b} \, dx} = \)
-   \{ans_rule(30) \} + \( C\).
-$BR
-$BR
+Context('Numeric')->flags->set(
+	reduceConstants => 0
+);
+$l = Formula("x - $b")->reduce;
+$f = Formula("$a * ($l)^($k)");
+$F = FormulaUpToConstant(
+	str($coeff) . "($l)^($kp1)"
+);
 
-EOT
+Context()->texStrings;
+BEGIN_TEXT
+Evaluate the indefinite integral.
+$BR $BR
+\( \displaystyle \int $f \, dx = \)
+\{ans_rule() \}
+END_TEXT
+Context()->normalStrings;
 
-$ans = "((x-$a)**($b+1))/($b+1)";
-ANS(fun_cmp($ans, mode=>"antider", vars=>"x"));
+ANS($F->cmp);
+
+$raw = ( gcd($a, $k + 1) == 1
+	? ''
+	: "= \frac{$a}{$kp1} $l^{$kp1} + C"
+);
+
+Context()->texStrings;
+BEGIN_SOLUTION
+Integrating by inspection gives
+\[
+\int $f \, dx
+\textstyle $raw = $F.
+\]
+END_SOLUTION
 
 ENDDOCUMENT();

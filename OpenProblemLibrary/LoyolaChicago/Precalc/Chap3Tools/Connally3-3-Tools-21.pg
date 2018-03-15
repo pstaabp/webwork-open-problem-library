@@ -3,31 +3,38 @@
 ## ENDDESCRIPTION
 
 
-## DBsubject(Algebra)
-## DBchapter(Exponential functions)
-## DBsection(Introduction to the Family of Exponential Functions)
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Exponentiation)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('3 Tools')
-## Problem1('16 17')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
-## Section2('4.')
-## Problem2('16 17')
+## EditionText3('5')
+## Section1(3.Tools)
+## Section2('4.Skills')
+## Section3('4.Skills')
+## Problem1(21 22 26)
+## Problem2(16 19)
+## Problem3(16 19)
 ## KEYWORDS('exponents')
 
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -121,5 +128,5 @@ $PAR
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -4,8 +4,8 @@
 ## Tagged by jjh2b
 
 ## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('MAA Tutorial')
+## DBchapter(WeBWorK tutorial)
+## DBsection(MAA tutorial)
 ## Date('8/30/07')
 ## Author('')
 ## Institution('')
@@ -18,12 +18,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 

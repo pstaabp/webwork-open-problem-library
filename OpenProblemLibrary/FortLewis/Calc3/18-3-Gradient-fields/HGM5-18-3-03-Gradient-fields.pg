@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(The Fundamental Theorem for Line Integrals)
+## DBchapter(Vector calculus)
+## DBsection(Conservative vector fields)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(My_new_Conservative_vector_fields)
+## Level(2)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -25,14 +27,14 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"PGcourse.pl",
-"PGunion.pl",
-"MathObjects.pl",
-"VectorField2D.pl",
-"PGgraphmacros.pl",
-"PGgraders.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGunion.pl",
+  "MathObjects.pl",
+  "VectorField2D.pl",
+  "PGgraphmacros.pl",
+  "PGgraders.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -248,6 +250,20 @@ $showPartialCorrectAnswers = 0;
 
 ANS(str_cmp([@answer[@perm]]));
 
+@answerp=@answer[@perm];
+BEGIN_SOLUTION
+$PAR SOLUTION $BR $BR
+Draw any closed curve. 
+If the line integral along the closed curve appears to be zero
+, then the vector field appears to be independent of path. Thus
+$BR
+1. $answerp[0]  $BR
+2. $answerp[1]  $BR
+3. $answerp[2]  $BR
+4. $answerp[3]  $BR
+5. $answerp[4]  $BR
+6. $answerp[5]  $BR
+END_SOLUTION
 
-COMMENT('MathObject version');
+
 ENDDOCUMENT();

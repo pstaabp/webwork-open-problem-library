@@ -4,12 +4,15 @@
 
 ## Tagged by nhamblet
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Equations of Lines and Planes)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Planes)
 ## Date(10/15/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(planes_n_given_eqn)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -26,9 +29,9 @@ DOCUMENT();
 
 loadMacros(
   "PGstandard.pl",
-  "PGcourse.pl",
   "MathObjects.pl",
   "parserVectorUtils.pl",
+  "PGcourse.pl"
 );
 
 
@@ -73,5 +76,5 @@ ANS($V->cmp( checker=>~~&parallel_vector_cmp, showCoordinateHints => 0 ) );
 ##################################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

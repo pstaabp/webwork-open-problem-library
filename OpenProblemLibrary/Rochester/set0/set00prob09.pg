@@ -5,7 +5,7 @@
 ##KEYWORDS('sample')
 
 ## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
+## DBchapter(WeBWorK tutorial)
 ## DBsection('Rochester')
 ## Date('5/11/2008')
 ## Author('Paul Pearson')
@@ -26,11 +26,9 @@
 DOCUMENT(); 
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -2,19 +2,21 @@
 ## Higher order ODEs: constant coefficient second order homogeneous linear ODEs
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','second order linear ODE','constant coefficients')
 
 ## DBsubject(Differential equations)
-## DBchapter('Higher Order Differential Equations')
-## DBsection('Second Order Linear')
-## Date('01/01/2012')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Higher order differential equations)
+## DBsection(Linear, constant coefficients, homogeneous (distinct real roots))
+## Date(01/01/2012)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(4)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
-## EditionText1('2006')
 ## AuthorText1('Kohler and Johnson')
+## EditionText1('2006')
 ## Section1('1.2')
 ## Problem1('20')
+## KEYWORDS('differential equations','second order linear ODE','constant coefficients')
 
 
 ##############################
@@ -23,10 +25,11 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"unionLists.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "unionLists.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -81,6 +84,6 @@ $showPartialCorrectAnswers = 1;
 
 ANS( $answer->cmp() );
 
-COMMENT("MathObject version.  Sign for infinity chosen at random.");
+COMMENT("Sign for infinity chosen at random.");
 
 ENDDOCUMENT();

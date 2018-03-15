@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Direction Fields and Euler's Method)
+## DBchapter(First order differential equations)
+## DBsection(Direction fields)
 ## Date(06/23/2011)
 ## Institution(University of Minnesota)
 ## Author(Justin Sukiennik)
+## MLT(d_field_04)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Concepts and Contexts')
 ## AuthorText1('Stewart')
 ## EditionText1('4 Custom UMTYMP Ed.')
@@ -22,9 +25,8 @@ DOCUMENT();        # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "PGcourse.pl", 
-  "PGgraphmacros.pl"
-
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 #####################################################################

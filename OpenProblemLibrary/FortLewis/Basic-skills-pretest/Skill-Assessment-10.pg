@@ -1,11 +1,15 @@
+## DBsubject(Trigonometry)
+## DBchapter(Geometric and algebraic foundations for trigonometry)
+## DBsection(The Pythagorean theorem & its converse)
+## Level(2)
+## MO(1)
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-#"contextFraction.pl",
-"PGgraphmacros.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -94,5 +98,5 @@ $showPartialCorrectAnswers = 0;
 ANS($answer->cmp());
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

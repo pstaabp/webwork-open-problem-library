@@ -1,8 +1,9 @@
-## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Parametric Equations)
+## DBsubject(Calculus - single variable)
+## DBchapter(Parametric)
+## DBsection(Curves)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +12,15 @@
 ## KEYWORDS('calculus', 'parametric', 'parametric equations')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl", "PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 $context = Context("Point");
 $context->variables->add(t=>'Real');
 
@@ -58,7 +64,6 @@ $mc->extra(
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "11.1","27") \}
 $PAR
 \{$mc->print_q \}

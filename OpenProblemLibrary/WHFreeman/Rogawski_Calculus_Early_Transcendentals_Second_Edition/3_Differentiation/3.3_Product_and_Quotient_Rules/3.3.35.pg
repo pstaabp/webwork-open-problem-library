@@ -4,6 +4,7 @@
 ## Institution(W.H.Freeman)
 ## Author(Sam Hathaway)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -12,9 +13,14 @@
 ## KEYWORDS('calculus', 'derivatives', 'product rule')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 #$a = 2;
 #$b = -2;
@@ -25,8 +31,7 @@ $b = non_zero_random(-4,4,1);
 $c = non_zero_random(-4,4,1);
 $d = non_zero_random(-4,4,1);
 
-Context()->variables->remove('x');
-Context()->variables->add(z=>'Real');
+Context()->variables->are(z=>'Real');
 $a_term = Formula("(z-$a)")->reduce;
 $b_term = Formula("(z-$b)")->reduce;
 $c_term = Formula("(z-$c)")->reduce;
@@ -42,7 +47,6 @@ $gp = Formula("2z-".($b+$c))->reduce;
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "3.3","35") \}
 $PAR
 Calculate the derivative using the appropriate rule or combination of rules.

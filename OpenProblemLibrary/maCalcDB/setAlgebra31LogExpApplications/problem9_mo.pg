@@ -1,27 +1,29 @@
 ##DESCRIPTION
-##KEYWORDS('logarithms,exponentials','exponential growth,decay')
 ## tcao tagged and PAID on 2-20-2004
 
-## DBsubject('Algebra')
-## DBchapter('Exponential and Logarithmic Functions')
-## DBsection('Laws of Logarithms')
-## Date('6/3/2002')
-## Author('')
-## Institution('')
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Properties of logarithms)
+## Date(6/3/2002)
+## Institution(Rochester)
+## MLT(LogsInTermsOfVariables)
+## Level(4)
+## MO(1)
 ## TitleText1('College Algebra')
-## EditionText1('3')
 ## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
 ## Section1('6.4')
 ## Problem1('8 9 10')
+## KEYWORDS('logarithms,exponentials','exponential growth,decay','Algebra', 'Exponential', 'Logarithmic', 'Applications')
 ##TYPE('word problem')
 ##ENDDESCRIPTION
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   "PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 
@@ -61,14 +63,12 @@ $ans_e = Compute("($i *x)** $j");
 #
 
 BEGIN_TEXT;
-If \(\log\ p = x\) and \(\log\ q = y\), evaluate the following in terms of x 
-and y: 
-
-$PAR (a) \(\log\ (p^{$a} q^{$b}) =\) \{ans_rule(20) \}
-$PAR (b) \(\log\ \sqrt{p^{$c} q^{$d} } = \) \{ans_rule(20) \}
-$PAR (c) \(\log\ \frac{p^{$e}}{q^{$f}} = \) \{ans_rule(20) \}
-$PAR (d) \(\frac{\log\ p^{$g} }{\log\ q^{$h} } = \) \{ans_rule(20) \}
-$PAR (e) \( (\log\ p^{$i} )^{$j} = \) \{ans_rule(20) \}
+If \(\log\ p = x\) and \(\log\ q = y\), evaluate the following in terms of \(x\) and \(y\): 
+$BR $BR (a) \(\log\ (p^{$a} q^{$b}) =\) \{ans_rule(20) \}
+$BR $BR (b) \(\log\ \sqrt{p^{$c} q^{$d} } = \) \{ans_rule(20) \}
+$BR $BR (c) \(\displaystyle \log\ \frac{p^{$e}}{q^{$f}} = \) \{ans_rule(20) \}
+$BR $BR (d) \(\displaystyle \frac{\log\ p^{$g} }{\log\ q^{$h} } = \) \{ans_rule(20) \}
+$BR $BR (e) \( (\log\ p^{$i} )^{$j} = \) \{ans_rule(20) \}
 END_TEXT
 
 ##############################################################
@@ -84,8 +84,8 @@ ANS($ans_d->cmp);
 ANS($ans_e->cmp);
 
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 

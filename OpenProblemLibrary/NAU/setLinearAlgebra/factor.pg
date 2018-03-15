@@ -2,23 +2,25 @@
 ## Linear Algebra
 ## ENDDESCRIPTION
 
-## KEYWORDS('linear algebra','elementery matrix','multiplication')
 
-## DBsubject(Linear algebra)
-## DBchapter('Matrices')
-## DBsection(Elementary matrices)
-## Date('9/20/2013')
-## Author('Nandor Sieben')
 ## help from Paul Pearson
-## Institution('NAU')
+## DBsubject(Linear algebra)
+## DBchapter(Matrices)
+## DBsection(Elementary matrices)
+## Date(9/20/2013)
+## Institution(NAU)
+## Author(Nandor Sieben)
+## Level(2)
+## MO(1)
+## KEYWORDS('linear algebra','elementery matrix','multiplication')
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserMultiAnswer.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 $showPartialCorrectAnswers = 0;
 TEXT(beginproblem()); 
@@ -70,6 +72,6 @@ install_problem_grader(~~&std_problem_grader);
 
 ANS( $multians->cmp() );
 
-COMMENT('MathObject version.');
+;
 
 ENDDOCUMENT();

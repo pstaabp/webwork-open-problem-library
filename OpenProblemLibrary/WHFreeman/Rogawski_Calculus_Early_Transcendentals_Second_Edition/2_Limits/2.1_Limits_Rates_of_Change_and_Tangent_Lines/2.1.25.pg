@@ -3,16 +3,16 @@
 DOCUMENT();
 
 # Load whatever macros you need for the problem
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",  );
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Rates of change - engineering and physics)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk!)
@@ -23,7 +23,7 @@ loadMacros("freemanMacros.pl");
 ## Section1('2.1')
 ## Problem1('25')
 ## KEYWORDS('calculus', 'rates of change', 'velocity', 'graphs')
-## UsesAuxiliaryFiles('ex21231.png','ex21232.png','ex21233.png','ex21234.png');
+## RESOURCES('ex21231.png','ex21232.png','ex21233.png','ex21234.png');
 
 ## Show partial correct answers
 $showPartialCorrectAnswers = 0;

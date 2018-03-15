@@ -2,27 +2,37 @@
 ##   Infinite Series with the Integral Test
 ## ENDDESCRIPTION
 
-## KEYWORDS('Series', 'Converge', 'Diverge', Integral Test')
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('The Integral Test and Estimates of Sums')
-## Date('')
-## Author('Paul Pearson')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBchapter(Infinite sequences and series)
+## DBsection(Integral test)
+## Date(6/3/2002)
+## Institution(Rochester)
+## Author(Paul Pearson)
+## MLT(xsqe)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Stewart')
+## EditionText1('6')
+## Section1('11.3')
+## Problem1('7')
+## TitleText2('Calculus: Early Transcendentals')
+## AuthorText2('Rogawski')
+## EditionText2('1')
+## Section2('10.3')
+## Problem2('9')
+## KEYWORDS('Series', 'Converge', 'Diverge', Integral Test','Series' , 'Integral test' , 'Convergence' )
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserPopUp.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -59,5 +69,5 @@ ANS(Compute("$a/(3*e)")->cmp() );
 ANS($popup->cmp() );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

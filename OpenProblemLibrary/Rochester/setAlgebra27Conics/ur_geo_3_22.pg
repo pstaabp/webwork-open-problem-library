@@ -4,10 +4,12 @@
 
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
+## DBsubject(Algebra)
 ## DBchapter(Conic sections)
-## DBsection(Shifted conics)
-## Date('6/3/2002')
+## DBsection(Parabolas)
+## Date(6/3/2002)
+## MLT(Parabolas_MLT1)
+## Level(2)
 ## TitleText1('College Algebra')
 ## AuthorText1('Stewart, Redlin, Watson')
 ## EditionText1('3')
@@ -18,11 +20,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -2,32 +2,21 @@
 ##  Sample of new style problem.
 ## ENDDESCRIPTION
 
-## KEYWORDS('sample','webwork','new')
 ## Tagged by jjh2b
 
-## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('AIM Tutorial: New Problems')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(WeBWorK)
+## DBchapter(WeBWorK tutorial)
+## DBsection(AIM tutorial: new problems)
+## Institution(Rochester)
+## MO(1)
+## KEYWORDS('sample','webwork','new')
 
 DOCUMENT();       # This should be the first executable line in the problem.
 
 loadMacros(
-"PGstandard.pl",  # Standard macros for PG language
-"PGcourse.pl",    # Contains customization settings for the course
-"MathObjects.pl", # Macros for the different types of Math Objects: 
-                  #      (Real, Complex, List, Point, Vector, Matrix, Interval, 
-                  #       Set, Union, String, Formula), containing information 
-                  #       such as the appropriate answer checker associated 
-                  #       which each object. 
-# "source.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -97,5 +86,5 @@ ANS($deriv->cmp);
 ANS($TangentLine->cmp);
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

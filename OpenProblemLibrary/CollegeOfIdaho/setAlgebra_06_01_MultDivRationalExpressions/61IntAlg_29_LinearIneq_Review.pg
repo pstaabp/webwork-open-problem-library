@@ -3,16 +3,18 @@
 ## 
 ##ENDDESCRIPTION
 ## DBsubject(Algebra)
-## DBchapter(Rational expressions, functions and equations)
-## DBsection('Rational Expressions and Functions: Multipying and Dividing')
-## KEYWORDS('linear inequality')
+## DBchapter(Linear equations and functions)
+## DBsection(Graphs of lines)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## Level(2)
+## MO(1)
 ## TitleText1('Essentials of Intermediate Algebra')
-## EditionText1('1')
 ## AuthorText1('Blitzer')
+## EditionText1('1')
 ## Section1('6.1')
 ## Problem1('')
-## Author('RA Cruz')
-## Institution('The College of Idaho')
+## KEYWORDS('linear inequality')
 ## Date: 2007/11
 
 DOCUMENT(); # This should be the first executable line in the problem.
@@ -24,7 +26,8 @@ loadMacros(
   "PGgraphmacros.pl",
   "PGnauGraphics.pl",
   "contextInequalitiesAllowStrings.pl",
-  "answerHints.pl"
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -90,7 +93,7 @@ do {
 BEGIN_TEXT
 \{ Plot($graph, tex_size => 600) \}
 $BR $BR
-REVIEW: The graph of a linear equation, \(y = f(x)\) is shown above.  
+The graph of a linear equation, \(y = f(x)\) is shown above.  
 Find the interval where  \( $inequality[$choose[0]]\).
 $PAR
 Answer: \{ans_rule(15)\}
@@ -111,6 +114,6 @@ $showPartialCorrectAnswers = 1;
 ######################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 

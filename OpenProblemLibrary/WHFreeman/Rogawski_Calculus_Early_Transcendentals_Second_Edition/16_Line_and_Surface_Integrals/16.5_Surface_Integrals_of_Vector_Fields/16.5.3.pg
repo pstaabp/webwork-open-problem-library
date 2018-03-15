@@ -1,24 +1,28 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Line and Surface Integrals)
-## DBsection(Surface Integrals of Vector Fields)
+## DBchapter(Vector calculus)
+## DBsection(Surface integrals of vector fields)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('16.5')
 ## Problem1('3')
 ## KEYWORDS('calculus')
-## UsesAuxiliaryFiles('image_16_5_3.png')
+## RESOURCES('image_16_5_3.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGauxiliaryFunctions.pl");
-loadMacros("PGgraphmacros.pl");
-loadMacros("PGchoicemacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -45,13 +49,12 @@ Context()->texStrings;
 BEGIN_TEXT
 \{ textbook_ref_exact("Rogawski ET 2e", "16.5","3") \}
 $PAR
-Let \($surf\) be the square in the \(xy\)-plane shown in the Figure below
-, oriented with the normal pointing in the
+Let \($surf\) be the square in the \(xy\)-plane shown in the figure below, oriented with the normal pointing in the
 positive \(z\)-direction.  Estimate
 \[\iint_{$surf} $FF \cdot \,d\mathbf{S}\]
 where \($FF\) is a vector
 field whose values at the labeled points are
-\[\begin{array}{11} $FF(A) &= $faV,&\qquad $FF(B) &= $fbV\\
+\[\begin{array}{llll} $FF(A) &= $faV,&\qquad $FF(B) &= $fbV\\
                     $FF(C) &= $fcV,&\qquad $FF(D) &= $fdV\end{array}
 \]
 \{image("image_16_5_3.png", width=>163, height=>167)\} $PAR

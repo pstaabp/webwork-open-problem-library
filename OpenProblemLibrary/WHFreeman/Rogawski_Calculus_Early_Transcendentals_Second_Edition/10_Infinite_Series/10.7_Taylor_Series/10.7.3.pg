@@ -1,25 +1,34 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Infinite Sequences and Series)
-## DBsection(Taylor and Maclaurin series)
+## DBchapter(Infinite sequences and series)
+## DBsection(Interval of convergence of a power series)
 ## Institution(W.H.Freeman)
 ## Author(Emily Price)
+## MLT(SeriesForCOverLinear)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('10.7')
 ## Problem1('3')
-## KEYWORDS('')
+## KEYWORDS('calculus', 'series', 'sequences', 'power series', 'convergence', 'radius of convergence', 'interval of convergence')
 DOCUMENT();
 
 
 
 #Load Necessary Macros
 
-loadMacros("PG.pl", "PGbasicmacros.pl", "PGchoicemacros.pl", "PGanswermacros.pl", );
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
 
+TEXT(beginproblem());
 Context()->variables->add(n=>'Real');
 
 #Book Values
@@ -39,7 +48,6 @@ $interval = Interval("(-1/$constant,1/$constant)");
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "10.7", "3") \}
 $PAR
 Find the Maclaurin series and corresponding interval of convergence of the following function.

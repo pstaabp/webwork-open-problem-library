@@ -1,9 +1,11 @@
 ##DESCRIPTION
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Approximating Integrals')
-## Author('Jim Swift')
-## Institution('NAU')
+## DBchapter(Techniques of integration)
+## DBsection(Approximation)
+## Institution(NAU)
+## Author(Jim Swift)
+## MLT(approx_03)
+## Level(2)
 ## KEYWORDS('integrals', 'approximation', 'Simpson')
 ## New problem by Jim Swift @ NAU  2006/01/30
 ##ENDDESCRIPTION
@@ -11,12 +13,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"Parser.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

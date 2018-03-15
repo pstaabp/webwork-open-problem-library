@@ -2,28 +2,21 @@
 ##  Sample of new style problem.
 ## ENDDESCRIPTION
 
-## KEYWORDS('sample','webwork','new')
 ## Tagged by jjh2b
 
-## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('AIM Tutorial: New Problems')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(WeBWorK)
+## DBchapter(WeBWorK tutorial)
+## DBsection(AIM tutorial: new problems)
+## Institution(Rochester)
+## MO(1)
+## KEYWORDS('sample','webwork','new')
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGcourse.pl",
-"MathObjects.pl",
-# "source.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -99,5 +92,5 @@ ANS($answ->cmp(checker=>$checker));
   # Uses the custom answer checker defined above to show an error message.
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

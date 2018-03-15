@@ -4,17 +4,14 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-"contextCurrency.pl",
- #"unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
-#"answerHints.pl", 
-"problemPanic.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "contextCurrency.pl",
+  "contextLeadingZero.pl",
+  "problemPanic.pl",
+  "PGcourse.pl"
 );
 Context("Numeric");
 
@@ -84,9 +81,12 @@ ANS(Real($c1)->cmp);
 ANS(Real($c2)->cmp);
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Graphs')
-## DBsection('')
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Plotting points)
+## MLT(id_points_from_graph)
+## Level(2)
+## MO(1)
 

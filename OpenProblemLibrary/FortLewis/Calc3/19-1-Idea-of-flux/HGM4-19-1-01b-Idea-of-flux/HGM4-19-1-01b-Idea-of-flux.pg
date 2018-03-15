@@ -4,11 +4,12 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Surface Integrals)
+## DBchapter(Vector calculus)
+## DBsection(Surface integrals of vector fields)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(2)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -24,14 +25,13 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"PGcourse.pl",
-"PGunion.pl",
-"MathObjects.pl",
-"LiveGraphics3D.pl",
-#"LiveGraphicsVectorField3D.pl",
-"PGgraders.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGunion.pl",
+  "MathObjects.pl",
+  "LiveGraphics3D.pl",
+  "PGgraders.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -59,6 +59,14 @@ Context("Numeric")->variables->are(x=>"Real",y=>"Real",z=>"Real",u=>"Real",v=>"R
 "Zero",
 "Zero",
 "Zero",
+);
+
+@explanation=(
+"The vector field is transverse to the surface and it has the same orientation as the surface. Thus the flux is positive",
+"The vector field is transverse to the surface and  oriented in the direction opposite  of the  orientation of the surface. Thus the flux is negative.",
+"The vector field is parallel to the surface. Thus the flux is zero.",
+"The vector field is parallel to the surface. Thus the flux is zero.",
+"The vector field is parallel to the surface. Thus the flux is zero.",
 );
 
 @perm = shuffle(5);
@@ -128,8 +136,16 @@ ANS(str_cmp([@answer[@perm]]));
 
 COMMENT("Uses interactive graphics");
 
+@explanationp=@explanation[@perm];
+BEGIN_SOLUTION
+$PAR SOLUTION $BR $BR
+$explanationp[0] $BR $BR
+$explanationp[1] $BR $BR
+$explanationp[2] $BR $BR
+$explanationp[3] $BR $BR
+$explanationp[4] $BR $BR
+END_SOLUTION
 
-COMMENT('MathObject version');
 ENDDOCUMENT();
 
 

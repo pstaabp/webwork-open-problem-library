@@ -4,21 +4,21 @@
 
 ## Tagged by XW
 
-## DBsubject('Financial Mathematics')
-## DBchapter('Annuities')
-## DBsection('Annuities')
-## Institution('ASU')
+## DBsubject(Financial mathematics)
+## DBchapter(Annuities)
+## DBsection(Sinking funds)
+## Institution(ASU)
+## MLT(Sinking_Funds_Future_Value_Deposit_Wait)
+## Level(5)
 ## KEYWORDS('percent', 'mathematics for business', 'algebraic expression')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

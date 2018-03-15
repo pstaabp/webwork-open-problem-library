@@ -6,7 +6,7 @@
 ## tcao , PAID on 11-24-2003
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Continuity - concept of)
 ## Date(6/3/2002)
 ## MLT(cc-e)
@@ -18,12 +18,11 @@
 ## Problem1('18')
 ## KEYWORDS('limit', 'continuity')
 
-DOCUMENT();        # This should be the first executable line in the problem.
+DOCUMENT(); 
 
 loadMacros(
-"PGbasicmacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -52,5 +51,6 @@ END_TEXT
 ANS(str_cmp("A"));
 
 COMMENT('It is best to give only one attempt for this problem.');
+COMMENT('Answer is always the same.');
 
-ENDDOCUMENT();        # This should be the last executable line in the problem.
+ENDDOCUMENT();

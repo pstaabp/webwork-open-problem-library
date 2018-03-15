@@ -5,9 +5,11 @@
 ## Tagged by tda2d
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Exponential Growth and Decay)
+## DBchapter(First order differential equations)
+## DBsection(Applications - exponential growth & decay)
 ## Institution(Dartmouth)
+## MLT(applications_exponential_bacteria_formula_findY_findT)
+## Level(5)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -17,13 +19,13 @@
 
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers
@@ -72,7 +74,7 @@ $k = log($later/$initial)/$t1;
 ANS(fun_cmp("$initial*exp($k*t)", var=>['t']));
 ANS(num_cmp($initial*exp($k*($t1+1)), tol=>2));
 ANS(num_cmp($initial*exp($k*($t1+1))*$k, tol=>2));
-ANS(num_cmp(log(30000/$initial)/$k, tol=>2));
+ANS(num_cmp("ln(30000/$initial)/$k", tol=>2));
 
 ENDDOCUMENT();
 

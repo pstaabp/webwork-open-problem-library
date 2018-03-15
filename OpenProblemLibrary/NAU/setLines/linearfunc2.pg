@@ -1,20 +1,20 @@
 ##DESCRIPTION
-## DBsubject('Algebra')
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Linear functions)
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Institution(NAU)
+## Author(John Hagood)
+## MLT(LineFromPoints)
+## Level(5)
 ## KEYWORDS('linear function')
-## Author('John Hagood')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

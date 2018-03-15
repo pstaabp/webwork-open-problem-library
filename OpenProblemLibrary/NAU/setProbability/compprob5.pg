@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Probability')
-## DBchapter('Discrete Probability')
-## DBsection('Events/Probability Calculation')
+## DBsubject(Probability)
+## DBchapter(Sample Space)
+## DBsection(Conditional probability -- direct)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## Level(3)
 ## KEYWORDS('probability')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 6/20/05
@@ -14,12 +15,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

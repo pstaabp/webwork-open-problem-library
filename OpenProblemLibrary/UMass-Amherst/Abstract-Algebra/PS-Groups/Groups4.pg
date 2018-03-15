@@ -1,28 +1,23 @@
-## DBsubject('Abstract Algebra')
-## DBchapter('Groups')
-## DBsection('Group axioms')
-## KEYWORDS('inverse, identity')
+## DBsubject(Abstract algebra)
+## DBchapter(Groups)
+## DBsection(Group axioms)
+## Institution(University of Massachusetts Amherst)
+## Author(Siman Wong, Patrick O'Brien', Dan Nichols)
 ## Level(2)
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Siman Wong, Patrick O'Brien', Dan Nichols)
-## Institution('University of Massachusetts Amherst')
+## Static(1)
+## MO(1)
+## KEYWORDS('inverse, identity')
 
 
 
 DOCUMENT();        
 
 loadMacros(
-"PG.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"unionTables.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 

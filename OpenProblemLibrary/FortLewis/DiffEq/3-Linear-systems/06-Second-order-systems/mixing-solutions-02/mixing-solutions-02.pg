@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Systems of Differential Equations)
+## DBchapter(Systems of differential equations)
+## DBsection(Applications)
 ## Date(03/19/2011)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(SDE-A-mixture)
+## Level(5)
+## MO(1)
 ## TitleText1('Notes on Diffy Qs')
 ## AuthorText1('')
 ## EditionText1('December 9, 2010')
@@ -23,12 +26,12 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGmatrixmacros.pl",
-"MathObjects.pl",
-#"parserMultiAnswer.pl",
-"unionTables.pl",
-"unionLists.pl",
+  "PGstandard.pl",
+  "PGmatrixmacros.pl",
+  "MathObjects.pl",
+  "unionTables.pl",
+  "unionLists.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -126,6 +129,6 @@ ANS( $xinf->cmp() );
 ANS( $yinf->cmp() );
 
 
-COMMENT('MathObject version.');
+;
 
 ENDDOCUMENT();

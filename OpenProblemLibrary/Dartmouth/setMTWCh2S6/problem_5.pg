@@ -5,9 +5,11 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Partial Derivatives)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Chain rule)
 ## Institution(Dartmouth)
+## Level(3)
+## Static(1)
 ## TitleText1('Basic Multivariable Calculus')
 ## AuthorText1('Marsden, Tromba, Weinstein')
 ## EditionText1('3')
@@ -16,9 +18,9 @@
 ## KEYWORDS('partial' 'differentiation')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
+loadMacros(
+  "PGstandard.pl",
+  "PGcourse.pl"
 );
  
 

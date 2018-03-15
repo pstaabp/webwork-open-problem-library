@@ -1,39 +1,44 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Trigonometry)
 ## DBchapter(Trigonometric functions)
-## DBsection(Introduction to Periodic Functions)
+## DBsection(Modeling with trigonometric functions)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## MLT(Ferris_wheel)
+## Level(5)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('6.1')
-## Problem1('18')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(6.1)
 ## Section2('7.1')
+## Section3('7.1')
+## Problem1(17)
 ## Problem2('18')
+## Problem3('25')
 ## KEYWORDS('periodic','period','amplitude','midline','ferris wheel')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGgraphmacros.pl",
-#           "PGauxiliaryFunctions.pl",
-           "parserPopUp.pl",
-"MathObjects.pl",
-"parserNumberWithUnits.pl",
-"PGcourse.pl",
-"unionTables.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "parserPopUp.pl",
+  "MathObjects.pl",
+  "parserNumberWithUnits.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -267,7 +272,7 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 

@@ -1,23 +1,23 @@
-## Author('Utah ww group')
-## Institution('Univeristy of Utah')
-## DBsubject('Algebra')
-## DBchapter('Coordinates and Graphs')
-## DBsection('The Coordinate Plane')
-## AuthorText1('Dale Varberg, Edwin J. Purcell, and Steven E. Rigdon')
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Midpoint and distance formulas)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## Level(4)
+## Static(1)
 ## TitleText1('Calculus')
+## AuthorText1('Dale Varberg, Edwin J. Purcell, and Steven E. Rigdon')
 ## EditionText1('9')
-## Section1('Preliminaries')
+## Section1('.')
 ## Problem1('')
 ## KEYWORDS('calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -2,28 +2,46 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS('calculus','integration','area','area between curves')
 ## Tagged by cmd6a 8/9/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Applications of Integration')
-## DBsection('Areas Between Curves')
-## Date('8/23/07')
-## Author('')
-## Institution('Union College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBchapter(Applications of integration)
+## DBsection(Areas between curves)
+## Date(6/3/2002)
+## Institution(Univeristy of Utah)
+## Author(Utah ww group)
+## MLT(AI-A-one-noTrig)
+## Level(4)
+## MO(1)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Stewart')
+## EditionText1('6')
+## Section1('6.1')
+## Problem1('6 8 9 15 18')
+## TitleText2('Calculus: Early Transcendentals')
+## AuthorText2('Rogawski')
+## EditionText2('1')
+## Section2('6.1')
+## Problem2('11')
+## TitleText3('Calculus: Early Transcendentals')
+## AuthorText3('Stewart')
+## EditionText3('5')
+## Section3('6.1')
+## Problem3('6')
+## TitleText4('Mathematical Applications')
+## AuthorText4('Ronal J. Harshbarger and James J. Reynolds')
+## EditionText4('8')
+## Section4('.')
+## Problem4('')
+## KEYWORDS('calculus','integration','area','area between curves','integrals', 'area between curvers', 'integration', 'integrals', 'areas between curves')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -45,7 +63,7 @@ $end2=1;
 
 Context()->texStrings;
 BEGIN_TEXT
-Sketch the region enclosed by \(y = $curve1, y=$curve2\) and \(x=1\).
+Sketch the bounded region enclosed by \(y = $curve1, y=$curve2\) and \(x=1\).
 $PAR
 Decide whether to integrate with respect to \(x\) or \(y\), and
 then find the area of the region.
@@ -71,5 +89,5 @@ ANS(Real($answer)->cmp);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

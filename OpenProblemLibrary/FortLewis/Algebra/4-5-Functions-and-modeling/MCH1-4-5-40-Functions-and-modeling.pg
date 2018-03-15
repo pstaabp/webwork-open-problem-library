@@ -2,22 +2,23 @@
 ## Functions and modeling
 ## ENDDESCRIPTION
 
-## KEYWORDS('functions')
 
-## DBsubject('Algebra') 
 ## BookTitle('Algebra: Form and Function')
-## DBchapter('Functions') 
 ## BookChapter('Functions, Expressions, and Equations')
-## DBsection('Modeling with Functions') 
-## BookSection('Functions and Modeling')
-## Date('01/01/10')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBsubject(Algebra)
+## DBchapter(Variation and power functions)
+## DBsection(Direct variation)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Algebra: Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum, Connally, and Hughes-Hallett')
+## EditionText1('1')
 ## Section1('4.5')
 ## Problem1('40')
+## KEYWORDS('functions')
 
 
 ##############################################
@@ -26,13 +27,12 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGcourse.pl",
-"AnswerFormatHelp.pl",
-#"contextFraction.pl",
-"parserPopUp.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -103,5 +103,5 @@ ANS($units->cmp() );
 ANS(radio_cmp( $mc->correct_ans() ) );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

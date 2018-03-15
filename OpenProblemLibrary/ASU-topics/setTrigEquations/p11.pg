@@ -2,32 +2,25 @@
 ## Precalculus: Trigonometry
 ## ENDDESCRIPTION
 
-## KEYWORDS('precalculus','trigonometric equation')
 ## Tagged by cmd6a 6/21/06
 
-## DBsubject('Trigonometry')
-## DBchapter('Analytic Trigonometry')
-## DBsection('Trigonometric Equations')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Trigonometry)
+## DBchapter(Analytic trigonometry)
+## DBsection(Solving trigonometric equations exactly)
+## Institution(Rochester)
+## MLT(factorForm)
+## Level(3)
+## KEYWORDS('precalculus','trigonometric equation','trigonometry')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraphmacros.pl",
-"PGasu.pl",
-"extraAnswerEvaluators.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGasu.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -58,7 +51,7 @@ by commas.
 $PAR
 \( 2\sin t \cos t $value1[$tag1] $value2[$tag1] -1 =0 \) 
 $PAR
-x = \{ans_rule(12) \} \( \pi\)
+t = \{ans_rule(12) \} \( \pi\)
 
 EOT
 ANS(no_decimal_list("$ans1[$tag1],$ans2[$tag1],$ans3[$tag1]"));

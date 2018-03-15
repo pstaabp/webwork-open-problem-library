@@ -2,27 +2,31 @@
 ## Functions: Input and Output
 ## ENDDESCRIPTION
 
-## KEYWORDS('exponential functions','growth rate','growth factor')
 
-## DBsubject('Algebra')
-## DBchapter('Logarithms')
-## DBsection('Solving Equations')
-## Date('12/05/10')
-## Author('Erich McAlister')
-## Institution('Fort Lewis College')
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Exponential and logarithmic equations)
+## Date(12/05/10)
+## Institution(Fort Lewis College)
+## Author(Erich McAlister)
+## MLT(ELEqMLT4G)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Algebra: Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum')
+## EditionText1('1')
 ## Section1('11.2')
 ## Problem1('30')
+## KEYWORDS('exponential functions','growth rate','growth factor')
 
 DOCUMENT();  
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -66,9 +70,9 @@ Context()->normalStrings;
 
 $showPartialCorrectAnswers = 1;
 
-ANS( Compute("log(1/3)")->cmp() );
+ANS( Compute("logten(1/3)")->cmp() );
 
 
 
-COMMENT('MathObject version.  Uses log = log10.');
+COMMENT('Uses log = log10.');
 ENDDOCUMENT();

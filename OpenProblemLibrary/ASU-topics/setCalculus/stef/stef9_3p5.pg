@@ -6,8 +6,8 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Separable equations)
+## DBchapter(First order differential equations)
+## DBsection(Applications - other)
 ## Institution(ASU)
 ## Level(5)
 ## TitleText1('Calculus: Early Transcendentals')
@@ -25,13 +25,11 @@
 DOCUMENT() ;        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGdiffeqmacros.pl"
-) ;
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGdiffeqmacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem()) ;
 $showPartialCorrectAnswers = 1 ;

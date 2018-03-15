@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Apply Ohm's Law and KVL to a dc circuit
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Nodal and Loop Analysis Techniques')
-## DBsection('Nodal Analysis')
+## DBsubject(Electric circuits)
+## DBchapter(Nodal and loop analysis techniques)
+## DBsection(Nodal analysis)
 ## Institution('Northern Arizona University')
 ## Author('Elizabeth J. Brauer')
 ## TitleText1('Basic Engineering Circuit Analysis')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

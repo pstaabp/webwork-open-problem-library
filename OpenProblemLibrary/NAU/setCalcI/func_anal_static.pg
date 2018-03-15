@@ -1,6 +1,6 @@
 ##DESCRIPTION
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Summary of curve sketching)
 ## Institution(NAU)
 ## Author(Nandor Sieben)
@@ -12,17 +12,12 @@
 DOCUMENT() ;
 
 loadMacros(
-"PGstandard.pl",
-"PGnauGraphics.pl",
-# "PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-# "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraphmacros.pl",
-# "PGdiffeqmacros.pl",
-# "unionMacros.pl",
-) ;
+  "PGstandard.pl",
+  "PGnauGraphics.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 COMMENT('No randomization.');
 

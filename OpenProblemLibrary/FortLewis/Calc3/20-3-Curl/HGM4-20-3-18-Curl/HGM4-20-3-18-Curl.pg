@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Curl and Divergence)
+## DBchapter(Vector calculus)
+## DBsection(Curl and divergence)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -24,15 +26,14 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"PGcourse.pl",
-"PGunion.pl",
-"MathObjects.pl",
-"LiveGraphics3D.pl",
-#"LiveGraphicsVectorField3D.pl",
-"parserVectorUtils.pl",
-"answerCustom.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGunion.pl",
+  "MathObjects.pl",
+  "LiveGraphics3D.pl",
+  "parserVectorUtils.pl",
+  "answerCustom.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -114,7 +115,7 @@ ANS($answerb->cmp() );
 COMMENT("Uses interactive graphics");
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 

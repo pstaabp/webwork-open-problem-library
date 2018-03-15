@@ -2,32 +2,25 @@
 ##   Apply the Normal Distribution
 ## ENDDESCRIPTION
 
-## KEYWORDS('Normal Distribution', 'Mean', 'Standard Deviation', 'Percentile')
 ## Tagged by nhamblet
 
-## DBsubject('Probability')
-## DBchapter('Distributions')
-## DBsection('Normal Distribution')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Probability)
+## DBchapter(Continuous distributions)
+## DBsection(Application of a normal distribution)
+## Institution(Rochester)
+## MLT(Temperature)
+## Level(2)
+## KEYWORDS('Normal Distribution', 'Mean', 'Standard Deviation', 'Percentile')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",   
-"PGauxiliaryFunctions.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

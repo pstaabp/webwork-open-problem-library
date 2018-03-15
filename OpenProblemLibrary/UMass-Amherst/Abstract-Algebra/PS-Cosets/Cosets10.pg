@@ -1,6 +1,6 @@
-## DBsubject('Abstract Algebra')
+## DBsubject(Abstract algebra)
 ## DBchapter('Groups')
-## DBsection('Cosets, Lagrange theorem and Normality')
+## DBsection(Cosets, Lagrange's theorem, and normality)
 ## KEYWORDS('cosets')
 ## Level(3)
 ## TitleText1('')
@@ -16,16 +16,13 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"parserRadioButtons.pl",
-"answerHints.pl",
-"algebraMacros.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "parserRadioButtons.pl",
+  "answerHints.pl",
+  "algebraMacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

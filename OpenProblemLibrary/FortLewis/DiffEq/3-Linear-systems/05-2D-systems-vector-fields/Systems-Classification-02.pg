@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Systems of Differential Equations)
+## DBchapter(Systems of differential equations)
+## DBsection(Phase planes)
 ## Date(03/19/2011)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(SDE-PP-DRE)
+## Level(4)
+## MO(1)
 
 
 ##################################
@@ -18,15 +21,15 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGmatrixmacros.pl",
-"MathObjects.pl",
-"parserMultiAnswer.pl",
-"MatrixUnimodular.pl",
-"unionLists.pl",
-"parserRadioButtons.pl",
-"weightedGrader.pl",
-#"problemRandomize.pl",
+  "PGstandard.pl",
+  "PGmatrixmacros.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "MatrixUnimodular.pl",
+  "unionLists.pl",
+  "parserRadioButtons.pl",
+  "weightedGrader.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -193,6 +196,6 @@ $showPartialCorrectAnswers = 1;
 WEIGHTED_ANS( $multians->cmp(), 95 );
 WEIGHTED_ANS( $radio->cmp(), 5 );
 
-COMMENT('MathObject version.  One positive and one negative integer eigenvalue.');
+COMMENT('One positive and one negative integer eigenvalue.');
 
 ENDDOCUMENT();

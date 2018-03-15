@@ -1,22 +1,30 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Change of Variables)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Change of variable)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.6')
 ## Problem1('37')
-## KEYWORDS('calculus', '')
-## UsesAuxiliaryFiles('image_15_5_37_a.png','image_15_5_37_b.png')
+## KEYWORDS('calculus')
+## RESOURCES('image_15_5_37_a.png','image_15_5_37_b.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl","PGchoicemacros.pl","PGauxiliaryFunctions.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGgraphmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $a=random(2,9);
 
@@ -29,7 +37,6 @@ $rec="\mathcal{R}";
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.6","37") \}
 $PAR
 Sketch the domain \($d\) bounded by

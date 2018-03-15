@@ -1,12 +1,17 @@
+## DBsubject(Trigonometry)
+## DBchapter(Geometric and algebraic foundations for trigonometry)
+## DBsection(Similar figures)
+## Level(3)
+## Static(1)
+## MO(1)
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"contextFraction.pl",
-"PGgraphmacros.pl",
-#"PGchoicemacros.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -117,5 +122,5 @@ $showPartialCorrectAnswers = 0;
 ANS($answer->cmp());
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

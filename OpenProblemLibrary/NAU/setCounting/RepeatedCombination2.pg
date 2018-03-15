@@ -1,17 +1,20 @@
 ##DESCRIPTION
-## DBsubject('Discrete Mathematics')
-## DBchapter('Combinatorics')
-## DBsection('Counting')
+## DBsubject(Combinatorics)
+## DBchapter(Counting)
+## DBsection(Multiple techniques)
+## Institution(NAU)
+## Author(Monika Keindl and Nandor Sieben)
+## Level(3)
+## MO(1)
 ## KEYWORDS('counting','repeated combinations')
-## Author('Monika Keindl and Nandor Sieben')
-## Institution('NAU')
 ##ENDDESCRIPTION
 # File Created: 1/21/13
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -38,7 +41,7 @@ Context()->texStrings;
 BEGIN_TEXT
 
 To avoid collisions with invasive species of aliens,
-new imperial regulations allow only integer space jumps parallel 
+new imperial regulations allow only positive integer space jumps parallel 
 to the three space axes defined in the Jedi council's booklet of
 rules and regulations. How many ways can the Millenium Falcon travel from
 Earth with coordinates ($a,$b,$c) to the Wookiee smugglers trading 

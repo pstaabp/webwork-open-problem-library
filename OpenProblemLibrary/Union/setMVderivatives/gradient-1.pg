@@ -5,10 +5,13 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Tangent Planes)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Differentiability, linearization and tangent planes)
 ## Date(8/23/07)
 ## Institution(Union College)
+## MLT(imptan)
+## Level(2)
+## MO(1)
 ## KEYWORDS('Tangent', 'Plane', 'Multivariable', 'Implicit')
 
 DOCUMENT();        # This should be the first executable line in the problem.
@@ -18,7 +21,7 @@ loadMacros(
   "PGunion.pl",
   "MathObjects.pl",
   "parserImplicitPlane.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 
@@ -81,5 +84,5 @@ $showPartialCorrectAnswers = 1;
 ##################################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

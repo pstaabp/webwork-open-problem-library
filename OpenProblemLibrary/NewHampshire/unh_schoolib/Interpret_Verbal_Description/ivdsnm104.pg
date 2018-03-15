@@ -1,8 +1,8 @@
 DOCUMENT();        # This should be the first executable line in the problem.
-loadMacros("PGbasicmacros.pl",
-        "PGchoicemacros.pl",
-        "PGanswermacros.pl",
-
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 # Make a new multiple choice
@@ -31,8 +31,9 @@ $PAR Solution $PAR
 END_SOLUTION
 
 ENDDOCUMENT();     
-## DBsubject(Middle school)
-## DBchapter('Interpret_Verbal_Description')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Decimals)
+## DBsection(Applications)
+## Level(5)
 
 

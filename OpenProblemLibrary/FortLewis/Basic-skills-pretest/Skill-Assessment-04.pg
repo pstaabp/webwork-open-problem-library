@@ -1,10 +1,16 @@
+## DBsubject(Algebra)
+## DBchapter(Rational equations and functions)
+## DBsection(Simplifying)
+## Level(3)
+## Static(1)
+## MO(1)
+## MLT(functionlintrans)
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-#"contextFraction.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -45,5 +51,5 @@ $showPartialCorrectAnswers = 0;
 ANS($answer->cmp());
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

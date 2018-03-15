@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -75,7 +75,7 @@ $PAR Solution $PAR
 There are 20 boxes in the map of Vermont.  \(\frac{3}{4}\times 20=15\) so he should shade $BR 15 boxes gray
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 $graph->moveTo(,);
@@ -195,7 +195,9 @@ IN THIS PROBLEM ON THE NECAP EXAM YOU WERE EXPECTED $BR
  TO SHOW YOUR WORK.  SOMETHING SIMILAR TO THE SOLUTION $BR
  ABOVE WOULD BE APPROPRIATE.    
 
-## DBsubject('NECAP')
-## DBchapter('Grade 5')
-## DBsection('2006')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Interpreting fractions)
+## Level(5)
+## MO(1)
 

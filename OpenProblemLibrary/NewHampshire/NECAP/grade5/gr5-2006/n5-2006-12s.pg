@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Numeric");
@@ -47,7 +47,7 @@ $BR
     ) \}
 
 $PAR
-She uses 24 toothpicks to make the square.  She made the hexagon so that its $BR are the same length as the sides of the square.$PAR
+She uses 24 toothpicks to make the square.  She made the hexagon so that each of its sides are the same length as a side of the square.$PAR
 She uses \{ans_rule(3 )\} toothpicks to make the hexagon.
 END_TEXT
 ANS(Real(36)->cmp);
@@ -57,11 +57,13 @@ A square has 4 sides so she must use \(\frac{1}{4}\times 24\) toothpicks one eac
 A hexagon has 6 side.  A side uses 6 toothpicks.$BR  So she must use \(6\times 6=36\) toothpicks for the hexagon.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 5')
-## DBsection('2006')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Applications)
+## Level(4)
+## MO(1)
 

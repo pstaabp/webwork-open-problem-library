@@ -2,22 +2,24 @@
 ## Quadratic functions, expressions, and equations
 ## ENDDESCRIPTION
 
-## KEYWORDS('quadratic functions')
 
-## DBsubject('Algebra') 
 ## BookTitle('Algebra: Form and Function')
-## DBchapter('Quadratic Functions') 
 ## BookChapter('Quadratic Functions, Expressions, and Equations')
-## DBsection('Factoring Quadratics') 
-## BookSection('Solving Quadratic Equations by Factoring')
-## Date('01/01/10')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBsubject(Algebra)
+## DBchapter(Factoring)
+## DBsection(Factoring: common factors)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Algebra: Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum, Connally, and Hughes-Hallett')
+## EditionText1('1')
 ## Section1('9.4')
 ## Problem1('27')
+## KEYWORDS('quadratic functions')
+## MLT(common_factors_more_involved)
 
 
 ####################################
@@ -26,12 +28,12 @@
 DOCUMENT();  
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-"contextPolynomialFactors.pl",
-"contextLimitedPowers.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "contextPolynomialFactors.pl",
+  "contextLimitedPowers.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -98,6 +100,6 @@ ANS($factored->cmp() );
 ANS(List($ans1,$ans2)->cmp() );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 

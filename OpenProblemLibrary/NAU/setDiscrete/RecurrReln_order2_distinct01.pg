@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Discrete Mathematics')
-## DBchapter('Number Theory')
-## DBsection('Recurrence Relations')
+## DBsubject(Combinatorics)
+## DBchapter(Recurrence relations)
+## DBsection(Solving homogeneous)
+## Institution(NAU)
+## Author(John Hagood)
+## Level(2)
 ## KEYWORDS('nonhomogeneous', 'recurrence')
-## Author('John Hagood')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # March 1, 2006
@@ -12,11 +13,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

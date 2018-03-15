@@ -1,8 +1,13 @@
+## Static(1)
 ## Universal set header file by Paul Pearson, January 2010
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","unionLists.pl");
+loadMacros(
+  "PGstandard.pl",
+  "unionLists.pl",
+  "PGcourse.pl"
+);
 
 TEXT($BEGIN_ONE_COLUMN);
 

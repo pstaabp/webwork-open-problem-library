@@ -5,11 +5,13 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Rates of change - engineering and physics)
 ## Institution(ASU)
 ## Level(5)
 ## KEYWORDS('Differentiation' 'Rates of Change')
+## MLT(thrown_up)
+## MLTleader(1)
 
 #
 # First comes some stuff that appears at the beginning of every problem
@@ -18,9 +20,8 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGanswermacros.pl",
+  "PGstandard.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

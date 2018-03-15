@@ -5,19 +5,19 @@
 ## Tagged by cmd6a 3/10/06
 
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Exact equations)
+## DBchapter(First order differential equations)
+## DBsection(Exact)
 ## Institution(ASU)
+## MLT(Exact_Mixed_Partials_Level_Curves)
+## Level(3)
 
 DOCUMENT() ;        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem()) ;

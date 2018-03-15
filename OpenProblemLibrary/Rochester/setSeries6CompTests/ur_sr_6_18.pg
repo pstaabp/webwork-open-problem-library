@@ -5,9 +5,11 @@
 ## Tagged by cmd6a 5/6/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Strategy for Testing Series')
-## Date('6/3/2002')
+## DBchapter(Infinite sequences and series)
+## DBsection(Strategy for testing series)
+## Date(6/3/2002)
+## MLT(Best_statement_reason)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -18,11 +20,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -70,7 +70,7 @@ $questions[5] = EV2( " \( \displaystyle \sum^\infty_{n=5} \; \frac{ ($a3 -1) \cd
 TEXT(EV2(<<EOT));
 $BR
 For each of the series below select the  letter from a to c that
-best applies and the letter from d to k that best applies.
+best applies and the letter from d to j that best applies.
 A possible correct answer is af, for example.  $BR
 EOT
 

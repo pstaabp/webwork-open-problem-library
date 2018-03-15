@@ -4,21 +4,13 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-"answerHints.pl",
-"problemPanic.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextCurrency.pl",
+  "answerHints.pl",
+  "problemPanic.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -32,7 +24,7 @@ $h5=$h*5;
 $tot=Currency($h*5+$b);
 ;
 BEGIN_TEXT
-Ken wants to earn $tot to buy a computer game.  He uses the equation below to$BR the number of hours, \(h\), he needs to babysit to earn the  $tot.$PAR
+Ken wants to earn $tot to buy a computer game.  He uses the equation below to$BR determine the number of hours, \(h\), he needs to babysit to earn the  $tot.$PAR
 \(5h+$b=$totx\).$PAR
 Ken needs to babysit for \{ans_rule(3)\} hours to earn enough money to buy the
 computer game.
@@ -47,11 +39,13 @@ What remains is to just solve the equation.  Subtracting $b from each side we ge
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 8')
-## DBsection('2008')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Solving linear equations in one variable)
+## Level(2)
+## MO(1)
 

@@ -10,6 +10,7 @@
 ## Date(8/23/07)
 ## Institution(Union College)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Anton')
 ## EditionText1('7')
@@ -21,15 +22,16 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
 
 ###################################
 # Setup
+
 
 $a = random(2,9,1);
 $b  = random(2,8,1);
@@ -66,5 +68,5 @@ ANS(Formula($derv)->with(limits => [2,4], tolerance => .001)->cmp);
 
 ###################################
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

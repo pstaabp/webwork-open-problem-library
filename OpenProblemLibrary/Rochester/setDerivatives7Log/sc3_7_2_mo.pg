@@ -10,6 +10,7 @@
 ## Date(6/3/2002)
 ## Institution(Rochester)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('1')
@@ -25,10 +26,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   #"source.pl",         # used to display problem source button
-   "PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -63,13 +63,14 @@ $fpatx1 = $fp->eval(x=>$x1);
 Context()->texStrings;
 BEGIN_TEXT
 If \( f(x) = $f  \), find \( f'( x ) \).
-$PAR 
-\{ans_rule(50) \}
+$BR$BR 
+\( f'(x) = \)\{ans_rule(50) \}
 
-$PAR
+$BR$BR
 Find \( f'( $x1 ) \).
-$PAR \{ans_rule(50) \}
-$BR
+$BR$BR 
+\( f'($x1) = \)\{ans_rule(50) \}
+
 END_TEXT
 Context()->normalStrings;
 
@@ -82,7 +83,5 @@ Context()->normalStrings;
 ANS($fp->cmp, $fpatx1->cmp);
 
 
-COMMENT('MathObject version');
-
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

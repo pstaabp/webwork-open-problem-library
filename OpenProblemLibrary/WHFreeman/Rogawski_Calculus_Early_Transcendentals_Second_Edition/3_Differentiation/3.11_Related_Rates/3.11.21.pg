@@ -1,9 +1,10 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Related rates)
 ## Institution(UCSB)
 ## Author(Keith Thompson)
 ## Level(5)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -12,9 +13,14 @@
 ## KEYWORDS('calculus','derivatives', 'related rates')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $pi=arctan(1)*4;
 $denom=random(3,6,1);
@@ -27,8 +33,7 @@ $showdhdt = int($decimals * $dhdt) / $decimals;
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \} \{
-textbook_ref_exact("Rogawski ET 2e", "3.11","21") \}
+\{ textbook_ref_exact("Rogawski ET 2e", "3.11","21") \}
 
 $PAR
 A hot air balloon rising vertically is tracked by an observer located

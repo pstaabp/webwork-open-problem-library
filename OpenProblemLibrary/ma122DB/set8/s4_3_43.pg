@@ -7,12 +7,13 @@
 ## lcao , PAID on 11-24-2003
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Concavity and points of inflection)
 ## Date(6/3/2002)
 ## Institution(Rochester)
 ## MLT(Concavity_CubicOverQuadratic)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -28,11 +29,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGbasicmacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"extraAnswerEvaluators.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
 
 Context('Interval');

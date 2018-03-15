@@ -5,11 +5,12 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Graphs and Level Surfaces)
+## DBchapter(Concepts for multivariable functions)
+## DBsection(Surfaces)
 ## Date(10/23/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(2)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('5')
@@ -28,11 +29,10 @@ loadMacros(
   "PGstandard.pl",
   "PGunion.pl",
   "MathObjects.pl",
-#  "contextABCD.pl",
   "imageChoice.pl",
   "LiveGraphics3D.pl",
-  "PGcourse.pl",
-"PGgraders.pl",
+  "PGgraders.pl",
+  "PGcourse.pl"
 );
 
 
@@ -134,5 +134,5 @@ ANS(str_cmp($ml->ra_correct_ans));
 COMMENT("Uses interactive graphs.");
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -5,22 +5,22 @@
 ## Tagged by tda2d
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Modeling with Differential Equations)
+## DBchapter(First order differential equations)
+## DBsection(Equilibrium points and phase lines)
 ## Institution(Rochester)
+## MLT(eq_pt_01)
+## Level(4)
 ## KEYWORDS('differential equation' 'stability')
 
 DOCUMENT() ;        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraphmacros.pl",
-"PGdiffeqmacros.pl"
-) ;
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGdiffeqmacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem()) ;
 $showPartialCorrectAnswers = 0 ;

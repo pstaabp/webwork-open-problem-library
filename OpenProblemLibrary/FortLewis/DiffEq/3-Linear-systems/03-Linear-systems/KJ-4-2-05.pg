@@ -2,19 +2,22 @@
 ## Systems of ODEs: introduction to systems of ODEs
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','systems of ODEs')
 
 ## DBsubject(Differential equations)
-## DBchapter('Linear systems')
-## DBsection('Linear Systems')
-## Date('01/30/2012')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Systems of differential equations)
+## DBsection(Distinct real eigenvalues)
+## Date(01/30/2012)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(3)
+## Static(1)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
-## EditionText1('2006')
 ## AuthorText1('Kohler and Johnson')
+## EditionText1('2006')
 ## Section1('4.2')
 ## Problem1('5')
+## KEYWORDS('differential equations','systems of ODEs')
 
 
 ##############################
@@ -23,9 +26,10 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"unionLists.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "unionLists.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -187,6 +191,6 @@ ANS( ($matrix[2]*$y1)->cmp() );
 ANS( ($matrix[3]*$y2)->cmp() );
 
 
-COMMENT("MathObject version");
+
 
 ENDDOCUMENT();

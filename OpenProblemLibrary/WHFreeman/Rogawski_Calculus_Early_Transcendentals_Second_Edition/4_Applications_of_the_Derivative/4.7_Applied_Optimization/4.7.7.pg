@@ -1,16 +1,15 @@
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-          );
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Optimization - general)
 ## MLT(Optimization_NormanWindow)
 ## Institution(W.H.Freeman)
@@ -22,7 +21,7 @@ loadMacros("freemanMacros.pl");
 ## Section1('4.7')
 ## Problem1('7')
 ## KEYWORDS('calculus', 'derivatives', 'optimization')
-## UsesAuxiliaryFiles('question4-6-9.png')
+## RESOURCES('question4-6-9.png')
 
 ## Show partial correct answers
 $showPartialCorrectAnswers = 0;

@@ -6,13 +6,14 @@
 ## tsuda tagged and PAID on 2-20-2004
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Limits at infinity, horizontal and oblique asymptotes)
 ## Date(6/3/2002)
 ## Institution(ASU)
 ## MLT(liminfexpo)
 ## MLTleader(1)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('4')
@@ -38,10 +39,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-   "PGstandard.pl",      # Standard macros for PG language
-   "PGchoicemacros.pl",
-   "MathObjects.pl",
-   "PGcourse.pl",        # Customization file for the course
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 
@@ -108,7 +109,7 @@ $ans2 = $a / $b;
 ANS($ans1->cmp);
 ANS($ans2->cmp);
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

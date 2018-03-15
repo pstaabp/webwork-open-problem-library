@@ -4,11 +4,12 @@
 
 
 ## DBsubject(Trigonometry)
-## DBchapter(Right Triangle Trigonometry)
-## DBsection(Applications to Right Triangles)
+## DBchapter(Triangle trigonometry)
+## DBsection(Applications of special triangles & right triangles)
 ## Date(January 2012)
 ## Institution(Mississippi College)
 ## Author(John Travis)
+## Level(2)
 ## TitleText1('Trigonometry')
 ## AuthorText1('')
 ## EditionText1('')
@@ -19,12 +20,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 

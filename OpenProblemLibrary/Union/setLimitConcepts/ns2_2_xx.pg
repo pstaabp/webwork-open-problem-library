@@ -5,7 +5,7 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(One-sided limits - concept of)
 ## Date(6/3/2002)
 ## Institution(Univeristy of Utah)
@@ -13,6 +13,7 @@
 ## MLT(limits_one_sided_three_line_and_point_spline)
 ## MLTleader(1)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -34,10 +35,10 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "alignedChoice.pl",      # for aligned answer blanks
-  "PGcourse.pl",           # Customization file for the course
+  "alignedChoice.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -87,7 +88,7 @@ Let
 \]
 Sketch the graph of this function and find the following
 limits, if they exist.$BR
-${BITALIC}(If a limit does not exist, enter ${LQ}DNE${RQ}.)${EITALIC}
+(${BITALIC}If a limit does not exist, enter ${EITALIC}${BBOLD}DNE${EBOLD}.)
 $PAR
 \{$alignment->print_q\}
 END_TEXT
@@ -102,5 +103,5 @@ ANS($alignment->correct_ans);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

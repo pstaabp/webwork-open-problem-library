@@ -2,28 +2,31 @@
 ##  Financial mathematics: Bonds
 ## ENDDESCRIPTION
 
-## KEYWORDS('financial mathematics', 'bonds')
 ## JJH tagged this problem.
 
-## DBsubject('Financial Mathematics')
-## DBchapter('Bonds')
-## DBsection('Bonds')
-## Date('5/22/2005')
-## Author('Jeff Holt')
-## Institution('UVA')
+## DBsubject(Financial mathematics)
+## DBchapter(Bonds)
+## DBsection(Prices and coupon rates)
+## Date(5/22/2005)
+## Institution(UVA)
+## Author(Jeff Holt)
+## MLT(bond4)
+## MLTleader(1)
+## Level(3)
 ## TitleText1('Financial Mathematics')
-## EditionText1('1')
 ## AuthorText1('Holt')
+## EditionText1('1')
 ## Section1('4.2')
-## Problem1()
+## Problem1('')
+## KEYWORDS('financial mathematics', 'bonds')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 0;

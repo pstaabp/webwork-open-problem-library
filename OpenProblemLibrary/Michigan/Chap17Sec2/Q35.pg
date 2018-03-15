@@ -2,26 +2,33 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 06/07/10
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Functions)
-## DBsection(Motion in Space: Velocity and Acceleration)
+## DBchapter(Calculus of vector valued functions)
+## DBsection(Frames, motions, and other applications)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(fma_helix)
+## Level(5)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('17.2')
-## Problem1('35')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('17.2')
 ## Section2('17.2')
+## Section3('17.2')
+## Problem1('35')
 ## Problem2('41')
+## Problem3('42')
 ## KEYWORDS('acceleration', 'velocity', 'vector function', 'arc length ')
 
 ## Textbook tags
@@ -30,14 +37,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"parserPopUp.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 
@@ -180,5 +184,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

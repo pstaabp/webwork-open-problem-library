@@ -3,16 +3,18 @@
 ## 
 ##ENDDESCRIPTION
 ## DBsubject(Algebra)
-## DBchapter(Polynomials, polynomial functions, and factoring)
-## DBsection('Polynomial Equations and Their Applications')
-## KEYWORDS('polynomial equations')
+## DBchapter(Quadratic equations and functions)
+## DBsection(Graphs)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## Level(3)
+## MO(1)
 ## TitleText1('Essentials of Intermediate Algebra')
-## EditionText1('1')
 ## AuthorText1('Blitzer')
+## EditionText1('1')
 ## Section1('5.7')
 ## Problem1('')
-## Author('RA Cruz')
-## Institution('The College of Idaho')
+## KEYWORDS('polynomial equations')
 ## Date: 2007/11
 
 DOCUMENT(); # This should be the first executable line in the problem.
@@ -20,10 +22,10 @@ DOCUMENT(); # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "PGchoicemacros.pl",
-  "PGchoicemacros.pl",
   "MathObjects.pl",
   "PGgraphmacros.pl",
-  "PGnauGraphics.pl"
+  "PGnauGraphics.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -109,5 +111,5 @@ $showPartialCorrectAnswers = 1;
 ######################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

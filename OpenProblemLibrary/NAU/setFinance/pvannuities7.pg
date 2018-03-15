@@ -1,5 +1,3 @@
-## DBchapter(Annuities)
-## DBsection()
 ##DESCRIPTION
 #Name of file: pvannuities7.pg
 #File Created:  6/16/05
@@ -13,18 +11,20 @@
 
 ##ENDDESCRIPTION
 
-## DBsubject(Financial Mathematics)
-## KEYWORDS('percent')
+## DBsubject(Financial mathematics)
+## DBchapter(Annuities)
+## DBsection(Income streams)
+## MLT(Income_Streams_Find_Present_Value)
+## Level(5)
+## KEYWORDS('percent', 'mathematics for business', 'algebraic expression')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

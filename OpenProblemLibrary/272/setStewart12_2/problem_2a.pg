@@ -8,19 +8,22 @@
 
 ## Tagged by ynw2d
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Vectors)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Dot product, length, and unit vectors)
 ## Author(Stewart)
+## MLT(CalcUnitVectorSameDirection)
+## MLTleader(1)
+## Level(3)
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers
@@ -36,16 +39,14 @@ TEXT(beginproblem());
 
 
 BEGIN_TEXT
-$BR
 Let \( \mathbf v = \langle $v1, $v2, $v3 \rangle\).
-$BR
+$BR 
 Find a unit vector in the same direction as \( \mathbf v\).
 
 
-$BR
+$BR $BR
 \(\langle\) \{ans_rule(10)\},\{ans_rule(10)\},\{ans_rule(10)\} \(\rangle\) $BR
 
-$PAR
 END_TEXT
     $d = sqrt(($v1)**2 + ($v2)**2 + ($v3)**2);
 

@@ -2,19 +2,21 @@
 ## First order ODEs: linear ODEs and the integrating factor
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','first order','integrating factor')
 
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection('Linear ODEs and the Integrating Factor')
-## Date('01/01/2012')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(First order differential equations)
+## DBsection(Applications - mixing problems)
+## Date(01/01/2012)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(5)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
-## EditionText1('2006')
 ## AuthorText1('Kohler and Johnson')
+## EditionText1('2006')
 ## Section1('2.3')
 ## Problem1('8')
+## KEYWORDS('differential equations','first order','integrating factor')
 
 
 
@@ -24,10 +26,11 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"unionLists.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "unionLists.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -50,7 +53,7 @@ $cp= $c->D('t');
 
 $y0 = Compute("$v / $a");
 
-$c_in = Compute("($v/$f) * ($cp) + ($c)");
+$c_in = Compute("(1-$v /($b*$f)  )*e^(-t/$b)/$a");
 
 
 #############################
@@ -101,7 +104,5 @@ $showPartialCorrectAnswers = 1;
 
 ANS( $y0->cmp() );
 ANS( $c_in->cmp() );
-
-COMMENT("MathObject version.");
 
 ENDDOCUMENT();

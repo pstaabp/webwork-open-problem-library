@@ -2,31 +2,23 @@
 ## Algebra
 ## ENDDESCRIPTION
 
-## KEYWORDS('Algebra', 'Functions','Polynomial')
 ## Tagged by LD
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Polynomial')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Transformations of functions and graphs)
+## DBsection(Vertical shifts)
+## Institution(ASU)
+## Level(3)
+## KEYWORDS('Algebra', 'Functions','Polynomial')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

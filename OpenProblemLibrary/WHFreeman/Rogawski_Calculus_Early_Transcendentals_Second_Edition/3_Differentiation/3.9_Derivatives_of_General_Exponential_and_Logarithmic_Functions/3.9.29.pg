@@ -4,6 +4,7 @@
 ## Institution(W.H.Freeman)
 ## Author(Keith Thompson)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -13,9 +14,17 @@
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
+
+Context("Numeric");
 
 $a=random(2,4,1);
 $b=list_random(2,3,5,6);
@@ -29,9 +38,10 @@ $ypt=$a**$fx;
 $slope=$a**$fx * log($a) * (2*$xpt-$b);
 $ans=Formula("$slope*x+($ypt-$slope*$xpt)");
 
+
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \} \{ textbook_ref_exact("Rogawski ET 2e", "3.9","29") \}
+\{ textbook_ref_exact("Rogawski ET 2e", "3.9","29") \}
 $PAR
 Find the equation of the tangent line to \(y=$a^{$f}\) at \(x=$xpt\).
 $PAR

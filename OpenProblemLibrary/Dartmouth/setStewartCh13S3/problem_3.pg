@@ -4,11 +4,12 @@
 
 ## Tagged by tda2d
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Vectors)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Dot product, length, and unit vectors)
 ## Institution(Dartmouth)
 ## Author(Stewart)
+## Level(3)
 ## TitleText1('Calculus')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -17,13 +18,13 @@
 ## KEYWORDS('dot product' 'orthogonal')
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-           "Dartmouthmacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "Dartmouthmacros.pl",
+  "PGcourse.pl"
+);
  
 
 ## Do NOT show partial correct answers
@@ -40,14 +41,11 @@ TEXT(beginproblem());
 
 
 BEGIN_TEXT
-$BR
 Find a vector orthogonal to both 
 \(\langle $a, $b, 0 \rangle\) and to \(\langle 0, $b, $c \rangle\) of the form
 $BR
 \( \langle 1, \)\{ans_rule(10)\}, \{ans_rule(10)\} \(\rangle \)
 
-
-$PAR
 END_TEXT
     ANS(num_cmp(- $a/$b));
 ANS(num_cmp($a/$c));

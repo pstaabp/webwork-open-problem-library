@@ -1,20 +1,26 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter(Infinite Sequences and Series)
-## DBsection(Taylor and Maclaurin series)
+## DBchapter(Infinite sequences and series)
+## DBsection(Interval of convergence of a power series)
 ## Institution(W.H.Freeman)
 ## Author(Nick Hamblet)
+## MLT(SeriesForCOverLinear)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('10.7')
 ## Problem1('29')
-## KEYWORDS('')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 Context()->variables->add(n=>'Real');
 
 $c = random(2,7,1);
@@ -36,7 +42,6 @@ $interval = Interval("(0,$c+$c)");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "10.7","29") \}
 $PAR
 Find the Taylor series, centered at \(c=$c\), for the function

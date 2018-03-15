@@ -1,10 +1,11 @@
 ##DESCRIPTION
-## DBsubject('Probability')
-## DBchapter('Theory')
-## DBsection('Expected Value')
+## DBsubject(Probability)
+## DBchapter(Random variables)
+## DBsection(Expectation)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## Level(3)
 ## KEYWORDS('probability')
-## Author('Michael Ratliff')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 6/29/05
@@ -15,12 +16,10 @@
 DOCUMENT(); 
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -35,7 +34,7 @@ $ans1 = round(log($dcost/(-$val*log(1-$nup)))/log(1-$nup));
 $ans2 = $val*(1-(1-$nup)**$ans1)-$dcost*$ans1;
 
 BEGIN_TEXT
-A $DOLLAR $val oil detector is lowered under the sea to detect oil fields,
+A ${DOLLAR}$val oil detector is lowered under the sea to detect oil fields,
 $BR
 and it becomes detached from the ship.  If the instrument is not found within
 $BR

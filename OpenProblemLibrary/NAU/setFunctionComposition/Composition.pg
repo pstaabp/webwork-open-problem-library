@@ -1,10 +1,12 @@
 ##DESCRIPTION
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Combining Functions')
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Compositions and combinations of functions)
+## Institution(NAU)
+## Author(Edgar Fisher)
+## MLT(ccf-graphs-evaluate-comp)
+## Level(3)
 ## KEYWORDS('function,'composition')
-## Author('Edgar Fisher')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 6/28/06
@@ -14,10 +16,11 @@
 DOCUMENT();      
 
 loadMacros(
-"PGstandard.pl",
-"PGnauGraphics.pl",
-"unionMacros.pl",
-"PGasu.pl",
+  "PGstandard.pl",
+  "PGnauGraphics.pl",
+  "unionMacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);
@@ -96,9 +99,9 @@ if ($function[0] eq 'h'){
   $heq = "\frac{$n1 x + $n2}{x - $d1}";
 }else {
   $n1 = random(-1,1,2);
-  $n2 = $n1 * random(-4,0,1);
+  $n2 = $n1 * random(-4,-1,1);
   if ($n1 > 0){
-    $heq = "|x| $n2";
+    $heq = "|x| +$n2";
   } else {
     $heq = "-|x| +$n2";
   }

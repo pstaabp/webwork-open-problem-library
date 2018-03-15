@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Solving linear equations)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
 ## Date(09/09/2009)
 ## Institution(University of Minnesota)
 ## Author(Justin Sukiennik)
+## MLT(Percentages)
+## Level(5)
+## MO(1)
 ## TitleText1('Algebra for College Students')
 ## AuthorText1('Kaufmann, Schwitters')
 ## EditionText1('8')
@@ -21,10 +24,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-   "PGstandard.pl",
-   "MathObjects.pl",
-   "contextCurrency.pl",
-   "PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextCurrency.pl",
+  "PGcourse.pl"
 );
 
 ########################################################################

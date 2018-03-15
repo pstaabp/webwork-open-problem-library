@@ -5,23 +5,22 @@
 ## DBsubject(Linear algebra)
 ## DBchapter(Matrices)
 ## DBsection(Transpose and trace)
-## Institution(NAU)
-## KEYWORDS('linear algebra','matrix','trace')
-## Author(Nandor Sieben)
 ## Date(9/7/2013)
+## Institution(NAU)
+## Author(Nandor Sieben)
+## Level(2)
+## KEYWORDS('linear algebra','matrix','trace')
 
 DOCUMENT(); 
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGmatrixmacros.pl", 
-"PGnumericalmacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGmorematrixmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGmatrixmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGmorematrixmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -47,12 +46,14 @@ $ans=$a[$y][$x];
 
 BEGIN_TEXT
 
-\{ mbox( 'Let \( A=\)', display_matrix($A) ) \}. 
+\{ mbox( 'Let \( A=\)', display_matrix($A) ) \}
 $BR
 Then \({\rm tr}(A^T)=\) \{ans_rule(10)\} and
-\({A^T ($x,$y)=\) \{ans_rule(10)\}.
+\(A^T ($x,$y)=\) \{ans_rule(10)\}.
 
 END_TEXT
+
+
 
 ANS(num_cmp($tr));
 ANS(num_cmp($ans));

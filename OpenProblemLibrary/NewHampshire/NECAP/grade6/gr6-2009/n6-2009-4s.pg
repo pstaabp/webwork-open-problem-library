@@ -4,22 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -33,8 +21,7 @@ $radio->extra("\(\frac{ 1 }{ 8}\) cup of carrots ", "\(\frac{2  }{6 }\) cup of c
 
 
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATOR. 
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR
+
 Stewart needs to cut \(\frac{ 3 }{ 4}\) cup of carrots for a salad.  He has
 already cut  \(\frac{1  }{2 }\) cup of carrots.$BR
 \{$radio->print_q()\}
@@ -48,8 +35,10 @@ $PAR Solution $PAR
 \(\frac {1 } {2 } =\frac {2 } {4 } \).$PAR  \(\frac {3 } {4 } -\frac {2 } {4 }=\frac {1 } {4 } \).
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 6')
-## DBsection('2009')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Applications)
+## MLT(FractionSubtraction_MultChoice)
+## Level(5)

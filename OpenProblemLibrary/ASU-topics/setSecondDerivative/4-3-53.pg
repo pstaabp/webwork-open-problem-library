@@ -5,7 +5,7 @@
 ## Tagged by cmd6a 2/9/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Summary of curve sketching)
 ## Institution(ASU)
 ## Level(2)
@@ -13,12 +13,11 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "extraAnswerEvaluators.pl"
-); 
+loadMacros(
+  "PGstandard.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
+);
 
 $a = random(2,9,1);
 $b = random(10,17,1);

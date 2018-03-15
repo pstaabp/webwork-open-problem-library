@@ -1,8 +1,11 @@
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Models involving y' = k(y - b))
+## DBchapter(First order differential equations)
+## DBsection(Separable)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## MLT(Separable_Initial_Condition)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +14,14 @@
 ## KEYWORDS('calculus', 'differential equations', 'exponential growth')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 $coef = Real(random(2, 5, 1));
 $init1 = Real(random(25, 50, 5));
 $init2 = Real(random(1, 9, 1));
@@ -40,7 +47,6 @@ $ans3 = Formula("$b + $c2 * e^($coef * t)")->reduce();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "9.2","1") \}
 $PAR
 Find the general solution of \( y' = {$coef}\left(y - $b\right) \).

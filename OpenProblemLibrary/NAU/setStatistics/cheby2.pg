@@ -1,10 +1,10 @@
 ##DESCRIPTION
-## DBsubject('Statistics')
-## DBchapter('Descriptive Statistics')
-## DBsection('Chebyshevs Theorem')
-## KEYWORDS('')
-## Author('Michael Ratliff ')
-## Institution('NAU')
+## DBsubject(Probability)
+## DBchapter(Laws, theory)
+## DBsection(Chebychev's inequality)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## Level(2)
 ##ENDDESCRIPTION
 
 # File Created: 7/2/05
@@ -14,14 +14,12 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

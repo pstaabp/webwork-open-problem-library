@@ -11,15 +11,16 @@
 ## Institution(Union College)
 ## MLT(Constant)
 ## Level(2)
+## MO(1)
 ## KEYWORDS('derivative')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -37,17 +38,16 @@ $f =Formula("-sqrt{$a}");
 BEGIN_TEXT
 Let \( f(x) = -\sqrt{$a}\).
 Find \( f'(x)\).
-$PAR
+$BR$BR
 \( f'(x) \) = \{ans_rule(20) \}
 END_TEXT
 
 ###################################
 # Answers
 
-$ans=$f->D('x');
-ANS(Formula($ans)->cmp);
+Context("Numeric");
+ANS(Compute(0)->cmp);
 
 ###################################
 
-COMMENT('MathObject version');
 ENDDOCUMENT();

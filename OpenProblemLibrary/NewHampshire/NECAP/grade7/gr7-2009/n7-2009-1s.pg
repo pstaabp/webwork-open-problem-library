@@ -4,22 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -33,8 +21,7 @@ $radio->extra("There are three eighth graders for every seventh grader. ", "Ther
 
 
 BEGIN_TEXT
-The Math League consists of 18 students .  Of these students, 6 are seventh$BR
- graders and the rest are eighth graders.$BR
+The Math League consists of 18 students.  Of these students, 6 are seventh graders and the rest are eighth graders.$BR
 \{$radio->print_q()\}
 \{$radio->print_a()\}
 
@@ -48,11 +35,13 @@ graders.  So, since \(12=2\times 6\), there are twice as many eighth graders as$
 seventh graders.
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 7')
-## DBsection('2009')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Applications)
+## Level(5)
+## MO(1)
 
 \{ans_rule(10)\}
 \{Panic::Button(label => " Ask for a Hint", penalty => .00)\}

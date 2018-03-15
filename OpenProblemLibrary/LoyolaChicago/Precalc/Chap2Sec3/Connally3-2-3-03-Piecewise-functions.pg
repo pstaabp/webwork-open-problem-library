@@ -1,35 +1,42 @@
 ## DESCRIPTION
 ## Functions: Piecewise defined functions
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
 ## DBchapter(Functions)
-## DBsection(Piecewise Defined Functions)
+## DBsection(Piecewise functions)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(piecewise_graph_looks_like_this)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('2.3')
-## Problem1('3')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1('2.3')
 ## Section2('2.3')
+## Section3('2.3')
+## Problem1('3')
 ## Problem2('3')
+## Problem3('3')
 ## KEYWORDS('functions','piecwise')
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGunion.pl",
-"PGgraphmacros.pl",
-"PGcourse.pl",
-"PGchoicemacros.pl",
-"parserPopUp.pl",
+  "PGstandard.pl",
+  "PGunion.pl",
+  "PGgraphmacros.pl",
+  "PGchoicemacros.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

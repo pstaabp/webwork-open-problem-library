@@ -4,23 +4,23 @@
 
 ## Tagged by cmd6a 5/30/06
 
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Three-Dimensional Coordinate Systems)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Planes)
 ## Date(6/2/2000)
 ## Institution(Rochester)
 ## Author(Joseph Neisendorfer)
+## Level(4)
 ## KEYWORDS('calculus','vector')
 
 
 DOCUMENT();		# This should be the first executable line in the problem.
 
-loadMacros("PG.pl",      
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",      
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl"     
-          );      
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;

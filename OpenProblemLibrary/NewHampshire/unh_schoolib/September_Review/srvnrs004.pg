@@ -4,21 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -34,7 +23,8 @@ $a6=random(12,19,1); $b6=random (19,29,2);$ans6=$a6+$b6;
 $a7=random(8,16,4); $b7=random (9,19,2);$ans7=$a7+$b7;
 $a8=random(13,29,2); $b8=random (13,28,3);$ans8=$a8+$b8;
 BEGIN_TEXT
-Addition practice to recover from summer vacation.$PAR
+Compute:
+$BR$BR
 $a1+$b1=\{ans_rule(1)\}$PAR
 $a2+$b2=\{ans_rule(1)\}$PAR
 $a3+$b3=\{ans_rule(1)\}$PAR
@@ -55,9 +45,11 @@ ANS(Real($ans7 )->cmp);
 ANS(Real($ans8 )->cmp);
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter(September review)
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Addition/subtraction)
+## Level(2)
+## MO(1)
 

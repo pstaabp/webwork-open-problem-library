@@ -2,21 +2,23 @@
 ## Algebra: Analytic Trigonometry
 ##ENDDESCRIPTION
 
-##KEYWORDS('algebra', 'analytic trigonometry', 'double-angle')
 
 
-## DBsubject('Trigonometry')
-## DBchapter('Analytic Trigonometry')
-## DBsection('Double- and Half-Angle/Product-Sum Formulas')
+## DBsubject(Trigonometry)
+## DBchapter(Analytic trigonometry)
+## DBsection(Double-angle & half-angle formulas)
+## MLT(SimpleDouble)
+## Level(2)
+## MO(1)
+## KEYWORDS('algebra', 'analytic trigonometry', 'double-angle')
 
 DOCUMENT();       
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"MathObjects.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -1,39 +1,41 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Polynomial and rational functions)
-## DBsection(The Short-Run Behavior Of Polynomials)
+## DBchapter(Polynomial equations and functions)
+## DBsection(Polynomial equations)
 ## Institution(Loyola University Chicago and Fort Lewis College)
 ## Author(Adam Spiegler and Paul Pearson)
+## MLT(Power_times_quadratic)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('9.3')
-## Problem1('1')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(9.3)
 ## Section2('11.3')
+## Section3('11.3')
+## Problem1(3)
 ## Problem2('1')
+## Problem3('2')
 ## KEYWORDS('polynomial','zero','factor')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-#           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-#           "PGgraphmacros.pl",
-#           "PGauxiliaryFunctions.pl",
-#           "extraAnswerEvaluators.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-"contextFraction.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -81,5 +83,5 @@ Context()->normalStrings;
 
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

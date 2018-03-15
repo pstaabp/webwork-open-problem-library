@@ -2,19 +2,21 @@
 ## First order ODEs: integrals as solutions
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','first order','integrals as solutions')
 
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection('Integrals as Solutions')
-## Date('01/30/2011')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(First order differential equations)
+## DBsection(Applications - other)
+## Date(01/30/2011)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(4)
+## MO(1)
 ## TitleText1('Notes on Diffy Qs')
-## EditionText1('December 9, 2010')
 ## AuthorText1('Jiri Lebl')
+## EditionText1('December 9, 2010')
 ## Section1('1.1')
 ## Problem1('9')
+## KEYWORDS('differential equations','first order','integrals as solutions')
 
 
 ##############################
@@ -23,10 +25,11 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"parserNumberWithUnits.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -52,7 +55,7 @@ Context()->texStrings;
 BEGIN_TEXT
 A spaceship is traveling directly away from earth
 with speed \( $a t^2 + $b \ \mathrm{km/s} \).  At
-time \( t = 0 \) is is \( $d0 \ \mathrm{km} \)
+time \( t = 0 \) it is \( $d0 \ \mathrm{km} \)
 from earth.  How far is it from earth one minute
 after time \( t = 0 \)?  Include units in your answer.
 $BR
@@ -71,6 +74,6 @@ $showPartialCorrectAnswers = 1;
 
 ANS( $answer->cmp(tolType=>absolute,tolerance=>0.0001) );
 
-COMMENT("MathObject version.");
+;
 
 ENDDOCUMENT();

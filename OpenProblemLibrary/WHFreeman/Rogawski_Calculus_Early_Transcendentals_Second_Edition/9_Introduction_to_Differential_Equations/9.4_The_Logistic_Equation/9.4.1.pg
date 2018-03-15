@@ -1,8 +1,11 @@
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(The Logistic Equation)
+## DBchapter(First order differential equations)
+## DBsection(Separable)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## MLT(Separable_Initial_Condition)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +14,14 @@
 ## KEYWORDS('calculus', 'differential equations', 'logistic equation', 'population growth', 'exponential growth', 's-curve', 'sigmoid')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 $k = Real(random(2, 6, 1));
 $init = Real(random(2, 10, 1));
 $A = $init + 4;
@@ -32,7 +39,6 @@ $ans2 = Formula("$A / (1 - (e^(-1 * $k * t)) / $C)")->reduce();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "9.4","1") \}
 $PAR
 Find the general solution of the logistic equation

@@ -5,13 +5,14 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Related rates)
 ## Date(8/23/07)
 ## Institution(Union College)
 ## MLT(RelatedRate-BoatOnPulley)
 ## MLTleader(1)
 ## Level(5)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Anton')
 ## EditionText1('7')
@@ -23,9 +24,9 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -52,7 +53,7 @@ $rope_length ft of rope is out?
 $PAR
 The boat will be approaching the dock at \{ ans_rule(25)\} ft/min.
 $PAR
-Note: There is a diagram of this situation
+${BITALIC}Hint${EITALIC}: Sketch a diagram of this situation.
 END_TEXT
 
 ###################################
@@ -67,5 +68,5 @@ ANS(Real($ans)->cmp);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

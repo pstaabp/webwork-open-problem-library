@@ -4,21 +4,20 @@
 
 ## Tagged by cmd6a 4/20/06
 
-## DBsubject(Numbers)
-## DBchapter(Complex numbers)
-## DBsection(Polar form)
+## DBsubject(Complex analysis)
+## DBchapter(Arithmetic)
+## DBsection(Conversion to/from polar form)
 ## Institution(Rochester)
 ## MLT(topolar)
+## Level(2)
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -9,12 +9,14 @@
 ## MLT(two_tangents_intersection)
 ## MLTleader(1)
 ## Level(4)
+## MO(1)
 ## KEYWORDS('tangent', 'tangent line')
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -31,9 +33,11 @@ TEXT(beginproblem());
 
 Context()->texStrings;
 BEGIN_TEXT
-Let \(f(x) = x^2\). Find the first coordinate of the intersection point of the two
-tangent lines of \( f \) at $a and at $b.
-$PAR
+Let \(f(x) = x^2\). Find the first coordinate
+of the intersection point of the two
+tangent lines of \( f \) at \( $a \) and at
+\( $b \).
+$BR $BR
 \{ ans_rule(35) \}
 END_TEXT
 Context()->normalStrings;

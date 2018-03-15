@@ -5,10 +5,13 @@
 ## Tagged by nhamblet
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Directional Derivatives and the Gradient Vector)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Directional derivatives and the gradient)
 ## Date(8/23/07)
 ## Institution(Union College)
+## MLT(Grad-GradAtPt-DirDeriv)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Anton')
 ## EditionText1('7')
@@ -28,7 +31,7 @@ loadMacros(
   "PGunion.pl",
   "MathObjects.pl",
   "parserVectorUtils.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 
@@ -95,5 +98,5 @@ $showPartialCorrectAnswers = 1;
 ##################################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

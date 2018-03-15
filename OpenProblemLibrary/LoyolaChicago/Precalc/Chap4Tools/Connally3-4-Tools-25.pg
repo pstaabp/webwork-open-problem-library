@@ -1,23 +1,31 @@
 ## DESCRIPTION
 ## Logarithms
-## ENDDESCRIPTION
 
 
 ## DBsubject(Algebra)
-## DBchapter(Logarithmic functions)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Properties of logarithms)
 ## Date(01/01/10)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(LogProperties_Expand_FreeResponse)
+## Level(2)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('4 Tools')
-## Problem1('19')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
-## Section2('5.')
-## Problem2('19')
+## EditionText3('5')
+## Section1(4.Tools)
+## Section2(5.Skills)
+## Section3('5.Skills')
+## Problem1(25)
+## Problem2(19)
+## Problem3('19')
 ## KEYWORDS('logarithms')
 
 ####################################
@@ -26,10 +34,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -89,5 +97,5 @@ so that, using the property for powers,
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('MathObject version.  Uses log = logten.');
+COMMENT('Uses log = logten.');
 ENDDOCUMENT();

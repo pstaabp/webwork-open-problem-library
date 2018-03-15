@@ -2,18 +2,21 @@
 #  Series: limit comparison test
 #ENDDESCRIPTION
 
-## KEYWORDS('series','limit comparison test')
 
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('The Comparison Tests')           
-## AuthorText1('')
+## DBchapter(Infinite sequences and series)
+## DBsection(Comparison tests)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(LCT_bit_by_bit)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
+## AuthorText1('')
 ## EditionText1('')
-## Section1('')
+## Section1('.')
 ## Problem1('')
+## KEYWORDS('series','limit comparison test')
 
 ######################################
 #  Initialization
@@ -21,13 +24,14 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"unionTables.pl",
-"parserPopUp.pl",
-"answerHints.pl",
-"PGgraders.pl",
-"parserMultiAnswer.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "unionTables.pl",
+  "parserPopUp.pl",
+  "answerHints.pl",
+  "PGgraders.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -38,12 +42,14 @@ TEXT(beginproblem());
 
 Context("Numeric")->variables->are(n=>"Real");
 
-$a = random(5,9,1);
-$b = random(2,9,1);
-$c = random(2,5,1);
-$d = random(3,9,1);
-$e = random(2,9,1);
+do {	# Prevent a common factor 2, which a student may (correctly) cancel
+  $a = random(5,9,1);
+  $b = random(2,9,1);
+  $c = random(2,5,1);
+  $e = random(2,9,1);
+} until ($a % 2 || $b % 2 || $c % 2 || $e % 2);
 
+$d = random(3,9,1);
 $dm1 = $d - 1;
 $dm2 = $d - 2;
 

@@ -2,26 +2,34 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 02/08/10
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Maximum and Minimum Values)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Extreme values and optimization)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(FindParamValuesToOptimize)
+## MLTleader(1)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('15.2')
-## Problem1('15')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('15.2')
 ## Section2('15.2')
+## Section3('15.2')
+## Problem1('15')
 ## Problem2('27')
+## Problem3('39')
 ## KEYWORDS('maximum', 'minimum', 'absolute maximum', 'absolute minimum', 'local maximum', 'local minimum', 'extrema', 'calculus', 'differentiation', 'multivariable', 'functions')
 
 ## Textbook tags
@@ -30,14 +38,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGauxiliaryFunctions.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -113,12 +117,14 @@ S=(a+b)^2+($x1sq a+b - $y1)^2+($x2sq a+b- $y2)^2.
 \]
 
 $PAR
-\( y = \) \{ ans_rule(35) \}
+\( y = \) \{ $a->ans_rule(15) \} \( x^2 + \) \{ $b->ans_rule(15) \}
 
 END_TEXT
 Context()->normalStrings;
 
-ANS($yfit->cmp() );
+# ANS($yfit->cmp() );
+ANS( $a->cmp() );
+ANS( $b->cmp() );
 
 Context()->texStrings;
 SOLUTION(EV3(<<'END_SOLUTION'));
@@ -148,5 +154,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

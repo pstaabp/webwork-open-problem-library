@@ -1,23 +1,30 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Trigonometric Integrals')
-## KEYWORDS('calculus', 'integration', 'integral', 'trigonometry', 'trigonometric', 'trig')
+## DBchapter(Techniques of integration)
+## DBsection(Trigonometric integrals)
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## MLT(tan_odd)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('7.2')
 ## Problem1('44')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'integration', 'integral', 'trigonometry', 'trigonometric', 'trig')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 $context = Context();
 
 $context->variables->add(C=>'Real');
+
+TEXT(beginproblem());
 
 $a = Real(random(2, 9, 1));
 
@@ -38,7 +45,6 @@ $ans = Formula("$a * ((1/2) * (tan($subform))**2 - ln(abs(sec($subform))) ) + C"
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "7.2","44") \}
 $PAR
 Calculate \( \int $func \, dx \).

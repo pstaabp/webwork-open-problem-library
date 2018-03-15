@@ -12,18 +12,21 @@
 ## MLT(extrig)
 ## MLTleader(1)
 ## Level(3)
+## MO(1)
 ## KEYWORDS('derivative' 'chain rule')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
+
+Context('Numeric');
 
 ###################################
 # Setup
@@ -45,7 +48,7 @@ $f=Formula("$function[$i]")->reduce;
 Context()->texStrings;
 BEGIN_TEXT
 Let \( f(x) =\displaystyle $f \).  Find \(f'(x)\).
-$PAR
+$BR$BR
 \(f'(x) =\) \{ans_rule(50) \}
 END_TEXT
 Context()->normalStrings;
@@ -59,5 +62,5 @@ ANS($ans->with(limits => [0,1], tolerance => .001)->cmp);
 
 ###################################
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

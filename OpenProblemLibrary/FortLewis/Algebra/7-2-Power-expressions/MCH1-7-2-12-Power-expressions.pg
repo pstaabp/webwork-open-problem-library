@@ -2,22 +2,24 @@
 ## power expressions
 ## ENDDESCRIPTION
 
-## KEYWORDS('power expressions')
 
-## DBsubject('Algebra') 
 ## BookTitle('Algebra: Form and Function')
-## DBchapter('Power Functions') 
 ## BookChapter('Power Functions, Expressions, and Equations')
-## DBsection('Power Expressions') 
-## BookSection('Working with Power Expressions')
-## Date('01/01/10')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBsubject(Algebra)
+## DBchapter(Variation and power functions)
+## DBsection(Power functions)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(expressionToConstAndPower)
+## Level(3)
+## MO(1)
 ## TitleText1('Algebra: Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum, Connally, and Hughes-Hallett')
+## EditionText1('1')
 ## Section1('7.2')
 ## Problem1('12')
+## KEYWORDS('power expressions')
 
 ##############################################
 #  Initialization
@@ -25,10 +27,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGcourse.pl",
-"AnswerFormatHelp.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -69,5 +71,5 @@ ANS(Compute("-$n/2")->cmp() );
 ANS(Compute("1/($a^$n)")->cmp() );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

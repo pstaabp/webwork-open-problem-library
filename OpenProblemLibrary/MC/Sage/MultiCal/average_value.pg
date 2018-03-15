@@ -3,27 +3,30 @@
 ## function where the student must only determine the correct order and limits of integration
 ## END_DESCRIPTION
 
-## KEYWORDS('sage', 'sagelet', 'integration', 'multiple','average')
 
-## DBsubject('Calculus - multivariable')
-## DBchapter('Multiple Integrals')
-## DBsection('Applications of Multiple Integrals')
-## Date('March 2012')
-## Author('John Travis')
-## Institution('Mississippi College')
+## DBsubject(Calculus - multivariable)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Applications of double integrals)
+## Date(March 2012)
+## Institution(Mississippi College)
+## Author(John Travis)
+## Level(3)
 ## TitleText1('Calculus')
-## EditionText1('')
 ## AuthorText1('')
-## Section1('')
+## EditionText1('')
+## Section1('.')
 ## Problem1('')
+## KEYWORDS('sage', 'sagelet', 'integration', 'multiple','average')
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"problemRandomize.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "problemRandomize.pl",
+  "sage.pl",
+  "PGcourse.pl"
 );
 
 Context()->strings->add(none=>{});
@@ -50,34 +53,7 @@ $volume = $height *($x1-$x0)*($y1-$y0);
 
 $showHint = 3;
 
-TEXT(MODES(TeX =>"",HTML=>EV3(<<'EOT')));
-
-$PAR
-The average value of a function \(f(x_0,y_0)\) over a given region \(R\) is given by taking the volume of the resulting solid and dividing by the area over which the volume is defined.  In notation, \[ f(x_0,y_0) = \frac{\int \int _{R} f(x,y)dA}{\int \int _{R} dA} \]
-Geometrically, this occurs when the volume of the solid equals the volume of one box...
-\[ V = \int \int _{R} f(x,y)dA = f(x_0,y_0) \int \int _{R} dA = height \times base\]
-
-
-Adjust values of \(f(x_0,y_0)\) above to determine the correct
-$BITALICSaverage height 
-$EITALICS
-so that the volume of the region under the surface equals the volume of the single rectangular box.  The height of this box will be the average value of \(f\). 
-
-$PAR
-
-$PAR
-EOT
-
-############### start Sage Cell ###############
-BEGIN_TEXT
-
-<div id="sagecell">
-
-height = \{ ans_rule(15) \} 
-
-<script type="text/code">
- 
-# Sage Python Code
+$SageCode = <<SAGE_CODE;
 
 var('x,y')
 xmin = $x0
@@ -93,13 +69,7 @@ zmax = $r1
 f(x,y) = $funct
 
 ~~@interact(layout=dict(bottom=[["z0"],["nojavagraph"]]))
-def _(z0 = slider(1,zmax,label='f(x_0,y_0)'),
-    nojavagraph=checkbox(default=false,label='Problems with 3D Graph?')):
-    
-    if nojavagraph:
-        view_method = "tachyon"
-    else:
-        view_method = "jmol"
+def _(z0 = slider(1,zmax,label='\(f(x_0,y_0)\)')):
 
     integ = integrate(integrate(f,y,ymin,ymax),x,xmin,xmax).n()
     box_vol =(xmax-xmin)*(ymax-ymin)*z0    
@@ -110,35 +80,36 @@ def _(z0 = slider(1,zmax,label='f(x_0,y_0)'),
     B.show(figsize=(2,5))
     
     G = plot3d(f, (x, xmin, xmax), (y,ymin,ymax),opacity=0.3)
-    G += plot3d(z0, (x, xmin, xmax), (y,ymin,ymax),color='green',opacity=0.6)
+    G += plot3d(z0, (x, xmin, xmax), (y,ymin,ymax),color='green',opacity=0.9)
     G += cube(color=['green', 'green', 'green'],aspect_ratio=[1,1,1], center=(xmid/xdiff, ymid/ydiff,1/2) ,opacity=0.3).scale([xdiff,ydiff,z0])
             
-    G.show(figsize=(4,6),viewer=view_method)
+    threejs(G, figsize=(4,6))
 
-    html('<input type=hidden size=15 name="\{ANS_NUM_TO_NAME(1)\}" id="\{ANS_NUM_TO_NAME(1)\}" value="%s">' %str(z0) )
+SAGE_CODE
 
- </script>
- </div>
+Sage(
+  SageCode=>$SageCode,
+  AutoEvaluateCell=>'true',
+  AnswerReturn => 0 
+);
+
+BEGIN_TEXT
+
+$PAR
+The average value of a function \(f(x_0,y_0)\) over a given region \(R\) is given by taking the volume of the resulting solid and dividing by the area over which the volume is defined.  In notation, \[ f(x_0,y_0) = \frac{\int \int _{R} f(x,y)dA}{\int \int _{R} dA} \]
+Geometrically, this occurs when the volume of the solid equals the volume of one box...
+\[ V = \int \int _{R} f(x,y)dA = f(x_0,y_0) \int \int _{R} dA = height \times base\]
+
+
+Adjust values of \(f(x_0,y_0)\) above to determine the correct
+$BITALICSaverage height 
+$EITALICS
+so that the volume of the region under the surface equals the volume of the single rectangular box.  The height of this box will be the average value of \(f\). 
+
+$PAR
+Average of \(f(x,y) = \) \{ ans_rule(15) \} .
 
 END_TEXT
-
-
-TEXT(MODES(TeX=>"", HTML=><<'SAGE_SCRIPT'));
-
-<script src="http://aleph.sagemath.org/static/jquery.min.js"></script>
-<script src="http://aleph.sagemath.org/embedded_sagecell.js"></script>
-
-<script>
-$(function () {
-   sagecell.makeSagecell({inputLocation:  '#sagecell',
-                          template:       sagecell.templates.minimal,
-                          autoeval:        true, 
-                          evalButtonText: 'Start/Restart'});
-});
-</script>
-
-
-SAGE_SCRIPT
 
 Context()->normalStrings;
 

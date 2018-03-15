@@ -1,9 +1,11 @@
 ##DESCRIPTION
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(The Dot Product)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Dot product, length, and unit vectors)
 ## Institution(NAU)
 ## Author(Jim Swift)
+## MLT(ProjectionsComponentNotation)
+## Level(3)
 ## KEYWORDS('vector', 'projection')
 
 #  First Created: 5/31/00
@@ -25,11 +27,9 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

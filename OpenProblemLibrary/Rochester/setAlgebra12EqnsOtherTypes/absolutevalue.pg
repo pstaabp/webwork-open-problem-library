@@ -2,29 +2,21 @@
 ##   Solve an Equation with Absolute Value
 ## ENDDESCRIPTION
 
-## KEYWORDS('Solve', 'Equation', 'Absolute Value')
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Absolute Value')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Absolute value expressions and functions)
+## DBsection(Solving equations with absolute values)
+## Institution(Rochester)
+## Level(3)
+## KEYWORDS('Solve', 'Equation', 'Absolute Value')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

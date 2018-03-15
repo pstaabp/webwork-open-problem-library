@@ -2,29 +2,21 @@
 ##   Function Composition
 ## ENDDESCRIPTION
 
-## KEYWORDS('Function', 'Composition')
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Combining Functions')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Compositions and combinations of functions)
+## Institution(Rochester)
+## Level(2)
+## KEYWORDS('Function', 'Composition')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

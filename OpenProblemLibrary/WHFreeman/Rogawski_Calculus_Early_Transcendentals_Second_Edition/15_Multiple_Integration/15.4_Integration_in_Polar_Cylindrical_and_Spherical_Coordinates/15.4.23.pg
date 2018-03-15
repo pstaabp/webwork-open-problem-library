@@ -1,21 +1,29 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Multiple Integrals)
-## DBsection(Integration in Polar, Cylindrical, and Spherical Coordinates)
+## DBchapter(Integration of multivariable functions)
+## DBsection(Double integrals in polar)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Kobi Fonarov)
+## MLT(BetweenCirclesCompleteSquare)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('15.4')
 ## Problem1('23')
-## KEYWORDS('calculus', '')
-## UsesAuxiliaryFiles('image_15_4_27_a.png','image_15_4_27_b.png','image_15_4_27_c.png')
+## KEYWORDS('calculus')
+## RESOURCES('image_15_4_27_a.png','image_15_4_27_b.png','image_15_4_27_c.png')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $a=random(1,9);
 
@@ -34,7 +42,6 @@ $answer=Real(($sol1)-($sol2));
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "15.4","23") \}
 $PAR
 Evaluate \($IINT _{$d}\sqrt{x^2+y^2}\,dA\),

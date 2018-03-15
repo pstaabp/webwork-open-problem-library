@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## 
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Nodal and Loop Analysis Techniques')
-## DBsection('Nodal Analysis')
+## DBsubject(Electric circuits)
+## DBchapter(Nodal and loop analysis techniques)
+## DBsection(Nodal analysis)
 ## KEYWORDS('dc','nodal analysis','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

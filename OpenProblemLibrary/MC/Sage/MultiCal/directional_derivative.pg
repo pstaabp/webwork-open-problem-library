@@ -3,25 +3,32 @@
 ## related to directional derivatives.
 ## END_DESCRIPTION
 
-## KEYWORDS('sage', 'sagelet', 'directional derivative', 'multivariate')
 
-## DBsubject('Calculus - multivariable')
-## DBchapter('Partial Derivatives')
-## DBsection('Directional Derivatives and the Gradient Vector')
-## Date('January 2012')
-## Author('John Travis')
-## Institution('Mississippi College')
+## DBsubject(Calculus - multivariable)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Directional derivatives and the gradient)
+## Date(January 2012)
+## Institution(Mississippi College)
+## Author(John Travis)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
+## AuthorText1('')
+## EditionText1('')
+## Section1('.')
+## Problem1('')
+## KEYWORDS('sage', 'sagelet', 'directional derivative', 'multivariate')
 
 
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"problemRandomize.pl",
-"sage.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "problemRandomize.pl",
+  "sage.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -107,7 +114,7 @@ def myfun(x0 = input_box(0,width=5,label='\( x_0 \)'), y0=input_box(0,width=5,la
     picture2d += arrow(location.list(),(location+dff).list(),rgbcolor=gradient_color,width=line_thickness)
     show(picture2d, aspect_ratio=1)
     if show_surface:
-        show(picture3d,aspect=[1,1,1],axes=True)
+        threejs(picture3d,aspect=[1,1,1],axes=True)
 
     record_answer(angle)
 
@@ -115,11 +122,10 @@ SAGE_CODE
 
 Sage(
   SageCode=>$SageCode,
-  ButtonText=>'Click Here to Evaluate/Reload',
+  ButtonText=>'Click Here to Restart the Active Cell Below',
 );
 
-
-TEXT(MODES(TeX =>"",HTML=>EV3(<<'EOT')));
+BEGIN_TEXT
 
 $PAR
  
@@ -127,7 +133,7 @@ A contour plot for \( z = f(x,y) \) is illustrated with normal vector in orange.
 \({($x/$denom,$y/$denom)}\).
 $BR
 
-EOT
+END_TEXT
 
 Context()->normalStrings;
 

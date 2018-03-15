@@ -2,19 +2,22 @@
 ## Systems of ODEs: introduction to systems of ODEs
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','systems of ODEs')
 
-## DBsubject('Differential Equations')
-## DBchapter('Systems of Differential Equations')
-## DBsection('Introduction to Systems')
-## Date('08/16/2013')
-## Author('Barbara Margolius')
-## Institution('Cleveland State University')
+## DBsubject(Differential equations)
+## DBchapter(Systems of differential equations)
+## DBsection(Matrix notation for systems)
+## Date(08/16/2013)
+## Institution(Cleveland State University)
+## Author(Barbara Margolius)
+## MLT(SDE-MN-matrix_derivatives)
+## Level(3)
+## MO(1)
 ## TitleText1('Differential Equations')
-## EditionText1('2009')
 ## AuthorText1('Ricardo')
+## EditionText1('2009')
 ## Section1('5.1')
-## Problem1('A4')
+## Problem1('4')
+## KEYWORDS('differential equations','systems of ODEs')
 
 
 ##############################
@@ -23,9 +26,10 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGmatrixmacros.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGmatrixmacros.pl",
+  "PGcourse.pl"
 );
 
 
@@ -115,6 +119,6 @@ ANS($Df2->cmp());
 ANS($Dg1->cmp());
 ANS($Dg2->cmp());
 
-COMMENT("MathObject version.");
+;
 
 ENDDOCUMENT();

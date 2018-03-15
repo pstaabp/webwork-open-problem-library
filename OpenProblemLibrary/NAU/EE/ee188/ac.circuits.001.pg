@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Solve ac circuit
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('AC Steady-State Analysis')
-## DBsection(Analysis Techniques)
+## DBsubject(Electric circuits)
+## DBchapter(AC steady-state analysis)
+## DBsection(Analysis techniques)
 ## KEYWORDS('ac','circuits','impedance','Ohm's Law')
 ## Author('Elizabeth J. Brauer')
 ## Institution('Northern Arizona University')
@@ -11,12 +11,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGcomplexmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcomplexmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

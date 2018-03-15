@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Transformations of functions and their graphs)
-## DBsection(Horizontal Stretches and Compressions)
+## DBchapter(Transformations of functions and graphs)
+## DBsection(Three or more transformations)
 ## Date(11/07/2011)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(4)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('3')
@@ -22,17 +24,16 @@
 
 DOCUMENT();
 
-loadMacros(        
-"PGstandard.pl",
-"MathObjects.pl",
-"AppletObjects.pl",
-"alignedChoice.pl",
-"unionTables.pl",
-"parserFunction.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-# "source.pl",
-"PGgraphmacros.pl",
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AppletObjects.pl",
+  "alignedChoice.pl",
+  "unionTables.pl",
+  "parserFunction.pl",
+  "AnswerFormatHelp.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -272,6 +273,6 @@ NAMED_ANS('answerBox'=>List($A,$B,$C,$D)->cmp()  );
 
 
 
-COMMENT('MathObject version.  Note: Uses JavaScript, which might not be executed in the Library Browser.  Any graph transformation is possible.');
+COMMENT('Note: Uses JavaScript, which might not be executed in the Library Browser.  Any graph transformation is possible.');
 
 ENDDOCUMENT();  

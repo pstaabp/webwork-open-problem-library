@@ -1,18 +1,21 @@
 ##DESCRIPTION
-## DBsubject('Statistics')
-## DBchapter('What is Statistics?')
-## DBsection('Characterizing a Set of Measurements: Graphical Methods')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Graphical representations)
+## Institution(NAU)
+## Author(Edgar Fisher)
+## Level(2)
 ## KEYWORDS('boxplot')
-## Author('Edgar Fisher')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 6/14/05
 # Location: Northern Arizona University
 
 DOCUMENT();
-loadMacros("PGstandard.pl",
-           "PGnauStats.pl"
+loadMacros(
+  "PGstandard.pl",
+  "PGnauStats.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

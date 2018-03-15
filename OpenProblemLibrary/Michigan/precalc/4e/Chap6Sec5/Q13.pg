@@ -6,10 +6,12 @@
 ## Tagged by ak 05/15/12
 
 ## DBsubject(Algebra)
-## DBchapter(Transformations of functions and their graphs)
-## DBsection(Horizontal Stretches and Compressions)
+## DBchapter(Transformations of functions and graphs)
+## DBsection(Three or more transformations)
 ## Institution(University of Michigan)
 ## Author(Angela Kubena)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
 ## AuthorText1('Connally')
 ## EditionText1('4')
@@ -23,14 +25,10 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-# "PGgraphmacros.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");

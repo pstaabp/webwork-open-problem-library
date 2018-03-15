@@ -7,8 +7,10 @@
 ## DBsection(Systems with 2 variables)
 ## Institution(The College of Idaho)
 ## Author(RA Cruz)
-## MLT(nosol)
+## MLT(InconsistentSystem14)
+## MLTleader(1)
 ## Level(2)
+## MO(1)
 ## TitleText1('Essentials of Intermediate Algebra')
 ## AuthorText1('Blitzer')
 ## EditionText1('1')
@@ -22,6 +24,7 @@ DOCUMENT(); # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -91,6 +94,7 @@ $showPartialCorrectAnswers = 1;
 
 
 
-COMMENT('MathObject version');
+;
+COMMENT('System is inconsistent');
 ENDDOCUMENT();
 

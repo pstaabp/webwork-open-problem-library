@@ -6,15 +6,22 @@
 ## Tagged by ak 05/15/12
 
 ## DBsubject(Algebra)
-## DBchapter(Transformations of functions and their graphs)
-## DBsection(Horizontal Stretches and Compressions)
+## DBchapter(Transformations of functions and graphs)
+## DBsection(Three or more transformations)
 ## Institution(University of Michigan)
 ## Author(Angela Kubena)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
+## TitleText2('Functions Modeling Change')
 ## AuthorText1('Connally')
+## AuthorText2('Connally')
 ## EditionText1('4')
+## EditionText2('5')
 ## Section1('6.5')
+## Section2('6.3')
 ## Problem1('3')
+## Problem2('15')
 ## KEYWORDS('transformations', 'transformations of functions', 'translation', 'shifts', 'stretch', 'compression', 'composition', 'order of operations')
 
 ## Textbook tags
@@ -22,13 +29,13 @@
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-	   "MathObjects.pl",
-	   "contextFraction.pl",
-	   "AnswerFormatHelp.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
+);
 
 $showPartialCorrectAnswers = 1;
 Context("Fraction");

@@ -1,11 +1,11 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 #THIS IS MORE RECENT VERSION INCLUDES STUFF FROM LAROSE PROBLEM #.
 #This is the initialization section of the problem. Note that we need to include 
 #PGgraphmacros.pl to use graphs in the problem.
@@ -107,12 +107,13 @@ So the plant must be \(\frac{\frac{1}{2}+\frac{3}{4}}{2}=\frac{5}{8}\) yard
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
  
 
-## DBsubject('NECAP')
-## DBchapter('Grade 6')
-## DBsection('2008')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Estimation)
+## Level(5)
 

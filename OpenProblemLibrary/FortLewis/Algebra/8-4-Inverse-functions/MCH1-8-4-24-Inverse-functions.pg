@@ -2,19 +2,22 @@
 ## inverse functions
 ## ENDDESCRIPTION
 
-## KEYWORDS('inverse functions')
 
-## DBsubject('Algebra')
-## DBchapter('More on Functions')
-## DBsection('Inverse Functions')
-## Date('01/01/10')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBsubject(Algebra)
+## DBchapter(Inverse functions)
+## DBsection(Finding the inverse function)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(Compositions_thenInverseQuestion)
+## Level(2)
+## MO(1)
 ## TitleText1('Algebra Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum, Connally, and Hughes-Hallett')
+## EditionText1('1')
 ## Section1('8.4')
 ## Problem1('24')
+## KEYWORDS('inverse functions')
 
 
 ####################################
@@ -22,11 +25,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-"answerHints.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem()); 
@@ -83,6 +86,6 @@ ANS( Compute("y/$a - $b/$c")->cmp()
 ))
 );
 
-COMMENT('MathObject version');
+;
 
 ENDDOCUMENT();

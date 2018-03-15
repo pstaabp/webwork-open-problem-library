@@ -1,8 +1,10 @@
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Linear equations)
+## DBchapter(First order differential equations)
+## DBsection(Integrating factor)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,13 +13,16 @@
 ## KEYWORDS('calculus', 'differential equations', 'linear equation', 'first order')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
 
+TEXT(beginproblem());
 $a = Real(random(2,10,1));
-
 
 $context = Context();
 
@@ -27,7 +32,6 @@ $fp = Formula("($a x^x) + C * (x^x) * (e^(-x))")->reduce();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "9.5","17") \}
 $PAR
 Find the general solution of the first-order linear differential equation 
@@ -39,7 +43,7 @@ $BITALIC Note: Use \( C \) for the arbitrary constant. $EITALIC
 END_TEXT
 Context()->normalStrings;
 
-ANS($fp->cmp);
+ANS($fp->cmp(limits => [0,4]));
 
 Context()->texStrings;
 SOLUTION(EV3(<<'END_SOLUTION'));

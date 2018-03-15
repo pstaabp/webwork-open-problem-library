@@ -1,35 +1,42 @@
 # DESCRIPTION
 # Problem from Calculus, single variable, Hughes-Hallett et al., 4th ed.
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 02/08/09
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Integrals)
-## DBsection(Substitution)
+## DBchapter(Techniques of integration)
+## DBsection(Substitution (without trigonometric functions))
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(Sub_direct)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('4')
-## Section1('7.1')
-## Problem1('11')
 ## TitleText2('Calculus')
-## AuthorText2('Hughes-Hallett')
-## EditionText2('5')
-## Section2('7.1')
-## Problem2('13')
 ## TitleText3('Calculus')
-## AuthorText3('Hughes-Hallett')
-## EditionText3('6')
-## Section3('7.1')
-## Problem3('14')
 ## TitleText4('Applied Calculus')
+## TitleText5('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
 ## AuthorText4('Hughes-Hallett')
+## AuthorText5('Hughes-Hallett')
+## EditionText1('4')
+## EditionText2('5')
+## EditionText3('6')
 ## EditionText4('4')
+## EditionText5('7')
+## Section1('7.1')
+## Section2('7.1')
+## Section3('7.1')
 ## Section4('7.2')
+## Section5('7.1')
+## Problem1('11')
+## Problem2('13')
+## Problem3('14')
 ## Problem4('9')
+## Problem5('14')
 ## KEYWORDS('calculus', 'integral', 'indefinite integrals', 'substitution', 'antiderivatives')
 
 ## Textbook tags
@@ -41,21 +48,21 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-"parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "parserFormulaUpToConstant.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
-Context()->variables->are(t=>["Real", limits=>[0,0.5]]);
+Context()->variables->are(t=>["Real", limits=>[0.15,0.75]]);
 
-$r = random(3,5,1);
+$r = random(2,4,1);
 $r1 = $r+1;
-$p = random(3,5,1);
+$p = random(2,4,1);
 $p1 = $p+1;
-$a = random(1,7,1);
+$a = random(1,6,1);
 
 $func = Compute("t^{$r} (t^{$r1} - $a)^{$p}");
 $afunc = FormulaUpToConstant("(t^($r1) - $a)^($p1)/($p1*$r1) + C");
@@ -68,7 +75,7 @@ Context()->texStrings;
 BEGIN_TEXT
 
 Find the following integral.  Note that you can check your answer by
-differentiation. 
+differentiation.
 
 $PAR
 \( \displaystyle \int\, $func \,dt = \) \{ ans_rule(35) \}
@@ -99,5 +106,5 @@ Context()->normalStrings;
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

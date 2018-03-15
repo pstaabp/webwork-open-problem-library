@@ -2,22 +2,23 @@
 ## power functions and modeling
 ## ENDDESCRIPTION
 
-## KEYWORDS('power functions')
 
-## DBsubject('Algebra') 
 ## BookTitle('Algebra: Form and Function')
-## DBchapter('Power Functions') 
 ## BookChapter('Power Functions, Expressions, and Equations')
-## DBsection('Power Functions') 
-## BookSection('Modeling With Power Functions')
-## Date('03/01/11')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBsubject(Algebra)
+## DBchapter(Variation and power functions)
+## DBsection(Applications of power functions)
+## Date(03/01/11)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(5)
+## MO(1)
 ## TitleText1('Algebra: Form and Function')
-## EditionText1('1')
 ## AuthorText1('McCallum, Connally, and Hughes-Hallett')
+## EditionText1('1')
 ## Section1('7.4')
 ## Problem1('28')
+## KEYWORDS('power functions')
 
 
 ##############################################
@@ -26,11 +27,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGcourse.pl",
-"AnswerFormatHelp.pl",
-"parserPopUp.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -78,5 +79,5 @@ ANS( $popupdoubled->cmp() );
 ANS( $popuphalved->cmp() );
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

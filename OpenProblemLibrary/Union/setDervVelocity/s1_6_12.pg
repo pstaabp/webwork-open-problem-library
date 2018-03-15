@@ -5,12 +5,13 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Rates of change - engineering and physics)
 ## Date(8/23/07)
 ## Institution(Union College)
 ## MLT(ROC_kinematics_vertical_multistep)
 ## Level(4)
+## MO(1)
 ## KEYWORDS('derivative' 'limit' 'velocity')
 
 # Edited by K. Lesh, Union College, 9/10/03
@@ -19,9 +20,9 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -77,5 +78,5 @@ ANS(Real($ans3)->cmp);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

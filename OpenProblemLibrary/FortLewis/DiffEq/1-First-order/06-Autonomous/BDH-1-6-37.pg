@@ -4,11 +4,12 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Autonomous Differential Equations)
+## DBchapter(First order differential equations)
+## DBsection(Equilibrium points and phase lines)
 ## Date(01/01/2012)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(4)
 ## KEYWORDS('phase line')
 
 
@@ -17,11 +18,12 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGgraphmacros.pl",
-"PGunion.pl",
-"imageChoice.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "PGgraphmacros.pl",
+  "PGunion.pl",
+  "imageChoice.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -213,7 +215,7 @@ foreach my $i (0..7) { push( @QA, "\($de[$i]\)",  $gr[$i] ); }
 $ml = new_image_match_list(
   link => 1,                #  do not link to separate image
   size => [60,300],         #  image size in pixels
-  tex_size => 200,          #  tex size in precent times 10
+  tex_size => 100,          #  tex size in precent times 10
   columns => 4,             #  number of columns
   separation => 20,         #  separation between image columns 
 );
@@ -261,5 +263,5 @@ $showPartialCorrectAnswers = 0;
 
 ANS(str_cmp($ml->ra_correct_ans));
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

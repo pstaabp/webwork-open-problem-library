@@ -2,17 +2,19 @@
 ##  Plug a value into a formula from a word problem 
 ##
 ##ENDDESCRIPTION
-## DBsubject(Algebra)
-## DBchapter(Algebra, Mathematical Models and Problem Solving)
-## DBsection('Operations with Real Numbers and Simplifying Algebraic Expressions')
-## KEYWORDS('real numbers','algebraic expressions')
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Absolute value)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## Level(2)
+## MO(1)
 ## TitleText1('Essentials of Intermediate Algebra')
-## EditionText1('1')
 ## AuthorText1('Blitzer')
+## EditionText1('1')
 ## Section1('1.2')
 ## Problem1('')
-## Author('RA Cruz')
-## Institution('The College of Idaho')
+## KEYWORDS('real numbers','algebraic expressions')
 ## Date: 2007/09
 
 
@@ -22,7 +24,8 @@ loadMacros(
   "PGstandard.pl",
   "PGchoicemacros.pl",
   "MathObjects.pl",
-  "contextLimitedNumeric.pl"
+  "contextLimitedNumeric.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -50,6 +53,8 @@ END_TEXT
 ######################################
 #  Answers
 
+$showPartialCorrectAnswers = 1;
+
 Context("LimitedNumeric");
 
 $ans_a=Real($a[$slice[0]]);
@@ -58,10 +63,8 @@ ANS($ans_a->cmp);
 $ans_b=Real($a[$slice[1]]);
 ANS($ans_b->cmp);
 
-$showPartialCorrectAnswers = 1;
-
 ######################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

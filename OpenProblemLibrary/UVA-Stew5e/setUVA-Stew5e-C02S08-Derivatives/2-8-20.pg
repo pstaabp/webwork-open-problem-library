@@ -17,6 +17,7 @@
 ## Author(Jeff Holt)
 ## MLT(defDerFormulaGivenRepresent)
 ## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -31,9 +32,11 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PGstandard.pl",
-           "MathObjects.pl",
-           "parserMultiAnswer.pl"
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

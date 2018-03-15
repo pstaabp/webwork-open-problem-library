@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(The Divergence Theorem)
+## DBchapter(Fundamental theorems)
+## DBsection(Divergence theorem)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(Divergence_cylinder_constant_div)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -25,15 +28,13 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGcourse.pl",
-"weightedGrader.pl",
-"LiveGraphics3D.pl",
-#"LiveGraphicsVectorField3D.pl",
-#"LiveGraphicsParametricSurface3D.pl",
-"unionTables.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "weightedGrader.pl",
+  "LiveGraphics3D.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 install_weighted_grader();
@@ -117,7 +118,7 @@ WEIGHTED_ANS($flux->cmp(), 5);
 COMMENT("Uses interactive graphics");
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 

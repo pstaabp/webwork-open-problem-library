@@ -1,8 +1,10 @@
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Models involving y' = k(y - b))
+## DBchapter(First order differential equations)
+## DBsection(Applications - circuits)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## Level(5)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +13,14 @@
 ## KEYWORDS('calculus', 'differential equations', 'exponential growth')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 $context = Context();
 
 $context->variables->add(V=>'Real');
@@ -32,7 +38,6 @@ $ans3 = $temp * 100;
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "9.2","26") \}
 $PAR
 An electric current flowing in a circuit (consisting of a battery of \(V\) volts and a resistor of \(R\) ohms connected in series), satisfies

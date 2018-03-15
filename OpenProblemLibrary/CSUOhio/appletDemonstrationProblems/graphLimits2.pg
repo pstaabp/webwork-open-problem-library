@@ -4,12 +4,13 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Increasing/decreasing functions and local extrema)
 ## Date(7/5/2011)
 ## Institution(Cleveland State University)
 ## Author(Barbara Margolius)
 ## Level(2)
+## MO(1)
 ## TitleText1('')
 ## AuthorText1('')
 ## EditionText1('2011')
@@ -25,10 +26,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-  "PGanswermacros.pl",
   "PGstandard.pl",
   "AppletObjects.pl",
   "MathObjects.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;
@@ -137,13 +138,13 @@ TEXT(MODES(TeX=>"", HTML=><<'END_TEXT'));
 <input type="hidden" name="constant" id="constant" />
 END_TEXT
 
-$answerString1 = $inputs_ref->{inc};
+$answerString1 = $inputs_ref->{inc} || '(0,1)';
 my $correctAnswer1 = List($answerString1);
 
-$answerString2 = $inputs_ref->{dec};
+$answerString2 = $inputs_ref->{dec} || '(0,1)';
 my $correctAnswer2 = List($answerString2);
 
-$answerString3 = $inputs_ref->{constant};
+$answerString3 = $inputs_ref->{constant} || '(0,1)';
 my $correctAnswer3 = List($answerString3);
 
 TEXT(MODES(TeX=>"", HTML=><<'END_TEXT'));
@@ -158,7 +159,9 @@ BEGIN_TEXT
 
 $BR
 
-$BR list all intervals for which
+$BR
+The graph shown is for the function \(f(x)\).
+List all intervals for which
 $BR
 a)
 \(f^\prime(x)>0\)
@@ -174,6 +177,9 @@ c)
 \{ans_rule(35) \}
 
 $BR
+Enter "None" if no intervals meet these criteria.
+$BR
+$BBOLD Note:$EBOLD all intervals should be given as open intervals.
 
 END_TEXT
 Context()->normalStrings;

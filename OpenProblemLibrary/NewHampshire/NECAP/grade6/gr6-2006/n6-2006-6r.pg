@@ -4,21 +4,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextCurrency.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -40,9 +30,6 @@ $radio->qa("What is the correct amount of change Mr. Mason will receive? ", "$DO
 $radio->extra("$DOLLAR $bad1 ", "$DOLLAR $bad2 ", " $DOLLAR $bad3 ");
 
 BEGIN_TEXT
-IF YOU ARE PREPARING FOR THE NEAP EXAMINATION, NOTE THAT THIS PROBLEM IS
-A NEAP PROBLEM ON WHICH NO CALCULATORS WERE ALLOWED.$PAR
-
 
 Mr. Mason owes $DOLLAR $a for his groceries.  He pays with a twenty-dollar
 bill and a five dollar bill.  
@@ -57,11 +44,12 @@ $PAR Solution $PAR
 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 6')
-## DBsection('2006')
+## DBsubject(Arithmetic)
+## DBchapter(Decimals)
+## DBsection(Applications)
+## Level(5)
 

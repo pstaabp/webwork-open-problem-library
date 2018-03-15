@@ -1,20 +1,28 @@
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Calculus of Vector-Valued Functions)
-## DBsection(Arc Length and Speed)
+## DBchapter(Calculus of vector valued functions)
+## DBsection(Arc length and curvature)
 ## Institution(W.H.Freeman)
 ## Author(JustAsk - Vladimir Finkelshtein)
+## MLT(alc_velocity_speed)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('13.3')
 ## Problem1('12')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
 
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 $t=random(0,5);
 $n=random(0,1);
@@ -47,7 +55,6 @@ $answer=sqrt($v0x**2+$v0y**2+$v0z**2);
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "13.3","12") \}
 $PAR
 Find the speed: \(\bf r\it(t)=\left<$x,$y,$z\right> \) at \(t=$t\).

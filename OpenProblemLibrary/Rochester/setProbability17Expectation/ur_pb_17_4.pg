@@ -2,31 +2,23 @@
 ##   Expected Values
 ## ENDDESCRIPTION
 
-## KEYWORDS('Expected Value', 'Random Variable', 'Variance')
 ## Tagged by nhamblet
 
-## DBsubject('Probability')
-## DBchapter('Theory')
-## DBsection('Expected Value')
-## Date('')
-## Author('')
-## Institution('Rochester')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Probability)
+## DBchapter(Random variables)
+## DBsection(Variance, standard deviation)
+## Institution(Rochester)
+## Level(2)
+## KEYWORDS('Expected Value', 'Random Variable', 'Variance')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGnumericalmacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGnumericalmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -3,42 +3,39 @@
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
 # ENDDESCRIPTION
 
-## KEYWORDS('calculus', 'integral', 'definite integral', 'area')
 ## Tagged by glr 02/08/09
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('The Definite Integral')
-## Date('')
-## Author('Gavin LaRose, Paul Pearson')
-## Institution('University of Michigan, Fort Lewis College')
+## DBchapter(Integrals)
+## DBsection(Conceptual understanding of integration)
+## Institution(University of Michigan, Fort Lewis College)
+## Author(Gavin LaRose, Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## TitleText2('Calculus')
-## EditionText1('4')
-## EditionText2('5')
 ## AuthorText1('Hughes-Hallett')
-## AuthorText2('Hughes-Hallett')
+## EditionText1('4')
 ## Section1('5.2')
-## Section2('5.2')
 ## Problem1('29')
+## TitleText2('Calculus')
+## AuthorText2('Hughes-Hallett')
+## EditionText2('5')
+## Section2('5.2')
 ## Problem2('33')
+## KEYWORDS('calculus', 'integral', 'definite integral', 'area')
 
 ## Textbook tags
 ## HHChapter1('Key Concept: The Definite Integral')
 ## HHChapter2('Key Concept: The Definite Integral')
-## HHSection1('The Definite Integral')
-## HHSection2('The Definite Integral')
 
 DOCUMENT();
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraphmacros.pl",
-"MathObjects.pl",
-"unionTables.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
  
 Context("Numeric")->variables->are(A=>'Real');
@@ -116,16 +113,12 @@ ColumnTable(
 "Use the graph of \(f(x)\) in the figure to find the following integrals." .
 $BR.
 $BR.
-${BBOLD}.
-"A. ".
-$EBOLD.
+"${BBOLD}A. $EBOLD".
 "\( \displaystyle \int_{-$a}^0 f(x) \, dx = \) ".
 ans_rule(15).
 $BR.
 $BR.
-${BBOLD}.
-"B. ".
-$EBOLD.
+"${BBOLD}B. $EBOLD".
 "If the blue shaded area in the graph has area \(A\), find the value of the following integral in terms of \( A \).". 
 $BR.
 "\( \displaystyle \int_{-$a}^{$ub} f(x) \, dx = \) ".
@@ -170,6 +163,6 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 

@@ -4,22 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -28,13 +16,11 @@ $showPartialCorrectAnswers = 1;
 Context("Numeric");
 Context()->texStrings;
 $radio=new_multiple_choice();
-$radio->qa("If x is an integer, which expression must be divisible by 3? ", "12x-9 ");
+$radio->qa("Which expression must be divisible by 3 for every integer x? ", "12x-9 ");
 $radio->extra("3x+1 ", "8x+6 ","4x-1 ");
 
 
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATOR. 
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR
 \{$radio->print_q()\}
 \{$radio->print_a()\}
 
@@ -47,8 +33,9 @@ $PAR Solution $PAR
 them$BR and notice that you don't get a multiple of 3. 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 11')
-## DBsection('2009')
+## DBsubject(Number theory)
+## DBchapter(Divisibility)
+## DBsection(Definitions)
+## Level(2)

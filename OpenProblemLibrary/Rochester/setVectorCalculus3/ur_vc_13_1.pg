@@ -5,9 +5,10 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Surface Integrals)
+## DBchapter(Vector calculus)
+## DBsection(Surface integrals of scalar fields)
 ## Date(6/3/2002)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -23,12 +24,11 @@
 
 DOCUMENT();		# This should be the first executable line in the problem.
 
-loadMacros("PG.pl",      
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",      
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl"     
-          );      
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;

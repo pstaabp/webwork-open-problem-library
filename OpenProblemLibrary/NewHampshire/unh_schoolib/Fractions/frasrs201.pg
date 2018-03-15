@@ -1,12 +1,13 @@
 
     DOCUMENT();
 
-    loadMacros(
-     "PGstandard.pl",
-     "MathObjects.pl",
-     "contextFraction.pl",
-      "unionMacros.pl",
-    );
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextFraction.pl",
+  "unionMacros.pl",
+  "PGcourse.pl"
+);
 
     TEXT(beginproblem);
 
@@ -95,6 +96,8 @@
 
     ENDDOCUMENT();
     
-## DBsubject(Middle school)
-## DBchapter('Fractions')
-## DBsection('')
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Addition/subtraction)
+## Level(2)
+## MO(1)

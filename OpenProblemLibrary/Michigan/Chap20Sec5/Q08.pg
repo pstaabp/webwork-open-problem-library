@@ -2,26 +2,34 @@
 # Problem from Calculus, multi-variable, Hughes-Hallett et al.,
 # originally from 5ed (with updates)
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 08/20/10
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(The Divergence Theorem)
+## DBchapter(Vector calculus)
+## DBsection(Curl and divergence)
 ## Date(08/20/10)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## MLT(curl_div_6)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('5')
-## Section1('20.5')
-## Problem1('8')
 ## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
 ## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
 ## EditionText2('6')
+## EditionText3('7')
+## Section1('20.5')
 ## Section2('20.3')
+## Section3('20.3')
+## Problem1('8')
 ## Problem2('22')
+## Problem3('24')
 ## KEYWORDS('divergence theorem', 'stokes theorem', 'divergence', 'curl', 'gradient vector field')
 
 ## Textbook tags
@@ -30,14 +38,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"parserPopUp.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
 );
 
 Context("Vector");
@@ -190,6 +195,6 @@ Since
 END_SOLUTION
 Context()->normalStrings;
 
-COMMENT('Uses MathObjects');
+;
 
 ENDDOCUMENT();

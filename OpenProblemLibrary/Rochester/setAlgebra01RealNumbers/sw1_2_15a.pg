@@ -4,9 +4,12 @@
 
 ## Tagged by cmd6a 4/4/06
 
-## DBsubject(Numbers)
-## DBchapter(Real numbers)
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Division)
 ## Date(6/3/2002)
+## MLT(basic_division)
+## Level(2)
 ## TitleText1('College Algebra')
 ## AuthorText1('Stewart, Redlin, Watson')
 ## EditionText1('3')
@@ -17,11 +20,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 $showCorrectPartialAnswers = 1;
@@ -32,7 +33,7 @@ $d1 = random(32,69,1);
 $d2 = random(25,49,1);
 
 BEGIN_TEXT
-Add the fractions, and reduce your answer. 
+Divide the fractions, and reduce your answer. 
              \[ \frac{$n1}{$d1}\div\frac{$n2}{$d2} \]
 The reduced answer is \{ans_rule(5)\} / \{ans_rule(5)\}
 END_TEXT

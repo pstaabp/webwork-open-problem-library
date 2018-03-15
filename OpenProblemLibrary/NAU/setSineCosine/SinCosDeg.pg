@@ -1,103 +1,139 @@
-##DESCRIPTION
-## DBsubject('Trigonometry')
-## DBchapter('Trigonometric Functions of Angles')
-## DBsection('Trigonometric Functions of Angles')
-## KEYWORDS('trigonometry', 'reference angle')
-## Author('Katie Louchart')
-## Institution('NAU')
-##ENDDESCRIPTION
+## DESCRIPTION
+##   Calculate Values of Trig Functions
+## ENDDESCRIPTION
 
-# File Created: 6/13/05
-# Location: Northern Arizona University
-# Course: Precalculus
+## Tagged by nhamblet
 
-DOCUMENT();
+## DBsubject(Trigonometry)
+## DBchapter(Trigonometric functions)
+## DBsection(Trigonometric functions of special angles)
+## Date(2/27/15)
+## Institution(Hope College)
+## Author(Paul Pearson)
+## MLT(Many_functions_many_angles)
+## Level(2)
+## MO(1)
+## KEYWORDS('Trig')
+
+DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl",
-"extraAnswerEvaluators.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGunion.pl",
+  "MathObjects.pl",
+  "alignedChoice.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
 
-TEXT(&beginproblem);
-$showPartialCorrectAnswers = 1;
+TEXT(beginproblem());
+
+###################################
+# Setup
+
+Context("Fraction-NoDecimals");
+
+# angle theta in degrees
+@t = (
+'-270','-240','-225','-210',
+'-180','-150','-135','-120',
+'-90','-60','-45','-30',
+'0','30','45','60',
+'90','120','135','150',
+'180','210','225','240',
+'270');
+
+@cost = (
+'0','-1/2','-sqrt(2)/2','-sqrt(3)/2',
+'-1','-sqrt(3)/2','-sqrt(2)/2','-1/2',
+'0','1/2','sqrt(2)/2','sqrt(3)/2',
+'1','sqrt(3)/2','sqrt(2)/2','1/2',
+'0','-1/2','-sqrt(2)/2','-sqrt(3)/2',
+'-1','-sqrt(3)/2','-sqrt(2)/2','-1/2',
+'0');
+
+@sint = (
+'1','sqrt(3)/2','sqrt(2)/2','1/2',
+'0','-1/2','-sqrt(2)/2','-sqrt(3)/2',
+'-1','-sqrt(3)/2','-sqrt(2)/2','-1/2',
+'0','1/2','sqrt(2)/2','sqrt(3)/2',
+'1','sqrt(3)/2','sqrt(2)/2','1/2',
+'0','-1/2','-sqrt(2)/2','-sqrt(3)/2',
+'-1');
+
+@theta = ();
+
+foreach my $i (0..$#t) {
+  $theta[$i] = $t[$i] . '^\circ';
+}
+
+#@perm = NchooseK( scalar(@t), scalar(@t) );
+@perm = shuffle( scalar(@t) );
+
+#BEGIN_TEXT
+#\{ join( ', ', @perm) \}
+#END_TEXT
+
+@t = @t[@perm];
+@theta = @theta[@perm];
+@cost = @cost[@perm];
+@sint = @sint[@perm];
+
+@ans = ();
+
+foreach my $i (0..2) {
+  $ans[2*$i] = Compute("$cost[2*$i]");
+  $ans[2*$i+1] = Compute("$sint[2*$i+1]");
+}
 
 
-@angles30=(30, 150, 210, 330, 390, 510, 570, 690, -30, -150, -210, -330, -390, -510, -570, -690);
-$tag1=random(0,15,1);
-$tag2=random(0,15,1);
-while ($tag2 == $tag1) {$tag2 = random(0,15,1);}
-$sina=sin(($PI/180)*$angles30[$tag1]);
-$cosa=cos(($PI/180)*$angles30[$tag2]);
+###################################
+# Setting the answers
 
 
-@angles60=(60, 120, 240, 300, 420, 180, 600, 660, -60, -120, -240, -300, -420, -180, -600, -660);
-$tag3=random(0,15,1);
-$tag4=random(0,15,1);
-while ($tag3 == $tag4) {$tag4 = random(0,15,1);}
-$sinb=sin(($PI/180)*$angles60[$tag3]);
-$cosb=cos(($PI/180)*$angles60[$tag4]);
+###################################
+#
+#  For the answers, don't allow functions other than sqrt()
+#
+
+Parser::Context::Functions::Disable('All'); #  disable all functions
+Parser::Context::Functions::Enable('sqrt'); # re-enable the sqrt function
+
+###################################
+#  Use an alignment to present the questions and answers
+###################################
+
+$al = new_aligned_list(ans_rule_len=>10, numbered=>1, tex_spacing=>"3pt");
+$al->qa(
+  "\( \cos \left($theta[0]\right) \) ", $ans[0]->cmp,
+  "\( \sin \left($theta[1]\right) \) ", $ans[1]->cmp,
+  "\( \cos \left($theta[2]\right) \) ", $ans[2]->cmp,
+  "\( \sin \left($theta[3]\right) \) ", $ans[3]->cmp,
+  "\( \cos \left($theta[4]\right) \) ", $ans[4]->cmp,
+  "\( \sin \left($theta[5]\right) \) ", $ans[5]->cmp,
+);
 
 
-@angles45=(45, 135, 225, 315, 405, 495, 585, 675, -45, -135, -225, -315, -405, -495, -585, -675);
-$tag5=random(0,15,1);
-$tag6=random(0,15,1);
-while ($tag5 == $tag6) {$tag6 = random(0,15,1);}
-$sinc=sin(($PI/180)*$angles45[$tag5]);
-$cosc=cos(($PI/180)*$angles45[$tag6]);
-
-@angles90=(90, 180, 270, 360, 450, 540, 630, -720, -90, -180, -270, -360, -450, -540, -630, -720);
-$tag7=random(0,15,1);
-$tag8=random(0,15,1);
-while ($tag7 == $tag8) {$tag8 = random(0,15,1);}
-$sind=sin(($PI/180)*$angles90[$tag7]);
-$cosd=cos(($PI/180)*$angles90[$tag8]);
-
-
+###################################
+# Main text
 
 BEGIN_TEXT
-
-Determine the exact values of the following expressions. Use reference angles where necessary. 
-$BR 
-$BBOLD Note: $EBOLD
-Your answers must be in EXACT form.  They cannot
-contain decimals.  If an answer involves a square root,
- write it as  $BITALIC sqrt $EITALIC. For instance, the square root of 2
-should be written as sqrt(2).
-
+Evaluate the  following expressions.
 $PAR
-\( \sin ($angles30[$tag1]^\circ)\) =  \{ans_rule(20) \} $BR
-
-\( \cos ($angles30[$tag2]^\circ)\) =  \{ans_rule(20) \} $BR
-
-\( \sin ($angles60[$tag3]^\circ)\) =  \{ans_rule(20) \} $BR
-
-\( \cos ($angles60[$tag4]^\circ)\) =  \{ans_rule(20) \} $BR
-
-\( \sin ($angles45[$tag5]^\circ)\) =  \{ans_rule(20) \} $BR
-
-\( \cos ($angles45[$tag6]^\circ)\) =  \{ans_rule(20) \} $BR
-
-\( \sin ($angles90[$tag7]^\circ)\) =  \{ans_rule(20) \} $BR
-
-\( \cos ($angles90[$tag8]^\circ)\) =  \{ans_rule(20) \} $BR
-
+\{$al->print_q\}
+$PAR
+Remark: Your answer cannot contain trigonometric functions;
+it must be a fraction (not a decimal) and it may contain square roots (e.g., sqrt(2)).
 END_TEXT
 
+###################################
+# Answer checking
 
-&ANS(exact_no_trig($sina));
-&ANS(exact_no_trig($cosa));
-&ANS(exact_no_trig($sinb));
-&ANS(exact_no_trig($cosb));
-&ANS(exact_no_trig($sinc));
-&ANS(exact_no_trig($cosc));
-&ANS(exact_no_trig($sind));
-&ANS(exact_no_trig($cosd));
+$showPartialCorrectAnswers = 1;
+ANS($al->correct_ans);
 
+###################################
 
-
+;
 ENDDOCUMENT();

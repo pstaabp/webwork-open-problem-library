@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ##  Find the power absorbed by the elements
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Basic Concepts')
-## DBsection('Circuit Elements')
+## DBsubject(Electric circuits)
+## DBchapter(Basic concepts)
+## DBsection(Circuit elements)
 ## KEYWORDS('power','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

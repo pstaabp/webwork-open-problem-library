@@ -1,19 +1,21 @@
 ##DESCRIPTION
 ## Tagged by jjh2b
 
-## DBsubject('WeBWorK')
-## DBchapter('Demos')
-## DBsection('JavaScript')
-## Date('8/30/07')
-## Institution('Rochester')
+## DBsubject(WeBWorK)
+## DBchapter(Demos)
+## DBsection(JavaScript)
+## Date(8/30/07)
+## Institution(Rochester)
+## Static(1)
 ## KEYWORDS('sample','Java applet example')
 
 DOCUMENT();
 
-loadMacros("PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-); 
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
 
 $showPartialCorrectAnswers = 1;
 TEXT(beginproblem());

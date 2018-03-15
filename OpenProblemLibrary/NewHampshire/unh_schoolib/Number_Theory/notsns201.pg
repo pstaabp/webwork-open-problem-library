@@ -4,15 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
-# "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "contextLeadingZero.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -54,12 +49,15 @@ The primes less than 10 are 2,3,5,7, so there are 4 of them. The composites less
 Since \(51=17\times 3\), \(52=2^2\times 13), and 53 is prime so it is the smallest prme greater than 50.
 END_SOLUTION	
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
-## DBsubject(Middle school)
-## DBchapter('Number_Theory')
-## DBsection('')
+## DBsubject(Number theory)
+## DBchapter(Divisibility)
+## DBsection(Definitions)
+## Level(2)
+## Static(1)
+## MO(1)
 
 
 

@@ -3,24 +3,28 @@
 ## 
 ##ENDDESCRIPTION
 ## DBsubject(Algebra)
-## DBchapter(Functions and linear functions)
-## DBsection('Functions and Linear Functions')
-## KEYWORDS('parallel lines','perpendicular lines')
+## DBchapter(Linear equations and functions)
+## DBsection(Parallel and perpendicular lines)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(Slope_of_par_perp)
+## Level(2)
+## MO(1)
 ## TitleText1('Essentials of Intermediate Algebra')
-## EditionText1('1')
 ## AuthorText1('Blitzer')
+## EditionText1('1')
 ## Section1('2.4')
 ## Problem1('')
-## Author('RA Cruz')
-## Institution('The College of Idaho')
-## Date: 2007/10
+## KEYWORDS('parallel lines','perpendicular lines')
+## Date: 2007/10 updated 2016/06 --rac
 
 DOCUMENT(); # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "CofIdaho_macros.pl"
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -59,8 +63,20 @@ ANS($ans_b->cmp);
 $showPartialCorrectAnswers = 1;
 
 ######################################
+#  Solution
 
+Context("Fraction");
+$ans_a_display = Compute($m);
+$ans_b_display = Compute("-1/$m");
 
-COMMENT('MathObject version');
+Context()->texStrings;
+BEGIN_SOLUTION
+$PAR Solution: $BR $BR
+a) \( m_{parallel} = $ans_a_display\)
+$BR
+b) \( m_{perpendicular} = $ans_b_display\)
+END_SOLUTION
+Context()->normalStrings;
+
 ENDDOCUMENT();
 

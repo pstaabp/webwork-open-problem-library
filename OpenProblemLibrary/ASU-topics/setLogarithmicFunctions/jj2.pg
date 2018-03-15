@@ -2,30 +2,22 @@
 ## Algebra
 ## ENDDESCRIPTION
 
-## KEYWORDS('Algebra', 'logarithmic')
 ## Tagged by LD
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Logarithmic')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Logarithmic functions)
+## Institution(ASU)
+## Level(3)
+## KEYWORDS('Algebra', 'logarithmic')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"extraAnswerEvaluators.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

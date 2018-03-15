@@ -1,25 +1,26 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('The Fundamental Theorem of Calculus')
-## KEYWORDS('calculus', 'integrals', 'integration', 'fundamental theorem of calculus')
+## DBchapter(Integrals)
+## DBsection(Fundamental theorem of calculus)
+## Institution(W.H.Freeman)
+## Author(Justask)
+## MLT(FTC_08)
+## Level(3)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('5.3')
 ## Problem1('53')
-## Author('Justask')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'integrals', 'integration', 'fundamental theorem of calculus')
 
 
 DOCUMENT();
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "PGgraphmacros.pl",
-          );
- loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
 
 TEXT(beginproblem());

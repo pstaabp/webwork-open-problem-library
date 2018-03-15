@@ -5,11 +5,12 @@
 
 
 ## DBsubject(Algebra)
-## DBchapter(Functions and Models)
-## DBsection(Four Ways to Represent a Function)
+## DBchapter(Functions)
+## DBsection(Domain and range)
 ## Date(5/26/2005)
 ## Institution(UVA)
 ## Author(Jeff Holt)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -21,15 +22,17 @@
 ## Section2('1.1')
 ## Problem2('')
 ## KEYWORDS('calculus', 'functions', 'models)
+## MLTleader(1)
+## MLT(algebra_functions_domain_range_high_root)
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "extraAnswerEvaluators.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
+);
 
 $a = non_zero_random(3,15,2);
 $b = non_zero_random(2,14,2);

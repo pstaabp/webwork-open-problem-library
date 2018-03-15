@@ -1,9 +1,9 @@
 ##DESCRIPTION
 ## Apply loop analysis to a dc circuit with a VCCS
 ##ENDDESCRIPTION
-## DBsubject('Electric Circuits')
-## DBchapter('Nodal and Loop Analysis Techniques')
-## DBsection('Loop Analysis')
+## DBsubject(Electric circuits)
+## DBchapter(Nodal and loop analysis techniques)
+## DBsection(Loop analysis)
 ## KEYWORDS('dc','nodal analysis','circuits')
 ## TitleText1('Basic Engineering Circuit Analysis')
 ## EditionText1('8e')
@@ -16,11 +16,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

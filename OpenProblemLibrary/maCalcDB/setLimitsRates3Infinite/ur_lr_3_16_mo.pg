@@ -5,13 +5,15 @@
 ## tsuda tagged and PAID on 2-20-2004
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Infinite limits and vertical asymptotes)
 ## Date(6/3/2002)
 ## Institution(ASU)
 ## MLT(oneandtwosidedinfinite)
 ## MLTleader(1)
 ## Level(2)
+## Static(1)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -21,11 +23,12 @@
 
 DOCUMENT();
 loadMacros(
-   "PGstandard.pl",      # Standard macros for PG language
-   "PGchoicemacros.pl",
-   "MathObjects.pl",
-   "unionTables.pl",        # for customized match set up
-   "PGcourse.pl",        # Customization file for the course
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -70,20 +73,17 @@ $BR
 For example, the function \( \displaystyle{f(x)=$questions[$sl]} \) has a 
 vertical asymptote at \(x=$xval[$sl]\).
 $HR
-For each of the following limits:
-$BR enter either 'infinity' for  positive infinity,
-$BR
- '-infinity' for negative infinity, 
-$BR or 'DNE' when the limit simply does not exist.
+
+Find each of the following limits.
 $PAR
 \( \displaystyle{
-         \lim_{x\to $xval[$sl]^-}$questions[$sl]= }\)\{ans_rule(20)\} 
+         \lim_{x\to $xval[$sl]^-}$questions[$sl]= }\)\{ans_rule(20)\} \{ AnswerFormatHelp("limits") \}
 $PAR
 \( \displaystyle{
-         \lim_{x\to $xval[$sl]^+}$questions[$sl]=}\)\{ans_rule(20)\} 
+         \lim_{x\to $xval[$sl]^+}$questions[$sl]=}\)\{ans_rule(20)\} \{ AnswerFormatHelp("limits") \}
 $PAR
 \( \displaystyle{
-         \lim_{x\to $xval[$sl]}$questions[$sl]=}\) \{ans_rule(20)\} 
+         \lim_{x\to $xval[$sl]}$questions[$sl]=}\) \{ans_rule(20)\} \{ AnswerFormatHelp("limits") \}
 $PAR
 END_TEXT
 Context()->normalStrings;
@@ -98,8 +98,8 @@ ANS($leftans[$sl]->cmp,  $rtans[$sl]->cmp,   $ans[$sl]->cmp  );
 
  
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 

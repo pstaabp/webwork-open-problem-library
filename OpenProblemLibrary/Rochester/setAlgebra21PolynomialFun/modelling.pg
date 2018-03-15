@@ -4,10 +4,11 @@
 
 ## Tagged by tda2d
 
-## DBsubject('Algebra')
-## DBchapter('Exponential and Logarithmic Functions')
-## DBsection('The Natural Exponential Function')
-## Date('6/3/2002')
+## DBsubject(Linear algebra)
+## DBchapter(Systems of linear equations)
+## DBsection(Applications)
+## Date(6/3/2002)
+## Level(4)
 ## TitleText1('College Algebra')
 ## AuthorText1('Stewart, Redlin, Watson')
 ## EditionText1('3')
@@ -18,11 +19,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

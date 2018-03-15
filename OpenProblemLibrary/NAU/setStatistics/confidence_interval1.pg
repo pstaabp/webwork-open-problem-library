@@ -1,10 +1,13 @@
 ##DESCRIPTION
-## DBsubject('Statistics')
-## DBchapter('Estimation')
-## DBsection('Confidence Intervals')
+## DBsubject(Statistics)
+## DBchapter(Confidence intervals)
+## DBsection(One sample proportion)
+## Institution(NAU)
+## Author(N.Spencer Sitton)
+## MLT(CI_1p_03)
+## MLTleader(1)
+## Level(3)
 ## KEYWORDS('Confidence Intervals')
-## Author('N.Spencer Sitton')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 07/13/05
@@ -12,16 +15,16 @@
 # Course: Qauntitative Reasoning
 
 DOCUMENT();     
-loadMacros("PGstandard.pl",  
-           "PGauxiliaryFunctions.pl"
-          
-);     
+loadMacros(
+  "PGstandard.pl",
+  "PGcourse.pl"
+);
 TEXT(&beginproblem);
 
 $size = random( 500, 2000, 100 );
 @name = ( 'workers', 'voters', 'home owners', 'car owners' );
 @item = (  'full health insurance coverage', ' voted yes on proposition 200', 
-          ' a swimming pool in their backyard', ' recieved a speeding ticket this year');
+          ' a swimming pool in their backyard', ' received a speeding ticket this year');
 @wd1 = ( 'had', '', 'had', '' );
 @wd2 = ( 'have', '', 'have', '' );
 $ind1 = random( 0, 3, 1 );
@@ -35,7 +38,7 @@ BEGIN_TEXT
 
 A random sample of $size $name[$ind1] in a particular city found $sample $name[$ind1] who $wd1[$ind1]
 $item[$ind1]. Find a 95$PERCENT confidence interval for the true percent of $name[$ind1] in this 
-city who $wd2[$ind1] $item[$ind1].  ${BBOLD} Express your results to the nearest hundredth of a percent.  $EBOLD. $PAR
+city who $wd2[$ind1] $item[$ind1].  ${BBOLD} Express your results to the nearest hundredth of a percent$EBOLD. $PAR
 Answer: \{ans_rule( 15 )\} to \{ans_rule( 15 )\} $PERCENT   
 
 END_TEXT

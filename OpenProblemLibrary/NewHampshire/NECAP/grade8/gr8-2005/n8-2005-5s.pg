@@ -1,12 +1,12 @@
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"MathObjects.pl",
-"PGgraphmacros.pl",
-"contextCurrency.pl",
-"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
-);	
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGgraphmacros.pl",
+  "contextCurrency.pl",
+  "PGcourse.pl"
+);
 
 # make sure we're in the context we want
 Context("Currency");
@@ -115,11 +115,12 @@ two rows are skipped. Thus it will$BR be $DOLLAR1.35 more than the last row in
 the 25-29 row.  So the price is $DOLLAR \(5.90+1.35=6.25\).
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 
 
-## DBsubject('NECAP')
-## DBchapter('Grade 8')
-## DBsection('2005')
+## DBsubject(Set theory and logic)
+## DBchapter(Pattern matching)
+## DBsection(Numeric)
+## Level(3)
 

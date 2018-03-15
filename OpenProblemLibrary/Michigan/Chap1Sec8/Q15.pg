@@ -7,12 +7,13 @@
 
 ## Author('Gavin LaRose');
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Estimating limits numerically)
 ## Institution(University of Michigan)
 ## MLT(limit_numerical_fill_table_and_guess)
 ## MLTleader(1)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -26,15 +27,12 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-"parserMultiAnswer.pl",
-"PGgraphmacros.pl",
-# "parserNumberWithUnits.pl",
-# "parserFormulaWithUnits.pl", 
-# "parserFormulaUpToConstant.pl",
-# "PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "parserMultiAnswer.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -175,8 +173,8 @@ $BR
 $PAR
 ${BBOLD}(c)$EBOLD
 Graph the function to see if it is consistent with your answers to
-parts (a) and (b).  By graphing, find an interval for \( x \) near
-zero such that the difference between your conjectured limit and the
+parts (a) and (b).  By graphing, find an interval for \( x \) near \( $a \)
+such that the difference between your conjectured limit and the
 value of the function is less than 0.01.  In other words, find a
 window of height 0.02 such that the graph exits the sides of the window
 and not the top or bottom.  What is the window?
@@ -249,12 +247,12 @@ $ECENTER
 $BR
 This confirms our estimate of the limit.  A reasonable range for \(x\)
 so that the graph of \(f(x)\) enters and leaves a window of height 0.02
-around \(y = $limit\) is \(-$amd \le x \le $apd\) and
+around \(y = $limit\) is \($amd \le x \le $apd\) and
 \($lmd\le y\le $lpd\).
 
 END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

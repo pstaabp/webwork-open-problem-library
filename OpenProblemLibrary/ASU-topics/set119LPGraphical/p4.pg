@@ -2,20 +2,14 @@
 ##   Linear Programming: Graphical
 ##ENDDESCRIPTION
 
-## KEYWORDS('Inequalities', 'Linear', 'Optimization')
 ## Tagged by nhamblet
 
-## DBsubject('Algebra')
-## DBchapter('Linear Programming')
-## DBsection('Constraint Optimization')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Operations research)
+## DBchapter(Linear programming)
+## DBsection(Constrained optimization - planar)
+## Institution(ASU)
+## Level(5)
+## KEYWORDS('Inequalities', 'Linear', 'Optimization')
 
 #
 # First comes some stuff that appears at the beginning of every problem
@@ -24,15 +18,16 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGgraphmacros.pl",
-"PGasu.pl",
-"extraAnswerEvaluators.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "PGasu.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
 );
+
+Context('Point');
 
 TEXT(beginproblem());
 
@@ -71,10 +66,11 @@ a) Write the objective function to be maximized. $BR
 $SPACE \(P =\) \{ ans_rule(20) \}
 $BR
 $BR 
-b) The feasible region has 3 corner points. Two of them are are:
-(0, \{ ans_rule(5) \}) and (\{ ans_rule(5) \}, 0). The third is the point \( (a,a) \) where \( a \)= \{ ans_rule(5) \}.
+b) The feasible region has 3 corner points.  List the three
+\{helpLink('points')\}:
 $BR
-$BR
+Corner points: \{ ans_rule(60) \}
+$BRBR
 c) Determine the amount to be invested in each bond to maximize the return
 and determine the maximum return:
 $BR
@@ -100,9 +96,7 @@ if ($z > $zmax){$zmax=$z,$xmax=$P/2,$ymax=0;}
 $z = " $r1*x+$r2*y";
 
 ANS(fun_cmp($z,var=>['x','y']));
-ANS(num_cmp($P));
-ANS(num_cmp($a));
-ANS(num_cmp($a));
+ANS(List("($P,0),($a,0),($a,$a)")->cmp);
 ANS(num_cmp($xmax));
 ANS(num_cmp($ymax));
 ANS(num_cmp($zmax));

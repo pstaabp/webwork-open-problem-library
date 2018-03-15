@@ -5,18 +5,20 @@
 ## Tagged by cmd6a 3/10/06
 
 ## DBsubject(Differential equations)
-## DBchapter(Laplace Transforms)
+## DBchapter(Laplace transforms)
+## DBsection(Basic transformations)
 ## Institution(ASU)
+## MLT(forward_08)
+## MLTleader(1)
+## Level(3)
 
 DOCUMENT() ;        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem()) ;

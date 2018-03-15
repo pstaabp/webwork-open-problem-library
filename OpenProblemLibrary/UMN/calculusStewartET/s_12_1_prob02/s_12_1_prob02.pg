@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Three-Dimensional Coordinate Systems)
+## DBchapter(Concepts for multivariable functions)
+## DBsection(Surfaces)
 ## Date(11/28/2011)
 ## Institution(University of Minnesota)
 ## Author(Justin Sukiennik)
+## MLT(sur_match_formula_colorShading)
+## Level(2)
 ## TitleText1('Calculus: Concepts and Contexts')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -23,11 +25,11 @@ DOCUMENT();        # This should be the first executable line in the problem.
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "PGchoicemacros.pl",
   "PGgraphmacros.pl",
   "choiceUtils.pl",
-  "PGcourse.pl", 
+  "PGcourse.pl"
 );
 ########################################################################
 

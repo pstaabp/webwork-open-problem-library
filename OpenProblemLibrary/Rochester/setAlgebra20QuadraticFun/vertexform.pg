@@ -2,26 +2,28 @@
 ## Algebra
 ## ENDDESCRIPTION
 
-## KEYWORDS('quadratic', 'function' 'limits' 'intercepts')
 ## Tagged by tda2d
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Extreme Values of Functions')
-## Date('6/3/2002')
-## Author('')
-## Institution('')
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Graphs)
+## Date(6/3/2002)
+## MLT(LikeThisI)
+## Level(2)
+## MO(1)
 ## TitleText1('College Algebra')
-## EditionText1('3')
 ## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
 ## Section1('4.6')
 ## Problem1('28')
+## KEYWORDS('quadratic', 'function' 'limits' 'intercepts')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 #Math Objects version - replaced interval_cmp with Point math object, and accept strings 'max' or 'min' as well as maximum / minimum.
@@ -48,6 +50,9 @@ if ($A > 0) {
    $K2 = $K; 
    $K = Compute("-$K"); 
    $minmax = String("minimum"); }
+   else {
+   $K2 = -$K; 
+   $minmax = String("maximum"); }
 
 $funct = Formula("$A*(x - $H)^2 + $K")->reduce();
 

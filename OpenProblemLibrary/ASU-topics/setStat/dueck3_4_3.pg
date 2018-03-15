@@ -2,30 +2,25 @@
 ##  Statistics 
 ## ENDDESCRIPTION
 
-## KEYWORDS('Statistics','Quartiles')
 ## Tagged by dgt5v
 
-## DBsubject('Statistics')
-## DBchapter('Descriptive Statistics')
-## DBsection('Quartiles')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summary statistics)
+## Institution(ASU)
+## MLT(stat-des-quartiles)
+## MLTleader(1)
+## Level(2)
+## KEYWORDS('Statistics','Quartiles')
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

@@ -4,19 +4,13 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-"contextLeadingZero.pl",
-"answerHints.pl",
-"contextTF.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "contextLeadingZero.pl",
+  "answerHints.pl",
+  "contextTF.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -68,10 +62,12 @@ greater than 1 then the smaller of them cannot be larger than \(\sqrt{$d}\)
 END_SOLUTION	
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Factoring')
-## DBsection('')
-
+## DBsubject(Algebra)
+## DBchapter(Factoring)
+## DBsection(Factoring: common factors)
+## Level(2)
+## MO(1)
+## MLT(common_factors_numbers)
 

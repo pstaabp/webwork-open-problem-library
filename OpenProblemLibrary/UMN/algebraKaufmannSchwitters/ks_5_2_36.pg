@@ -2,30 +2,32 @@
 ##  Algebra: exponents and radicals 
 ##ENDDESCRIPTION
 
-##KEYWORDS('algebra', 'radicals', 'fraction', 'exponents')
 
-##DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Exponents and Radicals')
-## Date('10/27/2009')
-## Author('Justin Sukiennik')
-## Institution('University of Minnesota')
+## DBsubject(Arithmetic)
+## DBchapter(Irrational numbers)
+## DBsection(Simplify radical numbers)
+## Date(10/27/2009)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## MLT(rewrite_a_radical)
+## Level(2)
+## MO(1)
 ## TitleText1('Algebra for College Students')
-## EditionText1('8')
 ## AuthorText1('Kaufmann, Schwitters')
+## EditionText1('8')
 ## Section1('5.2')
 ## Problem1('46')
+## KEYWORDS('algebra', 'radicals', 'fraction', 'exponents')
 
 ########################################################################
 
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   "parserMultiAnswer.pl",
-   #"source.pl",        # allows code to be displayed on certain sites.
-   #"PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
 );
 
 

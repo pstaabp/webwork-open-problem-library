@@ -2,30 +2,30 @@
 ##   Algebra: Exponential and Logarithmic Applications
 ##ENDDESCRIPTION
 
-##KEYWORDS('Algebra', 'Exponential', 'Logarithmic', 'Applications')
 ##Tagged by up2p
 
-##DBsubject('Algebra')
-##DBchapter('Exponential and Logarithmic Functions')
-##DBsection('Applications of Exponential and Logarithmic Functions')
-##Date('')
-##Author('')
-##Institution('Rochester')
-##TitleText1('')
-##EditionText1('')
-##AuthorText1('')
-##Section1('')
-##Problem1('')
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Applications and models - general)
+## Date(6/3/2002)
+## Institution(Rochester)
+## MLT(Bacteria_doublingTimeGiven)
+## Level(4)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('6.6')
+## Problem1('14')
+## KEYWORDS('Algebra', 'Exponential', 'Logarithmic', 'Applications','logarithms,exponentials','exponential growth,decay')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",   						# Macros for the different types of Math Objects:
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -55,7 +55,7 @@ $ans = Compute("$a1*2^($c1*2)");
 ANS($ans->cmp);              #compare using math obj
 
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

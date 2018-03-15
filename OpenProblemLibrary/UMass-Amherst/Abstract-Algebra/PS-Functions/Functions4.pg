@@ -1,26 +1,18 @@
-## DBsubject('Set theory')
-## DBchapter('Relations')
-## DBsection('General relations')
-## KEYWORDS('injective, one-to-one, surjective, onto, bijective')
+## DBsubject(Combinatorics)
+## DBchapter(Counting)
+## DBsection(Permutations)
+## Institution(University of Massachusetts Amherst)
+## Author(Siman Wong and Patrick O'Brien)
 ## Level(4)
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Siman Wong and Patrick O'Brien')
-## Institution('University of Massachusetts Amherst')
+## KEYWORDS('injective, one-to-one, surjective, onto, bijective')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -64,9 +56,7 @@ so that \(\varphi\) is not onto. $BR $BR
 EOT
 
 
-ANS(str_cmp($h) );
-
-#ANS(radio_cmp( $mc -> correct_ans ) );
+ANS(num_cmp($h) );
 
 
 
@@ -86,13 +76,5 @@ Context()->normalStrings;
 COMMENT("Complete solution included.");
 
 
-
-
-
-
-
-
 ENDDOCUMENT();        # This should be the last executable line in the problem.;
 
-#Fix view in second cell of first column
-#Adjust all answers correctly

@@ -1,30 +1,36 @@
 # DESCRIPTION
 # Problem from Calculus, single variable, Hughes-Hallett et al., 4th ed.
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 02/08/09
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Integrals)
-## DBsection(The Definite Integral)
+## DBchapter(Applications of integration)
+## DBsection(Distance, velocity, acceleration)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('4')
-## Section1('5.2')
-## Problem1('15')
 ## TitleText2('Calculus')
-## AuthorText2('Hughes-Hallett')
-## EditionText2('5')
-## Section2('5.2')
-## Problem2('18')
 ## TitleText3('Calculus')
+## TitleText4('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
 ## AuthorText3('Hughes-Hallett')
+## AuthorText4('Hughes-Hallett')
+## EditionText1('4')
+## EditionText2('5')
 ## EditionText3('6')
+## EditionText4('7')
+## Section1('5.2')
+## Section2('5.2')
 ## Section3('5.2')
+## Section4('5.2')
+## Problem1('15')
+## Problem2('18')
 ## Problem3('26')
+## Problem4('31')
 ## KEYWORDS('calculus', 'integral', 'definite integral', 'area')
 
 ## Textbook tags
@@ -33,12 +39,11 @@
 
 DOCUMENT();
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "parserNumberWithUnits.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
  
 Context("Numeric");
@@ -60,6 +65,8 @@ for ( my $i=0; $i<@vel; $i++ ) {
 # average accelerations over each of the first two seconds
 $acc1 = $vel[1]-$vel[0];
 $acc2 = $vel[2]-$vel[1];
+$acc1mo = NumberWithUnits( $acc1, "ft/s^2" );
+$acc2mo = NumberWithUnits( $acc2, "ft/s^2" );
 
 Context()->texStrings;
 BEGIN_TEXT
@@ -68,7 +75,8 @@ Suppose that an accelerating car goes from
 0 mph to $top_mph mph in five seconds.  Its
 velocity is given in the following table, converted from 
 miles per hour to feet per second, so that all time 
-measurements are in seconds.  (Note: 1 mph is 22/15 ft/sec.)
+measurements are in seconds.  (Note: 1 mph is 22/15 feet per sec =
+22/15 ft/s.)
 Find the average acceleration of the car over each of the first two
 seconds.
 $PAR
@@ -78,7 +86,7 @@ $PAR
 \{ endtable() \}
 
 $PAR
-average acceleration over the first second = \{ ans_rule(35) \} 
+average acceleration over the first second = \{ ans_rule(35) \}
 (include \{ helpLink("units") \})
 $BR
 average aceleration over the second second = \{ ans_rule(35) \}
@@ -87,8 +95,10 @@ average aceleration over the second second = \{ ans_rule(35) \}
 END_TEXT
 Context()->normalStrings;
 
-ANS(num_cmp( $acc1, 'units'=>'ft/s^2' ) );
-ANS(num_cmp( $acc2, 'units'=>'ft/s^2' ) );
+# ANS(num_cmp( $acc1, 'units'=>'ft/s^2' ) );
+# ANS(num_cmp( $acc2, 'units'=>'ft/s^2' ) );
+ANS( $acc1mo->cmp() );
+ANS( $acc2mo->cmp() );
 
 Context()->texStrings;
 SOLUTION(EV3(<<'END_SOLUTION'));
@@ -116,5 +126,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

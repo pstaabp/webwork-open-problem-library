@@ -1,7 +1,6 @@
 # DESCRIPTION
 # Problem from Calculus, single variable, Hughes-Hallett et al., 4th ed.
 # WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
-# ENDDESCRIPTION
 
 ## Tagged by glr 12/09/08
 
@@ -10,23 +9,29 @@
 ## DBsection(Implicit differentiation)
 ## Institution(University of Michigan)
 ## Author(Gavin LaRose)
-## MLT(xy_powers_only)
+## MLT(xy_powers_only_deriv)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## AuthorText1('Hughes-Hallett')
-## EditionText1('4')
-## Section1('3.7')
-## Problem1('1')
 ## TitleText2('Calculus')
-## AuthorText2('Hughes-Hallett')
-## EditionText2('5')
-## Section2('3.7')
-## Problem2('1')
 ## TitleText3('Calculus')
+## TitleText4('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
 ## AuthorText3('Hughes-Hallett')
+## AuthorText4('Hughes-Hallett')
+## EditionText1('4')
+## EditionText2('5')
 ## EditionText3('6')
+## EditionText4('7')
+## Section1('3.7')
+## Section2('3.7')
 ## Section3('3.7')
+## Section4('3.7')
+## Problem1('1')
+## Problem2('1')
 ## Problem3('1')
+## Problem4('1')
 ## KEYWORDS('calculus','derivative','implicit functions','implicit differentiation')
 
 ## Textbook tags
@@ -35,16 +40,15 @@
 
 DOCUMENT();
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"MathObjects.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
  
-Context("Numeric");
-Context()->variables->add( y=>'Real' );
+Context('Numeric')->variables->are(
+	x => [ 'Real', limits => [1, 2] ],
+	y => [ 'Real', limits => [1, 2] ]
+);
 
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;
@@ -53,20 +57,25 @@ $r = random(2,9,1);
 $a = random(2,15,1);
 $a++ if ( $a == 4 || $a == 9 );
 
+$rm1 = $r - 1;
+($n, $d) = reduce($r, 2);
+
+$Fx = Formula("$n x^($rm1)")->reduce;
+$Fy = Formula("$d y")->reduce;
+$dydx = -($Fx/$Fy);
+
+
 Context()->texStrings;
 BEGIN_TEXT
-
 Find \( dy/dx \) in terms of \( x \) and \( y \)
-if
-\( x^{$r}+y^2=\sqrt{$a} \).
-
-$PAR
-\( {dy\over dx} = \) \{ ans_rule(65) \}
-
+if \( x^{$r} + y^2 = \sqrt{$a} \).
+$BR $BR
+\( \displaystyle \frac{dy}{dx} = \)
+\{ ans_rule(15) \}
 END_TEXT
 Context()->normalStrings;
 
-ANS(Compute( "-1*$r*x^($r-1)/(2*y)" )->cmp() );
+ANS($dydx->cmp);
 
 $r1exp = ( $r==2 ) ? '' : '^{' . ($r-1) . '}';
 
@@ -79,9 +88,7 @@ if ( $r2 == int($r2) ) {
 }
 
 Context()->texStrings;
-SOLUTION(EV3(<<'END_SOLUTION'));
-$PAR SOLUTION $PAR
-
+BEGIN_SOLUTION
 We differentiate implicitly both sides of the equation with respect to 
 \(x\).
 \[
@@ -91,10 +98,8 @@ so
 \[
 \frac{dy}{dx}=-\frac{$r x$r1exp}{2y} $simp
  \]
-
 END_SOLUTION
 Context()->normalStrings;
 
-
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

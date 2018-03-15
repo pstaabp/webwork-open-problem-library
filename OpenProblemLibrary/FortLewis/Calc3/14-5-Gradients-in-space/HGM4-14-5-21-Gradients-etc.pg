@@ -4,11 +4,14 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Partial Derivatives)
-## DBsection(Directional Derivatives and the Gradient Vector)
+## DBchapter(Differentiation of multivariable functions)
+## DBsection(Differentiability, linearization and tangent planes)
 ## Date(10/15/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(imptan)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -28,7 +31,7 @@ loadMacros(
   "MathObjects.pl",
   "parserVectorUtils.pl",
   "parserImplicitPlane.pl",
-  "PGcourse.pl",
+  "PGcourse.pl"
 );
 
 
@@ -118,5 +121,5 @@ ANS(ImplicitPlane($P,$N)->cmp);
 $showPartialCorrectAnswers = 1;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

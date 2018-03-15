@@ -4,20 +4,19 @@
 
 ## Tagged by YL
 
-## DBsubject('Discrete Mathematics')
-## DBchapter('Logic')
-## DBsection('Quantifiers')
-## Institution('ASU')
+## DBsubject(Set theory and logic)
+## DBchapter(First order logic)
+## DBsection(Translation)
+## Institution(ASU)
+## Level(2)
 ## KEYWORDS('logic', 'predicate')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

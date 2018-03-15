@@ -1,28 +1,22 @@
-## DBsubject('Abstract Algebra')
-## DBchapter('Groups')
-## DBsection('Permutation Groups')
-## KEYWORDS('disjoint cyclce decompositions')
+## DBsubject(Abstract algebra)
+## DBchapter(Groups)
+## DBsection(Permutation groups)
+## Institution(University of Massachusetts Amherst)
+## Author(Daniel Nichols and Siman Wong)
 ## Level(2)
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Daniel Nichols and Siman Wong')
-## Institution('University of Massachusetts Amherst')
+## MO(1)
+## KEYWORDS('disjoint cyclce decompositions')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"MathObjects.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGmatrixmacros.pl",
-"answerHints.pl",
-"algebraMacros.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGmatrixmacros.pl",
+  "answerHints.pl",
+  "algebraMacros.pl",
+  "PGcourse.pl"
 );
 
 

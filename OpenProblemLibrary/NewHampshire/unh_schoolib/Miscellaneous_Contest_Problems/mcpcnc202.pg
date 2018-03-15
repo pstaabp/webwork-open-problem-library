@@ -3,11 +3,11 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGgraphmacros.pl",
-"MathObjects.pl",
-"answerHints.pl",
-#"UnionMacros.pl",
+  "PGstandard.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "answerHints.pl",
+  "PGcourse.pl"
 );
 TEXT(beginproblem());
 $showPartialCorrectAnswers = 1;
@@ -60,11 +60,13 @@ Since the perimeter of the square is 144  units, each side is \(\frac{144}{4}=36
 \(36+9+36+9=90\ \) units. 
 END_SOLUTION	
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject(Middle school)
-## DBchapter('Miscellaneous_Contest_Problems')
-## DBsection('')
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Perimeter)
+## Level(2)
+## MO(1)
 
 
 

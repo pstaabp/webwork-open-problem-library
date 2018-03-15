@@ -2,28 +2,26 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS('calculus','integration','partial fractions')
 ## Tagged by cmd6a 8/9/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Integration by Partial Fractions')
-## Date('8/23/07')
-## Author('K. Lesh')
-## Institution('Union College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBchapter(Techniques of integration)
+## DBsection(Partial fractions)
+## Date(8/23/07)
+## Institution(Union College)
+## Author(K. Lesh)
+## MLT(PartFracProperMult)
+## Level(3)
+## MO(1)
+## KEYWORDS('calculus','integration','partial fractions')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -82,5 +80,5 @@ ANS($antideriv->cmp(upToConstant=>1));
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

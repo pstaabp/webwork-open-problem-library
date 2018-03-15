@@ -1,11 +1,13 @@
 ##DESCRIPTION
 ##DESCRIPTION
-## DBsubject('Statistics')
-## DBchapter('Distributions')
-## DBsection('Normal Distribution')
+## DBsubject(Probability)
+## DBchapter(Continuous distributions)
+## DBsection(Application of a normal distribution)
+## Institution(NAU)
+## Author(N.Spencer Sitton; Modified slightly by John Hagood)
+## MLT(ExamCourse)
+## Level(2)
 ## KEYWORDS('empirical rule')
-## Author('N.Spencer Sitton; Modified slightly by John Hagood')
-## Institution('NAU')
 ##ENDDESCRIPTION
 
 # File Created: 07/05/05; 07/28/10
@@ -13,9 +15,10 @@
 # Course: Qauntitative Reasoning
 
 DOCUMENT();     
-loadMacros("PGstandard.pl",  
-           "PGauxiliaryFunctions.pl"
-);     
+loadMacros(
+  "PGstandard.pl",
+  "PGcourse.pl"
+);
 
 TEXT( &beginproblem );
 

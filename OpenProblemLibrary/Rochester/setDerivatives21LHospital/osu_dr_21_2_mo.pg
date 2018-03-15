@@ -8,11 +8,12 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Indeterminate forms and L'Hopital's rule)
 ## Date(4/17/2000)
 ## Institution(Rochester)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -33,10 +34,9 @@
 DOCUMENT();
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   #"source.pl",         # used to display problem source button
-   "PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -56,7 +56,7 @@ if ($aa==$bb){$aa++;}
 
 
 $fun1 = Compute("(1-cos($aa x))/(1-cos($bb x))");
-$fun2 = Compute("$b1^x-$bb^x -10(x^2-1)");
+$fun2 = Compute("($b1^x-$bb^x -1)/(x^2-1)");
 
 $limit1 = Compute("($aa/$bb)^2");
 $limit2 = Compute("($b1*log($b1)-$bb*log($bb))/2");
@@ -104,7 +104,7 @@ ANS($limit1->cmp,
 
 
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

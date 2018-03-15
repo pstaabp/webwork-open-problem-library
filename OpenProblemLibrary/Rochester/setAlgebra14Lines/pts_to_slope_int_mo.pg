@@ -5,17 +5,26 @@
 ##Tagged by up2p
 
 ## DBsubject(Algebra)
-## DBchapter(Linear functions, expressions, and equations)
-## DBsection(Equations for lines)
+## DBchapter(Linear equations and functions)
+## DBsection(Equations of lines: slope-intercept form)
+## Date(6/3/2002)
 ## Institution(Rochester)
+## MLT(JohnJonesRocks)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('2.4')
+## Problem1('20')
 ## KEYWORDS('Algebra', 'Lines')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
- "PGstandard.pl",
- "MathObjects.pl",
- "PGcourse.pl"
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 Context('Numeric');
@@ -62,8 +71,8 @@ ANS($ans1->cmp);
 ANS($ans2->cmp);
 
 
-COMMENT('MathObject version');
+;
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
 

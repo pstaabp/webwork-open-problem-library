@@ -6,7 +6,7 @@
 
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Applications of Differentiation)
+## DBchapter(Applications of differentiation)
 ## DBsection(Increasing/decreasing functions and local extrema)
 ## Institution(ASU)
 ## MLT(INF_average_local)
@@ -26,12 +26,11 @@
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-           "PGanswermacros.pl",
-           "PGauxiliaryFunctions.pl",
-           "extraAnswerEvaluators.pl"
-); 
+loadMacros(
+  "PGstandard.pl",
+  "extraAnswerEvaluators.pl",
+  "PGcourse.pl"
+);
 
 $b = random(2,9,2);
 $c = non_zero_random(-9,9,2);
@@ -88,19 +87,3 @@ ANS(str_cmp( "DONE" ));
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.
 
-
-
-
-
-
-
-
-$PAR
-$PAR
-EOT
-
-@answers = (num_cmp(1) );
-
-ANS(@answers );
-
-ENDDOCUMENT();        # This should be the last executable line in the problem.

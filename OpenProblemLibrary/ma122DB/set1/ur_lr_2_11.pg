@@ -6,7 +6,7 @@
 ## tcao , PAID on 11-24-2003
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(Squeeze theorem)
 ## Date(6/3/2002)
 ## MLT(limits_squeeze_linear_and_quadratic)
@@ -18,12 +18,22 @@
 ## Section1('2.3')
 ## Problem1('33')
 ## KEYWORDS('limits', 'sequences', 'squeeze theorem')
+## MO(1)-TF-12/18/2014
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
-loadMacros("PGbasicmacros.pl",
-           "PGanswermacros.pl",
-"PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextArbitraryString.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+Context("Numeric");
+
 
 
 $a = random(-4,4,1);
@@ -36,12 +46,12 @@ $a2 = -$a*$b+$c;
 $b1 = $a + $b;
 $b2 = -$a*($a +$b) + $c;
 
-$pol = nicestring([1, $a1, $a2], ['x^2', 'x', '']);
-TEXT(beginproblem());
+$pol = nicestring([1, $a1, $a2]);
+$lhs = nicestring([$b1, $b2]);
 $showPartialCorrectAnswers=1;
 
 BEGIN_TEXT
-Suppose \[ ${b1}x +$b2 \le f(x) \le $pol \] $BR 
+Suppose \[ $lhs  \le f(x) \le $pol \] $BR 
 
 Use this to compute the following limit. $BR
 
@@ -55,23 +65,22 @@ Answer: \{ ans_rule(50) \}
                   	                  
 END_TEXT
 
+Context('Numeric');
+ANS(Real($c)->cmp);
 
-$ans_eval = sub { my $in = shift;
-                  $in = lc($in);
-                  my $score;
-                  if ( $in =~ /squeeze/  or $in =~ /pinch/  or $in =~/sandwich/) {
-                  	$score = 1;
-                  } else { 
-                  	$score = 0;
-                  }
-                  	
-                  my $ans_hash = { score => $score,
-                  	                 correct_ans => "The Squeeze theorem",
-                  	                 student_ans => $in,
-                  	                 ans_message => ($score) ? '' : "Hint: Look thorugh the end of section 2.6",
-                  };
-                  $ans_hash;
-};
+Context("ArbitraryString");
 
-ANS(num_cmp($c), $ans_eval);
+#ANS(Real(1)->cmp);
+
+ANS(Compute("The Squeeze Theorem")->cmp(checker=>sub {
+  my ($correct,$student,$ans) = @_;
+  $correct = $correct->value; # get perl string from String object
+  $student = $student->value; # ditto
+  $student =~ s/ //g;
+  $student = lc($student);
+  return 1 if($student =~ /squeeze/ or $student =~ /pinch/  or $student =~/sandwich/);
+  return 0;
+}));
+
+
 ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,26 +1,24 @@
 ##DESCRIPTION
-##KEYWORDS('logarithms', 'exponentials')
 ##DIFFICULTY('easy')
 ##  Evaluate simple expressions involving logs and exponentials
 ##ENDDESCRIPTION
 
-#KEYWORDS('Sequences')
 ##Tagged by ynw2d
 
-##DBsubject('Algebra')
-##DBchapter('Sequences and Series')
-## DBsection('Sequences and Series Notation')
-##Institution('Rochester')
+## DBsubject(Algebra)
+## DBchapter(Finite sequences and series)
+## DBsection(Summation formulas)
+## Institution(Rochester)
+## Level(3)
+## KEYWORDS('Sequences')
 
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

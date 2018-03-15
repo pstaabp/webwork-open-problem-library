@@ -2,28 +2,31 @@
 ## Calculus
 ## ENDDESCRIPTION
 
-## KEYWORDS('calculus','integration','fundamental theorem of calculus')
 ## Tagged by cmd6a 8/9/06
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Integrals')
-## DBsection('The Fundamental Theorem of Calculus')
-## Date('8/23/07')
-## Author('K. Lesh')
-## Institution('Union College')
+## DBchapter(Integrals)
+## DBsection(Fundamental theorem of calculus)
+## Date(8/23/07)
+## Institution(Union College)
+## Author(K. Lesh)
+## MLT(FTC_06)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## EditionText1('7')
 ## AuthorText1('Anton')
+## EditionText1('7')
 ## Section1('6.6')
 ## Problem1('3')
+## KEYWORDS('calculus','integration','fundamental theorem of calculus')
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -64,5 +67,5 @@ ANS(Real($ftc)->cmp);
 ###################################
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

@@ -15,11 +15,9 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -37,8 +35,6 @@ at \(x=$a\).
 $BR $BR
 
 Tangent Line: \(y = \) \{ans_rule(30) \}
-$BR
-
 EOT
 
 $ans = "$m*(x-$a)+$m";

@@ -1,25 +1,31 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Absolute Convergence and the Ratio and Root Tests')
-# KEYWORDS('calculus', 'series', 'sequences', 'convergence', 'root test', 'ratio test')
-# TitleText1('Calculus: Early Transcendentals')
-# EditionText1('2')
-# AuthorText1('Rogawski')
-# Section1('10.5')
-# Problem1('47')
-# Author('Emily Price')
-# Institution('W.H.Freeman')
+## DBchapter(Infinite sequences and series)
+## DBsection(Strategy for testing series)
+## Institution(W.H.Freeman)
+## Author(Emily Price)
+## MLT(Simple_cmp_to_vanishing_p-series)
+## Level(2)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Rogawski')
+## EditionText1('2')
+## Section1('10.5')
+## Problem1('47')
+## KEYWORDS('calculus', 'series', 'sequences', 'convergence', 'root test', 'ratio test')
 DOCUMENT();
 
 
 
 #Load Necessary Macros
 
-loadMacros("PG.pl", "PGbasicmacros.pl", "PGchoicemacros.pl", "PGanswermacros.pl", );
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
-
+TEXT(beginproblem());
 Context()->variables->add(n=>'Real');
 
 #Book Values
@@ -44,7 +50,6 @@ $question->makeLast( 'convergent', 'divergent');
 Context()->texStrings;
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "10.5", "47") \}
 $PAR
 Determine convergence or divergence using any method covered so far.

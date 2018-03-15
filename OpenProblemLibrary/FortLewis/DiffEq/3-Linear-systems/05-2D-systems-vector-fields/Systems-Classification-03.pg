@@ -4,11 +4,15 @@
 
 
 ## DBsubject(Differential equations)
-## DBchapter(Introduction)
-## DBsection(Systems of Differential Equations)
+## DBchapter(Systems of differential equations)
+## DBsection(Phase planes)
 ## Date(03/19/2011)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## MLT(SDE-PP-DRE)
+## MLTleader(1)
+## Level(4)
+## MO(1)
 
 
 ##################################
@@ -18,15 +22,15 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"PGmatrixmacros.pl",
-"MathObjects.pl",
-"parserMultiAnswer.pl",
-"MatrixUnimodular.pl",
-"unionLists.pl",
-"parserRadioButtons.pl",
-"weightedGrader.pl",
-#"problemRandomize.pl",
+  "PGstandard.pl",
+  "PGmatrixmacros.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "MatrixUnimodular.pl",
+  "unionLists.pl",
+  "parserRadioButtons.pl",
+  "weightedGrader.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());

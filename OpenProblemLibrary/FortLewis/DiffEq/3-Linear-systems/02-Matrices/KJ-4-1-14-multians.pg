@@ -2,19 +2,22 @@
 ## Systems of ODEs: introduction to systems of ODEs
 ## ENDDESCRIPTION
 
-## KEYWORDS('differential equations','systems of ODEs')
 
 ## DBsubject(Differential equations)
-## DBchapter('Systems of Differential Equations')
-## DBsection('Introduction to Systems')
-## Date('01/30/2012')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Systems of differential equations)
+## DBsection(Matrix notation for systems)
+## Date(01/30/2012)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(SDE-MN-setup_only)
+## Level(2)
+## MO(1)
 ## TitleText1('Elementary Differential Equations')
-## EditionText1('2006')
 ## AuthorText1('Kohler and Johnson')
+## EditionText1('2006')
 ## Section1('4.1')
 ## Problem1('14')
+## KEYWORDS('differential equations','systems of ODEs')
 
 
 ##############################
@@ -23,11 +26,12 @@
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGmatrixmacros.pl",
-"parserMultiAnswer.pl",
-"weightedGrader.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGmatrixmacros.pl",
+  "parserMultiAnswer.pl",
+  "weightedGrader.pl",
+  "PGcourse.pl"
 );
 
 install_weighted_grader();
@@ -160,6 +164,6 @@ $showPartialCorrectAnswers = 1;
 WEIGHTED_ANS( $multians1->cmp(), 80 );
 WEIGHTED_ANS( $multians2->cmp(), 20 );
 
-COMMENT("MathObject version.  Uses parserMultiAnswer.pl and has fancy formatting of student answers.");
+COMMENT("Uses parserMultiAnswer.pl and has fancy formatting of student answers.");
 
 ENDDOCUMENT();

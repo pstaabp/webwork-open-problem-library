@@ -2,30 +2,31 @@
 ##  Algebra: Coordinates and Graphs
 ##ENDDESCRIPTION
 
-## KEYWORDS('algebra', 'coordinate', 'inequalities', 'linear', 'graph')
 
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Linear Inequalities')
-## Date('11/24/2009')
-## Author('Justin Sukiennik')
-## Institution('University of Minnesota')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear inequalities)
+## Date(11/24/2009)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## MLT(SolutionRegionOnPlane)
+## Level(3)
 ## TitleText1('Algebra for College Students')
-## EditionText1('8')
 ## AuthorText1('Kaufmann, Schwitters')
+## EditionText1('8')
 ## Section1('7.3')
 ## Problem1('')
+## KEYWORDS('algebra', 'coordinate', 'inequalities', 'linear', 'graph')
 
 #####################################################################
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 #####################################################################

@@ -1,10 +1,10 @@
 ##DESCRIPTION
-## DBsubject('Probability')
-## DBchapter('Distributions')
-## DBsection('Binomial Distribution')
-## KEYWORDS('')
-## Author('Michael Ratliff ')
-## Institution('NAU')
+## DBsubject(Probability)
+## DBchapter(Discrete distributions)
+## DBsection(Binomial)
+## Institution(NAU)
+## Author(Michael Ratliff)
+## Level(3)
 ##ENDDESCRIPTION
 
 # File Created: 7/5/05
@@ -14,15 +14,13 @@
 DOCUMENT();
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl",
-"PGasu.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl",
-"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGasu.pl",
+  "PGnumericalmacros.pl",
+  "PGstatisticsmacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);

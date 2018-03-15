@@ -2,19 +2,15 @@
 ## MathObjects contexts
 ## ENDDESCRIPTION
 
-## KEYWORDS('sample', 'WeBWorK')
 
-## DBsubject('WeBWorK')
-## DBchapter('WeBWorK Tutorial')
-## DBsection('Fort Lewis Tutorial 2011')
-## Date('01/30/2011')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(WeBWorK)
+## DBchapter(WeBWorK tutorial)
+## DBsection(Fort Lewis tutorial 2011)
+## Date(01/30/2011)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MO(1)
+## KEYWORDS('sample', 'WeBWorK')
 
 
 #######################
@@ -22,11 +18,6 @@
 
 DOCUMENT();
 
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGunion.pl",
-);
 
 # TEXT(beginproblem());
 
@@ -108,9 +99,11 @@ $ITEMSEP
 $ITEM Adding named functions to the context.  Suppose we want to add a base two logarithm to the context, so that students could enter ${BCODE}log2( )${ECODE}.  For more details, see \{ htmlLink('http://webwork.maa.org/wiki/AddingFunctions','adding functions to the context',"TARGET=~~"_new~~"") \}
 ${BPRE}
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserFunction.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGunion.pl",
+  "parserFunction.pl",
+  "PGcourse.pl"
 );
 
 Context("Numeric");
@@ -186,6 +179,6 @@ $showPartialCorrectAnswers = 1;
 
 #ANS( $answer->cmp() );
 
-COMMENT('MathObject version');
+;
 
 ENDDOCUMENT();

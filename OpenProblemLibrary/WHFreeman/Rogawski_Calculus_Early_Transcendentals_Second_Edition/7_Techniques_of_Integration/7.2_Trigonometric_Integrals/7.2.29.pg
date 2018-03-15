@@ -1,23 +1,33 @@
 ## DBsubject(Calculus - single variable)
-## DBchapter('Techniques of Integration')
-## DBsection('Trigonometric Integrals')
-## KEYWORDS('calculus', 'integration', 'integral', 'trigonometry', 'trigonometric', 'trig')
+## DBchapter(Techniques of integration)
+## DBsection(Trigonometric integrals)
+## Institution(W.H.Freeman)
+## Author(Christopher Sira)
+## MLT(sin_fourth)
+## MLTleader(1)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('7.2')
 ## Problem1('29')
-## Author('Christopher Sira')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'integration', 'integral', 'trigonometry', 'trigonometric', 'trig')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl","parserFormulaUpToConstant.pl");
-loadMacros("PGchoicemacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "parserFormulaUpToConstant.pl",
+  "PGchoicemacros.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 $context = Context();
 
 #$context->variables->add(C=>'Real');
+
+TEXT(beginproblem());
 
 #($a, $b, $ans) = @{ list_random([],
 #                                []
@@ -31,7 +41,6 @@ $ans = FormulaUpToConstant("-(1/$b) ((sin($a x))**3) * cos($a x) - (3/$c) *sin($
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "7.2","29") \}
 $PAR
 Calculate \( \int \sin^4 ($a x) \, dx \).

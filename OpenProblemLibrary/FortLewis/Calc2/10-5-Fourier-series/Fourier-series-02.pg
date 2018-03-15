@@ -2,31 +2,31 @@
 # Fourier Series
 # ENDDESCRIPTION
 
-## KEYWORDS('calculus','integral', 'fourier', 'series', 'approximation')
 ## Tagged by glr 02/03/09
 
 ## DBsubject(Calculus - single variable)
-## DBchapter('Infinite Sequences and Series')
-## DBsection('Fourier Series')
-## Date('')
-## Author('Paul Pearson')
-## Institution('Fort Lewis College')
+## DBchapter(Infinite sequences and series)
+## DBsection(Fourier series)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus')
-## TitleText2('Calculus')
-## EditionText1('4')
-## EditionText2('5')
 ## AuthorText1('Hughes-Hallett')
-## AuthorText2('Hughes-Hallett')
+## EditionText1('4')
 ## Section1('10.5')
+## Problem1('1')
+## TitleText2('Calculus')
+## AuthorText2('Hughes-Hallett')
+## EditionText2('5')
 ## Section2('10.5')
-## Problem1('')
 ## Problem2('')
-
+## KEYWORDS('calculus','integral', 'fourier', 'series', 'approximation')
+## MLT(fourier-coef-given)
+## MLTleader(1)
 ## Textbook tags
 ## HHChapter1('Approximating Functions Using Series')
 ## HHChapter2('Approximating Functions Using Series')
-## HHSection1('Fourier Series')
-## HHSection2('Fourier Series')
 
 
 #################################
@@ -35,12 +35,13 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",
-"PGgraphmacros.pl",
-"parserPopUp.pl",
-"unionTables.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "parserPopUp.pl",
+  "unionTables.pl",
+  "PGcourse.pl"
 );
 
 $refreshCachedImages=1;
@@ -92,11 +93,12 @@ $F3 = Compute("$a0 + $b1 sin(x) + $b2 sin(2x) + $b3 sin(3x)");
 
 Context()->texStrings;
 BEGIN_TEXT
-Suppose you're given the following Fourier coefficients: 
+Suppose you're given the following Fourier coefficients for a function on the interval \([-\pi,\pi]\): 
 \( \displaystyle a_0 = $a0 \), 
 \( \displaystyle a_k = 0 \) for \( k \geq 1 \), and 
 \( \displaystyle b_k = $bk \) for \( k \geq 1 \).
-Find the following Fourier approximations.
+Find the following Fourier approximations to the Fourier series 
+\( \displaystyle a_0 + \sum_{n=1}^{\infty} (a_n\cos(nx) + b_n\sin(nx)) \).
 $BR
 $BR
 \( F_0(x) = \) \{ ans_rule(50) \}
@@ -119,5 +121,5 @@ ANS($F1->cmp() );
 ANS($F2->cmp() );
 ANS($F3->cmp() );
 
-COMMENT('MathObject version');
+COMMENT('Uses the convention that the constant term is a0, not a0/2');
 ENDDOCUMENT();

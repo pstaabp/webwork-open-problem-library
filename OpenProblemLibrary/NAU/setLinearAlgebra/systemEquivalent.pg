@@ -5,21 +5,23 @@
 ## DBsubject(Linear algebra)
 ## DBchapter(Systems of linear equations)
 ## DBsection(Matrix-vector forms)
-## Institution(NAU)
-## KEYWORDS('linear algebra','matrix','trace')
-## Author(Nandor Sieben)
 ## Date(11/17/2013)
+## Institution(NAU)
+## Author(Nandor Sieben)
+## Level(3)
+## MO(1)
+## KEYWORDS('linear algebra','matrix','trace')
 
 DOCUMENT(); 
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserMultiAnswer.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-"PGnauGraphics.pl",
-"PGgraphmacros.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserMultiAnswer.pl",
+  "AnswerFormatHelp.pl",
+  "PGnauGraphics.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -108,7 +110,7 @@ $BR
 \{ $A->ans_array(3) \} \( $XX = \) \{ $Y->ans_array(3) \}
 
 $BR
-c. Find a matrix that satisfies the following matrix equation. 
+c. Use the inverse to satisfy the following matrix equation. 
 $BR
 \( $XX = \) \{ $Ai->ans_array(3) \}  \( $Y \)
 

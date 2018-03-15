@@ -4,11 +4,13 @@
 
 
 ## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Calculus)
-## DBsection(Line Integrals)
+## DBchapter(Vector calculus)
+## DBsection(Line integrals)
 ## Date(10/31/09)
 ## Institution(Fort Lewis College)
 ## Author(Paul Pearson)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus')
 ## AuthorText1('Hughes-Hallett')
 ## EditionText1('4')
@@ -24,11 +26,11 @@
 DOCUMENT();
 
 loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserVectorUtils.pl",
-"PGcourse.pl",
-"weightedGrader.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserVectorUtils.pl",
+  "weightedGrader.pl",
+  "PGcourse.pl"
 );
 
 install_weighted_grader();
@@ -118,5 +120,5 @@ WEIGHTED_ANS($upperlimit->cmp(), 5);
 WEIGHTED_ANS($integralvalue->cmp(), 50);
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

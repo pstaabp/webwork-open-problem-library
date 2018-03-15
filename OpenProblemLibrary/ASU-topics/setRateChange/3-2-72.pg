@@ -5,7 +5,7 @@
 ## Tagged by tda2d
 
 ## DBsubject(Calculus - single variable)
-## DBchapter(Limits and Continuity)
+## DBchapter(Limits and continuity)
 ## DBsection(One-sided limits - concept of)
 ## Date(5/26/2005)
 ## Institution(UVA)
@@ -13,6 +13,7 @@
 ## MLT(limits_one_sided_two_line_spline_with_m)
 ## MLTleader(1)
 ## Level(3)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('5')
@@ -28,11 +29,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
@@ -57,7 +57,7 @@ HTML_dpng=>"\[ f(x) = \begin{cases}
 </blockquote>
 <p>");
 
-TEXT(EV3(<<'EOT'));
+BEGIN_TEXT
 Let \(f\) be defined by
 $displayedfunc
 $PAR
@@ -79,7 +79,7 @@ $PAR
 \]
 $BR
 \(m\) = \{ans_rule(15) \}
-EOT
+END_TEXT
 
 @ans = (fun_cmp("$b + 5*m", vars=>"m"), fun_cmp("-$a - 2*m", vars=>"m"),
         num_cmp((-$a-$b)/7));

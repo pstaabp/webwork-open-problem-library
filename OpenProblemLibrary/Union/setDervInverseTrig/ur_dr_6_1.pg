@@ -12,6 +12,7 @@
 ## MLT(DerivInvTrig-FuncTimesX)
 ## MLTleader(1)
 ## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('1')
@@ -28,15 +29,18 @@ DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
   "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
+  "PGunion.pl",
   "MathObjects.pl",
-  "PGcourse.pl",           # Customization file for the course
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
 
 ###################################
 # Setup
+
+Context("Numeric");
+Context()->variables->set(x=>{limits=>[-0.9,0.9]});
 
 $a = random(2,8,1);
 $point = random(.3,.8,.1);
@@ -71,5 +75,5 @@ ANS($fprimeatpoint->cmp);
 
 ###################################
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

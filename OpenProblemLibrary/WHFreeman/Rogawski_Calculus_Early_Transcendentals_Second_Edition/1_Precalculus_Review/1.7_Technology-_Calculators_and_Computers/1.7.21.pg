@@ -1,21 +1,25 @@
-## DBsubject('Algebra')
-## DBchapter(Polynomial and rational functions)
-## DBsection('Polynomial Functions and Their Roots')
-## KEYWORDS('calculus', 'algebra', 'inequality', 'zeros', 'polynomial')
+## DBsubject(Algebra)
+## DBchapter(Polynomial equations and functions)
+## DBsection(Graphs of polynomials)
+## Institution(W.H.Freeman)
+## Author(Brian Kell)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
-## EditionText1('2')
 ## AuthorText1('Rogawski')
+## EditionText1('2')
 ## Section1('1.7')
 ## Problem1('21')
-## Author('Brian Kell')
-## Institution('W.H.Freeman')
+## KEYWORDS('calculus', 'algebra', 'inequality', 'zeros', 'polynomial')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
-loadMacros("PGgraphmacros.pl");
-loadMacros("PGauxiliaryFunctions.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
 
 @signs = (1, -1);
 $s_sidx = random(0,1,1);
@@ -36,7 +40,6 @@ $ans = $possible[$s_sidx];
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "1.7", "21") \}
 $PAR
 Find the intervals on which

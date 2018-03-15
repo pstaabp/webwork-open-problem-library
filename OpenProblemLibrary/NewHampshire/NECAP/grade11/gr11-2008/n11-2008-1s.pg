@@ -4,22 +4,10 @@
 
 DOCUMENT();
 loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-#"PGgraphmacros.pl",
- "MathObjects.pl",
-# "compoundProblem.pl",
-#"contextCurrency.pl",
-#"contextInequalities.pl",
-#"unionTables.pl",
-# "unionLists.pl",
-#"unionMacros.pl",
-#"contextLeadingZero.pl",
-#"contextFraction.pl",
-#"contextString.pl",
-#"answerHints.pl",
-#"problemPanic.pl",
-#"PGauxiliaryFunctions.pl", #for lcm, gcd,etc
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 #for currency use Context("Currency") then Currency($A);
 #Then, in the text use $DOLLAR $a
@@ -33,8 +21,6 @@ $radio->extra("\(x<y\) ", "\(x^3<y^3\) ","\(\frac{1}{x}<\frac{1}{y}\) ");
 
 
 BEGIN_TEXT
-IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATOR. 
- THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR
 \{$radio->print_q()\}
 \{$radio->print_a()\}
 
@@ -46,9 +32,10 @@ $PAR Solution $PAR
 if  \(x^2<y^2\) then  \(\vert x\vert<\vert y\vert\) since \(\vert x\vert =\sqrt{x^2\).$BR \(x<y\) and \(x^3<y^3\) fail when \(y\) is negative and \(\frac{1}{x}<\frac{1}{y}\) fails when \(x>0 \ and\ y<0\) 
 END_SOLUTION
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();
-## DBsubject('NECAP')
-## DBchapter('Grade 11')
-## DBsection('2008')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Inequalities and intervals)
+## Level(5)
 

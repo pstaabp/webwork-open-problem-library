@@ -13,11 +13,9 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGauxiliaryFunctions.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(&beginproblem);
@@ -27,7 +25,8 @@ $c = random(1,5);
 $cx = nicestring([-$c],['x^2']);
 
 TEXT(EV2(<<EOT));
-Let \(f(x) = e^{$cx}\). Then, \(f''(x) = \)  \{ans_rule(25) \}.
+Let \(f(x) = e^{$cx}\). $BR$BR 
+\(f''(x) = \)  \{ans_rule(25) \}. $BR$BR
 The solutions to \(f''(x) = 0\) are \(x = \pm\) \{ans_rule(15) \}.
 EOT
 

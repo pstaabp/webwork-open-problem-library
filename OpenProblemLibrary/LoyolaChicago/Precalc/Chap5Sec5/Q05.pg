@@ -1,41 +1,40 @@
 # DESCRIPTION
 # Problem from Functions Modeling Change, Connally et al., 3rd ed.
 # WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
-# ENDDESCRIPTION
 
 ## DBsubject(Algebra)
-## DBchapter(Transformations of functions and their graphs)
-## DBsection(The Family of Quadratic Functions)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Graphs)
 ## Institution(Loyola University Chicago)
 ## Author(Adam Spiegler)
+## Level(3)
+## MO(1)
 ## TitleText1('Functions Modeling Change')
-## AuthorText1('Connally')
-## EditionText1('3')
-## Section1('5.5')
-## Problem1('4')
 ## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
 ## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
 ## EditionText2('4')
+## EditionText3('5')
+## Section1(5.5)
 ## Section2('3.2')
+## Section3('3.Review')
+## Problem1(5)
 ## Problem2('4')
+## Problem3('11')
 ## KEYWORDS('quadratic','vertex','axis of symmetry','zeros')
 
 DOCUMENT();
 
-loadMacros("PG.pl",
-           "PGbasicmacros.pl",
-#           "PGchoicemacros.pl",
-           "PGanswermacros.pl",
-#           "PGgraphmacros.pl",
-#           "extraAnswerEvaluators.pl",
-#           "PGauxiliaryFunctions.pl",
-#           "PGgraphmacros.pl",
-#           "parserPopUp.pl",
-"parserImplicitPlane.pl",
-"parserVectorUtils.pl",
-"AnswerFormatHelp.pl",
-"PGcourse.pl",
-           );
+loadMacros(
+  "PGstandard.pl",
+  "parserImplicitPlane.pl",
+  "parserVectorUtils.pl",
+  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
+);
 
 TEXT(beginproblem());
 
@@ -104,5 +103,5 @@ END_SOLUTION
 Context()->normalStrings;
 
 
-COMMENT('MathObject version');
+;
 ENDDOCUMENT();

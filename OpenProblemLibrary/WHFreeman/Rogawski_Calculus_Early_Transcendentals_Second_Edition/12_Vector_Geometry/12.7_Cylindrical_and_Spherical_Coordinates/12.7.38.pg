@@ -1,19 +1,27 @@
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vector Geometry)
-## DBsection(Cylindrical and Spherical Coordinates)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Coordinate systems)
 ## Institution(W.H.Freeman)
 ## Author(Nick Hamblet)
+## MLT(rectspher)
+## Level(3)
+## MO(1)
 ## TitleText1('Calculus Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
 ## Section1('12.7')
 ## Problem1('38')
-## KEYWORDS('calculus', '')
+## KEYWORDS('calculus')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
 
 # make nicely showing values for
 # $sgn * $r * (\sqrt{$a} / 2) * (\sqrt{$b} / 2)
@@ -176,7 +184,6 @@ $sph_pt = Compute("($rho, $theta, $phi)");
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "12.7","38") \}
 $PAR
 Convert the following point from rectangular to spherical coordinates:

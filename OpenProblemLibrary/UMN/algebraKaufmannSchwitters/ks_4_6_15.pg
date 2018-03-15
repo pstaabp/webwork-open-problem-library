@@ -2,29 +2,31 @@
 ##  Algebra: Fractional equations 
 ## ENDDESCRIPTION
 
-## KEYWORDS('algebra', 'fractional equations')
 
-## DBsubject('Algebra')
-## DBchapter('Equations and Inequalities')
-## DBsection('Other Equations')
-## Date('10/26/2009')
-## Author('Jonathan Rogness')
-## Institution('University of Minnesota')
+## DBsubject(Algebra)
+## DBchapter(Rational equations and functions)
+## DBsection(Rational equations)
+## Date(10/26/2009)
+## Institution(University of Minnesota)
+## Author(Jonathan Rogness)
+## MLT(xplus_noverx)
+## Level(2)
+## MO(1)
 ## TitleText1('Algebra for College Students')
-## EditionText1('8')
 ## AuthorText1('Kaufmann, Schwitters')
+## EditionText1('8')
 ## Section1('4.6')
 ## Problem1('15')
+## KEYWORDS('algebra', 'fractional equations')
 
 ########################################################################
 
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   #"source.pl",        # allows code to be displayed on certain sites.
-   #"PGcourse.pl",      # Customization file for the course
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
 );
 
 ########################################################################

@@ -1,8 +1,10 @@
 ## DBsubject(Differential equations)
-## DBchapter(First order)
-## DBsection(Linear equations)
+## DBchapter(First order differential equations)
+## DBsection(Integrating factor)
 ## Institution(W.H.Freeman)
 ## Author(Christopher Sira)
+## Level(4)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,11 +13,14 @@
 ## KEYWORDS('calculus', 'differential equations', 'linear equation', 'first order')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
-
+TEXT(beginproblem());
 $a = Real(random(2,8,1)); #yo
 #also randomize constant 1 in x+1 term LAD
 $c = Real(random(1,8,1));
@@ -31,7 +36,6 @@ $fp = Formula("(1 / (x + $c)) * ($C + ln(x) - ($c/x))")->reduce();
 
 Context()->texStrings;
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "9.5","21") \}
 $PAR
 Solve the initial value problem \( y' + \frac{1}{x + $c} y = x^{-2}, \qquad y(1) = $a \)
@@ -40,7 +44,7 @@ $PAR
 END_TEXT
 Context()->normalStrings;
 
-ANS($fp->cmp);
+ANS($fp->cmp(limits => [0,4]));
 
 Context()->texStrings;
 SOLUTION(EV3(<<'END_SOLUTION'));

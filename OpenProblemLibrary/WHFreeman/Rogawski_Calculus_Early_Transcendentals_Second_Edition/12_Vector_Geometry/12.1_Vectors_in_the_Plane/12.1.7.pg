@@ -1,8 +1,11 @@
-## DBsubject(Calculus - multivariable)
-## DBchapter(Vectors and the Geometry of Space)
-## DBsection(Vectors)
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Vectors and vector arithmetic)
 ## Institution(W.H.Freeman)
 ## Author(Danny Glin)
+## MLT(va_construct)
+## Level(2)
+## MO(1)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Rogawski')
 ## EditionText1('2')
@@ -11,10 +14,14 @@
 ## KEYWORDS('vector')
 
 DOCUMENT();
-loadMacros("PG.pl","PGbasicmacros.pl","PGanswermacros.pl");
-loadMacros("Parser.pl");
-loadMacros("freemanMacros.pl");
+loadMacros(
+  "PGstandard.pl",
+  "Parser.pl",
+  "freemanMacros.pl",
+  "PGcourse.pl"
+);
 
+TEXT(beginproblem());
 Context("Vector");
 
 #$P1=3;
@@ -33,7 +40,6 @@ $P=Point($P1,$P2);
 $Q=Point($Q1,$Q2);
 
 BEGIN_TEXT
-\{ beginproblem() \}
 \{ textbook_ref_exact("Rogawski ET 2e", "12.1","7") \}
 $PAR
 If \(P=$P\) and \(Q=$Q\), find the components of \(\vec{PQ}\)$BR

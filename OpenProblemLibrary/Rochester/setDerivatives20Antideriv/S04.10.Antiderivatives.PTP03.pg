@@ -5,10 +5,13 @@
 
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Integrals)
-## DBsection(Antiderivatives)
+## DBsection(Antiderivatives (without trigonometric functions))
 ## Date(05/01/2007)
 ## Institution(University of Rochester)
 ## Author(Paul Pearson)
+## MLT(antideriv_matching_deriv_graph)
+## MLTleader(1)
+## Level(2)
 ## TitleText1('Calculus: Early Transcendentals')
 ## AuthorText1('Stewart')
 ## EditionText1('6')
@@ -24,11 +27,10 @@
 DOCUMENT();        # This should be the first executable line in the problem.
 
 loadMacros(
-	"PGbasicmacros.pl",
-	"PGchoicemacros.pl",
-	"PGanswermacros.pl",
-	"PGauxiliaryFunctions.pl",
-	"PGgraphmacros.pl"
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
 );
 
 TEXT(beginproblem());
