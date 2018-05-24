@@ -1,0 +1,105 @@
+# DESCRIPTION
+# A problem that asks the student to find
+# the formula of a line through two points. 
+# ENDDESCRIPTION
+
+## DBsubject('Lines and Linear Functions')
+## DBchapter('')
+## DBsection('')
+## KEYWORDS('lines, linear functions')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+
+
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserAssignment.pl",
+  "contextFraction.pl"
+);
+
+TEXT(beginproblem);
+
+##############################
+#
+#  Setup
+#
+
+Context("Fraction");
+
+
+$a = random(-5,5);
+$b = random(-5,5);
+
+$c = non_zero_random(-5,5);
+$d = non_zero_random(-5,5);
+
+
+Context("Numeric");
+Context("Numeric")->variables->add(y=>'Real');
+        parser::Assignment->Allow;
+
+$g = Formula("x=$c");
+
+
+$pt = Point($c,$d); 
+
+
+
+##############################
+#
+#  Main text
+#
+
+Context()->texStrings;
+BEGIN_TEXT
+
+Find an equation of the line that is perpendicular to  \( y = $b\), and passes through the point \( $pt \).  
+$BR
+\{ans_rule(30)\}.
+END_TEXT
+Context()->normalStrings;
+
+##############################
+#
+#  Answers
+#
+
+ANS($g->cmp);
+
+##############################
+
+# Switch back to TeX stringification.
+Context()->texStrings;
+
+# SOLUTION() works like TEXT() except that it's only shown if the "show
+# solutions" flag is given. $SOL evaluates to "Solution: " in bold. Note the
+# MathObjects embedded in math expressions in the solution. Remember that they
+# are stringifying to their TeX representations.
+SOLUTION(EV3(<<'END_SOLUTION'));
+$PAR
+$SOL
+
+In this case, notice that the line is horizontal (since the slope is 0).  A line that is perpendicular to a horizontal is vertical, which has the form:
+
+\[ x= a \]
+
+Thus we need to find a line of this form that passes through \( ($c,$d)\), and this means that \(a=$c\), therefore the line is 
+
+\[ x = $c. \]
+
+
+END_SOLUTION
+
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+

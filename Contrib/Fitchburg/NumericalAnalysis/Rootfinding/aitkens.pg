@@ -1,0 +1,163 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Rootfinding')
+## DBsection("Aitken's Acceleration")
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+
+#############################
+#  Setup
+
+Context("Numeric");
+
+$a = random(0.5,3.5,0.25);
+$k = random(0.1,0.9,0.1);
+
+while($a*$k>0.9){
+$a = random(0.5,3.5,0.25);
+$k = random(0.1,0.9,0.1);
+}
+
+
+
+$f = Compute("$a*cos($k*x)");
+
+
+@x = (random(0,2,0.1));
+
+for($i=0;$i<8;$i++){
+  push(@x,$f->eval(x => $x[$i]));
+}
+
+@xhat = ();
+for($i=0;$i<6;$i++){
+  push(@xhat,$x[$i]-($x[$i+1]-$x[$i])**2/($x[$i+2]-2*$x[$i+1]+$x[$i]));
+}
+
+BEGIN_PGML
+
+Perform fixed point iteration for
+
+[`` g(x) = [$a]\cos([$k] x) ``]
+
+For the first 6 iterations.  Start with [`x_0=[$x[0]]`].
+
+
+[@
+begintable(2) .
+row("n","\\(x_n\\)") .
+row("0",ans_rule(12)).
+row("1",ans_rule(12)).
+row("2",ans_rule(12)).
+row("3",ans_rule(12)).
+row("4",ans_rule(12)).
+row("5",ans_rule(12)).
+row("6",ans_rule(12)).
+endtable();
+@]*
+
+Now use Aitken's [`\Delta^2`] method to provide an accelerated version, [` \hat{x}_n`]
+
+[@
+begintable(2) .
+row("n","\\(\\hat{x}_n\\)") .
+row("0",ans_rule(12)).
+row("1",ans_rule(12)).
+row("2",ans_rule(12)).
+row("3",ans_rule(12)).
+row("4",ans_rule(12)).
+endtable();
+@]*
+
+
+END_PGML
+
+for($i=0;$i<7;$i++){
+ANS(Compute($x[$i])->cmp);
+}
+
+for($i=0;$i<5;$i++){
+ANS(Compute($xhat[$i])->cmp);
+}
+
+############################
+#  Solution
+
+BEGIN_PGML_SOLUTION
+
+To begin, the iteration is simply applying the iteration [`x_{n+1} = g(x_n)`] repeatedly. For example,
+
+[`` x_1 = g(x_0) = [$a]\cos([$k] \cdot [$x[0]]) = [$x[1]]``]
+
+[`` x_2 = g(x_1) = [$a]\cos([$k] \cdot [$x[1]]) = [$x[2]]``]
+
+and continuing, with the table:
+
+[@
+begintable(2) .
+row("n","\\(\\hat{x}_n\\)") .
+row("0",$x[0]).
+row("1",$x[1]).
+row("2",$x[2]).
+row("3",$x[3]).
+row("4",$x[4]).
+row("5",$x[5]).
+row("6",$x[6]).
+endtable();
+@]*
+
+For the second table, we use the general Aitken's acceleration formula:
+
+[`` \hat{x}_n = x_n - \frac{(\Delta x_n)^2}{\Delta^2 x_n} = x_n - \frac{(x_{n+1}-x_n)^2}{x_{n+2}-2x_{n+1}-x_n}``]
+
+For example:
+
+[`` \hat{x}_0 = x_0 - \frac{(\Delta x_0)^2}{\Delta^2 x_0} = x_0 - \frac{(x_{1}-x_0)^2}{x_{2}-2x_{1}-x_0} = [$xhat[0]]``]
+
+and the following table shows the rest:
+
+[@
+begintable(2) .
+row("n","\\(\\hat{x}_n\\)") .
+row("0",$xhat[0]).
+row("1",$xhat[1]).
+row("2",$xhat[2]).
+row("3",$xhat[3]).
+row("4",$xhat[4]).
+endtable();
+@]*
+
+
+END_PGML_SOLUTION
+
+COMMENT("Uses PGML.");
+
+ENDDOCUMENT();

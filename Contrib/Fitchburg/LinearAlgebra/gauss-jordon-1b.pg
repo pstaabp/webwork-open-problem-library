@@ -1,0 +1,84 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"parserImplicitEquation.pl",
+"PGmatrixmacros.pl"
+);
+
+
+Context("Numeric");
+Context()->strings->add(NS=>{});
+##Context()->strings->add(infin=>{caseSensitive=>1});
+
+
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+
+$a11=non_zero_random(-6,6); $a12=non_zero_random(-6,6);
+$k=non_zero_random(-3,3);
+$a21=$k*$a11; $a22 = $k*$a12;
+
+
+$b1=random(1,10);
+
+$b2=$k*$b1+non_zero_random(-4,4); 
+
+
+$line1 = nicestring([$a11,$a12],['x','y']);
+$line2 = nicestring([$a21,$a22],['x','y']);
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+BEGIN_TEXT
+Solve the follow linear system using the Gauss-Jordon method: $PAR
+
+
+\[
+\begin{eqnarray}
+$line1 & = & $b1 \\
+$line2 & = & $b2
+\end{eqnarray}
+\]
+
+
+Write your answer as a point, or write "NS" if there are no solutions or "inf" if there are an infinite number of solutions. 
+
+$BR
+\{ ans_rule(20) \} 
+
+END_TEXT
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+# That's it.
+
+
+ANS(String('NS')->cmp);
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

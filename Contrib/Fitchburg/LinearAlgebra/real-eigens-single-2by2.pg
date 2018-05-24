@@ -1,0 +1,105 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Algebra')
+## DBchapter('Fundamentals')
+## DBsection('Real Numbers')
+## Date('6/3/2002')
+## Author('')
+## Institution('')
+## TitleText1('Precalculus')
+## EditionText1('3')
+## AuthorText1('Stewart, Redlin, Watson')
+## Section1('1.1')
+## Problem1('22')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   "contextFraction.pl",
+);
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 1;
+
+##############################################################
+#
+#  Setup
+#
+#
+Context("Vector");
+
+
+$a=non_zero_random(-3,3); $d=non_zero_random(-3,3);
+
+$a11=2*$a; $a12=1;
+$a21=-1*($d-$a)*($d-$a); $a22=2*$d; 
+
+
+$lambda1=Real($a+$d);
+
+$ev1=Vector(1,$d-$a);
+
+
+
+
+
+sub mycheck {
+  my ($correct, $student, $ansHash) = @_;
+  return ($correct->isParallel($student));
+}
+
+
+
+
+##############################################################
+#
+#  Text
+#
+#
+
+Context()->texStrings;
+BEGIN_TEXT
+
+Let
+\[
+A =\left[ \begin{array}{rr} $a11 & $a12 \\ $a21 & $a22 \end{array} \right] \]
+
+For \(A\) find the eigenvalues, \( \lambda\) and eigenvectors \(\vec{v}\).  In the following two lines, enter the eigenvalue and then its corresponding eigenvector such that \(\lambda_1 \leq \lambda_2\).   If \(A\) only has one eigenvalue and only one eigenvector type DNE in the second row.  If the eigenvalues are complex conjugates, let \( \lambda_1\) be the eigenvalue with the position imaginary term.  For each eigenvector, put it in vector notation, i.e. <1,2>. 
+
+$PAR
+
+\( \lambda_1 = \) \{ ans_rule(10)\} \(\vec{v}_1= \) \{ ans_rule(15) \} $BR
+\( \lambda_2 = \) \{ ans_rule(10)\} \(\vec{v}_2= \) \{ ans_rule(15) \} $BR
+
+
+END_TEXT
+Context()->normalStrings;
+
+##############################################################
+#
+#  Answers
+#
+#
+
+
+Context("Vector");
+
+ANS(Real($lambda1)->cmp);
+ANS($ev1->cmp( checker=>~~&mycheck ) );
+ANS(String("DNE")->cmp);
+ANS(String("DNE")->cmp);
+
+
+
+ENDDOCUMENT();        

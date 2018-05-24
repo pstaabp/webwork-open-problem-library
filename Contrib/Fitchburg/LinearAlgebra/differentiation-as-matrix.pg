@@ -1,0 +1,81 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Homogeneous and Nonhomogeneous Solutions')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGchoicemacros.pl",
+"PGcourse.pl",
+);
+
+Context("Vector");
+
+
+# Define all variables used in the problem statement and solution
+
+
+$row1=Vector(0,-1,0,0);
+$row2=Vector(1,0,0,0);
+$row3=Vector(0,0,0,-2);
+$row4=Vector(0,0,2,0); 
+
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+
+
+BEGIN_TEXT
+
+Consider the subspace, \(V\) of all continuous functions where
+\[ V = $LBRACE a \sin x + b \cos x + c \sin 2x + d \cos 2x \; |\; a,b,c,d \in \mathbb{R} $RBRACE \]
+Let the linear map \( D: V \rightarrow V\) be the derivative. Find the matrix that represents the map in the standard basis \( B = (\sin x, \cos x, \sin 2x, \cos 2x) \)
+
+$PAR
+Hint: for each basis element, find the derivative and write the derivative in terms of \(B\).  The columns of the resulting matrix are these representations.  
+
+$PAR
+
+Each row of the matrix should be written as a vector such as "<1,2,3,4>":  $PAR
+
+\{ ans_rule(20) \} $BR
+\{ ans_rule(20) \} $BR
+\{ ans_rule(20) \} $BR
+\{ ans_rule(20) \} $BR
+
+
+END_TEXT
+
+
+# Enter the correct answers to be checked against the answers to the students.
+
+$showPartialCorrectAnswers = 0;
+
+ANS($row1->cmp); 
+ANS($row2->cmp); 
+ANS($row3->cmp);
+ANS($row4->cmp); 
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

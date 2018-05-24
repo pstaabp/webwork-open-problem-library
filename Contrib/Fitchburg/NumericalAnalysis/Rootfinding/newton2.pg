@@ -1,0 +1,127 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Sequences')
+## DBsection('Order of Convergence')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGpolynomialmacros.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+
+#############################
+#  Setup
+
+Context("Numeric");
+
+
+
+$k1 = 0.1*random(1,9);
+
+$p1 = [1,-1];
+$b = random(2,4);
+@p = PolyMult([1,-$b],[1,-1]);
+
+$c = $b;
+while($c==$b){
+  $c = random(3,5);
+}
+@p = PolyMult([1,-$c],~~@p);
+
+$poly = PolyString(~~@p);
+
+$f = Compute("e^(-$k1*x)-($poly)");
+$df = $f->D('x');
+
+sub newton {
+ @x = (shift);
+ $n = 0;
+do {
+    push(@x,$x[$n]-$f->eval(x=>$x[$n])/$df->eval(x=>$x[$n]));
+    $n++;
+ } while ((abs($x[$n-1]-$x[$n-2])>1e-8)&&($n<20));
+
+ return($n>19)?undef:$x[$#x];
+}
+
+@roots = ();
+
+$root1 = newton(1.0); if($root1) { push(@roots,$root1);}
+$root2 = newton($b);  if($root2) { push(@roots,$root2);}
+$root3 = newton($c);  if($root3) { push(@roots,$root3);}
+
+# make sure roots are not repeated.
+
+@roots =  num_sort(@roots);
+@roots_diff = map { abs($_-$roots[0]); } @roots;
+
+for($i=$#roots;$i>=1;$i--){
+  if ($roots_diff[$i] <1e-8){
+    splice @roots, $i, 1;
+  }
+}
+
+$ans = List(join(",",@roots));
+
+BEGIN_PGML
+
+Let
+
+[`` f(x) =  e^{-[$k1]x} - ([$poly]).``]
+
+Use Newton's method to find all the roots to at least 6 decimal places. Separate your answers by commas. (Hint: you may want to graph the function to determine approximate roots first.)
+
+roots of [`f(x)`] are [_______________________________________________]{$ans}
+
+END_PGML
+
+############################
+#  Solution
+
+$fexp = $f->TeX;
+$fexp =~ s/x/x_n/g;
+$dfexp = $df->TeX;
+$dfexp =~ s/x/x_n/g;
+
+
+
+BEGIN_PGML_SOLUTION
+For this, we use the standard Newton's Method formula:
+
+[`` x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} = x_n - \frac{[$fexp]}{[$dfexp]}``]
+
+Additionally, looking at a plot of the function, it appears that there are roots near 1, [$b] and [$c].
+
+Using each of this as values of [`x_0`] and iterating Newton's method above, we get [$root1], [$root2], and [$root3]
+as the roots. 
+
+END_PGML_SOLUTION
+
+COMMENT("Uses PGML.");
+
+ENDDOCUMENT();

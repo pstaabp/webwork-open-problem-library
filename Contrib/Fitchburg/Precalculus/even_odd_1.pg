@@ -1,0 +1,136 @@
+# DESCRIPTION
+# Problem from Functions Modeling Change, Connally et al., 3rd ed.
+# WeBWorK problem written by Adam Spiegler, <aspiegler@luc.edu>
+
+## DBsubject(Algebra)
+## DBchapter(Transformations of functions and graphs)
+## DBsection(Symmetry: even, odd, neither)
+## Institution(Loyola University Chicago and Fort Lewis College)
+## Author(Adam Spiegler and Paul Pearson)
+## Level(2)
+## TitleText1('Functions Modeling Change')
+## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
+## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
+## EditionText2('4')
+## EditionText3('5')
+## Section1(9.4)
+## Section2(11.4)
+## Section3('11.4')
+## Problem1(14a)
+## Problem2(17a)
+## Problem3('26a')
+## KEYWORDS('rational','fraction','numerator','denominator','asymptote')
+
+DOCUMENT();
+
+loadMacros("PG.pl",
+           "PGbasicmacros.pl",
+           "PGchoicemacros.pl",
+           "PGanswermacros.pl",
+#           "PGgraphmacros.pl",
+#           "PGauxiliaryFunctions.pl",
+#           "extraAnswerEvaluators.pl",
+"MathObjects.pl",
+#"AnswerFormatHelp.pl",
+"PGcourse.pl",
+           );
+
+TEXT(beginproblem());
+
+#Context("Numeric");
+
+$a1 = non_zero_random(-10,10); 
+$c1 = non_zero_random(-10,10); 
+$f1 = nicestring([$a1,0,$c1]); 
+$ans1 = "E"; 
+
+$pow2 = random(3,9,2); 
+$a2 = non_zero_random(-10,10); 
+$f2 = Compute("$a1/x^$pow2")->TeX;
+$ans2 = "O";
+
+$a3 = non_zero_random(-10,10); 
+$c3 = non_zero_random(-10,10); 
+$f3 = nicestring([$a3,0,$c3,0]); 
+$ans3 = "O";
+
+$a4 = non_zero_random(-10,10); 
+$b4 = non_zero_random(-10,10); 
+$c4 = non_zero_random(-10,10); 
+$f4 = nicestring([$a4,$b4,$c4]); 
+$ans4 = "N";
+
+$a5 = non_zero_random(-10,10);
+$f5 = Compute("$a5|x|")->TeX; 
+$ans5 = "E"; 
+
+$a6 = non_zero_random(-10,10); 
+$b6 = non_zero_random(-10,10); 
+$c6 = non_zero_random(-10,10); 
+$d6 = non_zero_random(-10,10);  
+$f6 = "\frac{" . nicestring([$a6,0,$b6]) . "}{" . nicestring([$c6,0,$d6]) . "}"; 
+$ans6 = "E";
+
+$a7 = random(2,8); 
+$f7 = "\sqrt{$a7 x}"; 
+$ans7 = "N"; 
+
+$a8 = random(2,8); 
+$b8 = non_zero_random(-10,10); 
+$f8 = "\sqrt{" . nicestring([$a8,0,$b8]). "}"; 
+$ans8 = "E"; 
+
+$a9 = non_zero_random(-10,10); 
+$b9 = non_zero_random(-10,10); 
+$c9 = non_zero_random(-10,10); 
+$d9 = non_zero_random(-10,10);  
+$f9 = "\frac{" . nicestring([$a6,$b6,0]) . "}{" . nicestring([$c6,0,$d6]) . "}"; 
+$ans9 = "N";
+
+
+
+# Create and use pop up lists
+$tf = new_select_list();
+$tf->rf_print_q(~~&pop_up_list_print_q);
+
+# Specify choices presented to students
+$tf->ra_pop_up_list( [ No_answer => "Choose", E => "Even", O => "Odd", N=>"Neither"] );
+
+# Questions and answers
+$tf -> qa (
+"\( \displaystyle $f1 \) $BR", $ans1,
+"\( \displaystyle $f2 \) $BR", $ans2,
+"\( \displaystyle $f3 \) $BR", $ans3,
+"\( \displaystyle $f4 \) $BR", $ans4,
+"\( \displaystyle $f5 \) $BR", $ans5,
+"\( \displaystyle $f6 \) $BR", $ans6,
+"\( \displaystyle $f7 \) $BR", $ans7,
+"\( \displaystyle $f8 \) $BR", $ans8,
+"\( \displaystyle $f9 \) $BR", $ans9,
+);
+
+# Number of randomly chosen questions to
+#    display to students
+$tf->choose(6);
+
+Context()->texStrings;
+BEGIN_TEXT
+Determine whether each of the following rational functions
+is even, odd, or neither.
+$BR
+\{ $tf-> print_q \}
+END_TEXT
+Context()->normalStrings;
+
+install_problem_grader(~~&std_problem_grader);
+
+$showPartialCorrectAnswers = 0;
+
+ANS(str_cmp($tf->ra_correct_ans));
+
+;
+ENDDOCUMENT();

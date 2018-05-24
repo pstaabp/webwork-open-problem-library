@@ -1,0 +1,96 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Rootfinding')
+## DBsection('Order of Convergence')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+
+#############################
+#  Setup
+
+Context("Numeric");
+
+$a = random(65,80);
+
+@x = (random(1,5),0);
+do {
+  $x[1] = random(1,5);
+} while ($x[0]==$x[1]);
+
+$f = Compute("x^2-$a");
+
+for($i=2;$i<=8;$i++){
+  $m=($f->eval(x=>$x[$i-2])-$f->eval(x=>$x[$i-1]))/($x[$i-2]-$x[$i-1]);
+  push(@x,$x[$i-1]-$f->eval(x=>$x[$i-1])/$m);
+}
+
+
+BEGIN_PGML
+
+Perform the secant method to find a root of
+
+[`` f(x) =  x^2-[$a]``]
+
+For the first 6 iterations.  Start with [`x_0=[$x[0]]`] and [`x_1=[$x[1]]`].
+
+
+[@
+begintable(2) .
+row("n","\\(x_n\\)") .
+row("0",ans_rule(12)).
+row("1",ans_rule(12)).
+row("2",ans_rule(12)).
+row("3",ans_rule(12)).
+row("4",ans_rule(12)).
+row("5",ans_rule(12)).
+row("6",ans_rule(12)).
+row("7",ans_rule(12)).
+row("8",ans_rule(12)).
+endtable();
+@]*
+
+END_PGML
+
+for($i=0;$i<9;$i++){
+ANS(Compute($x[$i])->cmp);
+}
+
+
+############################
+#  Solution
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+COMMENT("Uses PGML.");
+
+ENDDOCUMENT();

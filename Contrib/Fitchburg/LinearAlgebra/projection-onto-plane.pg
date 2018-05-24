@@ -1,0 +1,81 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Homogeneous and Nonhomogeneous Solutions')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGchoicemacros.pl",
+"PGcourse.pl",
+);
+
+Context("Vector");
+
+
+# Define all variables used in the problem statement and solution
+
+$a=random(1,4); $b=random(1,4); $c=random(1,4); 
+
+$u1=random(-3,3);$u2=random(-3,3);$u3=random(-3,3);
+$u=Vector($u1,$u2,$u3);
+
+$plane=nicestring([$a,$b,$c],['x','y','z']);
+
+$v = Vector($c,0,-$a); $v2=Vector(0,$c,-$b); 
+
+$w=$v2-($v.$v2)/($v.$v)*$v;
+
+
+$ansV=($u.$v)/($v.$v)*$v+($u.$w)/($w.$w)*$w;
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+
+
+BEGIN_TEXT
+
+Find the projection of the vector 
+\[
+\vec{u} = \left[ \begin{array}{r} $u1 \\ $u2 \\ $u3 \end{array} \right] \]
+onto the plane \( H: $plane=0\).  
+$PAR
+
+\( \text{Proj}_H (\vec{u}) \) = \{ ans_rule(35) \} $BR
+Write your answer as a vector.  
+
+
+
+
+
+END_TEXT
+
+
+# Enter the correct answers to be checked against the answers to the students.
+
+$showPartialCorrectAnswers = 0;
+
+ANS($ansV->cmp); 
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

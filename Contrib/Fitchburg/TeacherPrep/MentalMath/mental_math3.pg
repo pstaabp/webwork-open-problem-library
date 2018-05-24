@@ -1,0 +1,92 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Algebra')
+## DBchapter('Fundamentals')
+## DBsection('Real Numbers')
+## Date('6/3/2002')
+## Author('')
+## Institution('')
+## TitleText1('Precalculus')
+## EditionText1('3')
+## AuthorText1('Stewart, Redlin, Watson')
+## Section1('1.1')
+## Problem1('22')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   "contextLimitedNumeric.pl"
+);
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 1;
+
+##############################################################
+#
+#  Setup
+#
+#
+Context("LimitedNumeric");
+
+$a1=random(21,49); 
+$ans1=Compute(9*$a1); 
+
+$b1=random(52,88);
+$ans2=Compute(9*$b1); 
+
+$c1=100*random(12,20);
+$ans3=Compute($c1/25); 
+
+$d1=25*random(21,49);
+$ans4=Compute($d1/5); 
+
+$e1=10*random(2,9);
+$e2=100*random(3,9); 
+$ans5=Compute($e1*$e2); 
+
+
+##############################################################
+#
+#  Text
+#
+#
+
+Context()->texStrings;
+BEGIN_TEXT
+
+Answer the following addition problems using any mental math technique:$PAR
+
+\(9 \times $a1\)=\{ans_rule\} $BR
+\($b1 \times 9 \)= \{ans_rule\} $BR
+\($c1 \div 25 \)=\{ans_rule\} $BR
+\($d1 \div 5 \)=\{ans_rule\} $BR
+\($e1 \times $e2 \) = \{ ans_rule \} $BR
+
+END_TEXT
+Context()->normalStrings;
+
+##############################################################
+#
+#  Answers
+#
+#
+
+ANS($ans1->cmp);
+ANS($ans2->cmp);
+ANS($ans3->cmp);
+ANS($ans4->cmp);
+ANS($ans5->cmp);
+
+
+ENDDOCUMENT();        

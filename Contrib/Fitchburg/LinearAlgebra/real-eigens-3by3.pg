@@ -1,0 +1,133 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Algebra')
+## DBchapter('Fundamentals')
+## DBsection('Real Numbers')
+## Date('6/3/2002')
+## Author('')
+## Institution('')
+## TitleText1('Precalculus')
+## EditionText1('3')
+## AuthorText1('Stewart, Redlin, Watson')
+## Section1('1.1')
+## Problem1('22')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   "contextFraction.pl",
+   #"source.pl",        # allows code to be displayed on certain sites.
+   #"PGcourse.pl",      # Customization file for the course
+);
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 1;
+
+##############################################################
+#
+#  Setup
+#
+#
+Context("Vector");
+
+$det=0; 
+
+while (($det==0)||($det>2)||($det<-2)) {
+$u1=non_zero_random(-3,3); $u2=non_zero_random(-3,3); $u3=0;
+$v1=non_zero_random(-3,3); $v2=0; $v3=non_zero_random(-3,3);
+$w1=0; $w2=non_zero_random(-3,3); $w3=non_zero_random(-3,3);
+$det=$u1*($v2*$w3-$v3*$w2)-$u2*($v1*$w3-$v3*$w1)+$u3*($v1*$w2-$v2*$w1); 
+}
+
+$lambda1=0; $lambda2=0; $lambda3=0;
+
+
+while(($lambda1-$lambda2)*($lambda2-$lambda3)*($lambda1-$lambda3)==0)
+{
+($lambda1,$lambda2,$lambda3)=num_sort($det*non_zero_random(-2,2),$det*non_zero_random(-2,2),0);
+}
+
+$q1=$lambda1/$det;
+$q2=$lambda2/$det;
+$q3=$lambda3/$det;
+
+
+
+$a11=-$u1*$q1*$w2*$v3-$v1*$q2*$u2*$w3;
+$a12=-($q1-$q2)*$w3*$v1*$u1;
+$a13=($q1-$q2)*$w2*$v1*$u1;
+$a21=-($q1-$q3)*$v3*$w2*$u2;
+$a22=-$u2*$q1*$v1*$w3-$w2*$q3*$u1*$v3;
+$a23=($q1-$q3)*$w2*$v1*$u2;
+$a31=-($q2-$q3)*$w3*$u2*$v3;
+$a32=($q2-$q3)*$w3*$u1*$v3;
+$a33=-$v3*$q2*$u1*$w2-$w3*$q3*$v1*$u2;
+
+$ev1=Vector($u1,$u2,$u3);
+$ev2=Vector($v1,$v2,$v3);
+$ev3=Vector($w1,$w2,$w3);
+
+
+
+sub mycheck {
+  my ($correct, $student, $ansHash) = @_;
+  return ($correct->isParallel($student));
+}
+
+
+
+
+##############################################################
+#
+#  Text
+#
+#
+
+Context()->texStrings;
+BEGIN_TEXT
+
+Let
+\[
+A =\left[ \begin{array}{rrr} $a11 & $a12 & $a13 \\ $a21 & $a22 & $a23 \\ $a31 & $a32 & $a33 \end{array} \right] \]
+
+For \(A\) find the eigenvalues, \( \lambda\) and eigenvectors \(\vec{v}\).  In the following three lines, enter the eigenvalue and then its corresponding eigenvector such that \(\lambda_1 \leq \lambda_2 \leq \lambda_3\).  (Note: if the eigenvalues are equal, you may need to swap the rows of the eigenvectors.)  For each eigenvector, put it in vector notation, i.e. <1,2>. 
+
+$PAR
+
+\( \lambda_1 = \) \{ ans_rule(10)\} \(\vec{v}_1= \) \{ ans_rule(15) \} $BR
+\( \lambda_2 = \) \{ ans_rule(10)\} \(\vec{v}_2= \) \{ ans_rule(15) \} $BR
+\( \lambda_3 = \) \{ ans_rule(10)\} \(\vec{v}_3= \) \{ ans_rule(15) \} $BR
+
+
+END_TEXT
+Context()->normalStrings;
+
+##############################################################
+#
+#  Answers
+#
+#
+
+
+Context("Vector");
+
+ANS(Real($lambda1)->cmp);
+ANS($ev1->cmp( checker=>~~&mycheck ) );
+ANS(Real($lambda2)->cmp);
+ANS($ev2->cmp( checker=>~~&mycheck ) );
+ANS(Real($lambda3)->cmp);
+ANS($ev3->cmp( checker=>~~&mycheck ) );
+
+
+ENDDOCUMENT();        

@@ -1,0 +1,77 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl"
+);
+
+
+Context("Numeric");
+
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+
+$a1 = random(2,6);
+$b1 = random(2,6);
+$c1 = random(2,6);
+$d1 = 5*random(2,6);
+
+
+$a2 = random(2,6);
+$b2 = random(2,6);
+$c2 = random(2,6);
+$d2 = 5*random(2,6);
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+BEGIN_TEXT
+If the following linear programming problem is written as a simplex tableau: 
+
+$PAR
+Maximize \(f(x_1,x_2,x_3) = 3x_1 + 10 x_2 + 4 x_3 \) subject to $BR
+\(
+\begin{cases}
+\begin{eqnarray}
+$a1 x_1 + $b1 x_2 + $c1 x_3 \leq $d1 \\
+$a2 x_1 + $b2 x_2 + $c2 x_3 \leq $d2 \\
+\end{eqnarray}
+\end{cases}
+\)
+$PAR
+Give the size of the simplex tableau:$BR
+number of rows:\{ ans_rule(5) \} $BR
+number of columns:\{ ans_rule(5) \} $BR
+END_TEXT
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+# That's it.
+
+
+ANS(Real(3)->cmp);
+ANS(Real(7)->cmp);
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

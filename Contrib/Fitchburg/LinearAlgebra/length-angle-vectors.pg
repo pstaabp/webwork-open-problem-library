@@ -1,0 +1,126 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Geometry of n-Space')
+## DBsection('Vectors in n-Space')
+## Date('September 5, 2011')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('Hefferon, Jim')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+);
+
+Context("Vector");
+
+$u1=random(-5,5);
+$u2=random(-5,5);
+$u3=random(-5,5);
+
+
+$v1=random(-5,5);
+$v2=random(-5,5);
+$v3=random(-5,5);
+
+$w1=random(-5,5);
+$w2=random(-5,5);
+$w3=random(-5,5);
+$w4=random(-5,5);
+
+$x1=random(-5,5);
+$x2=random(-5,5);
+$x3=random(-5,5);
+$x4=random(-5,5);
+
+
+$Lu = Compute("sqrt($u1*$u1+$u2*$u2+$u3*$u3)");
+$Lv = Compute("sqrt($v1*$v1+$v2*$v2+$v3*$v3)");
+$DOTuv = Compute("$u1*$v1+$u2*$v2+$u3*$v3"); 
+$ANGLEuv = Compute("acos($DOTuv/($Lu*$Lv))"); 
+
+$Lw = Compute("sqrt($w1*$w1+$w2*$w2+$w3*$w3+$w4*$w4)");
+$Lx = Compute("sqrt($x1*$x1+$x2*$x2+$x3*$x3+$x4*$x4)");
+$DOTwx = Compute("$w1*$x1+$w2*$x2+$w3*$x3+$w4*$x4"); 
+$ANGLEwx = Compute("acos($DOTwx/($Lw*$Lx))"); 
+
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+Context()->texStrings;
+BEGIN_TEXT
+
+Consider the vectors 
+
+\(
+\vec{u} = \left[ \begin{array}{r} $u1 \\ $u2 \\ $u3 \end{array} \right]
+\), 
+
+\(
+\vec{v} = \left[ \begin{array}{r} $v1 \\ $v2 \\ $v3 \end{array} \right]
+\), 
+
+
+\(
+\vec{w} = \left[ \begin{array}{r} $w1 \\ $w2 \\ $w3 \\ $w4 \end{array} \right]
+\), 
+
+\(
+\vec{x} = \left[ \begin{array}{r} $x1 \\ $x2 \\ $x3 \\ $x4 \end{array} \right]
+\), 
+
+
+
+$PAR
+
+
+Find the following:$PAR
+
+a) The length of \(\vec{u}\) is \{ ans_rule(20) \}  
+$BR
+b) The dot product \(\vec{u} \cdot \vec{v} \)= \{ ans_rule(20) \} 
+$BR
+c) The angle between vectors \( \vec{u}\) and \( \vec{v}\) is \{ ans_rule(30) \}
+$BR
+d) The length of \( \vec{w} \) is \{ ans_rule(20) \}
+$BR
+e) The angle between \(\vec{w} \) and \( \vec{x}\) is \{ans_rule(30) \}
+
+$PAR
+Note: all angles should in radians.  
+END_TEXT
+
+
+
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+$showPartialCorrectAnswers = 1;
+
+ANS($Lu->cmp);
+ANS($DOTuv->cmp);
+ANS($ANGLEuv->cmp);
+ANS($Lw->cmp);
+ANS($ANGLEwx->cmp);
+
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

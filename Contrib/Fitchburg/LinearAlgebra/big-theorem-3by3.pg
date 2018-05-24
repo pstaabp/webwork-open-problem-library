@@ -1,0 +1,165 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"PGmatrixmacros.pl"
+);
+
+Context("Vector");
+Context()->strings->add(True=>{},T=>{alias=>'True'});
+Context()->strings->add(False=>{},F=>{alias=>'False'});
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+
+$det=0;
+
+while(($det==0)||($det<-8) || ($det>8))
+{
+$a11=random(-3,3); $a12=random(-3,3); $a13=0; 
+$a21=random(-3,3); $a22=0; $a23=random(-3,3); 
+$a31=0; $a32=random(-3,3); $a33=random(-3,3);
+$det=$a11*($a22*$a33-$a23*$a32)-$a12*($a21*$a33-$a31*$a23)+$a13*($a21*$a32-$a31*$a31);
+}
+
+# pick a random solution 
+
+$x=random(-3,3); $y=random(-3,3); $z=random(-3,3);
+
+$b1=$a11*$x+$a12*$y+$a13*$z;
+$b2=$a21*$x+$a22*$y+$a23*$z;
+$b3=$a31*$x+$a32*$y+$a33*$z;
+
+
+
+ 
+#Find the inverse of the matrix:
+
+$c11=Compute("($a22*$a33-$a23*$a32)/$det"); 
+$c12=Compute("($a32*$a13-$a33*$a12)/$det");
+$c13=Compute("($a12*$a23-$a13*$a22)/$det"); 
+
+$c21=Compute("($a31*$a23-$a21*$a33)/$det"); 
+$c22=Compute("($a11*$a33-$a31*$a13)/$det"); 
+$c23=Compute("($a21*$a13-$a11*$a23)/$det"); 
+
+
+$c31=Compute("($a21*$a32-$a31*$a22)/$det"); 
+$c32=Compute("($a31*$a12-$a11*$a32)/$det"); 
+$c33=Compute("($a11*$a22-$a21*$a12)/$det"); 
+
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+BEGIN_TEXT
+
+Let
+
+\[  A=
+\left[ \begin{array}{rrr}
+$a11 & $a12 & $a13 \\
+$a21 & $a22 & $a23 \\
+$a31 & $a32 & $a33
+\end{array} \right] \qquad \qquad
+\vec{y} = \left[\begin{array}{r}
+$b1 \\ $b2 \\$b3 \end{array} \right] 
+\]
+
+a) \{ mbox('\(A^{-1} =\)',answer_matrix(3,3,5)) \} 
+
+$BR
+
+If the inverse does not exist, write DNE in all boxes. 
+$PAR
+
+b) The solution to  \( A \vec{x} = \vec{y} \) is \( \vec{x} = \) \{ans_rule(15) \} $BR
+Note: write your answer as a vector, i.e. <1,2,3> or if it does not exist, then write DNE.   $PAR
+
+c) Find the reduced row echelon form of \(A\) $BR
+\{ answer_matrix(3,3,5) \} 
+$PAR
+
+d) The rank of \( A \) is \{ ans_rule(5) \} $PAR  
+
+e) The rows of \(A\) are linearly independent (true/false) \{ans_rule(10)\} $PAR
+
+f) The columns of \(A\) are linearly independent (true/false) \{ans_rule(10)\} $PAR
+
+g) The matrix \( A \) is singular  (true/false): \{ ans_rule(10) \}
+
+$PAR
+
+h) The determinant of \(A\) is \{ ans_rule(5)\} $PAR
+
+END_TEXT
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+# answer to a)
+
+ANS($c11->cmp); ANS($c12->cmp); ANS($c13->cmp);
+ANS($c21->cmp); ANS($c22->cmp); ANS($c23->cmp);
+ANS($c31->cmp); ANS($c32->cmp); ANS($c33->cmp);
+
+# answer to b)
+
+
+ANS(Vector($x,$y,$z)->cmp);
+
+
+# answer to c)
+
+ANS(Real(1)->cmp); ANS(Real(0)->cmp); ANS(Real(0)->cmp);
+ANS(Real(0)->cmp); ANS(Real(1)->cmp); ANS(Real(0)->cmp);
+ANS(Real(0)->cmp); ANS(Real(0)->cmp); ANS(Real(1)->cmp);
+
+# answer to d)
+
+ANS(Real(3)->cmp); 
+
+# answer to e) 
+
+ANS(String("True")->cmp);
+
+# answer to f) 
+
+ANS(String("True")->cmp);
+
+
+# answer to g) 
+
+ANS(String("False")->cmp);
+
+# answer to h)
+
+ANS(Real($det)->cmp); 
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,0 +1,109 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"PGmatrixmacros.pl"
+);
+
+Context("Numeric");
+Context()->strings->add(Yes=>{});
+Context()->strings->add(No=>{});
+
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+$m1= random(2,4); $m2= random(3,5); $m3= random(2,6); $m4=random(5,10); 
+$n1= random(2,4); $n2= random(3,5); $n3= random(2,6); $n4=random(5,10); 
+
+$ab=random(1,2); $cd=random(3,4);
+
+if ($ab==1){
+ $ans1=List("$m1,$n1"); 
+ $r1=random(2,4); $q1=$r1;
+ $r2=random(2,4); $q2=$r2;
+ while($r2==$q2) {$r2=random(2,4);$q2=random(2,4);}
+ $ans2=String("DNE");
+
+}
+else
+{
+ $r2=random(2,4); $q2=$r2;
+ $ans2=List("$m2,$n2");
+ $r1=random(2,4); $q1=$r1;
+ while($r1==$q1) {$r1=random(2,4);$q1=random(2,4);}
+ $ans1=String("DNE");
+}
+
+if ($cd==3){
+$r3=random(3,6); $q3=$r3;
+$ans3=List("$m3,$n3");
+$r4=random(3,6); $q4=$r4;
+while($r4==$q4) {
+$r4=random(3,6);$q4=random(3,6);}
+$ans4=String("DNE");
+}
+else
+{
+$r4=random(3,6); $q4=$r4;
+$ans4=List("$m4,$n4");
+$r3=random(3,6); $q3=$r3;
+while($r3==$q3) {
+$r3=random(3,6);$q3=random(3,6);}
+$ans3=String("DNE");
+}
+
+
+
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+BEGIN_TEXT
+
+Give the size of the resulting matrix or say DNE if the product is not defined. For the size of a valid product list the number of rows, number of columns.  For example if the result is a \( 2 \times 3\) matrix, answer "2,3" 
+
+$PAR
+
+a) A \( $m1 \times $r1 \) matrix times a \( $q1 \times $n1 \) matrix:  \{ans_rule(10) \} $PAR
+b) A \( $m2 \times $r2 \) matrix times a \( $q2 \times $n2 \) matrix:  \{ans_rule(10) \} $PAR
+c) A \( $m3 \times $r3 \) matrix times a \( $q3 \times $n3 \) matrix:  \{ans_rule(10) \} $PAR
+d) A \( $m4 \times $r4 \) matrix times a \( $q4 \times $n4 \) matrix:  \{ans_rule(10) \} $PAR
+
+
+END_TEXT
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+ANS($ans1->cmp);
+ANS($ans2->cmp);
+ANS($ans3->cmp);
+ANS($ans4->cmp);
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

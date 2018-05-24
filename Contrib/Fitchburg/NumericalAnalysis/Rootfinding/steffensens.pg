@@ -1,0 +1,112 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Rootfinding')
+## DBsection("Steffensen's Method")
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+
+#############################
+#  Setup
+
+Context("Numeric");
+Context()->flags->set(
+  tolerance => 0.00000001,
+);
+
+$a = random(20,80);
+
+
+$g = Compute("$a*(x+1)/(x^2+$a)");
+
+
+@x0 = (random(4,7,0.25));
+
+for($i=0;$i<3;$i++){
+  push(@x0,$g->eval(x => $x0[$i]));
+}
+@x1 = ($x0[0]-($x0[1]-$x0[0])**2/($x0[2]-2*$x0[1]+$x0[0]));
+for($i=1;$i<3;$i++){
+  push(@x1,$g->eval(x => $x1[$i-1]));
+}
+
+@x2 = ($x1[0]-($x1[1]-$x1[0])**2/($x1[2]-2*$x1[1]+$x1[0]));
+for($i=1;$i<3;$i++){
+  push(@x2,$g->eval(x => $x2[$i-1]));
+}
+
+$x3 = $x2[0]-($x2[1]-$x2[0])**2/($x2[2]-2*$x2[1]+$x2[0]);
+
+
+BEGIN_PGML
+
+The fixed point iteration
+
+[`` g(x) = \frac{a(x+1)}{x^2+a} ``]
+
+converges to [`\sqrt[3]{a}`] for any [`a>1`].  Perform fixed point iteration and use Steffensen's Method to accelerate the method and to fill in the following table for [`a=[$a]`] and initial point [`x_0^{(0)}=[$x0[0]]`]
+
+[@
+begintable(4) .
+row("n","\\(x_0^{(n)}\\)","\\(x_1^{(n)}\\)","\\(x_2^{(n)}\\)") .
+row("0",ans_rule(12),ans_rule(12),ans_rule(12)).
+row("1",ans_rule(12),ans_rule(12),ans_rule(12)).
+row("2",ans_rule(12),ans_rule(12),ans_rule(12)).
+row("3",ans_rule(12),"","").
+endtable();
+@]*
+
+END_PGML
+
+for($i=0;$i<3;$i++){
+  ANS(Compute($x0[$i])->cmp);
+}
+for($i=0;$i<3;$i++){
+  ANS(Compute($x1[$i])->cmp);
+}
+for($i=0;$i<3;$i++){
+  ANS(Compute($x2[$i])->cmp);
+}
+
+ANS(Compute($x3)->cmp);
+
+
+
+
+############################
+#  Solution
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+COMMENT("Uses PGML.");
+
+ENDDOCUMENT();

@@ -1,0 +1,89 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"parserVectorUtils.pl",
+"parserSolutionFor.pl"
+);
+
+Context("Vector");
+Context("Vector")->variables->are(x=>"Real",y=>"Real",t=>"Real");
+
+# Define all variables used in the problem statement and solution
+
+$a11 = non_zero_random(-5,5); $a12 = non_zero_random(-5,5); $b1 = non_zero_random(-5,5);
+
+$k = non_zero_random(-4,-2);
+
+$a21 = $k*$a11; $a22 = $k*$a12; $b2 = $k*$b1;
+
+$ans1 = SolutionFor("$a11*x+$a12*y=$b1","($b1/$a11,0)");
+
+$ans2 = Compute("<-$a12*t/$a11,t>");
+
+
+
+$line1 = nicestring([$a11,$a12],['x','y']);
+$line2 = nicestring([$a21,$a22],['x','y']);
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+Context()->texStrings;
+BEGIN_TEXT
+
+Consider the following linear system. 
+
+\[
+\begin{eqnarray}
+$line1 & = & $b1 \\
+$line2 & = & $b2
+\end{eqnarray} \] 
+
+$PAR
+
+Write a particular solution as a point, e.g. (1,2), to the linear system: $BR
+\( \vec{x}_p = \) \{ ans_rule(25) \} $PAR
+
+Write the solution to the associated homogeneous system in the form \( \vec{x}=t\vec{u} \) $BR
+\(\vec{x}_h = \) \{ ans_rule(25) \} 
+
+
+
+
+END_TEXT
+
+
+
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+ANS($ans1->cmp);
+ANS($ans2->cmp);
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

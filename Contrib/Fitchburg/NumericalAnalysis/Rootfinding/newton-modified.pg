@@ -1,0 +1,171 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Sequences')
+## DBsection('Order of Convergence')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 1;
+
+
+#############################
+#  Setup
+
+Context("Numeric");
+
+$k = 0.1*random(1,9);
+$a= 0.25*non_zero_random(-8,8);
+$ka=-$k*$a;
+$b=1+$ka;
+
+$poly=nicestring([-$k,-$b]);
+
+$x0 = $a+random(5,15)/10;
+
+$f = Compute("exp($k*(x-$a))-(1+$k*(x-$a))");
+$df = $f->D('x');
+$F = Compute("$f/$df");
+$dF = $F->D('x');
+
+sub newton {
+ my @x = (shift);
+ my $n = 0;
+do {
+    push(@x,$x[$n]-$f->eval(x=>$x[$n])/$df->eval(x=>$x[$n]));
+    $n++;
+ } while ((abs($x[$n-1]-$x[$n-2])>1e-8)&&($n<20));
+
+ return @x;
+}
+
+sub mod_newton {
+ my @mx = (shift);
+ my $n = 0;
+do {
+    push(@mx,$mx[$n]-$F->eval(x=>$mx[$n])/$dF->eval(x=>$mx[$n]));
+    $n++;
+ } while ((abs($mx[$n-1]-$mx[$n-2])>1e-8)&&($n<20));
+
+ return @mx;
+}
+
+
+@x = newton($x0);
+@mx = mod_newton($x0);
+
+BEGIN_PGML
+
+Perform Newton's Method to find a root of
+
+[`` f(x) =  e^{[$k]x}e^{[$ka]}+[$poly]``]
+
+For the first 6 iterations.  Start with [`x_0=[$x[0]]`].
+
+
+[@
+begintable(2) .
+row("n","\\(x_n\\)") .
+row("0",ans_rule(12)).
+row("1",ans_rule(12)).
+row("2",ans_rule(12)).
+row("3",ans_rule(12)).
+row("4",ans_rule(12)).
+row("5",ans_rule(12)).
+row("6",ans_rule(12)).
+endtable();
+@]*
+
+Perform Modified Newton's method on [`f(x)`].  Start with [`x_0=[$x[0]]`].
+
+
+[@
+begintable(2) .
+row("n","\\(x_n\\)") .
+row("0",ans_rule(12)).
+row("1",ans_rule(12)).
+row("2",ans_rule(12)).
+row("3",ans_rule(12)).
+row("4",ans_rule(12)).
+endtable();
+@]*
+
+END_PGML
+
+for($i=0;$i<7;$i++){
+ANS(Compute($x[$i])->cmp);
+}
+
+
+
+for($i=0;$i<5;$i++){
+ANS(Compute($mx[$i])->cmp);
+}
+
+############################
+#  Solution
+
+
+$poly2 = $poly;
+$poly2 =~ s/x/x_n/g;
+
+
+
+BEGIN_PGML_SOLUTION
+For this, we use the standard Newton's Method formula:
+
+[`` x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} = x_n - \frac{e^{[$k]x_n}e^{[$ka]}+[$poly2]}{[$k] e^{[$k]x_n}e^{[$ka]}-[$k]}``]
+
+The first few iterations of this is:
+
+[@
+begintable(2) .
+row("n","\\(x_n\\)") .
+row("0",$x[0]).
+row("1",$x[1]).
+row("2",$x[2]).
+row("3",$x[3]).
+row("4",$x[4]).
+row("5",$x[5]).
+row("6",$x[6]).
+endtable()
+@]*
+
+Next, to perform Modified Newton's method, define:
+
+[`` F(x) = \frac{f(x)}{f'(x)}=\frac{e^{[$k]x}e^{[$ka]}+[$poly]}{[$k] e^{[$k]x}e^{[$ka]}-[$k]}``]
+
+Simplifying [`'F(x)/F'(x)`] is
+
+
+
+END_PGML_SOLUTION
+
+COMMENT("Uses PGML.");
+
+ENDDOCUMENT();

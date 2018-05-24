@@ -1,0 +1,108 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"PGmatrixmacros.pl"
+);
+
+Context("Numeric");
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+
+$det=0;
+
+while(($det==0)||($det<-8) || ($det>8))
+{
+$a11=random(-3,3); $a12=random(-3,3); $a13=0; 
+$a21=random(-3,3); $a22=0; $a23=random(-3,3); 
+$a31=0; $a32=random(-3,3); $a33=random(-3,3);
+$det=$a11*($a22*$a33-$a23*$a32)-$a12*($a21*$a33-$a31*$a23)+$a13*($a21*$a32-$a31*$a31);
+}
+
+# pick a random solution 
+
+
+
+ 
+#Find the inverse of the matrix:
+
+$c11=Compute("($a22*$a33-$a23*$a32)/$det"); 
+$c12=Compute("($a32*$a13-$a33*$a12)/$det");
+$c13=Compute("($a12*$a23-$a13*$a22)/$det"); 
+
+$c21=Compute("($a31*$a23-$a21*$a33)/$det"); 
+$c22=Compute("($a11*$a33-$a31*$a13)/$det"); 
+$c23=Compute("($a21*$a13-$a11*$a23)/$det"); 
+
+
+$c31=Compute("($a21*$a32-$a31*$a22)/$det"); 
+$c32=Compute("($a31*$a12-$a11*$a32)/$det"); 
+$c33=Compute("($a11*$a22-$a21*$a12)/$det"); 
+
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+BEGIN_TEXT
+
+Let
+
+\[  A=
+\left[ \begin{array}{rrr}
+$a11 & $a12 & $a13 \\
+$a21 & $a22 & $a23 \\
+$a31 & $a32 & $a33
+\end{array} \right]
+\]
+  Find 
+\{ mbox('\(A^{-1} =\)',answer_matrix(3,3,5)) \} 
+
+$PAR
+
+If the inverse does not exist, write DNE in all boxes. 
+
+
+END_TEXT
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+ANS($c11->cmp); 
+ANS($c12->cmp);
+ANS($c13->cmp);
+ANS($c21->cmp); 
+ANS($c22->cmp);
+ANS($c23->cmp);
+ANS($c31->cmp); 
+ANS($c32->cmp);
+ANS($c33->cmp);
+
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,0 +1,158 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Introduction to Numerical Analysis')
+## DBsection('Errors')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+
+#############################
+#  Setup
+
+Context("Numeric");
+
+sub round3 {
+  $x = shift;
+  $n = floor(log(abs($x))/log(10));
+  return round($x*10**(2-$n))/10**(2-$n);
+}
+
+$a = random(100,400)/10;
+$b = random(500,900)/10;
+$c = random(1,9)/10;
+
+$ac = round3($a*$c);#round($a*$c*1000)/1000;
+$ac4 = round3(4*$ac); #round(4000*$ac)/1000;
+
+$bsq = round3($b*$b); #round(1000*$b*$b)/1000;
+
+$bsq4ac = round3($bsq-$ac4);
+$sqrtbsq4ac = round3(sqrt($bsq4ac));
+$bplus = round3($b+$sqrtbsq4ac);
+$bminus = abs(-$b+$sqrtbsq4ac)<1e-8?0:round3(-$b+$sqrtbsq4ac);
+$c2 = round3(2*$c);
+$a2 = round3(2*$a);
+
+$top = abs($bminus)<1e-8?0:round3($bminus/$a2);
+$bottom = round3(-$c2/$bplus);
+
+$larger_root = -2*$c/($b+sqrt($b*$b-4*$a*$c));
+
+$reltop = abs(($top-$larger_root)/$larger_root);
+$relbottom = abs(($bottom-$larger_root)/$larger_root);
+
+$quad = nicestring([$a,$b,$c]);
+
+
+BEGIN_PGML
+
+If you are trying to solve the equation [`ax^2+bx+c=0`], then the quadratic formula can be written as
+
+[`` x  = \frac{-b\pm\sqrt{b^2-4ac}}{2a} ``]
+
+or
+
+[`` x= -\frac{2c}{b \pm \sqrt{b^2-4ac}} ``]
+
+Find the larger of the two roots of [`[$quad]=0`] using 3-digit rounding on all steps. Using both the top and bottom methods.
+
+Larger root using top formula: [_______]{$top}
+
+Larger root using bottom formula: [_______]{$bottom}
+
+Relative error using top formula: [________]{$reltop}
+
+Relative error using bottom formula: [________]{$relbottom}
+
+
+END_PGML
+
+############################
+#  Solution
+
+BEGIN_PGML_SOLUTION
+
+For this, we need to go step-by-step through the quadratic formula.
+
+First, since [`b^2-4ac`] is in both formulas we will do that.  On each step, the result has been rounded to 3 decimals.  Starting with [`a=[$a], b=[$b], c=[$c] `]:
+
+[` b^2 = [$b]^2 \approx [$bsq] `]
+
+[` ac = ([$a])([$c]) \approx [$ac] `]
+
+[`4ac  = 4(ac) = 4([$ac]) \approx [$ac4]  `]
+
+[` b^2-4ac = [$bsq] - [$ac4] \approx [$bsq4ac] `]
+
+[` \sqrt{b^2-4ac} = \sqrt{[$bsq4ac]} \approx [$sqrtbsq4ac] `]
+
+Now, we do each formula.
+
+*Top formula:*
+
+Since [`b>0`], the larger root occurs when we use the plus formula:
+
+[` -b +\sqrt{b^2-4ac} = -[$b]+[$sqrtbsq4ac] \approx [$bminus]  `]
+
+And finally,
+[`` root = \frac{-b+\sqrt{b^2-4ac}}{2a} = \frac{[$bminus]}{[$a2]} \approx [$top] ``]
+
+Using a large (10 or more decimal places):
+
+[`` \frac{-b+\sqrt{b^2-4ac}}{2a}  = [$larger_root] ``]
+
+So the relative error is
+
+[`` \frac{|[$larger_root] - [$top]|}{|[$larger_root]|} = [$reltop] ``]
+
+*Bottom Formula:*
+
+Since [`b>0`], the larger root occurs when we use the minus formula:
+
+[` -b -\sqrt{b^2-4ac} = -[$b]-[$sqrtbsq4ac] \approx [$bplus]  `]
+
+And finally,
+[`` root = \frac{2c}{-b-\sqrt{b^2-4ac}} = \frac{[$c2]}{-[$bplus]} \approx [$bottom] ``]
+
+Using a large (10 or more decimal places):
+
+[`` \frac{2c}{-b-\sqrt{b^2-4ac}}  = [$larger_root] ``]
+
+So the relative error is
+
+[`` \frac{|[$larger_root] - [$bottom]|}{|[$larger_root]|} = [$relbottom] ``]
+
+And as you can see the error is much less than the traditional (top version) quadratic formula.  This alternative version is often used to get more accurate solutions for the quadratic formula.
+
+END_PGML_SOLUTION
+
+COMMENT("Uses PGML.");
+
+ENDDOCUMENT();

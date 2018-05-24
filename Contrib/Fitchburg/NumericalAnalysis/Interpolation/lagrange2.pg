@@ -1,0 +1,120 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Sequences')
+## DBsection('Order of Convergence')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT(); 
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+
+#############################
+#  Setup
+
+Context("Numeric");
+
+$k = random(0.25,2,0.25);
+$C = random(0.25,2,0.25); 
+$kx = nicestring([$k],["x"]); 
+
+$f = Compute("$C*exp($k*x)"); 
+
+$a = random(-2,-0.5,0.5);
+$b = random(0.5,2,0.5); 
+
+$dx = ($b-$a)/3; 
+@x = ($a,$a+$dx,$a+2*$dx,$b); 
+
+$L0 = Compute("(x-$x[1])*(x-$x[2])*(x-$x[3])/(($x[0]-$x[1])*($x[0]-$x[2])*($x[0]-$x[3]))"); 
+$L1 = Compute("(x-$x[0])*(x-$x[2])*(x-$x[3])/(($x[1]-$x[0])*($x[1]-$x[2])*($x[1]-$x[3]))"); 
+$L2 = Compute("(x-$x[0])*(x-$x[1])*(x-$x[3])/(($x[2]-$x[0])*($x[2]-$x[1])*($x[2]-$x[3]))"); 
+$L3 = Compute("(x-$x[0])*(x-$x[1])*(x-$x[2])/(($x[3]-$x[0])*($x[3]-$x[1])*($x[3]-$x[2]))"); 
+
+@y = map { $f->eval(x=>$_)} @x; 
+
+$poly = Compute("$y[0]*$L0+$y[1]*$L1+$y[2]*$L2+$y[3]*$L3"); 
+
+$a0 = $poly->eval(x=>0);
+$df = $poly->D('x'); $a1 = $df->eval(x=>0);
+$d2f = $df->D('x'); $a2 = $d2f->eval(x=>0)/2.0;
+$d3f = $d2f->D('x'); $a3 = $d3f->eval(x=>0)/6.0;
+
+$red_poly = nicestring([$a3,$a2,$a1,$a0]); 
+
+
+
+
+
+BEGIN_PGML
+
+Use Lagrange Interpolation to find the interpolation through 
+
+[`` f(x) = [$C] e^{[$kx]}``]
+
+on 4 equally-spaced points (that is [`n=3`]) on [` [[$a],[$b]] `]. 
+
+[________________________________________________________________]{$poly}
+
+END_PGML
+
+############################
+#  Solution
+
+BEGIN_PGML_SOLUTION
+
+The general form of a Lagrange polynomial that is 1 at [`x_j`] and 0 through all [`x_i`] for [`i=1\ldots n, i \neq j`] is
+
+[`` L_{n,j} = \frac{\prod_{i=1,i \neq j}^n (x-x_i)}{\prod_{i=1,i \neq j}^n (x_j-x_i)} ``]
+
+For [` x_0 = [$x[0]], \quad x_1 = [$x[1]], \quad x_2 = [$x[2]], \quad x_3 = [$x[3]] `], 
+
+[`` L_{3,0} = \frac{(x-[$x[0]])(x-[$x[2]])(x-[$x[3]])}{([$x[0]]-[$x[1]])([$x[0]]-[$x[2]])([$x[0]]-[$x[3]])} ``]
+
+[`` L_{3,1} = \frac{(x-[$x[0]])(x-[$x[2]])(x-[$x[3]])}{([$x[1]]-[$x[0]])([$x[1]]-[$x[2]])([$x[1]]-[$x[3]])} ``]
+
+[`` L_{3,2} = \frac{(x-[$x[0]])(x-[$x[1]])(x-[$x[3]])}{([$x[2]]-[$x[0]]])([$x[2]]-[$x[1]])([$x[2]]-[$x[3]])} ``]
+
+[`` L_{3,3} = \frac{(x-[$x[0]])(x-[$x[1]])(x-[$x[2]])}{([$x[3]]-[$x[0]])([$x[2]]-[$x[0]])([$x[3]]-[$x[0]])} ``]
+
+
+And using Lagrange polynomials, the interpolating polynomials is 
+
+[`` P(x) = \sum_{j=0}^n y_j L_{n,j} ``]
+
+so for this problem, 
+
+[`` P(x) = [$y[0]] L_{3,0}(x) + [$y[1]] L_{3,1}(x) + [$y[2]] L_{3,2}(x) + [$y[3]] L_{3,3}(x) ``]
+
+[`` P(x) = [$red_poly] ``]
+
+
+END_PGML_SOLUTION
+
+COMMENT("Uses PGML.");
+
+ENDDOCUMENT();

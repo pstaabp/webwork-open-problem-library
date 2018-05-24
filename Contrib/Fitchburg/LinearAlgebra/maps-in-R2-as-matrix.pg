@@ -1,0 +1,105 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Homogeneous and Nonhomogeneous Solutions')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGchoicemacros.pl",
+"PGcourse.pl",
+);
+
+Context("Vector");
+Context()->strings->add("yes");
+Context()->strings->add("no");
+
+
+# Define all variables used in the problem statement and solution
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+
+
+BEGIN_TEXT
+
+
+For each of the following problems, a map \(T: V \rightarrow W\) is given.  Determine if the map is linear.  If so, find the matrix that represents the map in the standard basis.  If it is not a linear map type DNE for all rows of the matrix.  
+
+a) \( T: \mathbb{R}^2 \rightarrow \mathbb{R}^2 \) 
+\[ T\biggl( \left[ \begin{array}{r} x_1 \\ x_2 \end{array} \right] \biggr) = \left[ \begin{array}{r} x_1 + x_2 \\ x_1 - x_2 \end{array} \right]  \] 
+
+Is \( T\) linear (yes/no)?  \{ ans_rule(5) \} $BR
+If so, write down the matrix representation in the standard basis (each row of the matrix should be a vector): $BR
+\{ ans_rule(20) \} $BR
+\{ ans_rule(20) \} 
+
+$PAR
+
+b) \( T: \mathbb{R}^2 \rightarrow \mathbb{R} \) 
+\[ T\biggl( \left[ \begin{array}{r} x_1 \\ x_2 \end{array} \right] \biggr) = x_1 x_2   \] 
+
+Is \( T\) linear (yes/no)?  \{ ans_rule(5) \} $BR
+If so, write down the matrix representation in the standard basis (each row of the matrix should be a vector): $BR
+\{ ans_rule(20) \} $BR
+\{ ans_rule(20) \} 
+
+
+$PAR
+
+c) \( T: \mathcal{P}_2 \rightarrow \mathcal{P}_3 \) 
+\[ T(a_0+a_1x+a_2x^2) = a_0 x + a_1 x^2 + a_2 x^3   \] 
+
+Is \( T\) linear (yes/no)?  \{ ans_rule(5) \} $BR
+If so, write down the matrix representation in the standard basis (each row of the matrix should be a vector): $BR
+\{ ans_rule(20) \} $BR
+\{ ans_rule(20) \} $BR
+\{ ans_rule(20) \} $BR
+\{ ans_rule(20) \} 
+
+
+
+
+
+END_TEXT
+
+
+# Enter the correct answers to be checked against the answers to the students.
+
+$showPartialCorrectAnswers = 0;
+
+ANS(String("yes")->cmp); 
+ANS(Vector(1,1)->cmp);
+ANS(Vector(1,-1)->cmp); 
+ANS(String("no")->cmp);
+ANS(String("DNE")->cmp);
+ANS(String("DNE")->cmp);
+ANS(String("yes")->cmp); 
+ANS(Vector(0,0,0)->cmp);
+ANS(Vector(1,0,0)->cmp); 
+ANS(Vector(0,1,0)->cmp); 
+ANS(Vector(0,0,1)->cmp); 
+
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,0 +1,87 @@
+## DESCRIPTION
+## Calculus
+## ENDDESCRIPTION
+
+## Tagged by AA
+
+## DBsubject(Number theory)
+## DBchapter(Divisibility)
+## DBsection(GCDs and LCMs)
+## Institution(SDSU)
+## Author(Amy Arita','Michael E. O'Sullivan','Tom Schmidt)
+## Level(2)
+## Static(1)
+## MO(1)
+## KEYWORDS('logic', 'predicate')
+
+
+############################
+# Initialization
+
+DOCUMENT();       
+
+loadMacros("PGstandard.pl",
+		   "MathObjects.pl",
+           "PGchoicemacros.pl",
+           "PGanswermacros.pl",
+           "PGauxiliaryFunctions.pl",
+           "PGgraphmacros.pl",
+          );
+ 
+TEXT(beginproblem());
+
+############################
+# Setup
+
+$showPartialCorrectAnswers = 0;
+
+@primes=(2,3,5,7,13); 
+
+@common_factors = (); 
+for($i=2;$i<=20;$i++){
+  if($i<7 || !isPrime($i)){
+      push(@common_factors,$i);
+}
+}
+$cflength = scalar(@common_factors)-1;
+
+$ans_factor =$common_factors[random(0,$cflength)]; 
+
+@all_factors = ();
+for($i=1;$i<=$ans_factor;$i++){
+   if($ans_factor % $i == 0){
+      push(@all_factors,$i);
+   }
+}
+do {
+   $a=$ans_factor*$primes[random(0,scalar(@primes)-1)];
+   $b=$ans_factor*$primes[random(0,scalar(@primes)-1)];
+} until ($a != $b);
+
+$answer = Compute(join(",",@all_factors));
+
+############################
+# Main Text
+
+BEGIN_TEXT
+List all of the positive common divisors of $a and $b:
+$BR \{ans_rule(20)\} $BR $BR
+Note: Enter your answers as a comma-separated list. 
+$PAR $PAR
+END_TEXT
+
+############################
+# Answer Evaluation
+
+ANS($answer->cmp());
+
+############################
+# Solution
+
+SOLUTION(EV3(<<'END_SOLUTION'));
+$PAR SOLUTION $PAR
+The common divisors of $a and $b are: $answer $BR $BR
+$PAR
+END_SOLUTION
+
+ENDDOCUMENT();

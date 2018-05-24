@@ -1,0 +1,207 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"PGmatrixmacros.pl"
+);
+
+Context("Vector");
+
+Context("Vector")->variables->are(t=>"Real",s=>"Real");
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+
+$det=0;
+
+$a11=random(-3,3); $a12=random(-3,3); $a13=0; 
+$a21=random(-3,3); $a22=0; $a23=random(-3,3); 
+$k1=non_zero_random(-2,2); $k2=non_zero_random(-2,2); 
+$a31=$k1*$a11+$k2*$a21;
+$a32=$k1*$a12+$k2*$a22;
+$a33=$k1*$a13+$k2*$a23;
+
+
+# pick a random solution 
+
+$x=random(-3,3); $y=random(-3,3); $z=random(-3,3);
+
+$b1=$a11*$x+$a12*$y+$a13*$z;
+$b2=$a21*$x+$a22*$y+$a23*$z;
+$b3=$k1*$b1+$k2*$b2;
+
+# row reduce the matrix A
+
+$det1=$a11*$a22-$a21*$a12;
+$det2=$a22*$a13-$a12*$a23;
+$det3=$a11*$a23-$a21*$a13;
+$det4=$a12*$a23-$a22*$a13;
+
+
+$detB1=$b1*$a22-$b2*$a12;
+$detB2=$b2*$a11-$b1*$a21;
+$detB3=$b1*$a23-$b2*$a13;
+$detB4=$b2*$a11-$b1*$a21;
+
+$rr11=101; $rr12=102;$rr13=103;
+$rr21=201; $rr22=202;$rr23=203;
+
+$s=Compute("<1,2,3>");
+
+
+if($det1 !=0)  {  # z is a free variable. 
+  $rr11=1; $rr21=0; $rr12=0; $rr22=1; $rr13=$det2/$det1; $rr23=$det3/$det1;
+ $s=Compute("<$detB1/$det1-$det2/$det1*t,$detB2/$det1-$det3/$det1*t,t>");
+} elsif (abs($a11)+abs($a21)==0)
+{
+   $rr11=0; $rr21=0;
+   if ($det4 != 0) { $rr12=1; $rr21=0; $rr13=0; $rr23=1;}
+   elsif (abs($a21)+abs($a22)==0) { $rr12=0; $rr22=0; $rr13=1; $rr23=0;}
+} else
+{
+  $rr11=1; $rr21=0; 
+  if($det4==0)
+  { 
+    if(abs($a12)+abs($a22)==0) 
+    {  # y is  free variable
+      $rr12=0; $rr22=0; $rr13=0; $rr23=1;
+      if ($det3 != 0) {$s=Compute("<$detB3/$det3,t,$detB4/$det3>"); }
+      else 
+      { $rr13=0; $rr23=0;  
+        if ($a11*$b2-$a21*$b1 !=0) { $s=String("DNE");} 
+        else { $s=Compute("<$b1/$a11,s,t>"); }
+      } 
+    }
+  } else # y is a free variable;
+  {  
+     if ($det3 !=0) {$rr12=$det4/$det3; $rr13=0;}
+     if ($det1 !=0) {$rr22=1; $rr23=$det4/$det1;} else {$rr22=0; $rr23=1;}
+
+     $s=Compute("<$x-$det4/$det3*t,$y+t,$z>");
+  }
+}
+
+
+$rank=2;
+
+if (($det1==0)&&($det3==0)) {$rank=1;}
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+BEGIN_TEXT
+
+
+
+
+Let
+
+\[  A=
+\left[ \begin{array}{rrr}
+$a11 & $a12 & $a13 \\
+$a21 & $a22 & $a23 \\
+$a31 & $a32 & $a33
+\end{array} \right] \qquad \qquad
+\vec{y} = \left[\begin{array}{r}
+$b1 \\ $b2 \\$b3 \end{array} \right] 
+\]
+
+a) \{ mbox('\(A^{-1} =\)',answer_matrix(3,3,5)) \} 
+
+$BR
+
+If the inverse does not exist, write DNE in all boxes. 
+$PAR
+
+b) The solution to  \( A \vec{x} = \vec{y} \) is \( \vec{x} = \) \{ans_rule(15) \} $BR
+Note: write your answer as a vector, i.e. <1,2,3> with \(t\) as the free variable (if needed) or if it does not exist, then write DNE.   $PAR
+
+c) Find the reduced row echelon form of \(A\) $BR
+\{ answer_matrix(3,3,5) \} 
+$PAR
+
+d) The rank of \( A \) is \{ ans_rule(5) \} $PAR  
+
+e) The rows of \(A\) are linearly independent (true/false) \{ans_rule(10)\} $PAR
+
+f) The columns of \(A\) are linearly independent (true/false) \{ans_rule(10)\} $PAR
+
+g) The matrix \( A \) is singular  (true/false): \{ ans_rule(10) \}
+
+$PAR
+
+h) The determinant of \(A\) is \{ ans_rule(5)\} $PAR
+
+END_TEXT
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+# answer to a)
+
+ANS(String("DNE")->cmp);ANS(String("DNE")->cmp);ANS(String("DNE")->cmp);
+ANS(String("DNE")->cmp);ANS(String("DNE")->cmp);ANS(String("DNE")->cmp);
+ANS(String("DNE")->cmp);ANS(String("DNE")->cmp);ANS(String("DNE")->cmp); 
+
+# answer to b)
+
+
+ANS($s->cmp);
+
+
+Context("Numeric");
+Context()->strings->add(True=>{},T=>{alias=>'True'});
+Context()->strings->add(False=>{},F=>{alias=>'False'});
+
+# answer to c)
+
+ANS(Real($rr11)->cmp); ANS(Real($rr12)->cmp); ANS(Real($rr13)->cmp);
+ANS(Real($rr21)->cmp); ANS(Real($rr22)->cmp); ANS(Real($rr23)->cmp);
+ANS(Real(0)->cmp); ANS(Real(0)->cmp); ANS(Real(0)->cmp);
+
+# answer to d)
+
+ANS(Real($rank)->cmp); 
+
+# answer to e) 
+
+ANS(String("False")->cmp);
+
+# answer to f) 
+
+ANS(String("False")->cmp);
+
+
+# answer to g) 
+
+ANS(String("True")->cmp);
+
+# answer to h)
+
+ANS(Real($det)->cmp); 
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

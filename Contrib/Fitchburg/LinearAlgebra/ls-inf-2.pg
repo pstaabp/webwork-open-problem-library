@@ -1,0 +1,111 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"parserVectorUtils.pl",
+);
+
+Context("Vector");
+Context("Vector")->variables->are(t=>"Real",s=>"Real");
+
+
+# Define all variables used in the problem statement and solution
+
+$row1=Vector(1,1,1); $row2=Vector(1,1,1); $ncp=norm($row1 x $row2);
+
+while($ncp==0)
+{
+$row1=Vector(random(-4,4),random(-4,4),random(-4,4));
+$row2=Vector(random(-4,4),random(-4,4),random(-4,4));
+$ncp=norm($row1 x $row2);
+}
+
+$b1 = non_zero_random(-5,5); $b2 = non_zero_random(-5,5);
+
+$k1 = non_zero_random(-3,3); $k2 = non_zero_random(-3,3);
+
+$row3=$k1*$row1+$k2*$row2; 
+
+$b3 = $k1*$b1+$k2*$b2; 
+
+
+
+@r1 = $row1->value;
+@r2 = $row2->value;
+@r3 = $row3->value;
+
+$line1 = nicestring([$r1[0],$r1[1],$r1[2]],['x','y','z']);
+$line2 = nicestring([$r2[0],$r2[1],$r2[2]],['x','y','z']);
+$line3 = nicestring([$r3[0],$r3[1],$r3[2]],['x','y','z']);
+
+
+$a11=$r1[0]*$r2[1]-$r1[1]*$r2[0];
+$a13=$r1[2]*$r2[1]-$r1[1]*$r2[2];
+$a23=$r1[0]*$r2[2]-$r2[0]*$r1[2];
+$b1s=$b1*$r2[1]-$b2*$r1[1];
+$b2s=$r1[0]*$b2-$r2[0]*$b1;
+
+
+$ans1 = Compute("<($b1s-t*$a13)/$a11,($b2s-t*$a23)/$a11,t>");
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+Context()->texStrings;
+BEGIN_TEXT
+
+The following linear system has an infinite number of solutions:
+
+
+\[  
+\begin{eqnarray}
+$line1 & = & $b1 \\
+$line2 & = & $b2 \\
+$line3 & = & $b3 \\
+\end{eqnarray} \] 
+
+
+Let \(\vec{x}=\langle x,y,z \rangle\) be the solution to the linear system.  Write the solution in the form \(\vec{x}=\vec{u}+t\vec{v} \) or \( \vec{x} = \vec{u} + t \vec{v} + s \vec{w} \) depending on the number of free parameters.  
+ 
+
+$PAR
+
+\( \vec{x} = \) \{ ans_rule(25) \} $BR
+
+
+END_TEXT
+
+
+
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+ANS($ans1->cmp);
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

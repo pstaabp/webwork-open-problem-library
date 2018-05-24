@@ -1,0 +1,83 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"parserVectorUtils.pl",
+);
+
+Context("Vector");
+Context("Vector")->variables->are(t=>"Real");
+
+# Define all variables used in the problem statement and solution
+
+$a11 = non_zero_random(-4,4); $a12 = non_zero_random(-4,4); $b1 = non_zero_random(-5,5);
+
+$k = non_zero_random(-3,3);
+
+$a21 = $k*$a11; $a22 = $k*$a12; $b2 = $k*$b1;
+
+$ans1 = Compute("<$b1/$a11-$a12*t/$a11,t>");
+
+
+
+$line1 = nicestring([$a11,$a12],['x','y']);
+$line2 = nicestring([$a21,$a22],['x','y']);
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+Context()->texStrings;
+BEGIN_TEXT
+
+The following linear system has an infinite number of solutions:
+
+\[
+\begin{eqnarray}
+$line1 & = & $b1 \\
+$line2 & = & $b2
+\end{eqnarray} \] 
+
+
+Let \(\vec{x}=\langle x,y \rangle\) be the solution to the linear system.  Write the solution in the form \(\vec{x}=\vec{u}+t\vec{v} \)
+ 
+
+$PAR
+
+\( \vec{x} = \) \{ ans_rule(25) \} $BR
+
+
+END_TEXT
+
+
+
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+ANS($ans1->cmp);
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

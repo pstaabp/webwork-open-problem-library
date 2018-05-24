@@ -1,0 +1,103 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Homogeneous and Nonhomogeneous Solutions')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"parserVectorUtils.pl",
+"parserSolutionFor.pl"
+);
+
+Context("Vector");
+
+# Define all variables used in the problem statement and solution
+
+$a11 = random(-4,4);$a12 = random(-4,4);$a13 = random(-4,4);
+$a21 = random(-4,4);$a22 = random(-4,4);$a23 = random(-4,4);
+
+$det=0;
+while($det==0)
+{
+$a31 = random(-4,4);$a32 = random(-4,4);$a33 = random(-4,4);
+$det = $a11*($a22*$a33-$a32*$a23)-$a12*($a23*$a31-$a21*$a33)+$a13*($a21*$a32-$a31*$a22);
+}
+
+$x=random(-3,3); $y=random(-3,3); $z=random(-3,3);  
+
+$b1 = $a11*$x+$a12*$y+$a13*$z;
+$b2 = $a21*$x+$a22*$y+$a23*$z;
+$b3 = $a31*$x+$a32*$y+$a33*$z;
+
+
+$line1=nicestring([$a11,$a12,$a13],['x','y','z']);
+$line2=nicestring([$a21,$a22,$a23],['x','y','z']);
+$line3=nicestring([$a31,$a32,$a33],['x','y','z']);
+
+
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+Context()->texStrings;
+BEGIN_TEXT
+
+$PAR
+
+Write the following matrix in reduced row echelon form:
+
+\[
+\left[
+\begin{array}{rrrr}
+$a11 & $a12 & $a13 & $b1 \\
+$a21 & $a22 & $a23 & $b2 \\
+$a31 & $a32 & $a33 & $b3 \\
+\end{array}
+\right] \]
+
+
+$PAR
+Solution: $BR
+\{ begintable(4) \}
+\{ row( ans_rule(5),ans_rule(5),ans_rule(5),ans_rule(5) ) \}
+\{ row( ans_rule(5),ans_rule(5),ans_rule(5),ans_rule(5) ) \}
+\{ row( ans_rule(5),ans_rule(5),ans_rule(5),ans_rule(5) ) \}
+\{ endtable() \}
+
+
+END_TEXT
+
+
+
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+$showPartialCorrectAnswers = 0;
+
+ANS(Real(1)->cmp);ANS(Real(0)->cmp);ANS(Real(0)->cmp);ANS(Real($x)->cmp);
+ANS(Real(0)->cmp);ANS(Real(1)->cmp);ANS(Real(0)->cmp);ANS(Real($y)->cmp);
+ANS(Real(0)->cmp);ANS(Real(0)->cmp);ANS(Real(1)->cmp);ANS(Real($z)->cmp);
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

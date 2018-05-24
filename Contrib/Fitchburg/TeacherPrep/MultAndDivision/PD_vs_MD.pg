@@ -1,0 +1,94 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Algebra')
+## DBchapter('Fundamentals')
+## DBsection('Real Numbers')
+## Date('6/3/2002')
+## Author('')
+## Institution('')
+## TitleText1('Precalculus')
+## EditionText1('3')
+## AuthorText1('Stewart, Redlin, Watson')
+## Section1('1.1')
+## Problem1('22')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   #"source.pl",        # allows code to be displayed on certain sites.
+   #"PGcourse.pl",      # Customization file for the course
+);
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 1;
+
+##############################################################
+#
+#  Setup
+#
+#
+Context("Numeric");
+Context()->strings->add(pd=>{});
+Context()->strings->add(md=>{});
+$showPartialCorrectAnswers=0;
+
+$ans1=Compute("MD");
+$ans2=Compute("MD");
+$ans3=Compute("PD");
+$ans4=Compute("PD");
+$ans5=Compute("MD");
+$ans6=Compute("PD");
+
+
+##############################################################
+#
+#  Text
+#
+#
+
+Context()->texStrings;
+BEGIN_TEXT
+
+For each of the following word problems, determine if it is a partivitive division (PD) or measurement division (MD) interpretation.  Enter "PD" or "MD" and you do not need to solve the problem.   $PAR
+
+
+If it takes a half-yard of material to make an apron, how many aprons can be made with 3 yards of material?   \{ ans_rule \}  $BR
+
+How many half bushels are there in \(2 \frac{1}{4} \) bushels? \{ ans_rule \} $BR
+
+The perimeter of a square flower bed is 32 feet.  Find the length of each side?  \{ ans_rule \} $BR
+
+Mary poured 6 cups of juice equally into 8 glasses.  How much was in each glass?  \{ ans_rule \} $BR
+
+How many laps around a 1/4 mile track make 6 miles?  \{ ans_rule \} $BR
+
+We drove 3240 miles from New York to Los Angeles in 6 days.  What was our average distance each day?  \{ ans_rule \} $BR
+
+END_TEXT
+Context()->normalStrings;
+
+##############################################################
+#
+#  Answers
+#
+#
+
+ANS($ans1->cmp);
+ANS($ans2->cmp);
+ANS($ans3->cmp);
+ANS($ans4->cmp);
+ANS($ans5->cmp);
+ANS($ans6->cmp);
+
+ENDDOCUMENT();        
