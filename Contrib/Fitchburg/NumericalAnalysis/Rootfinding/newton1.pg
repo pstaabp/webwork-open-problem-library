@@ -26,6 +26,7 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "AnswerFormatHelp.pl",
+  "numericalMethods.pl",
   "PGML.pl"
 );
 
@@ -49,18 +50,8 @@ $x0 = 0.5*random(0,10);
 $f = Compute("$a1*cos($k1*x)+$a2*sin($k2*x)");
 $df = $f->D('x');
 
-sub newton {
- @x = (shift);
- $n = 0;
-do {
-    push(@x,$x[$n]-$f->eval(x=>$x[$n])/$df->eval(x=>$x[$n]));
-    $n++;
- } while ((abs($x[$n-1]-$x[$n-2])>1e-8)&&($n<20));
 
- return @x;
-}
-
-@x = newton($x0);
+@x = newtonsMethod($f,$x0,1e-12);
 
 BEGIN_PGML
 
