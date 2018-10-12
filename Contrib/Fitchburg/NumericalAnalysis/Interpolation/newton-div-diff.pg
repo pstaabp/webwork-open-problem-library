@@ -1,5 +1,5 @@
 ##DESCRIPTION
-##  Algebra problem: true or false for inequality 
+##  Algebra problem: true or false for inequality
 ##ENDDESCRIPTION
 
 ##KEYWORDS('algebra', 'inequality', 'fraction')
@@ -20,13 +20,15 @@
 ##############################
 #  Initialization
 
-DOCUMENT(); 
+DOCUMENT();
 
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "AnswerFormatHelp.pl",
-  "PGML.pl"
+  "numericalMethods.pl",
+  "PGML.pl",
+  "PGinfo.pl"
 );
 
 TEXT(beginproblem());
@@ -45,8 +47,8 @@ Context()->flags->set(
 $which = 1; #random(1,5);
 if($which==1){
   $k=random(2,4);
-  $f=Compute("sin($k*x)"); 
-  $a=0; $b=Compute("2*pi/[$k]"); 
+  $f=Compute("sin($k*x)");
+  $a=0; $b=Compute("2*pi/[$k]");
 }
 
 
@@ -54,30 +56,20 @@ if($which==1){
 for($i=0;$i<=4;$i++){
   push(@x,$a+$i*($b-$a)/4);
 }
-@y = map {$f->eval(x=>$_) } @x; 
+@y = map {$f->eval(x=>$_)->value } @x;
 
-$a11 = Compute("($y[1]-$y[0])/($x[1]-$x[0])");
-$a21 = Compute("($y[2]-$y[1])/($x[2]-$x[1])");
-$a31 = Compute("($y[3]-$y[2])/($x[3]-$x[2])");
-$a41 = Compute("($y[4]-$y[3])/($x[4]-$x[3])");
+@a = newton_divided_difference(\@x,\@y);
+#@a = ();
 
-$a12 = Compute("($a21-$a11)/($x[2]-$x[0])");
-$a22 = Compute("($a31-$a21)/($x[3]-$x[1])");
-$a32 = Compute("($a41-$a31)/($x[4]-$x[2])");
 
-$a13 = Compute("($a22-$a12)/($x[3]-$x[0])");
-$a23 = Compute("($a32-$a22)/($x[4]-$x[1])");
 
-$a14 = Compute("($a23-$a13)/($x[4]-$x[0])");
-
-$poly = Compute("$y[0]+$a11*(x-$x[0])+$a12*(x-$x[0])*(x-$x[1])+$a13*(x-$x[0])*(x-$x[1])*(x-$x[2])+$a14*(x-$x[0])*(x-$x[1])*(x-$x[2])*(x-$x[3])");
-
+$poly = Compute("$y[0]+$a[0][0]*(x-$x[0])+$a[1][1]*(x-$x[0])*(x-$x[1])+$a[2][2]*(x-$x[0])*(x-$x[1])*(x-$x[2])+$a[3][3]*(x-$x[0])*(x-$x[1])*(x-$x[2])*(x-$x[3])");
 BEGIN_PGML
 
-Use a Netwon Divided Difference table to find the interpolation of [`f(x)=[$f]`] with 5 equally-space points ([`n=4`]) on the interval [`[[$a],[$b]]`]. 
+Use a Netwon Divided Difference table to find the interpolation of [`f(x)=[$f]`] with 5 equally-space points ([`n=4`]) on the interval [`[[$a],[$b]]`].
 
 [@
-begintable(6) . 
+begintable(6) .
 row("\\(x_n\\)","\\(y_n\\)","","","","") .
 row($x[0],ans_rule(8),"","","","").
 row("","",ans_rule(8),"","","").
@@ -91,21 +83,21 @@ row($x[4],ans_rule(8),"","","","").
 endtable();
 @]*
 
-Lastly, use the divided-difference table above to find the interpolated polynomial through the point [`(x_i,y_i)`] for [`i=0,1,2,3,4`]. 
+Lastly, use the divided-difference table above to find the interpolated polynomial through the point [`(x_i,y_i)`] for [`i=0,1,2,3,4`].
 
 [`P(x)=`][___]{width=>100}
 
 END_PGML
 
-ANS(Compute("$y[0]")->cmp);
-  ANS($a11->cmp);
-ANS(Compute("$y[1]")->cmp);   ANS($a12->cmp);
-  ANS($a21->cmp);   ANS($a13->cmp);
-ANS(Compute("$y[2]")->cmp);   ANS($a22->cmp);   ANS($a14->cmp);
-  ANS($a31->cmp);   ANS($a23->cmp);
-ANS(Compute("$y[3]")->cmp);   ANS($a32->cmp);
-  ANS($a41->cmp);
-ANS(Compute("$y[4]")->cmp);
+ANS(Compute($y[0])->cmp);
+                    ANS(Compute($a[0][0])->cmp);
+ANS(Compute($y[1])->cmp);   ANS(Compute($a[1][1])->cmp);
+                     ANS(Compute($a[0][1])->cmp);   ANS(Compute($a[2][2])->cmp);
+ ANS(Compute($y[2])->cmp);   ANS(Compute($a[1][2])->cmp);   ANS(Compute($a[3][3])->cmp);
+                    ANS(Compute($a[0][2])->cmp);   ANS(Compute($a[2][3])->cmp);
+ANS(Compute($y[3])->cmp);   ANS(Compute($a[1][3])->cmp);
+                    ANS(Compute($a[0][3])->cmp);
+ANS(Compute($y[4])->cmp);
 ANS($poly->cmp(tolerance => 0.001,
   tolType => "relative"));
 
@@ -122,30 +114,30 @@ For the first column, use
 
 For example, the second one down should be:
 
-[`` f[x_1,x_2] = \frac{f(x_2)-f(x_1)}{x_2-x_1} = \frac{[$y[2]]-[$y[1]]}{[$x[2]]-[$x[1]]} = [$a21] ``]
+[`` f[x_1,x_2] = \frac{f(x_2)-f(x_1)}{x_2-x_1} = \frac{[$y[2]]-[$y[1]]}{[$x[2]]-[$x[1]]} = [$a[0][1]] ``]
 
 In the 2nd column, use
 
 [`` f[x_i,x_{i+1},x_{i+2}] = \frac{f[x_{i+2},x_{i+1}]-f[x_{i+1},x_i]}{x_{i+2}-x_i} ``]
 
-For example, 
+For example,
 
-[`` f[x_0,x_{1},x_{2}] = \frac{f[x_{2},x_{1}]-f[x_{1},x_0]}{x_{2}-x_0}
-=\frac{[$a22]-[$a12]}{[$x[2]]-[$x[0]]} = [$a13]``]
+[`` f[x_0,x_{1},x_{2}] = \frac{f[x_{2},x_{1}]-f[x_{1},x_0]}{x_{2}-x_0}=
+\frac{[$a[0][2]]-[$a[0][1]]}{[$x[2]]-[$x[0]]} = [$a[1][2]]``]
 
 Continuing for all of the other divided differences, we get the following table:
 
 [@
-begintable(6) . 
+begintable(6) .
 row("\\(x_n\\)","\\(y_n\\)","","","","") .
 row($x[0],$y[0],"","","","").
-row("","",[$a11],"","","").
-row($x[1],$y[1],"",[$a12],"","").
-row("","",[$a21],"",[$a13],"").
-row($x[2],$y[2],"",[$a22],"",[$a14]).
-row("","",[$a31],"",[$a23],"").
-row($x[3],$y[3],"",[$a32],"","").
-row("","",[$a41],"","","").
+row("","",[$a[0][0]],"","","").
+row($x[1],$y[1],"",[$a[1][1]],"","").
+row("","",[$a[0][1]],"",[$a[2][2]],"").
+row($x[2],$y[2],"",[$a[1][2]],"",[$a[3][3]]).
+row("","",[$a[0][2]],"",[$a[2][3]],"").
+row($x[3],$y[3],"",[$a[1][3]],"","").
+row("","",[$a[0][3]],"","","").
 row($x[4],$y[4],"","","","").
 endtable();
 @]*

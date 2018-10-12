@@ -27,6 +27,7 @@ loadMacros(
   "MathObjects.pl",
   "AnswerFormatHelp.pl",
   "PGpolynomialmacros.pl",
+  "numericalMethods.pl",
   "PGML.pl"
 );
 
@@ -58,22 +59,18 @@ $poly = PolyString(~~@p);
 $f = Compute("e^(-$k1*x)-($poly)");
 $df = $f->D('x');
 
-sub newton {
- @x = (shift);
- $n = 0;
-do {
-    push(@x,$x[$n]-$f->eval(x=>$x[$n])/$df->eval(x=>$x[$n]));
-    $n++;
- } while ((abs($x[$n-1]-$x[$n-2])>1e-8)&&($n<20));
-
- return($n>19)?undef:$x[$#x];
-}
 
 @roots = ();
 
-$root1 = newton(1.0); if($root1) { push(@roots,$root1);}
-$root2 = newton($b);  if($root2) { push(@roots,$root2);}
-$root3 = newton($c);  if($root3) { push(@roots,$root3);}
+@root1 = newtonsMethod($f,1.0,1e-10); $n = scalar(@root1);
+if(abs($root1[$n-1]-$root1[$n-2])<1e-10) { push(@roots,$root1[$n-1]);}
+@root2 = newtonsMethod($f,$b,1e-10); $n = scalar(@root2);
+if(abs($root2[$n-1]-$root2[$n-2])<1e-10) { push(@roots,$root2[$n-1]);}
+@root3 = newtonsMethod($f,$c,1e-10); $n = scalar(@root3);
+if(abs($root3[$n-1]-$root3[$n-2])<1e-10) { push(@roots,$root3[$n-1]);}
+
+#$root2 = newton($b);  if($root2) { push(@roots,$root2);}
+#$root3 = newton($c);  if($root3) { push(@roots,$root3);}
 
 # make sure roots are not repeated.
 
@@ -94,7 +91,7 @@ Let
 
 [`` f(x) =  e^{-[$k1]x} - ([$poly]).``]
 
-Use Newton's method to find all the roots to at least 6 decimal places. Separate your answers by commas. (Hint: you may want to graph the function to determine approximate roots first.)
+Use Newton's method to find all the roots of [`f(x)`] to at least 6 decimal places. Separate your answers by commas. (Hint: you may want to graph the function to determine approximate roots first.)
 
 roots of [`f(x)`] are [_______________________________________________]{$ans}
 
@@ -117,8 +114,8 @@ For this, we use the standard Newton's Method formula:
 
 Additionally, looking at a plot of the function, it appears that there are roots near 1, [$b] and [$c].
 
-Using each of this as values of [`x_0`] and iterating Newton's method above, we get [$root1], [$root2], and [$root3]
-as the roots. 
+Using each of this as values of [`x_0`] and iterating Newton's method above, we get [$ans]
+as the roots.
 
 END_PGML_SOLUTION
 

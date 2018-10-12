@@ -26,7 +26,8 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "AnswerFormatHelp.pl",
-  "PGML.pl"
+  "PGML.pl",
+  "numericalMethods.pl"
 );
 
 TEXT(beginproblem());
@@ -38,32 +39,26 @@ $showPartialCorrectAnswers = 1;
 
 Context("Numeric");
 
-sub round3 {
-  $x = shift;
-  $n = floor(log(abs($x))/log(10));
-  return round($x*10**(2-$n))/10**(2-$n);
-}
-
 $a = random(100,400)/10;
 $b = random(500,900)/10;
 $c = random(1,9)/10;
 
-$ac = round3($a*$c);#round($a*$c*1000)/1000;
-$ac4 = round3(4*$ac); #round(4000*$ac)/1000;
+$ac = round_digits($a*$c,3);
+$ac4 = round_digits(4*$ac,3);
 
-$bsq = round3($b*$b); #round(1000*$b*$b)/1000;
+$bsq = round_digits($b*$b,3);
 
-$bsq4ac = round3($bsq-$ac4);
-$sqrtbsq4ac = round3(sqrt($bsq4ac));
-$bplus = round3($b+$sqrtbsq4ac);
-$bminus = abs(-$b+$sqrtbsq4ac)<1e-8?0:round3(-$b+$sqrtbsq4ac);
-$c2 = round3(2*$c);
-$a2 = round3(2*$a);
+$bsq4ac = round_digits($bsq-$ac4,3);
+$sqrtbsq4ac = round_digits(sqrt($bsq4ac),3);
+$bplus = round_digits($b+$sqrtbsq4ac,3);
+$bminus = abs(-$b+$sqrtbsq4ac)<1e-8?0:round_digits(-$b+$sqrtbsq4ac,3);
+$c2 = round_digits(2*$c,3);
+$a2 = round_digits(2*$a,3);
 
-$top = abs($bminus)<1e-8?0:round3($bminus/$a2);
-$bottom = round3(-$c2/$bplus);
+$top = abs($bminus)<1e-8?0:round_digits($bminus/$a2,3);
+$bottom = round_digits(-$c2/$bplus,3);
 
-$larger_root = -2*$c/($b+sqrt($b*$b-4*$a*$c));
+$larger_root = round_digits(-2*$c/($b+sqrt($b*$b-4*$a*$c)),3);
 
 $reltop = abs(($top-$larger_root)/$larger_root);
 $relbottom = abs(($bottom-$larger_root)/$larger_root);

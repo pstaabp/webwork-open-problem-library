@@ -26,6 +26,7 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "AnswerFormatHelp.pl",
+  "numericalMethods.pl",
   "PGML.pl"
 );
 
@@ -46,17 +47,19 @@ $f = Compute("$k1*exp(-$k2*x)-x");
 $f1 = nicestring([-$k2],["x"]);
 $f2 = nicestring([$k1],["e^{" . $f1 . "}"] );
 
+@intervals = bisection($f,0,2,1e-12,8);
 
-@a = (0); @b=(2);
 
-for($i=0;$i<8;$i++){
-  $c = 0.5*($a[$i]+$b[$i]);
-  $fa = $f->eval(x => $a[$i]);
-  $fb = $f->eval(x => $b[$i]);
-  $fc = $f->eval(x => $c);
-  push(@a,($fa*$fc<0)?$a[$i]:$c);
-  push(@b,($fa*$fc<0)?$c:$b[$i]);
-}
+# @a = (0); @b=(2);
+#
+# for($i=0;$i<8;$i++){
+#   $c = 0.5*($a[$i]+$b[$i]);
+#   $fa = $f->eval(x => $a[$i]);
+#   $fb = $f->eval(x => $b[$i]);
+#   $fc = $f->eval(x => $c);
+#   push(@a,($fa*$fc<0)?$a[$i]:$c);
+#   push(@b,($fa*$fc<0)?$c:$b[$i]);
+# }
 
 BEGIN_PGML
 
@@ -83,8 +86,8 @@ endtable();
 END_PGML
 
 for($i=0;$i<8;$i++){
-ANS(Compute($a[$i])->cmp);
-ANS(Compute($b[$i])->cmp);
+ANS(Compute($intervals[$i][0])->cmp);
+ANS(Compute($intervals[$i][1])->cmp);
 }
 
 ############################
@@ -142,14 +145,14 @@ Continuing this process, you can build up the following table:
 [@
 begintable(3) .
 row("n","\\(a_n\\)","\\(b_n\\)") .
-row("0",$a[0],$b[0]).
-row("1",$a[1],$b[1]).
-row("2",$a[2],$b[2]).
-row("3",$a[3],$b[3]).
-row("4",$a[4],$b[4]).
-row("5",$a[5],$b[5]).
-row("6",$a[6],$b[6]).
-row("7",$a[7],$b[7]).
+row("0",$intervals[0][0],$intervals[0][1]).
+row("1",$intervals[1][0],$intervals[1][1]).
+row("2",$intervals[2][0],$intervals[2][1]).
+row("3",$intervals[3][0],$intervals[3][1]).
+row("4",$intervals[4][0],$intervals[4][1]).
+row("5",$intervals[5][0],$intervals[5][1]).
+row("6",$intervals[6][0],$intervals[6][1]).
+row("7",$intervals[7][0],$intervals[7][1]).
 endtable();
 @]*
 

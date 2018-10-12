@@ -1,8 +1,8 @@
 ##DESCRIPTION
-##  Algebra problem: true or false for inequality 
+##  Algebra problem: true or false for inequality
 ##ENDDESCRIPTION
 
-##KEYWORDS('algebra', 'inequality', 'fraction')
+##KEYWORDS('numerical analysis', 'sequences', 'newtons method')
 
 ## DBsubject('Numerical Analysis')
 ## DBchapter('Sequences')
@@ -20,12 +20,13 @@
 ##############################
 #  Initialization
 
-DOCUMENT(); 
+DOCUMENT();
 
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "AnswerFormatHelp.pl",
+  "numericalMethods.pl",
   "PGML.pl"
 );
 
@@ -38,31 +39,32 @@ $showPartialCorrectAnswers = 1;
 
 Context("Numeric");
 
-$a = random(17,26); 
+$a = random(17,26);
 
-@x=(2.0);
-@eps=(abs($a**(1/3)-2.0)); 
-for($i=0;$i<4;$i++){
-  push(@x,(2*$x[$i]**3+$a)/(3*$x[$i]**2));
-  push(@eps,abs($a**(1/3)-$x[$i+1] ) ); 
+$f = Compute("x^3-$a");
+$cuberoot = $a**(1/3);
+@x = newtonsMethod($f,2.0,10e-12,10);
+@eps = ();
+for($i=0;$i<=7;$i++){
+   push(@eps,abs($x[$i]-$cuberoot));
 }
 
-$xn=Compute("$x[0],$x[1],$x[2],$x[3],$x[4]"); 
+$xn=Compute("$x[0],$x[1],$x[2],$x[3],$x[4]");
 
-$lambda=1/$a**(1/3); 
+$lambda=1/$a**(1/3);
 
 BEGIN_PGML
 
-Newton's method applied to [`f(x)=x^3-a`] is 
+Newton's method applied to [`f(x)=x^3-a`] is
 
 [`` x_{n+1} = \frac{2x_n^3+a}{3x_n^2} ``]
 
 and the sequence will converge to [`\sqrt[3]{a}`]
 
-Let [`a=[$a]`] and [`x_0=2`]. Find the first 5 points in the sequence (starting with [`x_0`]) and the errors (find using a calculator or computer the decimal value of [`\sqrt[3]{[$a]} `]).   Use at least 8 digits. 
+Let [`a=[$a]`] and [`x_0=2`]. Find the first 5 points in the sequence (starting with [`x_0`]) and the errors (find using a calculator or computer the decimal value of [`\sqrt[3]{[$a]} `]).   Use at least 8 digits.
 
 [@
-begintable(3) . 
+begintable(3) .
 row("n","\\(x_n\\)","\\(\\epsilon_n\\)") .
 row("0",ans_rule(12),ans_rule(12)).
 row("1",ans_rule(12),ans_rule(12)).
@@ -74,7 +76,7 @@ endtable();
 
 Use the errors to numerically estimate the order of the method [_____________]
 
-Estimate the asymptotic error constant 
+Estimate the asymptotic error constant
 [______________]
 
 END_PGML
@@ -99,7 +101,7 @@ ANS(Compute($lambda)->with(tolerance=>0.1)->cmp);
 ############################
 #  Solution
 
-# the variables errRatn is the error ratio for order n 
+# the variables errRatn is the error ratio for order n
 @errRat1 = ();@errRat2 = ();@errRat3 = ();
 
 for($i=0; $i<4; $i++){
@@ -117,7 +119,7 @@ Iterating the formula, we get
 Similarly for the next few iterates, you get:
 
 [@
-begintable(2) . 
+begintable(2) .
 row("n","\\(x_n\\)") .
 row("0",$x[0]).
 row("1",$x[1]).
@@ -130,7 +132,7 @@ endtable();
 To find the errors for each of these, we compute [` \epsilon_n = |x_n-\sqrt[3]{[$a]}| `].  The result is the following table:
 
 [@
-begintable(2) . 
+begintable(2) .
 row("n","\\(\\epsilon_n\\)") .
 row("0",$eps[0]).
 row("1",$eps[1]).
@@ -151,10 +153,10 @@ row($errRat1[0],$errRat2[0],$errRat3[0]) .
 row($errRat1[1],$errRat2[1],$errRat3[1]) .
 row($errRat1[2],$errRat2[2],$errRat3[2]) .
 row($errRat1[3],$errRat2[3],$errRat3[3]) .
-endtable(); 
+endtable();
 @]*
 
-And as can be scene from the [`\alpha = 2`] column, the ratio is nearly constant, so the order this is 2 (quadratic) and the asymptotic error constant is [$lambda]. 
+And as can be scene from the [`\alpha = 2`] column, the ratio is nearly constant, so the order this is 2 (quadratic) and the asymptotic error constant is [$lambda].
 
 
 
