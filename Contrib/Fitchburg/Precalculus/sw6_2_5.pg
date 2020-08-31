@@ -1,0 +1,144 @@
+#DESCRIPTION
+##  Algebra problem: Natural Exponential Functions 
+##ENDDESCRIPTION
+
+## tsch tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Graphs)
+## Date(6/3/2002)
+## Level(3)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('6.2')
+## Problem1('5 6')
+## KEYWORDS('algebra', 'natural exponential function')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "parserFunction.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 0;
+#############################
+#  Setup
+
+Context("Numeric");
+Context()->strings->add(a=>{},b=>{},c=>{},d=>{},e=>{},f=>{});
+$inputs_ref->{first_ans}='' unless defined $inputs_ref->{first_ans};
+
+$a=non_zero_random(-7,7);
+$b=non_zero_random(-7,7); 
+$domain = Compute("(-inf,inf)"); 
+$ref = 3; #random(0,3); 
+if ($ref == 0) {
+  $f = nicestring([1,$a],["e^{-x}",""]);
+  $ans1 = ($a<0)?Compute("a,f"):Compute("a,e"); 
+  $range = Compute("($a,inf)");
+  $shift = abs($a);
+} elsif ($ref == 1) {
+  $inside = nicestring([1,$b]); 
+  $f = "e^{-($inside)}"; 
+  $ans1 = ($b<0)?Compute("a,c"):Compute("a,d"); 
+  $range = Compute("(0,inf)");
+  $shift = abs($b);
+} elsif ($ref ==2) {
+   $f = nicestring([1,$a],["-e^{x}",""]);
+  $ans1 = ($a<0)?Compute("b,f"):Compute("b,e"); 
+  $range = Compute("(-inf,$a)");
+  $shift = abs($a);
+} else {
+  $inside = nicestring([1,$b]); 
+  $f = "-e^{$inside}"; 
+  $ans1 = ($b<0)?Compute("b,c"):Compute("b,d"); 
+  $range = Compute("(-inf,0)");
+  $shift = abs($b);
+}
+
+
+
+BEGIN_PGML
+
+The graph of the function  [`f(x)=[$f]`]
+can be obtained from the graph of [`g(x)=e^x `]
+by two of the following actions:
+
+a) reflecting the graph of [`g(x)`] over the [`y`]-axis;
+b) reflecting the graph of [`g(x)`] over the [`x`]-axis;
+c) shifting the graph of [`g(x)`] to the right [`[$shift]`] units;
+d) shifting the graph of [`g(x)`] to the left [`[$shift]`] units;
+e) shifting the graph of [`g(x)`] upward [`[$shift]`] units;
+f) shifting the graph of [`g(x)`] downward [`[$shift]`] units;
+
+Your answer: Apply the first transformation above (a,b,c,d,e, or f) 
+then apply the second transformation (separate by commas):
+
+Transformations: [________]{$ans1}
+
+The domain  of the function [`f(x)`] is [____________]{$domain}
+
+The range of the function [`f(x)`] is [____________]{$range}
+
+END_PGML
+
+############################
+#  Solution
+
+ $r = $range->TeX;
+ 
+if ($ref == 0) {
+  $refl = "inside";
+  $axis = "y";
+  $ref_shift = "outside";
+  $sign = "positive";
+  $dir = $a>0?"up":"down";
+  $range_ans =  "And shifting the function $dir results in shifting the original range of \(e^x\), which is \((0,\infty)\).  The resulting shifted range is \($r\)";
+} elsif ($ref == 1) {
+  $refl = "inside"; 
+  $axis = "y";
+  $ref_shift = "inside";
+  $sign = $b<0?"negative":"positive";
+  $dir = $b<0?"right":"left";
+  $range_ans = "The range is the same as the original function or \((0,\infty)\)";
+} elsif ($ref ==2) {
+  $refl = "outside";
+  $axis = "x";
+  $ref_shift = "outside";
+  $sign = "positive";
+  $dir = $a>0?"up":"down";
+  $range_ans = "In this case, the negative outside the function flips the range to \((-\infty,0)\). And shifting the function $dir results in shifting the range to \($r\)";
+} else {
+  $refl = "outside";
+  $axis = "x";
+  $ref_shift = "inside";
+  $sign = "negative";
+  $dir = $b<0?"right":"left";
+  $range_ans = "In this case, the negative outside the function flips the range to \((-\infty,0)\).";
+}
+
+
+ 
+
+
+
+
+BEGIN_PGML_SOLUTION
+
+In this case there is a negative sign [$refl] the function, so the function is reflected over the [`[$axis]`]-axis.  Next, there is a shift of [$shift] that is [$ref_shift] the function and since the sign of the shift is [$sign], then the function is shifted [$dir] [$shift] units. 
+
+Because the domain of [`e^x`] is [`(-\infty,\infty)`], and any left/right shift doesn't change this domain, the domain of [`f(x)`] is still [`(-\infty,\infty)`].
+
+[$range_ans]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+

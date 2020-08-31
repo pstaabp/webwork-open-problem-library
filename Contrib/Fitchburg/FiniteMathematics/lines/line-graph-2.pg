@@ -1,0 +1,128 @@
+# DESCRIPTION
+# A problem that asks the student to find
+# the formula of a line from a plot.. 
+# ENDDESCRIPTION
+
+## DBsubject('Lines and Linear Functions')
+## DBchapter('')
+## DBsection('')
+## KEYWORDS('graph, lines, linear functions')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+
+
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "MathObjects.pl",
+  "PGcourse.pl",
+  "PGgraphmacros.pl",
+);
+
+TEXT(beginproblem);
+
+##############################
+#
+#  Setup
+#
+
+Context("Numeric");
+
+$a = random(0,360,5);
+
+$b = random(-20,20)/4; 
+$m = tan($a/180*3.14159);
+
+$answer="";
+
+if (abs($m-1)<0.01) {$answer="Equal to 1";}
+elsif (abs($m+1)<0.01) {$answer = "Equal to -1";}
+elsif (abs($m)<0.01) {$answer = "Equal to 0";}
+elsif (($m>0) && ($m<1)) {$answer = "Between 0 and 1";}
+elsif ($m>1) {$answer = "Greater than 1";}
+elsif (($m<0) && ($m>-1)) {$answer = "Between -1 and 0";} 
+elsif ($m<-1) {$answer = "Less than -1";} 
+else {$answer = "Undefined";}
+
+$mc = new_multiple_choice();
+  $mc->qa("Of the following choice determine the best range of the slope of the line.", $answer);
+  $mc->makeLast("Between 0 and 1","Equal to 1","Greater than 1","Between -1 and 0","Equal to -1","Less than -1","Equal to 0","Undefined");
+
+
+
+
+
+$f = Formula("tan($a/180*3.14159)*x + $b")->reduce;
+
+$graph = init_graph(-5,-5,5,5,axes=>[0,0],grid=>[10,10],size=>[300,300]);
+
+plot_functions( $graph, "$f for x in " .
+"<-5,5> using color:blue " .
+"and weight:2");
+
+
+##############################
+#
+#  Main text
+#
+
+Context()->texStrings;
+BEGIN_TEXT
+
+Consider the graph 
+$BCENTER
+\{ image( insertGraph($graph), tex_size=>100,
+    height=>300, width=>300,
+    extra_html_tags=>'alt="graph of a ' .
+    'line through ($a,$b) and ($c,$d)."' ) \}
+$ECENTER
+\{ $mc->print_q() \}
+  \{ $mc->print_a() \}
+
+ 
+END_TEXT
+Context()->normalStrings;
+
+##############################
+#
+#  Answers
+#
+
+ ANS( radio_cmp( $mc->correct_ans() ) );
+
+
+##############################
+
+
+# SOLUTION() works like TEXT() except that it's only shown if the "show
+# solutions" flag is given. $SOL evaluates to "Solution: " in bold. Note the
+# MathObjects embedded in math expressions in the solution. Remember that they
+# are stringifying to their TeX representations.
+SOLUTION(EV3(<<'END_SOLUTION'));
+$PAR
+$SOL
+
+
+Recall that a horizontal line has slope of 0.  
+
+$PAR
+
+If the line runs from the SW to the NE (or rises from left to right), then the slope is a positive number.  A slope of +1 rises one unit for every one unit of run.  (For example the 45 degree line \(y=x\) has slope 1.)  If a line is not as steep as this line, then it must have slope between 0 and 1. If a line still has positive slope but is steeper than the \( y=x \) line then the slope is greater than one. 
+
+$PAR
+
+If a line runs from the NW to the SE (or falls from left to right), then the slope is a negative number.  The line \( y=-x\) has a slope of -1 and falls one unit for each unit of run. If a line with negative slope is less steep than \( y=-x \) then its slope is between -1 and 0, and such a line that is steeper will have a slope less than -1.  
+
+END_SOLUTION
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+

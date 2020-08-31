@@ -1,0 +1,88 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Algebra')
+## DBchapter('Fundamentals')
+## DBsection('Real Numbers')
+## Date('6/3/2002')
+## Author('')
+## Institution('')
+## TitleText1('Precalculus')
+## EditionText1('3')
+## AuthorText1('Stewart, Redlin, Watson')
+## Section1('1.1')
+## Problem1('22')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   "contextLimitedNumeric.pl"
+);
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 1;
+
+##############################################################
+#
+#  Setup
+#
+#
+Context("LimitedNumeric");
+
+$a1=100+random(20,30);
+$a2=random(10,20);
+$a3=200+random(40,60);
+$a4=200-$a1;
+$ans1=Compute($a1+$a2+$a3+$a4); 
+
+$b1=random(4,9);
+$b2=random(4,9);
+$ans2=Compute(10*$b1*$b2); 
+
+$c1=40*random(5,25,5);
+$c2=40+non_zero_random(-10,10);
+$ans3= Compute($c1/40*$c2); 
+
+
+
+
+##############################################################
+#
+#  Text
+#
+#
+
+Context()->texStrings;
+BEGIN_TEXT
+
+Answer the following addition problems using compatible numbers:$PAR
+
+\($a1+$a2+$a3+$a4\)=\{ans_rule\} $BR
+\(2 \times $b1 \times $b2 \times 5\)= \{ans_rule\} $BR
+\($c1 \times $c2 \div 40 \)=\{ans_rule\} $BR
+
+END_TEXT
+Context()->normalStrings;
+
+##############################################################
+#
+#  Answers
+#
+#
+
+ANS($ans1->cmp);
+ANS($ans2->cmp);
+ANS($ans3->cmp);
+
+
+ENDDOCUMENT();        

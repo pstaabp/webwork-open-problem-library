@@ -1,0 +1,87 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Algebra')
+## DBchapter('Fundamentals')
+## DBsection('Real Numbers')
+## Date('6/3/2002')
+## Author('')
+## Institution('')
+## TitleText1('Precalculus')
+## EditionText1('3')
+## AuthorText1('Stewart, Redlin, Watson')
+## Section1('1.1')
+## Problem1('22')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   #"source.pl",        # allows code to be displayed on certain sites.
+   #"PGcourse.pl",      # Customization file for the course
+);
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 1;
+
+##############################################################
+#
+#  Setup
+#
+#
+Context("Numeric");
+
+$a1=random(50,80);
+$a2=10*random(2,4)-random(1,2);
+$ans1=Compute($a1-$a2);
+
+$b1=random(2,4)*100+ random(20,60);
+$b2=100-random(2,4);
+$ans2=Compute($b1-$b2);
+
+$d1=random(2,9);
+$d2=random(2,9);
+$c1=random(6,8)*10+$d1;
+$c2=random(2,4)*10+$d2;
+$ans3=Compute($c1+$c2-10-$d1-$d2);
+
+##############################################################
+#
+#  Text
+#
+#
+
+Context()->texStrings;
+BEGIN_TEXT
+
+Answer the following addition problems using Mental math techniques. $PAR
+
+$a1-$a2=\{ans_rule\} $BR
+$b1-$b2= \{ans_rule\} $BR
+$c1+$c2-\{$d1+10\}-$d2= \{ans_rule\}
+
+
+END_TEXT
+Context()->normalStrings;
+
+##############################################################
+#
+#  Answers
+#
+#
+
+ANS($ans1->cmp);
+ANS($ans2->cmp);
+ANS($ans3->cmp);
+
+
+ENDDOCUMENT();        

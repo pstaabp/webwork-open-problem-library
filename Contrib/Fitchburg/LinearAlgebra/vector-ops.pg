@@ -1,0 +1,77 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"parserVectorUtils.pl",
+"unionLists.pl",
+);
+
+Context("Vector");
+
+$U = non_zero_vector3D(-5,5,1);
+$V = non_zero_vector3D(-5,5,1);
+$W = non_zero_vector3D(-5,5,1);
+
+$k = non_zero_random(-4,4,1);  
+
+$ans1 = $U+$V;
+$ans2 = $U+$W;
+$ans3 = $k * $U;  
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+Context()->texStrings;
+BEGIN_TEXT
+Suppose \( \vec{u} = $U,  \vec{v} = $V \) and \( \vec{w}= $W\). 
+\{ BeginList('OL', type=>'A') \}
+
+$ITEM \( \vec{u}+\vec{v}\) = \{ ans_rule(20) \}
+
+$ITEMSEP
+
+$ITEM \( \vec{u} + \vec{w} = \) \{ ans_rule(20) \}
+
+$ITEMSEP
+$ITEM \( $k \vec{u} = \) \{ ans_rule(20) \}
+
+\{ EndList('OL') \}
+
+Note: In this case, the vectors are written in the form of a sequence with angle brackets.  Your solution should have the same form.  Also, these operations are equivalent to those with either row or column vectors.  
+
+END_TEXT
+
+
+
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+ANS($ans1->cmp);
+ANS($ans2->cmp);
+ANS($ans3->cmp);
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

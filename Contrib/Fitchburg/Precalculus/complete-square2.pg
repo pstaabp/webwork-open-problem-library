@@ -1,0 +1,136 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Algebra')
+## DBchapter('Fundamentals')
+## DBsection('Real Numbers')
+## Date('6/3/2002')
+## Author('')
+## Institution('')
+## TitleText1('Precalculus')
+## EditionText1('3')
+## AuthorText1('Stewart, Redlin, Watson')
+## Section1('1.1')
+## Problem1('22')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   "PGML.pl",
+  "parserMultiAnswer.pl",
+  "scaffold.pl",
+  "contextFraction.pl"
+);
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+Context("Numeric");
+
+$a = Compute(random(-5,-2,1));
+$asq = $a*$a; 
+$b = Compute(non_zero_random(-5,5,1));
+$bsq = $b*$b;
+$c = Compute(non_zero_random(-5,5,1));
+
+$h = Compute("$b/(2*$a)"); 
+$hsq = Compute("$h*$h"); 
+$ans1 = Compute("x^2+($b/$a)x"); 
+
+$fr = "\frac{" . abs($b).  "}{" . abs($a) . "}";
+if ($a*$b<0) { $fr = "-" . $fr; }  
+$part2 = "$a\left(x^2+$fr x \right)"; 
+
+$additional = -1*$hsq*$a;
+
+$quadratic = Formula("$a x^2 + $b x + $c");
+$quadnice=nicestring([$a,$b,$c]);
+
+$k = $quadratic->eval(x=>$h); 
+$plusC=$c<0?$c:"+".$c;
+
+Context("Fraction");
+
+$d = Compute("$c-$bsq/(4*$a)"); 
+
+Context("Numeric");
+
+$dd = 4*$asq;
+$part3 = "$a\left(x^2 + $fr x + \frac{$bsq}{$dd}\right)+" . $d->TeX;
+$inner = Compute("x+$h");
+ 
+###########################################
+#  The scaffold
+Scaffold::Begin();
+
+###########################################
+Section::Begin("Part 1: Factoring out the leading Coefficient");
+
+BEGIN_PGML
+The goal of this problem is to use completing the square to write a quadratic in standard form, [` q(x) = a(x-h)^2 +k `]
+
+Consider the quadratic equation given by [`q(x)=[$quadnice]`]. 
+
+First, factor out the leading coefficient from the first two terms: 
+
+[`q(x)=`][___]{$a}([_______]{$ans1})[`[$plusC]`]
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Take the coefficient of [`x^2`] for the value of [`a`], the coefficient
+of [`x`] for [`b`], and the constant for [`c`].  In this case, they
+are [`a = [$a]`], [`b = [$b]`], and [`c = [$c]`].
+END_PGML_SOLUTION
+
+Section::End();
+
+###########################################
+Section::Begin("Part 2: Finding the Perfect Square");
+
+BEGIN_PGML
+The quadratic is now [`q(x) = [$part2][$plusC]`].
+
+We now wish to find the first term as a perfect square:
+
+[` q(x) = [$a]\left(x^2+[$fr]x +\right.`] [___________]{$hsq} [`\left. \right)[$plusC]+`][__________]{$additional}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Recall that the quadratic equation is
+
+    [``x = {-b \pm \sqrt{b^2 - 4ac} \over 2a}``].
+
+You already identified [`a = [$a]`], [`b = [$b]`], and [`c = [$c]`],
+so the results are:
+
+    [``x = {-[$b] + \sqrt{[$b]^2 - 4[$a][$c]} \over 2[$a]} = [$x1]``]
+
+or
+
+    [``x = {-[$b] - \sqrt{[$b]^2 - 4[$a][$c]} \over 2[$a]} = [$x2]``].
+END_PGML_SOLUTION
+
+Section::End();
+
+###########################################
+Section::Begin("Part 3: Writing in Perfect Square Form");
+
+BEGIN_PGML
+From the last part you wrote [`q(x)=[$part3]`].  Write [`q(x)`] as a perfect square:
+
+[`q(x)=[$a](`][______________]{$inner}[`)^2+[$d]`]
+
+END_PGML
+Section::End();
+###########################################
+Scaffold::End();
+ENDDOCUMENT();

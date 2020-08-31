@@ -1,0 +1,107 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Introduction to Numerical Analysis')
+## DBsection('Errors')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+
+#############################
+#  Setup
+
+Context("Numeric");
+
+$n = 10*random(3,12);
+
+$approx = 0;
+for($j=0;$j<=$n;$j++){
+  $approx += 4*(-1)**($j)/(2*$j+1);
+}
+
+$abserror = Compute("$approx-pi");
+$relerror = Compute("$abserror/(pi)");
+
+
+
+
+
+BEGIN_PGML
+
+Recall that the Maclaurin series for [`\tan x`] is
+
+[`` \tan^{-1} x = \sum_{j=0}^{\infty} (-1)^{j} \frac{x^{2j+1}}{2j+1} ``]
+
+If we evaluate this at [`x=1`] it results in
+
+[`` \tan^{-1} 1 = \frac{\pi}{4} = \sum_{j=0}^{\infty} (-1)^{j} \frac{1}{2j+1} ``]
+
+and an approximation is
+
+[``\pi \approx  4 \sum_{j=0}^{n} (-1)^{j} \frac{1}{2j+1} ``]
+
+
+
+Use the partial sum with [`n=[$n]`] to find an approximation for [``\pi``].
+
+[``\pi\approx``]  [_________]{$approx}
+
+Also find:
+
+Absolute Error: [_____________]{$abserror}
+
+Relative Error: [_____________]{$relerror}
+END_PGML
+
+############################
+#  Solution
+
+BEGIN_PGML_SOLUTION
+
+As stated above, we compute
+
+[`` 4 \sum_{j=0}^{n} (-1)^{j} \frac{1}{2j+1} ``]
+
+using [`n=[$n]`].  Using software (either a Computer Algebra System or a multi-purpose language like python), you can get:
+
+[`` p = 4 \sum_{j=0}^{n} (-1)^{j} \frac{1}{2j+1} = [$approx] ``]
+
+and the absolute error is
+
+[`` |p - \pi| = [$abserror] ``]
+
+and the relative error:
+
+[`` \frac{|p - \pi|}{\pi} = [$relerror] ``]
+
+END_PGML_SOLUTION
+
+COMMENT("Uses PGML.");
+
+ENDDOCUMENT();

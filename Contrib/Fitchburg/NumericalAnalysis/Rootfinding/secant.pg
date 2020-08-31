@@ -1,0 +1,123 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Rootfinding')
+## DBsection('Order of Convergence')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "numericalMethods.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+
+#############################
+#  Setup
+
+Context("Numeric");
+
+$a = random(65,80);
+
+$x0 = random(1,5);
+
+do {
+  $x1 = random(1,5);
+} while ($x0 == $x1);
+
+$f = Compute("x^2-$a");
+
+@x = secant($f,$x0,$x1,1e-10,8);
+
+BEGIN_PGML
+
+Perform the secant method to find a root of
+
+[`` f(x) =  x^2-[$a]``]
+
+For the first 6 iterations.  Start with [`x_0=[$x0]`] and [`x_1=[$x0]`].
+
+
+[@
+begintable(2) .
+row("n","\\(x_n\\)") .
+row("0",ans_rule(12)).
+row("1",ans_rule(12)).
+row("2",ans_rule(12)).
+row("3",ans_rule(12)).
+row("4",ans_rule(12)).
+row("5",ans_rule(12)).
+row("6",ans_rule(12)).
+row("7",ans_rule(12)).
+row("8",ans_rule(12)).
+endtable();
+@]*
+
+END_PGML
+
+for($i=0;$i<9;$i++){
+ANS(Compute($x[$i])->cmp);
+}
+
+
+############################
+#  Solution
+
+BEGIN_PGML_SOLUTION
+
+Recall that the secant method is the iterative formula given by
+
+[``x_{n+1} = x_n - f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}``]
+
+Using [`x_0=[$x0]`] and [`x_1=[$x1]`] with the function [`f(x)=x^2-[$a]`], then
+
+[``x_{2} = [$x1] - ([$x1]^2-[$a])\frac{[$x1]-[$x0]}{([$x1]^2-[$a])-([$x0]^2-[$a])} = [$x[2]]``]
+
+The next step is
+
+[``x_{3} = [$x[2]] - ([$x[2]]^2-[$a])\frac{[$x[2]]-[$x1]}{([$x[2]]^2-[$a])-([$x1]^2-[$a])} = [$x[3]]``]
+
+and repeating we get the following table:
+
+[@
+begintable(2) .
+row("n","\\(x_n\\)") .
+row("0",$x[0]).
+row("1",$x[1]).
+row("2",$x[2]).
+row("3",$x[3]).
+row("4",$x[4]).
+row("5",$x[5]).
+row("6",$x[6]).
+row("7",$x[7]).
+row("8",$x[8]).
+endtable();
+@]*
+
+END_PGML_SOLUTION
+
+COMMENT("Uses PGML.");
+
+ENDDOCUMENT();

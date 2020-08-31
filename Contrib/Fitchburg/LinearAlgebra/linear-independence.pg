@@ -1,0 +1,108 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Homogeneous and Nonhomogeneous Solutions')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros(
+"PGstandard.pl",
+"PGchoicemacros.pl",
+"PGcourse.pl",
+);
+
+
+# Define all variables used in the problem statement and solution
+
+$a11 = random(-5,5); $a12 = random(-5,5); $a13 = random(-5,5);
+
+
+$det=0;
+while($det==0)
+{
+$a21 = random(-5,5); $a22 = random(-5,5); $a23 = random(-5,5);
+$a31 = random(-5,5); $a32 = random(-5,5); $a33 = random(-5,5);
+$det=$a11*($a22*$a33-$a23*$a32)-$a12*($a21*$a33-$a23*$a31)+$a13*($a21*$a32-$a22*$a31);}
+
+$k1=non_zero_random(-3,3);$k2=non_zero_random(-3,3);
+$a41=$k1*$a11+$k2*$a21;$a42=$k1*$a12+$k2*$a22;$a43=$k1*$a13+$k2*$a23;
+
+$b11 = random(-3,3); $b12 = random(-3,3); $b13=random(-3,3); 
+
+
+$det=0;
+while($det==0)
+{
+$b21 = random(-3,3); $b22 = random(-3,3); $b23=random(-3,3);
+$b31 = random(-3,3); $b32 = random(-3,3); $b33 = random(-3,3);
+$det=$b11*($b22*$b33-$b23*$b32)-$b12*($b21*$b33-$b23*$b31)+$b13*($b21*$b32-$b22*$b31);
+}
+
+$poly1 = nicestring([$b11,$b12,$b13],["","x","x^2"]);
+$poly2 = nicestring([$b21,$b22,$b23],["","x","x^2"]);
+$poly3 = nicestring([$b31,$b32,$b33],["","x","x^2"]);
+
+# generate some polynomials with no constant term.  
+
+$poly4 = nicestring([$a11,$b12],["x","x^2"]);
+$poly5 = nicestring([$b33,$a23],["x","x^2"]);
+$poly6 = nicestring([$b13,$a42],["x","x^2"]);
+
+
+$dd1=non_zero_random(-3,3); $dd2=non_zero_random(-3,3);
+$dd3=2*$dd1; $dd4=2*$dd2;
+
+$f11=random(-4,4);$f12=random(-4,4);
+$f21=random(-4,4);$f22=random(-4,4);
+$f31=random(-4,4);$f32=random(-4,4);
+
+
+$mc = new_checkbox_multiple_choice();
+$mc -> qa (
+"Select all sets that are linearly independent", 
+"\[ $LBRACE \left[ \begin{array}{r} $a11 \\ $a12 \\ $a13 \end{array} \right], \left[ \begin{array}{r} $a21 \\ $a22 \\ $a23 \end{array} \right],\left[ \begin{array}{r} $a31 \\ $a32 \\ $a33 \end{array} \right] $RBRACE\]",
+"\[ $LBRACE $poly1,$poly2,$poly3 $RBRACE \]");
+$mc -> extra(
+"\[ $LBRACE \left[ \begin{array}{r} $a11 \\ $a12 \\ $a13 \end{array} \right], \left[ \begin{array}{r} $a21 \\ $a22 \\ $a23 \end{array} \right],\left[ \begin{array}{r} $a41 \\ $a42 \\ $a43 \end{array} \right] $RBRACE\]",
+"\[ $LBRACE \left[ \begin{array}{rr} $dd1  & 0 \\ 0 & $dd2 \end{array} \right] ,\left[ \begin{array}{rr} $dd3  & 0 \\ 0 & $dd4 \end{array} \right]$RBRACE \]",
+,"\[$LBRACE $poly4, $poly5, $poly6 $RBRACE \]",
+"\[ $LBRACE \left[ \begin{array}{r} $f11 \\ $f12  \end{array} \right], \left[ \begin{array}{r} $f21 \\ $f22  \end{array} \right],\left[ \begin{array}{r} $f31 \\ $f32  \end{array} \right] $RBRACE\]"
+);
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+
+
+BEGIN_TEXT
+
+\{ $mc -> print_q() \}
+$BR
+\{ $mc -> print_a() \}
+
+END_TEXT
+
+
+# Enter the correct answers to be checked against the answers to the students.
+
+install_problem_grader(~~&std_problem_grader);
+
+$showPartialCorrectAnswers = 0;
+
+ANS( checkbox_cmp( $mc->correct_ans() ) ); 
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,0 +1,121 @@
+##DESCRIPTION
+## Algebra: Analytic Trigonometry
+##ENDDESCRIPTION
+
+ 
+## tcao , PAID on 11-24-2003
+
+## DBsubject(Trigonometry)
+## DBchapter(Analytic trigonometry)
+## DBsection(Solving trigonometric equations numerically)
+## Date(6/3/2002)
+## MLT(KentMoreLike6)
+## Level(3)
+## Static(1)
+## TitleText1('Precalculus')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('7.5')
+## Problem1('31')
+## KEYWORDS('algebra', 'analytic trigonometry', 'trigonometric equation')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+ loadMacros(
+     "PGstandard.pl",
+     "MathObjects.pl",
+     "PGML.pl",
+ #    "contextFraction.pl"
+     );
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 0;
+Context("Numeric");
+
+$k = random(2,4);
+$i = random(1,3); 
+$j = random(1,2); 
+
+$f = $j==1?"\cos":"\sin";
+$top = $i==1?"1":"\sqrt{$i}"; 
+
+$eqn = "2 $f $k x = $top";
+$eqn2 = "$f $k x = \frac{$top}{2}"; 
+$eqn3 = "$f \theta = \frac{$top}{2}";
+
+$q1 = $j==1?new Fraction(5-$i,12):new Fraction($i+1,12); 
+
+$angle1 = nice_angle($q1->times(1)->numerator,$q1->times(1)->denominator); 
+
+# this is all solutions to $f(theta)=$top/2$ in [0,k*pi] without the pi.
+@all_values; 
+
+## go through quadrants from 2 up to the quadrant corresponding to 2$k
+for($n=1;$n<=2*$k;$n++){
+  if($n % 4 == 1) {
+     push(@all_values, $q1->plus(($n-1)/2));
+  } elsif ($j==2 && $n % 4 == 2) {
+     push(@all_values, $q1->subtractFrom($n/2));
+  } elsif ($j==1 && $n % 4 == 0) {
+     push(@all_values, $q1->subtractFrom($n/2));
+  }
+}
+## and this is the value of those above divided by $k
+
+@all_values2 = map {$_->divBy($k)} @all_values; 
+
+## and the answer will be the value of these multiplied by pi
+
+@answers = map {angle($_->numerator,$_->denominator) } @all_values2; 
+
+$ans = List(@answers); 
+## the following prints it nicely. 
+$pp_all = join(",",map {nice_angle($_->numerator,$_->denominator) } @all_values); 
+$pp_all2 = join(",",map {nice_angle($_->numerator,$_->denominator) } @all_values2); 
+
+#$qq = @all_values[0]->denominator; 
+#
+sub nice_angle {
+  ($num,$den) = @_; 
+  return $num==1?"\frac{\pi}{$den}":"\frac{$num \pi}{$den}";
+}
+
+sub angle {
+   ($num,$den) = @_; 
+   return "$num*pi/$den";   
+}
+
+#$qq = nice_angle($q1->numerator,$q1->denominator);
+
+BEGIN_PGML
+
+Find all solutions of [`[$eqn]`] for [`x`] in [`[0,\pi]`]
+
+[`x=`][__________________]{$ans}
+
+Note: separate solutions by commas and enter the values exactly (not as decimals). 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+*SOLUTION*
+
+First, we can write the equation as 
+
+[`[$all_values]`]
+
+and if we let [`\theta = [$k] x`], then the equation is:
+
+[`[$eqn3]`]
+
+The value of [`\theta`] in [`[0,\frac{\pi}{2}]`] that satisfies this (see a unit circle) is [`\theta=[$angle1]`].
+
+And all values of [`\theta`] in [`[0,[$k]\pi]`] is [`[$pp_all]`]
+
+Lastly, since [`\theta=[$k] x`] or [`x = \frac{\theta}{[$k]}`], then dividing all of the values above
+by [$k$] results in 
+
+[`[$pp_all2]`]
+
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

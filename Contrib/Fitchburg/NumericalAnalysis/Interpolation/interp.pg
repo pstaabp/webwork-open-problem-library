@@ -1,0 +1,99 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Interpolation')
+## DBsection('Lagrange Interpolation')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT(); 
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGpolynomialmacros.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+
+#############################
+#  Setup
+
+Context("Numeric");
+
+$x0 = 0; 
+$x1 = random(1,5);
+$x2 = -1*random(1,5);
+
+$a = non_zero_random(-2,2); 
+$b = random(1,6);
+$c = random(1,6);
+
+$quad = Formula("$a*x^2+$b*x+$c");
+
+$y0 = $quad->eval(x=>$x0); 
+$y1 = $quad->eval(x=>$x1);
+$y2 = $quad->eval(x=>$x2); 
+
+$quad1 = nicestring([$x1*$x1,$x1,1],["a","b","c"]);
+$quad2 = nicestring([$x2*$x2,$x2,1],["a","b","c"]);
+
+$poly = nicestring([$a,$b,$c]);
+
+BEGIN_PGML
+
+Find the quadratic function that passes through the points [` ([$x2],[$y2]) `], [`([$x0],[$y0])`] and [`([$x1],[$y1]) `]. 
+
+The quadratic is [_______________________________________________]{$quad}
+
+END_PGML
+
+############################
+#  Solution
+
+BEGIN_PGML_SOLUTION
+Let
+[`` q(x) = ax^2+bx+c ``]
+be a generic quadratic function.  It must satisfy
+
+[`` q([$x0])=[$y0], \quad q([$x1])=[$y1], \quad q([$x2])=[$y2] ``]
+
+or
+
+[`` c=[$y0] ``]
+
+[`` [$quad1] = [$y1] ``]
+
+[`` [$quad2] = [$y2] ``]
+
+Solving these three equations simulataneously results in 
+
+[`` a=[$a], \quad b=[$b], \quad c=[$c] ``]
+
+Resulting in the quadratic
+
+[`` q(x) = [$poly] ``]
+
+END_PGML_SOLUTION
+
+COMMENT("Uses PGML.");
+
+ENDDOCUMENT();

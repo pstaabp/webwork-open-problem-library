@@ -1,0 +1,133 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Algebra')
+## DBchapter('Fundamentals')
+## DBsection('Real Numbers')
+## Date('6/3/2002')
+## Author('')
+## Institution('')
+## TitleText1('Precalculus')
+## EditionText1('3')
+## AuthorText1('Stewart, Redlin, Watson')
+## Section1('1.1')
+## Problem1('22')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   "contextFraction.pl",
+   #"source.pl",        # allows code to be displayed on certain sites.
+   #"PGcourse.pl",      # Customization file for the course
+);
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 1;
+
+##############################################################
+#
+#  Setup
+#
+#
+Context("Vector");
+
+$det=0; 
+
+while ($det==0) {
+$u1=non_zero_random(-2,2); $u2=non_zero_random(-2,2);
+$v1=non_zero_random(-2,2); $v2=non_zero_random(-2,2);
+$det=$u1*$v2-$v1*$u2;
+}
+
+
+$lambda1=random(-3,3); $lambda2=non_zero_random(-3,3);
+
+if ($lambda1<$lambda2) {$tmp=$lambda1; $lambda1=$lambda2; $lambda2=$tmp;} 
+
+
+$P11=$v2; $P12=-$v1; $P21=-$u2; $P22=$u1;
+
+$ev1=Vector($u1,$u2);
+$ev2=Vector($v1,$v2);
+
+
+
+
+
+
+$a11t = $lambda1*$u1*$v2-$lambda2*$u2*$v1; # $a11=Fraction($allt,$det);
+$a12t = -$lambda1*$u1*$v1+$lambda2*$u1*$v1; 
+$a21t = $lambda1*$u2*$v2-$lambda2*$u2*$v2; 
+$a22t = -$lambda1*$u2*$v1+$lambda2*$u1*$v2; 
+
+#$a11=Fraction($a11t,$det);
+#$a12=Fraction($a12t,$det);
+#$a21=Fraction($a21t,$det);
+#$a22=Fraction($a22t,$det);
+
+$a11 = $a11t/$det;
+$a12 = $a12t/$det;
+$a21 = $a21t/$det;
+$a22 = $a22t/$det;
+
+
+sub mycheck {
+  my ($correct, $student, $ansHash) = @_;
+  warn($student);
+  return ($correct->isParallel($student));
+}
+
+
+
+
+##############################################################
+#
+#  Text
+#
+#
+
+Context()->texStrings;
+BEGIN_TEXT
+
+Let
+\[
+A =\left[ \begin{array}{rr} $a11 & $a12 \\ $a21 & $a22 \end{array} \right] \]
+
+For \(A\) find the eigenvalues, \( \lambda\) and eigenvectors \(\vec{v}\).  In the following two lines, enter the eigenvalue and then its corresponding eigenvector such that \(\lambda_1 \geq \lambda_2\).   If \(A\) only has one eigenvalue and only one eigenvector type DNE in the second row.  If the eigenvalues are complex conjugates, let \( \lambda_1\) be the eigenvalue with the position imaginary term.  For each eigenvector, put it in vector notation, i.e. <1,2>. 
+
+$PAR
+
+\( \lambda_1 = \) \{ ans_rule(10)\} \(\vec{v}_1= \) \{ ans_rule(15) \} $BR
+\( \lambda_2 = \) \{ ans_rule(10)\} \(\vec{v}_2= \) \{ ans_rule(15) \} $BR
+
+
+END_TEXT
+Context()->normalStrings;
+
+##############################################################
+#
+#  Answers
+#
+#
+
+
+Context("Vector");
+
+ANS(Real($lambda1)->cmp);
+ANS($ev1->cmp( checker=>~~&mycheck ) );
+ANS(Real($lambda2)->cmp);
+ANS($ev2->cmp( checker=>~~&mycheck ) );
+
+
+
+ENDDOCUMENT();        

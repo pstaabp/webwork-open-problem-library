@@ -1,0 +1,80 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Homogeneous and Nonhomogeneous Solutions')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGchoicemacros.pl",
+"PGcourse.pl",
+);
+
+Context("Vector");
+
+
+# Define all variables used in the problem statement and solution
+
+$x=random(2,7); $y=random(2,7); 
+
+$a=random(1,4); $b=random(1,4);
+
+$u=Vector($x,$y);
+$v=Vector($a,$b);
+$proj=($u.$v)/($v.$v)*$v; 
+$w = $u-$proj;
+$d = norm($w); 
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+
+
+BEGIN_TEXT
+
+Find the minimum distance from the point \( ($x,$y) \) to the line 
+\[ L = 
+$LBRACE \left[\begin{array}{r} $a \\ $b \end{array} \right]t  \; | \; t \in \mathbb{R} $RBRACE \]
+$PAR
+In solving the problem, let \(\vec{u}\) be the vector from the origin to the point.  Find \( \text{Proj}_L (\vec{u}) \) $BR
+\{ ans_rule(15) \} $BR Your answer should be a vector in \(\mathbb{R}^2 \).  
+
+$PAR 
+\( \vec{u} - \text{Proj}_L (\vec{u}) = \) \{ ans_rule(15) \}
+
+$PAR
+And the distance sought should be $BR
+\( ||\vec{u} - \text{Proj}_L (\vec{u}) || = \) \{ ans_rule(15) \}
+
+
+
+END_TEXT
+
+
+# Enter the correct answers to be checked against the answers to the students.
+
+$showPartialCorrectAnswers = 0;
+
+ANS($proj->cmp); 
+ANS($w->cmp);
+ANS($d->cmp);
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,0 +1,161 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Homogeneous and Nonhomogeneous Solutions')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGchoicemacros.pl",
+"PGcourse.pl",
+);
+
+Context("Vector");
+Context()->strings->add("yes");
+Context()->strings->add("no");
+
+
+# Define all variables used in the problem statement and solution
+
+$a1 = random(-5,5); $a2 = random(-5,5); 
+
+$b11 = random(-3,3); $b12 = 0; $b13=random(-3,3); 
+$b21 = random(-3,3); $b22 = random(-3,3); $b23 = 0;
+
+$det=0;
+while($det==0)
+{
+$b31 = random(-3,3); $b32 = random(-3,3); $b33 = random(-3,3);
+$det=$b11*($b22*$b33-$b23*$b32)-$b12*($b21*$b33-$b23*$b31)+$b13*($b21*$b32-$b22*$b31);}
+
+$d1=random(-3,3); $d2=random(-3,3); $d3=random(-3,3);
+
+$poly1 = nicestring([$b11,$b21,$b31],["","x","x^2"]);
+$poly2 = nicestring([$b12,$b22,$b32],["","x","x^2"]);
+$poly3 = nicestring([$b13,$b23,$b33],["","x","x^2"]);
+$poly4 = nicestring([$d1,$d2,$d3],["","x","x^2"]);
+
+
+$c1=($b22*$b33-$b23*$b32)*$d1+($b13*$b32-$b12*$b33)*$d2+($b12*$b23-$b13*$b22)*$d3;
+
+$c2=($b31*$b23-$b21*$b33)*$d1+($b11*$b33-$b13*$b31)*$d2+($b21*$b13-$b11*$b23)*$d3;
+
+$c3=($b21*$b32-$b31*$b22)*$d1+($b31*$b12-$b11*$b32)*$d2+($b11*$b22-$b12*$b21)*$d3;
+
+$ans2b=Compute("<$c1/$det,$c2/$det,$c3/$det>");
+$ans2c=Real(3);
+
+
+$g11 = random(-3,3); $g12 = random(-3,3); $g13=random(-3,3); 
+$g21 = random(-3,3); $g22 = random(-3,3); $g23 = random(-3,3);
+$k1= non_zero_random(-2,2); $k2=non_zero_random(-2,2);
+$g31= $k1*$g11+$k2*$g21;
+$g32= $k1*$g21+$k2*$g22;
+$g33= $k1*$g13+$k2*$g23; 
+
+$h1=random(-4,4); $h2=random(-4,4); $h3 = random(-4,4); 
+
+$p11=random(-4,4);$p12=random(-4,4);$p13=random(-4,4);$p14=random(-4,4);
+$p21=random(-4,4);$p22=random(-4,4);$p23=random(-4,4);$p24=random(-4,4);
+
+$q1= non_zero_random(-2,2);$q2= non_zero_random(-2,2);
+$p31=$q1*$p11+$q2*$p21;
+$p32=$q1*$p12+$q2*$p22;
+$p33=$q1*$p13+$q2*$p23;
+$p34=$q1*$p14+$q2*$p24;
+
+
+
+
+$ans1a=String('YES'); $ans1b=Formula("<$a1,$a2>"); $ans1c=Real(2);
+
+$ans2a=String('YES'); 
+
+$ans3a=String('NO'); $ans3b=String("DNE"); $ans3c=String("DNE");
+
+$ans4a=String('YES'); $ans4b=Formula("<$q1,$q2>"); $ans4c=Real(2);
+
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+
+
+BEGIN_TEXT
+
+Each of the following lists a vector space \(V\), a sequence of vectors, called \( B\)  and a specific vector, \(\vec{v}\).  Determine if the sequence is a basis by saying "YES" or "NO".  If the sequence is a basis, find \( \text{Rep}_B(\vec{v}) \) and the dimension of space and if the sequence is not a basis put DNE in for the representation and the dimension. 
+
+$PAR
+
+a) 
+
+\[ V = \mathbb{R}^2, \qquad B = \langle \left[\begin{array}{r} 1 \\ 0 \end{array} \right],
+\left[\begin{array}{r} 0 \\ 1 \end{array} \right] \rangle, \qquad \qquad 
+\vec{v} = \left[\begin{array}{r} $a1 \\ $a2 \end{array} \right] \]
+
+$PAR
+Is \(B\) a basis? \{ans_rule(8)\}.  Find \(\text{Rep}_B (\vec{v}) \) \{ans_rule(30)\} and the dimension of \(V\) is \{ans_rule(5)\}   
+
+
+$PAR
+
+b) 
+
+\[ V={\cal P}_2 \qquad B = \langle $poly1, $poly2, $poly3 \rangle, \qquad \qquad 
+\vec{v} = $poly4 \]
+
+$PAR
+Is \(B\) a basis? \{ans_rule(8)\}.  Find \(\text{Rep}_B (\vec{v}) \) \{ans_rule(30)\} and the dimension of \(V\) is \{ans_rule(5)\}   
+
+
+$PAR
+
+c) 
+
+\[ V = \mathbb{R}^3 \qquad B = \langle \left[  \begin{array}{r} $g11 \\ $g12 \\ $g13 \end{array} \right], \left[  \begin{array}{r} $g21 \\ $g22 \\ $g23 \end{array} \right],\left[  \begin{array}{r} $g31 \\ $g32 \\ $g33 \end{array} \right] \rangle, \qquad \qquad 
+\vec{v} = \left[\begin{array}{r} $h1 \\ $h2 \\ $h3 \end{array} \right] \]
+
+$PAR
+Is \(B\) a basis? \{ans_rule(8)\}.  Find \(\text{Rep}_B (\vec{v}) \) \{ans_rule(30)\} and the dimension of \(V\) is \{ans_rule(5)\}  
+
+$PAR
+
+d) 
+
+\[ V = $LBRACE \left[ \begin{array}{r} $p11 \\ $p12 \\ $p13 \\ $p14 \end{array} \right] t + \left[ \begin{array}{r} $p21 \\ $p22 \\ $p23 \\ $p24 \end{array} \right] s \; | \; s,t \in \mathbb{R} $RBRACE \qquad B = \langle\left[ \begin{array}{r} $p11 \\ $p12 \\ $p13 \\ $p14 \end{array} \right], \left[ \begin{array}{r} $p21 \\ $p22 \\ $p23 \\ $p24 \end{array} \right] \rangle  \qquad \vec{v} =  \left[ \begin{array}{r} $p31 \\ $p32 \\ $p33 \\ $p34 \end{array} \right]\]
+
+$PAR
+Is \(B\) a basis? \{ans_rule(8)\}.  Find \(\text{Rep}_B (\vec{v}) \) \{ans_rule(30)\} and the dimension of \(V\) is \{ans_rule(5)\}   
+
+END_TEXT
+
+
+# Enter the correct answers to be checked against the answers to the students.
+
+$showPartialCorrectAnswers = 0;
+
+ANS($ans1a->cmp); ANS($ans1b->cmp); ANS($ans1c->cmp); 
+ANS($ans2a->cmp); ANS($ans2b->cmp); ANS($ans2c->cmp);
+ANS($ans3a->cmp); ANS($ans3b->cmp); ANS($ans3c->cmp);
+ANS($ans4a->cmp); ANS($ans4b->cmp); ANS($ans4c->cmp);
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

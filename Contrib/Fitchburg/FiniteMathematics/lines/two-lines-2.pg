@@ -1,0 +1,89 @@
+# DESCRIPTION
+# A problem that asks the student to find
+# the formula of a line through two points. 
+# ENDDESCRIPTION
+
+## DBsubject('Linear Systems')
+## DBchapter('')
+## DBsection('')
+## KEYWORDS('lines, linear systems')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+
+
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGunion.pl",
+  "MathObjects.pl",
+  "PGcourse.pl",
+);
+
+TEXT(beginproblem);
+
+##############################
+#
+#  Setup
+#
+
+$a11 = non_zero_random(-4,4);
+$a12 = non_zero_random(-4,4);
+$scale = non_zero_random(-3,3);
+$a21 = $scale * $a11;
+$a22 = $scale * $a12;
+
+$b1 = random(-10,10);
+$b2 = $scale * $b1+4; 
+
+$line1 = nicestring([$a11,$a12],["x","y"]);
+$line2 = nicestring([$a21,$a22],["x","y"]);
+
+
+
+
+##############################
+#
+#  Main text
+#
+
+Context()->texStrings;
+BEGIN_TEXT
+
+Solve the linear system: 
+\[ 
+\begin{cases}
+$line1 = $b1 \\
+$line2 = $b2
+\end{cases}
+\] 
+
+Using the solving simultaneous method. $BR
+
+Write your answer as a point (e.g. (3,-2) ), write "NS" if there is no solution and write "infinity" if there is an infinite number of solutions. $BR
+\{ans_rule(10)\}
+
+END_TEXT
+Context()->strings->add(NS=>{});
+
+
+##############################
+#
+#  Answers
+#
+
+
+
+ANS(String("NS")->cmp());
+
+##############################
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+
+

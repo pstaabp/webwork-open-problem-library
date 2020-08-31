@@ -1,0 +1,76 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"PGmatrixmacros.pl"
+);
+
+Context("Numeric");
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+
+
+$a11=random(-3,3); $a12=random(-3,3); $a13=0; $a14 = random(-3,3);
+$a21=random(-3,3); $a22=0; $a23=random(-3,3); $a24 = random(-3,3);
+$a31=0; $a32=random(-3,3); $a33=random(-3,3); $a34 = 0; 
+$a41=random(-3,3); $a42=0; $a43=random(-3,3); $a44 = random(-3,3);
+
+
+$det=$a11*$a22*$a33*$a44-$a11*$a22*$a34*$a43+$a11*$a32*$a43*$a24-$a11*$a32*$a23*$a44+$a11*$a42*$a23*$a34-$a11*$a42*$a33*$a24-$a21*$a12*$a33*$a44+$a21*$a12*$a34*$a43-$a21*$a32*$a43*$a14+$a21*$a32*$a13*$a44-$a21*$a42*$a13*$a34+$a21*$a42*$a33*$a14+$a31*$a12*$a23*$a44-$a31*$a12*$a43*$a24+$a31*$a22*$a43*$a14-$a31*$a22*$a13*$a44+$a31*$a42*$a13*$a24-$a31*$a42*$a23*$a14-$a41*$a12*$a23*$a34+$a41*$a12*$a33*$a24-$a41*$a22*$a33*$a14+$a41*$a22*$a13*$a34-$a41*$a32*$a13*$a24+$a41*$a32*$a23*$a14;
+
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+BEGIN_TEXT
+
+Let
+
+\[  A=
+\left[ \begin{array}{rrr}
+$a11 & $a12 & $a13 & $a14 \\
+$a21 & $a22 & $a23 & $a24 \\
+$a31 & $a32 & $a33 & $a34 \\
+$a41 & $a42 & $a43 & $a44 \\
+\end{array} \right]
+\]
+$PAR
+\( |A| = \) \{ ans_rule(10) \} 
+
+
+END_TEXT
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+ANS(Real($det)->cmp); 
+
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

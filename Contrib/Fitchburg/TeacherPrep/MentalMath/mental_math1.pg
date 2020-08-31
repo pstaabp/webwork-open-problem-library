@@ -1,0 +1,96 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Algebra')
+## DBchapter('Fundamentals')
+## DBsection('Real Numbers')
+## Date('6/3/2002')
+## Author('')
+## Institution('')
+## TitleText1('Precalculus')
+## EditionText1('3')
+## AuthorText1('Stewart, Redlin, Watson')
+## Section1('1.1')
+## Problem1('22')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   "contextLimitedNumeric.pl"
+);
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 1;
+
+##############################################################
+#
+#  Setup
+#
+#
+Context("LimitedNumeric");
+
+$a1=random(2,4)*100+non_zero_random(-5,5);
+$a2=random(3,5)*100+random(40,60);
+$ans1=Compute($a1+$a2); 
+
+$b2=random(3,5)*100+random(40,60);
+$b1=random(2,4)*100+non_zero_random(-5,5);
+$ans2=Compute($b2-$b1); 
+
+$c1=random(50,80);
+$c2=random(2,4)*10+non_zero_random(-2,2);
+$ans3= Compute($c1-$c2); 
+
+$d1=4*random(11,17);
+$ans4=Compute($d1*25);
+
+$e1=random(20,25);
+$e2=5*$e1;
+$ans5=Compute($e1);
+
+
+
+##############################################################
+#
+#  Text
+#
+#
+
+Context()->texStrings;
+BEGIN_TEXT
+
+Answer the following addition problems using the mental math technique compensation: $PAR
+
+\($a1+$a2\)=\{ans_rule\} $BR
+\($b2-$b1\)= \{ans_rule\} $BR
+\($c1-$c2\)=\{ans_rule\} $BR
+\($d1\times 25\)= \{ans_rule\}$BR
+\($e2\div 5\) = \{ans_rule\}
+
+END_TEXT
+Context()->normalStrings;
+
+##############################################################
+#
+#  Answers
+#
+#
+
+ANS($ans1->cmp);
+ANS($ans2->cmp);
+ANS($ans3->cmp);
+ANS($ans4->cmp);
+ANS($ans5->cmp);
+
+
+ENDDOCUMENT();        

@@ -1,0 +1,128 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Sequences')
+## DBsection('Order of Convergence')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "numericalMethods.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+
+#############################
+#  Setup
+
+Context("Numeric");
+
+$a1 = random(2,4);
+$a2 = random(2,4);
+$k1 = 0.1*random(1,9);
+$k2 = 0.1*random(1,9);
+
+$x0 = 0.5*random(0,10);
+
+
+$f = Compute("$a1*cos($k1*x)+$a2*sin($k2*x)");
+$df = $f->D('x');
+
+
+@x = newtonsMethod($f,$x0,1e-12);
+
+BEGIN_PGML
+
+Perform Newton's Method to find a root of
+
+[`` f(x) =  [$a1] \cos([$k1]x)+[$a2]\sin([$k2]x)``]
+
+For the first 4 iterations.  Start with [`x_0=[$x[0]]`].
+
+
+[@
+begintable(2) .
+row("n","\\(x_n\\)") .
+row("0",ans_rule(12)).
+row("1",ans_rule(12)).
+row("2",ans_rule(12)).
+row("3",ans_rule(12)).
+row("4",ans_rule(12)).
+endtable();
+@]*
+
+END_PGML
+
+for($i=0;$i<5;$i++){
+ANS(Compute($x[$i])->cmp);
+}
+
+############################
+#  Solution
+
+# create f(x_n) and f'(x_n)
+
+$x0 = $x[0];
+
+$fexp = $f->TeX;
+$fexp =~ s/x/x_n/g;
+$f0 = $f->TeX;
+$f0 =~ s/x/($x0)/g;
+
+$dfexp = $df->TeX;
+$dfexp =~ s/x/x_n/g;
+$df0 = $df->TeX;
+$df0 =~ s/x/($x0)/g;
+
+
+BEGIN_PGML_SOLUTION
+
+For this, we use the standard Newton's Method formula:
+
+[`` x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} = x_n - \frac{[$fexp]}{[$dfexp]}``]
+
+For example,
+
+[`` x_1 = [$x[0]]- \frac{[$f0]}{[$df0]}=[$x[1]] ``]
+
+Continuing,  you get the following:
+
+
+[@
+begintable(2) .
+row("n","\\(x_n\\)") .
+row("0",$x[0]).
+row("1",$x[1]).
+row("2",$x[2]).
+row("3",$x[3]).
+row("4",$x[4]).
+endtable();
+@]*
+
+END_PGML_SOLUTION
+
+COMMENT("Uses PGML.");
+
+ENDDOCUMENT();

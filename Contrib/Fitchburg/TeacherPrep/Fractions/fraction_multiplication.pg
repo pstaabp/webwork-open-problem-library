@@ -1,0 +1,161 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Algebra')
+## DBchapter('Fundamentals')
+## DBsection('Real Numbers')
+## Date('6/3/2002')
+## Author('')
+## Institution('')
+## TitleText1('Precalculus')
+## EditionText1('3')
+## AuthorText1('Stewart, Redlin, Watson')
+## Section1('1.1')
+## Problem1('22')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   "contextFraction.pl",
+);
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 1;
+
+##############################################################
+#
+#  Setup
+#
+#
+Context("LimitedFraction");
+Context()->flags->set(requirePureFractions=>1);
+Context()->flags->set(showMixedNumbers=>0);
+
+# multiply with denoms with gcd = 1
+
+$den1a=random(5,10);
+do {
+$num1a=random(1,9);
+} until gcd($num1a,$den1a)==1 && $num1a <$den1a;
+
+do {
+$den1b = random(5,10);
+} until gcd($den1b,$den1a)==1;
+
+do{
+$num1b=random(1,9);
+} until gcd($den1b,$num1b)==1 && $num1b <$den1b;
+
+$frac1a=Fraction($num1a,$den1a);
+$frac1b=Fraction($num1b,$den1b);
+
+$ans1 = Fraction($frac1a*$frac1b);
+
+# multiply with denoms with gcd = 1 and improper
+
+$den2a=random(5,10);
+do {$num2a=random(6,20); } until gcd($num2a,$den2a)==1&& $num2a >$den2a;
+
+do {$den2b = random(5,10);} until gcd($den2b,$den2a)==1;
+
+do{ $num2b=random(5,20);} until gcd($den2b,$num2b)==1 && $num2b >$den2b;
+
+$frac2a=Fraction($num2a,$den2a);
+$frac2b=Fraction($num2b,$den2b);
+
+$ans2 = Fraction($frac2a*$frac2b);
+
+
+# multiplication with denominators that are a multiple of another
+
+$den3a = random(3,9);
+$den3b = random(2,4)*$den3a;
+do { $num3a=random(3,8); } until gcd($num3a,$den3a)==1;
+
+do {$num3b=random(4,11);} until gcd($num3b,$den3b)==1;
+
+$frac3a = Fraction($num3a,$den3a);
+$frac3b = Fraction($num3b,$den3b);
+$ans3 = Compute($frac3a*$frac3b);
+
+##  Fraction with GCF of denoms equal 1
+
+#$den3a = random(3,20); 
+#do {
+ #  $den3b = random(3,20);
+#} until gcd($den3a,$den3b) == 1;
+
+#do {
+ # $num3a = random(2,15);
+#} until gcd($num3a,$den3a)==1;
+
+#do {
+ # $num3b = random(2,15);
+#} until gcd($num3b,$den3b)==1 && $den3b*$num3a-$den3a*$num3b>0;
+
+#$frac3a = Fraction($num3a,$den3a);
+#$frac3b = Fraction($num3b,$den3b);
+#$ans3 = Compute($frac3a-$frac3b);
+
+## fractions will larger denominators, but GCF != 1
+
+do {
+  $den4a = 2**random(0,2)*3**random(0,2)*5**random(0,1)*7**random(0,1);
+  $den4b = 2**random(0,2)*3**random(0,2)*5**random(0,1)*7**random(0,1);  
+} until gcd($den4a,$den4b)!=1 && $den4a>2 && $den4b>2;
+
+do {
+  $num4a = random(2,$den4a-1);
+} until gcd($num4a,$den4a)==1;
+
+do {
+  $num4b = random(2,$den4b-1);
+  $den4b = 2**random(0,2)*3**random(0,2)*5**random(0,1)*7**random(0,1);
+} until gcd($num4b,$den4b)==1 && $den4b*$num4a-$den4a*$num4b>0;
+
+$frac4a = Fraction($num4a,$den4a);
+$frac4b = Fraction($num4b,$den4b);
+$ans4 = Compute($frac4a*$frac4b);
+
+
+##############################################################
+#
+#  Text
+#
+#
+
+Context()->texStrings;
+BEGIN_TEXT
+
+Evaluate the following operations.  You should reduce all fractions and write the answer as an improper fraction (not a mixed number): $PAR
+
+\(\displaystyle $frac1a \times $frac1b = \) \{ans_rule(20)\} $PAR
+\(\displaystyle $frac2a \times $frac2b = \) \{ans_rule(20)\} $PAR
+\(\displaystyle $frac3a \times $frac3b = \) \{ans_rule(20)\} $PAR
+\(\displaystyle $frac4a \times $frac4b = \) \{ans_rule(20)\} $PAR
+END_TEXT
+Context()->normalStrings;
+
+##############################################################
+#
+#  Answers
+#
+#
+
+ANS($ans1->cmp);
+ANS($ans2->cmp);
+ANS($ans3->cmp);
+ANS($ans4->cmp);
+
+
+ENDDOCUMENT();        

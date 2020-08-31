@@ -1,0 +1,95 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"PGmatrixmacros.pl"
+);
+
+Context("Point");
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+
+$det=0;
+
+while(($det==0)||($det<-3) || ($det>3))
+{
+$a11=random(-6,6); $a12=random(-6,6); 
+$a21=random(-6,6); $a22=random(-6,6); 
+$det=$a11*$a22-$a12*$a21;
+}
+ 
+$b1=abs($det)*random(-3,3); $b2=abs($det)*random(-3,3);
+
+$line1=nicestring([$a11,$a12],['x','y']);
+$line2=nicestring([$a21,$a22],['x','y']);
+ 
+#Find the inverse of the matrix:
+
+$c11=Compute("$a22/$det"); $c12=Compute("-$a12/$det"); 
+$c21=Compute("-$a21/$det"); $c22=Compute("$a11/$det"); 
+
+$soln= Point($c11*$b1+$c12*$b2,$c21*$b1+$c22*$b2); 
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+BEGIN_TEXT
+
+Consider the linear system 
+
+\begin{eqnarray}
+$line1 & = & $b1 \\
+$line2 & = & $b2 \\
+\end{eqnarray}
+
+
+First, write this system as a augmented coefficient matrix.  Then multiply this matrix by a sequence of elementary row reduction matrices to transform the matrix to one in reduced row echelon form (see examples 3.20 and 3.21 on p. 226 of the text).  Call these matrices \( M_1,M_2, \ldots, M_k \).  
+
+$PAR
+
+a)  Find the product of all the matrices: $BR
+\{ mbox('\(M_k M_{k-1}\cdots M_2 M_1 =\)',answer_matrix(2,2,5)) \} 
+
+$PAR
+
+b) Find the solution to your linear system (write your answer as a point): \{ ans_rule(10) \}
+
+
+END_TEXT
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+ANS($c11->cmp); 
+ANS($c12->cmp);
+ANS($c21->cmp); 
+ANS($c22->cmp);
+
+ANS($soln->cmp); 
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

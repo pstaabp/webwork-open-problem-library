@@ -1,0 +1,161 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"PGchoicemacros.pl"
+);
+
+
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+$x1a=random(-4,4);
+$x2a=random(-4,4);
+
+$a11a = random(-6,6); $a12a = random(-6,6); $b1a = $a11a*$x1a+$a12a*$x2a;
+$a21a = random(-6,6); $a22a = random(-6,6); $b2a = $a21a*$x1a+$a22a*$x2a;
+
+$line1a = nicestring([$a11a,$a12a],['x','y']);
+$line2a = nicestring([$a21a,$a22a],['x','y']);
+
+
+
+$radioA = new_multiple_choice();
+$radioA->qa("Is the point \(($x1a, $x2a)\) a solution to ", "yes");
+$radioA->extra("no");
+
+$x1c=random(-4,4);
+$x2c=random(-4,4);
+
+$a11c = random(-6,6); $a12c = random(-6,6); $b1c = $a11c*$x1+$a12c*$x;
+$a21c = random(-6,6); $a22c = random(-6,6); $b2c = 1+$a21c*$x1+$a22c*$x;
+
+$line1c = nicestring([$a11c,$a12c],['x','y']);
+$line2c = nicestring([$a21c,$a22c],['x','y']);
+
+
+
+$radioC = new_multiple_choice();
+$radioC->qa("Is the point \(($x1c, $x2c)\) a solution to ", "no");
+$radioC->extra("yes");
+
+
+
+
+$x1b=random(-4,4);
+$x2b=random(-4,4);
+$x3b=random(-4,4);
+
+$a11b=1; $a12b=0; $a13b = 4; $b1b = $a11b*$x1b+$a12b*$x2b+$a13b*$x3b;
+$a21b=2; $a22b=3; $a23b = 0; $b2b = $a21b*$x1b+$a22b*$x2b+$a23b*$x3b;
+$a31b=-3; $a32b=-2; $a33b = 3; $b3b = $a31b*$x1b+$a32b*$x2b+$a33b*$x3b;
+
+$line1b = nicestring([$a11b,$a12b,$a13b],['x','y','z']);
+$line2b = nicestring([$a21b,$a22b,$a23b],['x','y','z']);
+$line3b = nicestring([$a31b,$a32b,$a33b],['x','y','z']);
+
+
+$radioB = new_multiple_choice();
+$radioB->qa("Is the point \(($x1b, $x2b, $x3b)\) a solution to ", "yes");
+$radioB->extra("no");
+
+
+
+
+# Note that unlike match lists and select lists, you cannot call qa() again
+
+TEXT(beginproblem());
+BEGIN_TEXT
+\{ $radioA->print_q() \}$BR
+\( \
+\begin{cases}
+ $line1a &= $b1a, \\
+ $line2a &= $b2a.\\
+\end{cases} 
+\)$BR
+
+\{ $radioA->print_a() \}
+
+$PAR
+
+\{ $radioC->print_q() \}$BR
+\( \
+\begin{cases}
+ $line1c &= $b1c, \\
+ $line2c &= $b2c.\\
+\end{cases} 
+\)
+$BR
+
+\{ $radioC->print_a() \}
+
+$PAR
+
+\{ $radioB->print_q() \}$BR
+\( \
+\begin{cases}
+ $line1b &= $b1b, \\
+ $line2b &= $b2b,\\
+ $line3b &= $b3b,\\
+\end{cases} 
+\)
+
+
+$BR
+
+\{ $radioB->print_a() \}
+
+
+
+END_TEXT
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+ANS( radio_cmp( $radioA->correct_ans() ) );
+ANS( radio_cmp( $radioC->correct_ans() ) );
+ANS( radio_cmp( $radioB->correct_ans() ) );
+
+Context()->texStrings;
+SOLUTION(EV3(<<'END_SOLUTION'));
+$SOL $BR
+
+In this case, you need to plug the point into each equation, that is: $BR
+\(
+\begin{eqnarray}
+$a11($x1)+($a12)($x2)+($a13)($x3) & = $b1 \\
+$a21($x1)+($a22)($x2)+($a23)($x3) & = $b2 \\
+$a31($x1)+($a32)($x2)+($a33)($x3) & = $b3 \\
+\end{eqnarray}
+\) 
+
+$PAR
+And since ${BBOLD} all $EBOLD three equations are satisfied by the point, this means that the point \( ($x1,$x2,$x3) \) is a solution.
+
+END_SOLUTION
+Context()->normalStrings;
+
+
+
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

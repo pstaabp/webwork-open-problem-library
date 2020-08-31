@@ -1,0 +1,90 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Homogeneous and Nonhomogeneous Solutions')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGchoicemacros.pl",
+"PGcourse.pl",
+);
+
+Context("Vector");
+
+
+# Define all variables used in the problem statement and solution
+
+
+$row1=Vector(0,0,1,0);
+$row2=Vector(1,0,0,0);
+$row3=Vector(0,0,0,1);
+$row4=Vector(0,1,0,0); 
+
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+
+
+BEGIN_TEXT
+
+Consider the linear map \(f: \mathcal{M}_{2 \times 2} \rightarrow \mathcal{M}_{2 \times 2}\) such that 
+\[
+\left[ \begin{array}{rr} a & b \\ c & d \end{array} \right] \mapsto
+\left[ \begin{array}{rr} c & a \\ d & b \end{array} \right].
+\]
+The map rotates the matrix (not to be confused with a rotation matrix).  Find the matrix that represents the map in the standard basis:
+\[B=
+\langle 
+\left[ \begin{array}{rr} 1 & 0 \\ 0 & 0 \end{array} \right], \; 
+\left[ \begin{array}{rr} 0 & 1 \\ 0 & 0 \end{array} \right], \; 
+\left[ \begin{array}{rr} 0 & 0 \\ 1 & 0 \end{array} \right], \; 
+\left[ \begin{array}{rr} 0 & 0 \\ 0 & 1 \end{array} \right] \rangle\]
+
+$PAR
+Hint: each basis matrix \(b_i\) is represented by the standard vector \( \vec{e}_i \in \mathbb{R}^4\).  Rotate each basis matrix in \( B\) to determine how each representation maps.  The columns of the resulting matrix are these representations.  
+
+$PAR
+
+Each row of the matrix should be written as a vector separated by commas, such as <1,2,3,4> $PAR
+
+\{ ans_rule(20) \} $BR
+\{ ans_rule(20) \} $BR
+\{ ans_rule(20) \} $BR
+\{ ans_rule(20) \} $BR
+
+
+END_TEXT
+
+
+# Enter the correct answers to be checked against the answers to the students.
+
+$showPartialCorrectAnswers = 1;
+
+ANS($row1->cmp); 
+ANS($row2->cmp); 
+ANS($row3->cmp);
+ANS($row4->cmp); 
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

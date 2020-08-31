@@ -1,0 +1,165 @@
+##DESCRIPTION
+##  Bisection method for a function with a non-closed solution.
+##ENDDESCRIPTION
+
+##KEYWORDS('bisection method', 'rootfinding')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Rootfinding')
+## DBsection('Bisection Method')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "numericalMethods.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+
+#############################
+#  Setup
+
+Context("Numeric");
+
+$k1 = random(1,8);
+$k2 = random(1,8);
+
+$f = Compute("$k1*exp(-$k2*x)-x");
+
+$f1 = nicestring([-$k2],["x"]);
+$f2 = nicestring([$k1],["e^{" . $f1 . "}"] );
+
+@intervals = bisection($f,0,2,1e-12,8);
+
+
+# @a = (0); @b=(2);
+#
+# for($i=0;$i<8;$i++){
+#   $c = 0.5*($a[$i]+$b[$i]);
+#   $fa = $f->eval(x => $a[$i]);
+#   $fb = $f->eval(x => $b[$i]);
+#   $fc = $f->eval(x => $c);
+#   push(@a,($fa*$fc<0)?$a[$i]:$c);
+#   push(@b,($fa*$fc<0)?$c:$b[$i]);
+# }
+
+BEGIN_PGML
+
+There is one root of the function
+
+[``f(x)= [$f2]-x``]
+
+in the interval [` [0,2] `].  Use the bisection method to determine the left and right endpoints of the interval.  Determine the first 8 steps.  Start with the initial interval:
+
+[@
+begintable(3) .
+row("n","\\(a_n\\)","\\(b_n\\)") .
+row("0",ans_rule(12),ans_rule(12)).
+row("1",ans_rule(12),ans_rule(12)).
+row("2",ans_rule(12),ans_rule(12)).
+row("3",ans_rule(12),ans_rule(12)).
+row("4",ans_rule(12),ans_rule(12)).
+row("5",ans_rule(12),ans_rule(12)).
+row("6",ans_rule(12),ans_rule(12)).
+row("7",ans_rule(12),ans_rule(12)).
+endtable();
+@]*
+
+END_PGML
+
+for($i=0;$i<8;$i++){
+ANS(Compute($intervals[$i][0])->cmp);
+ANS(Compute($intervals[$i][1])->cmp);
+}
+
+############################
+#  Solution
+
+$fa0= $f->eval(x=>0); $fc0= $f->eval(x=>1); $fb0= $f->eval(x=>2);
+
+if($fa0*$fc0<0){
+  $a1=0; $b1=1;  $inter1 = "left"; $fns1 = "f(a_0)f(c_0)<0";
+  } else {
+  $a1=1; $b1=2; $inter1 = "right"; $fns1 = "f(c_0)f(b_0)<0";
+}
+
+$c1 = 0.5*($a1+$b1);
+
+$fa1= $f->eval(x=>$a1); $fc1= $f->eval(x=>$c1); $fb1= $f->eval(x=>$b1);
+
+if($fa1*$fc1<0){
+  $a2=$a1; $b2=$c1; $inter2 = "left"; $fns2 = "f(a_1)f(c_1)<0";
+  } else {
+  $a2=$c1; $b2=$b1; $inter2 = "right"; $fns2 = "f(c_1)f(b_1)<0";
+}
+
+
+
+
+BEGIN_PGML_SOLUTION
+
+
+
+The basic bisection is used in which at each step the left or right interval is kept to ensure that there is still a root.
+
+We start with the interval [` [0,2] `], therefore
+
+[`` a_0 = 0, b_0 = 2 ``]
+
+and the midpoint [`c_0 = 1 `].  Since
+
+[`` f(a_0) = [$fa0], \quad f(c_0) = [$fc0], \quad f(b_0) = [$fb0] ``]
+
+and since [` [$fns1] `], then we use the [$inter1] interval and thus
+
+[`` a_1 = [$a1], \quad b_1 = [$b1] ``]
+
+Next, we repeat these steps using the interval [` [[$a1],[$b1]] `]:
+
+[`` f(a_1) = [$fa1], \quad f(c_1) = [$fc1], \quad f(b_1) = [$fb1] ``]
+
+and since [` [$fns2] `], then we use the [$inter2] interval and thus
+
+[`` a_2 = [$a2], \quad b_2 = [$b2] ``]
+
+Continuing this process, you can build up the following table:
+
+[@
+begintable(3) .
+row("n","\\(a_n\\)","\\(b_n\\)") .
+row("0",$intervals[0][0],$intervals[0][1]).
+row("1",$intervals[1][0],$intervals[1][1]).
+row("2",$intervals[2][0],$intervals[2][1]).
+row("3",$intervals[3][0],$intervals[3][1]).
+row("4",$intervals[4][0],$intervals[4][1]).
+row("5",$intervals[5][0],$intervals[5][1]).
+row("6",$intervals[6][0],$intervals[6][1]).
+row("7",$intervals[7][0],$intervals[7][1]).
+endtable();
+@]*
+
+
+
+END_PGML_SOLUTION
+
+COMMENT("Uses PGML.");
+
+ENDDOCUMENT();

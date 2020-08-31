@@ -1,0 +1,125 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Sequences')
+## DBsection('Order of Convergence')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT(); 
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "AnswerFormatHelp.pl",
+  "PGpolynomialmacros.pl",
+  "contextFraction.pl",
+  "PGML.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+
+#############################
+#  Setup
+
+Context("Fraction");
+
+$showPartialCorrectAnswers = 1;
+$showPartialCredit = 0;
+
+$a= non_zero_random(-5,5); 
+$b = $a;
+while($a==$b){
+  $b=non_zero_random(-3,3); 
+}
+
+@p = (1);
+$p1 = [1,-$a]; 
+$p2 = [1,-$b];
+
+$n1=random(2,4); 
+
+for($i=0;$i<$n1; $i++){
+ @p = PolyMult($p1,~~@p);
+}
+$m1=5-$n1;
+for($i=0;$i<$m1; $i++){
+ @p = PolyMult($p2,~~@p);
+}
+$out = PolyString(~~@p); 
+
+### e^{kx} - taylor 
+
+$n2 = random(2,4);
+$k2 = non_zero_random(-3,3); 
+
+@tay2=(1);
+$fact=1;
+for($i=1;$i<$n2;$i++){
+  $fact *= $i; 
+  $coeff = Fraction($k2**$i,$fact)->reduce; 
+  push(@tay2,$coeff); 
+}
+
+@tay2a = reverse @tay2;
+
+#$tayout= PolyString(~~@tay2a); 
+$tayout2 = nicestring(~~@tay2a); 
+$arg2 = nicestring([$k2,0]); 
+
+### sin(kx) - taylor 
+
+$n3 = random(2,3);
+$k3 = random(1,4);
+
+@tay3=(Fraction(-$k3**3,6),0,$k3,0);
+$tayout3= PolyString(~~@tay3); 
+$arg3 = nicestring([$k3,0]); 
+
+
+BEGIN_PGML
+
+For each of the following functions and points, determine the multiplicity.  
+
+
+[`` f(x) = [$out] ``] at [` x= [$a] `]
+
+Multiplicity is [_______]{$n1}
+
+[`` g(x) = [$tayout2] -e^{[$arg2]} ``] at [`x=0`]
+
+Multiplicity is [_______]{$n2}
+
+[`` h(x) = [$tayout3] -\sin([$arg3]) ``] at [`x=0`]
+
+Multiplicity is [_______]{5}
+
+END_PGML
+
+
+############################
+#  Solution
+
+BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+COMMENT("Uses PGML.");
+
+ENDDOCUMENT();

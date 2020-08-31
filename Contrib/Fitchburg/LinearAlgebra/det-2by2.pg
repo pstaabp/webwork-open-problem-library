@@ -1,0 +1,65 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"PGmatrixmacros.pl"
+);
+
+Context("Point");
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+
+$det=0;
+
+while($det==0)
+{
+$a11=random(-6,6); $a12=random(-6,6); 
+$a21=random(-6,6); $a22=random(-6,6); 
+$det=$a11*$a22-$a12*$a21;
+}
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+BEGIN_TEXT
+
+If 
+\[ A = \left[ \begin{array}{rr}
+$a11 & $a12 \\ $a21 & $a22
+\end{array} \right] \]
+
+Then \( |A| = \) \{ans_rule(10)\}
+
+END_TEXT
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+ANS(Real($det)->cmp); 
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

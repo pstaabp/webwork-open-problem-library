@@ -1,0 +1,134 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Homogeneous and Nonhomogeneous Solutions')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGchoicemacros.pl",
+"PGcourse.pl",
+);
+
+Context("Vector");
+Context()->strings->add("yes");
+Context()->strings->add("no");
+
+
+# Define all variables used in the problem statement and solution
+
+$a11=random(-4,4);$a21=random(-4,4);$a31=random(-4,4);
+$a12=random(-4,4);$a22=random(-4,4);$a32=random(-4,4);
+
+$anorm2 = $a11*$a11+$a21*$a21+$a31*$a31;
+
+$ans1a=Real($a11*$a12+$a21*$a22+$a31*$a32);
+$ans1b=Compute("sqrt($anorm2)");
+
+
+$b11 = random(-4,4); $b12 = random(-4,4); $b13 = random(-4,4); 
+$b21 = random(-4,4); $b22 = random(-4,4); $b23 = random(-4,4);  
+
+$poly1=nicestring([$b11,$b12,$b13],['','x','x^2']);
+$poly2=nicestring([$b21,$b22,$b23],['','x','x^2']);
+
+$tmp = 6*$b13*$b23+10*($b11*$b23+$b21*$b13+$b12*$b22)+30*$b11*$b21;
+
+$ans2a = Compute("$tmp/15");
+
+$tmp = 6*$b13*$b13+20*$b13*$b11+10*$b12*$b12+30*$b11*$b11;
+$ans2b = Compute("sqrt($tmp/15)");  
+
+$c11 = random(-3,3); $c12 = random(-3,3);
+$c21 = random(-3,3); $c22 = random(-3,3);
+
+$poly3=nicestring([$c11,$c12],['','x']);
+$poly4=nicestring([$c21,$c22],['','x']);
+
+$tmp = $c11*$c21+$c12*$c21+$c22*$c11+2*$c12*$c22;
+$ans3a = Compute("$tmp"); 
+
+$tmp = $c11*$c11+2*$c11*$c12+2*$c12*$c12;
+$ans3b = Compute("sqrt($tmp)"); 
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+
+
+BEGIN_TEXT
+
+
+Each of the following lists a vector space \(V\), an inner product and two vectors.  Find the inner products or norm, where \(||f|| =\sqrt{ \langle f,f \rangle}\) for the given inner product.  
+
+$PAR
+
+a) 
+
+\[ V = \mathbb{R}^3, \qquad \langle \vec{u},\vec{v} \rangle = \vec{u}^T \vec{v}, \qquad \vec{u} =  \left[\begin{array}{r} $a11 \\ $a21 \\ $a31 \end{array} \right], \quad \vec{v} = \left[\begin{array}{r} $a12 \\ $a22 \\ $a32 \end{array} \right] 
+ \]
+
+$PAR
+\( \langle \vec{u}, \vec{v} \rangle \) = \{ ans_rule(10)\}  $BR
+\( || \vec{u} || \) = \{ ans_rule(10) \}
+
+
+$PAR
+
+ b) 
+
+\[ V = \mathcal{P}_2, \qquad \langle p,q \rangle = \int_{-1}^1 p q \, dx , \qquad p =  $poly1, \quad q = $poly2
+ \]
+
+$PAR
+\( \langle p,q \rangle \) = \{ ans_rule(10)\}  $BR
+\( || p || \) = \{ ans_rule(10) \}
+
+$PAR
+
+ c) 
+
+\[ V = \mathcal{P}_1, \qquad \langle p,q \rangle = \int_{0}^{\infty} e^{-x} p q \, dx , \qquad p =  $poly3, \quad q = $poly4
+ \]
+
+$PAR
+\( \langle p,q \rangle \) = \{ ans_rule(10)\}  $BR
+\( || p || \) = \{ ans_rule(10) \}
+
+
+
+
+END_TEXT
+
+
+# Enter the correct answers to be checked against the answers to the students.
+
+$showPartialCorrectAnswers = 0;
+
+ANS($ans1a->cmp); ANS($ans1b->cmp); 
+
+ANS($ans2a->cmp); ANS($ans2b->cmp); 
+
+ANS($ans3a->cmp); ANS($ans3b->cmp); 
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

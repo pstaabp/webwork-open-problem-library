@@ -1,0 +1,149 @@
+## DESCRIPTION
+## WeBWorK Demo 
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Homogeneous and Nonhomogeneous Solutions')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl",
+"MathObjects.pl",
+"parserVectorUtils.pl",
+"parserSolutionFor.pl"
+);
+
+Context("Matrix");
+Context()->variables->add(t=>'Real');
+
+# Define all variables used in the problem statement and solution
+
+$a11 = non_zero_random(-5,5); $a12 = non_zero_random(-5,5); $a13 = non_zero_random(-5,5); $b1 = non_zero_random(-5,5);
+
+$a21 = non_zero_random(-5,5); $a22 = non_zero_random(-5,5); $a23 = non_zero_random(-5,5); $b2 = non_zero_random(-5,5);
+
+
+$k1 = non_zero_random(-3,3);$k2 = non_zero_random(-3,3);
+
+$a31=$k1*$a11+$k2*$a21;
+$a32=$k1*$a12+$k2*$a22;
+$a33=$k1*$a13+$k2*$a23;
+$b3=$k1*$b1+$k2*$b2;
+
+$Amat = Compute("[[$a11,$a12,$a13],[$a21,$a22,$a23],[$a31,$a32,$a33]]");
+$bvect = Compute("<$b1,$b2,$b3>");
+$bv = Compute("[[$b1],[$b2],[$b3]]");
+
+$det1=$a11*$a22-$a12*$a21;
+$det2=$a11*$b2-$a21*$b1;
+$det3=$a22*$b1-$a12*$b2;
+$det4=$a21*$a13-$a11*$a23;
+$det5=$a12*$a23-$a22*$a3;
+
+$fun = $Amat*$bvect;
+$ans1= Compute("<$det3,$det2,0>");
+$ans2= Compute("<$det4,$det5,$det1>*t");
+
+
+$zero=Compute("[[0],[0],[0]]");
+$zvector = Compute("<0,0,0>"); 
+
+$line1 = nicestring([$a11,$a12,$a13],['x','y','z']);
+$line2 = nicestring([$a21,$a22,$a23],['x','y','z']);
+$line3 = nicestring([$a31,$a32,$a33],['x','y','z']);
+
+sub check_solution1 {
+  my ($correct, $student, $ansHash) = @_;
+  return ($Amat*$student==$bv);
+}
+
+sub check_solution2 {
+  my ($correct, $student, $ansHash) = @_;
+  $dstudent = $student->D('t');
+  if ($dstudent == $zvector) {return 0;}
+  #warn($Amat*$student);
+  #warn($svalues);
+  #warn(abs($Amat*$student-$bvect));
+  return ($Amat*$student==$zero);
+}
+
+
+
+# Now begin with the Problem Statement 
+
+TEXT(beginproblem());
+Context()->texStrings;
+BEGIN_TEXT
+
+$PAR
+
+Consider the following linear system. 
+
+\[
+\begin{eqnarray}
+$line1 & = & $b1 \\
+$line2 & = & $b2 \\
+$line3 & = & $b3 \\
+\end{eqnarray} \] 
+
+$PAR
+
+Write a particular solution as a vector, e.g. <1,2,3>, to the linear system: $BR
+\( \vec{x}_p = \) \{ ans_rule(25) \} $PAR
+
+Write the solution to the associated homogeneous system in the form \( \vec{x}=t\vec{u} \) $BR
+\(\vec{x}_h = \) \{ ans_rule(25) \} 
+
+
+
+
+END_TEXT
+
+
+
+
+Context()->normalStrings;
+
+# Enter the correct answers to be checked against the answers to the students.
+
+$showPartialCorrectAnswers = 1;
+
+ANS( $ans1->cmp( checker=>~~&check_solution1,
+               showCoordinateHints => 0 ) );
+
+#ANS( $ans1->cmp(checker => sub {
+ #     my ( $correct, $student, $self ) = @_;
+
+      # my $context = Context()->copy;
+      # return 0 if $student == 0;
+      #$context->flags->set(no_parameters=>0);
+      #$context->variables->add('C0'=>'Parameter');
+      #my $c0 = Formula($context,'C0');
+      #$student = Formula($context,$student);
+   #   $correct = Formula($context,"7");
+  #    warn("Hi");
+      #return (abs($Amat*$student-$bvect)<1e-8);
+   #  return 0;
+    #}
+#) );
+
+
+ANS($ans2->cmp( checker=>~~&check_solution2,
+               showCoordinateHints => 0 ) );
+#ANS($ans2->cmp);
+
+
+# That's it.
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
