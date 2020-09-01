@@ -1,0 +1,73 @@
+##DESCRIPTION
+##  Problem converts between decimal and base-5
+##ENDDESCRIPTION
+
+##KEYWORDS('teacher preparation', 'base-5')
+
+## DBsubject('Teacher Preparation')
+## DBchapter('Other Number Systems')
+## DBsection('Base 5 Numbers')
+## Date('8/30/2020')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGML.pl",
+"PGcourse.pl",
+"base5.pl",
+);
+
+# make sure we're in the context we want
+Context("Numeric");
+$showPartialCorrectAnswers = 1;
+
+$a1 = random(6, 24, 1);$a1_5 = base_to($a1,5);
+$a2 = random(25, 124, 1);$a2_5 = base_to($a2,5);
+$a3 = random(125, 625, 1);$a3_5 = base_to($a3,5);
+
+@d1 = split //, "".$a1_5;
+@d2 = split //, "".$a2_5;
+@d3 = split //, "".$a3_5;
+
+TEXT(beginproblem());
+BEGIN_PGML
+
+Convert each of the following from decimal to base-5.  (Hint: you may want to think about using the chip/coin model)
+
+1. [`[$a1]`]=[________]{$a1_5}[`_5`]
+
+2. [`[$a2]`]=[________]{$a2_5}[`_5`]
+
+3. [`[$a3]`]=[________]{$a3_5}[`_5`]
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+*SOLUTION*
+
+We will solve this in an intuitive nature, thinking of determining the number of pennies, nickels, quarters and 125-cent coins. 
+
+1. To convert [`[$a1]`] to base-5, note that since this is less than 25, it is a 2-digit base-5 number.  This can be written as [`[$d1[0]]`] nickels and [`[$d1[1]]`] pennies so [`[$a1]`] in decimal is [`[$a1_5]_5`].
+
+2. To convert [`[$a2]`] to base-5, note that since this is less than 125, it is a 3-digit base-5 number.  First, note that there are [`[$d2[0]]`] quarters in this number.  Then the remainder is [`[$a2]-[$d2[0]*25]=[$a2-$d2[0]*25]`].
+
+    This can be written as [`[$d2[1]]`] nickels and [`[$d2[2]]`] pennies so [`[$a2]`] in decimal is [`[$a2_5]_5`].
+
+3. To convert [`[$a3]`] to base-5, note that since this is more than 125 and less than 625, so it is a 4-digit base-5 number.  First, note that there are [`[$d3[0]]`] 125s in this number.  Then the remainder is [`[$a3]-[$d3[0]*125]=[$a3-$d3[0]*125]`].
+
+    We then convert [`[$a3-$d3[0]*125]`] to base-5.  This has [`[$d3[1]]`] quarters in it with [`[$a3-$d3[0]*125]-[$d3[1]*25]=[$a3-$d3[0]*125-$d3[1]*25]`] leftover which is [`[$d3[2]]`] nickels and [`[$d3[3]]`] pennies.  
+    
+    The result is that [`[$a3]`] in base-5 is [`[$a3_5]_5`]. 
+
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

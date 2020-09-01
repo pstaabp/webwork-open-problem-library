@@ -1,0 +1,65 @@
+##DESCRIPTION
+##  Problem converts between decimal and base-5
+##ENDDESCRIPTION
+
+##KEYWORDS('teacher preparation', 'base-5')
+
+## DBsubject('Teacher Preparation')
+## DBchapter('Other Number Systems')
+## DBsection('Base 5 Numbers')
+## Date('8/30/2020')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGML.pl",
+"PGcourse.pl",
+"base5.pl",
+);
+
+# make sure we're in the context we want
+Context("Numeric");
+$showPartialCorrectAnswers = 1;
+
+$a1 = random(1, 24, 1);$a1_5 = base_to($a1,5);
+$a2 = random(25, 124, 1);$a2_5 = base_to($a2,5);
+$a3 = random(125, 625, 1);$a3_5 = base_to($a3,5);
+
+
+TEXT(beginproblem());
+BEGIN_PGML
+
+Convert each of the following from decimal to base-5.  (Hint: you may want to think about using the chip/coin model)
+
+1. [`[$a1_5]_5`]=[________]{$a1}
+
+2. [`[$a2_5]_5`]=[________]{$a2}
+
+3. [`[$a3_5]_5`]=[________]{$a3}
+
+END_PGML
+
+@d1 = split //, ("".$a1_5);
+@d2 = split //, ("".$a2_5);
+@d3 = split //, ("".$a3_5);
+
+BEGIN_PGML_SOLUTION
+*SOLUTION*
+
+Recall that from right to left, the digits represent ones, fives, 25s and 125s, so using the digits as multiples of these values: 
+
+1. [`5 \times [$d1[0]] + [$d1[1]] = [$a1]`]
+2. [`25 \times [$d2[0]] + 5 \times [$d2[1]] + [$d2[2]] = [$a2]`]
+3. [`125 \times [$d3[0]] + 25 \times[$d3[1]]+ 5 \times [$d3[2]] + [$d3[3]] = [$a3]`]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

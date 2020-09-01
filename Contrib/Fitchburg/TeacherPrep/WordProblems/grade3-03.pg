@@ -1,0 +1,64 @@
+# DESCRIPTION
+# A simple sample problem that asks students to 
+# differentiate a trigonometric function.
+# WeBWorK problem written by Gavin LaRose
+# <glarose(at)umich(dot)edu>
+# and modified by Mike Gage   gage(at)math(dot)rochester(dot)edu
+# ENDDESCRIPTION
+
+## DBsubject('WeBWorK')
+## DBchapter('Demos')
+## DBsection('Problem')
+## KEYWORDS('')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGML.pl",
+"PGcourse.pl",
+"PCCmacros.pl",
+);
+
+# make sure we're in the context we want
+Context("Numeric");
+$showPartialCorrectAnswers = 1;
+
+$name1 = RandomName(sex=>"male");
+
+$x1 = random(3,9); 
+
+do { $x2 = random(2,5); } until ($x1 != $x2); 
+
+$prod = $x1*$x2; 
+
+TEXT(beginproblem());
+BEGIN_PGML
+
+[$name1]'s fish store has [$prod] goldfish. The fish are in  [$x2] aquariums.  The same number of goldfish are in each aquarium.  How many goldfish are in each aquarium?
+
+There are [________]{$prod} goldfish.
+
+There are [________]{$x2} aquariums.
+
+There are [________]{$x1} goldfish in each aquarium. 
+
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+*SOLUTION*
+
+The total number of pages is the number of the three page totals or 
+[`[$m1]+[$m2]+[$m3] = [$ans1]`]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

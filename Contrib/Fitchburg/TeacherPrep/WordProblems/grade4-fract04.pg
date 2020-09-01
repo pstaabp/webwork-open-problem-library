@@ -1,0 +1,64 @@
+# DESCRIPTION
+# Base-5 subtraction problems to help with the understanding of the standard 
+# subtraction algorithm.
+# ENDDESCRIPTION
+
+## DBsubject('Elementary Education')
+## DBchapter('Arithmetic')
+## DBsection('Models')
+## KEYWORDS('')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+
+
+DOCUMENT();
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGML.pl",
+"PGcourse.pl",
+"contextFraction.pl",
+"PCCmacros.pl"
+);
+
+# make sure we're in the context we want
+Context("Fraction");
+$showPartialCorrectAnswers = 1;
+
+$x = list_random(3,4,5,10);
+do {$y = list_random(5,10,20,25);} until ($x != $y);
+$prod = $x*$y; 
+
+$name = RandomName(sex=>"female");
+
+$f = Compute("1-$x/$prod");
+$fract_left = Compute("$x/$prod"); 
+$ans = Compute("1-$f"); 
+
+TEXT(beginproblem());
+BEGIN_PGML
+
+[$name] made  [`[$prod]`] sandwiches for a children's party.  The children ate [`[$f]`] of the sandwiches.  How many sandwiches are left? 
+
+[________]{$x}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+*SOLUTION*
+
+
+The fraction of sandwiches left are [`[$fract_left]`].  
+
+Then [`[$fract_left]`] of [`[$prod]`] is [`[$x]`]. 
+
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

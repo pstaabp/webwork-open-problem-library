@@ -1,0 +1,135 @@
+##DESCRIPTION
+##  Problem that asks about doing arithmetic mentally.
+##ENDDESCRIPTION
+
+##KEYWORDS('teacher preparation', 'mental math', 'arithmetic')
+
+## DBsubject('Teacher Preparation')
+## DBchapter('Basic Arithmetic')
+## DBsection('Mental Mathematics')
+## Date('8/30/2020')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   "PGML.pl",
+   "parserPopUp.pl",
+   "niceTables.pl",
+);
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 1;
+
+##############################################################
+#
+#  Setup
+#
+#
+Context("Numeric");
+
+$arith_props = [
+    "Select Property",
+    "Additive Identity",
+    "Associativity",
+    "Commutativity",
+    "Compensation",
+    "Multiplicative Identity",
+    "Reflexsive",
+    "Statement is not True"];
+
+$a1 = random(250,950);
+do {$b1 = random(250,950)} until ($a1 != b1);
+
+$ans1 = PopUp($arith_props,"Commutativity" );
+
+$a2 = random(10,99);
+do {
+  $b2 = random(10,99);
+  $c2 = random(10,99);
+} until ($a2 != $b2 && $a2 != $c2 && $b2 != $c2); 
+
+$ans2 = PopUp($arith_props,"Associativity");
+
+$ans3 = PopUp($arith_props,"Additive Identity");
+
+$a3 = random(10,99);
+do {
+  $b3 = random(10,99);
+  $c3 = random(10,99);
+} until ($a3 != $b3 && $a3 != $c3 && $b3 != $c3); 
+
+$ans5 = PopUp($arith_props,"Associativity");
+
+$a4 = random(10,99);
+do {$b4 = random(10,99);} until ($a4 != $b4);
+
+$ans4 = PopUp($arith_props,"Statement is not True");
+
+##############################################################
+#
+#  Text
+#
+#
+
+BEGIN_PGML
+
+For each of the following statements, like the arithmetic property or thinking strategy:
+
+[@
+  DataTable(
+    [
+      [
+        PGML('[`[$a1]+[$b1] = [$b1]+[$a1]`]'), PGML('[@$ans1->menu()@]*')
+      ],
+      [
+        PGML('[`[$a2]+([$b2]+[$c2]) = ([$a2]+[$b2]) + [$c2]`]'), PGML('[@$ans2->menu()@]*')
+      ],
+      [
+        PGML('[`[$a1] + 0 = [$a1]`]'), PGML('[@$ans3->menu()@]*')
+      ],
+      [
+        PGML('[`[$a4]-[$b4] = [$b4] - [$a4]`]'), PGML('[@$ans4->menu()@]*')
+      ],
+      [
+        PGML('[`[$a3]\times([$b3]\times[$c3]) = ([$a3]\times[$b3]) \times [$c3]`]'), PGML('[@$ans5->menu()@]*')
+      ],
+    ],
+    caption => ' ',
+    midrules=>0,
+    align => 'll'
+  )
+@]***
+
+END_PGML
+
+ANS( $ans1->cmp() );
+ANS( $ans2->cmp() );
+ANS( $ans3->cmp() );
+ANS( $ans4->cmp() );
+ANS( $ans5->cmp() );
+
+
+BEGIN_PGML_SOLUTION
+1. The statement [`[$a1]+[$b1] = [$b1]+[$a1]`] is the additive commutative property.
+2. The statement [`[$a2]+([$b2]+[$c2]) = ([$a2]+[$b2]) + [$c2]`] is the additive associative property.
+3. The statement [`[$a1] + 0 = [$a1]`] is the additive identity property.
+4. The statement [`[$a4]-[$b4] = [$b4] - [$a4]`] is not true.
+5. The statement [`[$a3]\times([$b3]\times[$c3]) = ([$a3]\times[$b3]) \times [$c3]`] is the multiplicative associative property. 
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();        

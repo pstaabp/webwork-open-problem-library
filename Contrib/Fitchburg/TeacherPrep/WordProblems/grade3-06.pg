@@ -1,0 +1,60 @@
+# DESCRIPTION
+# A simple sample problem that asks students to 
+# differentiate a trigonometric function.
+# WeBWorK problem written by Gavin LaRose
+# <glarose(at)umich(dot)edu>
+# and modified by Mike Gage   gage(at)math(dot)rochester(dot)edu
+# ENDDESCRIPTION
+
+## DBsubject('WeBWorK')
+## DBchapter('Demos')
+## DBsection('Problem')
+## KEYWORDS('')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGML.pl",
+"PGcourse.pl",
+"PCCmacros.pl",
+);
+
+# make sure we're in the context we want
+Context("Numeric");
+$showPartialCorrectAnswers = 1;
+
+$a1 = random(49,72); 
+$a2 = random(25,48);
+$a3 = random(39,61); 
+
+
+TEXT(beginproblem());
+BEGIN_PGML
+
+Mrs. Lopez is [$a1] years old, Mr. Pina is [$a2] years old and Ms. Sullivan is [$a3] years old. 
+
+Their combined age is ? [_______]{Real($a1+$a2+$a3)}
+
+How much old is Mrs. Lopez than Mr. Pina? [_______]{Real($a1-$a2)}
+
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+*SOLUTION*
+
+Their combined age is the sum or [@ Real($a1+$a2+$a3) @]. 
+
+The second answer is the difference of the ages or [`[$a1]-[$a2]=`] [@ Real($a1-$a2) @]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

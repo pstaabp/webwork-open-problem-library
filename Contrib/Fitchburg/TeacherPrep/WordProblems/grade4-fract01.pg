@@ -1,0 +1,62 @@
+# DESCRIPTION
+# Base-5 subtraction problems to help with the understanding of the standard 
+# subtraction algorithm.
+# ENDDESCRIPTION
+
+## DBsubject('Elementary Education')
+## DBchapter('Arithmetic')
+## DBsection('Models')
+## KEYWORDS('')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+
+
+DOCUMENT();
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGML.pl",
+"PGcourse.pl",
+"contextFraction.pl",
+"PCCmacros.pl"
+);
+
+# make sure we're in the context we want
+Context("Fraction");
+$showPartialCorrectAnswers = 1;
+
+$denom = random(4,8);
+$a1=random(1,2);
+$a2=random(2,5);
+$f1 = Compute("$a1/$denom");
+$f2 = Compute("$a2/$denom");
+
+$name1 = RandomName();
+do {$name2 = RandomName } until ($name1 ne $name2); 
+
+$ans = Compute($f1+$f2); 
+
+TEXT(beginproblem());
+BEGIN_PGML
+
+[$name1] ate [`[$f1]`] of a cake and [$name2] ate [`[$f2]`] of it?  What fraction of the cake did they eat altogether? 
+
+[________]{$ans}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+*SOLUTION*
+
+This is the addition of fractions.  Since the denominators are the same, the result is the sum of the numerators over the common denominator or
+[`[$ans]`]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

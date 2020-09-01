@@ -1,0 +1,70 @@
+# DESCRIPTION
+# Fraction story problem.
+# ENDDESCRIPTION
+
+## DBsubject('Elementary Education')
+## DBchapter('Arithmetic')
+## DBsection('Models')
+## KEYWORDS('')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+
+
+DOCUMENT();
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGML.pl",
+"PGcourse.pl",
+"contextFraction.pl",
+"PCCmacros.pl"
+);
+
+# make sure we're in the context we want
+Context("Fraction");
+$showPartialCorrectAnswers = 1;
+
+$x= random(1,2);
+$y = 5-$x; 
+$z = random(4,6); 
+$num_brown = $x*$z; 
+$num_orange = $y*$z;
+$total = $num_brown + $num_orange;
+$fract_brown = Compute("$x/5");
+$fract_orange = Compute("$y/5"); 
+
+
+TEXT(beginproblem());
+BEGIN_PGML
+
+There is a bag of M&M's that are only brown and orange. [`[$fract_brown]`] of the bag are brown.
+
+What fraction of the bag of M&M's are orange? [_____]{$fract_orange}
+
+If there are [`[$num_orange]`] M&M's that are orange, how many M&M's are there alltogether? [________]{$total}
+
+How many more orange M&M's are there than brown ones?  [________]{$num_brown}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+*SOLUTION*
+
+
+The fraction of orange M&M's is [`1-[$fract_brown]=[$fract_orange]`]
+
+To find the answer to the second one.  We know that [`[$fract_orange]`] units is [`[$num_orange]`], so [`\frac{1}{5}`] is [`[$z]`].
+
+If [`\frac{1}{5}`] of a unit is [`[$z]`], then one unit is [`[$total]`].  There are a total of [`[$total]`] M&M's. 
+
+If there are [`[$total]`] M&M's altogether and there are [`[$num_orange]`] orange M&M's, there are [`[$total]-[$num_orange]=[$num_brown]`] M&M's. 
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

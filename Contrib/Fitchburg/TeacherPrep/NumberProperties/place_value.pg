@@ -1,0 +1,126 @@
+##DESCRIPTION
+##  Problem that asks about doing arithmetic mentally.
+##ENDDESCRIPTION
+
+##KEYWORDS('teacher preparation', 'mental math', 'arithmetic')
+
+## DBsubject('Teacher Preparation')
+## DBchapter('Basic Arithmetic')
+## DBsection('Mental Mathematics')
+## Date('8/30/2020')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   "PGML.pl",
+   "parserPopUp.pl",
+   "PGchoicemacros.pl",
+   "niceTables.pl",
+);  
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 0;
+
+##############################################################
+#
+#  Setup
+#
+#
+Context("Numeric");
+
+@vals=(random(1,9),,,,);
+
+do {$vals[1] = random(0,9);} until ($vals[1] != $vals[0]);
+do {$vals[2] = random(0,9);} until ($vals[2] != $vals[1] && $vals[2] != $vals[0]);
+do {$vals[3] = random(0,9);} until ($vals[3] != $vals[2] && $vals[3] != $vals[1] && $vals[3] != $vals[0]);
+do {$vals[4] = random(0,9);} until ($vals[4] != $vals[3] && $vals[4] != $vals[2] && $vals[4] != $vals[1] && $vals[4] != $vals[0]);
+
+@n = (0..4)[shuffle(5)];
+
+$options = [
+  "Select Place Value",
+  "Ten Thousands",
+  "Thousands",
+  "Hundreds",
+  "Tens",
+  "Ones"];
+
+@ans=(1,2,3,4,5);
+
+for $i (0..4) {
+  $ans[$i] = PopUp($options,${$options}[1+$n[$i]]);
+}
+
+BEGIN_PGML
+
+Consider the number [`[$vals[0]][$vals[1]],[$vals[2]][$vals[3]][$vals[4]]`]
+
+What is the place value of each number?
+
+[@
+  DataTable(
+    [
+      [
+        PGML('[`[$vals[$n[0]]]`]'), PGML('[@ $ans[0]->menu()@]*')
+      ],
+      [
+        PGML('[`[$vals[$n[1]]]`]'), PGML('[@ $ans[1]->menu()@]*')
+      ],
+      [
+        PGML('[`[$vals[$n[2]]]`]'), PGML('[@ $ans[2]->menu()@]*')
+      ],
+      [
+        PGML('[`[$vals[$n[3]]]`]'), PGML('[@ $ans[3]->menu()@]*')
+      ],
+      [
+        PGML('[`[$vals[$n[4]]]`]'), PGML('[@ $ans[4]->menu()@]*')
+      ],
+    ]
+  )
+@]***
+
+
+END_PGML
+
+for $i (0..4) {
+ ANS($ans[$i]->cmp);
+}
+
+BEGIN_PGML_SOLUTION
+
+For this, remember that the place value from right to left is
+* ones
+* tens
+* hundreds,
+* thousands, 
+* ten thousands
+
+and thus the result is
+
+
+
+* [`[$vals[4]]`] is the ones place.
+* [`[$vals[3]]`] is the tens place.
+* [`[$vals[2]]`] is the hundreds place.
+* [`[$vals[1]]`] is the thousands place.
+* [`[$vals[0]]`] is the ten thousands place.
+
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();        
+

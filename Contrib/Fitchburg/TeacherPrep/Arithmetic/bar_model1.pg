@@ -1,0 +1,185 @@
+# DESCRIPTION
+# Base-5 subtraction problems to help with the understanding of the standard 
+# subtraction algorithm.
+# ENDDESCRIPTION
+
+## DBsubject('Elementary Education')
+## DBchapter('Arithmetic')
+## DBsection('Models')
+## KEYWORDS('')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+
+
+DOCUMENT();
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGML.pl",
+"PGcourse.pl",
+"PGgraphmacros.pl",
+"PGchoicemacros.pl"
+);
+
+# make sure we're in the context we want
+Context("Numeric");
+$showPartialCorrectAnswers = 1;
+
+sub rect {
+  ($gr,$x0,$y0,$x1,$y1,$color,$lw) = @_;
+  
+  $gr->moveTo($x0,$y0);
+  $gr->lineTo($x1,$y0,$color,$lw);
+  $gr->lineTo($x1,$y1,$color,$lw);
+  $gr->lineTo($x0,$y1,$color,$lw);
+  $gr->lineTo($x0,$y0,$color,$lw);
+}
+
+## draw from midpoint to one head
+# midpoint $x0,$y0
+# length: $l
+# angle: $ang
+
+sub arr {
+  ($gr,$x_mid,$y_mid,$l,$ang,$sc) = @_; 
+  
+  ## need the height and width of the plot to get the arrow heads to look right.
+   $pi = Real("pi");
+
+  
+  ($w,$h) = @{$gr->size()};
+  $head_angle = abs(($ang %pi) - $pi/2) < 1e-2 ? atan($h/$w) : atan($w/$h);
+  
+  $ll = abs(($ang %pi) - $pi/2) < 1e-2 ? $sc*$h/$w : 0.5*$sc*$w/$h;
+  
+  
+  $dl = $sc || 0.2; 
+  
+    warn $ang % $pi;
+  
+
+
+
+  $gr->moveTo($x_mid,$y_mid);
+  $gr->lineTo($x_mid+0.5*$l*cos($ang),$y_mid+0.5*$l*sin($ang));
+
+  # draw --- at end of arrow
+  
+  $gr->moveTo($x_mid+0.5*$l*cos($ang),$y_mid+0.5*$l*sin($ang));
+  $gr->lineTo($x_mid+0.5*$l*cos($ang)+$ll*cos($ang+$pi/2),
+              $y_mid+0.5*$l*sin($ang)+$ll*sin($ang+$pi/2),"black",2);
+  $gr->moveTo($x_mid+0.5*$l*cos($ang),$y_mid+0.5*$l*sin($ang));
+  $gr->lineTo($x_mid+0.5*$l*cos($ang)+$ll*cos($ang-$pi/2),
+              $y_mid+0.5*$l*sin($ang)+$ll*sin($ang-$pi/2),"black",2);
+
+  # draw > at end of arrow
+  $gr->moveTo($x_mid+0.5*$l*cos($ang),$y_mid+0.5*$l*sin($ang));
+  $gr->lineTo($x_mid+0.5*$l*cos($ang)+$dl*cos($ang+$pi-$head_angle), $y_mid+0.5*$l*sin($ang)+$dl*sin($ang+$pi-$head_angle),"black",2);
+  $gr->moveTo($x_mid+0.5*$l*cos($ang),$y_mid+0.5*$l*sin($ang));
+  $gr->lineTo($x_mid+0.5*$l*cos($ang)+$dl*cos($ang+$pi+$head_angle), $y_mid+0.5*$l*sin($ang)+$dl*sin($ang+$pi+$head_angle),"black",2);
+  
+
+
+}
+
+sub arrow {
+  ($gr,$x0,$y0,$x1,$y1,$hds,$sc) = @_;
+  
+  $pi = Real("pi");
+  
+  $heads = $hds || "-"; 
+  $scale = $sc || 0.2; 
+    
+  # calc the angle of the line
+  
+  $ang = abs($x1-$x0)<1e-6 ? ($y1 > $y0 ? $pi/2 : -$pi/2) : atan(($y1-$y0)/($x1-$x0));
+  
+  $l = sqrt(($x1-$x0)**2+($y1-$y0)**2);
+  
+  # draw the two end of the arrows as two separate arrows
+  arr($gr,0.5*($x0+$x1),0.5*($y0+$y1),$l,$ang,$scale);
+  arr($gr,0.5*($x0+$x1),0.5*($y0+$y1),$l,$ang+$pi,$scale);
+
+}
+
+$a = random(17,29);
+$b = random(30,50);
+
+$gr1 = init_graph(-0.05*$b,-0.05*$b,1.1*$b,$b, size => [600,200]);
+rect($gr1,0,0.1*$b,$a,0.4*$b,"blue",2);
+$gr1->lb( new Label(0.5*$a,0.05*$b,$a,'black','center','middle'));
+rect($gr1,0,0.5*$b,$b,0.8*$b,"green",2);
+$gr1->lb( new Label(0.5*$b,0.9*$b,$b,'black','center','middle'));
+
+arrow($gr1,1.05*$b,0.1*$b,1.05*$b,0.8*$b,'',2);
+$gr1->lb( new Label(1.07*$b,0.5*$b,'?','black','center','middle'));
+
+$gr2 = init_graph(-0.05*$b,-0.1*$b,1.1*$b,$b, size => [600,200]);
+rect($gr2,0,0.1*$b,$a,0.4*$b,"blue",2);
+$gr2->lb( new Label(0.5*$a,0.05*$b,$a,'black','center','middle'));
+rect($gr2,0,0.5*$b,$b,0.8*$b,"green",2);
+$gr2->lb( new Label(0.5*$b,0.9*$b,$b,'black','center','middle'));
+
+arrow($gr2,$a,0,$b,0*$b,'',2);
+$gr2->lb( new Label(0.5*($a+$b),0.05*$b,'?','black','center','middle'));
+
+$gr3 = init_graph(-0.05*($a+$b),-0.05*($a+$b),1.1*($a+$b),1.1*($a+$b), size => [600,200]);
+
+rect($gr3,0,0.5*($a+$b),$a,0.9*($a+$b),'blue',2);
+rect($gr3,1.01*$a,0.5*($a+$b),$a+$b,0.9*($a+$b),'green',2);
+$gr3->lb( new Label(0.5*$a,$a+$b,$a,'black','center','middle'));
+$gr3->lb( new Label($a+0.5*$b,$a+$b,$b,'black','center','middle'));
+
+arrow($gr3,0,0.4*($a+$b),$a+$b,0.4*($a+$b),'',2);
+$gr3->lb(new Label(0.5*($a+$b),0.35*($a+$b),'?','black','center','middle'));
+
+
+$mc = new_checkbox_multiple_choice();
+$mc -> qa (
+"Which of the following bar models best represents the addition problem $a+$b? Select all",
+"A",
+"C",
+);
+$mc -> extra(
+"B",
+);
+$mc -> makeLast("None");
+
+TEXT(beginproblem());
+BEGIN_PGML
+
+Consider the following bar models: 
+
+A.
+
+[@ image( insertGraph($gr1), width=>600,height=>200,tex_size=>800 ) @]*
+
+B.
+
+[@ image( insertGraph($gr2), width=>600,height=>200,tex_size=>800 ) @]*
+
+C.
+
+[@ image( insertGraph($gr3), width=>600,height=>200,tex_size=>800 ) @]*
+
+[@$mc -> print_q() @]*
+
+[@ $mc -> print_a() @]*
+
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+*SOLUTION*
+
+You can use PGML in your solution if you use the structure
+above.  There is currently no short cut.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

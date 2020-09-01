@@ -1,0 +1,74 @@
+# DESCRIPTION
+# Base-5 subtraction problems to help with the understanding of the standard 
+# subtraction algorithm.
+# ENDDESCRIPTION
+
+## DBsubject('Elementary Education')
+## DBchapter('Arithmetic')
+## DBsection('Models')
+## KEYWORDS('')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+
+
+DOCUMENT();
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+"PGML.pl",
+"PGcourse.pl",
+"contextFraction.pl",
+"PCCmacros.pl"
+);
+
+# make sure we're in the context we want
+Context("Fraction");
+$showPartialCorrectAnswers = 1;
+
+$x = random(3,4,5);
+do {$y = random(3,4,5);} until ($x != $y);
+$prod = $x*$y; 
+$left = $prod-$x;
+
+$name = RandomName(sex=>"female");
+
+$f = Compute("$x/$prod");
+$ans = Compute("1-$f"); 
+
+TEXT(beginproblem());
+BEGIN_PGML
+
+[$name] has  $[`[$prod]`].  She buys a toy for $[`[$x]`].  What fraction of her money does she have left? 
+
+[________]{$ans}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+*SOLUTION*
+
+The are two ways to do this.  
+
+*Method 1*
+
+The fraction of the money spent is [`\frac{[$x]}{[$prod]}`] which reduces to [`[$f]`]. 
+
+The fraction that she has left is [`1-[$f]=[$ans]`]
+
+*Method 2*
+
+The amount of money that is left is [`[$prod]-[$x]=[$left]`].
+
+The fraction left then is [`\frac{[$left]}{[$prod]}`] which reduces to [`[$ans]`].
+
+
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
