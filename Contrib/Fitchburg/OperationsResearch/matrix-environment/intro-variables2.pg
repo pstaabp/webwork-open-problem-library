@@ -1,0 +1,120 @@
+## DESCRIPTION
+## Solve a maximimum linear optimization problem that is not in standard form.
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2023')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'scaffold.pl', 'PGcourse.pl');
+
+Context('Matrix');
+
+$Am = [ map { [ map { non_zero_random(-9, 9) } (1 .. 3) ] } (1 .. 4) ];
+$A  = Matrix($Am);
+
+$b    = ColumnVector(map { non_zero_random(-40, 40) } (1 .. 4));
+$cm   = [ map { random(10, 40) } (1 .. 3) ];
+$c    = ColumnVector($cm);
+@beta = num_sort(random_subset(4, 1 .. 7));
+
+# This finds the difference (1..7) - @beta;
+%beta = map  { $_ => 1 } @beta;
+@pi   = grep { !$beta{$_} } (1 .. 7);
+
+for my $i (0 .. 3) {
+    for my $j (0 .. 3) {
+        $Bm->[$i][$j] =
+            $beta[$j] <= 3        ? $Am->[$i][ $beta[$j] - 1 ]
+            : $i == $beta[$j] - 4 ? 1
+            :                       0;
+    }
+    for my $j (0 .. $#pi) {
+        $Pim->[$i][$j] =
+            $pi[$j] <= 3 ? $Am->[$i][ $pi[$j] - 1 ] : $i == $pi[$j] - 4 ? 1 : 0;
+    }
+}
+$B     = Matrix($Bm);
+$dbeta = abs($B->det);
+$Bp    = $dbeta * $B->inverse;
+
+$cbm->[$_] = $beta[$_] <= 3 ? $cm->[ $beta[$_] - 1 ] : 0 for (0..3);
+$cpm->[$_] = $pi[$_] <= 3 ? $cm->[ $pi[$_] - 1 ] : 0 for (0..2);
+
+$cb = ColumnVector($cbm);
+$cp = ColumnVector($cpm);
+
+$Bpb  = $Bp * $b;
+$Pi   = Matrix($Pim);
+$BpPi = $Bp * $Pi;
+
+$z    = $cb . Vector($Bpb);
+$crow = Vector($cb * $BpPi) - $dbeta * $cp;
+
+BEGIN_PGML
+Let
+[```A = [$A], \qquad \mathbf{b} = [$b], \qquad \mathbf{c} = [$c] ```]
+
+and [`\beta =\{`] [@ join(", ",@beta) @] [`\}`].  Recall that [`\mathbf{B}`] and  [`\mathbf{\Pi}`] are the columns of [`\mathbf{A}`] or [`\mathbf{I}`] from [`\beta`] and [`\pi`] respectively.  Find the following:
+
+END_PGML
+
+Scaffold::Begin();
+Section::Begin('Definitions of B, \(\Pi\) and c');
+
+BEGIN_PGML
+
+a) [`\mathbf{B}=`][_]*{$B}
+b) [`\mathbf{\Pi} =`] [_]*{$Pi}
+c) [`d_{\beta}=`] [_]{$dbeta}
+d) [`\mathbf{c}_{\beta}= `] [_]*{$cb}
+e) [`\mathbf{c}_{\pi}= `] [_]*{$cp}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+First, the matrices [`\mathbf{B}`] and  [`\mathbf{\Pi}`] are the columns of [`\mathbf{A}`] or [`\mathbf{I}`] from [`\beta`] and [`\pi`] respectively. Also redefine [`\mathbf{c}`] to concatenate the zero vector of length 4.
+
+a) [``` \mathbf{B} = [$B] ```]
+b) [``` \mathbf{\Pi} = [$Pi] ```]
+c) [`d_{\beta}`] is the absolute value of the determinant of [`\mathbf{B}`] or [$dbeta].
+d) [`\mathbf{c}_{\beta}`] is the elements of [`\mathbf{c}`] selected from [`\beta`] or 
+[``` \mathbf{c}_{\beta} = [$cb] ```]
+e) [`\mathbf{c}_{\pi}`] is the elements of [`\mathbf{c}`] selected from [`\pi`] or 
+[``` \mathbf{c}_{\pi} = [$cp] ```]
+
+END_PGML_SOLUTION
+
+Section::End();
+
+Section::Begin('Calculations');
+BEGIN_PGML
+For the following, recall that [`d_{\beta} = |\text{det}(\textbf{B})|`] and  [`\mathbf{B}' = d_{\beta} \mathbf{B}^{-1}`] to ensure that if [`\mathbf{B}`] is integral, then [`\mathbf{B}'`] is integral. 
+
+a) [`\mathbf{B}'=`] [_]*{$Bp}
+b) [`\mathbf{B}'\mathbf{b}=`] [_]*{$Bpb}
+c) [`\mathbf{B}'\mathbf{\Pi}=`] [_]*{$BpPi}
+d) [`\mathbf{c}_{\beta}^{\intercal}\mathbf{B}^{-1}\mathbf{b}=`] [_]{$z}
+e) [`\mathbf{c}_{\beta}^{\intercal}\mathbf{B}^{-1}\mathbf{\Pi} - d_{\beta} \mathbf{c}_{\pi}^{\intercal} = `] [_]*{$crow}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+First, note that 
+[``` \mathbf{B}^{-1} = [$B->inverse] ```]
+
+a) [```\mathbf{B}' = d_{\beta} \mathbf{B}^{-1} =  [$Bp]```]
+b) [``` \mathbf{B}' \mathbf{b} = [$Bpb] ```]
+c) [``` \mathbf{B}'\mathbf{\Pi}= [$BpPi] ```]
+d) [```\mathbf{c}_{\beta}^{\intercal}\mathbf{B}^{-1}\mathbf{b}= [$z]```]
+e) [```\mathbf{c}_{\beta}^{\intercal}\mathbf{B}^{-1}\mathbf{\Pi} - d_{\beta} \mathbf{c}_{\pi}^{\intercal} = [$crow] ```]
+END_PGML_SOLUTION
+
+Section::End();
+Scaffold::End();
+ENDDOCUMENT();

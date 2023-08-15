@@ -1,0 +1,87 @@
+## DESCRIPTION
+## Given a linear optimization problem, write the corresponding dictionary using
+## slack variables.
+## ENDDESCRIPTION
+
+
+## DBsubject(Operations research)
+## DBchapter(Linear programming)
+## DBsection(Constrained optimization - planar)
+## Date(2012/07/01)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## Level(1)
+## KEYWORDS('linear optimization', 'slack variable', 'dictionary')
+
+DOCUMENT();
+
+loadMacros("PGstandard.pl", "PGML.pl", "PGcourse.pl");
+
+Context("Numeric")->variables->are(
+    x1 => "Real",
+    x2 => "Real",
+    x3 => "Real",
+    x4 => "Real",
+    x5 => "Real",
+    z  => "Real"
+);
+
+$A    = [ map { [ map { random(0, 6) } (1 .. 2) ] } (1 .. 3) ];
+@b    = map { random(12, 60, 6) } (1 .. 3);
+@line = map { Formula("$A->[$_][0] x1 + $A->[$_][1] x2")->reduce } (0 .. 2);
+$obj  = Formula(random(1, 5) . "x1 + " . random(1, 5) . "x2")->reduce;
+
+@dline = map { Formula("$b[$_] - $A->[$_][0] x1 - $A->[$_][1] x2")->reduce; }
+    (0 .. 2);
+
+BEGIN_PGML
+Consider the following Linear Optimization Problem
+[```
+\begin{aligned}
+\text{Maximize} && z = [$obj] \\
+\text{subject to} && [$line[0]] \leq [$b[0]] \\
+ && [$line[1]] \leq [$b[1]] \\
+ && [$line[2]] \leq [$b[2]] \\
+\text{and} && x_1, x_2 \geq 0.
+\end{aligned}
+```]
+Add the slack variables [`x_3, x_4, x_5`] to the three equations and write the initial dictionary of this problem.
+
+[#
+   [.Maximize.] [. [_]{Formula('z')} .] [.[`=`].] [. [_]{$obj} .]*
+   [.subject to.] [. [_]{Formula('x3')} .] [.[`=`] .] [. [_]{$dline[0]} .]*
+   [. .] [. [_]{Formula('x4')} .] [.[`=`] .] [. [_]{$dline[1]} .]*
+   [. .] [. [_]{Formula('x5')} .] [.[`=`] .] [. [_]{$dline[2]} .]*
+[. and .] [. [_]{List("x1, x2, x3, x4, x5")} .] [.[`\geq`].] [.[`0`] .]
+#]
+
+Note: use [|x1, x2, x3, x4, x5|] for the variables. 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The first step is to write the 3 inequalities using slack variables.  These are
+
+[```
+\begin{aligned}
+[$line[0]] + x_3 & = [$b[0]] \\
+[$line[1]] + x_4 & = [$b[1]] \\
+[$line[2]] + x_5 & = [$b[2]] \\
+\end{aligned}
+```]
+
+Next, solve for the slack variables in the above equations.  This results in 
+
+[```
+\begin{aligned}
+\text{Maximize} && z & = [$obj],  \\
+\text{subject to} && x_3 & = [$dline[0]], \\
+&& x_4 & = [$dline[1]], \\
+&& x_5 & = [$dline[2]], \\
+&& x_1, x_2, x_3, x_4, x_5 & \geq 0.
+\end{aligned}
+```]
+where the last set are the nonnegative constraints. 
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

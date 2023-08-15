@@ -1,0 +1,134 @@
+## DESCRIPTION
+## WeBWorK Demo
+## ENDDESCRIPTION
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',         'PGML.pl',
+    'parserCheckboxList.pl', 'tableau.pl',
+    'parserRadioButtons.pl', 'PGcourse.pl'
+);
+
+Context('Matrix');
+
+($a1, $b1, $c1) = (random(1, 6), random(1, 6), random(1, 6));
+($a2, $b2, $c2) = (random(1, 6), random(1, 6), random(1, 6));
+($a3, $b3, $c3) = (random(1, 6), random(1, 6), random(1, 6));
+
+# create some integer vertices
+($x1, $y1, $z1) = (random(2, 5), random(2, 5), random(2, 5));
+($x2, $y2, $z2) = (random(2, 5), random(2, 5), random(2, 5));
+
+$b = Vector([
+    $a1 * $x1 + $b1 * $y1 + $c1 * $z1,
+    $a2 * $x1 + $b2 * $y1 + $c2 * $z1,
+    $a2 * $x2 + $b2 * $y2 + $c2 * $z2
+]);
+
+# coefficients for the objective function
+
+$c = Vector(random(1, 10), random(1, 10), random(1, 10));
+
+$tab = Tableau->new(
+    A =>
+        Matrix([ [ $a1, $b1, $c1 ], [ $a2, $b2, $c2 ], [ $a3, $b3, $c3 ] ]),
+    b => $b,
+    c => $c
+);
+$tab_orig = $tab->copy;
+
+next_tableau($tab, 'max');
+
+$tab_current = $tab->copy;
+$flag        = next_tableau($tab, 'max');
+
+@basis           = $tab_current->basis->value;
+@basic_variables = map { $_ - 1 } @basis;
+
+$tableau_state = $tab_current->statevars;
+
+# The following finds the array difference.
+%basic_var          = map  { $_ => 1 } @basic_variables;
+@nonbasic_variables = grep { !$basic_var{$_} } (0 .. 5);
+
+$all_variables = [ (map {"\(x_{$_}\)"} (1 .. 6)), '\(z\)' ];
+$toplevel      = [ @$all_variables, '\(b\)' ];
+
+$basic = CheckboxList(
+    $all_variables, ~~@basic_variables,
+    separator     => '&nbsp;&nbsp;',
+    labels        => [ 'x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'z' ],
+    displayLabels => 0
+);
+$nonbasic = CheckboxList(
+    $all_variables, ~~@nonbasic_variables,
+    separator     => '&nbsp;&nbsp;',
+    labels        => [ 'x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'z' ],
+    displayLabels => 0
+);
+
+$optimal = RadioButtons(
+    [ 'yes', 'no' ],
+    $flag eq 'optimum' ? 0 : 1,
+    separator => '&nbsp;'
+);
+
+BEGIN_PGML
+The following simplex tableau arises from a linear programming problem:
+
+[@ lop_display($tab_current, toplevel => $toplevel)  @]*
+
+For this tableau:
+
+a) Select all basic variables:
+
+    [_]{$basic}
+
+b) Select all nonbasic variables:
+
+    [_]{$nonbasic}
+
+c) The solution to the above simplex tableau is:
+
+    - [`x_1=`] [_]{Real($tableau_state->[0])}
+    - [`x_2=`] [_]{Real($tableau_state->[1])}
+    - [`x_3=`] [_]{Real($tableau_state->[2])}
+    - [`x_4=`] [_]{Real($tableau_state->[3])}
+    - [`x_5=`] [_]{Real($tableau_state->[4])}
+    - [`x_6=`] [_]{Real($tableau_state->[5])}
+    - [`z=`]  [_]{Real($tableau_state->[6])}
+
+d) Is the tableau is optimal state?  [_]{$optimal}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) Recall that a basic variable in a tableau is a column that is a multiple of 
+a column in the identity matrix. The basic variables are [$basic->correct_ans].
+
+b) The nonbasic variables are the other variables in the tableau (except [`z`] and [`b`]).  The nonbasic variables in this tableau are [$nonbasic->correct_ans].
+
+c) To find the solution to the tableau, set the basic variables equal to 0 and then write each row of the tableau as an equation, solving for the nonbasic variables.  This results in 
+
+    - [`x_1=[$tableau_state->[0]]`]
+    - [`x_2=[$tableau_state->[1]]`]
+    - [`x_3=[$tableau_state->[2]]`]
+    - [`x_4=[$tableau_state->[3]]`]
+    - [`x_5=[$tableau_state->[4]]`]
+    - [`x_6=[$tableau_state->[5]]`]
+    - [`z=[$tableau_state->[6]]`] 
+
+d) To determine if the matrix is optimal, note that the last row 
+[@ $optimal eq 'yes' ? "doesn't" : "does" @] contain negative numbers, therefore the solution
+in part c) is [@ $optimal eq 'yes' ? '' : 'not' @] optimal.
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

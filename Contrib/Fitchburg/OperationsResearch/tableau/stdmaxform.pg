@@ -1,0 +1,152 @@
+## DESCRIPTION
+## WeBWorK Demo
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2023')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserCheckboxList.pl', 'PGcourse.pl');
+
+Context("Numeric")
+    ->variables->add(y => 'Real', x1 => 'Real', x2 => 'Real', x3 => 'Real');
+Context()->noreduce('(-x)-y', '(-x)+y');
+
+($a,  $b)  = (2 * random(1, 5), 2 * random(1, 5));
+($a1, $b1) = (2 * random(1, 5), 2 * random(1, 5));
+($a2, $b2) = (2 * random(1, 5), 2 * random(1, 5));
+($a3, $b3) = (random(1, 5), random(1, 5));
+
+$c1 = $a1 * $b1;
+$c2 = $a2 * $b2;
+$c3 = random(15, 45, 5);
+
+$obj   = Formula("$a x + $b y")->reduce;
+$line1 = Formula("$a1 x + $b1 y")->reduce;
+$line2 = Formula("$a2 x + $b2 y")->reduce;
+$line3 = Formula("$a3 x + $b3 y")->reduce;
+
+($a4, $b4, $c4) = (random(2, 10), random(2, 10), random(2, 10));
+($a5, $b5, $c5) = (random(2, 10), random(2, 10), random(2, 10));
+($a6, $b6, $c6) = (random(2, 10), random(2, 10), random(2, 10));
+
+$obj2  = Formula("$a4 x1 + $b4 x2 + $c4 x3")->reduce;
+$line4 = Formula("$a5 x1 + $b5 x2 + $c5 x3")->reduce;
+$line5 = Formula("$a6 x1 + $b6 x2 + $c6 x3")->reduce;
+$d4    = 12 * random(2, 5);
+$d5    = 12 * random(2, 5);
+
+@lop = (
+    PGML(
+        q|Find the maximum of [`f(x,y) = [$obj] `] subject to 
+
+[```
+\begin{cases}
+[$line1] \leq [$c1],\\\\
+[$line2] \leq [$c2],\\\\
+x \geq 0, \;\; y \geq 0
+\end{cases}
+```]|
+    ),
+    PGML(
+        q|Find the maximum of [`f(x,y) = [$obj] `] subject to 
+
+[```
+\begin{cases}
+[$line1] \leq [$c1],\\\\
+[$line2] \leq [$c2],\\\\
+[$line3] \leq [$c3],\\\\
+x \geq 0, \;\; y \geq 0
+\end{cases}
+```]|
+    ),
+    PGML(
+        q|Find the maximum of [`f(x,y) = [$obj2] `] subject to 
+
+[```
+\begin{cases}
+[$line4] \leq [$d4],\\\\
+[$line5] \leq [$d5],\\\\
+x_1 \geq 0, \; x_2 \geq 0, \; x_3 \geq 0.
+\end{cases}
+```]|
+    ),
+    PGML(
+        q|Find the maximum of [`f(x,y) = [$obj] `] subject to 
+
+[```
+\begin{cases}
+[$line1] \leq [$c1],\\\\
+[$line2] \leq [$c2],\\\\
+x \geq 0,
+\end{cases}
+```]|
+    ),
+    PGML(
+        q|Find the maximum of [`f(x,y) = [$obj] `] subject to 
+
+[```
+\begin{cases}
+[$line1] \geq [$c1],\\\\
+[$line2] \geq [$c2],\\\\
+x \geq 0, \; y \geq 0
+\end{cases}
+```]|
+    ),
+    PGML(
+        q|Find the minimum of [`f(x,y) = [$obj] `] subject to 
+
+[```
+\begin{cases}
+[$line1] \geq [$c1],\\\\
+[$line2] \geq [$c2],\\\\
+x \geq 0, \;\; y \geq 0
+\end{cases}
+```]|
+    )
+);
+
+@correct     = (1, 1, 1, 0, 0, 0);
+@order       = random_subset(6, 0 .. 5);
+$correct_ans = [ grep { @correct[ $order[$_] ] } (0 .. 5) ];
+
+$showPartialCorrectAnswers = 0;
+
+$ans = CheckboxList([ 'a' .. 'f' ], $correct_ans, separator => '&nbsp;&nbsp;');
+
+BEGIN_PGML
+Select all linear optimization problems that are in standard maximum form:
+
+a) [$lop[$order[0]]]*
+
+b) [$lop[$order[1]]]*
+
+c) [$lop[$order[2]]]*
+
+d) [$lop[$order[3]]]*
+
+e) [$lop[$order[4]]]*
+
+f) [$lop[$order[5]]]*
+
+
+[_]{$ans}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Recall that for a linear optimization problem to be in standard form, the problem must
+1) Be a maximum problem. 
+2) All of the inequalties (except the nonnegative ones) must have the form [` \leq b`] for some constant [`b`]. 
+3) All variables must be nonnegative. 
+
+In this problem, the following are in standard form: [$ans->correct_ans]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

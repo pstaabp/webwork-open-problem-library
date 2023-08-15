@@ -1,0 +1,114 @@
+## DESCRIPTION
+## Conversion of a linear optimization problem to standard maximum form.
+## ENDDESCRIPTION
+
+## DBsubject(Operations research)
+## DBchapter(Linear programming)
+## DBsection(Simplex method)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## Level(1)
+## KEYWORDS('linear optimization', 'dual problem')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',           'PGML.pl',
+    'parserLinearRelation.pl', 'parserRadioMultiAnswer.pl',
+    'PGcourse.pl'
+);
+
+Context('LinearRelation')->variables->are(
+    x1 => 'Real',
+    x2 => 'Real',
+    x3 => 'Real',
+    y1 => 'Real',
+    y2 => 'Real',
+);
+
+@c     = (random(1, 6), random(1, 6), random(1, 6));
+$obj   = Formula("$c[0] x1 + $c[1] x2 + $c[2] x3")->reduce;
+@a1    = (random(1, 6), random(1, 6), random(1, 6));
+@a2    = (random(1, 6), random(1, 6), random(1, 6));
+$line1 = Formula("$a1[0] x1 + $a1[1] x2 + $a1[2] x3")->reduce;
+$b1    = random(20, 60, 4);
+$line2 = Formula("$a2[0] x1 + $a2[1] x2 + $a2[2] x3")->reduce;
+$b2    = random(20, 60, 4);
+
+$new_obj = Formula("$b1 y1 + $b2 y2")->reduce;
+
+$rma = RadioMultiAnswer(
+    [
+        [ 'Minimize \( w = \) %s', $new_obj ],
+        [ 'Maximize \( z = \) %s', Formula('y1') ]
+    ],
+    0
+);
+
+$dual_line1 = LinearRelation("$a1[0] y1 + $a2[0] y2 >= $c[0]")->reduce;
+$dual_line2 = LinearRelation("$a1[1] y1 + $a2[1] y2 >= $c[1]")->reduce;
+$dual_line3 = LinearRelation("$a1[2] y1 + $a2[2] y2 >= $c[2]")->reduce;
+
+BEGIN_PGML
+Consider the following linear optimization problem written in standard maximum form:
+
+Maximize [`z=\; [$obj]`] 
+
+Subject to 
+[```
+\begin{aligned}
+[$line1] & \leq [$b1] \\
+[$line2] & \leq [$b2] \\
+x_1 \geq 0, \; x_2 \geq 0, \; x_3 &\geq 0.
+\end{aligned}
+```]
+
+Find the dual of this problem. 
+
+[_]{$rma}
+
+Subject to
+    - [_]{$dual_line1}
+    - [_]{$dual_line2}
+    - [_]{$dual_line3}
+
+and [` y_1, y_2, y_3 \geq 0 `].
+
+Use y1, y2, y3 for variables in the dual. 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+In this case, the dual of a maximum problem is a minimum problem.  Also recall if a problem is in the matrix form
+
+Maximize [`z = \vec{c}^{\intercal} \vec{x} `] subject to 
+
+[``` 
+\begin{aligned}
+A \vec{x} & \leq \vec{b} \\
+\vec{x} & \geq \vec{0}
+\end{aligned}
+```]
+has the dual problem: minimize [` w = \vec{b}^{\intercal} \vec{y} `] subject to 
+
+[``` 
+\begin{aligned}
+A^{\intercal} \vec{y} & \leq \vec{c} \\
+\vec{y} & \geq \vec{0}
+\end{aligned}
+```]
+
+Therefore for this problem, the dual is _Minimize_ [` w= [$new_obj] `] subject to
+
+[```
+\begin{aligned}
+[$dual_line1] \\
+[$dual_line2] \\
+[$dual_line3]
+\end{aligned}
+```]
+
+
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

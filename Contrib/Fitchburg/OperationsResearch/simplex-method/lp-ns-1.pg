@@ -1,0 +1,110 @@
+## DESCRIPTION
+## Solve a maximimum linear optimization problem that is not in standard form.
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2023')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'parserRadioMultiAnswer.pl', 'tableau.pl',
+    'PGcourse.pl'
+);
+
+Context('Point')->variables->are(x1 => 'Real', x2 => 'Real', x3 => 'Real');
+Context()->noreduce('(-x)-y', '(-x)+y');
+
+# make sure the level sets of the objective function is not parallel to
+# the line.
+do {
+    ($a1, $b1) = (random(1, 4), random(1, 4));
+    ($a,  $b)  = (random(2, 5), random(2, 5));
+} while ($b * $a1 == $b1 * $a);
+
+$d1 = random(4, 6) * $a1 * $b1;
+$d2 = random(1, 3);
+
+$line1 = Formula("$a1 x1 +$b1 x2")->reduce;
+$obj   = Formula("$a x1 + $b x2")->reduce;
+
+$line2 = Formula("$a1 x1 + $b1 (x3+$d2)")->reduce;
+$line3 = Formula("$a1 x1 + $b1 x3")->reduce;
+$d3    = $d1 - $b1 * $d2;
+$obj2  = Formula("$a x1 + $b ($d2-x3)")->reduce;
+$obj3  = Formula("$a x1 - $b x3 + $b*$d2")->reduce;
+
+$tab = Tableau->new(
+    A => Matrix([ [ $a1, $b1 ] ]),
+    S => Matrix([ [1] ]),
+    b => Vector($d3),
+    c => Vector($a, $b),
+    z => $b * $d2,
+);
+
+$orig_tab = $tab->copy;
+
+($sol_tab, $flag) = phase2_solve($tab, 'max');
+$state = $sol_tab->statevars;
+
+$max = Real($state->[3]);
+$x2  = $d2 + $state->[1];
+$pt  = Point($state->[0], $x2);
+
+$rma = RadioMultiAnswer(
+    [
+        ['There is no maximum.'],
+        [ 'The maximum is %s and occurs at the point %s', $max, $pt ]
+
+    ],
+    1
+);
+
+BEGIN_PGML
+
+Solve the following linear programming problem using the simplex method.
+Note that this problem is not in  *standard* form.
+
+Maximize [`f(x_1,x_2) =  [$obj] `] subject to
+
+[```
+\begin{cases}
+[$line1] \leq [$d1],& \\
+x_2 \geq [$d2],& \\
+x_1 \geq 0.&
+\end{cases}
+```]
+
+[_]{$rma}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+First, we need to rewrite this into one in standard max form. The objective is correct as is the first inequality.  The second inequality is a constrained problem.  If we let [`x_3 = x_2-[$d2]`], then the second inequality turns into [`x_3 \geq 0`].  Plugging [`x_2 = x_3+[$d2]`] into the objective and the first inequality or
+[``` [$line2] \leq [$d1] ```] or
+[``` [$line3] \leq [$d3] ```]
+
+The objective can be written [`z = [$obj2] = [$obj3] `]
+
+The tableau can then be written
+>> [@ lop_display($orig_tab, toplevel => ['\(x_1\)', '\(x_3\)', '\(x_4\)', 'z', 'b']) @]* <<
+
+Performing a single pivot, we get:
+
+>> [@ lop_display($sol_tab, toplevel => ['\(x_1\)', '\(x_3\)', '\(x_4\)', 'z', 'b']) @]* <<
+
+This shows that [`x_1 = [$state->[0]], x_3=[$state->[1]]`] and [`z=[$state->[3]]`].
+Lastly, we translate [`x_3`] back to [`x_2`], so [`x_2 = [$x2]`]
+
+Note: since the second inequality is [`x_2 \geq [$d2]`] then naturally it has a nonnegative inequality.  Thus, this can be solved with introducing a new variable.
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

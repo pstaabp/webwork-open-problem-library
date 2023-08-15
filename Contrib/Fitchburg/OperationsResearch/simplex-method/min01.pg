@@ -1,0 +1,111 @@
+## DESCRIPTION
+## Find the minimum of a linear function on a unbounded feasible set
+## ENDDESCRIPTION
+
+## KEYWORDS('linear programming')
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+# updated 2023.08.20
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',         'PGML.pl',
+    'parserRadioButtons.pl', 'tableau.pl',
+    'PGcourse.pl'
+);
+
+Context("Point")->noreduce('(-x)-y', '(-x)+y');
+
+# create a line (in the form ax+by=c, with c>0 and reduced)
+sub createLine {
+    my ($x1, $y1, $x2, $y2) = @_;
+    $a = $y1 - $y2;
+    $b = $x2 - $x1;
+    $c = $a * $x1 + $y1 * $b;
+    $f = gcf($a, $b, $c);
+    $f *= -1 if $c < 0;
+    return ($a / $f, $b / $f, $c / $f);
+}
+
+# create a feasible set with the points ($x1,0), ($x2, $y2) and (0,$y3)
+# to make a convex unbounded set.
+
+do {
+    ($x2, $y2) = (random(2, 8), random(2, 8));
+
+    do { $x1 = random(4, 10) } until $x1 > $x2;
+    do { $y3 = random(4, 10) } until $y3 > $y2;
+
+    $m2 = ($y3 - $y2) / (0 - $x2);
+    $m1 = (0 - $y2) / ($x1 - $x2);
+
+} until ($m2 < $m1);
+
+($a1, $b1, $c1) = createLine($x1, 0,   $x2, $y2);
+($a2, $b2, $c2) = createLine($x2, $y2, 0,   $y3);
+
+# ensure that the level sets of the objective function are not
+# parallel to the lines.
+
+do {
+    ($a, $b) = (random(1, 7), random(1, 7));
+} until ($a * $b1 - $b * $a1 != 0 && $a * $b2 - $b * $a2 != 0);
+
+$tab = Tableau->new(
+    A => Matrix([ [ $a1, $b1 ], [ $a2, $b2 ] ]),
+    b => Vector([ $c1,          $c2 ]),
+    c => Vector([ $a,           $b ]),
+    S => Matrix([ [ -1, 0 ],    [ 0, -1 ] ])
+);
+
+($sol_tab, $flag) = phase1_solve($tab, 'min');
+
+$state = $sol_tab->statevars;
+
+$minf = 1000000;
+$xans = 100000;
+$yans = 100000;
+
+if ($a * $a2 < $minf) { $minf = $a * $a2; $xans = $a2; $yans = 0; }
+if ($b * $b1 < $minf) { $minf = $b * $b1; $xans = 0;   $yans = $b1; }
+if ($a * $x + $b * $y < $minf) {
+    $minf = $a * $x + $b * $y;
+    $xans = $x;
+    $yans = $y;
+}
+
+$line1 = Formula("$a1 x + $b1 y")->reduce;
+$line2 = Formula("$a2 x + $b2 y")->reduce;
+$objf  = Formula("$a x + $b y")->reduce;
+
+$minf = Real($state->[4]);
+Context('Point');
+$min_pt = Point($state->[0], $state->[1]);
+
+# Now begin with the Problem Statement
+
+BEGIN_PGML
+
+Find the minimum of [` f(x,y) = [$objf] `] subject to
+
+[```
+\begin{cases}
+[$line1]  \geq [$c1] \\
+[$line2] \geq [$c2] \\
+x  \geq 0, y  \geq 0
+\end{cases}
+```]
+
+The minimum of [`f `] is [_]{$minf}
+and occurs at the point [_]{$min_pt}
+
+ Note: if the maximum does not exist, enter DNE in both boxes.
+
+END_PGML
+
+ENDDOCUMENT();

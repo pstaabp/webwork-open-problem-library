@@ -1,0 +1,90 @@
+## DESCRIPTION
+## WeBWorK Demo
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("Numeric")->variables->add(y => 'Real', z => 'Real');
+Context()->noreduce('(-x)-y', '(-x)+y');
+
+($a1, $b1, $c1) = (random(1, 6), random(1, 6), random(1, 6));
+($a2, $b2, $c2) = (random(1, 6), random(1, 6), random(1, 6));
+($a,  $b,  $c)  = (random(1, 6), random(1, 6), random(1, 6));
+
+$d1 = 5 * random(2, 6);
+$d2 = 3 * $d1;
+
+$f1  = Formula("$a1 x + $b1 y + $c1 z")->reduce;
+$f2  = Formula("$a2 x + $b2 y + $c2 z")->reduce;
+$obj = Formula("$a x + $b y + $c z")->reduce;
+
+Context('Matrix');
+$m = Matrix([
+    [ $a1,  $b1,  $c1,  1, 0,, 0, 0, $d1 ],
+    [ -$a2, -$b2, -$c2, 0, 1, 0, 0, -$d2 ],
+    [ 1,    -1,   0,    0, 0,  1, 0, 0 ],
+    [ $a,   $b,   $c,   0, 0,  0, 1, 0 ]
+]);
+
+BEGIN_PGML
+The following linear programming problem is a *nonstandard* problem:
+
+Minimize [`f(x, y, z) = [$obj] `] subject to
+[```
+\begin{cases}
+[$f1] \leq [$d1] \\
+[$f2] \geq [$d2] \\
+x \leq y, \\
+x \geq 0, \; y \geq 0, \; z \geq 0.
+\end{cases}
+```]
+
+Write the simplex tableau down for this problem:
+
+[_]*{$m}
+
+END_PGML
+
+$negf2  = Compute("-$a2 x-$b2 y - $c2 z")->reduce;
+$negobj = Compute("-$a x -$b y -$c z")->reduce;
+
+BEGIN_PGML_SOLUTION
+We need to write this in standard form. The objective to be maximized is
+[``` p = [$negobj]```]
+
+First, start by writing the three inequalities such that they are written in the form [`\leq b`], for some constant [`b`].
+[```
+\begin{aligned}
+[$f1] &\leq [$d1] \\
+[$negf2] &\leq [@-$d2@] \\
+x -y &\leq 0 \\
+\end{aligned}
+```]
+
+Next, write these down as equations using slack variables.  We'll use [`s_1, s_2`] and [`s3`].
+[```
+\begin{aligned}
+[$f1] + s_1 &= [$d1] \\
+[$negf2] + s_2 &= [@-$d2@] \\
+x -y + s_3 & = 0 \\
+\end{aligned}
+```]
+and then rewrite the objective as
+[``` [$obj]+p = 0```]
+
+These are then put into a matrix/tableau as
+[``` [$m] ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

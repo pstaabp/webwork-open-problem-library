@@ -1,0 +1,76 @@
+## DESCRIPTION
+## WeBWorK Demo
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioMultiAnswer.pl', 'PGcourse.pl');
+
+Context('Point');
+
+# Select three points for the feasible set. ($x1,$y1), ($x2,0) and (0,$y2)
+# make sure that the slope of the second line is smaller (more negative) than
+# the slope of the first line.  This makes sure that the F.S. is convex.
+
+do {
+$x1 = random(2,8);
+$y1 = random(2,8);
+
+$x2= $x1;
+while($x2<=$x1) { $x2=random(5,10);}
+
+$y2= $y1;
+while($y2<=$y1) { $y2=random(5,10);}
+
+$m1=($y1-$y2)/$x1;
+$m2=$y1/($x1-$x2);
+
+} while($m2>=$m1);
+
+# Build the lines that pass through the vertices chosen above.
+
+$a1=$y2-$y1; $b1=$x1; $c1=$y2*$x1;
+
+$line1 = nicestring([$a1,$b1],['x','y']);
+
+$a2=$y1; $b2=($x2-$x1); $c2=$y1*$x2;
+
+$line2 = nicestring([$a2,$b2],['x','y']);
+
+$a = random(2,8);
+$b = random(2,8);
+
+$objective = nicestring([$a,$b],['x','y']);
+
+$rma = RadioMultiAnswer([
+               ['There is no maximum.'],
+               ['The maximum is %s and occurs at the point %s',
+                    0, Point(0,0,0)]
+
+           ], 0);
+
+BEGIN_PGML
+Find the maximum of [` f(x,y) = [$objective] `] subject to
+
+[```
+\begin{cases}
+[$line1]  \geq [$c1], \\
+[$line2] \geq [$c2], \\
+x  \geq 0, \;\; y  \geq 0.
+\end{cases}
+```]
+
+[_]{$rma}
+
+END_PGML
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

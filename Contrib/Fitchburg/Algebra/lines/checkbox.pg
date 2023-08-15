@@ -12,9 +12,9 @@
 ## Level(1)
 ## KEYWORDS('lines')
 
-DOCUMENT();    # This should be the first executable line in the problem.
+DOCUMENT();
 loadMacros('PGstandard.pl', 'PGML.pl', 'parserCheckboxList.pl', 'PGcourse.pl');
-Context('Numeric');
+
 $showPartialCorrectAnswers = 0;
 
 $checks = CheckboxList(

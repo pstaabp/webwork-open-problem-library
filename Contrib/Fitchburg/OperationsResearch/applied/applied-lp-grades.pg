@@ -1,0 +1,110 @@
+## DESCRIPTION
+## An applied linear programming problem in that a student needs to determine the amount
+## of time to spend in two classes to minimize study time.
+## ENDDESCRIPTION
+
+## KEYWORDS('linear programming','linear optimization','studying')
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl', 'PGML.pl',
+    'tableau.pl',    'randomPerson.pl',
+    'PGcourse.pl'
+);
+
+Context('Numeric');
+
+$hrsCourse1 = random(30, 50, 10);
+$hrsCourse2 = $hrsCourse1 + non_zero_random(-20, 20, 10);
+$minGPA     = random(2.0, 3.0, 0.5);
+
+$tab = Tableau->new(
+    A => Matrix([
+        [ -$hrsCourse2, -$hrsCourse1 ],
+        [ -1,            0 ],
+        [  0,           -1 ],
+        [  1,            0 ],
+        [  0,            1 ]
+    ]),
+    b => Vector([
+        -2 * $minGPA * $hrsCourse2 * $hrsCourse1,
+        -$hrsCourse1, -$hrsCourse2,
+        4 * $hrsCourse1,
+        4 * $hrsCourse2
+    ]),
+    S => Matrix([
+        [ 1, 0, 0, 0, 0 ],
+        [ 0, 1, 0, 0, 0 ],
+        [ 0, 0, 1, 0, 0 ],
+        [ 0, 0, 0, 1, 0 ],
+        [ 0, 0, 0, 0, 1 ]
+    ]),
+    c => Vector([ $hrsCourse2 * $hrsCourse1, $hrsCourse2 * $hrsCourse1 ]),
+    z => Real($hrsCourse2 * $hrsCourse1)
+);
+
+($sol,  $flag) = phase1_solve($tab);
+($sol2, $flag) = phase2_solve($sol, 'min');
+
+$state = $sol2->statevars;
+$xans  = Real($state->[0]);
+$yans  = Real($state->[1]);
+
+$p = randomPerson();
+($class1, $class2) = random_subset(
+    2,            'Statistics', 'Art',     'History',
+    'Literature', 'Philosophy', 'Theatre', 'Computer Science',
+    'Biology',    'Chemistry'
+);
+
+BEGIN_PGML
+[$p] is taking [$class1] and [$class2] this semester.
+[$p->They] generally needs [$hrsCourse1] hours of study for each grade point
+in [$class1] and [$hrsCourse2] hours of study
+for each grade point in [$class2]. If [$p->they] must keep at least a
+[@ int($minGPA) == $minGPA ? "$minGPA.0" : $minGPA @]
+GPA and must get at least a 1.0 in each class and no more than a 4.0, what is the
+smallest number of hours of study in each class [$p->they] can get away with?
+
+Solve this problem using the simplex method. Also note that this is in *nonstandard* form.
+
+In order to study the fewest number of hours and still earn a
+[@ int($minGPA) == $minGPA ? "$minGPA.0" : $minGPA @] GPA, [$p->they] should:
+a) study [$class1] for [_]{$xans}{5} hours
+b) study [$class2] for [_]{$yans}{5} hours
+END_PGML
+
+BEGIN_PGML_SOLUTION
+This is a linear optimization problem and initially determine the variables:
+[```
+\begin{aligned}
+x & = \text{number of hours to spend studying [$class1]}, \\
+y & = \text{number of hours to spend studying [$class2]}, 
+\end{aligned}
+```]
+The objective function is the total number of hours which is [`z = x+y`] and is to be minimized. 
+
+The first constraint is the [$minGPA] GPA requirement and using the number of hours needing to spend for each class:
+[```
+\frac{\frac{x}{[$hrsCourse1]} + \frac{y}{[$hrsCourse2]}}{2} y \geq 2.5
+```]
+and since each class must have at least a 1.0, but not more than a 4.0, the additional requirements are 
+[```
+\begin{aligned}
+\frac{x}{[$hrsCourse1]} & \geq 1.0, & \frac{x}{[$hrsCourse1]} & \leq 4.0 \\
+\frac{y}{[$hrsCourse2]} &\geq 1.0, & \frac{y}{[$hrsCourse2]} & \leq 4.0 \\
+\end{aligned}
+```]
+Note: the nonnegative constraint is automatically satified by the above constraint. 
+
+The simplex method is used here (though not shown) to arrive at the solution that [$p] should study [$xans] hours in [$class1] and [$yans] hours in [$class2].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

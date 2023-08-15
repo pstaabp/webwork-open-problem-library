@@ -1,0 +1,76 @@
+## DESCRIPTION
+## Write down the simplex tableau of the linear programming problem.
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2023')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context('Matrix');
+
+$a1 = random(2, 6);
+$b1 = random(2, 6);
+$c1 = random(2, 6);
+$d1 = 5 * random(2, 6);
+
+$a2 = random(2, 6);
+$b2 = random(2, 6);
+$c2 = random(2, 6);
+$d2 = 5 * random(2, 6);
+
+$a = random(2, 6);
+$b = random(2, 6);
+$c = random(2, 6);
+
+$tableau = Matrix([
+    [ $a1, $b1, $c1, 1, 0, 0, $d1 ],
+    [ $a2, $b2, $c2, 0, 1, 0, $d2 ],
+    [ -$a, -$b, -$c, 0, 0, 1, 0 ]
+]);
+
+BEGIN_PGML
+If the following linear programming problem is written as a simplex tableau:
+
+Maximize [`f(x_1,x_2,x_3) =  [$a] x_1 + [$b] x_2 + [$c] x_3 `] subject to
+
+[```
+\begin{cases}
+[$a1] x_1 + [$b1] x_2 + [$c1] x_3 \leq [$d1] \\
+[$a2] x_1 + [$b2] x_2 + [$c2] x_3 \leq [$d2] \\
+x_1 \geq 0, \;  x_2 \geq 0, \;x_3 \geq 0, \\
+\end{cases}
+```]
+
+What is the simplex tabuleau:
+
+[_]*{$tableau}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Start with writing the two inequalities as equations by adding slack variables. 
+[```
+\begin{aligned}
+[$a1] x_1 + [$b1] x_2 + [$c1] x_3 + x_4 & = [$d1] \\
+[$a2] x_1 + [$b2] x_2 + [$c2] x_3 + x_5 & = [$d2] \\
+\end{aligned}
+```]
+And then we write the objective function in the form
+[```
+-[$a] x_1 - [$b] x_2 - [$c] x_3 + z = 0
+```]
+and placing in a matrix/tableau results in 
+
+[```[$tableau] ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

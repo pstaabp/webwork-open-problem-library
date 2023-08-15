@@ -124,33 +124,32 @@ BEGIN_PGML_SOLUTION
 For each of the lines in the answer, you should identify if the line is
 vertical, horizontal or oblique.
 
-In this case, the line [`[$lines[0]]`] is horizontal. The answer is [$options[$order[0]]].
+- In this case, the line [`[$lines[2]]`] is horizontal. The answer is [$options[2]].
 
-The line [`[$lines[1]]`] in slope-intercept form, and the slope is [$m2]
-with y-intercept of [$b2].  It appears that the [$sc[1]] line has this slope and y-intercept. The answer is [$options[$order[1]]].
+- The line [`[$lines[1]]`] in slope-intercept form, and the slope is [$m2]
+with y-intercept of [$b2].  It appears that the [$sc[1]] line has this slope and y-intercept. The answer is [$options[1]].
 
-For the other two lines, they are nearly in intercept form, so we should do
-that.  The line [`[$lines[2]]`] is:
+- For the line [`[$lines[0]]`] is nearly in intercept form and just a short algebra step will get it there. 
 [```
-\begin{eqnarray}
+\begin{aligned}
 [$a1] x + [$b1] y & = [$c1] \\
 \frac{[$a1]}{[$c1]} x + \frac{[$b1]}{[$c1]} y & = 1 \\
 \frac{x}{[$xi1]} + \frac{y}{[$yi1]} & = 1
-\end{eqnarray}
+\end{aligned}
 ```]
-so the x-intercept is [`[$xi1]`] and the y-intercept is [`[$yi1]`].  The answer is [$options[$order[2]]].
+so the x-intercept is [`[$xi1]`] and the y-intercept is [`[$yi1]`].  The answer is [$options[0]].
 
-We could just use process of elimination to find the last line, but lets
+- We could just use process of elimination to find the last line, but lets
 repeat the process above.  The last line is
 [```
-\begin{eqnarray}
+\begin{aligned}
 [$a4] x + [$b4] y & = [$c4] \\
 \frac{[$a4]}{[$c4]} x + \frac{[$b4]}{[$c4]} y & = 1 \\
 \frac{x}{[$xi4]} + \frac{y}{[$yi4]} & = 1
-\end{eqnarray}
+\end{aligned}
 ```]
 so the x-intercept is [$c4]/[$a4] and the y-intercept is [$c4]/[$b4].
-The answer is [$options[$order[3]]].
+The answer is [$options[3]].
 
 END_PGML_SOLUTION
 
