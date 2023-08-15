@@ -1,0 +1,109 @@
+## DESCRIPTION
+## WeBWorK Demo
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    'PGstandard.pl',     'PGML.pl',
+    'PGmatrixmacros.pl', 'tableau.pl',
+    'PGmatrixmacros.pl', 'PGmatrixmacros.pl',
+    'PGcourse.pl'
+);
+
+Context("Matrix");
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+$row = random(1, 2);
+$col = random(1, 3);
+
+$a1 = random(2, 5);
+$b1 = random(2, 5);
+$c1 = random(2, 5);
+
+$a2 = random(2, 5);
+$b2 = random(2, 5);
+$c2 = random(2, 5);
+
+$a = random(1, 3);
+$b = random(1, 3);
+$c = random(1, 3);
+
+$d1 = 5 * random(5, 8);
+$d2 = 5 * random(5, 8);
+
+if ($row == 1) {
+    $r  = random(3, 5);
+    $d1 = 2 * $r;
+    if ($col == 1) { $a1 = 2; $a = random(4, 6); }
+    if ($col == 2) { $b1 = 2; $b = random(4, 6); }
+    if ($col == 3) { $c1 = 2; $c = random(4, 6); }
+
+}
+
+if ($row == 2) {
+    $r  = random(3, 5);
+    $d2 = 2 * $r;
+    if ($col == 1) { $a2 = 2; $a = random(4, 6); }
+    if ($col == 2) { $b2 = 2; $b = random(4, 6); }
+    if ($col == 3) { $c2 = 2; $c = random(4, 6); }
+
+}
+
+if ($col == 1) {
+    if ($row == 1) { $d2 = $a2 * random($r, 8); }
+    if ($row == 2) { $d1 = $a1 * random($r, 8); }
+
+}
+
+if ($col == 2) {
+    if ($row == 1) { $d2 = $b2 * random($r, 8); }
+    if ($row == 2) { $d1 = $b1 * random($r, 8); }
+}
+
+if ($col == 3) {
+    if ($row == 1) { $d2 = $c2 * random($r, 8); }
+    if ($row == 2) { $d1 = $c1 * random($r, 8); }
+}
+
+##  calculate the new matrix.
+
+$tab = Tableau->new(
+    A => Matrix([ [ $a1, $b1, $c1 ], [ $a2, $b2, $c2 ] ]),
+    b => Vector($d1, $d2),
+    c => Vector($a,  $b, $c)
+);
+
+$tab_orig = $tab->copy;
+
+$tab->basis(2, 3);
+
+BEGIN_PGML
+A linear programming problem in standard maximum form has the following simplex tableau:
+
+[@ lop_display($tab_orig, toplevel => [qw(x1 x2 x3 s1 s2 z b)]) @]*
+
+Pivot the matrix about the element in row [$row] and column [$col].  Write the simplex tableau after the pivot in the matrix below:
+
+[_]*{$tab}
+
+Note: keep all entries as integers and the pivot element should not change.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+[@ lop_display($tab) @]*
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

@@ -1,0 +1,127 @@
+
+## DESCRIPTION
+## WeBWorK Demo
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    'PGstandard.pl',      'PGML.pl',
+    'tableau.pl',         'parserRadioMultiAnswer.pl',
+    'parserGraphTool.pl', 'PGcourse.pl'
+);
+
+Context('Point')->noreduce('(-x)-y', '(-x)+y');
+
+# Construct the feasible set my finding integer vertices first and then
+# determine lines that fit.
+
+# This makes the line through points ($x1, $y1) and ($x2, $y2) and returns the
+# (a,b,c) in the form ax+by=c for gcd(a,b,c) = 1.
+
+sub createLine {
+    my ($x1, $y1, $x2, $y2) = @_;
+    my ($a, $b, $c) = ($y2 - $y1, $x1 - $x2, $x1 * $y2 - $x2 * $y1);
+    my $f = gcf($a, $b, $c);
+    $f *= -1 if $c < 0;
+    return ($a / $f, $b / $f, $c / $f);
+}
+
+# Slope of "middle" line is -$p/$q
+do {
+    ($p, $q) = (random(1, 6), random(1, 6));
+} until (0.75 <= $p / $q && $p / $q <= 1.25);
+
+$y3 = random(36, 96, 12);
+($x1, $y1) = ($q, $y3 - $p);
+($a2, $b2, $d2) = createLine(0, $y3, $x1, $y1);
+$x3 = $d2 / $a2;
+
+do {
+    ($x1, $x2) = num_sort(
+        random(2 * $q, $x3 - 2 * $q, $q),
+        random(2 * $q, $x3 - 2 * $q, $q)
+    );
+} until ($x2 - $x1 <= 5 * $q && $x2 - $x1 >= 2 * $q);
+
+($y1, $y2) = (($d2 - $a2 * $x1) / $b2, ($d2 - $a2 * $x2) / $b2);
+
+$y4 = random($y1 + $p, $y3 - $p, $p);
+$x4 = random($x2 + $q, $x3 - $q, $q);
+
+($a1, $b1, $d1) = createLine(0,   $y4, $x1, $y1);
+($a3, $b3, $d3) = createLine($x2, $y2, $x4, 0);
+
+$line1 = Formula("$a1 x + $b1 y")->reduce;
+$line2 = Formula("$a2 x + $b2 y")->reduce;
+$line3 = Formula("$a3 x + $b3 y")->reduce;
+
+do {
+    ($a, $b) = (random(3, 10), random(3, 10));
+    } until ($a * $b1 - $b * $a1 != 0
+        && $a * $b2 - $b * $a2 != 0
+        && $a * $b3 - $b * $a3 != 0);
+
+$objective = Formula("$a x + $b y")->reduce;
+
+$tab = Tableau->new(
+    A => Matrix([ [ $a1, $b1 ], [ $a2, $b2 ], [ $a3, $b3 ] ]),
+    b => Vector($d1, $d2, $d3),
+    c => Vector($a,  $b)
+);
+
+($sol_tab, $flag) = phase2_solve($tab, 'max');
+
+$state = $sol_tab->statevars;
+
+$maxF   = Real($state->[5]);
+$sol_pt = Point($state->[0], $state->[1]);
+
+$rma = RadioMultiAnswer(
+    [
+        ['There is no maximum.'],
+        [ 'The maximum is %s and occurs at the point %s', $maxF, $sol_pt ]
+
+    ],
+    1
+);
+
+# Now begin with the Problem Statement
+
+BEGIN_PGML
+Find the maximum of [` f(x,y) = [$objective] `] subject to
+
+[```
+\begin{cases}
+[$line1]  \leq [$d1], \\
+[$line2] \leq [$d2], \\
+[$line3] \leq [$d3], \\
+x  \geq 0, \;\; y  \geq 0.
+\end{cases}
+```]
+
+[_]{$rma}
+
+END_PGML
+
+
+BEGIN_PGML_SOLUTION
+Note that as written, the Linear Optimization Problem is in standard form.  It can be written as
+
+[@ lop_display($tab) @]*
+
+This is also in phase II and performing pivots can be transformed to
+
+[@ lop_display($sol_tab) @]*
+
+And this shows that the maximum objective value is [$maxF] and occurs at [` [$sol_pt] `].
+END_PGML_SOLUTION
+ENDDOCUMENT();    # This should be the last executable line in the problem.

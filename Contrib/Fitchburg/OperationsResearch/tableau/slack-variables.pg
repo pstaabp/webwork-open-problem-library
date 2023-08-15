@@ -1,0 +1,53 @@
+## DESCRIPTION
+## Asks how to take an inequality and write down an equation using a slack variable.
+## ENDDESCRIPTION
+
+## KEYWORDS('linear optimization', 'dictionary form', 'simplex')
+
+## DBsubject('Operations Research')
+## DBchapter('Linear Programming')
+## DBsection('Simplex Method')
+## Date('09/23/2025')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserLinearRelation.pl',
+    'PGcourse.pl');
+
+Context('LinearRelation')
+    ->variables->are(x1 => 'Real', x2 => 'Real', x3 => 'Real', x4 => 'Real');
+
+$a = random(2, 6);
+$b = random(2, 6);
+$c = random(2, 6);
+$d = 5 * random(2, 6);
+
+$lin_inequal = LinearRelation("$a x1 + $b x2 + $c x3  <= $d");
+$f           = LinearRelation("$a x1 + $b x2 + $c x3 + x4 =$d");
+
+BEGIN_PGML
+Write the inquality
+
+[`` [$lin_inequal] ``]
+
+as an equation by using the slack variable [`x4`].
+
+[_]{$f}{25}
+
+(Hint: use the variables x1, x2, x3 and x4.  Don't worry about the subscripts.)
+
+For the linear inequality to hold, what inequality does the slack variable need
+to satisfy?
+
+[_]{LinearRelation('x4 >= 0')}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+In this case, we add [`x_4`] to the left side to create an equation. or
+[``` [$f] ```]
+and in order for the original inequality to hold, we need [`x_4 \geq 0`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

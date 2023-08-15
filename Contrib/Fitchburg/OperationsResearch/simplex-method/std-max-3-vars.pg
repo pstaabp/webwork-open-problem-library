@@ -1,0 +1,104 @@
+## DESCRIPTION
+## Find the maximum of a linear optimization problem.
+## ENDDESCRIPTION
+
+## KEYWORDS('maximum', 'linear programming', 'linear optimization')
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated 2023.07.22
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'PGmatrixmacros.pl',         'tableau.pl',
+    'parserRadioMultiAnswer.pl', 'PGcourse.pl'
+);
+
+Context('Point')->noreduce('(-x)-y', '(-x)+y');
+
+do {
+    ($a1, $b1, $c1) = (random(1, 5), random(1, 5), random(1, 5));
+    ($a2, $b2, $c2) = (random(1, 5), random(1, 5), random(1, 5));
+
+    $det1 = $b1 * $c2 - $b2 * $c1;
+    $det2 = $a1 * $c2 - $a2 * $c1;
+    $det3 = $a1 * $b2 - $b1 * $a2;
+} while ($det1 * $det2 * $det3 == 0);
+
+$other1 = lcm($a1, $b1, $c1);
+$other2 = lcm($a2, $b2, $c2);
+
+($a, $b, $c) = (random(1, 8), random(1, 8), random(1, 8));
+
+$d1 = random(2, 4) * $other1;
+$d2 = random(2, 4) * $other2;
+
+$obj   = Formula("$a x + $b y + $c z")->reduce;
+$line1 = Formula("$a1 x + $b1 y + $c1 z")->reduce;
+$line2 = Formula("$a2 x + $b2 y + $c2 z")->reduce;
+# $obj   = nicestring([ $a,  $b,  $c ],  [ 'x_1', 'x_2', 'x_3' ]);
+# $line1 = nicestring([ $a1, $b1, $c1 ], [ 'x_1', 'x_2', 'x_3' ]);
+# $line2 = nicestring([ $a2, $b2, $c2 ], [ 'x_1', 'x_2', 'x_3' ]);
+
+$tab = [
+    [ 0, $a1, $b1, $c1, 1, 0, $d1 ],
+    [ 0, $a2, $b2, $c2, 0, 1, $d2 ],
+    [ 1, -$a, -$b, -$c, 0, 0, 0 ]
+];
+
+$tab = Tableau->new(
+    A => Matrix([ [ $a1, $b1, $c1 ], [ $a2, $b2, $c2 ] ]),
+    b => Vector($d1, $d2),
+    c => Vector($a,  $b, $c)
+);
+
+($sol_tab, $flag) = phase2_solve($tab, 'max');
+$state = $sol_tab->statevars;
+# ($tab, $endcode, $pivcount) = lp_solve($tab);
+
+$x1ans = Real($state->[0]);
+$x2ans = Real($state->[1]);
+$x3ans = Real($state->[2]);
+
+$max = Real($state->[5]);
+
+$rma = RadioMultiAnswer(
+    [
+        ['There is no maximum.'],
+        [
+            'The maximum is %s and occurs at the point %s',
+            $max, Point($x1ans, $x2ans, $x3ans)
+        ]
+
+    ],
+    1
+);
+
+# Now begin with the Problem Statement
+
+BEGIN_PGML
+Solve the following linear programming problem using the simplex method:
+
+Maximize [`f(x_1,x_2,x_3) =  [$obj] `] subject to
+
+[```
+\begin{cases}
+[$line1] \leq [$d1] \\
+[$line2] \leq [$d2] \\
+x \geq 0, \;\; y \geq 0, \;\; z \geq 0
+\end{cases}
+```]
+
+[_]{$rma}
+
+(Make sure that your point has three coordinates)
+
+END_PGML
+
+ENDDOCUMENT();

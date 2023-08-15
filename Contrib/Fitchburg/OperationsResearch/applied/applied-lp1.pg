@@ -1,0 +1,132 @@
+## DESCRIPTION
+## Applied linear programming problem in which an optimal number of cookies and brownie
+## to make for a bake sale. 
+## ENDDESCRIPTION
+
+## KEYWORDS('linear programming', 'applied', 'cookies', 'brownies')
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    'PGstandard.pl',     'PGML.pl',
+    'PGmatrixmacros.pl', 'tableau.pl',
+    'randomPerson.pl',   'PGcourse.pl'
+);
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+# For this problem, we create two vertices that will be possibile solutions
+# and then create the inequalities that pass through the vertices.
+
+($x1, $y1) = (random(2, 5), random(7, 10));
+$x2 = $x1 + random(2, 4);
+$y2 = $y1 + $x1 - $x2;
+
+$b = $y1 + 1;
+$a = $x2 + 2;
+
+#define the upper line:
+
+$a1 = $b - $y1;
+$b1 = $x1;
+$c1 = $b * $b1;
+
+#define the middle line:
+
+$a2 = 2;
+$b2 = 2;
+$c2 = 2 * ($x1 + $y1);
+
+#define the lower line:
+
+$a3 = $y2;
+$b3 = $a - $x2;
+$c3 = $y2 * $a;
+
+$a4 = random(20, 40, 5);
+$b4 = $a4 + non_zero_random(-1, 1) * 5;
+
+$tab = Tableau->new(
+    A => Matrix([ [ $a1, $b1 ], [ $a2, $b2 ], [ $a3, $b3 ] ]),
+    b => Vector([ $c1,          $c2,          $c3 ]),
+    c => Vector([ $a4,          $b4 ])
+);
+
+($sol) = phase2_solve($tab, 'max');
+
+$state = $sol->statevars;
+
+$brownies = $state->[0];
+$cookies  = $state->[1];
+
+$maxf = $state->[5];
+
+# $maxf = lp_current_value(0,$tab);
+
+$p = randomPerson();
+
+# Now begin with the Problem Statement
+
+BEGIN_PGML
+[$p] is making brownies and cookies for a bake sale for [$p->their] daughter.
+[$p->They] can make some combination of the baked goods. One batch of
+brownies requires [$a1] cup of ﬂour, [$a3] cups of sugar and [$a2] eggs
+(among other ingredients). One batch of cookies requires [$b1] cup of ﬂour,
+[$b3] cups of sugar and [$b2] eggs (as well as other ingredients). [$p->They]
+[$p->verb('have')] [$c1] cups of ﬂour, [$c3] cups of sugar and [$c2] eggs available.
+One batch of brownies nets [$a4] dollars and one batch of cookies nets [$b4]
+dollars.
+
+How many of each should [$p->they] make to earn as much as possible for the bake
+sale?
+
+a) batches of brownies: [_]{$brownies}{5}
+b) batches of cookies: [_]{$cookies}{5}
+c) Total amount earned: $[_]{$maxf}{6}
+
+END_PGML
+Context()->variables->are(x => 'Real', y => 'Real');
+$constraint1 = Compute("$a1 x + $b1 y")->reduce;
+$constraint2 = Compute("$a2 x + $b2 y")->reduce;
+$constraint3 = Compute("$a3 x + $b3 y")->reduce;
+
+$obj = Compute("$a4 x + $b4 y")->reduce;
+
+BEGIN_PGML_SOLUTION
+This is a linear optimization (programming) problem.  First, define the variables:
+
+[```
+\begin{aligned}
+x & = \text{number of batches of brownies}, \\
+y & = \text{number of batches of cookies}, \\
+\end{aligned}
+```]
+
+Then develop the constraints, which are each of the ingredients:
+
+[```
+\begin{aligned}
+\text{flour}:&& [$constraint1] & \leq [$c1] \\
+\text{sugar}:&& [$constraint2] & \leq [$c2] \\
+\text{eggs}:&& [$constraint3] & \leq [$c3] \\
+\end{aligned}
+```]
+and the non-negative constraints, [`x \geq 0, y \geq 0 `] must also be included.  
+
+The objective function is the total amount earned for the bake sale or
+[``` z = [$obj]. ```]
+
+Using the simplex method (not shown), this is solved to get the optimal solution of 
+[``` 
+\begin{aligned}
+x & = [$brownies] & y & = [$cookies] \end{aligned} ```]
+and the result is that $[$maxf] is earned.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

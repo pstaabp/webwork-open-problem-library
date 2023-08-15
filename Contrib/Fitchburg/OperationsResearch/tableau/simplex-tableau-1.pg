@@ -1,0 +1,67 @@
+## DESCRIPTION
+## Determine the size of the simplex tableau for a given Linear Optimization
+## Problem.
+## ENDDESCRIPTION
+
+## KEYWORDS('lop', 'simplex tableau')
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2023')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context('Numeric')->variables->are(
+    x1 => 'Real',
+    x2 => 'Real',
+    x3 => 'Real',
+    x4 => 'Real',
+    x5 => 'Real',
+    x6 => 'Real',
+    x7 => 'Real'
+);
+
+$num_vars     = random(3, 5);
+$num_inequals = random(4, 7);
+
+$inequalities = join ' ', map {
+    do {
+        $f = Formula(join('+',
+            map { random(0, 1) * random(1, 6) . "x$_" } (1 .. $num_vars)))
+            ->reduce;
+    } until $f != 0;
+    $f->TeX . " \leq " . random(24, 80, 4) . '\\'
+} (1 .. $num_inequals);
+
+@c      = map { random(1, 8) . "x$_" } (1 .. $num_vars);
+$obj    = Formula(join('+', @c))->reduce;
+$nonneg = join(', ', map {"x_{$_}"} (1 .. $num_vars));
+
+BEGIN_PGML
+If the following linear programming problem is written as a simplex tableau:
+
+Maximize [`z = [$obj] `] subject to
+
+[```
+\begin{aligned}
+[$inequalities]
+[$nonneg] \geq 0. \\
+\end{aligned}
+```]
+
+Give the size of the simplex tableau:
+a) number of rows:[_]{Real($num_inequals+1)}{5}
+b) number of columns:[_]{Real($num_vars+$num_inequals+2)}{5}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+One method would be to write down the simplex tableau.  However, if just want the size of the tableau, the number of rows in the number of inequalities (not including the nonnegative ones) plus 1. In this case it is [@ $num_inequals+1 @].
+
+The number of columns is the number of variables plus the number of slack variables (equal to the number of inequalities) plus the [`z`] and [`b`] columns.  In this case it is [@ $num_vars+$num_inequals+2 @].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

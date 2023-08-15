@@ -1,0 +1,271 @@
+## DESCRIPTION
+## A scaffolded problem that asks the student to write down the dictionary form of a
+## linear optimization problem, perform a single step (simplex method) and then interpret
+## the result.
+## ENDDESCRIPTION
+
+## KEYWORDS('linear optimization', 'dictionary form', 'simplex')
+
+## DBsubject('Operations Research')
+## DBchapter('Linear Programming')
+## DBsection('Simplex Method')
+## Date('09/23/2025')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl', 'PGML.pl',
+    'scaffold.pl',   'parserRadioMultiAnswer.pl',
+    'PGcourse.pl'
+);
+
+Context("Numeric")->variables->are(
+    x1 => "Real",
+    x2 => "Real",
+    x3 => "Real",
+    x4 => "Real",
+    x5 => "Real",
+    x6 => "Real",
+    z  => "Real"
+);
+Context()->noreduce('(-x)-y', '(-x)+y');
+
+do {
+    $A = [ map { [ map { random(0, 6) } (1 .. 3) ] } (1 .. 3) ];
+    } until $A->[0][0] + $A->[1][0] + $A->[2][0] > 0
+    && $A->[0][1] + $A->[1][1] + $A->[2][1] > 0
+    && $A->[0][2] + $A->[1][2] + $A->[2][2] > 0;
+@b = map { random(10, 50, 5) } (1 .. 3);
+@line =
+    map { Formula("$A->[$_][0] x1 + $A->[$_][1] x2 + $A->[$_][2] x3")->reduce }
+    (0 .. 2);
+
+@dline = map {
+    Formula("$b[$_] -$A->[$_][0] x1 - $A->[$_][1] x2 - $A->[$_][2] x3")
+        ->reduce;
+} (0 .. 2);
+@c   = map { random(1, 5) } (1 .. 3);
+$obj = Formula("$c[0]x1 + $c[1]x2 + $c[2] x3")->reduce;
+
+# Determine the first step:
+
+$min = 10000;
+for (grep { $A->[$_][0] != 0 } (0 .. 2)) {
+    if ($b[$_] / $A->[$_][0] < $min) {
+        $min_index = $_;
+        $min       = $b[$_] / $A->[$_][0];
+    }
+}
+
+# Perform the pivot 1 |-> $min_index+4;
+$p                      = $A->[$min_index][0];
+$line_left[$min_index]  = Formula("$p x1");
+$line_right[$min_index] = Formula(
+    "$b[$min_index] - $A->[$min_index][1] x2 - $A->[$min_index][2] x3 - x"
+        . ($min_index + 4))->reduce;
+
+@other_rows = grep { $_ != $min_index } (0 .. 2);
+for (@other_rows) {
+    $line_left[$_] = Formula("$p x" . ($_ + 4));
+    $line_right[$_] =
+        Formula("$p*$b[$_] - $A->[$_][0]*$b[$min_index] "
+            . "+ ($A->[$_][0]*$A->[$min_index][1] -$p*$A->[$_][1]) x2 "
+            . "+ ($A->[$_][0]*$A->[$min_index][2]- $p*$A->[$_][2]) x3 "
+            . "+ $A->[$_][0]*x"
+            . ($min_index + 4))->reduce;
+}
+
+$obj1 =
+    Formula("$c[0]*$b[$min_index] + "
+        . "(-$c[0]*$A->[$min_index][1] + $p*$c[1])x2 +"
+        . "(-$c[0]*$A->[$min_index][2] + $p*$c[2])x3 +"
+        . "-$c[0]*x"
+        . ($min_index + 4))->reduce;
+
+BEGIN_PGML
+
+Consider the following Linear Optimization Problem
+[```
+\begin{aligned}
+\text{Maximize} && z = [$obj] \\
+\text{subject to} && [$line[0]] \leq [$b[0]] \\
+ && [$line[1]] \leq [$b[1]] \\
+ && [$line[2]] \leq [$b[2]] \\
+\text{and} && x_1, x_2, x_3 \geq 0.
+\end{aligned}
+```]
+The initial dictionary is written with the slack variables [`x_4, x_5, x_6`] and is 
+
+[#
+    [.Maximize.] [. [`z`] .] [.[`=`].] [. [`[$obj]`] .]*
+    [.subject to.] [. [`x_4`] .] [.[`=`] .] [. [`[$dline[0]] `].]*
+    [. .] [. [`x_5`] .] [.[`=`] .] [. [` [$dline[1]] `] .]*
+     [. .] [. [`x_6`] .] [.[`=`] .] [. [` [$dline[2]] `] .]*
+[. and .] [. [`x_1, x_2, x_3, x_4, x_5, x_6`] .] [.[`\geq`].] [.[`0`] .]
+#]{align => "lrcl"}
+
+END_PGML
+
+Scaffold::Begin();
+
+Section::Begin("Part 1: Pivoting with a Dictionary");
+
+BEGIN_PGML
+Perform the first step where [`x_1`] is brought into the basis.  The new dictionary is
+
+[# [. Maximize.] [. [_]{Formula("$p z")} = .] [. [_]{$obj1} .]*
+   [. subject to .] [. [_]{$line_left[0]}[`=`] .]  [. [_]{$line_right[0]} .]*
+   [. .] [. [_]{$line_left[1]} [`=`] .] [. [_]{$line_right[1]} .]*
+   [. .] [. [_]{$line_left[2]}  [`=`] .] [. [_]{$line_right[2]} .]*
+[. and .] [. [_]{List("x1,x2,x3,x4,x5,x6")} [`\geq`] .] [. [`0`] .]
+#]{align => "lrl"}
+
+*Note: The variables on the left should have the same integer multiple to avoid fractions.*
+
+Additionally, use [|x1, x2, ...|] in place of [`x_1,x_2, \cdots`] and keep the equations in the same spots (don't swap rows).
+END_PGML
+
+BEGIN_PGML_SOLUTION
+We want to solve for [`x_1`] in one of the equations.  To ensure that the result is feasible (all variables are nonnegative), we select
+
+[``` \min([$b[0]]/[$A->[0][0]], [$b[1]]/[$A->[1][0]],[$b[2]]/[$A->[2][0]]) ```]
+
+which in this case is in equation [$min_index+1].  First solve for [` [$p1]x_1 `] in this row to get:
+
+[``` [$line_left[$min_index]] = [$line_right[$min_index]] ```]
+
+Then multiply the other two rows by [$p] to avoid fractions, subsitute in [`x_1`] from above, to get: 
+
+[``` 
+\begin{aligned}
+[$line_left[$other_rows[0]]] &= [$line_right[$other_rows[0]]] \\
+[$line_left[$other_rows[1]]] & = [$line_right[$other_rows[1]]] 
+\end{aligned}
+```]
+
+and similarly the objective equation becomes:
+
+[``` z = [$obj1] ```]
+
+The nonnegative constraint still exists on all variables or 
+[``` x_1, x_2, x_3, x_4, x_5, x_6 \geq 0. ```]
+
+END_PGML_SOLUTION
+
+Section::End();
+
+$basis  = Set(1, 4, 5, 6) - Set($min_index + 4);
+$params = Set(2, 3) + Set($min_index + 4);
+
+Section::Begin('Part 2: Determining the basis and parameters');
+
+BEGIN_PGML
+
+The basis and parameter set for this dictionary is 
+* [`\beta  = `] [_]{$basis}
+* [`\pi = `] [_]{$params}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The original basis consists of the slack variables, so [`\beta = \{4,5,6\}`] and the parameter are variables on the right side of the equations above or [`\pi =  \{1,2,3\}`].
+
+In this first step, [`x_1`] enters the basis and in order to keep the solution feasible, [`x_{[@$min_index+4@]}`] leaves the basis.  Thus
+
+* [`\beta= [$basis]`]
+* [`\pi = [$params]`]
+END_PGML_SOLUTION
+
+Section::End();
+
+@bsoln = map {0} (0 .. 5);
+$bsoln[0] =
+    $line_right[$min_index]->eval(x2 => 0, x3 => 0, x4 => 0, x5 => 0, x6 => 0)
+    / $p;
+for (4 .. 6) {
+    $bsoln[ $_ - 1 ] =
+        $line_right[ $_ - 4 ]->eval(x2 => 0, x3 => 0, x4 => 0, x5 => 0, x6 => 0)
+        / $p
+        if $basis->contains($_);
+}
+
+$obj_val =
+    $obj1->eval(x1 => 0, x2 => 0, x3 => 0, x4 => 0, x5 => 0, x6 => 0) / $p;
+
+Section::Begin('Part 3: Basic Solution');
+
+BEGIN_PGML
+
+What is the basic solution for this dictionary?
+
+[#
+    [.[`x_1 =`] [_]{$bsoln[0]}.]*
+    [.[`x_2 =`] [_]{$bsoln[1]}.]*
+    [.[`x_3 =`] [_]{$bsoln[2]}.]*
+    [.[`x_4 =`] [_]{$bsoln[3]}.]*
+    [.[`x_5 =`] [_]{$bsoln[4]}.]*
+    [.[`x_6 =`] [_]{$bsoln[5]}.]*
+    [.[`z =`] [_]{$obj_val}.]*
+#]
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Recall that the basic solution substitutes 0 in for each of the parameters.  To find the value, you'll also need to divide each of the equations by the pivot number or [$p].  The result is:
+[#
+    [.[`x_1 =`] [$bsoln[0]].]*
+    [.[`x_2 =`] [$bsoln[1]].]*
+    [.[`x_3 =`] [$bsoln[2]].]*
+    [.[`x_4 =`] [$bsoln[3]].]*
+    [.[`x_5 =`] [$bsoln[4]].]*
+    [.[`x_6 =`] [$bsoln[5]].]*
+    [.[`z =`] [$obj_val].]*
+#]
+
+END_PGML_SOLUTION
+Section::End();
+
+Section::Begin('Part 4: Optimal Solution');
+
+# Determine the next pivot variable by checking the sign on the objective.
+for ($params->value) {
+    if ($obj1->D("x$_")
+        ->eval(x1 => 0, x2 => 0, x3 => 0, x4 => 0, x5 => 0, x6 => 0) > 0)
+    {
+        $nextvar = "x$_";
+        last;
+    }
+}
+
+$rma = RadioMultiAnswer(
+    [
+        ['optimal'],
+        [
+            'not optimal and the next variable that enters the basis should be %s',
+            $nextvar
+        ]
+    ],
+    defined($nextvar) ? 1 : 0
+);
+
+BEGIN_PGML
+The basic solution in Part 3 is 
+[_]{$rma}
+END_PGML
+
+if ($nextvar) {
+BEGIN_PGML_SOLUTION
+In this case, the objective function in the dictionary in Part 1 can increase because there are positive coefficients.  The smallest indexed one is [$nextvar]. 
+END_PGML_SOLUTION
+} else {
+BEGIN_PGML_SOLUTION
+In this case, the objective function in the dictionary in part 1 cannot increase by increasing any of the parameters since each of the coefficients in negative.  Therefore, this solution is optimal.
+END_PGML_SOLUTION
+
+}
+Section::End();
+Scaffold::End();
+
+ENDDOCUMENT();

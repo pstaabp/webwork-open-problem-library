@@ -1,0 +1,257 @@
+## DESCRIPTION
+## Solve a maximimum linear optimization problem that is not in standard form.
+## ENDDESCRIPTION
+
+## KEYWORDS('linear optimization', 'matrix form')
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2023')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',         'PGML.pl',
+    'parserRadioButtons.pl', 'scaffold.pl',
+    'PGcourse.pl'
+);
+
+Context('Matrix');
+
+# Build a 4 by 5 matrix that will start in Phase I.
+for my $i (0 .. 3) {
+    for my $j (0 .. 4) {
+        $Am->[$i][$j] = $i < 2 ? random(-9, 0) : random(0, 7);
+    }
+}
+$A = Matrix($Am);
+$b = ColumnVector(map { $_ <= 2 ? random(-40, 0, 5) : random(0, 50, 5) }
+        (1 .. 4));
+$cm = [ map { random(5, 60, 5) } (1 .. 5) ];
+$c  = ColumnVector($cm);
+
+# First pick a beta that will have the state in phase I
+do {
+    @beta1 = num_sort(random_subset(4, 1 .. 9));
+
+    # This finds the difference (1..9) - @beta;
+    %beta1 = map  { $_ => 1 } @beta1;
+    @pi1   = grep { !$beta1{$_} } (1 .. 9);
+
+    for my $i (0 .. 3) {
+        for my $j (0 .. 3) {
+            $Bm1->[$i][$j] =
+                $beta1[$j] <= 5        ? $Am->[$i][ $beta1[$j] - 1 ]
+                : $i == $beta1[$j] - 6 ? 1
+                :                        0;
+        }
+        for my $j (0 .. $#pi1) {
+            $Pim1->[$i][$j] =
+                $pi1[$j] <= 5        ? $Am->[$i][ $pi1[$j] - 1 ]
+                : $i == $pi1[$j] - 6 ? 1
+                :                      0;
+        }
+    }
+    $cbm1->[$_] = $beta1[$_] <= 3 ? $cm->[ $beta1[$_] - 1 ] : 0
+        for (0 .. 3);
+    $cpm1->[$_] = $pi1[$_] <= 3 ? $cm->[ $pi1[$_] - 1 ] : 0 for (0 .. 4);
+
+    $cb1 = ColumnVector($cbm1);
+    $cp1 = ColumnVector($cpm1);
+
+    $B1     = Matrix($Bm1);
+    $dbeta1 = abs($B1->det);
+    next if $dbeta1 == 0;
+    $Bp1    = $dbeta1 * $B1->inverse;
+    $Pi1    = Matrix($Pim1);
+    $BpPi1  = $Bp1 * $Pi1;
+    $t1     = $cb1 * $Bp1 * $Pi1;
+    $t2     = $dbeta1 * $cp1;
+    $crow1  = Vector($cb1 * $Bp1 * $Pi1) - Vector($dbeta1 * $cp1);
+    $crowt1 = Matrix([ [ $crow1->value ] ]);
+
+    $Bpb1 = $Bp1 * $b;
+    $v    = $Bpb1->data;
+} until $v->[0] < 0 || $v->[1] < 0 || $v->[2] < 0 || $v->[3] < 0;
+
+$radio1 = RadioButtons([ 'Phase I', 'Phase II' ], 0);
+
+# Find the location of the largest negative value of B'b
+$loc1   = -1;
+$value1 = 0;
+for my $j (1 .. 4) {
+    ($loc1, $value1) = ($j - 1, $Bpb1->data->[ $j - 1 ])
+        if ($Bpb1->data->[ $j - 1 ] < $value1);
+}
+$leave1 = Real($beta1[$loc1]);
+
+# find the column with leftmost negative number in row $loc1;
+for my $j (1 .. 4) {
+    if ($BpPi1->element($loc1 + 1, $j) < 0) {
+        $col1 = $j;
+        last;
+    }
+}
+
+$enter1 = Real($pi1[ $col1 - 1 ]);
+
+BEGIN_PGML
+Consider the LOP in matrix form _Maximize_ [` z = \mathbf{c}^{\intercal}\mathbf{x} `] 
+subject to [`\mathbf{A}\mathbf{x} \leq \mathbf{b} `] and [` \mathbf{x} \geq \mathbf{0} `],
+where
+[``` \mathbf{A} = [$A] \qquad \mathbf{b} = [$b] \quad \mathbf{c} = [$c] ```]
+END_PGML
+
+Scaffold::Begin();
+Section::Begin();
+
+BEGIN_PGML
+If [` \beta= \{ [@ join(', ', @beta1) @] \} `] and 
+
+[``` \mathbf{B}'\mathbf{\Pi}=[$BpPi1] \quad \mathbf{B}'\mathbf{b} = [$Bp1*$b] ```]
+
+and
+
+[```\mathbf{c}_{\beta}^{\intercal} \mathbf{B} \mathbf{\Pi} - \mathbf{c}_{\pi} = [$crowt1] ```]
+
+The current state is in [_]{$radio1}
+
+The next appropriate pivot should be [_]{$enter1} [`\mapsto`] [_]{$leave1}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Since there are negative numbers in the [`\mathbf{B}'\mathbf{b}`] vector this is in Phase I. 
+
+The parameters [`\pi`] is also needed and this is [`\{ [@ join(', ', @pi1) @] \}`], which are all of the variables that are not in [`\beta`]. 
+
+To determine the pivot, since this is in Phase I, we find the largest negative in [`\mathbf{B}'\mathbf{b}`].  This occurs in row [$loc1+1]. 
+
+Next, locate the leftmost negative number in row [$loc1+1].  This occurs in column [$col1]. 
+
+The leaving value is the row number element of [`\beta`] or [`[$leave1]`] and the entering variable is the column number element of [`\pi`] or [`[$enter1]`]. So the pivot is 
+[```[$enter1] \mapsto [$leave1]```]
+END_PGML_SOLUTION
+
+Section::End();
+
+# Next pick a beta that will have the state in phase II
+do {
+    @beta2 = num_sort(random_subset(4, 1 .. 9));
+
+    # This finds the difference (1..9) - @beta;
+    %beta2 = map  { $_ => 1 } @beta2;
+    @pi2   = grep { !$beta2{$_} } (1 .. 9);
+
+    for my $i (0 .. 3) {
+        for my $j (0 .. 3) {
+            $Bm2->[$i][$j] =
+                $beta2[$j] <= 5        ? $Am->[$i][ $beta2[$j] - 1 ]
+                : $i == $beta2[$j] - 6 ? 1
+                :                        0;
+        }
+        for my $j (0 .. $#pi2) {
+            $Pim2->[$i][$j] =
+                $pi2[$j] <= 5        ? $Am->[$i][ $pi2[$j] - 1 ]
+                : $i == $pi2[$j] - 6 ? 1
+                :                      0;
+        }
+    }
+
+    $cbm2->[$_] = $beta2[$_] <= 3 ? $cm->[ $beta2[$_] - 1 ] : 0
+        for (0 .. 3);
+    $cpm2->[$_] = $pi2[$_] <= 3 ? $cm->[ $pi2[$_] - 1 ] : 0 for (0 .. 4);
+
+    $cb2    = ColumnVector($cbm2);
+    $cp2    = ColumnVector($cpm2);
+    $B2     = Matrix($Bm2);
+    $dbeta2 = abs($B2->det);
+    next if $dbeta2 == 0;
+    $Bp2    = $dbeta2 * $B2->inverse;
+    $Pi2    = Matrix($Pim2);
+    $BpPi2  = $Bp2 * $Pi2;
+    $crow2  = Vector($cb2 * $Bp2 * $Pi2) - $dbeta2 * $cp2;
+    $crowt2 = Matrix([ [ $crow2->value ] ]);
+
+    $Bpb2 = $Bp2 * $b;
+    } until $Bpb2->data->[0] > 0
+    && $Bpb2->data->[1] > 0
+    && $Bpb2->data->[2] > 0
+    && $Bpb2->data->[3] > 0
+    && ($crow2->data->[0] < 0
+        || $crow2->data->[1] < 0
+        || $crow2->data->[2] < 0
+        || $crow2->data->[3] < 0
+        || $crow2->data->[4] < 0);
+
+$radio2 = RadioButtons([ 'Phase I', 'Phase II' ], 1);
+
+# Find the location of the leftmost negative in the objective row
+for my $j (1 .. 5) {
+    if ($crowt2->element(1, $j) < 0) {
+        $col2 = $j;
+        last;
+    }
+}
+
+# Find the smallest nonnegative b-ratio
+$loc2   = -1;
+$value2 = 10**8;
+
+for my $i (1 .. 4) {
+    next if $BpPi2->element($i, $col2) == 0;
+    $v = $Bpb2->data->[ $i - 1 ] / $BpPi2->element($i, $col2);
+    ($loc2, $value2) = ($i - 1, $v) if $v >= 0 && $v < $value2;
+}
+$leave2 = Real($beta2[$loc2]);
+$enter2 = Real($pi2[ $col2 - 1 ]);
+Section::Begin();
+
+BEGIN_PGML
+If [` \beta= \{ [@ join(', ', @beta2) @] \} `] and 
+
+[``` B'\Pi=[$BpPi2] \quad \mathbf{B}'\mathbf{b} = [$Bp2*$b] ```]
+
+and
+
+[```\mathbf{c}_{\beta}^{\intercal} \mathbf{B} \mathbf{\Pi} - \mathbf{c}_{\pi} = [$crowt2] ```]
+
+The current state is in [_]{$radio2}
+
+The next appropriate pivot should be [_]{$enter2} [`\mapsto`] [_]{$leave2}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+In this case, all of the elements of [`\mathbf{B}'\mathbf{b}`] are nonnegative, so this is in phase II.  
+
+The parameters [`\pi= \{ [@ join(', ', @pi2) @] \}`] are needed which are the variable numbers that are not in [`\beta`].  
+
+Since we are in phase II, to select the pivot, first, find the leftmost negative number in
+[`\mathbf{c}_{\beta}^{\intercal} \mathbf{B} \mathbf{\Pi} - \mathbf{c}_{\pi} `] which is in column [$col2].  The leaving variable is this element of [`\pi`] or [$leave2]. 
+
+To find the entering variable, we need the smallest nonnegative [`\mathbf{b}`]-ratio
+using column [$col2] above. 
+
+[``` \begin{bmatrix}
+     [@($Bp2*$b)->data->[0] @] / [$BpPi2->element(1,$col2)] \\
+    [@($Bp2*$b)->data->[1] @] / [$BpPi2->element(2,$col2)] \\
+    [@($Bp2*$b)->data->[2] @] / [$BpPi2->element(3,$col2)] \\
+    [@($Bp2*$b)->data->[3] @] / [$BpPi2->element(4,$col2)] \\
+\end{bmatrix} \approx 
+\begin{bmatrix}
+[@ ($Bp2*$b)->data->[0]/ $BpPi2->element(1,$col2)  @] \\
+[@ ($Bp2*$b)->data->[1]/ $BpPi2->element(2,$col2)  @] \\
+[@ ($Bp2*$b)->data->[2]/ $BpPi2->element(3,$col2)  @] \\
+[@ ($Bp2*$b)->data->[3]/ $BpPi2->element(4,$col2)  @] \\
+\end{bmatrix}
+```]
+and the smallest ratio occurs in row [$loc2+1]. Thus the entering variable is element [$loc2+1] of [`\beta`] or [$enter2].
+
+The next pivot should then be [`` [$enter2] \mapsto [$leave2]. ``]
+END_PGML_SOLUTION
+Section::End();
+Scaffold::End();
+ENDDOCUMENT();

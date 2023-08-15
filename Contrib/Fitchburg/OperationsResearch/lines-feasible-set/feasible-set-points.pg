@@ -1,0 +1,80 @@
+## DESCRIPTION
+## Determine which of a set of points is in a feasible set.
+## ENDDESCRIPTION
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear inequalities)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## Level(1)
+## KEYWORDS('linear inequalities', 'feasible set')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserCheckboxList.pl', 'PGcourse.pl');
+
+Context("Numeric")->variables->add(y => 'Real');
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+do {
+    $b1 = random(1,  5);
+    $a1 = random(1,  5);
+    $c1 = random(15, 35, 5);
+
+    $a2 = random(1,  5);
+    $b2 = random(1,  5);
+    $c2 = random(24, 48, 3);
+
+    # The points should be unique, so generate all integer points on [1,6]x[1,6]
+    # and pick of them.
+    for my $i (1 .. 6) {
+        for my $j (1 .. 6) {
+            push(@points, [ $i, $j ]);
+        }
+    }
+    @subset = random_subset(5, @points);
+    @x      = map { $_->[0] } @subset;
+    @y      = map { $_->[1] } @subset;
+
+    @ans = map {
+        $a1 * $x[$_] + $b1 * $y[$_] <= $c1
+            && $a2 * $x[$_] + $b2 * $y[$_] <= $c2
+    } (0 .. $#subset);
+    @correct = grep { $ans[$_] } (0 .. $#subset);
+} until scalar(@correct) > 0 && scalar(@correct) < 5;
+
+$checks = CheckboxList(
+    [ map {"\(($x[$_], $y[$_])\)"} (0 .. $#ans) ],
+    [ grep { $ans[$_] } (0 .. $#ans) ],
+    labels => 'abc'
+);
+
+$line1 = Formula("$a1 x + $b1 y ")->reduce;
+$line2 = Formula("$a2 x + $b2 y ")->reduce;
+
+BEGIN_PGML
+Consider the following inequalities
+[```
+\begin{cases}
+[$line1] \leq [$c1], \\
+[$line2] \leq [$c2], \\
+x \geq 0, \; y \geq 0.
+\end{cases}
+```]
+
+Which of the following are in the feasibile set?
+
+[_]{$checks}
+
+END_PGML
+
+@correct_ans = map {"($x[$_], $y[$_])"} grep { $ans[$_] } (0 .. $#ans);
+
+BEGIN_PGML_SOLUTION
+To solve this, check to determine if each point satisfies all of the inequalities.  In this case, the ones that satisfy it are [`[@ join(", ", @correct_ans) @]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

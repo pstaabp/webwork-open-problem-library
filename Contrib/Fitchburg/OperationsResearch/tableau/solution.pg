@@ -1,0 +1,119 @@
+## DESCRIPTION
+## Give a value for pi
+## ENDDESCRIPTION
+
+## KEYWORDS('template', 'pi')
+
+## DBsubject('Algebra')
+## DBchapter('Fundamentals')
+## DBsection('Real Numbers')
+## Date('')
+## Author('')
+## Institution('')
+
+DOCUMENT();
+
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserCheckboxList.pl', 'PGcourse.pl');
+
+Context('Numeric')->variables->are(x1 => Real, x2 => Real);
+Context()->noreduce('(-x)-y','(-x)+y');
+
+@A = map { [map { non_zero_random(1,5)} (1..2)] } (1..3);
+if (non_zero_random(-1,1) > 0) { $A[2][0] = 0; } else {$A[2][1] = 0;} 
+
+@lines = map { Formula("$A[$_][0] x1 + $A[$_][1] x2")->reduce} (0..2);
+($b1, $b2, $b3) = (random(12,60,4),random(12,60,4), random(3,15,3));
+($c1, $c2) = (random(2,6), random(2,6));
+$obj = Formula("$c1 x1 + $c2 x2")->reduce;
+
+# Create the dictionary associated with this:
+
+sub dict {
+    my ($x1, $x2) = @_;
+    return (
+        $x1,
+        $x2,
+        $b1 - $A[0][0]*$x1 - $A[0][1]*$x2,
+        $b2 - $A[1][0]*$x1 - $A[1][1]*$x2,
+        $b3 - $A[2][0]*$x1 - $A[2][1]*$x2,
+    );
+}
+
+@sol1 = dict(random(2,5), random(2,5));
+@sol2 = dict(0, random(3,10));
+@sol3 = dict(random(-3,3), random(-3,3));
+$i = random(0,4);
+@sol4 = @sol3;
+@sol4[$i] = $sol4[$i]+ non_zero_random(-2, 2);
+$i = random(0,4);
+@sol5 = @sol1;
+@sol5[$i] = $sol5[$i]+ non_zero_random(-5, 5);
+
+
+
+$checks = CheckboxList([[
+    "\( x = [~$sol1[0], ~$sol1[1]0~| ~$sol1[2], ~$sol1[3], ~$sol1[4] ~]^{\intercal} \)",
+    "\( x = [~$sol2[0], ~$sol2[1]0~| ~$sol2[2], ~$sol2[3], ~$sol2[4] ~]^{\intercal} \)",
+    "\( x = [~$sol3[0], ~$sol3[1]0~| ~$sol3[2], ~$sol3[3], ~$sol3[4] ~]^{\intercal} \)",
+    "\( x = [~$sol4[0], ~$sol4[1]0~| ~$sol4[2], ~$sol4[3], ~$sol4[4] ~]^{\intercal} \)",
+    "\( x = [~$sol5[0], ~$sol5[1]0~| ~$sol5[2], ~$sol5[3], ~$sol5[4] ~]^{\intercal} \)",]], [0,1,2], labels => 'ABC');
+
+
+
+BEGIN_PGML
+
+The Linear Optimization Problem is _Maximize_ [` z = [$obj]`] subject to
+
+[```
+\begin{aligned}
+[$lines[0]] &\leq [$b1] \\
+[$lines[1]] &\leq [$b2] \\
+[$lines[2]] &\leq [$b3] \\
+x_1, x_2 &\geq 0
+\end{aligned}
+```]
+
+Consider creating equations of the first three inequalities using the slack variables [`x_3, x_4, x_5`] in the standard way to make a dictionary.
+
+Which of the following are solutions to the LOP? 
+
+[_]{$checks}
+
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+First, if the slack variables [`x_3, x_4, x_5`] are used to make equations out of the inequalities, 
+[```
+\begin{aligned}
+[$lines[0]] + x_3 & = [$b1] \\
+[$lines[1]] + x_4 & = [$b2] \\
+[$lines[2]] + x_5 & = [$b3] \\
+\end{aligned}
+```]
+and then solving for the slack variables:
+
+[```
+\begin{aligned}
+x_3 & = [$b1] - [$A[0][0]] x_1 - [$A[0][1]] x_2 \\
+x_4 & = [$b2] - [$A[1][0]] x_1 - [$A[1][1]] x_2 \\
+x_5 & = [$b3] - [$A[2][0]] x_1 - [$A[2][1]] x_2
+\end{aligned}
+```]
+
+For each of the possible solutions listed above, substitute the values for [`x_1`] and [`x_2`] given and calculate the other three values from the above equations.  For example, if [`x_1 = [$sol1[0]], x_2 = [$sol1[1]] `], then 
+
+[```
+\begin{aligned}
+x_3 & = [$b1] - [$A[0][0]] ([$sol1[0]]) - [$A[0][1]] ([$sol1[1]]) = [$sol1[2]] \\
+x_4 & = [$b2] - [$A[1][0]] ([$sol1[0]]) - [$A[1][1]] ([$sol1[1]]) = [$sol1[3]] \\
+x_5 & = [$b3] - [$A[2][0]] ([$sol1[0]]) - [$A[2][1]] ([$sol1[1]]) = [$sol1[4]]
+\end{aligned}
+```]
+
+This means that [`[~[$sol1[0]], ~ [$sol1[1]] ~ | ~[$sol1[2]], ~[$sol1[3]], ~[$sol1[4]] ~]^{\intercal}`] is a solution.  Checking the others, [$checks] is a solution.
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

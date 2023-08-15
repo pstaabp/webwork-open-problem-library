@@ -1,0 +1,108 @@
+## DESCRIPTION
+## Applied Linear Optimization (Linear Programming) problem which asks the
+## profits to be maximized based on producing bicycles with two different types
+## of materials asked.
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'tableau.pl', 'PGcourse.pl');
+
+Context("Numeric");
+
+do {
+    do {
+        ($a1, $b1, $c1) =
+            (random(300, 900, 50), random(300, 900, 50), random(300, 900, 50));
+        ($a2, $b2, $c2) =
+            (random(300, 900, 50), random(300, 900, 50), random(300, 900, 50));
+        ($a, $b, $c) =
+            (random(100, 400, 25), random(100, 400, 25), random(100, 400, 25));
+        $m =
+            Matrix([ [ $a1, $b1, $c1 ], [ $a2, $b2, $c2 ], [ $a, $b, $c ] ]);
+    } until ($m->det != 0);
+
+    # create two linear inequalities with integer intecepts.
+    ($x1, $y1, $z1) = (random(1, 5), random(1, 5), random(1, 5));
+    ($x2, $y2, $z2) = (random(1, 5), random(1, 5), random(1, 5));
+
+    $d1 = $a1 * $y1 * $z1 + $b1 * $x1 * $z1 + $c1 * $x1 * $y1;
+    $d2 = $a2 * $y2 * $z2 + $b2 * $x2 * $z2 + $c2 * $x2 * $y2;
+
+    $tab = Tableau->new(
+        A => Matrix([ [ $a1, $b1, $c1 ], [ $a2, $b2, $c2 ] ]),
+        b => Vector($d1, $d2),
+        c => Vector($a,  $b, $c)
+    );
+
+    ($sol_tab, $flag) = phase2_solve($tab, 'max');
+    $state = $sol_tab->statevars;
+    $x     = $state->[0];
+    $y     = $state->[1];
+    $z     = $state->[2];
+
+} until (int($x) == $x && int($y) == $y && int($z) == $z);
+
+# Now begin with the Problem Statement
+
+BEGIN_PGML
+Main Street Cycles builds three styles of bicycles called series A, B, and C, each of which uses aluminum and carbon fiber.  The following table lists the amount (in grams) of each style of bike uses and the profit made from each bike.
+
+[#
+    [.Series.] [.Amt. of Alum. .][. Amt. of Carbon.][.Profit.]*{headerrow => 1}
+    [. A.] [.[$a1].][.[$a2].][.[$a].]*
+    [. B.] [.[$b1].][.[$b2].][.[$b].]*
+    [. C.] [.[$c1].][.[$c2].][.[$c].]*
+#]{padding => [0.5, 0.5],
+  horizontalrules => 1,
+  align => '|c|c|c|c|'
+}
+
+In the factory, there is [$d1]g of Aluminum and [$d2]g of Carbon Fiber.  
+How many of each type of bike should be made to maximize the profit?
+
+a) Number of series A bikes: [_]{Real($x)}
+b) Number of series B bikes: [_]{Real($y)}
+c) Number of series C bikes: [_]{Real($z)}
+d) Profit: $[_]{Real($state->[5])}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+This is an applied linear programming problem.  First, the variables for this problem are
+[```
+\begin{aligned}
+x & = \text{number of series A bikes,} \\
+y & = \text{number of series B bikes,} \\
+z & = \text{number of series C bikes,} \\
+\end{aligned}
+```]
+Also, because of the constraints of the aluminum and carbon fiber there are two standard inequality constraints:
+[```
+\begin{aligned}
+[$a1] x + [$b1] y + [$c1] z & \leq [$d1], \\
+[$a2] x + [$b2] y + [$c2] z & \leq [$d2], \\
+\end{aligned}
+```]
+as well as the nonnegative constraints [`` x \geq 0, y \geq 0, z \geq 0. ``]
+
+The objective is the profit which is to be maximized and this is:
+[``` w = [$a] x + [$b] y + [$c] z. ```]
+
+Using the simplex method (not shown), the optimal solution is 
+- Number of series A bikes to build is [$x]
+- Number of series B bikes to build is [$y]
+- Number of series C bikes to build is [$z]
+
+resulting in the total profit of $[$state->[5]].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

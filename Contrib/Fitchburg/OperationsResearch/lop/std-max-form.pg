@@ -1,0 +1,152 @@
+## DESCRIPTION
+## Conversion of a linear optimization problem to standard maximum form.
+## ENDDESCRIPTION
+
+
+## DBsubject(Operations research)
+## DBchapter(Linear programming)
+## DBsection(Constrained optimization - planar)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('linear optimization', 'non-standard form')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'scaffold.pl',               'parserRadioButtons.pl',
+    'parserRadioMultiAnswer.pl', 'PGcourse.pl'
+);
+
+Context('Numeric')->variables->are(
+    x1 => 'Real',
+    x2 => 'Real',
+    y1 => 'Real',
+    y2 => 'Real',
+    y3 => 'Real'
+);
+Context()->noreduce('(-x)-y', '(-x)+y');
+
+@c     = (random(1, 7), random(1, 7));
+@a     = (random(1, 7), random(1, 7));
+$obj   = Formula("$c[0] x1 + $c[1] x2")->reduce;
+$line1 = Formula("$a[0] x1 + $a[1] x2")->reduce;
+$b1    = random(2, 4) * $a[0] * $a[1];
+$b2    = random(4, 8);
+
+$x1conv = Formula("y1-y2");
+$x2conv = Formula("$b2-y3");
+
+$new_obj   = Formula("-$c[0](y1-y2) - $c[1] ($b2-y3)")->reduce;
+$new_line1 = Formula("-$a[0]y1 + $a[0] y2 + $a[1] y3")->reduce;
+$b1_star   = Compute(-$b1 + $a[1] * $b2)->reduce;
+
+BEGIN_PGML
+Consider the following linear optimization problem:
+
+Minimize [`w=[$obj]`] subject to
+
+[```
+\begin{aligned}
+[$line1] &\geq [$b1] \\
+x_2 & \leq [$b2]
+\end{aligned}
+```]
+
+This problem will be converted into a problem of standard maximum form.
+
+
+**Note:** enter variables in this problem as [`x_1`] as [|x1|] and [`x_2`] as [|x2|].
+
+
+END_PGML
+Scaffold::Begin();
+Section::Begin('The Objective Function');
+
+$rma = RadioMultiAnswer(
+    [
+        ['The objective function is in the correct form.'],
+        [
+            'The objective function needs to rewritten to \(z=\) %s',
+            -1 * $obj
+        ]
+    ],
+    1
+);
+
+BEGIN_PGML
+In order for this problem to be in standard maximum form: 
+
+[_]{$rma}
+END_PGML
+
+$obj2 = Compute("-$obj")->reduce;
+BEGIN_PGML_SOLUTION
+Because the original problem is a minimum problem, we write [` z= - w`] or in this case 
+[`z =  [$obj2] `]
+END_PGML_SOLUTION
+
+Section::End();
+Section::Begin('Types of Variables');
+
+$x1_type = RadioButtons([ 'nonnegative', 'constrained', 'free' ],
+    2, separator => '&nbsp;&nbsp;');
+$x2_type = RadioButtons([ 'nonnegative', 'constrained', 'free' ],
+    1, separator => '&nbsp;&nbsp;');
+
+BEGIN_PGML
+Determine the type of each of these variables:
+
+- [`x_1`] [_]{$x1_type}
+- [`x_2`] [_]{$x2_type}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+- Because there is no inequality with this variable directly, this is a *free* variable.
+- The second constraint has an [`x_2`], and it is not of the form [`x_2 \geq 0`], therefore
+it is *constrained*.
+END_PGML_SOLUTION
+
+Section::End();
+
+Section::Begin('Converting Variables');
+
+BEGIN_PGML
+From the previous section, you correctly selected that [`x_1`] is free and [`x_2`] is constrained.  We will use [`y_1 = x_1^+`], [`y_2 = x_1^-`] and [`y_3=x_2'`]. For this, convert [`x_1`] and [`x_2`] to functions of [`y_1, y_2`] and [`y_3`]. 
+
+- [`x_1= \;`] [_]{$x1conv}
+- [`x_2= \;`] [_]{$x2conv}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+- To convert a free variable to a nonnegative one, use [`x_1 = x_1^+ - x_1^- = y_1 - y_2`].
+- To convert a constrained variable of the form [`x_2 \leq a`], use [`x_2' = a - x_2`].  Solving for [`x_2`], one gets [`x_2 = a - x_2`] or in this case [`x_2 = [$x2conv]`].
+END_PGML_SOLUTION
+Section::End();
+
+Section::Begin('Rewrite the Linear Optimization Problem');
+
+BEGIN_PGML
+For the last step, we convert the objective function and constraints to functions in terms of [`y_1, y_2`] and [`y_3.`]  Note, the 2nd constraint given converts to a nonnegative constraint.
+
+Maximize [`z = \;`] [_]{$new_obj}  
+subject to 
+- [_]{$new_line1} [` \leq `] [_]{$b1_star}
+- [`y_1 \geq 0, \; y_2 \geq 0, \; y_3 \geq 0`]
+
+For the two inequalities, there should be no constants on the left side and only constants on the right side.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Substitute the new variables in the previous section into the linear objective problem or 
+
+Maximize [` z = [$new_obj] `]  
+subject to 
+- [` [$new_line1] \leq [$b1_star] `]
+- [`y_1 \geq 0, \; y_2 \geq 0, \; y_3 \geq 0`]
+END_PGML_SOLUTION
+Section::End();
+
+Scaffold::End();
+
+ENDDOCUMENT();

@@ -1,0 +1,142 @@
+## DESCRIPTION
+## Given inequalities, find the vertices of the feasible set.
+## ENDDESCRIPTION
+
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear inequalities)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## Level(1)
+## KEYWORDS('feasible set', 'vertices')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',      'PGML.pl',
+    'parserGraphTool.pl', 'contextFraction.pl',
+    'PGcourse.pl'
+);
+
+Context('Point')->noreduce('(-x)-y', '(-x)+y');
+
+sub createLine {
+    my ($x1, $y1, $x2, $y2) = @_;
+    my ($a, $b, $c) = ($y2 - $y1, $x1 - $x2, $x1 * $y2 - $x2 * $y1);
+    my $f = gcf($a, $b, $c);
+    $f *= -1 if $c < 0;
+    return ($a / $f, $b / $f, $c / $f);
+}
+
+# To create the feasible set with a nice intersection point, we find the
+# axis intercepts and then a vertext and then find the lines through these
+# points.
+do {
+    # x-intercept of one line
+    $x0 = random(5, 10);
+
+    # y-intercept of second line
+    $y1 = random(6, 10);
+
+    # intercept of the two lines.
+    ($x2, $y2) = (random(2, $x0 - 2), random(2, $y1 - 1));
+
+    # coefficients of the lines:
+    ($a1, $b1, $c1) = createLine($x0, 0,   $x2, $y2);
+    ($a2, $b2, $c2) = createLine(0,   $y1, $x2, $y2);
+} while ($a1 * $b2 - $a2 * $b1 == 0);
+
+$line1 = Formula("$a1 x + $b1 y")->reduce;
+$line2 = Formula("$a2 x + $b2 y")->reduce;
+
+Context('Fraction');
+$xint1 = Fraction($c1, $a1);
+$yint1 = Fraction($c1, $b1);
+$xint2 = Fraction($c2, $a2);
+$yint2 = Fraction($c2, $b2);
+
+$vertices =
+    List(Point(0, 0), Point($xint1, 0), Point(0, $yint2), Point($x2, $y2));
+
+BEGIN_PGML
+The following inequalities produce a feasible set
+
+[```
+\begin{cases}
+[$line1]  \leq [$c1] \\
+[$line2]  \leq [$c2] \\
+x  \geq 0, \;\;y  \geq 0
+\end{cases}
+```]
+
+Graph the feasible set and determine the vertices of the set algebraically.
+List your vertices as points in the box below separated by commas.
+For example:  (1,1), (4,3), (7,2)
+
+[_]{$vertices}
+
+END_PGML
+
+$gt = GraphTool('')->with(
+    bBox           => [ -1, 11, 11, -1 ],
+    ticksDistanceX => 1,
+    ticksDistanceY => 1,
+    minorTicksX    => 0,
+    minorTicksY    => 0,
+    staticObjects  => [
+        '{line,solid,(0,0),(0,1)}',
+        '{line,solid,(0,0),(1,0)}',
+        "{line,solid,(0,$y1),($x2,$y2)}",
+        "{line,solid,($x0,0),($x2,$y2)}",
+        '{fill,(1,1)}'
+    ]
+);
+
+BEGIN_PGML_SOLUTION
+For this, we will plot the feasible set.  To do this, 1) plot the lines 
+corresponding to each inequality, 2) pick a point not on the line 3) cross 
+off the "false" side of the line and 4) label the part of the plane that is 
+not crossed off as the feasible set.
+
+
+In this case, the two lines are:
+[``
+\begin{cases}
+[$line1] = [$c1] \\
+[$line2] = [$c2]
+\end{cases} ``]
+
+Since each of these are nearly in intercept form, divide both sides by the right side to get the following:
+
+[```
+\begin{cases}
+\frac{x}{[$xint1]} + \frac{y}{[$yint1]} = 1 \\
+\frac{x}{[$xint2]} + \frac{y}{[$yint2]} = 1
+\end{cases}
+```]
+
+The first line has intercepts at [``\left([$xint1],0\right)``] and 
+[``\left(0,[$yint1]\right)``].  The second line has intercepts at
+[``\left([$xint2],0\right)``] and [``\left(0,[$yint2]\right)``].
+
+Next, we pick a point not on the line (let's pick the origin) and substitute this into each inequality.
+
+In both cases, the origin does satisfy the inequality, so cross out the side 
+not containing the origin. 
+
+Lastly, it's helpful to find the point of intersection to plot the lines.  Solve
+The two equations using linear algebra or solving simultaneously to get that
+[`([$x2],[$y2])`] is the intersection point.
+
+A plot of the feasible set is
+
+[$gt->generateAnswerGraph]*
+
+
+The vertices are
+[``(0,0), \left(0,[$yint2]\right), \left([$xint1],0\right)``] and [`([$x2],[$y2])`].
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

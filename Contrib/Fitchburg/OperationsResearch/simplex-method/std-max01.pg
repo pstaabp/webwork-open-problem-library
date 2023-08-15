@@ -1,0 +1,101 @@
+## DESCRIPTION
+## Solve a maximum linear optimization problem in 2D.
+## ENDDESCRIPTION
+
+## KEYWORDS('linear optimization', 'linear programming')
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# update 2023.08.20
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl', 'PGML.pl',
+    'tableau.pl',    'parserRadioMultiAnswer.pl',
+    'PGcourse.pl'
+);
+
+Context("Numeric")->variables->add(y => 'Real');
+Context()->noreduce('(-x)-y', '(-x)+y');
+
+sub createLine {
+    my ($x1, $y1, $x2, $y2) = @_;
+    my ($a, $b, $c) = ($y2 - $y1, $x1 - $x2, $x1 * $y2 - $x2 * $y1);
+    my $f = gcf($a, $b, $c);
+    $f *= -1 if $c < 0;
+    return ($a / $f, $b / $f, $c / $f);
+}
+
+# select three points for the feasible set. ($x1,$y1), ($x2,0) and (0,$y2)
+# make sure that the slope of the second line is smaller (more negative)
+# than the slope of the first line.  This makes sure that the F.S.
+# is convex.
+
+($x1, $y1) = (random(2, 8), random(2, 8));
+$x2 = $x1 + random(2, 5);
+$y2 = $y1 + random(2, 5);
+
+($a1, $b1, $c1) = createLine($x2, 0,   $x1, $y1);
+($a2, $b2, $c2) = createLine(0,   $y2, $x1, $y1);
+
+$line1 = Formula("$a1 x + $b1 y")->reduce;
+$line2 = Formula("$a2 x + $b2 y")->reduce;
+
+# ensure that the level-set of the objective is not parallel to the
+# boundary lines.
+do {
+    $a = random(1, 8);
+    $b = random(1, 8);
+} while (($a * $b1 - $b * $a1 == 0) || ($a * $b2 - $b * $a2 == 0));
+
+$tab = Tableau->new(
+    A => Matrix([ [ $a1, $b1 ], [ $a2, $b2 ] ]),
+    b => Vector([ $c1,          $c2 ]),
+    c => Vector([ $a,           $b ])
+);
+
+($sol_tab, $flag, $i) = phase2_solve($tab, 'max');
+
+$state     = $sol_tab->statevars;
+$objective = Formula("$a x + $b y")->reduce;
+$maxf      = Real($state->[4]);
+
+Context('Point');
+$pt = Point($state->[0], $state->[1]);
+
+$rma = RadioMultiAnswer(
+    [
+        ['The maximum does not exist.'],
+        [
+            'The maximum value of \(f = \) %s.  The maximum occurs at the point %s',
+            $maxf,
+            $pt
+        ]
+    ],
+    1
+);
+
+BEGIN_PGML
+Find the maximum of [` f(x,y) = [$objective] `] subject to 
+
+[```
+\begin{cases}
+[$line1]  \leq [$c1], \\
+[$line2] \leq [$c2], \\
+x  \geq 0, y  \geq 0. 
+\end{cases} 
+```]
+
+[_]{$rma}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+We use the simplex method to solve this problem.  
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

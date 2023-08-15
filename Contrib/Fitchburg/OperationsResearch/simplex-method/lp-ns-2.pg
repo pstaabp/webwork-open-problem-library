@@ -1,0 +1,124 @@
+## DESCRIPTION
+## WeBWorK Demo
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros(
+    "PGstandard.pl", "PGML.pl",
+    'tableau.pl',    'parserRadioMultiAnswer.pl',
+    'PGcourse.pl'
+);
+
+Context('Point')->variables->are(x1 => 'Real', x2 => 'Real', x3 => 'Real');
+Context()->noreduce('(-x)-y', '(-x)+y');
+
+do {
+
+    $a1 = random(1, 5);
+    $b1 = random(1, 5);
+    $c1 = random(1, 5);
+
+    $a2 = random(1, 5);
+    $b2 = random(1, 5);
+    $c2 = random(1, 5);
+
+    $det1 = $b1 * $c2 - $b2 * $c1;
+    $det2 = $a1 * $c2 - $a2 * $c1;
+    $det3 = $a1 * $b2 - $b1 * $a2;
+
+    $a = random(1, 8);
+    $b = random(1, 8);
+    $c = random(1, 8);
+
+    $det =
+        $a * ($b1 * $c2 - $c1 * $b2) -
+        $b * ($a1 * $c2 - $c1 * $a2) +
+        $c * ($a1 * $b2 - $a2 * $b1);
+
+} while ($det == 0);
+
+$r = random(1, 3);
+if ($r == 1) { $y1 = 0;             $y2 = random(5, 10); $y3 = random(5, 10); }
+if ($r == 2) { $y1 = random(5, 10); $y2 = 0;             $y3 = random(5, 10); }
+if ($r == 3) { $y1 = random(5, 10); $y2 = random(5, 10); $y3 = 0; }
+
+$a = random(1, 8);
+$b = random(1, 8);
+$c = random(1, 8);
+
+$d1 = $a1 * $y1 + $b1 * $y2 + $c1 * $y3;
+$d2 = $a2 * $y1 + $b2 * $y2 + $c2 * $y3;
+
+$obj   = Formula("$a x1 + $b x2 + $c x3")->reduce;
+$line1 = Formula("$a1 x1 + $b1 x2 + $c1 x3")->reduce;
+$line2 = Formula("$a2 x1 + $b2 x2 + $c2 x3")->reduce;
+
+$tab = Tableau->new(
+    A => Matrix([ [ -$a1, -$b1, -$c1 ], [ -$a2, -$b2, -$c2 ] ]),
+    b => Vector(-$d1, -$d2),
+    c => Vector(-$a,  -$b, -$c),
+    S => Matrix([ [ -1, 0 ], [ 0, -1 ] ])
+);
+
+($phase1_tab, $flag) = phase1_solve($tab, 'max');
+($sol_tab,    $flag) = phase2_solve($phase1_tab, 'max');
+
+$state = $sol_tab->statevars;
+
+$pt  = Point($state->[0], $state->[1], $state->[2]);
+$min = Real(-1 * $state->[5]);
+
+$rma = RadioMultiAnswer(
+    [
+        ['There is no minimum.'],
+        [ 'The minimum is %s and occurs at the point %s', $min, $pt ]
+
+    ],
+    1
+);
+
+BEGIN_PGML
+
+Solve the following linear programming problem using the simplex method:
+
+Minimize [`f(x_1,x_2, x_3) =  [$obj] `] subject to
+
+[```
+\begin{cases}
+[$line1] \geq [$d1] \\
+[$line2] \geq [$d2] \\
+x_1 \geq 0, ~~ x_2 \geq 0
+\end{cases}
+```]
+
+[_]{$rma}
+
+(Make sure that your point has three coordinates)
+
+END_PGML
+
+$obj2 = Formula("-$a x1 - $b x2 - $c x3")->reduce;
+BEGIN_PGML_SOLUTION
+Note that this is not in standard form, but writing [`w = -f(x_1,x_2,x_3) = [$obj2] `]
+and then multiplying the first two inequalities by [`-1`] results in the following simplex tableau
+
+[@ lop_display($tab, toplevel => [qw(x1 x2 x3 x4 x5 w z)]) @]*
+
+This is phase I and performing the correct pivots results in 
+
+[@ lop_display($sol_tab, toplevel => [qw(x1 x2 x3 x4 x5 w z)]) @]*
+
+Thus there is a minimum of [$min] and occurs at [`[$pt]`]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
