@@ -1,0 +1,120 @@
+##DESCRIPTION
+##  Use Modified Newton's method to find a root.
+##ENDDESCRIPTION
+
+##KEYWORDS("Newton's method", "Modified Newton's method",'root')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Rootfinding')
+## DBsection("Newton's Method")
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',        'PGML.pl',
+    'PGnumericalmacros.pl', 'niceTables.pl',
+    'PGcourse.pl'
+);
+
+TEXT(beginproblem());
+Context('Numeric');
+
+$k  = 0.1 * random(1, 9);
+$a  = 0.25 * non_zero_random(-8, 8);
+$ka = -$k * $a;
+$b  = 1 + $ka;
+
+$poly = nicestring([ -$k, -$b ]);
+
+$x0 = $a + 0.1* random(5, 15);
+
+$f = Compute("exp($k*(x-$a))-(1+$k*(x-$a))");
+
+@x = @{ newton($f, $x0, max_iter => 100)->{iterations} };
+# Recall that modified newton's method is just newton's method using F = f/f'.
+$df = $f->D('x');
+$F  = Compute("$f/$df");
+@mx = @{ newton($F, $x0)->{iterations} };
+
+$rows1 =
+    [ [ '\(n\)', '\(x_n\)' ] ];
+push(@$rows1, [ "\($_\)", PGML::Format("[_]{$x[$_]}") ]) for (0 .. 6);
+$tab1 = LayoutTable(
+    $rows1,
+    align      => '|c|c|',
+    padding => [0.5, 0.5],
+    horizontalrules => 1
+);
+
+$rows2 = [ [ '\(n\)', '\(x_n\)'] ];
+push(@$rows2, [ "\($_\)", PGML::Format("[_]{$mx[$_]}") ]) for (0 .. 5);
+$tab2 = LayoutTable(
+    $rows2,
+    align      => '|c|c|',
+    padding => [0.5, 0.5],
+    horizontalrules => 1
+);
+
+BEGIN_PGML
+
+Perform Newton's Method to find a root of
+
+[`` f(x) =  e^{[$k]x}e^{[$ka]}+[$poly]``]
+
+For the first 6 iterations.  Start with [`x_0=[$x[0]]`].
+
+[@ $tab1 @]*
+
+Perform Modified Newton's method on [`f(x)`].  Start with [`x_0=[$x[0]]`].
+
+[@ $tab2 @]*
+
+END_PGML
+
+$poly2 = $poly;
+$poly2 =~ s/x/x_n/g;
+
+$rows3 =
+    [ [ '\(n\)', '\(x_n\)'] ];
+push(@$rows3, [ "\($_\)", "\($x[$_]\)" ]) for (0 .. 6);
+
+$rows4 =
+    [ [ '\(n\)', '\(x_n\)' ] ];
+push(@$rows4, [ "\($_\)", "\($mx[$_]\)" ]) for (0 .. 5);
+
+BEGIN_PGML_SOLUTION
+For this, we use the standard Newton's Method formula:
+
+[`` x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} =
+x_n - \frac{e^{[$k]x_n}e^{[$ka]}+[$poly2]}{[$k] e^{[$k]x_n}e^{[$ka]}-[$k]}``]
+
+The first few iterations of this is:
+
+[@  LayoutTable(
+	$rows3,
+	align      => '|c|c|',
+	allcellcss => 'padding:6px;',
+	center     => 1,
+	tablecss   => 'border:solid 1px;'
+); @]*
+
+Next, to perform Modified Newton's method, define:
+
+[`` F(x) = \frac{f(x)}{f'(x)}=\frac{e^{[$k]x}e^{[$ka]}+[$poly]}{[$k] e^{[$k]x}e^{[$ka]}-[$k]}``]
+
+Then we apply Newton's method to [`F(x)`] to get the following table:
+
+[@ LayoutTable(
+	$rows4,
+	align      => '|c|c|',
+	allcellcss => 'padding:6px;',
+	center     => 1,
+	tablecss   => 'border:solid 1px;'
+); @]*
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

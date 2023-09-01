@@ -1,0 +1,174 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Sequences')
+## DBsection('Order of Convergence')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl', 'MathObjects.pl',
+    'niceTables.pl', 'PGML.pl',
+    'parserRadioButtons.pl'
+);
+
+TEXT(beginproblem());
+Context('Numeric');
+
+do {
+    $order1 = random(1, 3);
+    $order2 = random(1, 3);
+} while ($order1 == $order2);
+
+@x1      = (random(0.01, 0.99, 0.01));
+$const1  = random(0.1, 0.9, 0.1);
+$lambda1 = Compute($const1);
+
+@x2      = (random(0.01, 0.99, 0.01));
+$const2  = random(0.1, 0.9, 0.1);
+$lambda2 = Compute($const2);
+
+$order3  = 6 - $order2 - $order1;
+@x3      = (random(0.01, 0.99, 0.01));
+$const3  = random(0.1, 0.9, 0.1);
+$lambda3 = Compute($const3);
+
+for ($i = 0; $i < 5; $i++) {
+    push(@x1, $const1 * $x1[$i]**$order1);
+    push(@x2, $const2 * $x2[$i]**$order2);
+    push(@x3, $const3 * $x3[$i]**$order3);
+}
+
+$rows1 = [ [ 'A', 'B', [ 'C', rowcss => 'border-bottom: 1px solid;' ] ] ];
+push(@$rows1, [ $x1[$_], $x2[$_], $x3[$_] ]) for (0 .. 5);
+$tab1 = LayoutTable(
+    $rows1,
+    align      => '|c|c|c|',
+    allcellcss => 'padding:6px;',
+    center     => 1,
+    tablecss   => 'border:solid 1px;'
+);
+
+$radio1 = RadioButtons([ 1, 2, 3 ], $order1 - 1, separator => '&nbsp;&nbsp;');
+$radio2 = RadioButtons([ 1, 2, 3 ], $order2 - 1, separator => '&nbsp;&nbsp;');
+$radio3 = RadioButtons([ 1, 2, 3 ], $order3 - 1, separator => '&nbsp;&nbsp;');
+
+BEGIN_PGML
+Below is a table of errors for 3 different methods (each column).  Determine numerically the order of convergence (linear, quadratic, cubic) and estimate the asymptotic error constant in each case.
+
+
+[@ $tab1 @]*
+
+*Method A:*
+
+Order: [__]{$radio1}
+
+Asymptotic Error Constant: [_____]{Real($const1)->with(tolerance=>.1)->cmp()}
+
+*Method B:*
+
+Order: [__]{$radio2}
+
+Asymptotic Error Constant: [_____]{Real($const2)->with(tolerance=>.1)->cmp()}
+
+*Method C:*
+
+Order: [__]{$radio3}
+
+Asymptotic Error Constant: [_____]{Real($const3)->with(tolerance=>.1)->cmp()}
+
+
+
+END_PGML
+
+############################
+#  Solution
+
+# the variables errAn is the error sequence of A given for order n
+@errA1 = ();
+@errA2 = ();
+@errA3 = ();
+@errB1 = ();
+@errB2 = ();
+@errB3 = ();
+@errC1 = ();
+@errC2 = ();
+@errC3 = ();
+
+for ($i = 0; $i < 5; $i++) {
+    push(@errA1, $x1[ $i + 1 ] / $x1[$i]);
+    push(@errA2, $x1[ $i + 1 ] / $x1[$i]**2);
+    push(@errA3, $x1[ $i + 1 ] / $x1[$i]**3);
+
+    push(@errB1, $x2[ $i + 1 ] / $x2[$i]);
+    push(@errB2, $x2[ $i + 1 ] / $x2[$i]**2);
+    push(@errB3, $x2[ $i + 1 ] / $x2[$i]**3);
+
+    push(@errC1, $x3[ $i + 1 ] / $x3[$i]);
+    push(@errC2, $x3[ $i + 1 ] / $x3[$i]**2);
+    push(@errC3, $x3[ $i + 1 ] / $x3[$i]**3);
+
+}
+
+BEGIN_PGML_SOLUTION
+For each of the error sequences, we compute the ratio [`` \frac{e_{n+1}}{e_n^{\alpha}} ``] for [`\alpha=1,2,3`]:
+
+*Error Sequence A*
+
+[@
+begintable(3) .
+row("\\(\\alpha=1\\)", "\\(\\alpha=2\\)", "\\(\\alpha=3\\)") .
+row($errA1[0],$errA2[0],$errA3[0]) .
+row($errA1[1],$errA2[1],$errA3[1]) .
+row($errA1[2],$errA2[2],$errA3[2]) .
+row($errA1[3],$errA2[3],$errA3[3]) .
+row($errA1[4],$errA2[4],$errA3[4]) .
+endtable();
+@]*
+
+And as can be scene from the [`\alpha = [$order1]`] column, the ratio is constant, so the order of method [`A`] is [$order1] and the asymptotic error constant is [$lambda1].
+
+*Error Sequence B*
+
+[@
+begintable(3) .
+row("\\(\\alpha=1\\)", "\\(\\alpha=2\\)", "\\(\\alpha=3\\)") .
+row($errB1[0],$errB2[0],$errB3[0]) .
+row($errB1[1],$errB2[1],$errB3[1]) .
+row($errB1[2],$errB2[2],$errB3[2]) .
+row($errB1[3],$errB2[3],$errB3[3]) .
+row($errB1[4],$errB2[4],$errB3[4]) .
+endtable();
+@]*
+
+And as can be scene from the [`\alpha = [$order2]`] column, the ratio is constant, so the order of method [`B`] is [$order2] and the asymptotic error constant is [$lambda2].
+
+*Error Sequence C*
+
+[@
+begintable(3) .
+row("\\(\\alpha=1\\)", "\\(\\alpha=2\\)", "\\(\\alpha=3\\)") .
+row($errC1[0],$errC2[0],$errC3[0]) .
+row($errC1[1],$errC2[1],$errC3[1]) .
+row($errC1[2],$errC2[2],$errC3[2]) .
+row($errC1[3],$errC2[3],$errC3[3]) .
+row($errC1[4],$errC2[4],$errC3[4]) .
+endtable();
+@]*
+
+And as can be scene from the [`\alpha = [$order3]`] column, the ratio is constant, so the order of method [`C`] is [$order3] and the asymptotic error constant is [$lambda3].
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

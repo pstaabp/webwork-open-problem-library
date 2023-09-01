@@ -1,0 +1,111 @@
+##DESCRIPTION
+##  Find the 3 Lagrange interpolating polynomials and the resulting
+## interpolation through 3 points.
+##ENDDESCRIPTION
+
+##KEYWORDS('interpolation', 'quadratic')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Interpolation')
+## DBsection('Lagrange Interpolation')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',     'PGML.pl',
+    'parserFunction.pl', 'scaffold.pl',
+    'PGcourse.pl'
+);
+
+# We use this to ensure that these are needed for the input. The actual
+# functions that L0, L1, L2 map to are not important except that they are independent.
+parserFunction("L0(x)" => "sqrt(x)+atan(x)");
+parserFunction("L1(x)" => "x^2+exp(x)");
+parserFunction("L2(x)" => "sin(x)+2sqrt(x)");
+
+# Pick three unique points.
+do {
+    $x0 = random(-5, 5);
+    $x1 = random(-5, 5);
+    $x2 = random(-5, 5);
+} while (($x1 == $x0) || ($x2 == $x1) || ($x2 == $x0));
+
+$L0 = Formula("(x-$x1)*(x-$x2)/(($x0-$x1)*($x0-$x2))");
+$L1 = Formula("(x-$x0)*(x-$x2)/(($x1-$x0)*($x1-$x2))");
+$L2 = Formula("(x-$x0)*(x-$x1)/(($x2-$x0)*($x2-$x1))");
+
+$y0 = random(-6, 6);
+$y1 = random(-6, 6);
+$y2 = random(-6, 6);
+
+$poly = Compute("$y0*L0(x)+$y1*L1(x)+$y2*L2(x)");
+
+Scaffold::Begin();
+Section::Begin("Part A: Find the Lagrange Interpolants");
+
+BEGIN_PGML
+Let
+
+[`` x_0 = [$x0], \quad x_1 = [$x1], \quad x_2 = [$x2] ``]
+
+Write the 3 Lagrange Polynomials through these points
+
+[`L_{2,0}(x) = `] [____________________________________]{$L0}
+
+[`L_{2,1}(x) = `] [____________________________________]{$L1}
+
+[`L_{2,2}(x) = `] [____________________________________]{$L2}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+The general form of a Lagrange polynomial that is 1 at [`x_j`] and 0
+through all [`x_i`] for [`i=1\ldots n, i \neq j`] is
+
+[`` L_{n,j} = \frac{\prod_{i=1,i \neq j}^n (x-x_i)}
+{\prod_{i=1,i \neq j}^n (x_j-x_i)} ``]
+
+For [` x_0 = [$x0], \quad x_1 = [$x1], \quad x_2 = [$x2] `],
+
+[`` L_{2,0} = \frac{(x-[$x1])(x-[$x2])}{([$x0]-[$x1])([$x0]-[$x2])} ``]
+
+[`` L_{2,1} = \frac{(x-[$x0])(x-[$x2])}{([$x1]-[$x0])([$x1]-[$x2])} ``]
+
+[`` L_{2,2} = \frac{(x-[$x0])(x-[$x1])}{([$x2]-[$x0])([$x2]-[$x1])} ``]
+
+END_PGML_SOLUTION
+
+Section::End();
+
+Section::Begin('Part B: Find the interpolating polynomial');
+
+BEGIN_PGML
+
+Find the quadratic that passes through the points [`([$x0],[$y0])`],
+[`([$x1],[$y1])`], [`([$x2],[$y2])`].  Use a linear combination of L0(x),
+L1(x), L2(x) instead of the actual functions above:
+
+[_]{$poly}{25}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+And using Lagrange polynomials, the interpolating polynomials is
+
+[`` P(x) = \sum_{j=0}^n y_j L_{n,j} ``]
+
+so for this problem,
+
+[`` P(x) = [$y0] L_{2,0}(x) + [$y1] L_{2,1}(x) + [$y2] L_{2,2}(x) ``]
+
+
+END_PGML_SOLUTION
+
+Section::End();
+Scaffold::End();
+ENDDOCUMENT();

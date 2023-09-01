@@ -1,0 +1,103 @@
+##DESCRIPTION
+##  Numerically Differentiating functions
+##ENDDESCRIPTION
+
+##KEYWORDS('numerical differentiation')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Integration and Differentiation')
+## DBsection('Composite Newton-Cotes Formulas')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated 2023.03.08
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+
+$choice = random(1, 5);
+
+if ($choice == 1) {
+    $k = -0.25 * non_zero_random(1, 8);
+    $f = Compute("exp($k*x^2)");
+    $a = random(-3, 3);
+    $b = $a + random(1, 2);
+} elsif ($choice == 2) {
+    $k = random(1, 5);
+    $f = Compute("sin(x*pi/$k)/x");
+    $a = 0.25 * random(1, 4);
+    $b = $a + 0.25 * random(1, 6);
+} elsif ($choice == 3) {
+    $k = random(1, 5);
+    $f = Compute("cos(x*pi/$k)/x");
+    $a = random(1, 4);
+    $b = $a + random(1, 2);
+} elsif ($choice == 4) {
+    $a = random(-5, -2);
+    $b = $a + random(2, 5);
+    $f = Compute("1/(1+x^2)");
+} elsif ($choice == 5) {
+    $a = random(-5, -2);
+    $b = $a + random(2, 5);
+    $f = Compute("x/(1+x^6)");
+}
+
+$xA0 = 0.5 * ($a + $b) - ($b - $a) / (2 * sqrt(3));
+$xA1 = 0.5 * ($a + $b) + ($b - $a) / (2 * sqrt(3));
+
+$I2 = 0.5 * ($b - $a) * ($f->eval(x => $xA0) + $f->eval(x => $xA1));
+
+$xB0 = 0.5 * ($a + $b) - 0.5 * ($b - $a) * sqrt(3 / 5);
+$xB1 = 0.5 * ($a + $b);
+$xB2 = 0.5 * ($a + $b) + 0.5 * ($b - $a) * sqrt(3 / 5);
+
+$I3 =
+    0.5 * ($b - $a) *
+    (5 * $f->eval(x => $xB0) +
+        8 * $f->eval(x => $xB1) +
+        5 * $f->eval(x => $xB2)) / 9;
+
+BEGIN_PGML
+
+Estimate
+
+[`` \int_{[$a]}^{[$b]} [$f->TeX] \, dx ``]
+
+using either the 2-point or 3-point Gaussian Quadrature formula
+
+* 2-point estimate: [__________________]{$I2}
+* 3-point estimate: [__________________]{$I3}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+* 2-point Gaussian Quadrature on [` [a,b] `]:
+
+If
+
+>>[`` x_0 = \frac{a+b}{2} - \frac{b-a}{2\sqrt{3}}, \qquad
+x_1 = \frac{a+b}{2} + \frac{b-a}{2\sqrt{3}} ``]<<
+
+[`` x_0 = [$xA0], \quad x_1 = [$xA1] ``]
+
+>>[`` I_2(f) = \frac{b-a}{2}\left( f(x_0) + f(x_1) \right) = [$I2] ``]<<
+
+* 2-point Gaussian Quadrature on [` [a,b] `]:
+
+If
+
+>>[`` x_0 = \frac{a+b}{2} - \frac{b-a}{2}\sqrt{\frac{3}{5}}, \qquad
+x_1 = \frac{a+b}{2}, \qquad
+x_2 = \frac{a+b}{2} + \frac{b-a}{2}\sqrt{\frac{3}{5}} ``]<<
+
+[`` x_0 = [$xB0], \quad x_1 = [$xB1], \quad x_2 = [$xB2]``]
+
+>>[`` I_2(f) = \frac{b-a}{2}\left( \frac{5}{9}f(x_0) +\frac{8}{9} f(x_1) + \frac{5}{9} f(x_2) \right) = [$I3] ``]<<
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

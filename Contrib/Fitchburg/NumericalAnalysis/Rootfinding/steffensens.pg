@@ -1,0 +1,100 @@
+##DESCRIPTION
+##  Use Steffensen's method to accelerate a fixed point iteration.
+##ENDDESCRIPTION
+
+##KEYWORDS('fixed point', 'steffensen', 'iteration')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Rootfinding')
+## DBsection("Steffensen's Method")
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'niceTables.pl', 'PGcourse.pl');
+
+$a = random(20, 80);
+$g = Compute("$a*(x+1)/(x^2+$a)");
+
+@x0 = (random(10, $a - 5));
+
+push(@x0, $g->eval(x => $x0[$_])) for (0 .. 2);
+
+@x1 = ($x0[0] - ($x0[1] - $x0[0])**2 / ($x0[2] - 2 * $x0[1] + $x0[0]));
+push(@x1, $g->eval(x => $x1[ $_ - 1 ])) for (1 .. 2);
+
+@x2 = ($x1[0] - ($x1[1] - $x1[0])**2 / ($x1[2] - 2 * $x1[1] + $x1[0]));
+push(@x2, $g->eval(x => $x2[ $_ - 1 ])) for (1 .. 2);
+
+$x3 = $x2[0] - ($x2[1] - $x2[0])**2 / ($x2[2] - 2 * $x2[1] + $x2[0]);
+
+$tab1 = LayoutTable(
+    [
+        [
+            '\(n\)',         '\(x_0^{(n)}\)',
+            '\(x_1^{(n)}\)', '\(x_2^{(n)}\)'
+        ],
+        [
+            '\(0\)',                   PGML::Format('[_]{$x0[0]}'),
+            PGML::Format('[_]{$x0[1]}'), PGML::Format('[_]{$x0[2]}')
+        ],
+        [
+            '\(1\)',                   PGML::Format('[_]{$x1[0]}'),
+            PGML::Format('[_]{$x1[1]}'), PGML::Format('[_]{$x1[2]}')
+        ],
+        [
+            '\(2\)',                   PGML::Format('[_]{$x2[0]}'),
+            PGML::Format('[_]{$x2[1]}'), PGML::Format('[_]{$x2[2]}')
+        ],
+        [ '\(3\)', PGML::Format('[_]{$x3}'), '&nbsp;', '&nbsp;' ]
+    ],
+    align           => '|c|c|c|c|',
+    padding         => [ 0.5, 0.5 ],
+    horizontalrules => 1
+);
+
+BEGIN_PGML
+
+The fixed point iteration
+
+>> [`` x_{n+1} = g(x_n) \qquad g(x) = \frac{a(x+1)}{x^2+a} ``] <<
+
+converges to [`\sqrt[3]{a}`] for any [`a>1`].
+
+Steffensen's Method accelerates an iteration in the following way.
+
+Define [``x_1^{(n)} = g(x_0^{(n)}), \qquad x_2^{(n)} = g(x_1^{(n)})``]
+
+Then
+
+>> [`` x_0^{(n+1)} = x_0^{(n)} - \frac{(x_1^{(n)}-x_0^{(n)})^2}{x_2^{(n)}-2x_1^{(n)}+x_0^{(n)}}  ``] <<
+
+Perform fixed point iteration and use Steffensen's Method to accelerate the method and to
+fill in the following table for [`a=[$a]`] and initial point [`x_0^{(0)}=[$x0[0]]`].
+Note: use at least 10 decimals places for all calculations in order to minimize round off errors.
+
+[@ $tab1 @]*
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+[@
+  LayoutTable([
+		[ '\(n\)', '\(x_0^{(n)}\)', '\(x_1^{(n)}\)', [ '\(x_2^{(n)}\)', rowcss => 'border-bottom: 1px solid;' ] ],
+		[0, $x0[0],$x0[1],$x0[2]],
+		[1, $x1[0],$x1[1],$x1[2]],
+		[2, $x2[0],$x2[1],$x2[2]],
+		[3, $x3,' ',' '],
+	],
+	align      => '|c|c|c|c|',
+	allcellcss => 'padding:6px;',
+	center     => 1,
+	tablecss   => 'border:solid 1px;');
+@]*
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

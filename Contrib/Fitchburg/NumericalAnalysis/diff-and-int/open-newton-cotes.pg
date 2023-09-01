@@ -1,0 +1,85 @@
+##DESCRIPTION
+##  Find definite integrals using open Newton-Cotes formulas.
+##ENDDESCRIPTION
+
+##KEYWORDS('numerical differentiation')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Integration and Differentiation')
+## DBsection('Newton-Cotes Formulas')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated 2023.03.08
+DOCUMENT();
+
+loadMacros("PGstandard.pl", "PGML.pl");
+
+$n    = random(2, 4);
+$k    = random(1, 4);
+$f    = Compute("sin(x*pi/$k)/x^(1/$n)");
+$fexp = "\frac{\sin\left(\frac{\pi x}{$k}\right)}{\sqrt[$n]{x}}";
+$a    = 0;
+$b    = $a + 0.25 * random(1, 6);
+
+$h  = ($b - $a) / 3;
+$I1 = 3 * $h / 2 * ($f->eval(x => $a + $h) + $f->eval(x => $a + 2 * $h));
+
+$h = ($b - $a) / 4;
+
+$I2 =
+    4 * $h / 3 *
+    (2 * $f->eval(x => $a + $h) -
+        $f->eval(x => $a + 2 * $h) +
+        2 * $f->eval(x => $a + 3 * $h));
+
+BEGIN_PGML
+
+Integrals of the form
+
+[`` \int_0^b \frac{g(x)}{x} \, dx ``]
+
+with [`g(0)=0`] often exist, however are not easy to calculate using standard
+quadrature approximations like Trapezoid Rule or Simpson's rule because you
+need to evaluate the integrand at 0, which is undefined.
+
+One alternative is to use an open Newton Cotes formula, which means the
+endpoints of the interval are not used. The formula with the lower degrees
+of precision are:
+
+[`` \tilde{I}_1(f) = \frac{3h}{2}\left( f(a+h)+f(a+2h) \right) \qquad \mbox{where $h=(b-a)/3$} ``]
+
+[`` \tilde{I}_2(f) = \frac{4h}{3}\left( 2f(a+h)-f(a+2h)+2f(a+3h) \right) \qquad \mbox{where $h=(b-a)/4$} ``]
+
+For the above two formulas, find the approximation of
+
+[`` \int_{[$a]}^{[$b]} [$fexp] \, dx ``]
+
+
+* [` \tilde{I}_1(f) = `] [____________________]{$I1}
+
+* [` \tilde{I}_2(f) = `] [____________________]{$I2}
+
+END_PGML
+
+############################
+#  Solution
+
+BEGIN_PGML_SOLUTION
+
+* For [` \tilde{I}_1(f) `]:
+
+[`` h= \frac{b-a}{3} = [@ ($b-$a)/3 @] ``]
+
+[`` \tilde{I}_1(f) = \frac{3h}{2}\left( f(a+h)+f(a+2h) \right) = [$I1] ``]
+
+* For [` \tilde{I}_1(f) `]:
+
+[`` h= \frac{b-a}{4} = [@ ($b-$a)/4 @] ``]
+
+[`` \tilde{I}_2(f) = \frac{4h}{3}\left( 2f(a+h)-f(a+2h)+2f(a+3h) \right) = [$I2] ``]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
