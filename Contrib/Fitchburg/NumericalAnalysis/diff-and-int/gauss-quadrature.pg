@@ -1,0 +1,62 @@
+##DESCRIPTION
+##  Find a definite integral using Gaussian Quadrature
+##ENDDESCRIPTION
+
+##KEYWORDS('numerical differentiation')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Integration and Differentiation')
+## DBsection('Gaussian Quadrature')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated 2023.03.08
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context('Numeric');
+
+$a = random(2, 4);
+$b = random(2, 4);
+$n = random(3, 5, 2);
+$m = random(1, 4);
+
+$f = Compute("($a*x^($m))/($b+x^($n))")->reduce;
+
+$I2 = $f->eval(x => sqrt(1 / 3)) + $f->eval(x => -sqrt(1 / 3));
+
+$I3 =
+    (5 * $f->eval(x => -sqrt(3 / 5)) +
+        8 * $f->eval(x => 0) +
+        5 * $f->eval(x => sqrt(3 / 5))) / 9;
+
+BEGIN_PGML
+
+Estimate
+
+[`` \int_{-1}^{1} \frac{[$a] x^{[$m]}}{[$b]+x^{[$n]}} \, dx ``]
+
+using Gaussian Quadrature with the indicated number of points.
+
+* 2-point formula [__________________]{$I2}
+
+* 3-point formula [__________________]{$I3}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+* 2-point Gaussian Quadrature on [` [-1,1] `]:
+
+[`` I_1(f) = f\left(\sqrt{\frac{1}{3}}\right) + f\left(-\sqrt{\frac{1}{3}}\right) = [$I2] ``]
+
+* 2-point Gaussian Quadrature on [` [-1,1] `]:
+
+[`` I_2(f) = \frac{5}{9} f\left(\sqrt{\frac{3}{5}}\right) + \frac{8}{9} f(0) + \frac{5}{9} f\left(-\sqrt{\frac{3}{5}}\right) = [$I3] ``]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

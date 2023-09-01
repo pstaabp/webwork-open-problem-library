@@ -1,0 +1,83 @@
+##DESCRIPTION
+##  Approximate the definite integral using the composite Trapezoid method
+##ENDDESCRIPTION
+
+##KEYWORDS('numerical differentiation')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Integration and Differentiation')
+## DBsection('Composite Newton-Cotes Formulas')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated 2023.03.08
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGnumericalmacros.pl', 'PGcourse.pl');
+
+
+$choice = random(1, 5);
+
+if ($choice == 1) {
+    $k = -0.25 * non_zero_random(1, 8);
+    $f = Compute("exp($k*x^2)");
+    $a = random(-3, 3);
+    $b = $a + random(1, 2);
+} elsif ($choice == 2) {
+    $k = random(1, 5);
+    $f = Compute("sin(x*pi/$k)/x");
+    $a = 0.25 * random(1, 4);
+    $b = $a + 0.25 * random(1, 6);
+} elsif ($choice == 3) {
+    $k = random(1, 5);
+    $f = Compute("cos(x*pi/$k)/x");
+    $a = random(1, 4);
+    $b = $a + random(1, 2);
+} elsif ($choice == 4) {
+    $a = random(-5, -2);
+    $b = $a + random(2, 5);
+    $f = Compute("1/(1+x^2)");
+} elsif ($choice == 5) {
+    $a = random(-5, -2);
+    $b = $a + random(2, 5);
+    $f = Compute("x/(1+x^6)");
+}
+
+$n = random(4, 6);
+$trap = trapezoid($f->perlFunction, $a, $b, steps => $n);
+$simp = simpson($f->perlFunction, $a, $b, steps => 2*$n);
+
+
+BEGIN_PGML
+
+Estimate
+
+[`` \int_{[$a]}^{[$b]} [$f->TeX] \, dx ``]
+
+using either the *composite* Trapezoid Rule [`n=[$n]`] or Simpson's rule and [`n=[@2*$n@]`]
+
+* trapezoid approximation: [__________________]{$trap}
+* simpson's rule approximation: [__________________]{$simp}
+
+END_PGML
+
+
+BEGIN_PGML_SOLUTION
+
+* Trapezoid Rule
+
+Since [`h=\frac{b-a}{n}`], then [`h=[@ ($b-$a)/$n@] `] and
+
+[`` I_1(f) = \sum_{i=0}^{n-1} \frac{h}{2} \left( f(a+ih) + f(a+(i+1)h) \right) = [$trap] ``]
+
+* Simpson's Rule
+
+Let [`h=\frac{b-a}{n}`], [`x_i=a+ih`], and [`m=n/2`] then
+
+[`` I_2(f) = \frac{h}{3}\left( f(x_0) + 4\sum_{j=1}^{m} f(x_{2j-1}) + 2\sum_{j=1}^{m-1} f(x_{2j}) + f(b) \right) = [$simp] ``]
+
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

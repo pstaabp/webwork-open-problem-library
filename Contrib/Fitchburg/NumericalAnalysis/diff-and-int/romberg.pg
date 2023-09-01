@@ -1,0 +1,144 @@
+##DESCRIPTION
+##  Approximate the definte integral with Romberg's method
+##ENDDESCRIPTION
+
+##KEYWORDS('quadrature','romberg')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Integration and Differentiation')
+## DBsection('Composite Newton-Cotes Formulas')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated 2023.03.08
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'niceTables.pl', 'PGcourse.pl');
+
+$choice = random(1, 5);
+$n      = random(4, 6);
+
+if ($choice == 1) {
+    $k = -0.25 * non_zero_random(1, 8);
+    $f = Compute("exp($k*x^2)");
+    $a = random(-3, 1);
+    $b = $a + random(1, 2);
+} elsif ($choice == 2) {
+    $k = random(1, 5);
+    $f = Compute("sin(x*pi/$k)/x");
+    $a = 0.25 * random(1, 4);
+    $b = $a + 0.25 * random(1, 6);
+} elsif ($choice == 3) {
+    $k = random(1, 5);
+    $f = Compute("cos(x*pi/$k)/x");
+    $a = random(1, 4);
+    $b = $a + random(1, 2);
+} elsif ($choice == 4) {
+    $a = random(-5, -2);
+    $b = $a + random(2, 5);
+    $f = Compute("1/(1+x^2)");
+} elsif ($choice == 5) {
+    $a = random(-5, -2);
+    $b = $a + random(2, 5);
+    $f = Compute("x/(1+x^6)");
+}
+
+##
+# evaluate the integral of $f from $a to $b using
+# the composite trapezoid rule with $n$
+# subintervals
+##
+
+sub trap {
+    my ($f, $n, $a, $b) = @_;
+    my $h   = ($b - $a) / $n;
+    my $int = $f->eval(x => $a) + $f->eval(x => $b);
+    for (my $i = 1; $i < $n; $i++) {
+        $int += 2 * $f->eval(x => $a + $h * $i);
+    }
+    return $int * $h / 2.0;
+}
+
+@T1 = (trap($f, 1, $a, $b));
+@T2 = (trap($f, 2, $a, $b));
+@T3 = (trap($f, 4, $a, $b));
+@T4 = (trap($f, 8, $a, $b));
+
+push(@T2, 4 / 3 * $T2[0] - 1 / 3 * $T1[0]);
+push(@T3, 4 / 3 * $T3[0] - 1 / 3 * $T2[0]);
+push(@T4, 4 / 3 * $T4[0] - 1 / 3 * $T3[0]);
+
+push(@T3, 16 / 15 * $T3[1] - 1 / 15 * $T2[1]);
+push(@T4, 16 / 15 * $T4[1] - 1 / 15 * $T3[1]);
+
+push(@T4, 64 / 63 * $T4[2] - 1 / 63 * $T3[2]);
+
+BEGIN_PGML
+
+For the definite integral
+
+[`` \int_{[$a]}^{[$b]} [$f->TeX] \, dx ``]
+
+create the 4 by 4 Romberg integration table:
+
+[@
+  DataTable([
+    ['\(i\)','\(R_{i,j}\)','','',''],
+    ['1',ans_rule(4),'','',''],
+    ['2',ans_rule(4),ans_rule(4),'',''],
+    ['3',ans_rule(4),ans_rule(4),ans_rule(4),''],
+    ['4',ans_rule(4),ans_rule(4),ans_rule(4),ans_rule(4)],
+  ],
+  padding => [0.5, 0.5],
+  align => '|c|c|c|c|c|', horizontalrules => 1);
+@]*
+
+END_PGML
+
+ANS(Compute($T1[0])->cmp);
+for $j (0 .. 1) { ANS(Compute($T2[$j])->cmp); }
+for $j (0 .. 2) { ANS(Compute($T3[$j])->cmp); }
+for $j (0 .. 3) { ANS(Compute($T4[$j])->cmp); }
+
+############################
+#  Solution
+
+BEGIN_PGML_SOLUTION
+
+The first column of the table is the composite trapezoid rule with
+[` n=2^i`]
+
+[`` T_{1,1} = \frac{b-a}{2} \left( f(a)+f(b) \right) = [$T1[0]] ``]
+
+[`` T_{2,1} = \frac{b-a}{4} \left( f(a)+2f\left(\frac{a+b}{2}\right)+f(b) \right) = [$T2[0]] ``]
+
+[`` T_{3,1} = [$T3[0]] ``]
+
+[`` T_{4,1} = [$T4[0]] ``]
+
+The remainder of the table is completed using the formula:
+
+[`` R_{i,j+1} = \frac{4^{j-1}}{4^{j-1}-1} R_{i,j} - \frac{1}{4^{j-1}-1} R_{i-1,j-1} ``]
+
+For example,
+
+[`` R_{2,2} = \frac{4}{3} R_{2,1} - \frac{1}{3} R_{1,1} = [$T2[1]] ``]
+
+The complete table is:
+
+[@
+  DataTable([
+    ['\(i\)','\(R_{i,j}\)','','',''],
+    ['1',$T1[0],'','',''],
+    ['2',$T2[0],$T2[1],'',''],
+    ['3',$T3[0],$T3[1],$T3[2],''],
+    ['4',$T4[0],$T4[1],$T4[2],$T4[3]],
+  ],
+  allcellcss => 'padding: 3px',
+  align => '|c|c|c|c|c|', horizontalrules => 1);
+@]*
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,157 @@
+##DESCRIPTION
+##  Use derivatives to determine the multiplicity of a root.
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Calculus - single variable')
+## DBchapter('Applications of Differentiation')
+## DBsection('Misc.')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',         'PGML.pl',
+    'PGpolynomialmacros.pl', 'contextFraction.pl',
+    'PGcourse.pl'
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+#############################
+#  Setup
+
+Context('Fraction');
+$showPartialCorrectAnswers = 1;
+$showPartialCredit         = 0;
+
+$a = non_zero_random(-5, 5);
+$b = $a;
+while ($a == $b) {
+    $b = non_zero_random(-3, 3);
+}
+
+@p  = (1);
+$p1 = [ 1, -$a ];
+$p2 = [ 1, -$b ];
+
+$n1 = random(2, 4);
+
+for ($i = 0; $i < $n1; $i++) {
+    @p = PolyMult($p1, ~~@p);
+}
+$m1 = 5 - $n1;
+for ($i = 0; $i < $m1; $i++) {
+    @p = PolyMult($p2, ~~@p);
+}
+$out = PolyString(~~@p);
+$f   = Compute($out);
+
+### e^{kx} - taylor
+
+$n2 = random(2, 4);
+$k2 = non_zero_random(-3, 3);
+
+@tay2 = (1);
+$fact = 1;
+for ($i = 1; $i < $n2; $i++) {
+    $fact *= $i;
+    $coeff = Fraction($k2**$i, $fact)->reduce;
+    push(@tay2, $coeff);
+}
+
+@tay2a = reverse @tay2;
+
+$tayout2 = nicestring(~~@tay2a);
+$arg2    = nicestring([ $k2, 0 ]);
+$g       = Compute("$tayout2-e^($arg2)");
+
+### sin(kx) - taylor
+
+$n3 = random(2, 3);
+$k3 = random(1, 4);
+
+@tay3    = (Fraction(-$k3**3, 6), 0, $k3, 0);
+$tayout3 = PolyString(~~@tay3);
+$arg3    = nicestring([ $k3, 0 ]);
+$h       = Compute("$tayout3-sin([$arg3])");
+
+BEGIN_PGML
+
+For each of the following functions and points, determine the multiplicity.
+
+
+1) [`` f(x) = [$out] ``] at [` x= [$a] `]
+
+	Multiplicity is [_______]{$n1}
+
+2) [`` g(x) = [$tayout2] -e^{[$arg2]} ``] at [`x=0`]
+
+	Multiplicity is [_______]{$n2}
+
+3) [`` h(x) = [$tayout3] -\sin([$arg3]) ``] at [`x=0`]
+
+	Multiplicity is [_______]{5}
+
+END_PGML
+
+BEGIN_PGML_HINT
+Recall that a function [`f(x)`] has a root of multiplicity [`k`] at [`x=x_0`] if
+[`f^{(n)}(x_0) = 0 `] for [`n=0,1,2,\ldots,k-1`] and [`f^{(k)}(x_0) \neq 0`].
+
+Therefore, take successive derivatives of the functions above, evaluate them at the
+given point and determine when the deriative at the point is not zero.
+END_PGML_HINT
+
+$df = $f;
+@fx0;
+for (0 .. $n1 + 1) {
+    $fx0[$_] = $df->eval(x => $a);
+    $df = $df->D('x');
+}
+
+$dfs = "f($a)=";
+$dfs .= "f^{($_)}($a)= " for (1 .. ($n1 - 1));
+
+$dg = $g;
+@gx0;
+for (0 .. $n2 + 1) {
+    $gx0[$_] = $dg->eval(x => 0);
+    $dg = $dg->D('x');
+}
+
+$dgs = "g(0)=";
+$dgs .= "g^{($_)}(0)=" for (1 .. ($n2 - 1));
+
+$dh = $h;
+@hx0;
+for (0 .. 6) {
+    $hx0[$_] = $dh->eval(x => 0);
+    $dh = $dh->D('x');
+}
+
+$dhs = "h(0)=";
+$dhs .= "h^{($_)}(0)=" for (1 .. 4);
+
+BEGIN_PGML_SOLUTION
+
+For each of these, we'll use the fact that a function [`f(x)`] has a root of
+multiplicity [`k`] at [`x=x_0`] if [`f^{(n)}(x_0) = 0 `] for [`n=0,1,2,\ldots,k-1`]
+and [`f^{(k)}(x_0) \neq 0`].
+
+1) For this function: [@ '\(' . $dfs . '0\)' @]  and [`f^{([$n1])}([$a])=[$fx0[$n1]] `],
+so the multiplicity is [$n1]
+
+2) For this function: [@ '\(' . $dgs . '0\)' @]  and [`g^{([$n2])}(0)=[$gx0[$n2]] `],
+so the multiplicity is [$n2]
+
+3) For this function: [@ '\(' . $dhs . '0\)' @]  and [`h^{(5)}(0)=[$hx0[5]] `],
+so the multiplicity is 5.
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

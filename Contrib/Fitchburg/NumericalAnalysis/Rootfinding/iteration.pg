@@ -1,0 +1,71 @@
+##DESCRIPTION
+##  Perform basic iteration on a function
+##ENDDESCRIPTION
+
+##KEYWORDS('iteration', 'fixed point')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Sequences')
+## DBsection('Fixed Point Iteration')
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'niceTables.pl', 'PGcourse.pl');
+
+$k = random(2,    8);
+$a = random(0.25, 2.5, 0.25);
+$f = Compute("$a*cos(x/$k)");
+
+@x = (random(0, 1, 0.1));
+
+push(@x, $f->eval(x => $x[$_])) for (0 .. 7);
+
+$rows =
+    [ [ '\(n\)', '\(x_n\)' ] ];
+push(@$rows, [ "\($_\)", PGML::Format("[_]{$x[$_]}") ]) for (0 .. 5);
+$tab = LayoutTable(
+    $rows,
+    align      => '|c|c|',
+    padding => [0.5, 0.5],
+    horizontalrules => 1
+);
+
+BEGIN_PGML
+
+Iterate the function
+
+[`` x_{n+1} = [$a]\cos\left(\frac{1}{[$k]} x_n\right)``]
+
+For the first 5 iterations.  Start with [`x_0=[$x[0]]`].
+
+[@ $tab @]*
+
+END_PGML
+
+
+$rows2 =
+    [ [ '\(n\)', '\(x_n\)'] ];
+push(@$rows2, [ "\($_\)", "\($x[$_]\)" ]) for (0 .. 5);
+$tab2 = LayoutTable(
+    $rows2,
+    align      => '|c|c|',
+    padding => [0.5, 0.5],
+    horizontalrules => 1
+);
+
+BEGIN_PGML_SOLUTION
+
+This is the repeated application of the function [`g(x)`] to the given initial point [`x_0 = [$x[0]]`].
+
+[`` x_1 = g(x_0) = [$a]\cos\biggl(\frac{[$x[0]]}{[$k]}\biggr) = [$x[1]] ``]
+
+[`` x_2 = g(x_1) = [$a]\cos\biggl(\frac{[$x[1]]}{[$k]}\biggr) = [$x[2]] ``]
+
+Continuing this, you can create the table:
+
+[@ $tab2 @]*
+
+END_PGML_SOLUTION
+ENDDOCUMENT();

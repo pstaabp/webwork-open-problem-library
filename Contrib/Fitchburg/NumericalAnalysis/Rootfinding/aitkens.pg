@@ -1,0 +1,122 @@
+##DESCRIPTION
+##  Perform's Aitkin's acceleration on a fixed point iteration
+##ENDDESCRIPTION
+
+##KEYWORDS('fixed-point iteration', 'iteration', "Aitkin's Acceleration")
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Rootfinding')
+## DBsection("Aitken's Acceleration")
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'niceTables.pl', 'PGcourse.pl');
+
+
+do {
+    $a = random(0.5, 3.5, 0.25);
+    $k = random(0.5, 1.9, 0.1);
+} while ($a * $k > 0.9);
+
+$f = Compute("$a*cos($k*x)")->reduce;
+
+@x = (random(0, 2, 0.1));
+
+for ($i = 0; $i < 8; $i++) {
+    push(@x, $f->eval(x => $x[$i]));
+}
+
+@xhat = ();
+for ($i = 0; $i < 6; $i++) {
+    push(@xhat,
+        $x[$i] -
+            ($x[ $i + 1 ] - $x[$i])**2 /
+            ($x[ $i + 2 ] - 2 * $x[ $i + 1 ] + $x[$i]));
+}
+
+$rows1 = [
+    [ "\(n\)",  "\(x_n\)"],
+    [ "\(0\)", "\($x[0]\)" ]
+];
+for $i (1 .. 6) {
+    push(@$rows1, [ "\($i\)", ans_rule(6) ]);
+}
+$tab1 = DataTable(
+    $rows1,
+    align           => '| c | c |',
+    padding         => [ 0.5, 0.5 ],
+    horizontalrules => 1
+);
+
+$rows2 = [ [
+    "\(n\)", "\(\hat{x}_n\)"
+] ];
+for $i (0 .. 4) {
+    push(@$rows2, [ "\($i\)", ans_rule(6) ]);
+}
+$tab2 = DataTable(
+    $rows2,
+    align           => '| c | c |',
+    padding         => [ 0.5, 0.5 ],
+    horizontalrules => 1
+);
+
+BEGIN_PGML
+
+Perform fixed point iteration for
+
+[`` g(x) = [$a]\cos([$k] x) ``]
+
+For the first 6 iterations.  Start with [`x_0=[$x[0]]`].
+
+[@ $tab1 @]*
+
+Now use Aitken's [`\Delta^2`] method to provide an accelerated version, [` \hat{x}_n`]
+
+[@ $tab2 @]*
+
+END_PGML
+
+for $i (1 .. 6) { ANS(Real($x[$i])->cmp); }
+for $i (0 .. 4) { ANS(Real($xhat[$i])->cmp); }
+
+############################
+#  Solution
+
+@tab1_rows = ([ '\(n\)', '\(x_n\)' ]);
+push(@tab1_rows, [ $_, $x[$_] ]) for (0 .. 6);
+
+@tab2_rows = ([ '\(n\)', '\(\hat{x}_n\)' ]);
+push(@tab2_rows, [ $_, $xhat[$_] ]) for (0 .. 4);
+
+BEGIN_PGML_SOLUTION
+
+To begin, the iteration is simply applying the iteration [`x_{n+1} = g(x_n)`] repeatedly. For example,
+
+[`` x_1 = g(x_0) = [$a]\cos([$k] \cdot [$x[0]]) = [$x[1]]``]
+
+[`` x_2 = g(x_1) = [$a]\cos([$k] \cdot [$x[1]]) = [$x[2]]``]
+
+and continuing, with the table:
+
+[@ DataTable(\@tab1_rows, allcellcss => 'padding: 3px', align => '|c|c|',
+	horizontalrules => 1); @]*
+
+For the second table, we use the general Aitken's acceleration formula:
+
+[`` \hat{x}_n = x_n - \frac{(\Delta x_n)^2}{\Delta^2 x_n} = x_n - \frac{(x_{n+1}-x_n)^2}{x_{n+2}-2x_{n+1}-x_n}``]
+
+For example:
+
+[`` \hat{x}_0 = x_0 - \frac{(\Delta x_0)^2}{\Delta^2 x_0} = x_0 - \frac{(x_{1}-x_0)^2}{x_{2}-2x_{1}-x_0} = [$xhat[0]]``]
+
+and the following table shows the rest:
+
+[@ DataTable(\@tab2_rows, allcellcss => 'padding: 3px', align => '|c|c|',
+	horizontalrules => 1); @]*
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,134 @@
+##DESCRIPTION
+##  Use Newton's method to find a set of root where one root has a near multiplicity of 2.
+##ENDDESCRIPTION
+
+##KEYWORDS("Newton's method", 'root')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Rootfinding')
+## DBsection("Newton's Method")
+## Date('2/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+########################################################################
+##############################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',         'PGML.pl',
+    'PGpolynomialmacros.pl', 'PGnumericalmacros.pl',
+    'PGtikz.pl',             'PGcourse.pl'
+);
+
+$k1 = 0.1 * random(1, 9);
+
+$p1 = [ 1, -1 ];
+$b  = random(2, 4);
+@p  = PolyMult([ 1, -$b ], [ 1, -1 ]);
+
+do { $c = random(3, 5); } while ($c == $b);
+@p = PolyMult([ 1, -$c ], ~~@p);
+
+$poly = PolyString(~~@p);
+
+$f  = Compute("e^(-$k1*x)-($poly)");
+$df = $f->D('x');
+
+@roots = ();
+
+my $newt1 = newton($f, 1.0, eps => 1e-10);
+push(@roots, $newt1->{root}) if $newt1->{root};
+
+my $newt2 = newton($f, $b, eps => 1e-10);
+push(@roots, $newt2->{root}) if $newt2->{root};
+
+my $newt3 = newton($f, $c, eps => 1e-10);
+push(@roots, $newt3->{root}) if $newt3->{root};
+
+
+# make sure roots are not repeated.
+
+@roots      = num_sort(@roots);
+@roots_diff = map { abs($roots[$_]- $roots[$_-1]) } (1..scalar(@roots));
+
+for ($i = $#roots; $i >= 1; $i--) {
+    splice @roots, $i, 1 if ($roots_diff[$i] < 1e-8);
+}
+$ans = List(join ',' , @roots );
+
+
+BEGIN_PGML
+
+Let
+
+[`` f(x) =  e^{-[$k1]x} - ([$poly]).``]
+
+Use Newton's method to find all the roots of [`f(x)`] to at least 6 decimal places.
+Separate your answers by commas. (Hint: you may want to graph the function to
+determine approximate roots first.)
+
+roots of [`f(x)`] are [_______________________________________________]{$ans}
+
+END_PGML
+
+# Plot of the function.
+# build up the function for tikz
+
+$fstr = "exp(-$k1*\\x) - (";
+$fstr .= "$p[$#p-$_]*pow(\\x,$_)+" for (0 .. $#p);
+$fstr .= "0)";
+
+if (scalar(@roots) == 3) {
+    $xmin = $roots[0] - 0.5;
+    $xmax = $roots[2] + 0.5;
+} else {
+    $xmin = $roots[0] - 1.5;
+    $xmax = $roots[0] + 1.5;
+}
+
+$graph_image = createTikZImage();
+$graph_image->tikzLibraries("arrows.meta");
+
+$graph_image->BEGIN_TIKZ
+\tikzset{>={Stealth[scale=1.5]}}
+\filldraw[
+    draw=LightBlue,
+    fill=white,
+    rounded corners=10pt,
+    thick,use as bounding box
+] (-6.5,-6.5) rectangle (6.5,6.5);
+\draw[<->,thick] (-2,0) -- (6,0) node[above left,outer sep=2pt]{\(x\)};
+\draw[<->,thick] (0,-5) -- (0,6) node[below right,outer sep=2pt]{\(y\)};
+\foreach \x in {-1,1,2,...,5} \draw[thin] (\x,5pt) -- (\x,-5pt) node[below]{\(\x\)};
+\foreach \y in {-4,-3,-2, -1,1,2,...,5} \draw[thin] (5pt,\y) -- (-5pt,\y) node[left]{\(\y\)};
+\draw[<->,thick,blue] plot[samples=100,domain=0.8:{$c+0.25}] (\x,{$fstr});
+END_TIKZ
+
+$fexp = $f->TeX;
+$fexp =~ s/x/x_n/g;
+$dfexp = $df->TeX;
+$dfexp =~ s/x/x_n/g;
+
+BEGIN_PGML_SOLUTION
+
+For this, we use the standard Newton's Method formula:
+
+[`` x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} = x_n - \frac{[$fexp]}{[$dfexp]}``]
+
+Additionally, looking at a plot of the function, it appears that there are roots
+near 1, [$b] and [$c].
+
+[@ image($graph_image, width => 300, tex_size => 600) @]*
+
+
+Using each of this as values of [`x_0`] and iterating Newton's method above, we
+get [$ans] as the roots.
+
+
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,171 @@
+##DESCRIPTION
+##  Algebra problem: true or false for inequality
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+
+## DBsubject('Numerical Analysis')
+## DBchapter('Interpolation')
+## DBsection('Newton Divided Difference')
+## Date('3/3/2018')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',        'MathObjects.pl',
+    'niceTables.pl',        'PGML.pl',
+    'PGnumericalmacros.pl', 'PGcourse.pl'
+);
+
+Context('Numeric')->flags->set(
+    tolerance => 0.001,
+    tolType   => 'absolute',
+);
+
+$which = random(1, 5);
+if ($which == 1) {
+    $k = random(2, 4);
+    $f = Compute("sin($k*x)")->reduce;
+    ($a, $b)         = (0, Compute("2*pi/$k"));
+    ($int_a, $int_b) = (0, "\frac{2\pi}{$k}");
+} elsif ($which == 2) {
+    $k = random(2, 4);
+    $f = Compute("cos($k*x)");
+    ($a, $b)         = (0, Compute("2*pi/$k"));
+    ($int_a, $int_b) = (0, "\frac{2\pi}{$k}");
+} elsif ($which == 3) {
+    $k = non_zero_random(-3, 3);
+    $f = Compute("e^($k*x)")->reduce;
+    $n = random(1, 8);
+    ($a, $b)         = (-0.25 * $n, 0.25 * $n);
+    ($int_a, $int_b) = ("-\frac{$n}{4}", "\frac{$n}{4}");
+} elsif ($which == 4) {
+    $k = random(2, 4);
+    $f = Compute("asin($k*x)")->reduce;
+    $a = (-1 / $k, 1 / $k);
+    ($int_a, $int_b) = ("-\frac{1}{$k}", "\frac{1}{$k}");
+} elsif ($which == 5) {
+    $k = random(2, 4);
+    $f = Compute("acos($k*x)");
+    $a = (-1 / $k, 1 / $k);
+    ($int_a, $int_b) = ("-\frac{1}{$k}", "\frac{1}{$k}");
+}
+$f->{limits} = [ $a, $b ];
+
+@x = map { $a + $_ * ($b - $a) / 4 } (0 .. 4);
+@y = map { $f->eval(x => $_) } @x;
+
+$c = newtonDividedDifference(~~@x, ~~@y);
+
+$tab = DataTable(
+    [
+        [ '\(x_n\)', '\(y_n\)',                '',      '', '', '' ],
+        [ $x[0],       PGML('[_]{$y[0]}'), '',      '', '', '' ],
+        [ '',          '', PGML('[_]{$c->[1][0]}'), '', '', '' ],
+        [
+            $x[1], PGML('[__]{$y[1]}'),
+            '',    PGML('[_]{$c->[2][0]}'),
+            '',    ''
+        ],
+        [
+            '',                              '',
+            PGML('[_]{$c->[1][1]}'), '',
+            PGML('[_]{$c->[3][0]}'), ''
+        ],
+        [
+            $x[2], PGML('[_]{$y[2]}'),
+            '',    PGML('[_]{$c->[2][1]}'),
+            '',    PGML('[_]{$c->[4][0]}')
+        ],
+        [
+            '',                              '',
+            PGML('[_]{$c->[1][2]}'), '',
+            PGML('[_]{$c->[3][1]}'), ''
+        ],
+        [
+            $x[3], PGML('[_]{$y[3]}'),
+            '',    PGML('[_]{$c->[2][2]}'),
+            '',    ''
+        ],
+        [ '',    '', PGML('[_]{$c->[1][3]}'), '', '', '' ],
+        [ $x[4], PGML('[_]{$y[4]}'), '',      '', '', '' ]
+    ],
+    texalignment    => '|c|c|c|c|c|c|',
+    horizontalrules => 1,
+    padding         => [ 0.25, 0.25 ]
+);
+
+$poly =
+    Compute("$y[0]+$c->[1][0]*(x-$x[0])+$c->[2][0]*(x-$x[0])*(x-$x[1])"
+        . "+$c->[3][0]*(x-$x[0])*(x-$x[1])*(x-$x[2])"
+        . "$p+$c->[4][0]*(x-$x[0])*(x-$x[1])*(x-$x[2])*(x-$x[3])");
+
+BEGIN_PGML
+
+Use a Netwon Divided Difference table to find the interpolation of [`f(x)=[$f]`] with 5 equally-space points ([`n=4`]) on the interval [`[[$int_a],[$int_b]]`].
+
+[$tab]*
+
+
+Lastly, use the divided-difference table above to find the interpolated polynomial through the point [`(x_i,y_i)`] for [`i=0,1,2,3,4`].
+
+[`P(x)=`][___]{$poly->cmp( tolerance => 0.05, tolType => 'relative')}
+
+END_PGML
+
+$tab2 = DataTable(
+    [
+        [ '\(x_n\)', '\(y_n\)', '',         '',         '',         '' ],
+        [ $x[0],       $y[0],       '',         '',         '',         '' ],
+        [ '',          '',          $c->[1][0], '',         '',         '' ],
+        [ $x[1],       $y[1],       '',         $c->[2][0], '',         '' ],
+        [ '',          '',          $c->[1][1], '',         $c->[3][0], '' ],
+        [ $x[2],       $y[2], '',         $c->[2][1], '',         $c->[4][0] ],
+        [ '',          '',    $c->[1][2], '',         $c->[3][1], '' ],
+        [ $x[3],       $y[3], '',         $c->[2][2], '',         '' ],
+        [ '',          '',    $c->[1][3], '',         '',         '' ],
+        [ $x[4],       $y[4], '',         '',         '',         '' ]
+    ],
+    texalignment    => '|c|c|c|c|c|c|',
+    horizontalrules => 1,
+    padding         => [ 0.25, 0.25 ]
+);
+
+BEGIN_PGML_SOLUTION
+
+First, for the values [`y_n`] in the table, use [`y_n = f(x_n)`]. Then we proceed like other Newton Divided difference table.
+
+For the first column of coefficients, use
+
+[`` f[x_i,x_{i+1}] = \frac{f[x_{i+1}]-f[x_i]}{x_{i+1}-x_i} ``]
+
+For example, the second one down should be:
+
+[`` f[x_1,x_2] = \frac{f(x_2)-f(x_1)}{x_2-x_1} = \frac{[$y[2]]-[$y[1]]}{[$x[2]]-[$x[1]]} = [$c->[1][1]] ``]
+
+In the 2nd column, use
+
+[`` f[x_i,x_{i+1},x_{i+2}] = \frac{f[x_{i+2},x_{i+1}]-f[x_{i+1},x_i]}{x_{i+2}-x_i} ``]
+
+For example,
+
+[`` f[x_0,x_{1},x_{2}] = \frac{f[x_{2},x_{1}]-f[x_{1},x_0]}{x_{2}-x_0}
+=\frac{[$c->[1][1]]-[$c->[1][0]]}{[$x[2]]-[$x[0]]} = [$c->[2][0]]``]
+
+Continuing for all of the other divided differences, we get the following table:
+
+[$tab2]*
+
+And lastly, to find the polynomial that interpolates the data, we use the formula
+
+[`` f[x_0] + f[x_0,x_1](x-x_0) + f[x_0,x_1,x_2](x-x_0)(x-x_1) +\cdots + f[x_0,x_1,\ldots,x_n] (x-x_0) \cdots (x-x_{n-1}) ``]
+
+and in this case, the result is
+
+[`` [$poly] ``]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
