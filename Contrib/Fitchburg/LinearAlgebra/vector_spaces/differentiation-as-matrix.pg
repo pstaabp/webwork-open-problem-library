@@ -1,0 +1,68 @@
+## DESCRIPTION
+## Use a basis of sines and cosines, find the matrix representing the derivative.
+## ENDDESCRIPTION
+
+
+## DBsubject(Linear algebra)
+## DBchapter(Linear transformations)
+## DBsection(Associated matrices)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('basis', 'sines', 'cosines')
+
+# updated 2022.12.12
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl", "PGML.pl", "PGcourse.pl",);
+
+Context("Vector");
+
+($k, $j) = random_subset(2, 1 .. 4);
+
+$f1 = Formula("sin($k x)")->reduce;
+$f2 = Formula("cos($k x)")->reduce;
+$f3 = Formula("sin($j x)")->reduce;
+$f4 = Formula("cos($j x)")->reduce;
+
+$ans = Matrix([
+    [ 0, -$k, 0, 0 ], [ $k, 0, 0, 0 ], [ 0, 0, 0, -$j ], [ 0, 0, $j, 0 ] ]);
+
+BEGIN_PGML
+Consider the subspace, [`V`] of all continuous functions where
+[` V =  \{ a\, [$f1] + b\,[$f2] + c\,[$f3] + d\, [$f4] \; |\; a,b,c,d \in \mathbb{R} \} `]
+Let the linear map [` D: V \rightarrow V `] be the derivative.
+Find the matrix that represents the map in the standard basis
+[` B = ([$f1], [$f2], [$f3], [$f4]) `]
+
+Hint: for each basis element, find the derivative and write the derivative in terms of [`B`].  The columns of the resulting matrix are these representations.
+
+[___]*{$ans}
+
+END_PGML
+
+$arg1 = Formula("$k x")->reduce;
+$arg2 = Formula("$j x")->reduce;
+$f1   = Formula("$k cos($arg1)")->reduce;
+$f2   = Formula("-$k sin($arg1)")->reduce;
+$f3   = Formula("$j cos($arg2)")->reduce;
+$f4   = Formula("$j sin($arg2)")->reduce;
+
+BEGIN_PGML_SOLUTION
+In this case, recall that 
+[``` \begin{aligned}
+\frac{d}{x} \sin ([$arg1]) & = [$f1] \\
+\frac{d}{x} \cos ([$arg1]) & = [$f2] \\
+\frac{d}{x} \sin ([$arg2]) & = [$f3] \\
+\frac{d}{x} \cos ([$arg2]) & = [$f4]
+\end{aligned}
+```]
+The four output functions are writen in terms of the basis.  For example [`[$f1] `]
+can be written as 
+[``` \begin{bmatrix} 0 \\ [$k] \\ 0 \\ 0 \end{bmatrix} ```]
+and continuing this for the other three output functions, then written as vectors,
+the output matrix is
+[``` [$ans] ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

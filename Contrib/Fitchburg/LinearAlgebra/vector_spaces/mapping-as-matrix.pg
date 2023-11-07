@@ -1,0 +1,51 @@
+## DESCRIPTION
+## Find the matrix representing a map.
+## ENDDESCRIPTION
+
+
+## DBsubject(Linear algebra)
+## DBchapter(Linear transformations)
+## DBsection(Associated matrices)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('homomorphism', 'matrix representation')
+
+# updated 2023.11.02
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl',);
+
+Context('Vector');
+
+do {
+    ($a1, $a2, $a3) = (random(-3, 3), random(-3, 3), random(-3, 3));
+    ($b1, $b2, $b3) = (random(-3, 3), random(-3, 3), random(-3, 3));
+} until abs($a1 * $b2 - $a2 * $b1) + abs($a2 * $b3 - $a3 * $b2) != 0;
+
+$ans = Matrix([ [ $a1, $b1 ], [ $a2, $b2 ], [ $a3, $b3 ] ]);
+
+BEGIN_PGML
+
+Consider the homomorphism [`h: \mathbb{R}^2 \rightarrow \mathbb{R}^3`] such that
+[```
+\left[ \begin{array}{r} 1 \\ 0 \end{array} \right] \mapsto
+\left[ \begin{array}{r} [$a1] \\ [$a2] \\ [$a3]  \end{array} \right] \qquad
+\left[ \begin{array}{r} 0 \\ 1 \end{array} \right] \mapsto
+\left[ \begin{array}{r} [$b1] \\ [$b2] \\ [$b3]  \end{array} \right]
+```]
+
+Use the standard basis to find the matrix representing this map.
+
+[___]*{$ans}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+In this case, because the standard basis are the input vectors for [`h`], then the
+representation matrix is the two column vectors or 
+
+[```[$ans]```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

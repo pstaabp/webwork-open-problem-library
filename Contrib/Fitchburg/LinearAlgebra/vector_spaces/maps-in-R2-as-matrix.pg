@@ -1,0 +1,143 @@
+## DESCRIPTION
+## WeBWorK Demo
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Homogeneous and Nonhomogeneous Solutions')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'parserRadioMultiAnswer.pl', 'PGcourse.pl'
+);
+
+Context('Vector');
+
+$rma1 = RadioMultiAnswer(
+    [
+        [
+            'The map \(T\) is linear with  matrix representation %s*',
+            Matrix([ [ 1, 1 ], [ 1, -1 ] ])
+        ],
+        ['The map \(T\) is not linear']
+    ],
+    0
+);
+
+$rma2 = RadioMultiAnswer(
+    [
+        [
+            'The map \(T\) is linear with  matrix representation %s*',
+            Matrix([ [ 1, 1 ], [ 1, -1 ] ])
+        ],
+        ['The map \(T\) is not linear']
+    ],
+    1
+);
+
+$rma3 = RadioMultiAnswer(
+    [
+        [
+            'The map \(T\) is linear with  matrix representation %s*',
+            Matrix([ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 0, 0, 1 ] ])
+        ],
+        ['The map \(T\) is not linear']
+    ],
+    0
+);
+
+$rma4 = RadioMultiAnswer(
+    [
+        [
+            'The map \(T\) is linear with  matrix representation %s*',
+            Matrix([
+                [ 0, 0, 0, 0 ],
+                [ 0, 0, 0, 0 ],
+                [ 0, 0, 0, 0 ],
+                [ 0, 0, 0, 1 ]
+            ])
+        ],
+        ['The map \(T\) is not linear']
+    ],
+    1
+);
+
+BEGIN_PGML
+
+
+For each of the following problems, a map [`T: V \rightarrow W`] is given.  Determine if the map is linear.  If so, find the matrix that represents the map in the standard basis.
+
+a) [` T: \mathbb{R}^2 \rightarrow \mathbb{R}^2 `]
+
+	[`` T\biggl( \left[ \begin{array}{r} x_1 \\ x_2 \end{array} \right] \biggr) = \left[ \begin{array}{r} x_1 + x_2 \\ x_1 - x_2 \end{array} \right]  ``]
+
+	[_]{$rma1}
+
+b) [` T: \mathbb{R}^2 \rightarrow \mathbb{R} `]
+
+	[`` T\biggl( \left[ \begin{array}{r} x_1 \\ x_2 \end{array} \right] \biggr) = x_1 x_2   ``]
+
+	[_]{$rma2}
+
+
+c) [` T: \mathcal{P}_2 \rightarrow \mathcal{P}_3 `]
+
+	[`` T(a_0+a_1x+a_2x^2) = a_0 x + a_1 x^2 + a_2 x^3   ``]
+
+	[_]{$rma3}
+
+d) [`T: \mathcal{M}_{4 \times 4} \mapsto \mathbb{R} `]
+
+    [`` T(A) = \text{det}(A) ``], the determinant of the matrix.
+
+    [_]{$rma4}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+In general to check if a transformation is linear, recall that you need to check the 
+two conditions, where [`\alpha`] is a scalar and [`\vec{u}`] and [`\vec{v}`] are vectors
+in the vector space. 
+* [`T(\alpha \vec{v}) = \alpha T(\vec{v}) `]
+* [`T(\vec{u}+\vec{v}) = T(\vec{u}) + T(\vec{v}) `]
+
+In this case, a) and c) are linear transformations.  The other two are not (note 
+that both b) and d) involve products of the elements.  In c), there are powers, but not
+involving the coefficients.
+
+To find the matrix representation, one needs to transform the standard basis elements.
+
+For a),
+[```
+\begin{aligned}
+T\left(\begin{bmatrix} 1 \\ 0 \end{bmatrix} \right) & = \begin{bmatrix} 1 \\ 1 \end{bmatrix} \\
+T\left(\begin{bmatrix} 0 \\ 1 \end{bmatrix} \right) & = \begin{bmatrix} 1 \\ -1 \end{bmatrix} \end{aligned}
+```]
+
+So placing these two vectors in a matrix returns in the matrix representation
+[``` \begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix} ```]
+
+For c), transform each of the basis ``vectors'': [`1,x,x^2`] 
+[```
+\begin{aligned}
+T(1) & = x \\
+T(x) & = x^2 \\
+T(x^2) & = x^3 
+\end{aligned}
+```]
+And then the standard representation of these are the vectors 
+[``` 
+\begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix},
+\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix},
+\begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix},
+```]
+so putting these in a matrix will be the matrix representation.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

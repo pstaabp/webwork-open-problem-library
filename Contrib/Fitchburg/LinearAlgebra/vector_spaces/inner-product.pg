@@ -1,0 +1,126 @@
+## DESCRIPTION
+## Dot product between vectors in R^4 as well as dot product between functions on
+## [-1,1] and [0,\infty]
+## ENDDESCRIPTION
+
+
+## DBsubject(Linear algebra)
+## DBchapter(Inner products)
+## DBsection(Computing with inner products)
+## Date(September 5, 2014)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('inner product', 'dot product')
+
+# update 2022.10.30
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', "PGcourse.pl");
+
+Context('Numeric')->noreduce('(-x)-y', '(-x)+y');
+
+$a = ColumnVector(random(-3, 3), random(-3, 3), random(-3, 3), random(-3, 3));
+$b = ColumnVector(random(-3, 3), random(-3, 3), random(-3, 3), random(-3, 3));
+$ans1 = $a . $b;
+
+($c1, $c2, $c3) = (random(-3, 3), random(-3, 3), random(-3, 3));
+($d1, $d2, $d3) = (random(-3, 3), random(-3, 3), random(-3, 3));
+
+$poly1 = Formula("$c1 + $c2 x + $c3 x^2")->reduce;
+$poly2 = Formula("$d1 + $d2 x + $d3 x^2")->reduce;
+
+$tmp =
+    6 * $c3 * $d3 + 10 * ($c1 * $d3 + $c2 * $d2 + $c3 * $d1) + 30 * $c1 * $d1;
+
+$ans2 = Real("$tmp/15");
+
+$tmp =
+    $c1 * $d1 +
+    $c1 * $d2 +
+    2 * $c1 * $d3 +
+    $c2 * $d1 +
+    2 * $c2 * $d2 +
+    6 * $c2 * $d3 +
+    2 * $c3 * $d1 +
+    6 * $c3 * $d2 +
+    24 * $c3 * $d3;
+
+$ans3 = Real($tmp);
+
+BEGIN_PGML
+Each of the following lists a vector space [`V`], an inner product and a pair of vectors.  Find the inner product of the vectors.
+
+a) [`` V = \mathbb{R}^4, \qquad \langle \vec{u},\vec{v} \rangle = \vec{u}^T \vec{v}, 
+    \qquad \vec{u} = [$a], \; \; \vec{v} = [$b] ``]
+
+    [` \langle \vec{u}, \vec{v} \rangle = `] [___]{$ans1}
+
+b) [`` V = \mathcal{P}_2, \qquad \langle p,q \rangle = \int_{-1}^1 p q \, dx , 
+    \qquad p = [$poly1], \;\; q= [$poly2] ``]
+
+    [` \langle p, q \rangle = `] [___]{$ans2}
+
+c) [`` V = \mathcal{P}_2, \qquad \langle p,q \rangle 
+    = \int_{0}^{\infty} e^{-x} p q \, dx , \qquad p = [$poly1], \;\; q= [$poly2] ``]
+
+    [` \langle p, q \rangle = `] [___]{$ans3}
+
+END_PGML
+
+$poly3 = Formula(
+    "$c1*$d1 + ($c1*$d2 + $c2 *$d1) x + ($c1 $d3 + $c3*$d1 + $c2 *$d2) x^2 + "
+        . "($c2*$d3  + $c3 * $d2) x^3 + $c3*$d3 x^4")->reduce;
+$poly4 =
+    Formula("$c1*$d1 x + ($c1*$d2 + $c2 *$d1) x^2/2 + "
+        . "($c1 $d3 + $c3*$d1 + $c2 *$d2) x^3/3 + "
+        . "($c2*$d3  + $c3 * $d2) x^4/4 + $c3*$d3 x^5/5")->reduce;
+
+$c5a =
+    $c1 * $d1 +
+    ($c1 * $d2 + $c2 * $d1) +
+    2 * ($c1 * $d3 + $c3 * $d1 + $c2 * $d2) +
+    6 * ($c2 * $d3 + $c3 * $d2) +
+    24 * $c3 * $d3;
+$c5b =
+    $c1 * $d1 +
+    ($c1 * $d2 + $c2 * $d1) +
+    2 * ($c1 * $d3 + $c3 * $d1 + $c2 * $d2) +
+    6 * ($c2 * $d3 + $c3 * $d2) +
+    24 * $c3 * $d3;
+$c5c =
+    2 * ($c1 * $d3 + $c3 * $d1 + $c2 * $d2) +
+    3 * ($c2 * $d3 + $c3 * $d2) +
+    12 * $c3 * $d3;
+$c5d = ($c2 * $d3 + $c3 * $d2) + 4 * $c3 * $d3;
+$c5e = $c3 * $d3;
+
+$poly5 =
+    Formula("-($c5a) - ($c5b)x - ($c5c) x^2 -($c5d) x^3 - ($c5e) x^4")->reduce;
+
+BEGIN_PGML_SOLUTION
+a) In this case, we use the standard dot product between vectors in [`\mathbb{R}^n`].  The answer is [$ans1]. 
+
+b) [`\;`]
+
+    [``` 
+    \begin{aligned}
+    \left\langle p, q \right\rangle & = \int_{-1}^1 ([$poly1])([$poly2]) \, dx  \\
+    & = \int_{-1}^1 ([$poly3]) \, dx \\
+    & = \left([$poly4]\right) \biggr|_{-1}^1 = [$ans2]
+    \end{aligned} ```]
+
+c) [`\;`]
+
+    [``` 
+    \begin{aligned}
+    \left\langle p, q \right\rangle & = \int_0^{\infty} e^{-x} ([$poly1])([$poly2]) \, dx \\
+    & = \int_0^{\infty} e^{-x} ([$poly3]) \, dx \\
+    & = - e^{-x}\left( [$poly5] \right) \biggl|_0^{\infty} \\
+    & = [$ans3]
+    \end{aligned}
+    ```]
+    where integration by parts was used.
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

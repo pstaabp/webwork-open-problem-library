@@ -1,0 +1,64 @@
+## DESCRIPTION
+## Asks the student to put a 3 by 4 matrix in reduced row echelon form.
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Matrices')
+## DBsection('Row Operations')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated on 2022.10.29
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    'PGstandard.pl',      'PGML.pl',
+    'contextFraction.pl', 'MatrixReduce.pl',
+    'PGcourse.pl'
+);
+
+Context('Fraction')->parens->set("[" => { formMatrix => 1 });
+# Define all variables used in the problem statement and solution
+
+do {
+    ($a11, $a12, $a13) = (random(-4, 4), random(-4, 4), random(-4, 4));
+    ($a21, $a22, $a23) = (random(-4, 4), random(-4, 4), random(-4, 4));
+    ($a31, $a32, $a33) = (random(-4, 4), random(-4, 4), random(-4, 4));
+    $A = Matrix([
+        [ $a11, $a12, $a13 ], [ $a21, $a22, $a23 ], [ $a31, $a32, $a33 ] ]);
+} until grep { abs($A->det) == $_ } (1, 2, 4, 5, 8, 10);
+
+# This makes entries of the matrix fractions and operations will remain fractions.
+$B = apply_fraction_to_matrix_entries(Matrix([
+    [ $a11, $a12, $a13, random(-5, 5) ],
+    [ $a21, $a22, $a23, random(-5, 5) ],
+    [ $a31, $a32, $a33, random(-5, 5) ],
+]));
+
+$C = rref($B);
+
+BEGIN_PGML
+
+Write the following matrix in reduced row echelon form:
+
+[``` [$B] ```]
+
+Solution:
+
+[____]*{$C}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Recall that to put a matrix in row reduced echelon form, first try to use row operations
+to put a 1 in the upper left corner (if the first column are all zeros this isn't possible). 
+Then zero out the rest of the column. 
+
+Repeat this for the next column and so on.  The result will be
+[``` [$C] ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

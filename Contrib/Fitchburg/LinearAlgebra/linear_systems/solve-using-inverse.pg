@@ -1,0 +1,106 @@
+## DESCRIPTION
+## Find the solution to a 3 by 3 linear system using the matrix inverse
+## ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Systems of linear equations)
+## DBsection(Systems with 3 variables)
+## Date(September 5, 2014)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('matrix inverse', 'solution')
+
+# update 2022.10.30
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    'PGstandard.pl',   'PGML.pl',
+    'MatrixReduce.pl', 'PGmatrixmacros.pl',
+    'scaffold.pl',     'PGcourse.pl'
+);
+
+Context('Vector');
+
+do {
+    $A = Matrix([
+        [ random(-3, 3), random(-3, 3), 0 ],
+        [ random(-3, 3), 0,             random(-3, 3) ],
+        [ 0,             random(-3, 3), random(-3, 3) ]
+    ]);
+    $det = $A->det;
+} until abs($A->det) > 0 && abs($A->det) <= 4;
+
+# pick a random solution
+
+do {
+    $x = ColumnVector(random(-3, 3), random(-3, 3), random(-3, 3));
+} until Vector($x) != Vector(0, 0, 0);
+$b = $A * $x;
+
+$inv = $A->inverse;
+
+BEGIN_PGML
+This problem solves the equation [`A \vec{x} = \vec{b} `] using the matrix inverse. Let
+
+[`` A=[$A] \qquad \qquad \vec{b}=[$b]``]
+
+END_PGML
+
+Scaffold::Begin();
+Section::Begin('Find the matrix inverse');
+
+BEGIN_PGML
+
+Find the inverse of [`A`]:
+
+[``A^{-1} = ``] [___]*{$inv}
+
+END_PGML
+
+Context('Fraction');
+$aug = apply_fraction_to_matrix_entries(Matrix([
+    [ $A->element(1, 1), $A->element(1, 2), $A->element(1, 3), 1, 0, 0 ],
+    [ $A->element(2, 1), $A->element(2, 2), $A->element(2, 3), 0, 1, 0, ],
+    [ $A->element(3, 1), $A->element(3, 2), $A->element(3, 3), 0, 0, 1 ]
+]));
+
+$aug_red = rref($aug);
+
+BEGIN_PGML_SOLUTION
+To solve this, we write the augmented matrix [` [A \; | \; I] `]: 
+
+[``` [$aug] ```]
+
+and then row reduce it to 
+
+[``` [$aug_red] ```]
+
+and note that since the left half of the matrix is the identity matrix, then the 
+right half is the inverse or 
+
+[``` A^{-1} = [$inv] ```]
+
+END_PGML_SOLUTION
+
+Section::End();
+
+Section::Begin('Use the inverse to find the solution');
+
+BEGIN_PGML
+Solve [`A \vec{x} = \vec{b} `] by first writing [` \vec{x} = A^{-1} \vec{b}`], then
+
+[` \vec{x} = `] [___]{$x}
+
+Write your answer as a vector, like [| <1,2,3> |].
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Next, use matrix multiply to find [` \vec{x} `] or
+
+[``` \vec{x} = A^{-1} \vec{b} = [$inv] [$b] = [$x] ```]
+END_PGML_SOLUTION
+
+Section::End();
+Scaffold::End();
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

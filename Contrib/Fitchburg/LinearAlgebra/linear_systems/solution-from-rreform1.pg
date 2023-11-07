@@ -1,0 +1,63 @@
+## DESCRIPTION
+## Find the solution of a linear system based on its reduced row echelon form. 
+## This problem has no solution. 
+## ENDDESCRIPTION
+
+## KEYWORDS('reduced row echelon form', 'solution')
+
+## DBsubject('Linear algebra')
+## DBchapter('Homogeneous and Nonhomogeneous Solutions')
+## DBsection('Problem')
+## Date('September 5, 2011')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated 2023.11.10
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioMultiAnswer.pl','PGcourse.pl');
+
+Context("Vector")->variables->are(t => 'Real', s => 'Real');
+
+# Define all variables used in the problem statement and solution
+
+$a13 = random(-4, 4);
+$a14 = random(-4, 4);
+$b1  = random(-4, 4);
+$a23 = random(-4, 4);
+$a24 = random(-4, 4);
+$b2  = random(-4, 4);
+$b3  = non_zero_random(-4, 4);
+
+# Now begin with the Problem Statement
+
+$rma = RadioMultiAnswer([
+    ['There is no solution.'],
+    ['The solution is %s', Compute('0')]
+    ],    0);
+
+BEGIN_PGML
+
+Consider the following matrix in reduced row echelon form: 
+
+[```
+\left[
+\begin{array}{rrrr|r}
+1 & 0 & [$a13] & [$a14]  & [$b1] \\
+0 & 1 & [$a23] & [$a24] & [$b2]\\
+0 & 0 & 0 & 0 & [$b3] \\
+\end{array}
+\right] ```]
+
+[_]{$rma}
+
+Write the solution to the associated linear system in vector form using [` s`] or [`t`] as free variables if necessary.  For example use [|<1,2,3>+t<4,5,6>|]* or 
+[|<1,2,3>+t<4,5,6>+s<7,8,9>|]*.
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The last row in the matrix corresponds to the equation [` 0 = [$b3]`] which is false, so there is no solution. 
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,46 @@
+##DESCRIPTION
+##  Draggable proof problem for the distributive property of transposes.
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'inequality', 'fraction')
+## DBsubject('Algebra')
+## DBchapter('Fundamentals')
+## DBsection('Real Numbers')
+## Date('09/25/2022')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+DOCUMENT();
+
+loadMacros("PGstandard.pl", "PGML.pl", "draggableProof.pl", "PGcourse.pl");
+
+Context("Numeric");
+
+$CorrectProof = DraggableProof(
+    [
+        "Let \(A=[a_{ij}]\) and \(B=[b_{ij}]\)",
+        "\(k(A+B)^T = k([a_{ij}]+[b_{ij}])^T\)",
+        "\(k(A+B)^T = k([a_{ij}+b_{ij}])^T\)",
+        "\(k(A+B)^T = k[(a_{ji}+b_{ji})]\)",
+        "\(k(A+B)^T = [k(a_{ji}+b_{ji})]\)",
+        "\(k(A+B)^T = [ka_{ji} +kb_{ji}] \)",
+        "\(k(A+B)^T = [ka_{ji}] + [kb_{ji}] \)",
+        "\(k(A+B)^T = k[a_{ji}]+ k[b_{ji}]\)",
+        "\(k(A+B)^T = k[a_{ij}]^T+ k[b_{ij}]^T\)",
+        "\(k(A+B)^T = kA^T+kB^T\)"
+    ],
+    [],
+    SourceLabel => "Choose from these",
+    TargetLabel => "Place them in the order for proper proof",
+);
+
+BEGIN_PGML
+
+Let [`k`] be a scalar and [`A`] and [`B`] be [`m \times n`] matrices.  Prove the following:
+
+[`` k(A+B)^T = kA^T + kB^T ``]
+
+Note: you may not need to use all of the statements.
+
+[_]{$CorrectProof}
+END_PGML
+ENDDOCUMENT();

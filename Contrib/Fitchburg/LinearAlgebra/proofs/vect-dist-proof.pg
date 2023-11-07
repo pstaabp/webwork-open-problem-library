@@ -1,0 +1,49 @@
+##DESCRIPTION
+##  Draggable proof for the scalar distributive property of vectors in R^n
+##ENDDESCRIPTION
+
+##KEYWORDS('proof', 'distributive', 'vectors')
+
+## DBsubject('Algebra')
+## DBchapter('Fundamentals')
+## DBsection('Real Numbers')
+## Date('9/25/2022')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+
+loadMacros(
+    "PGstandard.pl",    # Standard macros for PG language
+    "PGML.pl",
+    "draggableProof.pl",
+    "PGcourse.pl"
+);
+Context("Numeric");
+
+$proof = DraggableProof(
+    [
+        "Let \(\vec{u} = \left[ \begin{array}{c} u_1 \\ u_2 \\ \vdots \\ u_n \end{array}\right]\) ",
+        "\((k+p)\vec{u} = (k+p)\left[ \begin{array}{c} u_1 \\ u_2 \\ \vdots \\ u_n \end{array}\right] \)",
+        "\((k+p)\vec{u} = \left[ \begin{array}{c} (k+p) u_1 \\ (k+p) u_2 \\ \vdots \\ (k+p) u_n \end{array}\right]\)",
+        "\((k+p)\vec{u} = \left[ \begin{array}{c} k u_1 + p u_1 \\ k u_1 + p u_2 \\ \vdots \\ k u_1 + p u_n \end{array}\right]\)",
+        "\((k+p)\vec{u} = \left[ \begin{array}{c} k u_1  \\ k u_2 \\ \vdots \\ k u_n \end{array}\right]  + \left[ \begin{array}{c} p u_1  \\ p u_2 \\ \vdots \\ p u_n \end{array}\right] \)",
+        "\((k+p)\vec{u} = k \left[ \begin{array}{c} u_1  \\ u_2 \\ \vdots \\ u_n \end{array}\right]  + p\left[ \begin{array}{c} u_1  \\ u_2 \\ \vdots \\ u_n \end{array}\right] \)",
+        "\((k+p)\vec{u} = k \vec{u} + p \vec{u} \)"
+    ],
+    [],
+    SourceLabel => "Choose from these",
+    TargetLabel => "Place them in the order for proper proof",
+);
+
+BEGIN_PGML
+Let [`k`] and [`p`] be a scalars and [`\vec{u}`] be a vector in [`\mathbb{R}^n`].  Prove the following:
+
+[```(k+p)\vec{u} = k\vec{u}+p\vec{u}```]
+
+Note: you may not need to use all of the statements.
+
+[__]{$proof}
+
+END_PGML
+ENDDOCUMENT();

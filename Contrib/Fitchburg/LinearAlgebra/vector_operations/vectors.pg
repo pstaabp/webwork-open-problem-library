@@ -1,0 +1,74 @@
+## DESCRIPTION
+## Compute vectors between points.
+## ENDDESCRIPTION
+
+## KEYWORDS('vectors', 'points')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Vector geometry')
+## DBsection('Vectors and vector arithmetic')
+## Date('September 5, 2011')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated 2022.12.12
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    'PGstandard.pl',        'PGML.pl',
+    'parserVectorUtils.pl', 'parserParametricLine.pl',
+    'PGcourse.pl'
+);
+
+Context('Vector')->variables->add(t => 'Real');
+
+($x1, $y1) = (non_zero_random(-5, 5), non_zero_random(-5, 5));
+($x2, $y2) = (non_zero_random(-5, 5), non_zero_random(-5, 5));
+$ans1 = Vector($x2 - $x1, $y2 - $y1);
+
+($a1, $b1, $c1) =
+    (non_zero_random(-5, 5), non_zero_random(-5, 5), non_zero_random(-5, 5));
+($a2, $b2, $c2) =
+    (non_zero_random(-5, 5), non_zero_random(-5, 5), non_zero_random(-5, 5));
+$ans2 = Vector($a2 - $a1, $b2 - $b1, $c2 - $c1);
+
+$ans3 = ParametricLine("<$a1,$b1,$c1>+t*$ans2");
+
+BEGIN_PGML
+For all of the following problems, enter a vector with angle brackets.  For example, [` \langle 1,2\rangle`] or[` \langle 1,2,3\rangle`]
+
+
+a) Find the vector from [` ([$x1],[$y1]) `] to [` ([$x2],[$y2]) `]:  [____]{$ans1}
+
+b) Find the vector from [` ([$a1],[$b1],[$c1]) `] to [` ([$a2],[$b2],[$c2]) `]:  [____]{$ans2}
+
+c) Write the line from [` ([$a1],[$b1],[$c1]) `] to [` ([$a2],[$b2],[$c2]) `] in the form [`\vec{u} + t \vec{v}`]:  [____]{$ans3}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+a) A vector from a point [`(x_1,y_1)`] to [`(x_2,y_2)`] is found with the vector
+	[` \begin{bmatrix} x_2-x_1 \\ y_2-y_1 \end{bmatrix}`]
+
+	In this situation, the vector is
+
+	[``\begin{bmatrix} x_2-x_1 \\ y_2-y_1 \end{bmatrix} = \begin{bmatrix} [$x2]-[$x1] \\ [$y2]-[$y1] \end{bmatrix}
+	= \begin{bmatrix} [@ $x2-$x1 @] \\ [@ $y2-$y1@] \end{bmatrix} ``]
+
+a) A vector from a point [`(x_1,y_1,z_1)`] to [`(x_2,y_2,z_2)`] is found with the vector
+	[` \begin{bmatrix} x_2-x_1 \\ y_2-y_1 \\ z_2-z_1 \end{bmatrix}`]
+
+	In this situation, the vector is
+
+	[``\begin{bmatrix} x_2-x_1 \\ y_2-y_1 \\ z_2-z_1 \end{bmatrix}
+	= \begin{bmatrix} [$a2]-[$a1] \\ [$b2]-[$b1] \\ [$c2] - [$c1] \end{bmatrix}
+	= \begin{bmatrix} [@ $a2-$a1 @] \\ [@ $b2-$b1@] \\ [@ $c2-$c1@] \end{bmatrix} ``]
+
+a) To find the line, use the form [`\vec{u} +  t \vec{v}`] where $\vec{u}$ is any point on the line
+	(use either of the two points) and the vector between them (found in a).  The result is
+
+	[`` \langle [$a1],[$b1],[$c1] \rangle + t \langle [@ $a2-$a1 @], [@ $b2-$b1@], [@ $c2-$c1@] \rangle``]
+
+END_PGML_SOLUTION
+ENDDOCUMENT();    # This should be the last executable line in the problem.

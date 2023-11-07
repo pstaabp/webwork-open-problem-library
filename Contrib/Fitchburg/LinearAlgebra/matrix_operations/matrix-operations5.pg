@@ -1,0 +1,69 @@
+## DESCRIPTION
+## Write a linear system as a matrix equation.
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated 2024.01.05
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGmatrixmacros.pl', 'PGcourse.pl');
+
+Context("Matrix")->noreduce('(-x)+y', '(-x)-y');
+
+$zerov = Vector(0, 0, 0);
+do {
+    $A = Matrix([ map { [ map { random(-6, 6) } (1 .. 3) ] } (1 .. 3) ]);
+    } until $A->row(1) != $zerov
+    && $A->row(2) != $zerov
+    && $A->row(3) != $zerov
+    && Vector($A->column(1)) != $zerov
+    && Vector($A->column(2)) != $zerov
+    && Vector($A->column(3)) != $zerov;
+
+$b = ColumnVector(map { random(-6, 6) } (1 .. 3));
+$x = ColumnVector(Compute('<x,y,z>'));
+
+@lines = map {
+    Formula($A->element($_, 1) . 'x+'
+            . $A->element($_, 2) . 'y+'
+            . $A->element($_, 3)
+            . 'z')->reduce;
+} (1 .. 3);
+
+BEGIN_PGML
+Consider the linear system: 
+
+[``` \begin{aligned}
+[$lines[0]] & = [$b->{data}[0]] \\
+[$lines[1]] & = [$b->{data}[1]] \\
+[$lines[2]] & = [$b->{data}[2]] \\
+\end{aligned}
+```]
+
+The linear system can be written as the matrix equation [`AX=B`] if
+
+[`A=`] [_]*{$A}
+
+[`X=`] [_]*{$x}
+
+[`B=`] [_]*{$b}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+For this, the matrix [`A`] is the matrix of coefficients of the terms [`x, y`] and [`z`] respectively of the three equations.  This is 
+[``` A= [$A]```]
+The vector [`X`] is the vector of unknowns or 
+[``` X = [$x] ```]
+The vector [`B`] is the vector of the right hand side of the equations or 
+[``` B = [$b]```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,104 @@
+## DESCRIPTION
+## Find the solution of a linear system based on its reduced row echelon form.
+## This problem has no solution.
+## ENDDESCRIPTION
+
+
+## DBsubject(Linear algebra)
+## DBchapter(Matrices)
+## DBsection(Echelon form)
+## Date(September 5, 2011)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('reduced row echelon form', 'solution')
+
+# updated 2023.11.10
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'parserRadioMultiAnswer.pl', 'PGcourse.pl'
+);
+
+Context("Vector")->variables->add(w => 'Real', t => 'Real', s => 'Real');
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+# Define all variables used in the problem statement and solution
+
+$a13 = random(-4, 4);
+$a14 = random(-4, 4);
+$b1  = random(-4, 4);
+$a23 = random(-4, 4);
+$a24 = random(-4, 4);
+$b2  = random(-4, 4);
+$A   = Matrix([ [ 1, 0, $a13, $a14 ], [ 0, 1, $a23, $a24 ] ]);
+$b   = Vector($b1, $b2);
+
+$soln = Compute("<$b1,$b2,0,0>+t<-$a13,-$a23,1,0>+s<-$a14,-$a24,0,1>")->reduce;
+
+$a9 = $soln->D('t')->eval(t => 0);
+
+# Now begin with the Problem Statement
+
+$rma = RadioMultiAnswer(
+    [ ['There is no solution.'], [ 'The solution is %s', $soln ] ],
+    1,
+    checker => sub {
+        my ($correct, $student, $self, $ans) = @_;
+        my ($radio_cor, $corA, $corB) = @$correct;
+        my ($radio_stu, $stuA, $stuB) = @$student;
+
+  # the student answer is in $stuB->[0]
+  # adding ->eval(t=>0) or ->eval(s=>0) creates a constant vector, not a Formula
+        my $u = $stuB->[0]->D('t')->eval(t => 0);
+        my $v = $stuB->[0]->D('s')->eval(s => 0);
+        my $w = $stuB->[0]->eval(t => 0, s => 0);
+
+        # Make sure there are two free variables that are linearly independent.
+        if ($u == Vector(0, 0, 0, 0)
+            || $v == Vector(0, 0, 0, 0)
+            || $u->isParallel($v))
+        {
+            $self->appendMessage(
+                "You haven't found the most general solution.");
+            return 0;
+        }
+        return
+            $radio_cor == $radio_stu
+            && Vector($A * $w) == $b
+            && Vector($A * $u) == Vector(0, 0)
+            && Vector($A * $v) == Vector(0, 0) ? 1 : 0;
+    }
+);
+
+BEGIN_PGML
+Consider the following matrix in reduced row echelon form:
+
+[```\left[\begin{array}{rrrr|r}
+1 & 0 & [$a13] & [$a14]  & [$b1] \\
+0 & 1 & [$a23] & [$a24] & [$b2]\\
+0 & 0 & 0 & 0 & 0 \\
+\end{array}\right] ```]
+
+[_]{$rma}
+
+Write the solution to the associated linear system in vector form using [` s`] or [`t`] as free variables if necessary.  For example use [|<1,2,3>+t<4,5,6>|]* or 
+[|<1,2,3>+t<4,5,6>+s<7,8,9>|]*.
+
+END_PGML
+
+$eqn1 = Formula("$b1-$a13 z - $a14 w")->reduce;
+$eqn2 = Formula("$b2-$a23 z - $a24 w")->reduce;
+
+BEGIN_PGML_SOLUTION
+In this case, there are two free variables, so [`z=t`] and [`w=s`]. The top two rows can be written as the equations 
+[``` \begin{aligned}
+x & = [$eqn1] \\
+u & = [$eqn2] \\
+\end{aligned}
+```]
+Writing the equations with the free variable and in vector form, the answer is
+[``` [$soln] ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,64 @@
+## DESCRIPTION
+## Find the minimum distance from a point to a line
+## ENDDESCRIPTION
+
+
+## DBsubject(Linear algebra)
+## DBchapter(Inner products)
+## DBsection(Projection and distance)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## Level(1)
+## KEYWORDS('projection', 'point', 'line')
+
+# updated 2022.12.12
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserVectorUtils.pl', 'contextFraction.pl', 'PGcourse.pl');
+
+Context('Vector');
+
+# Define all variables used in the problem statement and solution
+
+$u = ColumnVector(non_zero_point2D(2, 7));
+@upt = $u->value;
+$v = ColumnVector(non_zero_point2D(1, 4));
+
+
+Context('Fraction');
+$proj = Fraction($u . $v, $v . $v) * $v;
+Context('Vector');
+$w    = $u - $proj;
+$d = norm($w);
+
+BEGIN_PGML
+
+Find the minimum distance from the point [` ([$upt[0]],[$upt[1]]) `] to the line
+[` L = \left\{ [$v] t  \; | \; t \in \mathbb{R} \right\} `]
+using the following steps:
+
+1. Let [`\vec{u}`] be the vector from the origin to the point and [`\vec{v}`] be the
+    vector parallel to the line.  
+		[`\text{Proj}_{\vec{v}} (\vec{u}) `] = [____]{$proj}
+
+2. [` \vec{u} - \text{Proj}_{\vec{v}} (\vec{u}) = `] [____]{$w}
+
+3. The minimum distance is the value [` ||\vec{u} - \text{Proj}_{\vec{v}} (\vec{u}) || = `] [_____]{$d}
+
+For 1. and 2. your answer should be a vector in [`\mathbb{R}^2 `], like "<1,2>".
+END_PGML
+
+BEGIN_PGML_SOLUTION
+1. The projection onto the line is the same as the projection onto the vector
+		[`\vec{v}`] or [``\text{Proj}_{\vec{v}}(\vec{v}) = \frac{\vec{u} \cdot
+		\vec{v}}{||\vec{v}||^2}\vec{v} = \frac{ [@ $u . $v @]}{[@ $v . $v @]} [$v]
+		= [$proj] ``]
+
+2. [` \vec{u} - \text{Proj}_L (\vec{u}) = [$w]`]
+
+3. The minimum distance is
+		[` ||\vec{u} - \text{Proj}_L (\vec{u}) || = \sqrt{[@ $w . $w @]} = [$d]`]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

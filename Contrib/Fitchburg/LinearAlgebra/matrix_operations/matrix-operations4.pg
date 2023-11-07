@@ -1,0 +1,76 @@
+## DESCRIPTION
+## Find the product of row and column vectors.
+## ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Matrices)
+## DBsection(Matrix algebra)
+## Date(September 5, 2010)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('vectors', 'products')
+
+# updated 2023.11.02
+
+DOCUMENT();
+loadMacros(
+    "PGstandard.pl",             "PGML.pl",
+    'parserRadioMultiAnswer.pl', "PGcourse.pl"
+);
+
+Context("Numeric");
+
+$X = Matrix([ [ map { random(-6, 6) } (1 .. 5) ] ]);
+#$Y = ColumnVector(map { [ random(-6, 6) ] } (1 .. 5));
+$Y = Matrix([ map { [ random(-6, 6) ] } (1 .. 5) ]);
+$Z = Matrix([ [ map { random(-6, 6) } (1 .. 5) ] ]);
+
+$rma1 = RadioMultiAnswer(
+    [
+        ['The product \(XY\) does not exist'],
+        [ 'The product \(XY = \) %s*', $X * $Y ],
+        [ 'The product \(XY = \) %s*', $Y * $Z ]
+    ],
+    1
+);
+
+$rma2 = RadioMultiAnswer(
+    [
+        ['The product \(YZ\) does not exist'],
+        [ 'The product \(YZ = \) %s*', $X * $Y ],
+        [ 'The product \(YZ = \) %s*', $Y * $Z ]
+    ],
+    1
+);
+
+$rma3 = RadioMultiAnswer(
+    [
+        ['The product \(XZ\) does not exist'],
+        [ 'The product \(XZ = \) %s*', $X * $Y ],
+        [ 'The product \(XZ = \) %s*', $Y * $Z ]
+    ],
+    0
+);
+
+BEGIN_PGML
+If
+[``` X = [$X], \quad Y = [$Y], \quad Z=[$Z] ```]
+
+1. [_]{$rma1}
+2. [_]{$rma2}
+3. [_]{$rma3}
+
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+When finding the product of vectors, you can either think that you can multiply a row vector by a column vector or a column vector by a row vector.  Also, you can think that the vectors
+are matrices and that the product exists if the inner dimensions are equal.
+
+For this problem, 
+1. [`XY`] exists and is the inner product between the vectors with the result [`[$X*$Y]`]
+2. [`YZ`] exists and is the inner product between the vectors with the result [`[$Y*$Z]`]
+3. The product [`XZ`] does not exist.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

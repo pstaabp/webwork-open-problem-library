@@ -1,0 +1,147 @@
+## DESCRIPTION
+## Determine if abstract vectors are linearly independent.
+## ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Euclidean spaces)
+## DBsection(Linear independence)
+## Date(September 5, 2023)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('linear independence', 'vectors', 'polynomials')
+
+# update 2022.12.12
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserCheckboxList.pl', 'PGcourse.pl');
+
+Context('Numeric')->noreduce('(-x)-y', '(-x)+y');
+
+$showPartialCorrectAnswers = 0;
+
+# Define all variables used in the problem statement and solution
+
+do {
+    $A = Matrix([
+        [ random(-5, 5), random(-5, 5), random(-5, 5) ],
+        [ random(-5, 5), random(-5, 5), random(-5, 5) ],
+        [ random(-5, 5), random(-5, 5), random(-5, 5) ]
+    ]);
+} while ($A->det == 0);
+
+$a1_out = ColumnVector($A->column(1))->TeX;
+$a2_out = ColumnVector($A->column(2))->TeX;
+$a3_out = ColumnVector($A->column(3))->TeX;
+
+# Make a vector that is a linear combination of the first two columns.
+
+$k1 = non_zero_random(-3, 3);
+$k2 = non_zero_random(-3, 3);
+
+$a4_out = ColumnVector($k1 * $A->column(1) + $k2 * $A->column(2))->TeX;
+
+do {
+    $B = Matrix([
+        [ random(-5, 5), random(-5, 5), random(-5, 5) ],
+        [ random(-5, 5), random(-5, 5), random(-5, 5) ],
+        [ random(-5, 5), random(-5, 5), random(-5, 5) ]
+    ]);
+} while ($B->det == 0);
+
+$poly1 =
+    Formula($B->element(1, 1) . '+'
+        . $B->element(1, 2) . ' x + '
+        . $B->element(1, 3)
+        . ' x^2')->reduce->TeX;
+$poly2 =
+    Formula($B->element(2, 1) . '+'
+        . $B->element(2, 2) . ' x + '
+        . $B->element(2, 3)
+        . ' x^2')->reduce->TeX;
+$poly3 =
+    Formula($B->element(3, 1) . '+'
+        . $B->element(3, 2) . ' x + '
+        . $B->element(3, 3)
+        . ' x^2')->reduce->TeX;
+
+# generate some polynomials with no constant term.  These will not be linearly independent.
+
+$poly4 =
+    Formula(non_zero_random(-5, 5) . ' x + ' . non_zero_random(-5, 5) . ' x^2')
+    ->reduce;
+$poly5 =
+    Formula(non_zero_random(-5, 5) . ' x + ' . non_zero_random(-5, 5) . ' x^2')
+    ->reduce;
+$poly6 =
+    Formula(non_zero_random(-5, 5) . ' x + ' . non_zero_random(-5, 5) . ' x^2')
+    ->reduce;
+
+$C1 = Matrix([ [ non_zero_random(-5, 5), 0 ], [ 0, non_zero_random(-5, 5) ] ]);
+$C2 = non_zero_random(-5, 5) * $C1;
+$C1_out = $C1->TeX;
+$C2_out = $C2->TeX;
+
+do {
+    $D = Matrix([
+        [
+            non_zero_random(-5, 5),
+            non_zero_random(-5, 5),
+            non_zero_random(-5, 5)
+        ],
+        [
+            non_zero_random(-5, 5),
+            non_zero_random(-5, 5),
+            non_zero_random(-5, 5)
+        ],
+    ]);
+    } while ($D->element(1, 1) * $D->element(2, 2) -
+        $D->element(1, 2) * $D->element(2,    1) != 0
+        && $D->element(1, 1) * $D->element(2, 3) -
+        $D->element(1, 3) * $D->element(2,    1) != 0);
+
+$d1 = $D->column(1)->TeX;
+$d2 = $D->column(2)->TeX;
+$d3 = $D->column(3)->TeX;
+
+$checks = CheckboxList(
+    [ [
+        "\( \left\{ $a1_out, $a2_out, $a3_out \right\}\)",
+        "\( \displaystyle \left\{ $poly1, $poly2, $poly3 \right\} \)",
+        "\( \displaystyle \left\{ $d1, $d2, $d3 \right\} \)",
+        "\( \left\{$a1_out, $a2_out, $a4_out \right\} \)",
+        "\( \left\{ $C1_out, $C2_out \right\} \)",
+        "\( \left\{ "
+            . $poly4->TeX . ","
+            . $poly5->TeX . ","
+            . $poly6->TeX
+            . " \right\} \)",
+    ] ],
+    [ 0, 1 ],
+    labels    => 'ABC',
+    separator => '<div style="height: 2ex"></div>'
+);
+
+BEGIN_PGML
+
+Select all sets that are linearly independent.
+
+[_]{$checks}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+In each case, we determine if the solution to the linear combination of the vectors equalling 0 has a trivial or nontrivial solution.
+
+a) In this case, solving 
+[``` c_1 [$A->column(1)] + c_2 [$A->column(2)] + c_3 [$a4_out] = \vec{0} ```]
+results in the only solution [`c_1=[$k1], c_2=[$k2], c_3=-1`], so this is not linearly independent.  Alternatively, the determinant of the matrix with these three columns is zero resulting in the same. 
+
+b) In this case, solving 
+[``` c_1 [$A->column(1)] + c_2 [$A->column(2)] + c_3 [$A->column(3)] = \vec{0} ```]
+results in the only solution [`c_1=c_2=c_3=0`], so this is linearly independent.  Alternatively, the determinant of the matrix with these three columns is not zero resulting in the same.
+
+c) In this case, we solve
+[``` c_1 ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

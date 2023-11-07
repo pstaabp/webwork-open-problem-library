@@ -1,0 +1,53 @@
+## DESCRIPTION
+## Determine a row operation that will eliminate an eliminate in a matrix.
+## ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Matrices)
+## DBsection(Row operations)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('matrix', 'elimination', 'row operation')
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("Numeric");
+$showPartialCorrectAnswers = 0;
+
+$A = Matrix([
+    [ 1, random(-6, 6), random(-6, 6),, random(-6, 6) ],
+    [ non_zero_random(-6, 6), random(-6, 6), random(-6, 6), random(-6, 6) ],
+    [ non_zero_random(-4, 4), random(-6, 6), random(-6, 6), random(-6, 6) ],
+]);
+
+$k = random(2, 3);
+
+BEGIN_PGML
+
+Consider the augmented coefficient matrix: 
+
+[``` [$A] ```]
+
+What row operation will zero out (eliminate) the element in the 
+[@ $k == 2 ? '2nd' : '3rd' @] row, first column?  Use the first row to perform the elimination step.
+
+[_]{Real(-1*$A->element($k,1))} [`R`][_]{Real(1)} [`+ R`] [_]{Real($k)}
+[`\to \cdot R`] [_]{Real($k)}
+
+(For example, if the operation is [`5R_3 + R_2 \rightarrow R_2`], enter 5, 3, 2, 2 in the above boxes.)
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The standard elimination step is [`c R_j + R_i \to R_i `] to eliminate the element with 
+value [`c`] in the [`i`]th row using the [`j`]th row. 
+
+In this case, the value of [`j=1`], the value of [`i=[$k]`] and [`c=[$A->element($k,1)]`].
+
+Therefore the operation should be
+[```[@ -1*$A->element($k,1) @] R_1 + R_{[$k]} \to R_{[$k]} ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

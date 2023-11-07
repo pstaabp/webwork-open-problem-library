@@ -1,0 +1,88 @@
+## DESCRIPTION
+## Find the solution to a 2 by 2 linear system where the solution is written in
+## vector form.
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Systems of Linear Equations')
+## DBsection('Systems with 2 variables')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated on 2022.10.29
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'MatrixReduce.pl', 'PGcourse.pl');
+
+Context('Vector')->variables->add(t => 'Real');
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+# Define all variables used in the problem statement and solution
+
+$a11 = non_zero_random(-4, 4);
+$a12 = non_zero_random(-4, 4);
+$b1  = non_zero_random(-5, 5);
+
+$k = list_random(-4 .. -2, 2 .. 4);
+
+$a21 = $k * $a11;
+$a22 = $k * $a12;
+$b2  = $k * $b1;
+
+$ans   = Compute("<$b1/$a11-$a12*t/$a11,t>")->reduce;
+$check = sub {
+    my ($correct, $student, $ansHash) = @_;
+    my $dt = $student->D('t')->eval(t => 0);
+    my $s0 = $student->eval(t => 0);
+    if ($dt == Vector(0, 0)) {
+        Value->Error('The solution must have the parameter t.');
+        return 0;
+    }
+    my $v = Vector($a11, $a12);
+    return $v . $s0 == $b1 && $v . $dt == 0 ? 1 : 0;
+};
+
+$line1 = Formula($a11 . 'x+' . $a12 . 'y')->reduce;
+$line2 = Formula($a21 . 'x+' . $a22 . 'y')->reduce;
+
+BEGIN_PGML
+The following linear system has an infinite number of solutions:
+
+[```\begin{aligned}
+[$line1] & = [$b1] \\
+[$line2] & = [$b2]
+\end{aligned} ```]
+
+
+Let [`\vec{x}=\langle x,y \rangle`] be the solution to the linear system.
+Write the solution in the form [`\vec{x}=\vec{u}+t\vec{v} `]
+
+
+[` \vec{x} = `] [____]{$ans->cmp(checker => $check)}
+
+END_PGML
+Context('Fraction');
+$aug = apply_fraction_to_matrix_entries(
+    Matrix([ [ $a11, $a12, $b1 ], [ $a21, $a22, $b2 ] ]));
+$aug_red = rref($aug);
+
+Context('Numeric')->variables->add(t => 'Real');
+Context()->noreduce('(-x)+y', '(-x)-y');
+$eqn_x = Formula($aug_red->element(1, 3) . '-' . $aug_red->element(1, 2) . 't')
+    ->reduce;
+
+BEGIN_PGML_SOLUTION
+For this write down the augmented matrix as
+[``` [$aug] ```]
+and row reduce it to 
+[``` [$aug_red] ```]
+and note that the last row is zero and the variable [`y`] is free so set it to [`t`]. 
+The first equation can be written
+[``` x = [$eqn_x] ```]
+Therefore the solution is written in vector form as [`[$ans]`]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

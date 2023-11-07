@@ -1,0 +1,170 @@
+##DESCRIPTION
+##  Compute the eigenvalues/eigenvectors of a 2 by 2 matrix (solution has two real eigenvalues)
+##ENDDESCRIPTION
+
+
+## DBsubject(Linear algebra)
+## DBchapter(Eigenvalues and eigenvectors)
+## DBsection(Computing eigenvalues and eigenvectors)
+## Date(12/12/2002)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## MO(1)
+## KEYWORDS('eigenvalues', 'eigenvectors', '2 by 2 matrix')
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'parserRadioMultiAnswer.pl', 'PGcourse.pl'
+);
+
+Context("Complex-Vector");
+
+# First, find determine the eigenvalues $a + $b i
+$a = random(-3, 3);
+$b = non_zero_random(-3, 3);
+
+# This will generate a matrix A that has these eigenvalues.
+do {
+    $A = Matrix([ [ random(-5, 5), random(-5, 5) ],
+        [ random(-5, 5), random(-5, 5) ] ]);
+    } until ($A->element(1, 1) + $A->element(2, 2) == 2 * $a
+        && $A->det() == $a**2 + $b**2);
+
+$lambda1 = Complex("$a+ $b i");
+$lambda2 = Complex("$a- $b i");
+
+$ev1 = ColumnVector([ $A->element(1, 2), $A->element(1, 1) - $lambda1 ]);
+$ev2 = ColumnVector([ $A->element(1, 2), $A->element(1, 1) - $lambda2 ]);
+
+# Set up the Question
+
+$rma = RadioMultiAnswer(
+    [
+        [
+            'The matrix \(A\) has the single real eigenvalue %s with eigenvector %s',
+            Real(0),
+            ''
+        ],
+        [
+            'The matrix \(A\) has two real eigenvalues. They are \(\lambda_1=\) %s ' .
+            'with corresponding eigenvector \(\vec{v}_1 = \) %s and \(\lambda_2 =\) ' . 
+            '%s with corresponding eigenvector \(\vec{v}_2 = \) %s',
+            Real(0),
+            Vector([ 0, 0 ]),
+            Real(0),
+            Vector([ 0, 0 ])
+        ],
+        [
+            'The matrix \(A\) has two complex eigenvalues. They are \(\lambda_1=\) %s ' .
+            'with corresponding eigenvector \(\vec{v}_1 = \) %s and \(\lambda_2 =\) %s ' .
+            'with corresponding eigenvector \(\vec{v}_2 = \) %s',
+            $lambda1, $ev1, $lambda2, $ev2
+        ]
+    ],
+    2,
+# this checker ensures that the eigenvalues match and that the eigenvectors are 
+# parallel to the correct ones.
+    checker => sub {
+        my ($correct, $student, $self, $ans) = @_;
+        my ($radio_cor, $a_cor, $b_cor, $c_cor) = @$correct;
+        my ($radio_stu, $a_stu, $b_stu, $c_stu) = @$student; 
+
+        return 0 if ($radio_cor ne $radio_stu);
+
+        if ($c_stu->[1] == Vector(0, 0) || $c_stu->[3] == Vector(0, 0)) {
+            $self->appendMessage(
+                'Recall that the zero vector cannot be an eigenvector.');
+            return 0;
+        }
+
+        # If the first entered eigenvalue matches the first correct one.
+        if ($c_cor->[0] == $c_stu->[0]) {
+            my ($c1a, $c2a) = $c_cor->[1]->value;
+            my ($s1a, $s2a) = $c_stu->[1]->value;
+            my ($c1b, $c2b) = $c_cor->[3]->value;
+            my ($s1b, $s2b) = $c_stu->[3]->value;
+
+            my $para1 = $c1a * $s2a == $c2a * $s1a ? 1 : 0;
+            my $para2 = $c1b * $s2b == $c2b * $s1b ? 1 : 0;
+
+            return $c_cor->[2] == $c_stu->[2] && $para1 && $para2;
+        } else {
+            my ($c1a, $c2a) = $c_cor->[1]->value;
+            my ($s1a, $s2a) = $c_stu->[3]->value;
+            my ($c1b, $c2b) = $c_cor->[3]->value;
+            my ($s1b, $s2b) = $c_stu->[1]->value;
+
+            my $para1 = $c1a * $s2a == $c2a * $s1a ? 1 : 0;
+            my $para2 = $c1b * $s2b == $c2b * $s1b ? 1 : 0;
+
+            my $eigen1 = $c_cor->[0] == $c_stu->[2] ? 1 : 0;
+            my $eigen2 = $c_cor->[2] == $c_stu->[0] ? 1 : 0;
+
+            return $eigen1 && $eigen2 && $para1 && $para2;
+        }
+    }
+);
+
+BEGIN_PGML
+Let [`` A = [$A] ``]
+
+[___]{$rma}
+
+Write any eigenvector in vector notation like [|<1,2>|]*
+
+END_PGML
+
+#Context('Numeric');
+$coeff1 = $A->trace;
+$coeff2 = $A->det;
+$char_poly = '\lambda^2';
+$char_poly .= $coeff1 == 0 ? '' : $coeff1 > 0 ? "+$coeff1\lambda" : "$coeff1\lambda";
+$char_poly .= $coeff2 == 0 ? '' : $coeff2 > 0 ? "+$coeff2" : "$coeff2";
+
+$lam1 = ($a == 0 ? '' : "$a"). '-' . abs($b) . 'i';
+$a11 = $A->element(1,1)-$a;
+$a22 = $A->element(2,2)-$a;
+
+$a11b = $a11**2 + $b**2;
+$a21r = -$A->element(2,1)*$a11;
+$a21c = -$A->element(2,1)*abs($b);
+BEGIN_PGML_SOLUTION
+First, take the determinant of [`A-\lambda I`]
+
+[```
+|A-\lambda I| = ([$A->element(1,1)]-\lambda)([$A->element(2,2)]-\lambda) - ([$A->element(1,2)])([$A->element(2,1)]) = [$char_poly]
+```]
+This doesn't factor easily, but using the quadratic formula
+[```\lambda = [@ $a== 0? '' : $a @]\pm [@abs($b) == 1 ? '' : abs($b) @]i ```]
+
+Next, we solve for the homogeneous solution of [`A-\lambda_1I=\vec{0}`] or
+
+[``` 
+A-([$lam1])I = \begin{bmatrix}
+[$a11]+[@ abs($b)==1 ? '' : abs($b) @]i & [$A->element(1,2)] \\
+[$A->element(2,1)] & [$a22]+[@ abs($b)==1 ? '' : abs($b) @]i
+\end{bmatrix}
+```]
+
+This is a bit difficult to row reduce, so multiply the second row by [`\overline{\lambda}_1 = [$a11]-[@ abs($b)==1 ? '' : abs($b) @]i`]
+
+[```
+\begin{bmatrix}
+[$a11]+[@ abs($b)==1 ? '' : abs($b) @]i & [$A->element(1,2)] \\
+[$a21r][@ $a21c <0 ? "$a21c " : "+$a21c" @]i & [@$a11**2 + $b**2@]
+\end{bmatrix} \sim 
+\begin{bmatrix}
+[$a11]+[@ abs($b)==1 ? '' : abs($b) @]i & [$A->element(1,2)] \\
+0 & 0 
+\end{bmatrix}
+```]
+and this has the corresponding eigenvector 
+[``` [$ev2] ```]
+
+Since the other eigenvalue/eigenvector is the conjugate of these, then
+
+[``` \lambda_2 = [$lambda1] \qquad \vec{v}_2 = [$ev1] ```]
+END_PGML_SOLUTION
+ENDDOCUMENT();

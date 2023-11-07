@@ -1,0 +1,70 @@
+## DESCRIPTION
+## Given a linear system, write down the augmented coefficient matrix.
+## ENDDESCRIPTION
+
+## KEYWORDS('linear system', 'augmented coefficient matrix')
+
+## DBsubject(Linear algebra)
+## DBchapter(Systems of linear equations)
+## DBsection(Augmented matrices)
+## Date(September 5, 2008)
+## Institution(Fitchburg State College)
+## Author(Peter Staab)
+
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'parserImplicitEquation.pl', 'PGmatrixmacros.pl',
+    'PGcourse.pl'
+);
+
+Context("Matrix")->noreduce('(-x)+y', '(-x)-y');
+
+do {
+    ($a11, $a12, $a13) = (random(-6, 6), random(-6, 6), random(-6, 6));
+} until $a11 * $a12 != 0 || $a11 * $a13 != 0 || $a12 * $a13 != 0;
+do {
+    ($a21, $a22, $a23) = (random(-6, 6), random(-6, 6), random(-6, 6));
+} until $a21 * $a22 != 0 || $a21 * $a23 != 0 || $a22 * $a23 != 0;
+do {
+    ($a31, $a32, $a33) = (random(-6, 6), random(-6, 6), random(-6, 6));
+} until $a31 * $a32 != 0 || $a31 * $a33 != 0 || $a32 * $a33 != 0;
+
+$line1 = Formula("$a11 x + $a12 y + $a13 z")->reduce;
+$line2 = Formula("$a21 x + $a22 y + $a23 z")->reduce;
+$line3 = Formula("$a31 x + $a32 y + $a33 z")->reduce;
+
+$b1 = random(-6, 6);
+$b2 = random(-6, 6);
+$b3 = random(-6, 6);
+
+$m = Matrix([
+    [ $a11, $a12, $a13, $b1 ],
+    [ $a21, $a22, $a23, $b2 ],
+    [ $a31, $a32, $a33, $b3 ]
+]);
+
+BEGIN_PGML
+Consider the linear system: 
+[```
+\begin{aligned}
+[$line1] & = [$b1] \\
+[$line2] & = [$b2] \\   
+[$line3] & = [$b3]
+\end{aligned}
+```]
+
+Write the linear system as a augmented coefficient matrix. 
+
+[_]*{$m}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+For this, each coefficient is placed in the matrix or:
+
+[``` [$m] ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

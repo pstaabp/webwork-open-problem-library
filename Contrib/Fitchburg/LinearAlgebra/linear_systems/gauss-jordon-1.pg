@@ -1,0 +1,91 @@
+## DESCRIPTION
+## WeBWorK Demo
+## ENDDESCRIPTION
+
+## Tagged by jjh2b
+
+## DBsubject(Linear algebra)
+## DBchapter(Systems of linear equations)
+## DBsection(Systems with 2 variables)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('lines')
+
+# updated 2023.10.30
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros("PGstandard.pl", 'PGML.pl',
+    'parserRadioMultiAnswer.pl',, 'contextFraction.pl', 'MatrixReduce.pl',
+    'PGcourse.pl');
+
+Context('Numeric')->variables->add(y => 'Real');
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+do {
+    $A = Matrix([
+        [ non_zero_random(-5, 5), non_zero_random(-5, 5) ],
+        [ non_zero_random(-5, 5), non_zero_random(-5, 5) ]
+    ]);
+} until $A->det != 0;
+
+$x = Vector(random(-4, 4), random(-4, 4));
+$b = $A * $x;
+
+@lines = map {
+    Formula($A->element($_, 1) . 'x+' . $A->element($_, 2) . 'y')->reduce
+} (1 .. 2);
+
+Context('Point');
+$xpt = Point($x);
+
+$rma = RadioMultiAnswer(
+    [
+        ['There is no solution to the linear system'],
+        ['There are an infinite number of solutions to the linear system.'],
+        [
+            'There is a single solution to the linear system in the form %s',
+            $xpt
+        ]
+    ],
+    2
+);
+
+BEGIN_PGML
+
+Solve the follow linear system using the Gauss-Jordon method:
+
+[```\begin{aligned}
+[$lines[0]] & = [@ Matrix($b)->element(1,) @] \\
+[$lines[1]] & = [@ Matrix($b)->element(2,) @] \\
+\end{aligned}
+```]
+[_]{$rma}
+
+If there is a single solution, write the answer like (3,4).
+END_PGML
+
+Context('Fraction');    # for fraction arithmetic
+
+# augmented matrix to be reduced
+$aug = Matrix([
+    [ $A->element(1, 1), $A->element(1, 2), Matrix($b)->element(1) ],
+    [ $A->element(2, 1), $A->element(2, 2), Matrix($b)->element(2) ]
+]);
+
+$aug_red = rref($aug);
+
+BEGIN_PGML_SOLUTION
+
+First, start with the augmented coefficient matrix or
+[``` [$aug] ```]
+
+and then perform Gauss-Jordon reduction to get 
+[``` [$aug_red] ```]
+
+The left 2 by 2 matrix is the identity matrix, so the solution is in the right column or
+[``[$x]``]
+END_PGML_SOLUTION
+COMMENT('The solution to this homogeneous system is a single point.');
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

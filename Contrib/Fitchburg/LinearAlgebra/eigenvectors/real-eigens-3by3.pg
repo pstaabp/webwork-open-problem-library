@@ -1,0 +1,202 @@
+##DESCRIPTION
+##  Compute the eigenvalues/eigenvectors of a 3 by 3 matrix (solution has three real eigenvalues)
+##ENDDESCRIPTION
+
+##KEYWORDS('eigenvalues', 'eigenvectors', '3 by 3 matrix')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Eigenvalues and eigenvectors')
+## DBsection('Computing eigenvalues and eigenvectors')
+## Date('12/12/2002')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## MO(1)
+
+########################################################################
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',        'PGML.pl',
+    'parserMultiAnswer.pl', 'MatrixReduce.pl',
+    'PGcourse.pl'
+);
+
+Context('Vector');
+
+do {
+    do {
+        # The columns of Q are the eigenvectors.
+        $Q = Matrix([
+            [ non_zero_random(-3, 3), non_zero_random(-3, 3), 0 ],
+            [ non_zero_random(-3, 3), 0, non_zero_random(-3, 3) ],
+            [ 0, non_zero_random(-3, 3), non_zero_random(-3, 3) ],
+        ]);
+    } while ($Q->det == 0 || abs($Q->det) > 4);
+
+    # Pick the eigenvalues such that lambda1 < lambda2 < lambda 3
+    do {
+        $lambda1 = non_zero_random(-3, 3);
+        $lambda2 = 0;
+        $lambda3 = non_zero_random(-3, 3);
+    } while ($lambda1 == $lambda3);
+    ($lambda1, $lambda2, $lambda3) = num_sort($lambda1, $lambda2, $lambda3);
+
+    # Diagonal matrix of eigenvalues
+    $Lambda =
+        Matrix([ [ $lambda1, 0, 0 ], [ 0, $lambda2, 0 ], [ 0, 0, $lambda3 ] ]);
+
+    $A = $Q * $Lambda * $Q->inverse;
+
+    #check that A is all integers
+    $all_ints = 1;
+    for ($i = 1; $i <= 3; $i++) {
+        for ($j = 1; $j <= 3; $j++) {
+            $all_ints =
+                $all_ints && int($A->element($i, $j)) == $A->element($i, $j);
+        }
+    }
+} until ($all_ints);
+
+$ev1 = Vector($Q->column(1));
+$ev2 = Vector($Q->column(2));
+$ev3 = Vector($Q->column(3));
+
+$mp2 = MultiAnswer($lambda1, $ev1, $lambda2, $ev2, $lambda3, $ev3)->with(
+    checker => sub {
+        my ($correct, $student, $self) = @_;
+        my ($stu_l1, $stu_ev1, $stu_l2, $stu_ev2, $stu_l3, $stu_ev3) =
+            @$student;
+
+        my $ans1 =
+            Vector($A * $stu_ev1) == $stu_l1 * $stu_ev1 ? [ 1, 1 ] : [ 0, 0 ];
+        if ($stu_ev1 == Vector(0, 0, 0)) {
+            $ans1 = [ 0, 0 ];
+            $self->setMessage(2, 'An eigenvector cannot be a zero vector.');
+        }
+        my $ans2 =
+            Vector($A * $stu_ev2) == $stu_l2 * $stu_ev2 ? [ 1, 1 ] : [ 0, 0 ];
+        if ($stu_ev2 == Vector(0, 0, 0)) {
+            $ans2 = [ 0, 0 ];
+            $self->setMessage(4, 'An eigenvector cannot be a zero vector.');
+        }
+
+        my $ans3 =
+            Vector($A * $stu_ev3) == $stu_l3 * $stu_ev3 ? [ 1, 1 ] : [ 0, 0 ];
+        if ($stu_ev3 == Vector(0, 0, 0)) {
+            $ans3 = [ 0, 0 ];
+            $self->setMessage(6, 'An eigenvector cannot be a zero vector.');
+        }
+        if ($stu_l1 == $stu_l2) {
+            $self->setMessage(1, 'You have a repeated eigenvalue.');
+            $self->setMessage(3, 'You have a repeated eigenvalue.');
+            $ans1 = [ 0, 0 ];
+            $ans2 = [ 0, 0 ];
+        }
+        if ($stu_l1 == $stu_l3) {
+            $self->setMessage(1, 'You have a repeated eigenvalue.');
+            $self->setMessage(5, 'You have a repeated eigenvalue.');
+            $ans1 = [ 0, 0 ];
+            $ans3 = [ 0, 0 ];
+        }
+        if ($stu_l2 == $stu_l3) {
+            $self->setMessage(3, 'You have a repeated eigenvalue.');
+            $self->setMessage(5, 'You have a repeated eigenvalue.');
+            $ans2 = [ 0, 0 ];
+            $ans3 = [ 0, 0 ];
+        }
+
+        return [ @$ans1, @$ans2, @$ans3 ];
+    }
+);
+
+BEGIN_PGML
+Let
+
+>> [`` A= [$A] ``] <<
+
+For [` A `] find the eigenvalues and eigenvectors.
+
+- [` \lambda_1 = `] [___]{$mp2} [`\qquad\vec{v}_1= `] [____]{$mp2}
+
+- [` \lambda_2 = `] [___]{$mp2} [`\qquad\vec{v}_2= `] [____]{$mp2}
+
+- [` \lambda_3 = `] [___]{$mp2} [`\qquad\vec{v}_3= `] [____]{$mp2}
+
+Write all vectors using the form <1,2,3>.
+END_PGML
+
+# lambda^2 terms
+$c2 = $A->element(1, 1) + $A->element(2, 2) + $A->element(3, 3);
+
+# $lambda term
+$m1 = ($A->element(2, 2) * $A->element(3, 3)) -
+    ($A->element(2, 3) * $A->element(3, 2));
+$m2 = ($A->element(1, 1) * $A->element(3, 3)) -
+    ($A->element(1, 3) * $A->element(3, 1));
+$m3 = ($A->element(1, 1) * $A->element(2, 2)) -
+    ($A->element(1, 2) * $A->element(2, 1));
+$c1 = $m1 + $m2 + $m3;
+
+# contstant term.
+$c0 = $A->det;
+
+Context()->variables->add(lambda => 'Real');
+Context()->variables->set(lambda => { TeX => '\lambda' });
+
+$char = Formula("lambda^3 + $c2 lambda^2 + $c1 lambda + $c0")->reduce;
+
+# For lambda_1, the matrix A-lambda I
+
+Context('Fraction');
+$A1 = apply_fraction_to_matrix_entries($A - $lambda1 * (Value::Matrix->I(3)));
+$A1red = rref($A1);
+$A2 = apply_fraction_to_matrix_entries($A - $lambda2 * (Value::Matrix->I(3)));
+$A2red = rref($A2);
+$A3 = apply_fraction_to_matrix_entries($A - $lambda3 * (Value::Matrix->I(3)));
+$A3red = rref($A3);
+
+BEGIN_PGML_SOLUTION
+First, we need to find 
+[```
+\begin{aligned}
+|A - \lambda I| & = \begin{vmatrix} [$A->element(1,1)] - \lambda & [$A->element(1,2)] & [$A->element(1,3)]\\
+[$A->element(2,1)] & [$A->element(2,2)] - \lambda  & [$A->element(2,3)] \\
+[$A->element(3,1)] & [$A->element(3,2)] & [$A->element(3,3)]- \lambda \\
+\end{vmatrix} \\
+& = [$char] \\
+& = (\lambda - [$lambda1]) (\lambda-[$lambda2])(\lambda-[$lambda3])
+\end{aligned}
+```]
+and therefore there are three real eigenvalues: [$lambda1], [$lambda2], [$lambda3].
+
+To find the eigenvector solve [`(A-\lambda_j I) = \mathbf{0}`] for each eigenvalue. 
+
+[```
+A - \lambda_1 I = A - [$lambda1] I = [$A1] \sim [$A1red]
+```]
+and an eignvector is orthogonal to the first two rows is 
+[```\mathbf{v}_1 = [$ev1]```]
+
+Similarly to find the second eigenvector:
+
+[```
+A - \lambda_1 I = A - [$lambda2] I = [$A2] \sim [$A2red]
+```]
+and an eignvector is orthogonal to the first two rows is 
+[```\mathbf{v}_1 = [$ev2]```]
+
+And the third eigenvector is found with 
+
+[```
+A - \lambda_1 I = A - [$lambda3] I = [$A3] \sim [$A3red]
+```]
+and an eignvector is orthogonal to the first two rows is 
+[```\mathbf{v}_1 = [$ev3]```]
+
+
+*Note:* recall that any scalar mulitple (other that by 0) of an eigenvector is another eigenvector, so simplifying or multiplying by [`-1`] is common in finding eigenvectors.
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

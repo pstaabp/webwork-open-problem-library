@@ -1,0 +1,100 @@
+## DESCRIPTION
+## Applied problem that asks for total number of baked goods depending on the 
+## number of ingredients on hand. 
+## ENDDESCRIPTION
+
+## KEYWORDS('linear system', 'application', 'bakery', 'cookies', 'cakes', 'muffins')
+
+## DBsubject(Linear algebra)
+## DBchapter(Systems of linear equations)
+## DBsection(Applications)
+## Date(September 5, 2012)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+
+# updated 2023.11.02
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'randomPerson.pl', 'PGcourse.pl');
+
+Context("Numeric");
+
+$cookies = random(2, 6);
+$cakes   = random(2, 6);
+$muffins = random(1, 5);
+
+$A = Matrix([ map { [ random(2, 8), random(1, 5), random(2, 6) ] } (1 .. 3) ]);
+
+$total = $A * Vector($cookies, $cakes, $muffins);
+
+$flour = Matrix($total)->element(1);
+$sugar = Matrix($total)->element(2);
+$eggs = Matrix($total)->element(3);
+
+$p = randomPerson();
+
+# Now begin with the Problem Statement
+
+BEGIN_PGML
+
+On Fridays, the Peace Frog bakery makes cookies, cakes and muffins.  The following table
+shows the ingredient amounts needed for each baked good with flour and sugar measured in cups and eggs is number of:
+
+[#
+    [. .][.flour .][.sugar.][.eggs.]*
+    [.cookies.][.[$A->element(1,1)].][.[$A->element(1,2)].][.[$A->element(3,1)].]*
+    [.cakes. .][.[$A->element(1,2)].][.[$A->element(2,2)].][.[$A->element(3,2)].]*
+    [.muffin .][.[$A->element(1,3)].][.[$A->element(2,3)].][.[$A->element(3,3)].]*
+
+#]
+
+(Each require other ingredients as well, but don’t worry about it). [$p]
+the Baker looks over [$p->their] inventory and 
+realizes that [$p->they] has [$flour] cups of ﬂour, 
+[$sugar] cups of sugar and [$eggs] eggs. 
+How many of each type of product (cookies,
+cakes, muffins) should [$p] make to use all the ingredients?
+
+- Number of batches of cookies: [_]{Real($cookies)}
+- Number of cakes: [_]{Real($cakes)}
+- Number of batches of muffins: [_]{Real($muffins)}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+First, we will define the following varibles
+[```
+\begin{aligned}
+x & = \text{number of batches of cookies} \\
+y &= \text{number of cakes } \\
+z & = \text{number of batches of muffins} 
+\end{aligned}
+```]
+
+We use the table given above to calculate how much flour, sugar and eggs are used respectively.  This becomes:
+[```\begin{aligned}
+[$A->element(1,1)] x + [$A->element(1,2)] y + [$A->element(1,3)] z & = [$flour] \\
+[$A->element(2,1)] x + [$A->element(2,2)] y + [$A->element(2,3)] z & = [$sugar] \\
+[$A->element(3,1)] x + [$A->element(3,2)] y + [$A->element(3,3)] z & = [$eggs]  \\
+\end{aligned}```]
+
+Then the standard way (although there are others) is to write these equations in augmented
+matrix form or
+[```
+\left[\begin{array}{rrr|r}
+[$A->element(1,1)] & [$A->element(1,2)] & [$A->element(1,3)] & [$flour] \\
+[$A->element(2,1)] & [$A->element(2,2)] & [$A->element(2,3)] & [$sugar] \\
+[$A->element(3,1)] & [$A->element(3,2)] & [$A->element(3,3)] & [$eggs] \\
+\end{array}\right] ```]
+
+Then using Gauss-Jordon reduction use row operations to put this matrix in row-reduced
+echelon form or
+[```
+\left[\begin{array}{rrr|r}
+1 & 0 & 0 & [$cookies] \\
+0 & 1 & 0 & [$cakes] \\
+0 & 0 & 1 & [$muffins] \\
+\end{array}\right] ```]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

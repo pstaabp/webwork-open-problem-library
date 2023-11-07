@@ -1,0 +1,64 @@
+## DESCRIPTION
+## Write the equations given an augmented coefficient matrix.
+## ENDDESCRIPTION
+
+## KEYWORDS('linear system','augmented coefficient matrix')
+
+## DBsubject(Linear algebra)
+## DBchapter(Systems of linear equations)
+## DBsection(Augmented matrices)
+## Date(September 5, 2012)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+
+# updated 2023.11.10
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'parserImplicitEquation.pl', 'parserMultiAnswer.pl',
+    'PGcourse.pl'
+);
+
+Context("ImplicitEquation");
+Context()->variables->add(z => 'Real');
+
+$A = Matrix([ map { [ map { random(-6, 6) } (1 .. 4) ] } 1 .. 3 ]);
+
+@eqns = (
+    map {
+        ImplicitEquation(
+            $A->element($_, 1) . 'x+'
+                . $A->element($_, 2) . 'y+'
+                . $A->element($_, 3) . 'z='
+                . $A->element($_, 4),
+            limits         => [ [ -15, 15 ], [ -15, 15 ], [ -15, 15 ] ],
+            ImplicitPoints => 20
+        )->reduce
+    } (1 .. 3)
+);
+
+BEGIN_PGML
+Consider the augmented coefficient matrix:
+
+[``` [$A] ```]
+
+Write the matrix as a linear system below.  (Use the variables [`x`], [`y`], and [`z`].)
+
+- [_]{$eqns[0]}
+- [_]{$eqns[1]}
+- [_]{$eqns[2]}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+For each row of the matrix, use the elements as coefficients of the equation and the right hand side for the last column.  These are
+
+[```\begin{aligned}
+[$eqns[0]] \\
+[$eqns[1]] \\
+[$eqns[2]]
+\end{aligned} ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

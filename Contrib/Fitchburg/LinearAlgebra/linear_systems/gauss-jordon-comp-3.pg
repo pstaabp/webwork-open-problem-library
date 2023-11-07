@@ -1,0 +1,117 @@
+## DESCRIPTION
+## Solve a 4 by 4 linear system.  Solution is a single point.
+## ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Systems of linear equations)
+## DBsection(Systems with 4 or more variables)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('linear system', 'solution', '4 by 4')
+
+# updated 2023.10.30
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioMultiAnswer.pl',,
+    'contextFraction.pl', 'MatrixReduce.pl', 'PGcourse.pl');
+
+Context('Vector')->variables->add(
+    w => 'Real',
+    t => 'Real',
+    s => 'Real'
+);
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+$zerov = Vector([ 0, 0, 0 ]);
+# Find a nice matrix with determinant of 1,2,4 or 5.
+do {
+    $A = Matrix([ map { [ map { random(-5, 5) } (1 .. 4) ] } (1 .. 4) ]);
+} until grep { abs($A->det) == $_ } (1, 2, 4, 5);
+
+$x = Vector(map { random(-5, 5) } (1 .. 4));
+$b = $A * $x;
+
+@lines = map {
+    Formula($A->element($_, 1) . 'x+'
+            . $A->element($_, 2) . 'y+'
+            . $A->element($_, 3) . 'z+'
+            . $A->element($_, 4)
+            . 'w')->reduce
+} (1 .. 4);
+
+$rma = RadioMultiAnswer(
+    [
+        ['There is no solution to the linear system'],
+        [ 'There is a solution to the linear system in the form %s', $x ]
+    ],
+    1
+);
+
+BEGIN_PGML
+
+Solve the follow linear system using the Gauss-Jordon method.
+
+[```
+\begin{aligned}
+[$lines[0]] & = [@ Matrix($b)->element(1) @] \\
+[$lines[1]] & = [@ Matrix($b)->element(2) @] \\
+[$lines[2]] & = [@ Matrix($b)->element(3) @] \\
+[$lines[3]] & = [@ Matrix($b)->element(4) @]
+\end{aligned}
+```]
+
+[_]{$rma}
+
+If there is a solution, write it in vector form, like <1,2,3,4> or <1+t, 2-t, 3+t,4t> and use t and s for free variables if needed.
+END_PGML
+Context('Fraction');    # for fraction arithmetic
+
+# augmented matrix to be reduced
+$aug = Matrix([
+    [
+        $A->element(1, 1),
+        $A->element(1, 2),
+        $A->element(1, 3),
+        $A->element(1, 4),
+        Matrix($b)->element(1)
+    ],
+    [
+        $A->element(2, 1),
+        $A->element(2, 2),
+        $A->element(2, 3),
+        $A->element(2, 4),
+        Matrix($b)->element(2)
+    ],
+    [
+        $A->element(3, 1),
+        $A->element(3, 2),
+        $A->element(3, 3),
+        $A->element(3, 4),
+        Matrix($b)->element(3)
+    ],
+    [
+        $A->element(4, 1),
+        $A->element(4, 2),
+        $A->element(4, 3),
+        $A->element(4, 4),
+        Matrix($b)->element(4)
+    ]
+]);
+
+$aug_red = rref($aug);
+
+BEGIN_PGML_SOLUTION
+
+First, start with the augmented coefficient matrix or
+[``` [$aug] ```]
+
+and then perform Gauss-Jordon reduction to get 
+[``` [$aug_red] ```]
+
+And since the left 4 by 4 matrix is the identity matrix, then the solution is the 
+rightmost column or 
+[``` \vec{x} = [$x] ```]
+END_PGML_SOLUTION
+COMMENT('The solution to this nonhomogeneous system is a single point.');
+ENDDOCUMENT();

@@ -1,0 +1,120 @@
+## DESCRIPTION
+## Find the solution to a 4 by 4 homogeneous system.
+## ENDDESCRIPTION
+
+## KEYWORDS('homogeneous', 'linear system', '4 by 4')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Systems of Linear Equations')
+## DBsection('Systems with 4 or more variables')
+## Date('September 5, 2014')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# update 2022.10.30
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'MatrixReduce.pl', 'PGcourse.pl');
+
+Context('Matrix');
+Context()->variables->add(w => 'Real', t => 'Real', s => 'Real');
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+# Define all variables used in the problem statement and solution
+
+($a11, $a13, $a22, $a24) = map { non_zero_random(-5, 5) } (1 .. 4);
+
+$A = Matrix([
+    [ $a11, 0,    $a13, 0 ],
+    [ 0,    $a22, 0,    $a24 ],
+    [ 0,    0,    0,    0 ],
+    [ 0,    0,    0,    0 ]
+]);
+$A = row_add($A, 3, 1, non_zero_random(-3, 3));
+$A = row_add($A, 3, 2, non_zero_random(-3, 3));
+$A = row_add($A, 4, 1, non_zero_random(-3, 3));
+$A = row_add($A, 4, 2, non_zero_random(-3, 3));
+
+$ans = Compute("<-1*$a13/$a11*t,-1*$a24/$a22*s,t,s>")->reduce;
+
+$zero = Vector(0, 0, 0, 0);
+
+@lines = map {
+    Formula($A->element($_, 1) . 'x+'
+            . $A->element($_, 2) . 'y+'
+            . $A->element($_, 3) . 'z+'
+            . $A->element($_, 4)
+            . 'w')->reduce
+} (1 .. 4);
+
+$check = sub {
+    my ($correct, $student, $ansHash) = @_;
+    $dt = $student->D('t')->eval(t => 0);
+    $ds = $student->D('s')->eval(x => 0);
+    if ($dt == $zero) {
+        Value->Error('Your solution must have the parameter t');
+        return 0;
+    }
+    if ($ds == $zero) {
+        Value->Error('Your solution must have the parameter s');
+        return 0;
+    }
+    if ($dt->isParallel($ds)) {
+        Value->Error(
+            'The vectors associated with t and s must be linearly independent.'
+        );
+        return 0;
+    }
+    return Vector($A * $dt) == $zero && Vector($A * $ds) == $zero ? 1 : 0;
+};
+
+BEGIN_PGML
+Consider the following homogeneous linear system.
+
+[```
+\begin{aligned}
+[$lines[0]] & = 0 \\
+[$lines[1]] & = 0 \\
+[$lines[2]] & = 0 \\
+[$lines[3]] & = 0 \\
+\end{aligned} ```]
+
+Let [` \vec{x} = \langle x,y,z,w \rangle`].  Write the solution in the 
+form [` \vec{x}=t\vec{u}+s \vec{v} `] for [`\vec{u}`]
+and [` \vec{v}`] constant vectors.
+
+[`\vec{x} = `] [____]{$ans->cmp(checker => $check, showCoordinateHints => 0)}
+
+END_PGML
+
+Context('Fraction');    # for fraction arithmetic
+
+# augmented matrix to be reduced
+$aug = apply_fraction_to_matrix_entries($A);
+
+$aug_red = rref($aug);
+
+Context('Numeric')->variables->are(t => 'Real', s => 'Real');
+Context()->noreduce('(-x)+y', '(-x)-y');
+$eqn_x = Formula(-1 * $aug_red->element(1, 3) . 't')->reduce;
+$eqn_y = Formula(-1 * $aug_red->element(2, 4) . 's')->reduce;
+
+BEGIN_PGML_SOLUTION
+If we write the matrix in augmented matrix form (however ignore the right hand side,
+since it is zero), we get:
+[``` [$aug] ```]
+and then row reduce it to
+[``` [$aug_red]```]
+There are only two non zero rows and the variables [`z`] and [`w`] are free variables. 
+We'll use [`t`] and [`s`] for these respectively. From the first two rows, we can write
+[```
+\begin{aligned}
+x & = [$eqn_x] \\
+y & = [$eqn_y] \\
+z & = t \\
+w & = s
+\end{aligned}
+```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,137 @@
+## DESCRIPTION
+## Find a solution and the associated homogeneous solution to a 3 by 3 linear system.
+## ENDDESCRIPTION
+
+## KEYWORDS('linear system', 'associated homogeneous')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Systems of Linear Equations')
+## DBsection('Systems with 3 variables')
+## Date('September 5, 2014')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# update 2022.10.30
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'MatrixReduce.pl', 'PGcourse.pl');
+
+Context("Matrix")->variables->add(t => 'Real');
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+# Define all variables used in the problem statement and solution
+
+do {
+    $A = Matrix([
+        [ map { non_zero_random(-5, 5) } (1 .. 4) ],
+        [ map { non_zero_random(-5, 5) } (1 .. 4) ],
+        [ 0, 0, 0, 0 ]
+    ]);
+    $det1 = $A->element(1, 1) * $A->element(2, 2) -
+        $A->element(1, 2) * $A->element(2, 1);
+
+} until ($det1 >= 1 && $det1 <= 1);
+
+$A = row_add($A, 3, 1, non_zero_random(-3, 3));
+$A = row_add($A, 3, 2, non_zero_random(-3, 3));
+
+$b = $A->column(4);
+
+$det2 = $A->element(1, 1) * $b->element(2, 1) -
+    $A->element(2, 1) * $b->element(1, 1);
+$det3 = $A->element(2, 2) * $b->element(1, 1) -
+    $A->element(1, 2) * $b->element(2, 1);
+$det4 = $A->element(2, 1) * $A->element(1, 3) -
+    $A->element(1, 1) * $A->element(2, 3);
+$det5 = $A->element(1, 2) * $A->element(2, 3) -
+    $A->element(2, 2) * $A->element(1, 3);
+
+$ans1 = Compute("<$det3,$det2,0>");
+$ans2 = Compute("<$det5,$det4,$det1>*t");
+
+@lines = map {
+    Formula($A->element($_, 1) . 'x+'
+            . $A->element($_, 2) . 'y+'
+            . $A->element($_, 3)
+            . 'z')->reduce
+} (1 .. 3);
+
+sub check_solution1 {
+    my ($correct, $student, $ansHash) = @_;
+    return ($A * $student == $bv);
+}
+
+sub check_solution2 {
+    my ($correct, $student, $ansHash) = @_;
+    if ($student->D('t') == $zvector) {
+        Value->Error('Your solution must have the parameter t.');
+        return 0;
+    }
+    return $A * $student == Vector(0, 0, 0);
+}
+
+BEGIN_PGML
+
+Consider the following linear system.
+
+[```
+\begin{aligned}
+[$lines[0]] & =  [$b->element(1,1)] \\
+[$lines[1]] & =  [$b->element(2,1)] \\
+[$lines[2]] & =  [$b->element(3,1)] \\
+\end{aligned} ```]
+
+
+Write a particular solution as a vector, e.g. [`\langle 1,2,3 \rangle`], to the linear system:
+
+[` \vec{x}_p = `] [____]{$ans1->cmp({checker => ~~&check_solution1, showCoordinateHints => 0})}
+
+Write the solution to the associated homogeneous system in the form [` \vec{x}=t\vec{u} `],
+like [` \langle 1,2,3\rangle t`].
+
+[`\vec{x}_h = `] [____]{$ans2->cmp({checker => ~~&check_solution2, showCoordinateHints => 0})}
+
+END_PGML
+
+Context('Fraction');    # for fraction arithmetic
+
+# augmented matrix to be reduced
+$aug = apply_fraction_to_matrix_entries($A);
+
+$aug_red = rref($aug);
+
+Context("Numeric")
+    ->variables->are(x => "Real", y => "Real", z => 'Real', t => "Real");
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+$sol_eq1 =
+    Formula($aug_red->element(1, 4) . '-' . ($aug_red->element(1, 3) . 'z'))
+    ->reduce;
+$sol_eq2 =
+    Formula($aug_red->element(2, 4) . '-' . ($aug_red->element(2, 3) . 'z'))
+    ->reduce;
+$sol_t1 = $sol_eq1->substitute(z => 't');
+$sol_t2 = $sol_eq2->substitute(z => 't');
+BEGIN_PGML_SOLUTION
+
+First, start with the augmented coefficient matrix or
+[``` [$aug] ```]
+
+and then perform Gauss-Jordon reduction to get 
+[``` [$aug_red] ```]
+
+Ignoring the row of zeros the top two equations are 
+[```\begin{aligned}
+x & = [$sol_eq1] \\
+y & = [$sol_eq2]
+\end{aligned}```]
+and letting the free variable [`z=t`], then 
+[```\begin{aligned}
+x & = [$sol_t1] \\
+y & = [$sol_t2] \\
+z & = t
+\end{aligned} ```]
+A particular solution is when [`t=0`] or the point [`[$ans1]`]. The solution to the associated homogeneous system is [`[$ans2]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.
