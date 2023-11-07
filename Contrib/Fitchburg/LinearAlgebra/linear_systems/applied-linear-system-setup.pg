@@ -1,0 +1,80 @@
+## DESCRIPTION
+## Applied linear algebra problem in which shipping costs are given and the
+## number of boxes of items are sought.
+## ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Systems of linear equations)
+## DBsection(Applications)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('linear algebra','applied','shipping costs')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',          'PGML.pl',
+    'parserImplicitPlane.pl', 'parserMultiAnswer.pl',
+    'randomPerson.pl',        'PGcourse.pl'
+);
+
+Context("ImplicitPlane");
+
+Context()->variables->are(x => 'Real', y => 'Real', z => 'Real');
+
+$NYBoxrate = list_random(15, 20, 25);
+$FLBoxrate = list_random(10, 15, 20, 25);
+$CABoxrate = list_random(20, 25, 30);
+
+$NYboxes = 5 * random(3, 8);
+$CAboxes = 5 * random(3, 8);
+$FLboxes = 2 * $CAboxes;
+
+$totalboxes = $NYboxes + $FLboxes + $CAboxes;
+
+$cost = $NYboxes * $NYBoxrate + $FLboxes * $FLBoxrate + $CAboxes * $CABoxrate;
+
+$f1  = ImplicitPlane("$NYBoxrate*x+$FLBoxrate*y+$CABoxrate*z=$cost");
+$f2  = ImplicitPlane("x+y+z=$totalboxes");
+$f3  = ImplicitPlane("-y+2z=0");
+$ans = List($f1, $f2, $f3);
+$ans = MultiAnswer($f1, $f2, $f3)->with(
+    checker => sub {
+        my ($correct, $student, $self) = @_;    # get the parameters
+        return List(@$correct) == List(@$student);
+    }
+);
+
+$p = randomPerson();
+
+BEGIN_PGML
+
+Consider the following problem: 
+
+_[$p]’s Toys_ has three separate orders in from a supply stores in New York, Florida and California.  The total number of boxes ordered is [$totalboxes] and the shipping rates from New York, Florida and California is  $[$NYBoxrate], $[$FLBoxrate] and $[$CABoxrate] respectively. There are twice as many boxes from Florida than from California.  If [$p] spent $[$cost] 
+in shipping, how many boxes came from each supply store? 
+
+Write down the linear system for this problem.  Let [`x, y`] and [`z`] represent the number of boxes from the New York, Florida and California supply stores respectively. 
+
+(Write all three equations in the box below separated by commas.  Note: you are not asked to solve this problem. ) 
+
+- [_]{$ans}
+- [_]{$ans}
+- [_]{$ans}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+There are three equations given in the problem above.  Since the total number of boxes is [$totalBoxes], the equation is 
+[``` [$f2] ```]
+
+Since the shipping rates are different, the total cost of shipping of [$cost] gives the 
+equation
+[``` [$f1] ```]
+
+The third equation is that there are twice as many boxes from Florida as from California.
+This equation is 
+[``` [$f3] ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,128 @@
+## DESCRIPTION
+## Find the solution to a system of 3 equations and 3 variables with infinite number of solutions.
+## ENDDESCRIPTION
+
+
+## DBsubject(Linear algebra)
+## DBchapter(Systems of linear equations)
+## DBsection(Systems with 3 variables)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('linear system', 'infinite solution', 'vector form')
+
+# updated on 2022.11.13
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'MatrixReduce.pl', 'PGcourse.pl');
+
+Context('Vector')->variables->are(
+    x => 'Real',
+    y => 'Real',
+    z => 'Real',
+    t => 'Real',
+    s => 'Real'
+);
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+# Define all variables used in the problem statement and solution
+
+do {
+    $A = Matrix([
+        [ map { random(-4, 4) } (1 .. 3) ],
+        [ map { random(-4, 4) } (1 .. 3) ],
+        [ 0, 0, 0 ]
+    ]);
+} until norm(Vector($A->row(1)) x Vector($A->row(2))) != 0;
+
+($b1, $b2) = (non_zero_random(-5, 5), non_zero_random(-5, 5));
+($k1, $k2) = (non_zero_random(-3, 3), non_zero_random(-3, 3));
+$A  = row_add($A, 3, 1, $k1);
+$A  = row_add($A, 3, 2, $k2);
+$b3 = $k1 * $b1 + $k2 * $b2;
+
+@lines = map {
+    Formula($A->element($_, 1) . 'x+'
+            . $A->element($_, 2) . 'y+'
+            . $A->element($_, 3)
+            . 'z')->reduce
+} (1 .. 3);
+
+Context('Fraction');
+$aug = apply_fraction_to_matrix_entries(Matrix([
+    [ $A->element(1, 1), $A->element(1, 2), $A->element(1, 3), $b1 ],
+    [ $A->element(2, 1), $A->element(2, 2), $A->element(2, 3), $b2 ],
+    [ $A->element(3, 1), $A->element(3, 2), $A->element(3, 3), $b3 ]
+]));
+
+$aug_red = rref($aug);
+$v00     = $aug_red->element(1, 4);
+$v01     = $aug_red->element(2, 4);
+$v10     = -1 * $aug_red->element(1, 3);
+$v11     = -1 * $aug_red->element(2, 3);
+Context('Vector')->variables->are(
+    t => 'Real',
+    s => 'Real'
+);
+Context()->noreduce('(-x)+y', '(-x)-y');
+$v0  = Compute("<$v00, $v01, 0>");
+$v1  = Compute("<$v10, $v11, 1>");
+$ans = Compute("$v0+t $v1")->reduce;
+
+$check = sub {
+    my ($correct, $student, $ansHash) = @_;
+    my $s0 = $student->eval(t => 0);
+    my $dt = $student->D('t')->eval(t => 0);
+    if ($dt == Vector(0, 0, 0)) {
+        Value->Error('The solution must have the parameter t.');
+        return 0;
+    }
+    return Vector($A * $s0) == Vector($b1, $b2, $b3)
+        && Vector($A * $dt) == Vector(0,   0,   0) ? 1 : 0;
+};
+
+BEGIN_PGML
+The following linear system has an infinite number of solutions:
+
+
+[```\begin{aligned}
+[$lines[0]] & = [$b1] \\
+[$lines[1]] & = [$b2] \\
+[$lines[2]] & = [$b3] \\
+\end{aligned} ```]
+
+
+Let [`\vec{x}=\langle x,y,z \rangle`] be the solution to the linear system.
+Write the solution in theform [`\vec{x}=\vec{u}+t\vec{v} `]
+or [` \vec{x} = \vec{u} + t \vec{v} + s \vec{w} `] depending on
+the number of free parameters.
+
+[` \vec{x} = `] [____]{$ans->cmp(checker => $check)}
+
+END_PGML
+
+Context('Numeric')->variables->add(y => 'Real', t => 'Real');
+Context()->noreduce('(-x)+y', '(-x)-y');
+$eqn_x = Formula($aug_red->element(1, 4) . '-' . $aug_red->element(1, 3) . 't')
+    ->reduce;
+$eqn_y = Formula($aug_red->element(2, 4) . '-' . $aug_red->element(2, 3) . 't')
+    ->reduce;
+
+BEGIN_PGML_SOLUTION
+For this write down the augmented matrix as
+[``` [$aug] ```]
+and row reduce it to 
+[``` [$aug_red] ```]
+and note that the last row is zero and the variable [`z`] is free so set it to [`t`]. 
+The first two equations can be written
+[``` 
+\begin{aligned}
+x & = [$eqn_x] \\
+y & = [$eqn_y] \\
+z & = t
+\end{aligned}
+```]
+So the solution in vector form is [`[$ans]`]
+END_PGML_SOLUTION
+COMMENT('The solution has one free variable.');
+ENDDOCUMENT();    # This should be the last executable line in the problem.

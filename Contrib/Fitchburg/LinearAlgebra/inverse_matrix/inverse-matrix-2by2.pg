@@ -1,0 +1,52 @@
+## DESCRIPTION
+## Find the inverse of a 2 by 2 matrix.
+## ENDDESCRIPTION
+
+## KEYWORDS('matrix inverse')
+
+## DBsubject(Linear algebra)
+## DBchapter(Matrices)
+## DBsection(Inverses)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+
+# updated 2023.11.10
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'parserRadioMultiAnswer.pl', 'PGcourse.pl'
+);
+
+Context('Matrix');
+
+do {
+    $A = Matrix([ map { [ map { random(-6, 6) } (1 .. 2) ] } (1 .. 2) ]);
+} until abs($A->det) > 1 && abs($A->det) <= 5;
+
+$Ainv = $A->inverse;
+
+$rma = RadioMultiAnswer(
+    [
+        ["The matrix \( A^{-1}\) doesn't exist"],
+        [ 'The matrix \( A^{-1} = \) %s*', $Ainv ]
+    ],
+    1
+);
+
+BEGIN_PGML
+Let [```A = [$A]```]
+
+[_]{$rma}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Since [`A`] is a 2 by 2 matrix, we can use the inverse formula for this for 
+[``` A = \begin{bmatrix} a & b \\ c & d \end{bmatrix} ```]
+First, the
+determinant is [`|A| = a d - bc = [$A->det] `] and then
+[``` A^{-1} = \frac{1}{|A|} \begin{bmatrix} d & - b \\ -c & a \end{bmatrix} 
+= [$Ainv] ```]
+END_PGML_SOLUTION
+ENDDOCUMENT();

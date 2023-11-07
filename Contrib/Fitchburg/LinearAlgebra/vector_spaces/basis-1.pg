@@ -1,0 +1,238 @@
+## DESCRIPTION
+## A problem that asks if a set is a basis, find the representation of a vector in the basis
+## and the dimension of the vector space.
+## ENDDESCRIPTION
+
+## DBsubject('Linear Algebra')
+## DBchapter('Abstract Vector Spaces')
+## DBsection('Basis and Dimension')
+## Date('10/3/2014')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated 2022.10.30
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    "PGstandard.pl",         "PGML.pl",
+    "parserCheckboxList.pl", 'parserRadioMultiAnswer.pl',
+    'PGcourse.pl'
+);
+
+Context("Vector");
+Context()->noreduce('(-x)-y', '(-x)+y');
+
+# Define all variables used in the problem statement and solution
+
+$a1 = random(-5, 5);
+$a2 = random(-5, 5);
+
+$ans1b = Vector($a1, $a2);
+
+$rma1 = RadioMultiAnswer(
+    [
+        ['\(B\) is not a basis of \(V\).'],
+        [
+            '\(B\) is a basis of \(V\) and \(\text{Rep}_B(\vec{v})=\) %s '
+                . 'and the dimension of \(V\) is %s',
+            $ans1b,
+            Real(2)
+        ]
+    ],
+    1
+);
+
+$zero = Vector(0, 0, 0);
+do {
+    $B = Matrix([
+        [ random(-3, 3), 0,             random(-3, 3) ],
+        [ random(-3, 3), random(-3, 3), 0 ],
+        [ random(-3, 3), random(-3, 3), random(-3, 3) ]
+    ]);
+    } until $B->det != 0
+    && $B->row(1) != $zero
+    && $B->row(2) != $zero
+    && $B->row(3) != $zero
+    && Vector($B->column(1)) != $zero
+    && Vector($B->column(2)) != $zero
+    && Vector($B->column(3)) != $zero;
+
+$ans2b = Vector(
+    non_zero_random(-4, 4),
+    non_zero_random(-4, 4),
+    non_zero_random(-4, 4)
+);
+
+$d = $B->transpose * $ans2b;
+
+$poly1 =
+    Formula($B->element(1, 1) . '+ '
+        . $B->element(1, 2) . 'x + '
+        . $B->element(1, 3)
+        . 'x^2')->reduce;
+$poly2 =
+    Formula($B->element(2, 1) . '+ '
+        . $B->element(2, 2) . 'x + '
+        . $B->element(2, 3)
+        . 'x^2')->reduce;
+$poly3 =
+    Formula($B->element(3, 1) . '+ '
+        . $B->element(3, 2) . 'x + '
+        . $B->element(3, 3)
+        . 'x^2')->reduce;
+$poly4 =
+    Formula(($d->value)[0] . '+ '
+        . ($d->value)[1] . 'x + '
+        . ($d->value)[2]
+        . 'x^2')->reduce;
+
+$rma2 = RadioMultiAnswer(
+    [
+        ['\(B\) is not a basis of \(V\).'],
+        [
+            '\(B\) is a basis of \(V\) and \(\text{Rep}_B(\vec{v})=\) %s '
+                . 'and the dimension of \(V\) is %s',
+            $ans2b,
+            Real(3)
+        ]
+    ],
+    1
+);
+
+$rma3 = RadioMultiAnswer(
+    [
+        ['\(B\) is not a basis of \(V\).'],
+        [
+            '\(B\) is a basis of \(V\) and \(\text{Rep}_B(\vec{v})=\) %s '
+                . 'and the dimension of \(V\) is %s',
+            Vector(0),
+            Real(0)
+        ]
+    ],
+    0
+);
+
+$g1 = ColumnVector(random(-3, 3), random(-3, 3), random(-3, 3));
+$g2 = ColumnVector(random(-3, 3), random(-3, 3), random(-3, 3));
+$g3 = non_zero_random(-2, 2) * $g1 + non_zero_random(-2, 2) * $g2;
+
+do {
+    $h = ColumnVector(random(-4, 4), random(-4, 4), random(-4, 4));
+} until Vector($h) != $zero;
+
+$p1 = ColumnVector(random(-4, 4), random(-4, 4), random(-4, 4), random(-4, 4));
+$p2 = ColumnVector(random(-4, 4), random(-4, 4), random(-4, 4), random(-4, 4));
+
+$q1    = non_zero_random(-2, 2);
+$q2    = non_zero_random(-2, 2);
+$p3    = $q1 * $p1 + $q2 * $p2;
+$ans4b = Formula("<$q1,$q2>");
+
+$rma4 = RadioMultiAnswer(
+    [
+        ['\(B\) is not a basis of \(V\).'],
+        [
+            '\(B\) is a basis of \(V\) and \(\text{Rep}_B(\vec{v})=\) %s '
+                . 'and the dimension of \(V\) is %s',
+            $ans4b,
+            Real(2)
+        ]
+    ],
+    1
+);
+
+BEGIN_PGML
+Each of the following lists a vector space [`V`], a sequence of vectors,
+called [` B `]  and a specific vector, [`\vec{v}`].  Determine if the sequence is 
+a basis and if the sequence is a basis, find [` \text{Rep}_B(\vec{v}) `]
+and the dimension of [`V`].
+
+a)  [``
+    V = \mathbb{R}^2, \qquad B = \left\langle 
+    \left[\begin{array}{r} 1 \\ 0 \end{array} \right],
+    \left[\begin{array}{r} 0 \\ 1 \end{array} \right] \right\rangle, 
+    \qquad \qquad
+    \vec{v} = \left[\begin{array}{r} [$a1] \\ [$a2] \end{array} \right]
+    ``]
+
+    [_]{$rma1}
+
+
+b) [``
+    V={\cal P}_2 \qquad B = \langle [$poly1], [$poly2], [$poly3] \rangle, \qquad \qquad
+    \vec{v} = [$poly4]
+    ``]
+
+    [_]{$rma2}
+
+
+c) [``
+    V = \mathbb{R}^3 \qquad B = \left\langle 
+    [$g1], [$g2], [$g3]
+    \right\rangle,
+    \qquad \qquad
+    \vec{v} = [$h]
+    ``]
+
+    [_]{$rma3}
+
+
+d) [``
+    V = \left\{ [$p1] t +  [$p2] s \; | \; s,t \in \mathbb{R} \right\} \qquad
+    B = \left\langle [$p1], [$p2] \right\rangle
+    \qquad \vec{v} =  [$p3]
+    ``]
+
+    [_]{$rma4}
+
+END_PGML
+
+# matrix of part c
+$A3 = Matrix([
+    [ $g1->{data}[0], $g2->{data}[0], $g3->{data}[0] ],
+    [ $g1->{data}[1], $g2->{data}[1], $g3->{data}[1] ],
+    [ $g1->{data}[2], $g2->{data}[2], $g3->{data}[2] ]
+]);
+
+BEGIN_PGML_SOLUTION
+a) To determine if [`B`] is a basis of [`V`], first note that the vectors in [`B`] are linearly independent since they are not multiples of each other.
+
+    To determine if they span [`V`], we solve
+    [``` c_1 \begin{bmatrix} 1 \\ 0 \end{bmatrix} + c_2 \begin{bmatrix}0 \\ 1 \end{bmatrix} = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} ```]
+    where the right hand side is a general vector in [`\mathbb{R}^2`]. In this case [`c_1 = x_1, c_2 = x_2`], so there is a solution so it spans the space. 
+
+    To find the representation, since we have the relation [`\vec{c} = \vec{x}`] then the representation is the same as the vector [`\vec{v}`].  The dimension is the number of basis vectors or 2. 
+
+b) To determine if [`B`] is a basis of [`V`], first check if the vectors are linearly independent.  This is found with
+    [``` c_1 ([$poly1]) + c_2([$poly2]) + c_3([$poly3]) = 0 ```]
+    which is the same as solving the linear system [`A \vec{u} = \vec{0}`] where
+    [``` A = [$B] ```]
+    and [`\vec{u} = [1 \; x \; x^2 ]^{\intercal}`]. This has a unique solution if the determinant of [`A`] is nonzero and since [`|A| = [@$B->det@] `], the vectors of [`B`] are linearly independent. 
+    
+    To determine if the vectors span [`{\cal P}_2`], we solve:
+    [``` c_1 ([$poly1]) + c_2([$poly2]) + c_3([$poly3]) = w_0 + w_1 x + w_2 x^2 ```], which is the same as solving the linear system [`A\vec{y} = \vec{w}`] where [`\vec{w} = [w_0 \; w_1 \; w_2]^{\intercal} `] and this has a unique solution because the determinant of [`A`] is nonzero.  Thus, [`B`] spans [`{\cal P}_2`]. 
+    
+    To find the representation we solve 
+    [``` c_1 ([$poly1]) + c_2([$poly2]) + c_3([$poly3]) = [$poly4] ```]
+    which can be solved via the linear system [`A\vec{u} = \vec{v}`], where [`v`] is the coefficients of the polynomial on the right hand side.  This has the solution that 
+    [` \vec{u} = [$ans2b]`], therefore this is the representation.  Also, since there are 3 vectors in [`B`], the dimension is 3. 
+    
+c) a) To determine if [`B`] is a basis of [`V`], we first check if they are linearly indepependent.  That is, solve
+    [``` c_1     [$g1] + c_2 [$g2] + c_3 [$g3] = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix} ```]
+    
+    This will have a unique solution of [`\vec{c} = \vec{0}`] if the determinant of the matrix
+    [``` A = [$A3] ```]
+    which is 0.  Since [`A`] is singular, the solution to [`A \vec{c} = \vec{0}`] is not unique, so the column are not linearly independent.  Therefore [`B`] is not a basis.
+    
+d) In this case, first check if [`B`] is a basis.  From inspection, the columns are not multiples of
+one another, so they are linearly independent.  Also, since the two vectors in [`B`] are the same vectors
+as in the definition of [`V`], so they span the set.  Therefore it is a basis and with two vectors, 
+the dimension is 2. 
+
+To find the representation of the vector [`v`] in the basis, we solve 
+[``` c_1 [$p1] + c_2 [$p2] = [$p3] ```]
+
+The solution of this is [`c_1= [$q1], c_2 = [$q2]`], so the vector representation is [`[$ans4b]`]. 
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

@@ -1,0 +1,73 @@
+## DESCRIPTION
+## Determine the matrix representation of rotating a matrix clockwise.
+## ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Linear transformations)
+## DBsection(Associated matrices)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('lines')
+
+# updated 2023.11.02
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGchoicemacros.pl', 'PGcourse.pl');
+
+Context('Vector');
+
+# Define all variables used in the problem statement and solution
+
+$T = Matrix([ [ 0, 0, 1, 0 ], [ 1, 0, 0, 0 ], [ 0, 0, 0, 1 ], [ 0, 1, 0, 0 ] ]);
+
+# Now begin with the Problem Statement
+
+BEGIN_PGML
+
+Consider the linear map [`f: \mathcal{M}_{2 \times 2} \rightarrow \mathcal{M}_{2 \times 2}`] such that
+[``
+\left[ \begin{array}{rr} a & b \\ c & d \end{array} \right] \mapsto
+\left[ \begin{array}{rr} c & a \\ d & b \end{array} \right].
+``]
+
+The map rotates the matrix (not to be confused with a rotation matrix).  Find the matrix, [`T`] that represents the map in
+the standard basis:
+[``B=
+\langle
+\left[ \begin{array}{rr} 1 & 0 \\ 0 & 0 \end{array} \right], \;
+\left[ \begin{array}{rr} 0 & 1 \\ 0 & 0 \end{array} \right], \;
+\left[ \begin{array}{rr} 0 & 0 \\ 1 & 0 \end{array} \right], \;
+\left[ \begin{array}{rr} 0 & 0 \\ 0 & 1 \end{array} \right] \rangle``]
+
+Hint: each basis matrix [`b_i`] is represented by the standard vector [` \vec{e}_i \in \mathbb{R}^4`].
+Rotate each basis matrix in [` B`] to determine how each representation maps.
+The columns of the resulting matrix are these representations.
+
+
+[`T=`] [___]*{$T}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+As noted, each basis vector is [`\vec{b}_i = \vec{e}_i`] and we will rotated each of theses.  That is
+
+[``` f\left( \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix} \right) = 
+\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix} ```]
+So [`f(\vec{e}_1) = \vec{e}_2`].  Similarly,
+[``` 
+\begin{aligned}
+f\left( \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix} \right) & = 
+\begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix} && \text{or} & f(\vec{e}_2) = \vec{e}_4 \\
+f\left( \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix} \right) & = 
+\begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix} && \text{or} & f(\vec{e}_4) = \vec{e}_3 \\
+f\left( \begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix} \right) & = 
+\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix} && \text{or} & f(\vec{e}_3) = \vec{e}_1
+\end{aligned}
+```]
+The vectors [` \vec{e}_2, \vec{e}_4, \vec{e}_1, \vec{e}_3 `] are the columns of the 
+transformation matrix or 
+[``` T = [$T] ```]
+
+END_PGML_SOLUTION
+ENDDOCUMENT();    # This should be the last executable line in the problem.

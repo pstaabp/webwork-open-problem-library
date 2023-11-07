@@ -1,0 +1,82 @@
+## DESCRIPTION
+## Find the solution to a 3 by 3 linear system using the matrix inverse.
+## ENDDESCRIPTION
+
+## KEYWORDS('linear system', 'solution', 'matrix inverse')
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# Updated 2023.10.30
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'parserRadioMultiAnswer.pl', 'PGcourse.pl'
+);
+
+Context("Point")->noreduce('(-x)+y', '(-x)-y');
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+do {
+    $A = Matrix([
+        [ random(-6, 6), random(-6, 6), random(-6, 6) ],
+        [ random(-6, 6), random(-6, 6), random(-6, 6) ],
+        [ random(-6, 6), random(-6, 6), random(-6, 6) ]
+    ]);
+} until abs($A->det) == 1;
+
+$Ainv = $A->inverse;
+
+@lines = map {
+    Formula($A->element($_, 1) . 'x+'
+            . $A->element($_, 2) . 'y+'
+            . $A->element($_, 3)
+            . 'z')->reduce
+} (1 .. 3);
+
+$b     = ColumnVector(random(-5, 5), random(-5, 5), random(-5, 5));
+@bvect = $b->value;
+$x     = $A * $b;
+
+Context('Point');
+$rma = RadioMultiAnswer(
+    [ ['There is no solution.'], [ 'The solution is %s', Point($x) ] ], 1);
+
+BEGIN_PGML
+
+Solve the following linear system: 
+
+[``` \begin{aligned}
+[$lines[0]] & = [$bvect[0]] \\
+[$lines[1]] & = [$bvect[1]] \\
+[$lines[2]] & = [$bvect[2]] \\
+\end{aligned} ```] 
+
+Using the matrix inverse.  Note that if
+
+[``` A = [$A] ```]
+
+then 
+
+[``` A^{-1} = [$Ainv]. ```]
+
+[_]{$rma}
+
+(Write the solution as a point if it exists.) 
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Since the inverse matrix exists, the solution exists. To find the solution to [`A\vec{x}=\vec{b}`], write
+[```\vec{x} = A^{-1}\vec{b}```]
+and in this case
+[``` \vec{x} = [$Ainv] [$b] = [$x] ```]
+END_PGML_SOLUTION
+ENDDOCUMENT();

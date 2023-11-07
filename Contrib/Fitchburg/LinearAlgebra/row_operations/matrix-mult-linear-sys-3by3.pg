@@ -1,0 +1,91 @@
+## DESCRIPTION
+## Find the inverse of a matrix by the product of all elementary matrices used to row 
+## reduce a matrix and then use the inverse to find the solution. 
+## ENDDESCRIPTION
+
+
+## DBsubject(Linear algebra)
+## DBchapter(Matrices)
+## DBsection(Inverses)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('lines')
+
+# updated 2023.11.02
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'MatrixReduce.pl', 'PGcourse.pl');
+
+Context("Point")->noreduce('(-x)-y', '(-x)+y');
+
+do {
+    $A = Matrix([
+        [ random(-3, 3), random(-3, 3), 0 ],
+        [ 0,             random(-3, 3), random(-3, 3) ],
+        [ random(-3, 3), 0,             random(-3, 3) ]
+    ]);
+} until grep { abs($A->det) == $_ } (1, 2, 4, 5);
+
+do {
+    ($x, $y, $z) = (random(-3, 3), random(-3, 3), random(-3, 3));
+    $b = $A * Vector($x, $y, $z);
+} until Vector($b) != Vector(0, 0, 0);
+
+$line1 =
+    Formula($A->element(1, 1) . 'x+'
+        . $A->element(1, 2) . 'y+'
+        . $A->element(1, 3)
+        . 'z')->reduce;
+$line2 =
+    Formula($A->element(2, 1) . 'x+'
+        . $A->element(2, 2) . 'y+'
+        . $A->element(2, 3)
+        . 'z')->reduce;
+$line3 =
+    Formula($A->element(3, 1) . 'x+'
+        . $A->element(3, 2) . 'y+'
+        . $A->element(3, 3)
+        . 'z')->reduce;
+
+$inv      = $A->inverse;
+$solution = Point($x, $y, $z);
+
+BEGIN_PGML
+Consider the linear system 
+
+[```  
+\begin{aligned}
+[$line1] & = [@ Matrix($b)->element(1) @] \\
+[$line2] & = [@ Matrix($b)->element(2) @] \\
+[$line3] & = [@ Matrix($b)->element(3) @] \\
+\end{aligned}
+```]
+
+First, write this system as a augmented coefficient matrix.  Then multiply this matrix by a sequence of elementary matrices to transform the matrix to one in _reduced row echelon form_.  Call these matrices [` M_1,M_2, \ldots, M_k `].
+
+a)  Find the product of all the matrices: [`M_k M_{k-1}\cdots M_2 M_1 =`] [_]*{$inv} 
+
+b) Find the solution to your linear system (write your answer as a point): [_]{$solution}
+
+END_PGML
+
+Context('Fraction');
+$AA = apply_fraction_to_matrix_entries($A);
+$Ainv = $AA->inverse; 
+$sol_vect = ColumnVector($x,$y,$z);
+
+BEGIN_PGML_SOLUTION
+a) There are two ways to do this.  1) Find all of the elementary matrices that reduce
+the augmented matrix to one of reduced row echelon form.  In this case, multiply all
+of the matrices in reverse order to get the result.  2) The product of these matrices
+create the inverse matrix.  Either way that you get this, the result is
+
+[``` [$Ainv] ```]
+
+b) Now that we have the inverse, find the product of the inverse and the vector of the 
+right hand side to get
+[``` [$Ainv] [$b] = [$sol_vect] ```] 
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

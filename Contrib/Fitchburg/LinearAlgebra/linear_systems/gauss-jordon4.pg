@@ -1,0 +1,103 @@
+## DESCRIPTION
+## Find the solution to a system of 3 equations and 3 variables.
+## ENDDESCRIPTION
+
+## DBsubject(Linear Algebra)
+## DBchapter(Systems of Linear Equations)
+## DBsection(Systems with 3 variables)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('lines')
+
+# updated on 2022.10.29
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'contextFraction.pl',        'MatrixReduce.pl',
+    'parserRadioMultiAnswer.pl', 'PGcourse.pl'
+);
+
+Context('Point');
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+$zv = Vector(0, 0, 0);
+do {
+    $A = Matrix([
+        [ random(-5, 5), random(-5, 5), random(-5, 5) ],
+        [ random(-5, 5), random(-5, 5), random(-5, 5) ],
+        [ random(-5, 5), random(-5, 5), random(-5, 5) ],
+    ]);
+} until ($A->det == 0)
+    && $A->row(1) != $zv
+    && $A->row(2) != $zv
+    && $A->row(3) != $zv
+    && $A->row(1) != $A->row(2)
+    && $A->row(1) != $A->row(3)
+    && $A->row(2) != $A->row(3);
+
+@lines = map {
+    Formula($A->element($_, 1) . 'x+'
+            . $A->element($_, 2) . 'y+'
+            . $A->element($_, 3)
+            . 'z')->reduce;
+} (1 .. 3);
+
+$rma = RadioMultiAnswer(
+    [
+        ['There is no solution to the linear system'],
+        [
+            'There are an infinite number of points in the solution to the linear system.'
+        ],
+        [
+            'There is a single solution to the linear system in the form %s',
+            Point(0, 0, 0)
+        ]
+    ],
+    1
+);
+
+BEGIN_PGML
+Solve the follow linear system using the Gauss-Jordon method:
+
+[```
+\begin{aligned}
+[$lines[0]] & = 0 \\
+[$lines[1]] & = 0 \\
+[$lines[2]] & = 0
+\end{aligned}
+```]
+
+Select the following result about the solution to this linear system.
+
+[____]{$rma}
+
+END_PGML
+
+Context('Fraction');    # for fraction arithmetic
+
+# augmented matrix to be reduced
+$aug = Matrix([
+    [ $A->element(1, 1), $A->element(1, 2), $A->element(1, 3), 0 ],
+    [ $A->element(2, 1), $A->element(2, 2), $A->element(2, 3), 0 ],
+    [ $A->element(3, 1), $A->element(3, 2), $A->element(3, 3), 0 ]
+]);
+
+$aug_red = rref($aug);
+
+BEGIN_PGML_SOLUTION
+
+First, start with the augmented coefficient matrix or
+[``` [$aug] ```]
+
+and then perform Gauss-Jordon reduction to get 
+[``` [$aug_red] ```]
+
+Because there is a free variable, there are an infinite number of solutions to this
+linear system. 
+END_PGML_SOLUTION
+COMMENT(
+    'The solution to this homogeneous system has an infinite number of points.'
+);
+ENDDOCUMENT();    # This should be the last executable line in the problem.
