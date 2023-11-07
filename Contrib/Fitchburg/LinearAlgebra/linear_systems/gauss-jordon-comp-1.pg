@@ -1,0 +1,112 @@
+## DESCRIPTION
+## Solve a 3 by 3 linear system.  There is no solution to the system.
+## ENDDESCRIPTION
+
+## KEYWORDS('linear system', '3 by 3', 'no solution')
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated 2023.10.30
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    "PGstandard.pl",             "PGML.pl",
+    "parserRadioMultiAnswer.pl", 'MatrixReduce.pl',
+    'PGcourse.pl'
+);
+
+Context('Numeric')->variables->add(y => 'Real', z => 'Real');
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+$zerov = Vector([ 0, 0, 0 ]);
+# Find a nice matrix with zero determinant that does not repeat rows or column or has zero rows/columns.
+
+$A = Matrix([
+    [ random(-5, 5), random(-5, 5), random(-5, 5), random(-8, 8) ],
+    [ random(-5, 5), random(-5, 5), random(-5, 5), random(-8, 8) ],
+    [ 0, 0, 0, 0 ],
+]);
+
+$A = row_add($A, 3, 1, non_zero_random(-3, 3));
+$A = row_add($A, 3, 2, non_zero_random(-3, 3));
+
+$b = ColumnVector(
+    $A->element(1, 4),
+    $A->element(2, 4),
+    $A->element(3, 4) + non_zero_random(-2, 2)
+);
+
+@lines = map {
+    Formula($A->element($_, 1) . 'x+'
+            . $A->element($_, 2) . 'y+'
+            . $A->element($_, 3)
+            . 'z')->reduce
+} (1 .. 3);
+
+$rma = RadioMultiAnswer(
+    [
+        ['There is no solution to the linear system'],
+        ['There are an infinite number of solutions to the linear system.'],
+        [
+            'There is a single solution to the linear system in the form %s',
+            ''
+        ]
+    ],
+    0
+);
+
+BEGIN_PGML
+Solve the follow linear system using the Gauss-Jordon method:
+
+[``` \begin{aligned}
+[$lines[0]] & = [$b->{data}[0]] \\
+[$lines[1]] & = [$b->{data}[1]] \\
+[$lines[2]] & = [$b->{data}[2]] \\
+\end{aligned} ```]
+
+[_]{$rma}
+
+END_PGML
+Context('Fraction');    # for fraction arithmetic
+
+# augmented matrix to be reduced
+$aug = apply_fraction_to_matrix_entries(Matrix([
+    [
+        $A->element(1, 1),
+        $A->element(1, 2),
+        $A->element(1, 3),
+        $b->{data}[0]
+    ],
+    [
+        $A->element(2, 1),
+        $A->element(2, 2),
+        $A->element(2, 3),
+        $b->{data}[1]
+    ],
+    [
+        $A->element(3, 1),
+        $A->element(3, 2),
+        $A->element(3, 3),
+        $b->{data}[2]
+    ]
+]));
+
+$aug_red = rref($aug);
+
+BEGIN_PGML_SOLUTION
+
+First, start with the augmented coefficient matrix or
+[``` [$aug] ```]
+
+and then perform Gauss-Jordon reduction to get 
+[``` [$aug_red] ```]
+
+The last row correspondx to [`0=1`], therefore there is no solution to this system. 
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

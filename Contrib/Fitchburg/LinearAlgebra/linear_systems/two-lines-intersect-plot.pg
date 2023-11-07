@@ -1,0 +1,108 @@
+# DESCRIPTION
+# A problem that asks a student to plot two lines and determine the solution
+# to the linear system from the plot.
+# ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Systems of linear equations)
+## DBsection(Systems with 2 variables)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('lines, linear systems')
+
+# updated 2024.01.05
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl', 'PGML.pl',
+    'PGtikz.pl',     'parserRadioMultiAnswer.pl',
+    'PGcourse.pl'
+);
+
+Context("Point")->noreduce('(-x)+y', '(-x)-y');
+
+do {
+    $A = Matrix([
+        [ non_zero_random(-4, 4), non_zero_random(-4, 4) ],
+        [ non_zero_random(-4, 4), non_zero_random(-4, 4) ]
+    ]);
+} until $A->det != 0;
+
+$x     = Vector(random(-4, 4), random(-4, 4));
+@xvect = $x->value;
+
+$b     = $A * $x;
+
+$line1 = Formula($A->element(1, 1) . 'x+' . $A->element(1, 2) . 'y')->reduce;
+$line2 = Formula($A->element(2, 1) . 'x+' . $A->element(2, 2) . 'y')->reduce;
+
+$pt = Point($xvect[0], $xvect[1]);
+# $pt = Point(0,0);
+
+$rma = RadioMultiAnswer(
+    [
+        ['The linear system has no solution'],
+        ['The linear system has an infinite number of solutions.'],
+        [
+            'The linear system has a single solution %s.  Write your answer as a point.',
+            $pt
+        ]
+    ],
+    2
+);
+
+BEGIN_PGML
+
+Plot the two lines below and determine the solution if it exists.
+
+[``` \begin{aligned} 
+[$line1] & = [@ Matrix($b)->element(1) @]\\
+[$line2] & = [@ Matrix($b)->element(2) @]
+\end{aligned}
+```]
+
+[_]{$rma}
+
+
+END_PGML
+
+# Find the slope and y-intercepts of the two lines written in standard form
+# and stored in the matrix $A
+$m1 = -1 * $A->element(1, 1) / $A->element(1, 2);
+$b1 = Matrix($b)->element(1) / $A->element(1, 2);
+
+$m2 = -1 * $A->element(2, 1) / $A->element(2, 2);
+$b2 = Matrix($b)->element(2) / $A->element(2, 2);
+
+$graph = createTikZImage();
+$graph->tikzLibraries('arrows.meta');
+$graph->BEGIN_TIKZ
+\tikzset{>={Stealth[scale=1.5]}}
+\filldraw[
+    draw=LightBlue,
+    fill=white,
+    rounded corners=10pt,
+    thick,use as bounding box
+] (-6,-6) rectangle (6,6);
+\draw[->,thick] (-5.5,0) -- (5.5,0) node[above left,outer sep=3pt] {\(x\)};
+\foreach \x in {-5,...,-1,1,2,...,5}
+    \draw(\x,5pt) -- (\x,-5pt) node [below] {\(\x\)};
+\draw[->,thick] (0,-5.5) -- (0,5.5) node[below right,outer sep=3pt] {\(y\)};
+\foreach \y in {-5,...,-1,1,2,...,5}
+    \draw (5pt,\y) -- (-5pt,\y) node[left] {\(\y\)};
+\draw[blue,ultra thick] plot[domain=-6:6,smooth] (\x,{$m1*\x+$b1});
+\draw[blue,ultra thick] plot[domain=-6:6,smooth] (\x,{$m2*\x+$b2});
+END_TIKZ
+
+BEGIN_PGML_SOLUTION
+The plot of these lines is given below:
+
+[!A graph of the lines given in the problem!]{$graph}{250}
+
+And notice that they are parallel, so there is no intersection point.
+Thus there is no solution to this system.
+END_PGML_SOLUTION
+COMMENT('The two lines cross at a single point.');
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

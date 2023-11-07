@@ -1,0 +1,47 @@
+## DESCRIPTION
+## Perform a row operation on a matrix.
+## ENDDESCRIPTION
+
+## KEYWORDS('matrix','row operation')
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated 2023.11.10
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'MatrixReduce.pl', 'PGcourse.pl');
+
+Context("Matrix");
+
+$A = Matrix([ map { [ map { random(-6, 6) } (1 .. 4) ] } (1 .. 3) ]);
+
+$q = non_zero_random(-3, 3);
+($row1, $row2) = random_subset(2, 1 .. 3);
+$A2 = row_add($A, $row1, $row2, $q);
+
+BEGIN_PGML
+Consider the augmented coefficient matrix:
+
+[``` [$A] ```]
+
+Perform the Row Operation [` [$q] R_{[$row2]} + R_{[$row1]} \rightarrow R_{[$row1]} `] on the matrix.
+
+[_]*{$A2}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+In this case, we perform the indicated row operation and note that
+
+[```[$q] R_{[$row2]} = [@ 3* $A->row($row2)@]```]
+and adding this to row [$row1] and adding results in 
+[```[$q] R_{[$row2]} + R_{[$row1]} = [@ 3* $A->row($row2) + $A->row($row1) @] ```]
+and then replacing row [$row1] with this results in the matrix:
+
+[```[$A2]```]
+END_PGML_SOLUTION
+ENDDOCUMENT();

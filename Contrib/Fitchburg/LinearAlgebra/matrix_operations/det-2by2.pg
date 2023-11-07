@@ -1,0 +1,42 @@
+## DESCRIPTION
+## Asks the student to calculated the determinant of a 2 by 2 matrix.
+## ENDDESCRIPTION
+
+
+## DBsubject(Linear algebra)
+## DBchapter(Determinants)
+## DBsection(Computing determinants)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('determinant','2 by 2 matrix')
+
+# updated 2022.10.29
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+do {
+    $A = Matrix([ [ random(-6, 6), random(-6, 6) ],
+        [ random(-6, 6), random(-6, 6) ] ]);
+    $det = Real($A->det);
+} while ($det == 0);
+
+BEGIN_PGML
+If
+[```A = [$A] ```]
+
+Then [` |A| = `] [___]{$det}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Using the rule for determinants of 2 by 2 matrices which is if
+[``` A = \begin{bmatrix} a & b \\ c & d \end{bmatrix} ```]
+then
+[``` |A| = ad-bc ```]
+
+In this case, [`|A|=[$det]`]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

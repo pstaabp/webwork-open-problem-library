@@ -1,0 +1,90 @@
+## DESCRIPTION
+## Find the length, dot product and angles between vectors.
+## ENDDESCRIPTION
+
+
+## DBsubject(Linear algebra)
+## DBchapter(Euclidean spaces)
+## DBsection(Vectors)
+## Date(September 5, 2011)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## Level(1)
+## KEYWORDS('length of vector', 'dot product', 'angle between vectors')
+
+# updated 2022.12.12
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserVectorUtils.pl', 'PGcourse.pl');
+
+Context('Vector');
+
+$u = ColumnVector(non_zero_vector3D(-5, 5));
+$v = ColumnVector(non_zero_vector3D(-5, 5));
+$w = ColumnVector([map { random(-5,5) } (0..3)]);
+$x = ColumnVector([map { random(-5,5) } (0..3)]);
+
+
+$Lu      = Real(norm($u));
+$Lv      = Real(norm($v));
+$DOTuv   = Compute("$u . $v");
+$ANGLEuv = Compute("acos($DOTuv/($Lu*$Lv))");
+
+$Lw      = Compute("sqrt($w . $w)");
+$Lx      = Compute("sqrt($x . $x)");
+$DOTwx   = Compute("$w . $x");
+$ANGLEwx = Compute("acos($DOTwx/($Lw*$Lx))");
+
+BEGIN_PGML
+
+Consider the vectors [```
+\vec{u} = [$u], \quad
+\vec{v} = [$v], \quad
+\vec{w} = [$w], \quad
+\vec{x} = [$x].
+```]
+
+
+Find the following:
+
+a) The length of [`\vec{u}`] is [___]{$Lu}
+
+b) The dot product [`\vec{u} \cdot \vec{v} `]= [_____]{$DOTuv}
+
+c) The angle between vectors [` \vec{u}`] and [` \vec{v}`] is [____]{$ANGLEuv}
+
+d) The length of [` \vec{w} `] is [_____]{$Lw}
+
+e) The angle between [`\vec{w} `] and [` \vec{x}`] is [_____]{$ANGLEwx}
+
+Note: all angles should in radians.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Recall that the length of a vector [`\vec{u}`] or [`||\vec{u}||`] is
+[```\vec{u} = \sqrt{u_1^2+u_2^2+ \cdots u_n^2}```].
+
+The dot product beetween vectors [`\vec{u}`] and [`\vec{v}`] is
+[```\vec{u}\cdot \vec{v} = u_1 v_1 + u_2 v_2 + \cdots + u_n v_n ```]
+
+The angle between two vectors [`\vec{u}`] and [`\vec{v}`] can be found using
+[```\cos(\theta) = \frac{\vec{u}\cdot\vec{v}}{||\vec{u}|| \; ||\vec{v}||}```]
+a) [``||\vec{u}|| = \sqrt{[@ Compute("$u . $u") @]}``]
+
+b) [`` \vec{u} \cdot \vec{v} = [$DOTuv]``]
+
+c) Angle between [`\vec{u}`] and [`\vec{v}`] is
+[``\cos^{-1} \left(\frac{\vec{u} \cdot \vec{v}}{||\vec{u}|| \; ||\vec{v}||}\right)
+= \cos^{-1} \frac{[$DOTuv]}{\sqrt{[@Compute("$u . $u")@]}\sqrt{[@Compute("$v.$v")@]}}
+= [$ANGLEuv]``]
+
+d) [``||\vec{x}|| = \sqrt{[@ Compute("$x . $x") @]}``]
+
+e) Angle between [`\vec{w}`] and [`\vec{x}`] is
+[``\cos^{-1} \left(\frac{\vec{w} \cdot \vec{x}}{||\vec{w}|| \; ||\vec{x}||}\right)
+= \cos^{-1} \frac{[$DOTwx]}{\sqrt{[@Compute("$w.$w")@]}\sqrt{[@Compute("$x.$x")@]}}
+= [$ANGLEwx]``]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

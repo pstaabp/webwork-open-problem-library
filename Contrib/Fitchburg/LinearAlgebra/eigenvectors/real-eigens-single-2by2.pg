@@ -1,0 +1,110 @@
+##DESCRIPTION
+##  Compute the eigenvalues/eigenvectors of a 2 by 2 matrix (solution has a single real eigenvalue)
+##ENDDESCRIPTION
+
+##KEYWORDS('eigenvalues', 'eigenvectors', '2 by 2 matrix')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Eigenvalues and eigenvectors')
+## DBsection('Computing eigenvalues and eigenvectors')
+## Date('12/12/2002')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+## MO(1)
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl', 'MathObjects.pl',
+    'PGML.pl',       'parserRadioMultiAnswer.pl'
+);
+
+Context('Vector');
+
+# Pick the single eigenvalue
+$lambda = non_zero_random(-3, 3);
+
+# Build A with repeated eigenvalues
+$A = Matrix([ [ $lambda, non_zero_random(-3, 3) ], [ 0, $lambda ] ]);
+
+# Set up the Question
+
+$rma = RadioMultiAnswer(
+    [
+        [
+            'The matrix \(A\) has the single real eigenvalue %s with eigenvector %s',
+            $lambda,
+            Vector(1, 0)
+        ],
+        [
+            'The matrix \(A\) has the single real eigenvalue %s with the eigenvectors \(\vec{v}_1 = \)%s '
+                . 'and \(\vec{v}_2 = \)%s',
+            $lambda,
+            Vector(0, 0),
+            Vector(0, 0)
+        ],
+        [
+            'The matrix \(A\) has two real eigenvalues. They are \(\lambda_1=\) %s  with corresponding '
+                . 'eigenvector \(\vec{v}_1 = \) %s and \(\lambda_2 =\) %s with corresponding eigenvector '
+                . '\(\vec{v}_2 = \) %s',
+            Real(0),
+            Vector(0, 0),
+            Real(0),
+            Vector(0, 0)
+        ]
+    ],
+    0,
+    checker => sub {
+        my ($correct, $student, $self, $ans) = @_;    # get the parameters
+        my ($radio_cor, $a_cor, $b_cor, $c_cor) =
+            @$correct;    # extract the correct answers
+        my ($radio_stu, $a_stu, $b_stu, $b_cor) =
+            @$student;    # extract the student answers
+
+        return 0 if ($radio_cor ne $radio_stu);
+
+# check that the eigenvalue matches and the eigenvector is parallel to the correct one.
+        return $a_cor->[0] eq $a_stu->[0]
+            && $a_cor->[1]->isParallel($a_stu->[1]);
+    }
+);
+
+BEGIN_PGML
+
+Let [`` A = [$A] ``]
+
+[___]{$rma}
+
+Write any eigenvector in vector notation like "<1,2>"
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+First, we need to find 
+[```
+\begin{aligned}
+|A - \lambda I| & = \begin{vmatrix} [$A->element(1,1)] - \lambda & [$A->element(1,2)] \\
+[$A->element(2,1)] & [$A->element(2,2)] - \lambda \end{vmatrix} \\
+& = ([$A->element(1,1)]-\lambda)([$A->element(2,2)]-\lambda) - (0)([$A->element(2,2)]) \\
+& = ([$lambda]-\lambda)^2
+\end{aligned}
+```]
+and therefore there only one real eigenvalue: [$lambda].
+
+To find the eigenvector solve [`(A-\lambda I) = \mathbf{0}`].
+
+[```
+A - \lambda I  = A - [$lambda] I = \begin{bmatrix}
+[$lambda*(-1)+$A->element(1,1)] & [$A->element(1,2)] \\
+[$A->element(2,1)] & [$lambda*(-1)+$A->element(2,2)] \\
+\end{bmatrix} \\
+```]
+and an eignvector is orthogonal to the first row is 
+[```\mathbf{v}_1 = [@ Vector(1,0) @]```]
+
+
+*Note:* recall that any scalar mulitple (other that by 0) of an eigenvector is another eigenvector, so simplifying or multiplying by [`-1`] is common in finding eigenvectors.
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

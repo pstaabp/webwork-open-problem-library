@@ -1,0 +1,67 @@
+## DESCRIPTION
+## Determine which sets are vectors spaces from a list of choices.
+## ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Abstract vector spaces)
+## DBsection(Definition and properties)
+## Date(10/3/2014)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('vector spaces')
+
+# updated 2022.10.30
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'parserCheckboxList.pl', 'PGML.pl', 'PGcourse.pl');
+
+# First define a number of sets
+
+$a1 = non_zero_random(-3, 3);
+$a2 = non_zero_random(-3, 3);
+$a3 = non_zero_random(-3, 3);
+$a4 = non_zero_random(-3, 3);
+$k  = random(3, 6);
+$n  = random(1, 5);
+
+$cb = CheckboxList(
+    [ [
+        'The set of vectors of the form \(\left\{ \left[ '
+            . '\begin{array}{r} a \\ b \end{array} \right] t \; | \; '
+            . 't \in \mathbb{R} \right\} \)',
+        'The set of diagonal 2 by 2 matrices given by \( \left\{\left[ '
+            . '\begin{array}{rr} a  & 0 \\ 0 & b \end{array} \right] \; | \;\; '
+            . 'a, b \in \mathbb{R} \right\} \)',
+        'The set of polynomials given by \( \left\{  ax^2 + (a+b)x + b  \; | \;\; '
+            . 'a, b \in \mathbb{R} \right\} \)',
+        '\(\mathbb{R}\)',
+        "\(\mathbb{R}^{$k}\)",
+        "The set of vectors of the form \(\left\{\left[ "
+            . "\begin{array}{r} $a3 \\ $a4 \end{array} \right] + "
+            . "\left[ \begin{array}{r} $a1 \\ $a2 \end{array} \right] t \; | \; "
+            . "\;t \in \mathbb{R}\right\} \)",
+        "The set of vectors of the form \(\left\{\left[ "
+            . "\begin{array}{r} x_1 \\ x_2 \\ x_3 \end{array} \right]  \; | \; "
+            . "x_1 + x_2 + x_3 = $n \right\}\)"
+    ] ],
+    [ 0 .. 4 ],
+    labels    => 'abc',
+    separator => '<div style="height: 2ex"></div>'
+);
+
+BEGIN_PGML
+Select all sets that are vector spaces under the natural operations of addition and scalar multiplication.
+
+[_]{$cb}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+One way to do this is to check all properties of vector spaces for each of these.  However, that takes a long time.  Some of the standard ways that a set fails being a vector space is that 
+* The zero vector is not in the set.
+* The vector addition results in a vector not in the set. 
+* Scalar multiplication results in a vector not in the set.
+
+Checking these, the solution is [$cb->correct_ans]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

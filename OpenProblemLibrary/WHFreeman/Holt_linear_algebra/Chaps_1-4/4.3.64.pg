@@ -23,78 +23,77 @@
 ## \{ textbook_ref_exact("Holt Linear Algebra", "4.3","64") \}
 ## MLT(RnkNul)
 
+# updated on 2024.01.19 by Peter Staab (Fitchburg State University)
+
 DOCUMENT();
 
-loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl",
-  "PGgraphmacros.pl",
-  "PGmatrixmacros.pl",
-  "PGmorematrixmacros.pl",
-  "PGnumericalmacros.pl",
-  "PGcourse.pl"
-);
+loadMacros('PGstandard.pl', 'PGML.pl', 'MatrixReduce.pl', 'PGcourse.pl');
 
-TEXT(beginproblem());
+# For a given matrix $mat, return the submatrix with rows in
+# arrayref $rows and cols in arrayref $cols.
 
-$k = non_zero_random(-2,2,1);
-$d=3;
+sub subMatrix {
+    my ($mat, $rows, $cols) = @_;
+    my $sub_mat = [];
+    for $r (@$rows) {
+        my $row = [];
+        push(@$row,     $mat->element($r, $_)) for (@$cols);
+        push(@$sub_mat, $row);
+    }
+    return Matrix($sub_mat);
+}
 
-$a11 = 4;
-$a12 = 3;
-$a13 = 2;
-$a14 = 1;
+$num_rows = random(5, 7);
+$num_cols = random(4, 5);
 
-$a21 = 5;
-$a22 = -1;
-$a23 = 3;
-$a24 = 2;
+$rank = random(2, 4);
 
-$a31 = 2;
-$a32 = 1;
-$a33 = 3;
-$a34 = 6;
+do {
+    # Fill the first $rank rows with random numbers and the rest with 
+    # rows of zeros.
+    $arr =
+        [ map { [ map { random(-4, 4) } (1 .. $num_cols) ] } (1 .. $rank) ];
+    push(@$arr, [ map {0} (1 .. $num_cols) ]) for ($rank + 1 .. $num_rows);
+    $A = Matrix($arr);
 
-$a41 = 7;
-$a42 = 10;
-$a43 = 3;
-$a44 = 1;
+    # Test to ensure that the $rank rows are linearly independent
+    # by adding the absolute values of the determinants.  If
+    # that value is 0, then they are dependent.
+    $abs_det = 0;
+    for $i (1 .. 1 + $num_cols - $rank) {
+        $S = subMatrix($A, [ 1 .. $rank ], [ $i .. $rank + $i - 1 ]);
+        $abs_det += abs($S->det);
+    }
+} while $abs_det == 0;
 
+# This fills the rest of the matrix with row combinations of
+# the first $rank rows.
+for ($k = $rank + 1; $k <= $num_rows; $k++) {
+    for ($j = 1; $j <= $rank; $j++) {
+        $A = row_add($A, $k, $j, non_zero_random(-3, 3));
+    }
+}
 
-$a51 = 6;
-$a52 = 4;
-$a53 = 5;
-$a54 = 7;
+$nullity = Real($num_cols - $rank);
 
-$a61 = -2;
-$a62 = -2;
-$a63 = 1;
-$a64 = 5;
-
-
-$ans1=3;
-$ans2=1;
-
-BEGIN_TEXT
+BEGIN_PGML
 Determine the rank and nullity of the matrix.
-$PAR
-\(\{ display_matrix_mm( [ [$a11,$a12,$a13,$a14] , [$a21,$a22,$a23,$a24] , [$a31, $a32, $a33,$a34] , [$a41,$a42,$a43,$a44] , [$a51,$a52,$a53,$a54] , [$a61,$a62,$a63,$a64]  ] ) \}\)
-$PAR
-The rank of the matrix is \{ans_rule(5)\}
-$PAR
-The nullity of the matrix is \{ans_rule(5)\}
-END_TEXT
 
-ANS(num_cmp($ans1) );
-ANS(num_cmp($ans2) );
+[``` [$A] ```]
 
-SOLUTION(EV3(<<'END_SOLUTION'));
-$PAR$PAR{BBOLD}SOLUTION:${EBOLD} $PAR
+The rank of the matrix is [_]{Real($rank)}
 
-When reduced to row-echelon form, there are three non-zero rows, so the rank of the matrix is 6 - 3 = $ans1, and since rank(A) + nullity(A) = number of columns in A, the nullity must be $ans2.
-$PAR
+The nullity of the matrix is [_]{$nullity}
+END_PGML
+Context('Fraction');
+$rref = rref(apply_fraction_to_matrix_entries($A));
 
-END_SOLUTION
+BEGIN_PGML_SOLUTION
+If we put the matrix in row-echelon or reduced row-echelon form, we get
+[``` [$rref] ```]
 
+And notice that there are [$rank] non-zero rows, so the rank of the matrix is [$rank], and since rank(A) + nullity(A) = number of columns in A, the nullity must be [$nullity].
+
+END_PGML_SOLUTION
 
 ENDDOCUMENT();

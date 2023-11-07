@@ -1,0 +1,80 @@
+## DESCRIPTION
+## Find the equation of a plane passing through three points.  Write the answer in both
+## equation and parametric forms.
+## ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Inner products)
+## DBsection(Applications)
+## Date(September 5, 2011)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('lines')
+
+# update 2022.12.12
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    "PGstandard.pl",        "PGML.pl",
+    "parserVectorUtils.pl", "parserImplicitPlane.pl",
+    'PGcourse.pl'
+);
+
+Context('ImplicitPlane');
+Context()->variables->are(x => 'Real', y => 'Real', z => 'Real');
+
+$pt1 = Point(non_zero_vector3D(-5, 5));
+$pt2 = Point(non_zero_vector3D(-5, 5));
+$pt3 = Point(non_zero_vector3D(-5, 5));
+
+$v1 = ColumnVector($pt2 - $pt1);
+$v2 = ColumnVector($pt3 - $pt1);
+
+$v3 = $v1 x $v2;
+
+$ans1 = ImplicitPlane($pt1, $v3);
+
+Context("Vector");
+Context()->variables->are(t => 'Real', s => 'Real');
+$ans2 = Compute("$pt1 + t $v1 + s $v2");
+
+BEGIN_PGML
+
+The plane [` P `] passes through the points [`[$pt1], [$pt2]`] and [`[$pt3]`].
+
+a) Find [` P `] in the form [` ax + by + cz =d `]: [_____]{$ans1}
+
+b) Find [` P `] in the form [` \vec{P} = \vec{u} + t \vec{v} + s \vec{w}  `]:
+    [____]{$ans2}
+
+    Note that you should write this in vector form like [|<1,2,3> + t<4,5,6> + s<7,8,9>|].
+
+END_PGML
+
+($x0, $y0, $z0) = $pt1->value;
+
+BEGIN_PGML_SOLUTION
+a) Generally, to find the equation of a plane, one needs it's normal vector.  In
+this case, find two vectors parallel to the plane with
+
+    [```\vec{v}_1 = [@ ColumnVector($pt2)@]-[@ ColumnVector($pt1) @] = [$v1], \qquad
+    \vec{v}_2 = [@ ColumnVector($pt3) @]-[@ ColumnVector($pt1)@] = [$v2].```]
+
+    Then to find the normal vector, find the cross product:
+    [```\vec{n} = \vec{v}_1 \times \vec{v}_2 = [$v3]```]
+
+    Now, the dot product between [`\vec{n}`] and any vector in the plane or
+    [`\langle x,y,z\rangle -[$pt1]`] is
+    [```[$v3] \cdot \begin{bmatrix} x-[$x0]\\ y-[$y0] \\ z-[$z0] \end{bmatrix} = 0```]
+    or simplifying
+    [``` [$ans1] ```]
+
+b) Finding this in the form [` \vec{P} = \vec{u} + t \vec{v} + s \vec{w}  `]
+the point [`\vec{u}`] is any point in the plane, the vectors [`\vec{v}`] and
+[`\vec{w}`] are vectors parallel to the plane.  All of this information is
+already found so the answer is
+[```[$ans2]```]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

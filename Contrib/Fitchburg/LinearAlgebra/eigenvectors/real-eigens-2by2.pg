@@ -1,0 +1,170 @@
+##DESCRIPTION
+##  Compute the eigenvalues/eigenvectors of a 2 by 2 matrix (solution has two real eigenvalues)
+##ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Eigenvalues and eigenvectors)
+## DBsection(Computing eigenvalues and eigenvectors)
+## Date(12/12/2002)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## MO(1)
+## KEYWORDS('eigenvalues', 'eigenvectors', '2 by 2 matrix')
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'parserRadioMultiAnswer.pl', 'PGcourse.pl'
+);
+
+Context('Vector');
+
+# General the matrix of eigenvectors
+
+do {
+    do {
+        $Q = Matrix([
+            [ non_zero_random(-3, 3), non_zero_random(-3, 3) ],
+            [ non_zero_random(-3, 3), non_zero_random(-3, 3) ]
+        ]);
+    } while ($Q->det == 0 || abs($Q->det) > 4);
+
+    # Picke the eigenvalues such that lambda1 < lambda2
+    do {
+        ($lambda1, $lambda2) = (random(-3, 3), non_zero_random(-3, 3));
+    } until ($lambda1 < $lambda2);
+
+    # Diagonal matrix of eigenvalues
+    $Lambda = Matrix([ [ $lambda1, 0 ], [ 0, $lambda2 ] ]);
+
+    $A = $Q * $Lambda * $Q->inverse;
+
+    #check that A is all integers
+    $all_ints = 1;
+    for my $i (1 .. 2) {
+        for my $j (1 .. 2) {
+            $all_ints =
+                $all_ints && int($A->element($i, $j)) == $A->element($i, $j);
+        }
+    }
+} until ($all_ints);
+
+$ev1 = ColumnVector($Q->column(1));
+$ev2 = ColumnVector($Q->column(2));
+
+# Set up the Question
+
+$rma = RadioMultiAnswer(
+    [
+        [
+            'The matrix \(A\) has the single real eigenvalue %s with eigenvector %s',
+            Real(0),
+            ''
+        ],
+        [
+            'The matrix \(A\) has the single real eigenvalue %s with the eigenvectors '
+                . '\(\vec{v}_1 = \)%s and \(\vec{v}_2 = \)%s',
+            Real(0),
+            Vector(0, 0),
+            Vector(0, 0)
+        ],
+        [
+            'The matrix \(A\) has two real eigenvalues. They are \(\lambda_1=\) %s  '
+                . 'with corresponding eigenvector \(\vec{v}_1 = \) %s and \(\lambda_2 =\) %s '
+                . 'with corresponding eigenvector \(\vec{v}_2 = \) %s',
+            $lambda1, $ev1, $lambda2, $ev2
+        ]
+    ],
+    2,
+# this checker ensures that the eigenvalues match and that the eigenvectors are parallel to the
+# correct ones.
+    checker => sub {
+        my ($correct,   $student, $self,  $ans)   = @_;
+        my ($radio_cor, $a_cor,   $b_cor, $c_cor) = @$correct;
+        my ($radio_stu, $a_stu,   $b_stu, $c_stu) = @$student;
+
+        if ($radio_cor ne $radio_stu) { return 0; }
+
+        if ($c_stu->[1] == Vector(0, 0) || $c_stu->[3] == Vector(0, 0)) {
+            $self->appendMessage(
+                'Recall that the zero vector cannot be an eigenvector.');
+        }
+
+        # The eigenvalues are in the same order as the correct answer
+        if ($c_stu->[0] < $c_stu->[2]) {
+            return
+                $c_cor->[0] == $c_stu->[0]
+                && $c_cor->[1]->isParallel($c_stu->[1])
+                && $c_cor->[2] == $c_stu->[2]
+                && $c_cor->[3]->isParallel($c_stu->[3]);
+        } else {
+            return
+                $c_cor->[0] == $c_stu->[2]
+                && $c_cor->[1]->isParallel($c_stu->[3])
+                && $c_cor->[2] == $c_stu->[0]
+                && $c_cor->[3]->isParallel($c_stu->[1]);
+        }
+    }
+);
+
+BEGIN_PGML
+
+Let
+
+>> [`` A = [$A] ``] <<
+
+[___]{$rma}
+
+Write any eigenvector in vector notation like "<1,2>"
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+First, we need to find 
+[```
+\begin{aligned}
+|A - \lambda I| & = \begin{vmatrix} [$A->element(1,1)] - \lambda & [$A->element(1,2)] \\
+[$A->element(2,1)] & [$A->element(2,2)] - \lambda \end{vmatrix} \\
+& = ([$A->element(1,1)]-\lambda)([$A->element(2,2)]-\lambda) - 1 \\
+& = \lambda^2 - ([$A->element(1,1)+$A->element(2,2)])\lambda  + ([$A->element(1,1)*$A->element(2,2)-$A->element(1,2)*$A->element(2,1)])\\
+& = (\lambda - [$lambda1])(\lambda-[$lambda2])
+\end{aligned}
+```]
+and therefore there are two real eigenvalues: [$lambda1], [$lambda2].
+
+To find the eigenvector solve [`(A-\lambda_j I) = \mathbf{0}`] for each eigenvalue. 
+
+[```\begin{aligned}
+A - \lambda_1 I & = A - [$lambda1] I = \begin{bmatrix}
+[$lambda1*(-1)+$A->element(1,1)] & [$A->element(1,2)] \\
+[$A->element(2,1)] & [$lambda1*(-1)+$A->element(2,2)] \\
+\end{bmatrix} \\
+& \sim \begin{bmatrix}
+[$lambda1*(-1)+$A->element(1,1)] & [$A->element(1,2)] \\
+0 & 0 \\
+\end{bmatrix}
+\end{aligned}```]
+and an eignvector is orthogonal to the first row is 
+[```\mathbf{v}_1 = [$ev1]```]
+
+Similarly to find the second eigenvector:
+
+[```\begin{aligned}
+A - \lambda_1 I & = A - [$lambda2] I = \begin{bmatrix}
+[$lambda2*(-1)+$A->element(1,1)] & [$A->element(1,2)] \\
+[$A->element(2,1)] & [$lambda2*(-1)+$A->element(2,2)] \\
+\end{bmatrix} \\
+& \sim \begin{bmatrix}
+[$lambda2*(-1)+$A->element(1,1)] & [$A->element(1,2)] \\
+0 & 0 \\
+\end{bmatrix}
+\end{aligned}```]
+and an eignvector is orthogonal to the first row is 
+[```\mathbf{v}_1 = [$ev2]```]
+
+*Note:* recall that any scalar mulitple (other that by 0) of an eigenvector is another eigenvector, so simplifying or multiplying by [`-1`] is common in finding eigenvectors.
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

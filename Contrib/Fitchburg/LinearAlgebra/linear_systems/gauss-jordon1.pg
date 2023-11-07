@@ -1,0 +1,108 @@
+## DESCRIPTION
+## Find the solution to a system of 3 equations and 3 variables.
+## ENDDESCRIPTION
+
+## DBsubject(Linear Algebra)
+## DBchapter(Systems of Linear Equations)
+## DBsection(Systems with 3 variables)
+## Date(September 5, 2012)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('lines')
+
+# updated on 2022.10.29
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    'PGstandard.pl',   'PGML.pl',
+    'MatrixReduce.pl', 'parserRadioMultiAnswer.pl',
+    'PGcourse.pl'
+);
+
+Context('Vector')->noreduce('(-x)+y', '(-x)-y');
+
+do {
+    $A = Matrix([
+        [ random(-4, 4), random(-4, 4), random(-4, 4) ],
+        [ random(-4, 4), random(-4, 4), random(-4, 4) ],
+        [ random(-4, 4), random(-4, 4), random(-4, 4) ],
+    ]);
+} while ($A->det == 0);
+
+$x = ColumnVector([ random(-4, 4), random(-4, 4), random(-4, 4) ]);
+$b = $A * $x;
+
+@lines = map {
+    Formula($A->element($_, 1) . 'x+'
+            . $A->element($_, 2) . 'y+'
+            . $A->element($_, 3)
+            . 'z')->reduce
+} (1 .. 3);
+
+$rma = RadioMultiAnswer(
+    [
+        ['The solution to the linear system does not exist'],
+        [ 'The solution is given by %s', $x ]
+    ],
+    1
+);
+
+BEGIN_PGML
+
+Consider the following linear system.
+
+[```
+\begin{aligned}
+[$lines[0]] & = [@ Matrix($b)->element(1) @] \\
+[$lines[1]] & = [@ Matrix($b)->element(2) @] \\
+[$lines[2]] & = [@ Matrix($b)->element(3) @]
+\end{aligned}
+```]
+
+Use the Gauss-Jordon method to find the solution to the linear system in vector form if it exists.
+For example, [`\langle 1,2,3 \rangle `] and if needed,  using [`t`] and [`s`] as free variables, like
+[`\langle t,t/2+3,2t \rangle`] or [`\langle t,s,2s-3t\rangle`]
+
+
+[____]{$rma}
+
+END_PGML
+
+Context('Fraction');    # for fraction arithmetic
+
+# augmented matrix to be reduced
+$aug = Matrix([
+    [
+        $A->element(1, 1),
+        $A->element(1, 2),
+        $A->element(1, 3),
+        Matrix($b)->element(1)
+    ],
+    [
+        $A->element(2, 1),
+        $A->element(2, 2),
+        $A->element(2, 3),
+        Matrix($b)->element(2)
+    ],
+    [
+        $A->element(3, 1),
+        $A->element(3, 2),
+        $A->element(3, 3),
+        Matrix($b)->element(3)
+    ]
+]);
+
+$aug_red = rref($aug);
+
+BEGIN_PGML_SOLUTION
+
+First, start with the augmented coefficient matrix or
+[``` [$aug] ```]
+
+and then perform Gauss-Jordon reduction to get
+[``` [$aug_red] ```]
+
+And this shows the solution is [`` [$x]``]
+END_PGML_SOLUTION
+COMMENT("Solution to the system is a single point.");
+ENDDOCUMENT();    # This should be the last executable line in the problem.

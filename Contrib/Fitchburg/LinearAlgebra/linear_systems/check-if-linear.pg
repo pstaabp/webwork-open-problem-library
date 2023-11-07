@@ -1,0 +1,109 @@
+## DESCRIPTION
+## Select linear equations from a list.
+## ENDDESCRIPTION
+
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear equations)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## Level(1)
+## KEYWORDS('linear equations')
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserCheckboxList.pl', 'PGcourse.pl');
+
+Context('Numeric')->variables->add(
+    y  => 'Real',
+    z  => 'Real',
+    x1 => 'Real',
+    x2 => 'Real',
+    x3 => 'Real',
+    x4 => 'Real'
+);
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+$eq1 = Formula(non_zero_random(-4, 4) . ' x+' . random(-4, 4))->reduce->TeX;
+
+$eq2 = Formula(non_zero_random(-6, 6) . ' x+' . non_zero_random(-6, 6) . 'y')
+    ->reduce->TeX;
+$b2 = non_zero_random(-10, 10);
+
+$eq3 = Formula(random(1, 6) . 'x+' . random(1, 6) . 'y+' . random(1, 6) . 'z')
+    ->reduce->TeX;
+$b3 = random(8, 40, 4);
+
+$eq4 = Formula(
+    random(-1, 1) . 'x1+' . random(-1, 1) . 'x2+' . random(-1, 1) . 'x3')
+    ->reduce->TeX;
+$b4 = non_zero_random(-5, 5);
+
+$eq5 =
+    Formula(random(-5, 5) . 'x1+'
+        . random(-5, 5) . 'x2+'
+        . random(-5, 5) . 'x3+'
+        . random(-5, 5)
+        . 'x4')->reduce->TeX;
+
+@vars = map { Formula("x$_")->TeX } random_subset(2, 1 .. 4);
+
+($a6, $b6) = (random(2, 8), random(2, 8));
+
+$eq7 =
+    Formula(non_zero_random(-6, 6) . ' x^2+' . non_zero_random(-6, 6) . 'y^2')
+    ->reduce->TeX;
+$b7 = non_zero_random(-10, 10);
+
+@vars8 = map { Formula("x$_")->TeX } random_subset(2, 1 .. 4);
+$b8    = random(1, 10);
+
+$eq9 =
+    Formula(random(-1, -1) . 'x1^2+'
+        . random(-1, 1) . 'x2^2+'
+        . random(-1, 1) . 'x3^2+'
+        . random(-1, 1)
+        . 'x4^2')->reduce->TeX;
+$b9 = random(1, 10);
+
+@correct = (
+    "\(y= $eq1\)",
+    "\( $eq2 = $b2\)",
+    "\( $eq3 = $b3\)",
+    "\( $eq4 = $b4\)",
+    "\( $eq5 = 0\)",
+    "\( $vars[0] = $vars[1] \)",
+    "\(\frac{x_1}{$a6}+\frac{x_2}{$b6}=1\)"
+);
+$num_correct = random(3, scalar(@correct));
+
+@incorrect = (
+    "\($eq7=$b7\)",     "\($vars8[0]$vars8[1] = $b8  \)",
+    "\( $eq9 = $b9 \)", "\(x=\frac{y}{z}\)"
+);
+$num_incorrect = random(2, scalar(@incorrect));
+$cblist        = CheckboxList(
+    [ [
+        random_subset($num_correct,   @correct),
+        random_subset($num_incorrect, @incorrect)
+    ] ],
+    [ 0 .. ($num_correct - 1) ],
+    labels => 'ABC'
+);
+
+BEGIN_PGML
+
+Select all equations that are linear:
+
+[_]{$cblist}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Select equations which have no powers, multiplication or division these are: [$cblist->correct_ans]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,104 @@
+## DESCRIPTION
+## Find a particular and homogeneous solution to a 2 by 2 linear system.
+## ENDDESCRIPTION
+
+## KEYWORDS('homogeneous', 'linear system')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Systems of Linear Equations')
+## DBsection('Systems with 2 variables')
+## Date('September 5, 2014')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# update 2022.10.30
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'parserSolutionFor.pl', 'PGML.pl',,
+ 'MatrixReduce.pl', 'PGcourse.pl');
+
+Context("Vector")->variables->are(x => "Real", y => "Real", t => "Real");
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+# Define all variables used in the problem statement and solution
+
+$a11 = non_zero_random(-5, 5);
+$a12 = non_zero_random(-5, 5);
+$b1  = non_zero_random(-5, 5);
+
+$k = random(-4, -2);
+
+$a21 = $k * $a11;
+$a22 = $k * $a12;
+$b2  = $k * $b1;
+
+$ans1 = SolutionFor("$a11*x+$a12*y=$b1", "($b1/$a11,0)");
+
+$ans2  = Compute("<-$a12*t/$a11,t>")->reduce;
+$check = sub {
+    my ($correct, $student, $ansHash) = @_;
+    my $ds = $student->D('t');
+    Value->Error('Your solution must have the parameter t')
+        if Vector($ds) == Vector(0, 0);
+    # add eval(t=>0) to make a vector instead of a formula.
+    return Vector(-$a12, $a11)->isParallel(Vector($ds)->eval(t => 0))
+        ? 1
+        : 0;
+};
+
+$line1 = Formula($a11 . 'x+' . $a12 . 'y')->reduce;
+$line2 = Formula($a21 . 'x+' . $a22 . 'y')->reduce;
+
+BEGIN_PGML
+Consider the following linear system.
+
+[```
+\begin{aligned}
+[$line1] & = [$b1] \\
+[$line2] & = [$b2]
+\end{aligned} ```]
+
+Write a particular solution as a point, e.g. (1,2), to the linear system:
+
+[` \vec{x}_p = `] [___]{$ans1}
+
+Write the solution to the associated homogeneous system in the form [` \vec{x}=t\vec{u} `]
+
+[`\vec{x}_h = `] [___]{$ans2->cmp(checker => $check)}
+
+END_PGML
+
+Context('Fraction');    # for fraction arithmetic
+
+# augmented matrix to be reduced
+$aug = apply_fraction_to_matrix_entries(Matrix([
+    [ $a11, $a12, $b1 ],
+    [$a21, $a22, $b2]
+]));
+
+$aug_red = rref($aug);
+
+Context("Numeric")->variables->are(x => "Real", y => "Real", t => "Real");
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+$sol_eq = Formula($aug_red->element(1,3) . '-' . ($aug_red->element(1,2) . 'y'))->reduce; 
+$sol_t = $sol_eq->substitute(y=>'t');
+BEGIN_PGML_SOLUTION
+
+First, start with the augmented coefficient matrix or
+[``` [$aug] ```]
+
+and then perform Gauss-Jordon reduction to get 
+[``` [$aug_red] ```]
+
+Ignoring the row of zeros the equation is 
+[``` x = [$sol_eq] ```]
+and letting the free variable [`y=t`], then 
+[```\begin{aligned}
+x & = [$sol_t] \\
+y & = t 
+\end{aligned} ```]
+A particular solution is when [`t=0`] or the point [`([$ans1])`]. The solution to the associated homogeneous system is [`[$ans2]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
