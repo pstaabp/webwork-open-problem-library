@@ -1,0 +1,72 @@
+## DESCRIPTION
+## Find the length of two segments of a biathlon
+## ENDDESCRIPTION
+
+## KEYWORDS('application','linear','biathlon')
+
+## DBsubject(Linear algebra)
+## DBchapter(Systems of linear equations)
+## DBsection(Applications)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+
+# updated 2023.11.10
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'randomPerson.pl', 'PGcourse.pl');
+
+Context("Numeric");
+
+do {
+    $runrate  = list_random(4,  5,  6);
+    $bikerate = list_random(12, 15, 20);
+
+    $runlength  = random(6,  10);
+    $bikelength = random(15, 25);
+
+    $total = $runlength + $bikelength;
+
+    $time = 60 * ($runlength / $runrate + $bikelength / $bikerate);
+} while ($time % 5 == 0);
+
+$hrs  = floor($time / 60);
+$mins = $time % 60;
+
+$p = randomPerson();
+
+BEGIN_PGML
+
+[$p] performs in a biathlon, an event with running and biking. The combined 
+distance is [$total] miles. [$p->They] can bike [$bikerate] miles per hour and run [$runrate]
+miles per hour. If [$p->they] [$p->verb('finish')] in [$hrs] hours and [$mins]
+minutes, how long is each leg of the event?
+
+- Running length: [_]{Real($runlength)} miles
+- Biking length: [_]{Real($bikelength)} miles   
+END_PGML
+
+BEGIN_PGML_SOLUTION
+First of all, let [`x`] be the number of miles spent running and [`y`] miles spent biking.
+
+The total distance is just the sum of the two, so the first equation is
+[``` x+y=[$total] ```]
+And the total time is the sum of the time spent running and biking where time = distance/rate.
+[``` \frac{x}{[$runrate]} + \frac{y}{[$bikerate]} = \frac{[$time]}{60} ```]
+where [$hrs] hours and [$mins] minutes is converted to hours.
+
+The solution is found numerous ways.  One standard way is to write these two equation 
+in augmented matrix form or
+[``` \left[ \begin{array}{rr|r} 1 & 1 & [$total] \\
+\frac{1}{[$runrate]} & \frac{1}{[$bikerate]} & \frac{[$time]}{60} 
+\end{array} \right] ```]
+and then using Gauss-Jordon to reduce it to 
+[``` \left[ \begin{array}{rr|r} 1 & 0 & [$runlength] \\
+0 & 1 & [$bikelength] 
+\end{array} \right] ```]
+showing that the running leg was [$runlength] miles long and the biking leg was
+[$bikelength] miles long.
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();

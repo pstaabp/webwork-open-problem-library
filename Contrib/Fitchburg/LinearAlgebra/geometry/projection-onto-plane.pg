@@ -1,0 +1,61 @@
+## DESCRIPTION
+## Find the projection of a vector onto a plane in R^3.
+## ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Inner products)
+## DBsection(Projection and distance)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## Level(1)
+## KEYWORDS('projection', 'plane')
+
+# updated 2022.12.12
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserVectorUtils.pl', 'PGcourse.pl');
+
+Context('Vector');
+Context()->noreduce('(-x)-y', '(-x)+y');
+
+# Define all variables used in the problem statement and solution
+
+do {
+    $a = random(1, 4);
+    $b = random(1, 4);
+    $c = random(1, 4);
+    $u = ColumnVector(non_zero_point3D(-3, 3));
+    $n = ColumnVector([ $a, $b, $c ]);
+} until (gcd($a, $b, $c) == 1) && $u . $n != 0;
+
+$plane = Formula("$a x + $b y + $c z")->reduce;
+
+$v    = ColumnVector(($n . $u) / ($u . $u) * $u);
+$proj = $u - $v;
+
+BEGIN_PGML
+
+Find the projection of the vector
+[``\vec{u} = [$u] ``] onto the plane [` H: [$plane]=0`].
+
+[` \text{Proj}_H (\vec{u}) `] = [____]{$proj}
+Write your answer as a vector, like "<1,2,3>"
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+A way to do this is to project the given vector [`\vec{u}`] onto the normal
+to the plane or
+[```\text{Proj}_{\vec{n}}(\vec{u}) = \frac{\vec{n}\cdot \vec{u}}
+{\vec{u} \cdot \vec{u}} \vec{u}```]
+where [`\vec{n} = [$n]`], the normal vector to the plane.
+[```\vec{v} = \text{Proj}_{\vec{n}}(\vec{u}) = \frac{[@ $n . $u @]}
+{[@ $u . $u @]} \vec{u} = [$v]```]
+
+Lastly, the projection onto the plane will be the original vector [`\vec{u}`]
+minus this vector or
+[```\text{Proj}_H (\vec{u}) = \vec{u} - \vec{v} = [$proj] ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

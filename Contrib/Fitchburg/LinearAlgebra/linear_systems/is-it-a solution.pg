@@ -1,0 +1,119 @@
+## DESCRIPTION
+## WeBWorK Demo
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+## Tagged by jjh2b
+
+## DBsubject('WeBWorK')
+## DBchapter('Linears and Linear Function')
+## DBsection('Problem')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State College')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioButtons.pl', 'PGcourse.pl');
+
+Context('Numeric')->variables->add(y => 'Real', z => 'Real');
+Context()->noreduce('(-x)+y', '(-x)-y');
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+$x1a = random(-4, 4);
+$x2a = random(-4, 4);
+
+$a11a = random(-6, 6);
+$a12a = random(-6, 6);
+$b1a  = $a11a * $x1a + $a12a * $x2a;
+$a21a = random(-6, 6);
+$a22a = random(-6, 6);
+$b2a  = $a21a * $x1a + $a22a * $x2a;
+
+$line1a = Formula($a11a . 'x+' . $a12a . 'y')->reduce;
+$line2a = Formula($a21a . 'x+' . $a22a . 'y')->reduce;
+
+$radioA = RadioButtons([ 'true', 'false' ], 0, separator => '&nbsp;');
+
+$x1c = random(-4, 4);
+$x2c = random(-4, 4);
+
+$a11c = random(-6, 6);
+$a12c = random(-6, 6);
+$b1c  = $a11c * $x1 + $a12c * $x;
+$a21c = random(-6, 6);
+$a22c = random(-6, 6);
+$b2c  = 1 + $a21c * $x1 + $a22c * $x;
+
+$line1c = Formula($a11c . 'x+' . $a12c . 'y')->reduce;
+$line2c = Formula($a21c . 'x+' . $a22c . 'y')->reduce;
+
+$radioC = RadioButtons([ 'true', 'false' ], 1, separator => '&nbsp;');
+
+$x1b = random(-4, 4);
+$x2b = random(-4, 4);
+$x3b = random(-4, 4);
+
+$A = Matrix([
+    [ random(-4, 4), random(-4, 4), random(-4, 4) ],
+    [ random(-4, 4), random(-4, 4), random(-4, 4) ],
+    [ random(-4, 4), random(-4, 4), random(-4, 4) ]
+]);
+$b = $A * Vector($x1b, $x2b, $x3b);
+
+@linesB = map {
+    Formula($A->element($_, 1) . 'x+'
+            . $A->element($_, 2) . 'y+'
+            . $A->element($_, 3)
+            . 'z')->reduce
+} (1 .. 3);
+
+$radioB = RadioButtons([ 'true', 'false' ], 0, separator => '&nbsp;');
+
+BEGIN_PGML
+a) For 
+    [```
+    \begin{aligned}
+     [$line1a] &= [$b1a], \\
+     [$line2a] &= [$b2a].\\
+    \end{aligned} 
+    ```]
+    the point [`([$x1a], [$x2a])`] is a solution.  [_]{$radioA}
+
+b) For
+    [```
+    \begin{aligned}
+     [$line1c] &= [$b1c], \\
+     [$line2c] &= [$b2c].\\
+    \end{aligned} 
+    ```]
+    the point [`([$x1c], [$x2c])`] is a solution.  [_]{$radioC}
+
+c) For
+    [```
+    \begin{aligned}
+     [$linesB[0]] &= [@ Matrix($b)->element(1) @], \\
+     [$linesB[1]] &= [@ Matrix($b)->element(2) @], \\
+     [$linesB[2]] &= [@ Matrix($b)->element(3) @], \\
+    \end{aligned} 
+    ```]
+    the point [`([$x1b],[$x2b],[$x3b])`] is a solution [_]{$radioB}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+For each part, substitute the point into the equations.  If *all* of the equations are satified, then the point is a solution.  If not, it is not. 
+
+a) true
+b) false
+c) true
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

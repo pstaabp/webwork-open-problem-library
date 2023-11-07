@@ -1,0 +1,99 @@
+## DESCRIPTION
+## Perform matrix vector products.
+## ENDDESCRIPTION
+
+
+## DBsubject(Linear algebra)
+## DBchapter(Matrices)
+## DBsection(Matrix algebra)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('matrix', 'vector','product')
+
+# updated 2023.11.02
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("Vector");
+
+# Define all variables used in the problem statement and solution
+
+do {
+    $A = Matrix([ map { [ map { random(-5, 5) } (1 .. 3) ] } (1 .. 3) ]);
+} until $A->det != 0;
+
+$u = ColumnVector(
+    non_zero_random(-5, 5),
+    non_zero_random(-5, 5),
+    non_zero_random(-5, 5)
+);
+$v = ColumnVector(
+    non_zero_random(-5, 5),
+    non_zero_random(-5, 5),
+    non_zero_random(-5, 5)
+);
+$w = ColumnVector(
+    non_zero_random(-5, 5),
+    non_zero_random(-5, 5),
+    non_zero_random(-5, 5)
+);
+
+BEGIN_PGML
+
+Let 
+[``` A = [$A] ```]
+and
+[```
+\vec{u} = [$u] \qquad
+\vec{v} = [$v] \qquad
+\vec{w} = [$w]  ```]
+
+Find the product of [`A`] and the three vectors.  Write your answer using vector form, i.e. [|<1,2,3>|]*
+
+a) [` A \vec{u} = `] [_]{Vector($A*$u)}
+b) [` A \vec{v} = `] [_]{Vector($A*$v)}
+c) [` A \vec{w} = `] [_]{Vector($A*$w)}
+
+END_PGML
+
+$Au = $A*$u; 
+$Av = $A*$v;
+$Aw = $A*$w;
+
+BEGIN_PGML_SOLUTION
+In this case, we do standard matrix vector multiplication.  For example, the product
+[``` A\vec{u} = \begin{bmatrix}
+([$A->element(1,1)])([$u->{data}[0]]) + ([$A->element(1,2)])([$u->{data}[1]]) 
++ ([$A->element(1,3)])([$u->{data}[2]]) \\
+([$A->element(2,1)])([$u->{data}[0]]) + ([$A->element(2,2)])([$u->{data}[1]]) 
++ ([$A->element(3,3)])([$u->{data}[2]]) \\
+([$A->element(3,1)])([$u->{data}[0]]) + ([$A->element(2,2)])([$u->{data}[1]]) 
++ ([$A->element(3,3)])([$u->{data}[2]]) \\
+\end{bmatrix} = 
+\begin{bmatrix}
+[$Au->element(1,1)] \\
+[$Au->element(2,1)] \\
+[$Au->element(3,1)] \\
+\end{bmatrix}
+```]
+
+Similarly, 
+[``` A\vec{v} = \begin{bmatrix}
+[$Av->element(1,1)] \\
+[$Av->element(2,1)] \\
+[$Av->element(3,1)] \\
+\end{bmatrix}
+```]
+and
+[``` A\vec{w} = \begin{bmatrix}
+[$Aw->element(1,1)] \\
+[$Aw->element(2,1)] \\
+[$Aw->element(3,1)] \\
+\end{bmatrix}
+```]
+
+
+END_PGML_SOLUTION
+ENDDOCUMENT();

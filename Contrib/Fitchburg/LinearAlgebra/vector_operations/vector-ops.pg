@@ -1,0 +1,104 @@
+## DESCRIPTION
+## Compute arimetic operations between vectors.
+## ENDDESCRIPTION
+
+
+## DBsubject(Linear algebra)
+## DBchapter(Matrices)
+## DBsection(Matrix algebra)
+## Date(September 5, 2011)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('vectors', 'scalar', 'addition')
+
+# updated 2022.12.12
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'MathObjects.pl', 'parserVectorUtils.pl',
+    'PGML.pl');
+
+Context('Vector');
+
+$U = non_zero_vector3D(-5, 5, 1);
+$V = non_zero_vector3D(-5, 5, 1);
+$W = non_zero_vector3D(-5, 5, 1);
+
+$k  = non_zero_random(-1, 1) * random(2, 5);
+$k1 = random(2, 5);
+$k2 = random(2, 5);
+
+$v1 = $U+$V;
+$v2 = $U+$W;
+$v3 = $k*$U;
+$v4 = $U-$V;
+$v5 = $k1*$V+$k2*$W;
+
+BEGIN_PGML
+
+Suppose [` \vec{u} = [$U],  \vec{v} = [$V] `] and [` \vec{w}= [$W]`].
+
+a) [` \vec{u}+\vec{v}`] = [____]{$v1}
+
+b) [` \vec{u} + \vec{w} = `] [____]{$v2}
+
+c) [` [$k] \vec{u} = `] [_____]{$v3}
+
+d) [` \vec{u}-\vec{v} =`] [____]{$v4}
+
+e) [`[$k1]\vec{v}+[$k2]\vec{w} `] [_____]{$v5}
+
+Note: In this case, the vectors are written in the form of a sequence with angle brackets.  Your solution should have the same form.  Also, these operations are equivalent to those with either row or column vectors.
+
+Enter vectors with < >.  [@ helpLink('vector') @]*
+END_PGML
+
+
+
+BEGIN_PGML_SOLUTION
+In these cases, each operation is done element by element.  For example
+
+a) [``` \vec{u}+\vec{v} = 
+\begin{bmatrix} 
+([$U->{data}[0]]) + ([$V->{data}[0]]) \\
+([$U->{data}[1]]) + ([$V->{data}[1]]) \\
+([$U->{data}[2]]) + ([$V->{data}[2]]) 
+\end{bmatrix} = 
+\begin{bmatrix} 
+[$v1->{data}[0]] \\
+[$v1->{data}[1]] \\
+[$v1->{data}[2]]
+\end{bmatrix}
+```]
+    Similarly, 
+b) [``` \vec{u} + \vec{w} = \begin{bmatrix} 
+[$v2->{data}[0]] \\
+[$v2->{data}[1]] \\
+[$v2->{data}[2]]
+\end{bmatrix}
+```]
+c) [``` 5\vec{u} = \begin{bmatrix} 
+[$v3->{data}[0]] \\
+[$v3->{data}[1]] \\
+[$v3->{data}[2]]
+\end{bmatrix}
+```]
+
+d) [``` \vec{u} - \vec{v} = \begin{bmatrix} 
+[$v4->{data}[0]] \\
+[$v4->{data}[1]] \\
+[$v4->{data}[2]]
+\end{bmatrix}
+```]
+
+e) [``` 4\vec{v} + 3\vec{w} = \begin{bmatrix} 
+[$v5->{data}[0]] \\
+[$v5->{data}[1]] \\
+[$v5->{data}[2]]
+\end{bmatrix}
+```]
+
+
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,51 @@
+## DESCRIPTION
+## Find the equation of all points perpendicular to a vector in R^3.
+## ENDDESCRIPTION
+## KEYWORDS('plane','equation')
+
+## DBsubject(Linear algebra)
+## DBchapter(Inner products)
+## DBsection(Computing with dot products)
+## Date(September 5, 2011)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',        'PGML.pl',
+    'parserVectorUtils.pl', 'parserImplicitPlane.pl',
+    'PGcourse.pl'
+);
+
+Context('ImplicitPlane');
+Context()->variables->are(x => 'Real', y => 'Real', z => 'Real');
+
+$u = ColumnVector(non_zero_point3D(-5, 5));
+$x = non_zero_point3D(-5, 5);
+
+$ans = ImplicitPlane([ $u->value ], $u . $x, [ 'x', 'y', 'z' ]);
+
+BEGIN_PGML
+
+Consider the vector [`` \vec{u} = [$u] ``]
+
+The set of points that are perpendicular to [` \vec{u} `] and pass through
+the point [`[$x]`] form an equation.
+
+The equation is [___]{$ans}
+
+Hint: think geometrically about this problem.  What is the geometric object
+that is perpendicular to a vector?  How best write it down as a function of
+[`x, y`] and [`z`]?
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The set of points is a plane.  The given vector will be the normal vector of the plane.
+Therefore, to find the equation
+[``` [$u] \cdot \langle x-[@ ($x->value)[0] @],y-[@ ($x->value)[1] @],
+x-[@ ($x->value)[2] @] \rangle =0 ```]
+or
+[```[$ans1]```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

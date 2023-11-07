@@ -62,10 +62,10 @@ $alt_text =
 
 $radio = RadioButtons(
     [ [
-        "The graph gives the impression that $p1's popularity is decreasing ",
+        "The graph gives the impression that $p1\'s popularity is decreasing ",
         'The graph does not show the number of voters polled each month. ',
         "The graph does not show the percent of voters who chose $p1. ",
-        "The graph gives the impression that $p1's popularity is changing at "
+        "The graph gives the impression that $p1\'s popularity is changing at "
             . 'a constant rate.  '
     ] ],
     0
@@ -92,7 +92,7 @@ BEGIN_PGML_SOLUTION
 While all of the choices state facts that are correct, the one unusual thing that would not
 be expected by the readers is that a line with negative slope would indicate increasing popularity.
 A person who did not look carefully would assume that a negative slope would indicate decreasing
-popularity. That is : the graph gives the impression that [$p1]'s popularity is decreasing.
+popularity. That is the graph gives the impression that [$p1]'s popularity is decreasing.
 END_PGML_SOLUTION
 
 ENDDOCUMENT();

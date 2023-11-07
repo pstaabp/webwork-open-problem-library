@@ -1,0 +1,70 @@
+## DESCRIPTION
+## Asks the student to put a 3 by 4 matrix in reduced row echelon form.
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Matrices')
+## DBsection('Row Operations')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated on 2022.10.29
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    'PGstandard.pl',      'PGML.pl',
+    'contextFraction.pl', 'MatrixReduce.pl',
+    'PGcourse.pl'
+);
+
+Context('Fraction')->parens->set("[" => { formMatrix => 1 });
+# Define all variables used in the problem statement and solution
+
+do {
+    ($a11, $a12, $a13) = (random(-4, 4), random(-4, 4), random(-4, 4));
+    ($a21, $a22, $a23) = (random(-4, 4), random(-4, 4), random(-4, 4));
+    $det1 = $a11 * $a22 - $a12 * $a21;
+} until $det1 != 0;
+
+($k1, $k2) = (non_zero_random(-3, 3), non_zero_random(-3, 3));
+
+($b1, $b2) = (random(-4, 4), random(-4, 4));
+# This makes entries of the matrix fractions and operations will remain fractions.
+$A = apply_fraction_to_matrix_entries(Matrix([
+    [ $a11, $a12, $a13, $b1 ],
+    [ $a21, $a22, $a23, $b2 ],
+    [
+        $k1 * $a11 + $k2 * $a21,
+        $k1 * $a12 + $k2 * $a22,
+        $k1 * $a13 + $k2 * $a23,
+        $k1 * $b1 + $k2 * $b2
+    ]
+]));
+
+$B = rref($A);
+
+BEGIN_PGML
+
+Write the following matrix in reduced row echelon form:
+
+[``` [$A] ```]
+
+Solution:
+
+[___]*{$B}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Recall that to put a matrix in row reduced echelon form, first try to use row operations
+to put a 1 in the upper left corner (if the first column are all zeros this isn't possible). 
+Then zero out the rest of the column. 
+
+Repeat this for the next column and so on.  The result will be
+[``` [$B] ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

@@ -1,0 +1,135 @@
+## DESCRIPTION
+## Asks the student to put a 3 by 4 matrix in reduced row echelon form.
+## ENDDESCRIPTION
+
+## KEYWORDS('lines')
+
+## DBsubject('Linear Algebra')
+## DBchapter('Matrices')
+## DBsection('Row Operations')
+## Date('September 5, 2008')
+## Author('Peter Staab')
+## Institution('Fitchburg State University')
+
+# updated on 2022.10.29
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    'PGstandard.pl',      'PGML.pl',
+    'contextFraction.pl', 'MatrixReduce.pl',
+    'PGcourse.pl'
+);
+
+Context('Fraction')->parens->set("[" => { formMatrix => 1 });
+# Define all variables used in the problem statement and solution
+
+sub fract_free_pivot {
+    my ($m, $r, $c, $d) = @_;
+
+    # If A[$row1,$col1] is negative, change the row:
+    $m = row_mult($m, $r, -1) if ($m->element($r, $c) < 0);
+
+    my @m = $m->value;
+    for my $k (1 .. 3) {
+        next if $k == $r;
+        ($a0, $a1) = ($m[ $k - 1 ][ $c - 1 ], $m[ $r - 1 ][ $c - 1 ]);
+        for my $j (0 .. 5) {
+            $m[ $k - 1 ][$j] =
+                (-$a0 * $m[ $r - 1 ][$j] + $a1 * $m[ $k - 1 ][$j]) / $d;
+        }
+    }
+
+    return { M => Matrix(@m), d => $m->element($r, $c) };
+}
+
+$A0 = Matrix([ map { [ map { random(-5, 5) } (1 .. 6) ] } (1 .. 3) ]);
+
+do {
+    ($row1, $col1) = (random(1, 3), random(1, 5));
+} until $A0->element($row1, $col1) != 0;
+
+# If A[$row1,$col1] is negative, change the row:
+if ($A0->element($row1, $col1) < 0) {
+    $A0 = row_mult($A0, $row1, -1);
+    $rf1 = "Since the pivot element is negative, perform the step \(-R_{$row1} \to R_{$row1}\)";
+}
+
+
+
+$FP1 = fract_free_pivot($A0, $row1, $col1, 1);
+$A1  = $FP1->{M};
+$d   = $FP1->{d};
+
+do {
+    ($row2, $col2) = (random(1, 3), random(1, 5));
+    } until $A1->element($row2, $col2) != 0
+    && $row1 != $row2
+    && $col1 != $col2;
+
+$FP2 = fract_free_pivot($A1, $row2, $col2, $d);
+$A2  = $FP2->{M};
+
+BEGIN_PGML
+Let [`A`] be
+
+[``` [$A0] ```]
+
+[``` [$A2] ```]
+
+Perform fraction-free pivoting to create positive integer pivots at the following rows/columns: 
+
+* Row [$row1], column [$col1]
+* Row [$row2], column [$col2]
+
+Resulting Matrix: 
+
+[_]*{$A2}
+
+*Note:* each the pivots should have the same value. 
+
+END_PGML
+
+@rows1 = grep { $_ != $row1 } (1..3);
+@a = map { ($_ == $row1 ? 1 : -1 ) * $A0->element($_, $col1) } (1..3);
+
+@rows2 = grep { $_ != $row2 } (1..3);
+@a2 = map { ($_ == $row2 ? 1 : -1 ) * $A0->element($_, $col2) } (1..3);
+
+
+
+BEGIN_PGML_SOLUTION
+We will use fraction free pivots about the sought after rows and columns. 
+
+[$rf1]*
+
+Performing the row operations to eliminate the rest of column [$col1], we use
+
+[``` 
+\begin{aligned}
+[$a[$rows1[0]-1]] R_{[$row1]} + [$a[$row1-1]] R_{[$rows1[0]]} & \to R_{[$rows1[0]]} \\
+[$a[$rows1[1]-1]] R_{[$row1]} + [$a[$row1-1]] R_{[$rows1[1]-1]} & \to R_{[$rows1[1]-1]}
+\end{aligned}
+```]
+resulting in 
+
+[``` [$A1] ```]
+
+Next, we perform a pivot about row [$row2], column [$col2]. 
+
+[$rf2]*
+
+[``` 
+\begin{aligned}
+[$a2[$rows2[0]-1]] R_{[$row2]} + [$2[$row2-1]] R_{[$rows2[0]]} & \to R_{[$rows2[0]]} \\
+[$a2[$rows2[1]-1]] R_{[$row2]} + [$a2[$row2-1]] R_{[$rows2[1]-1]} & \to R_{[$rows2[1]-1]}
+\end{aligned}
+```]
+resulting in 
+
+[``` [$A2] ```]
+
+where the rows: [$rows2[0]] and [$rows2[1]] have been divided by the previous pivot of [$d].
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

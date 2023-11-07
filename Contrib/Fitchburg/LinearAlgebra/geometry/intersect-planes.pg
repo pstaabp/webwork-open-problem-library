@@ -1,0 +1,96 @@
+## DESCRIPTION
+## Find the intersect of two planes written in parametric form.
+## ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Inner products)
+## DBsection(Projection and distance)
+## Date(September 5, 2011)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('lines')
+
+# updated 2022.12.12
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    'PGstandard.pl',        'PGML.pl',
+    'parserVectorUtils.pl', 'parserParametricLine.pl',
+    'PGcourse.pl'
+);
+
+Context('Vector');
+Context()->variables->are(t => 'Real');
+
+do {
+    $v1  = ColumnVector(non_zero_vector3D(-5, 5));
+    @vv1 = $v1->value;
+    $v2  = ColumnVector(non_zero_vector3D(-5, 5));
+    @vv2 = $v2->value;
+    $v3  = ColumnVector(non_zero_vector3D(-5, 5));
+    @vv3 = $v3->value;
+    $v4  = ColumnVector(non_zero_vector3D(-5, 5));
+    @vv4 = $v4->value;
+    $v5  = ColumnVector(non_zero_vector3D(-5, 5));
+    @vv5 = $v5->value;
+
+    $A = Matrix([
+        [ $vv1[0], $vv2[0], -$vv4[0], -$vv5[0], $vv3[0] ],
+        [ $vv1[1], $vv2[1], -$vv4[1], -$vv5[1], $vv3[1] ],
+        [ $vv1[2], $vv2[2], -$vv4[2], -$vv5[2], $vv3[2] ]
+    ]);
+
+    $A0 = Matrix([
+        [ $vv1[0], $vv2[0], -$vv4[0] ],
+        [ $vv1[1], $vv2[1], -$vv4[1] ],
+        [ $vv1[2], $vv2[2], -$vv4[2] ]
+    ]);
+    $d = $A0->det;
+
+} until ($d != 0 && abs($d) <= 5);
+
+$A_rr = $A0->inverse * $A;
+$w    = ColumnVector($A_rr->column(4));
+$P    = ColumnVector($A_rr->column(5));
+
+$ans1 = ParametricLine("$P+t*$w");
+
+BEGIN_PGML
+Find the intersection of the planes, [`P_1`] and [`P_2`] where
+
+[```
+\begin{aligned}
+P_1 & =  \left\{ [$v1] t + [$v2] s \; | \; t, s \in \mathbb{R} \right\} \\
+P_2 & =  \left\{ [$v3]  + [$v4] p + [$v5] q \; | \; p, q \in \mathbb{R} \right\}
+\end{aligned}
+```]
+
+[` P_1 \bigcap P_2 `] = [____]{$ans1}
+
+Write your answer in the vector form [` \vec{P} + t \vec{w} `] like [|<1,2,3>+t<4,5,6>|]
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Overall, the intersection between two planes is a line and this problem seeks
+a line in the form of [`\vec{P} + t \vec{w}.`]
+
+There are a number of ways to solve this.  We will set the two planes equal
+to each other or
+[``` [$v1] t + [$v2] s  = [$v3]  + [$v4] p + [$v5] q ```]
+or
+[``` [$v1] t + [$v2] s - [$v4] p - [$v5] q = [$v3] ```]
+
+Which can be written as the augmented coefficent matrix
+
+[```[$A]```]
+and row reducing results in
+
+[```[$A_rr]```]
+
+And the 4th column will be the vector [`\vec{w}`] and vector [`\vec{P}`] is
+the last column. Thus the solution is
+[```[$w] t + [$P]```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();    # This should be the last executable line in the problem.

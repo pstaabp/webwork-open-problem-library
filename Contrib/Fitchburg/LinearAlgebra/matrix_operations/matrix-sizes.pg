@@ -1,0 +1,128 @@
+## DESCRIPTION
+## Find the size of the product of matrices if the product exists.
+## ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Matrices)
+## DBsection(Matrix algebra)
+## Date(September 5, 2011)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('matrix', 'product','size', 'dimensions')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'parserRadioMultiAnswer.pl', 'PGcourse.pl'
+);
+
+Context("Numeric");
+
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 0;
+
+$m1 = random(2, 4);
+$m2 = random(3, 5);
+$m3 = random(2, 6);
+$m4 = random(5, 10);
+$n1 = random(2, 4);
+$n2 = random(3, 5);
+$n3 = random(2, 6);
+$n4 = random(5, 10);
+
+$ab = random(1, 2);
+$cd = random(3, 4);
+
+if ($ab == 1) {
+    $r1 = random(2, 4);
+    $q1 = $r1;
+    do { ($r2, $q2) = (random(2, 4), random(2, 4)); } until $r2 != $q2;
+} else {
+    $r2 = random(2, 4);
+    $q2 = $r2;
+    do { ($r1, $q1) = (random(2, 4), random(2, 4)); } until $r1 != $q1;
+}
+
+if ($cd == 3) {
+    $r3 = random(3, 6);
+    $q3 = $r3;
+    do { ($r4, $q4) = (random(3, 6), random(3, 6)); } until $r4 != $q4;
+} else {
+    $r4 = random(3, 6);
+    $q4 = $r4;
+    do { ($r3, $q3) = (random(3, 6), random(3, 6)); } until $r3 != $q3;
+}
+
+$rma1 = RadioMultiAnswer(
+    [ ['does not exist.'], [ 'has size %s \(\times\) %s', $m1, $n1 ] ],
+    $ab == 1 ? 1 : 0);
+
+$rma2 = RadioMultiAnswer(
+    [ ['does not exist.'], [ 'has size %s \(\times\) %s', $m2, $n2 ] ],
+    $ab == 1 ? 0 : 1);
+
+$rma3 = RadioMultiAnswer(
+    [ ['does not exist.'], [ 'has size %s \(\times\) %s', $m3, $n3 ] ],
+    $cd == 3 ? 1 : 0);
+
+$rma4 = RadioMultiAnswer(
+    [ ['does not exist.'], [ 'has size %s \(\times\) %s', $m4, $n4 ] ],
+    $cd == 3 ? 0 : 1,
+);
+
+BEGIN_PGML
+
+If the matrix product result is defined, find the size of product by listing the number of rows, number of columns.
+
+a) The product of a [` [$m1] \times [$r1] `] matrix and a [` [$q1] \times [$n1] `] matrix
+[_]{$rma1}
+
+b) The product of a [` [$m2] \times [$r2] `] matrix and a [` [$q2] \times [$n2] `] matrix
+[_]{$rma2}
+
+c) The product of a [` [$m3] \times [$r3] `] matrix and a [` [$q3] \times [$n3] `] matrix
+[_]{$rma3}
+
+d) The product of a [` [$m4] \times [$r4] `] matrix and a [` [$q4] \times [$n4] `] matrix
+[_]{$rma4}
+
+END_PGML
+
+$ans1 =
+    $r1 == $q1
+    ? PGML(
+    'Since [`[$r1] = [$q1]`], the product exists and the result is [`[$m1]\times [$n1]`]'
+    )
+    : PGML('Since [`[$r1] \neq [$q1]`], the product does not exist. ');
+
+$ans2 =
+    $r2 == $q2
+    ? PGML(
+    'Since [`[$r2] = [$q2]`], the product exists and the result is [`[$m2]\times [$n2]`]'
+    )
+    : PGML('Since [`[$r2] \neq [$q2]`], the product does not exist. ');
+
+$ans3 =
+    $r3 == $q3
+    ? PGML(
+    'Since [`[$r3] = [$q3]`], the product exists and the result is [`[$m3]\times [$n3]`]'
+    )
+    : PGML('Since [`[$r3] \neq [$q3]`], the product does not exist. ');
+
+$ans4 =
+    $r4 == $q4
+    ? PGML(
+    'Since [`[$r4] = [$q4]`], the product exists and the result is [`[$m4]\times [$n4]`]'
+    )
+    : PGML('Since [`[$r4] \neq [$q4]`], the product does not exist. ');
+
+BEGIN_PGML_SOLUTION
+Recall that in order to multiply two matrices that the number of columns of the first must equal the number of rows of the second.  Or if you write it as [`A`] is size [`m_1 \times n_1`] and [`B`] is size [`m_2 \times n_2`] that in order for the product to be defined that [`n_1`] must equal [`m_2`]. 
+
+a) [$ans1]*
+b) [$ans2]*
+c) [$ans3]*
+d) [$ans4]*
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

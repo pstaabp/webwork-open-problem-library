@@ -1,0 +1,179 @@
+## DESCRIPTION
+## Find inner product of abstract vectors given the inner product.
+## ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Inner products)
+## DBsection(Computing with inner products)
+## Date(September 5, 2008)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## KEYWORDS('lines')
+
+# updated 2022.11.11
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'MathObjects.pl', 'PGcourse.pl', 'PGML.pl');
+
+Context('Numeric')->noreduce('(-x)-y', '(-x)+y');
+
+# Define all variables used in the problem statement and solution
+
+$a1 = ColumnVector([ random(-4, 4), random(-4, 4), random(-4, 4) ]);
+$a2 = ColumnVector([ random(-4, 4), random(-4, 4), random(-4, 4) ]);
+
+$anorm2 = $a1 . $a1;
+$ans1a  = Real($a1 . $a2);
+$ans1b  = Real(sqrt($a1 . $a1));
+do {
+    ($b11, $b12, $b13) = (random(-4, 4), random(-4, 4), random(-4, 4));
+    ($b21, $b22, $b23) = (random(-4, 4), random(-4, 4), random(-4, 4));
+} until !($b11 == 0 && $b12 == 0 && $b13 == 0)
+    && !($b21 == 0 && $b22 == 0 && $b23 == 0);
+
+$poly1 = Formula("$b11+ $b12 x + $b13 x^2")->reduce;
+$poly2 = Formula("$b21+ $b22 x + $b23 x^2")->reduce;
+
+$ans2a = Real(
+    (
+        6 * $b13 * $b23 +
+            10 * ($b11 * $b23 + $b21 * $b13 + $b12 * $b22) +
+            30 * $b11 * $b21
+    ) / 15
+);
+$ans2b = Real(sqrt(
+    (
+        6 * $b13 * $b13 +
+            20 * $b13 * $b11 +
+            10 * $b12 * $b12 +
+            30 * $b11 * $b11
+    ) / 15
+));
+
+($c11, $c12) = (random(-3, 3), random(-3, 3));
+($c21, $c22) = (random(-3, 3), random(-3, 3));
+
+$poly3 = Formula("$c11 + $c12 x")->reduce;
+$poly4 = Formula("$c21 + $c22 x")->reduce;
+
+$ans3a = Real($c11 * $c21 + $c12 * $c21 + $c22 * $c11 + 2 * $c12 * $c22);
+$ans3b = Real(sqrt($c11 * $c11 + 2 * $c11 * $c12 + 2 * $c12 * $c12));
+
+BEGIN_PGML
+Each of the following lists a vector space [`V`], an inner product and two vectors.
+Find the inner products or norm, where [`||f|| =\sqrt{ \langle f,f \rangle}`] for the given inner product.
+
+
+a)
+
+	[`` V = \mathbb{R}^3, \qquad \langle \vec{u},\vec{v} \rangle = \vec{u}^T \vec{v},
+	\qquad \vec{u} =  [$a1], \quad \vec{v} = [$a2]
+	``]
+
+	[` \langle \vec{u}, \vec{v} \rangle `] = [____]{$ans1a}
+
+	[` || \vec{u} || `] = [____]{$ans1b}
+
+
+b)
+
+	[`` V = \mathcal{P}_2, \qquad \langle p,q \rangle = \int_{-1}^1 p q \, dx ,
+	\qquad p =  [$poly1], \quad q = [$poly2] ``]
+
+	[` \langle p,q \rangle `] = [____]{$ans2a}
+
+	[` || p || `] = [____]{$ans2b}
+
+
+c)
+
+    [`` V = \mathcal{P}_1, \qquad \langle p,q \rangle = 
+        \int_{0}^{\infty} e^{-x} p q \, dx , \qquad p =  [$poly3], \quad q = [$poly4] ``]
+
+	[` \langle p,q \rangle `] = [____]{$ans3a}
+
+	[` || p || `] = [____]{$ans3b}
+
+END_PGML
+
+$prod2 = Compute(
+    "$b11*$b21 + ($b11*$b22+$b12*$b21)*x+($b11*$b23+$b12*$b22+$b13*$b21)*x^2  "
+        . "+ ($b13*$b22 + $b12*$b23)x^3+$b13*$b23*x^4")->reduce;
+$anti2 =
+    Compute("$b11*$b21 * x + ($b11*$b22+$b12*$b21)*x^2/2+ "
+        . "($b11*$b23+$b12*$b22+$b13*$b21)*x^3/3  "
+        . "+ ($b13*$b22 + $b12*$b23)x^4/4+$b13*$b23*x^5/5");
+
+$sq2 = Compute("$b11*$b11 + (2*$b12*$b11)x + (2*($b11*$b13) + $b12*$b12) x^2"
+        . "+ (2*$b13*$b12) x^3 + $b13*$b13 x^4")->reduce;
+$antisq2 = Compute(
+    "$b11*$b11*x + (2*$b12*$b11)x^2/2 + (2*($b11*$b13) + $b12*$b12) x^3/3"
+        . "+ (2*$b13*$b12) x^4/4 + $b13*$b13 x^5/5")->reduce;
+
+BEGIN_PGML_SOLUTION
+a) [``` \langle \vec{u},\vec{v} \rangle = \vec{u}^T \vec{v} 
+    = ([$a1->data->[0]])([$a2->data->[0]]) + 
+    ([$a1->data->[1]])([$a2->data->[1]]) + 
+    ([$a1->data->[2]])([$a2->data->[2]])  = [$ans1a]
+    ```]
+
+    [``` ||\vec{u}|| = \sqrt{\vec{u}^{\intercal} \vec{u}} = 
+    \sqrt{([$a1->data->[0]])^2 + 
+    ([$a1->data->[1]])^2 + 
+    ([$a1->data->[2]])^2} = [$ans1b] ```]
+
+b) [```
+    \begin{aligned}
+    \langle p,q \rangle & = \int_{-1}^1 p q \, dx \\
+    & = \int_{-1}^1 ([$poly1])([$poly2]) \,dx \\
+    & = 2\int_{0}^1 ([$poly1])([$poly2]) \,dx \\
+    & = 2\int_0^1 \left([$prod2]\right) \, dx \\
+    & = 2 \int_0^1 \left([$anti2]\right) \, dx \\
+    & = [$ans2a]
+    \end{aligned} 
+    ```]
+
+    [```
+    \begin{aligned}
+    ||p|| & = \left(\int_{-1}^1 p^2 \, dx \right)^{1/2}
+    = \left(\int_{-1}^1 ([$poly1])^2 \, dx \right)^{1/2}  \\
+    & = \left(\int_{-1}^1 \left([$sq2]\right) \, dx \right)^{1/2} \\
+    & = \left(2\int_0^1 \left([$sq2]\right) \, dx \right)^{1/2} \\
+    & = \left(2\int_0^1 \left([$antisq2]\right) \, dx \right)^{1/2} \\
+    & = [$ans2b]
+    \end{aligned}
+    ```]
+c) First it is helpful to know, derive or lookup:
+    [``` \int_0^{\infty} x^n e^{-x} \, dx = n! ```]
+
+[```
+    \begin{aligned}
+    \langle p,q \rangle & = \int_0^{\infty}e^{-x} p q \, dx \\
+    & = \int_0^{\infty}e^{-x} ([$poly3])([$poly4]) \, dx \\
+    & = \int_0^{\infty}e^{-x} \left([$c11*$c21] + [$c21*$c11+$c12*$c22] x + [$c12*$c22]x^2\right) \, dx \\
+    & = [$c11*$c21] \int_0^{\infty} e^{-x} \, dx [@ $c21*$c11+$c12*$c22 < 0 ? '-' : '+' @]
+        [@ abs($c21*$c11+$c12*$c22) @] \int_0^{\infty} x e^{-\infty} 
+        [@ $c12*$c22 < 0 ? '-' : '+' @]
+        [@ abs($c12*$c22) @] \int_0^{\infty} x^2 e^{-\infty} \\
+    & = [$c11*$c21]  [@ $c21*$c11+$c12*$c22 < 0 ? '-' : '+' @]
+        [@ abs($c21*$c11+$c12*$c22) @] (1)
+        [@ $c12*$c22 < 0 ? '-' : '+' @]
+        [@ abs($c12*$c22) @] (2) = [$ans3a]
+        \end{aligned}
+    ```]
+
+    [```
+    \begin{aligned}
+    ||p|| & = \left(\int_0^{\infty}e^{-x} p^2 \, dx \right)^{1/2} \\
+    & = \left(\int_0^{\infty}e^{-x} ([$poly3])^2 \, dx \right)^{1/2}\\
+    & = \left(\int_0^{\infty}e^{-x} \left([$c11*$c11] + [$c11*$c12*2] x + [$c12*$c12]x^2\right) \, dx \right)^{1/2}\\
+    & = \left([$c11*$c11] \int_0^{\infty} e^{-x} \, dx [@ 2*$c11*$c12 < 0 ? '-' : '+' @]
+        [@ abs(2*$c11*$c12) @] \int_0^{\infty} x e^{-\infty} +
+        [@ abs($c12*$c12) @] \int_0^{\infty} x^2 e^{-\infty}  \right)^{1/2} \\
+    & = \sqrt{[$c11*$c11] (1) [@ 2*$c11*$c12 < 0 ? '-' : '+' @] [@ abs(2*$c11*$c12) @] (1)
+        + [@ abs($c12*$c12) @] (2)} = [$ans3b]
+        \end{aligned}
+    ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
