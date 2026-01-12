@@ -1,0 +1,31 @@
+name: Run Script on PR Files
+
+on:
+  pull_request:
+    branches: [ run-gha-scripts ]
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout the code
+      # fetch-depth: 0 is required to see the history and compare branches
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. Get the list of changed files
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v44
+
+      # 3. Run your script on those files
+      - name: Run script on changed files
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "Processing file: $file"
+            # Replace the line below with your actual script or command
+            # Example: gofmt -s -w "$file" or ./my-script.sh "$file"
+          done
