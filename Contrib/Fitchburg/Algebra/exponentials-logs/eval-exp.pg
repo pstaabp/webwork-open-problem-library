@@ -3,7 +3,7 @@
 ##ENDDESCRIPTION
 
 ##SubjectDB('Algebra')
-
+##ChapterDB('Exponentials and Logs')
 
 
 DOCUMENT();
