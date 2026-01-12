@@ -2,7 +2,7 @@ name: Run Script on PR Files
 
 on:
   pull_request:
-    branches: [ run-gha-scripts ]
+    branches: [ test-gha ]
 
 jobs:
   run-script:
