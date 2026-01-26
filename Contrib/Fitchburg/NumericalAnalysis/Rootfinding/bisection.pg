@@ -11,17 +11,9 @@
 ## Author('Peter Staab')
 ## Institution('Fitchburg State University')
 
-########################################################################
-##############################
-#  Initialization
-
 DOCUMENT();
 
-loadMacros(
-    'PGstandard.pl',        'PGML.pl',
-    'PGnumericalmacros.pl', 'niceTables.pl',
-    'PGcourse.pl'
-);
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGnumericalmacros.pl', 'PGcourse.pl');
 
 $k1 = random(1, 8);
 $k2 = random(1, 8);
@@ -31,7 +23,7 @@ $f = Compute("$k1*exp(-$k2*x)-x");
 $f1 = nicestring([ -$k2 ], ['x']);
 $f2 = nicestring([$k1],    [ "e^{" . $f1 . "}" ]);
 
-$bisect    = bisection($f, [ 0, 2 ]);
+$bisect    = bisection($f->perlFunction, [ 0, 2 ]);
 @intervals = @{ $bisect->{intervals} };
 
 $rows = [ [ '\(n\)', '\(a_n\)', '\(b_n\)' ], [ '\(0\)', 0, 2 ] ];
@@ -40,15 +32,15 @@ for $i (1 .. 6) {
         @$rows,
         [
             "\($i\)",
-            PGML::Format('[_]{$intervals[$i][0]}'),
-            PGML::Format('[_]{$intervals[$i][1]}')
+            PGML('[_]{$intervals[$i][0]}'),
+            PGML('[_]{$intervals[$i][1]}')
         ]
     );
 }
 $tab = LayoutTable(
     $rows,
     align           => '|c|c|c|',
-    padding         => [ 0.5, 0.5 ],
+    padding         => [ 0.25, 0.25 ],
     horizontalrules => 1
 );
 
@@ -59,15 +51,12 @@ There is one root of the function
 [``f(x)= [$f2]-x``]
 
 in the interval [` [0,2] `].  Use the bisection method to determine the
-left and right endpoints of the interval.  Determine through [`n=7`].
+left and right endpoints of the interval.  Determine through [`n=6`].
 Start with the initial interval:
 
 [@ $tab @]*
 
 END_PGML
-
-############################
-#  Solution
 
 $fa0 = $f->eval(x => 0);
 $fc0 = $f->eval(x => 1);
@@ -110,7 +99,7 @@ for $i (0 .. 6) {
 $tab2 = LayoutTable(
     $rows2,
     align           => '|c|c|c|',
-    padding         => [ 0.5, 0.5 ],
+    padding         => [ 0.25, 0.25 ],
     horizontalrules => 1
 );
 

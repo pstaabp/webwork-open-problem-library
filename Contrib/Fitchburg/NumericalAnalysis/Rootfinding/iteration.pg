@@ -12,7 +12,7 @@
 ## Institution('Fitchburg State University')
 
 DOCUMENT();
-loadMacros('PGstandard.pl', 'PGML.pl', 'niceTables.pl', 'PGcourse.pl');
+loadMacros('PGstandard.pl', 'PGML.pl',  'PGcourse.pl');
 
 $k = random(2,    8);
 $a = random(0.25, 2.5, 0.25);

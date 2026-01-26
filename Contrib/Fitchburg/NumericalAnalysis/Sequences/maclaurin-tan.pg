@@ -13,13 +13,7 @@
 
 DOCUMENT();
 
-loadMacros('PGstandard.pl', 'MathObjects.pl', 'AnswerFormatHelp.pl', 'PGML.pl');
-
-TEXT(beginproblem());
-$showPartialCorrectAnswers = 1;
-
-#############################
-#  Setup
+loadMacros('PGstandard.pl', 'PGML.pl');
 
 Context('Numeric');
 
@@ -59,9 +53,6 @@ Absolute Error: [_____________]{$abserror}
 
 Relative Error: [_____________]{$relerror}
 END_PGML
-
-############################
-#  Solution
 
 BEGIN_PGML_SOLUTION
 

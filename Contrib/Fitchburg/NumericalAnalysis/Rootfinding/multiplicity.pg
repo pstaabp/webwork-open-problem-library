@@ -2,7 +2,7 @@
 ##  Use derivatives to determine the multiplicity of a root.
 ##ENDDESCRIPTION
 
-##KEYWORDS('algebra', 'inequality', 'fraction')
+##KEYWORDS('multiplicity', 'polynomial')
 
 ## DBsubject('Calculus - single variable')
 ## DBchapter('Applications of Differentiation')
@@ -19,21 +19,14 @@ loadMacros(
     'PGcourse.pl'
 );
 
-TEXT(beginproblem());
-$showPartialCorrectAnswers = 1;
-
-#############################
-#  Setup
-
 Context('Fraction');
-$showPartialCorrectAnswers = 1;
+$showPartialCorrectAnswers = 0;
 $showPartialCredit         = 0;
 
-$a = non_zero_random(-5, 5);
-$b = $a;
-while ($a == $b) {
+do {
+    $a = non_zero_random(-5, 5);
     $b = non_zero_random(-3, 3);
-}
+} until ($a != $b);
 
 @p  = (1);
 $p1 = [ 1, -$a ];
@@ -48,8 +41,8 @@ $m1 = 5 - $n1;
 for ($i = 0; $i < $m1; $i++) {
     @p = PolyMult($p2, ~~@p);
 }
-$out = PolyString(~~@p);
-$f   = Compute($out);
+
+$poly1 = Compute(PolyString(~~@p))->reduce;
 
 ### e^{kx} - taylor
 
@@ -65,10 +58,9 @@ for ($i = 1; $i < $n2; $i++) {
 }
 
 @tay2a = reverse @tay2;
-
-$tayout2 = nicestring(~~@tay2a);
-$arg2    = nicestring([ $k2, 0 ]);
-$g       = Compute("$tayout2-e^($arg2)");
+$tay_f = Compute(PolyString(~~@tay2a))->reduce;
+$arg2  = Compute("$k2 x")->reduce;
+$g     = Compute("$tay_f-e^($arg2)");
 
 ### sin(kx) - taylor
 
@@ -77,19 +69,18 @@ $k3 = random(1, 4);
 
 @tay3    = (Fraction(-$k3**3, 6), 0, $k3, 0);
 $tayout3 = PolyString(~~@tay3);
-$arg3    = nicestring([ $k3, 0 ]);
+$arg3    = Compute("$k3 x")->reduce;
 $h       = Compute("$tayout3-sin([$arg3])");
 
 BEGIN_PGML
 
 For each of the following functions and points, determine the multiplicity.
 
-
-1) [`` f(x) = [$out] ``] at [` x= [$a] `]
+1) [`` f(x) = [$poly1] ``] at [` x= [$a] `]
 
 	Multiplicity is [_______]{$n1}
 
-2) [`` g(x) = [$tayout2] -e^{[$arg2]} ``] at [`x=0`]
+2) [`` g(x) = [$g] ``] at [`x=0`]
 
 	Multiplicity is [_______]{$n2}
 
@@ -107,7 +98,7 @@ Therefore, take successive derivatives of the functions above, evaluate them at 
 given point and determine when the deriative at the point is not zero.
 END_PGML_HINT
 
-$df = $f;
+$df = $poly1;
 @fx0;
 for (0 .. $n1 + 1) {
     $fx0[$_] = $df->eval(x => $a);
@@ -143,13 +134,13 @@ For each of these, we'll use the fact that a function [`f(x)`] has a root of
 multiplicity [`k`] at [`x=x_0`] if [`f^{(n)}(x_0) = 0 `] for [`n=0,1,2,\ldots,k-1`]
 and [`f^{(k)}(x_0) \neq 0`].
 
-1) For this function: [@ '\(' . $dfs . '0\)' @]  and [`f^{([$n1])}([$a])=[$fx0[$n1]] `],
+1) For this function: [` [$dfs]0 `]  and [`f^{([$n1])}([$a])=[$fx0[$n1]] `],
 so the multiplicity is [$n1]
 
-2) For this function: [@ '\(' . $dgs . '0\)' @]  and [`g^{([$n2])}(0)=[$gx0[$n2]] `],
+2) For this function: [` [$dgs]0 `] and [`g^{([$n2])}(0)=[$gx0[$n2]] `],
 so the multiplicity is [$n2]
 
-3) For this function: [@ '\(' . $dhs . '0\)' @]  and [`h^{(5)}(0)=[$hx0[5]] `],
+3) For this function: [`[$dhs]0`]  and [`h^{(5)}(0)=[$hx0[5]] `],
 so the multiplicity is 5.
 
 END_PGML_SOLUTION
