@@ -24,30 +24,16 @@ Context('Numeric');
 
 $a = random(17, 26);
 
+$x0 = random(1,2,0.1);
+
 $f        = Compute("x^3-$a");
+$f0 = sub {my $x = shift; return $x**3-$a;};
+$df0 = sub {my $x = shift; return 3*$x**2;};
 $cuberoot = $a**(1 / 3);
-@x        = @{ newton($f, 2.0)->{iterations} };
-@eps      = ();
-for ($i = 0; $i <= 7; $i++) {
-    push(@eps, abs($x[$i] - $cuberoot));
-}
+@x        = @{ newton($f0, $df0, $x0)->{iterations} };
+@eps = map { abs($_ - $cuberoot) } (@x);
 
-$xn = Compute("$x[0],$x[1],$x[2],$x[3],$x[4]");
-
-$lambda = 1 / $a**(1 / 3);
-
-$rows1 = [ [
-    '\(n\)', '\(x_n\)',
-    [ '\(\epsilon_n\)', rowcss => 'border-bottom: 1px solid;' ]
-] ];
-push(@$rows1, [ "\($_\)", ans_rule(6), ans_rule(6) ]) for (0 .. 4);
-$tab1 = LayoutTable(
-    $rows1,
-    align      => '|c|c|c|',
-    allcellcss => 'padding:6px;',
-    center     => 1,
-    tablecss   => 'border:solid 1px;'
-);
+$lambda = Real(1 / $a**(1 / 3));
 
 BEGIN_PGML
 
@@ -59,29 +45,24 @@ and the sequence will converge to [`\sqrt[3]{a}`]
 
 Let [`a=[$a]`] and [`x_0=2`]. Find the first 5 points in the sequence (starting with [`x_0`]) and the errors (find using a calculator or computer the decimal value of [`\sqrt[3]{[$a]} `]).   Use at least 8 digits.
 
-[@ $tab1 @]*
+[#
+    [.[`n`].] [.[`x_n`].] [. [`\epsilon_n`] .]*{headerrow => 1}
+    [. 0 .] [. [_]{$x[0]} .] [. [_]{$eps[0]}.]*
+    [. 1 .] [. [_]{$x[1]} .] [. [_]{$eps[1]}.]*
+    [. 2 .] [. [_]{$x[2]} .] [. [_]{$eps[2]}.]*
+    [. 3 .] [. [_]{$x[3]} .] [. [_]{$eps[3]}.]*
+    [. 4 .] [. [_]{$x[4]} .] [. [_]{$eps[4]}.]*
+    [. 5 .] [. [_]{$x[5]} .] [. [_]{$eps[5]}.]*
+    
+#]{padding => 0.2}
 
-Use the errors to numerically estimate the order of the method [_____________]
+Use the errors to numerically estimate the order of the method [_]{Real(2)}
 
 Estimate the asymptotic error constant
-[______________]
+[_]{$lambda->cmp(tolerance => 0.08)}
 
 END_PGML
 
-for $i (0 .. 2) {
-    ANS(Compute($x[$i])->cmp);
-    ANS(Compute($eps[$i])->cmp);
-}
-
-## since the errors are small, change the tolerance to give flexibility.
-ANS(Compute($x[3])->cmp);
-ANS(Compute($eps[3])->with(tolerance => 1)->cmp);
-
-ANS(Compute($x[4])->cmp);
-ANS(Compute($eps[4])->with(tolerance => 10)->cmp);
-
-ANS(Compute(2.0)->cmp);
-ANS(Compute($lambda)->with(tolerance => 0.1)->cmp);
 
 ############################
 #  Solution
@@ -91,7 +72,7 @@ ANS(Compute($lambda)->with(tolerance => 0.1)->cmp);
 @errRat2 = ();
 @errRat3 = ();
 
-for ($i = 0; $i < 4; $i++) {
+for ($i = 0; $i < 6; $i++) {
     push(@errRat1, $eps[ $i + 1 ] / $eps[$i]);
     push(@errRat2, $eps[ $i + 1 ] / $eps[$i]**2);
     push(@errRat3, $eps[ $i + 1 ] / $eps[$i]**3);
@@ -105,43 +86,40 @@ Iterating the formula, we get
 
 Similarly for the next few iterates, you get:
 
-[@
-begintable(2) .
-row('n',"\\(x_n\\)") .
-row('0',$x[0]).
-row('1',$x[1]).
-row('2',$x[2]).
-row('3',$x[3]).
-row('4',$x[4]).
-endtable();
-@]*
+>> [#
+    [.[`n`].] [.[`x_n`].]*{headerrow => 1}
+    [.[`0`].] [. [$x[0]] .]*
+    [.[`1`].] [. [$x[1]] .]*
+    [.[`2`].] [. [$x[2]] .]*
+    [.[`3`].] [. [$x[3]] .]*
+    [.[`4`].] [. [$x[4]] .]*
+    [.[`5`].] [. [$x[5]] .]*
+#]{padding => 0.2} <<
 
 To find the errors for each of these, we compute [` \epsilon_n = |x_n-\sqrt[3]{[$a]}| `].  The result is the following table:
-
-[@
-begintable(2) .
-row('n',"\\(\\epsilon_n\\)") .
-row('0',$eps[0]).
-row('1',$eps[1]).
-row('2',$eps[2]).
-row('3',$eps[3]).
-row('4',$eps[4]).
-endtable();
-@]*
+>> [#
+    [.[`n`].] [.[`x_n`].]*{headerrow => 1}
+    [.[`0`].] [. [$eps[0]] .]*
+    [.[`1`].] [. [$eps[1]] .]*
+    [.[`2`].] [. [$eps[2]] .]*
+    [.[`3`].] [. [$eps[3]] .]*
+    [.[`4`].] [. [$eps[4]] .]*
+    [.[`5`].] [. [$eps[5]] .]*
+#]{padding => 0.2} <<
 
 And lastly to estimate the order of convergence, we compute the ratio [`` \frac{\epsilon_{n+1}}{\epsilon_n^{\alpha}} ``] for [`\alpha=1,2,3`]:
 
-*Error Sequence A*
+**Numerically Checking the Order**
 
-[@
-begintable(3) .
-row("\\(\\alpha=1\\)", "\\(\\alpha=2\\)", "\\(\\alpha=3\\)") .
-row($errRat1[0],$errRat2[0],$errRat3[0]) .
-row($errRat1[1],$errRat2[1],$errRat3[1]) .
-row($errRat1[2],$errRat2[2],$errRat3[2]) .
-row($errRat1[3],$errRat2[3],$errRat3[3]) .
-endtable();
-@]*
+>> [#
+    [.[`n`].] [.[`\alpha=1`].][.[`\alpha=2`].][.[`\alpha=3`].]*{headerrow => 1}
+    [.[`0`].] [. [$errRat1[0]] .][. [$errRat2[0]] .][. [$errRat3[0]] .]*
+    [.[`1`].] [. [$errRat1[1]] .][. [$errRat2[1]] .][. [$errRat3[1]] .]*
+    [.[`2`].] [. [$errRat1[2]] .][. [$errRat2[2]] .][. [$errRat3[2]] .]*
+    [.[`3`].] [. [$errRat1[3]] .][. [$errRat2[3]] .][. [$errRat3[3]] .]*
+    [.[`4`].] [. [$errRat1[4]] .][. [$errRat2[4]] .][. [$errRat3[4]] .]*
+    [.[`5`].] [. [$errRat1[5]] .][. [$errRat2[5]] .][. [$errRat3[5]] .]*
+#]{padding => 0.2} <<
 
 And as can be scene from the [`\alpha = 2`] column, the ratio is nearly constant, so the order this is 2 (quadratic) and the asymptotic error constant is [$lambda].
 

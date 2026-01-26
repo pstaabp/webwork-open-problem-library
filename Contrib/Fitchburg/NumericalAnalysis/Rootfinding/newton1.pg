@@ -13,32 +13,27 @@
 
 DOCUMENT();
 
-loadMacros(
-    'PGstandard.pl',        'PGML.pl',
-    'PGnumericalmacros.pl', 'niceTables.pl',
-    'PGcourse.pl'
-);
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGnumericalmacros.pl', 'PGcourse.pl');
 
-$a1 = random(2, 4);
-$a2 = random(2, 4);
-$k1 = 0.1 * random(1, 9);
-$k2 = 0.1 * random(1, 9);
+$a1 = random(2,   4);
+$a2 = random(2,   4);
+$k1 = random(0.1, 0.9, 0.1);
+$k2 = random(0.1, 0.9, 0.1);
 
-$x0 = 0.5 * random(0, 10);
+$x0 = random(0, 1, 0.1);
 
 $f  = Compute("$a1*cos($k1*x)+$a2*sin($k2*x)");
 $df = $f->D('x');
 
-$newton = newton($f, $x0, eps => 1e-12);
+$newton = newton($f->perlFunction, $df->perlFunction, $x0, eps => 1e-12);
 @x      = @{ $newton->{iterations} };
 
-$rows =
-    [ [ '\(n\)', '\(x_n\)' ] ];
-push(@$rows, [ "\($_\)", PGML::Format("[_]{$x[$_]}") ]) for (0 .. 4);
+$rows = [ [ '\(n\)', '\(x_n\)' ] ];
+push(@$rows, [ "\($_\)", PGML("[_]{$x[$_]}") ]) for (0 .. 4);
 $tab = LayoutTable(
     $rows,
-    align      => '|c|c|',
-    padding => [0.5, 0.5],
+    align           => '|c|c|',
+    padding         => [ 0.5, 0.5 ],
     horizontalrules => 1
 );
 
@@ -53,7 +48,6 @@ For the first 4 iterations.  Start with [`x_0=[$x[0]]`].
 [@ $tab @]*
 
 END_PGML
-
 
 ############################
 #  Solution
@@ -72,8 +66,7 @@ $dfexp =~ s/x/x_n/g;
 $df0 = $df->TeX;
 $df0 =~ s/x/($x0)/g;
 
-$rows2 =
-    [ [ '\(n\)', '\(x_n\)' ] ];
+$rows2 = [ [ '\(n\)', '\(x_n\)' ] ];
 push(@$rows2, [ "\($_\)", "\($x[$_]\)" ]) for (0 .. 4);
 
 BEGIN_PGML_SOLUTION
