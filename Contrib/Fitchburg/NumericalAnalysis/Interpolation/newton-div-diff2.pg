@@ -1,5 +1,5 @@
 ##DESCRIPTION
-##  Algebra problem: true or false for inequality
+##  Produce a Newton Divided Difference table and find the resulting interpolating polynomial.
 ##ENDDESCRIPTION
 
 ##KEYWORDS('algebra', 'inequality', 'fraction')
@@ -14,8 +14,7 @@
 DOCUMENT();
 
 loadMacros(
-    'PGstandard.pl',        'MathObjects.pl',
-    'niceTables.pl',        'PGML.pl',
+    'PGstandard.pl',        'PGML.pl',
     'PGnumericalmacros.pl', 'PGcourse.pl'
 );
 
@@ -44,12 +43,12 @@ if ($which == 1) {
 } elsif ($which == 4) {
     $k = random(2, 4);
     $f = Compute("asin($k*x)")->reduce;
-    $a = (-1 / $k, 1 / $k);
+    ($a,$b) = (-1 / $k, 1 / $k);
     ($int_a, $int_b) = ("-\frac{1}{$k}", "\frac{1}{$k}");
 } elsif ($which == 5) {
     $k = random(2, 4);
     $f = Compute("acos($k*x)");
-    $a = (-1 / $k, 1 / $k);
+    ($a, $b) = (-1 / $k, 1 / $k);
     ($int_a, $int_b) = ("-\frac{1}{$k}", "\frac{1}{$k}");
 }
 $f->{limits} = [ $a, $b ];
