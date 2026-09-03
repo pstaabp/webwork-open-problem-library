@@ -59,10 +59,9 @@ BEGIN_PGML
 
 Divide: [`` \frac{[$num1]}{[$den1]} \div \left(-\frac{[$den2]}{[$num2]}\right) ``]
 
-[@KeyboardInstructions("If needed, use an improper fraction in your answer. Don't use a mixed number.")@]**
-
     [_________]{$ans} 
-
+    
+*If needed, use an improper fraction in your answer. Don't use a mixed number.*
 END_PGML
 
 ##############################################

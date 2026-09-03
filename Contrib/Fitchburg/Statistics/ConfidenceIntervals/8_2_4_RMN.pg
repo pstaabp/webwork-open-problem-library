@@ -1,0 +1,59 @@
+## DESCRIPTION
+## A problem that asks students to find the margin of error and confidence interval for
+## the size of a 16-ounce soda.
+## ENDDESCRIPTION
+
+# This problem is derived from a homework problem in Introductory Statistics,
+# licensed by OpenStax under a Creative Commons Attribution License (CC BY 4.0).
+# Modified for WeBWorK by Michael Stassen   mstassen(at)fitchburgstate(dot)edu
+
+## DBsubject('Introductory Statistics')
+## DBchapter('7')
+## DBsection('1')
+## KEYWORDS('confidence interval', 'margin of error')
+## Author('Michael Stassen')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros('PGstandard.pl', "PGML.pl", "PGstatisticsmacros.pl", 'PGcourse.pl');
+
+Context("LimitedNumeric");
+loadMacros("fixedPrecision.pl");    # must come after Context is set.
+
+$conf  = list_random(90, 95, 99);
+$alpha = 1 - $conf / 100;
+
+$n    = random(30,    40,    1);
+$Xbar = random(13.31, 14.29, .02);
+$s    = random(1.45,  1.65,  .02);
+
+$t = round(tdistr($n - 1, $alpha / 2), 3);
+
+$E = FixedPrecision($t * $s / sqrt($n), 2);
+
+$X1 = FixedPrecision($Xbar - $E, 2);
+$X2 = FixedPrecision($Xbar + $E, 2);
+
+BEGIN_PGML
+A quality control specialist for a restaurant chain takes a random sample of
+size [$n] to check the amount of soda served in the 16 oz. serving size, finding
+a mean of [$Xbar] oz. with a standard deviation of [$s] oz.
+
+We wish to calculate a [$conf]% confidence interval for the mean amount of soda
+served in the 16 oz. serving size. (Round to the nearest 0.01 oz.) 
+
+a. What is the margin of error for a [$conf]% confidence interval? [____]{$E} oz.  
+b. The [$conf]% confidence interval is from [____]{$X1} oz. to [____]{$X2} oz.  
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+For this problem, the population standard deviation is *not* known so the [`t`]-distribution is used, however, because the samples size is fairly large, using the [`z`]-distribution should be nearly the same answer. 
+
+a) The margin of error for this is 
+[``` ME = t_{\alpha/2,n} \frac{s}{\sqrt{n}} = [$t] \frac{[$s]}{\sqrt{[$n]}} = [$E] ```]
+
+b) The confidence interval is from [`\bar{x}-ME`] to [`\bar{x}+ME`] or [`[$X1]`] to [`[$X2]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

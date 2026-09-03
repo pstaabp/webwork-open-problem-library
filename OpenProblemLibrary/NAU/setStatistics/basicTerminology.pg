@@ -8,107 +8,61 @@
 ## KEYWORDS('statistic', 'sample', 'definition')
 ## Level(1)
 
+DOCUMENT();
 
-DOCUMENT(); 
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioButtons.pl', 'PGcourse.pl');
 
-loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl",
-  "PGcourse.pl"
+@slice = num_sort(random_subset(3, 0 .. 4));
+
+@question = (
+    'Identify the population',
+    'Identify the parameter',
+    'Identify the statistic.',
+    'Identify the sample',
+    'What is the sample size?'
 );
 
-TEXT(beginproblem());
-
-######################################
-#  Setup
-
-@FourProblems = (0,1,2,3,4);  #Order the problems
-@scramble = NchooseK(5,4);
-@order = @FourProblems[@scramble];
-
-$m1 = random(1000,2000,1);
+$m1 = random(1000,2000);
 $m2 = random(600,700,2);
-$m3 = random(15,30,1);
+$m3 = random(15,30);
 
+@opts = (
+    [
+        "entire singers ",
+        "$m3/$m1", "percentage of entire singers who are professional"
+    ],
+    [
+        'percentage of entire singers who are professional',
+        'range of values in which 95% values fall',
+        "$m3 "
+    ],
+    [ "$m3/$m2 ",               $m1,        'entire choir members' ],
+    [ "singers who were asked", "$m3/$m1 ", "$m2 " ],
+    [ "$m2 ",                   "$m1 ",     "$m3 " ]
+);
 
-$mc[0] = new_multiple_choice();
-     $mc[0]->qa(" Identify the population ",
-	"entire singers "); 
-     $mc[0]->extra("$m3/$m1 ", 
-	"percentage of entire singers who are professional ");
+@rb =
+    map { RadioButtons([ $opts[$_], 'None of the above' ], 0, labels => 'ABC') }
+    (0 .. $#opts);
 
-     $mc[0]->makeLast("None of the above. ");
+BEGIN_PGML
+A choral conductor has [$m1] singers in her choir, some of them are professional singers. The conductor wants to estimate what percentage of singers are professional, 
+but can't ask all [$m1], so she instead asks [$m2] singers in front and finds [$m3] who are professionals.
 
-$mc[1] = new_multiple_choice();
-     $mc[1] ->qa("Identify the parameter",
-	"percentage of entire singers who are professional "); 
-     $mc[1]->extra("range of values in which 95% values fall ", 
-	"$m3 ");
-     $mc[1]->makeLast("None of the above. ");
+a) [$question[$slice[0]]] [_]{$rb[$slice[0]]}
 
-$mc[2] = new_multiple_choice();
-     $mc[2] ->qa("Identify the statistic. ",
-        "$m3/$m2 "); 
-     $mc[2]->extra("$m1 ", 
-	"entire choir members ");
-     $mc[2]->makeLast("None of the above. ");
+b) [$question[$slice[1]]] [_]{$rb[$slice[1]]}
 
-$mc[3] = new_multiple_choice();
-     $mc[3] ->qa("Identify the sample. ",
-	"singers who were asked"); 
-     $mc[3]->extra("$m3/$m1 ", 
-	"$m2 ");
-     $mc[3]->makeLast("None of the above. ");
+c) [$question[$slice[2]]] [_]{$rb[$slice[2]]}
 
-$mc[4] = new_multiple_choice();
-     $mc[4] ->qa("What specific type of bias does this scenario demonstrate? ",
-        "Convenience Sampling");
-     $mc[4] ->extra("Voluntary response sampling",
-        "It is representative of the population. ");
-     $mc[4]->makeLast("None of the above. ");
+END_PGML
 
+BEGIN_PGML_SOLUTION
+a) [$question[$slice[0]]] [$rb[$slice[0]]]
 
-#################################################
-#  Main
+b) [$question[$slice[1]]] [$rb[$slice[1]]]
 
-BEGIN_TEXT
-A choral conductor has $m1 singers in her choir, some of them are professional singers. The conductor wants to estimate what percentage of singers are professional, 
-but can't ask all $m1, so she instead asks $m2 singers in front and finds $m3 who are professionals.
-$PAR
-
-$BR
-(a)   \{ $mc[$order[0]] -> print_q() \}
-$BR
-\{$mc[$order[0]] -> print_a() \}
-
-$PAR
-(b)   \{ $mc[$order[1]] -> print_q() \}
-$BR
-\{$mc[$order[1]] -> print_a() \}
-
-$PAR
-(c)   \{ $mc[$order[2]] -> print_q() \}
-$BR
-\{$mc[$order[2]] -> print_a() \}
-
-$PAR
-(d)   \{ $mc[$order[3]] -> print_q() \}
-$BR
-\{$mc[$order[3]] -> print_a() \}
-
-END_TEXT
-
-#################################################
-#  Answers
-
-$showPartialCorrectAnswers = 0;
-
-ANS(radio_cmp($mc[$order[0]]->correct_ans));
-ANS(radio_cmp($mc[$order[1]]->correct_ans));
-ANS(radio_cmp($mc[$order[2]]->correct_ans));
-ANS(radio_cmp($mc[$order[3]]->correct_ans));
+c) [$question[$slice[2]]] [$rb[$slice[2]]]
+END_PGML_SOLUTION
 
 ENDDOCUMENT();  
-
-
-

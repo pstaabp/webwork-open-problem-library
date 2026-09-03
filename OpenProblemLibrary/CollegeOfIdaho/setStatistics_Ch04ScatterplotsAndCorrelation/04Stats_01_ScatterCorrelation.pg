@@ -41,7 +41,7 @@ $showPartialCorrectAnswers = 0;
 
 @slice = random_subset(4, 0 .. 6);
 
-@dropdowns = map { DropDown([ ~~@match2 ], $_) } @slice;
+@dropdowns = map { DropDown([ ~~@match2 ], $_, useHTMLSelect => 0) } @slice;
 
 BEGIN_PGML
 Match the following sample correlation coefficients with the explanation of 

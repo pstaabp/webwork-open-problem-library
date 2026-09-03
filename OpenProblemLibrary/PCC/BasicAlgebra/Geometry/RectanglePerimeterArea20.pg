@@ -47,7 +47,7 @@ A rectangle's perimeter is [`[$perimeterU]`]. Its base is [`[$baseU]`].
 
     Its height is [_____________]{$heightU}. 
 
-[@KeyboardInstructions(q!Use [|cm|]* for centimenters.!)@]**
+*Note: you should use correct units for this problem.*
 
 END_PGML
 

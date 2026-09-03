@@ -12,35 +12,71 @@
 # Location: Northern Arizona University
 # Course: Qauntitative Reasoning
 
-DOCUMENT();     
+DOCUMENT();
 loadMacros(
-  "PGstandard.pl",
-  "PGnauStats.pl",
-  "PGstatisticsmacros.pl",
-  "PGnumericalmacros.pl",
-  "PGcourse.pl"
+    'PGstandard.pl',       'PGML.pl',
+    'parserPopUp.pl',      'PGnauStats.pl',
+    'StatisticalPlots.pl', 'PGcourse.pl'
 );
 
+@list = ('Right',               'Left',               'Bi',      'Norm');
+@opts = ('skewed to the right', 'skewed to the left', 'bimodal', 'symmetric');
+$ind  = random(0, 3);
+@data = SpecialData($list[$ind]);
+$dx   = 10;                              # bin size
+$min  = floor(min(@data) / $dx) * $dx;
+$max  = ceil(max(@data) / $dx) * $dx;
 
-TEXT(&beginproblem);
+$stat_plot = StatPlot(
+    xmin            => $min - 10,
+    xmax            => $max + 20,
+    xtick_delta     =>  10,
+    ymin            => -25,
+    ytick_delta     =>  25,
+    show_grid       =>  0,
+    rounded_corners =>  1,
+);
 
-@list = ( 'Right', 'Left', 'Bi', 'Norm' );
-@ans = ( 'Skewed to the right', 'skewed to the left', 'bimodal', 'symmetric' );
-$ind = random( 0, 3, 1 );
-$Hist = Histogram( SpecialData( $list[$ind] ), bins => random(15, 20, 5) );
+$hist_data = $stat_plot->add_histogram(
+    ~~@data,
+    min          => $min,
+    max          => $max,
+    bins         => ($max - $min) / $dx,
+    fill_color   => 'blue',
+    fill_opacity => 0.4,
+    stroke_width => 1
+);
+$stat_plot->axes->yaxis(max => max(@$hist_data) + 25);
+$stat_plot->axes->style(aspect_ratio => $max / max(@$hist_data));
 $ans = $ans[$ind];
 
-BEGIN_TEXT
+$alt =
+    'A histgoram with '
+    . scalar(@$hist_data)
+    . " bins from $min to $max."
+    . 'The heights of the bars are '
+    . join(', ', @$hist_data);
 
-Which of the following attributes best describes the histogram below?$BR
-\{ pop_up_list(''=>'', 'skewed to the right' => 'skewed to the right', 
-'skewed to the left' => 'skewed to the left','bimodal' => 'bimodal', 
-'symmetric' => 'symmetric' ) \} 
-$PAR
-$PAR \{ Plot( $Hist, tex_size=>900 ) \}
+$dd = DropDown(~~@opts, $ind);
 
-END_TEXT
+BEGIN_PGML
+Which of the following attributes best describes the histogram below? 
 
-ANS( str_cmp( $ans ) );
+    [_]{$dd}
+
+>>[![$alt]!]{$stat_plot}{400}<<
+
+END_PGML
+
+@explanation = (
+    'Because the tail of the data stretched to the right, ',
+    'Because the tail of the data stretched to the left, ',
+    'Because there are two distinct humps of data, ',
+    'Because the data is roughly the same on both sides of the maximum, '
+);
+
+BEGIN_PGML_SOLUTION
+[$explanation[$ind]] the answer is *[$opts[$ind]]****.
+END_PGML_SOLUTION
 
 ENDDOCUMENT();      

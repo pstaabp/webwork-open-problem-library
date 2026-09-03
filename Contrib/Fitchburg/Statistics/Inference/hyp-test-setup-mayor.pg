@@ -1,0 +1,48 @@
+## DESCRIPTION
+# A problem that asks students to set up a hypothesis test. 
+## ENDDESCRIPTION 
+# This problem is derived from a homework problem in Introductory Statistics,
+# licensed by OpenStax under a Creative Commons Attribution License (CC BY 4.0).
+# Modified for WeBWorK by Michael Stassen   mstassen(at)fitchburgstate(dot)edu
+
+
+## DBsubject(Statistics)
+## DBchapter(Hypothesis tests)
+## DBsection(One sample proportion)
+## KEYWORDS('inference', 'hypothesis test', 'voting')
+## Author('Michael Stassen')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros ('PGstandard.pl',  "PGML.pl","parserPopUp.pl", 'PGCourse.pl');
+
+Context("LimitedNumeric")->variables->are(p=>'Real');
+
+$p = random(41,49);
+
+@opts = ('\(=\)', '\(\neq\)', '\(<\)', '\(>\)');
+$dd1 = DropDown(~~@opts,0,useHTMLSelect => 0);
+$dd2 = DropDown(~~@opts,3,useHTMLSelect => 0);
+
+$popup = PopUp(["","left-tailed","right-tailed","two-tailed"],"right-tailed");    
+
+BEGIN_PGML
+The statement below is a testable claim about a population parameter. Write the
+null and alternative hypotheses in terms of [`p`].
+
+Enter percents as decimals, without a leading 0. For example, if one of your 
+hypotheses were that [`p`] is 50%, enter that as as *p=.50*.  
+
+More than [$p]\% of voters support Mayor Sam Squailia.
+
+- [`H_0`]: [_]{Compute('p')}[_]{$dd1} [____]{$p/100}
+- [`H_a`]: [_]{Compute('p')}[_]{$dd2} [____]{$p/100}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+- The null hypothesis is always the neutral statement and in this case, it is [` p = [$p/100] `]
+- Since the statement asks for "more than [$p]%", then the alternative is [`>`] or the statement is [`p > [$p/100] `].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

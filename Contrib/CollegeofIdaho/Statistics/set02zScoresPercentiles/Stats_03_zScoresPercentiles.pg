@@ -9,118 +9,75 @@
 ## AuthorText1('David Moore')
 ## EditionText1('5e')
 ## Section1('3')
-## Problem1('')
-## KEYWORDS('statistic', 'normal distribution', 'z score')
 
-DOCUMENT();        # This should be the first executable line in the problem.  
+## KEYWORDS('Measure', 'Mean', 'Standard Deviation', 'Score','statistics','measures','mean','standard deviation','z score')
+
+DOCUMENT();
 
 loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl",
-  "MathObjects.pl",
-  "niceTables.pl"
-  );
+    'PGstandard.pl',   'PGML.pl',
+    'randomPerson.pl', 'parserRadioButtons.pl',
+    'PGcourse.pl'
+);
 
-TEXT(beginproblem());
+$p = randomPerson();
 
-######################################
-#  Setup
+@sub = (
+    'Calculus', 'Biology',    'Spanish',    'History',
+    'Physics',  'Statistics', 'Literature', 'Chemistry'
+);
+@slice = random_subset(4, 0 .. 5);
+@ssub  = @sub[@slice];
 
-@Name = ('Ted', 'Nick', 'Mike', 'Kary', 'Mary', 'Fred', 'Sam', 'Pam', 'Joe', 'John', 
-         'Joan', 'Lisa', 'Kate');
-$tag = random(0,12,1);
-
-@sub = ('Calculus', 'Biology', 'Spanish', 'History', 'Physics');
-@slice = NchooseK(5,5);
-@ssub = @sub[@slice];
-
-@mean = (70, 77, 44, 53, 60, 69);
+@mean  = (70, 77, 44, 53, 60, 69);
 @smean = @mean[@slice];
 
-@dev = (12, 10, 12, 16, 14, 8);
-@sdev = @dev[@slice]; 
+@dev  = (12, 10, 12, 16, 14, 8);
+@sdev = @dev[@slice];
 
-@z = (-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2);
-@zslice = NchooseK(13,13);
-@sz = @z[@zslice];
+@z      = map { -1 + $_ * 0.25 } (0 .. 12);
+@zslice = random_subset(4, 0 .. 12);
+@sz     = @z[@zslice];
 
-$grade1 = $smean[1] + $sdev[1] * $sz[1];
-$grade2 = $smean[2] + $sdev[2] * $sz[2];
-$grade3 = $smean[3] + $sdev[3] * $sz[3];
-$grade4 = $smean[4] + $sdev[4] * $sz[4];
+@grade = map { $smean[$_] + $sdev[$_] * $sz[$_] } (0 .. 3);
 
-$best = 1;
-if ($sz[2] > $sz[1]) { $best = 2;}
-if ($sz[3] > $sz[$best]) { $best = 3;}
-if ($sz[4] > $sz[$best]) { $best = 4;}
+$sz = -100;
+for (0 .. 3) {
+    if ($sz[$_] > $sz) { $best = $_; $sz = $sz[$_]; }
+}
 
-#################################################
-#  Main
+$rb = RadioButtons([@ssub], $best, labels => 'ABC');
 
-BEGIN_TEXT
-$Name[$tag] took four courses last semester: $ssub[1], $ssub[2], $ssub[3], and $ssub[4].
-The means and standard deviations for the final exams, and $Name[$tag]'s scores are given in the table below. Convert $Name[$tag]'s scores into z-scores. 
-$BR
-\{
-DataTable(
-  [
-    [['Subject', headerrow => 1],'Mean','Stand. dev.',"$Name[$tag]'s score", "$Name[$tag]'s z-score"],
-    ["$ssub[1]", "\($smean[1]\)", "\($sdev[1]\)", "\($grade1\)",ans_rule(10)],
-    ["$ssub[2]", "\($smean[2]\)", "\($sdev[2]\)", "\($grade2\)",ans_rule(10)],
-    ["$ssub[3]", "\($smean[3]\)", "\($sdev[3]\)", "\($grade3\)",ans_rule(10)],
-    ["$ssub[4]", "\($smean[4]\)", "\($sdev[4]\)", "\($grade4\)",ans_rule(10)],
-  ], 
-  align => '| c | c | c | c | c |',
-  midrules => 1,
-);
-\}
-$BR
-On what exam did $Name[$tag] have the highest relative score? 
-$BR $SPACE $SPACE 
-Enter the subject: \{ans_rule(20)\}
-END_TEXT
+BEGIN_PGML
+  
+[$p] took 4 courses last semester: [$ssub[0]], [$ssub[1]], [$ssub[2]], and [$ssub[3]].
+The means and standard deviations for the final exams, and [$p]'s scores are given 
+in the table below. Convert [$p->their] scores into [`z`]-scores. 
 
-######################################
-#  Answers
+[#
+    [.Subject.][.Mean.][.Std.Dev. .][.[$p]'s score.][. [$p]'s [`z`]-score .]{headerrow=>1}*
+    [. [$ssub[0]] .] [.[$smean[0]].] [.[$sdev[0]].][. [$grade[0]] .] [. [_]{$sz[0]} .]*
+    [. [$ssub[1]] .] [.[$smean[1]].] [.[$sdev[1]].][. [$grade[1]] .] [. [_]{$sz[1]} .]*
+    [. [$ssub[2]] .] [.[$smean[2]].] [.[$sdev[2]].][. [$grade[2]] .] [. [_]{$sz[2]} .]*
+    [. [$ssub[3]] .] [.[$smean[3]].] [.[$sdev[3]].][. [$grade[3]] .] [. [_]{$sz[3]} .]*
+#]{align => '|c|c|c|c|c|', padding => 0.3, horizontalrules => 1}
 
-$showPartialCorrectAnswers = 1;
+On what exam did [$p] have the highest relative score? [_]{$rb}
 
-Context()->strings->add("Calculus"=>{}, "Biology"=>{}, "Spanish"=>{}, "History"=>{}, "Physics"=>{}); 
+END_PGML
 
-ANS(Real($sz[1])->cmp);
-ANS(Real($sz[2])->cmp);
-ANS(Real($sz[3])->cmp);
-ANS(Real($sz[4])->cmp);
-ANS(String($ssub[$best])->cmp->withPostFilter(sub { 
-  my $ans = shift; 
-  $ans->{ans_message} = "Enter one of the subjects listed in the table above." 
-    if $ans->{ans_message} =~ "not defined";
-  return $ans; 
-}));
+BEGIN_PGML_SOLUTION
+Recall that the [`z`]-score for a value [`x`] that comes from a distribution with mean [`\bar{x}`] and standard deviation [`s`] is 
+[``` z= \frac{x - \bar{x}}{s} ```]
 
-######################################
-#  Solutions
+Using this formula with the values in the table results in 
 
-BEGIN_SOLUTION
-$PAR SOLUTION $PAR
-$BR
-The \(t\)-scores are:
-\{
-DataTable(
-  [
-    [['Subject', headerrow => 1],"$Name[$tag]'s score", "$Name[$tag]'s z-score"],
-    ["$ssub[1]", "\($grade1\)","\(\frac{$grade1-$smean[1]}{$sdev[1]} =$sz[1]\)"],
-    ["$ssub[2]", "\($grade2\)","\(\frac{$grade2-$smean[2]}{$sdev[2]} = $sz[2]\)"],
-    ["$ssub[3]", "\($grade3\)","\(\frac{$grade3-$smean[3]}{$sdev[3]} = $sz[3]\)"],
-    ["$ssub[4]", "\($grade4\)","\(\frac{$grade4-$smean[4]}{$sdev[4]} = $sz[4]\)"],
-  ], 
-  align => '| c | c | c |',
-  midrules => 1,
-);
-\}
-$BR
-$Name[$tag]'s highest relative score was in: ${BBOLD}$ssub[$best]$EBOLD
-END_SOLUTION
+- [$ssub[0]]: [$sz[0]]
+- [$ssub[1]]: [$sz[1]]
+- [$ssub[2]]: [$sz[2]]
+- [$ssub[3]]: [$sz[3]]
+
+To answer the highest relative score, look for the largest [`z`]-score.  This occurs for him in [$rb].
+END_PGML_SOLUTION
 
 ENDDOCUMENT();       # This should be the last executable line in the problem.
-

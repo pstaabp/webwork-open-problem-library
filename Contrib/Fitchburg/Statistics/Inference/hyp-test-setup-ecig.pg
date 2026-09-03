@@ -1,0 +1,57 @@
+# DESCRIPTION
+# A problem that asks students to find the null and alternative hypotheses for a
+# problem involving electronic cigarettes.
+# ENDDESCRIPTION
+
+## DBsubject(Statistics)
+## DBchapter(Hypothesis tests)
+## DBsection(One sample proportion)
+## KEYWORDS('hypothesis test', 'proportion')
+## Author('Catherine Buell')
+## Institution('Fitchburg State')
+
+DOCUMENT();
+
+loadMacros("PGstandard.pl", "PGML.pl", "parserPopUp.pl", "PGcourse.pl",);
+
+Context("Numeric")->variables->set(p => 'Real');
+Context()->flags->set(
+    tolerance => 0,
+    tolType   => "absolute",
+);
+
+@opts = ('\(=\)', '\(\neq\)', '\(<\)', '\(>\)');
+$dd1  = DropDown(~~@opts, 0, useHTMLSelect => 0);
+$dd2  = DropDown(~~@opts, 3, useHTMLSelect => 0);
+
+$p0 = random(10, 20);
+do {
+    $n    = random(100,  250,  10);
+    $phat = random(0.10, 0.25, 0.01);
+    $n0   = $n * $phat;
+} until 100 * $phat > $p0 && int($n0) == $n0;
+
+BEGIN_PGML
+
+According to the Center for Disease Control, in 2022 about [$p0]% of high school students reported using an electronic cigarette in the previous month. A student wanted to determine if the percentage at her high school was higher. One hundred fifty students were chosen at random and surveyed. Of the [$n] students surveyed, [$n0] had used an electronic cigarette in the past month. The student wants to set up a hypothesis test.
+
+a) The null hypothesis would be: [`H_0`]: [_]{Compute('p')}[_]{$dd1} [____]{$p0/100}
+
+b) The alternative hypothesis would be: [_]{Compute('p')}[_]{$dd2} [____]{$p0/100}
+
+c) What is [`n`]? [____________]{$n}
+
+d) What is [`\hat{p}`]? [____________]{$phat} (round to the nearest hundredth)
+
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) The null hypothesis is always the neutral statement and in this case, it is [` p = [$p0/100] `]
+b) Since the student would like to know "if the percentage at her high school was higher", then the alternative is [`>`] or the statement is [`p > [$p0/100] `].
+c) [`n`] is the number in the sample or [$n].
+d) [`\hat{p}`] is the sample proportion or the number of students who had used electronic cigarettes divided by the number in the sample or 
+    [``` \hat{p} = \frac{[$n0]}{[$n]} = [$n0/$n] ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

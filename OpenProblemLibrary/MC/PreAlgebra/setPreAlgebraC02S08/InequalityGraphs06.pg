@@ -1,7 +1,7 @@
 ##DESCRIPTION
-##  Middle School problem:
+##  A problem that asks students to match a mathematical symbol (less than, greater than)
+## to words.
 ##ENDDESCRIPTION
-
 
 ## ProblemTester('Laura Travis')
 ## Publisher('Prentice Hall')
@@ -14,113 +14,68 @@
 ## Level(2)
 ## MO(1)
 ## TitleText1('Pre-Algebra')
-## AuthorText1('')
-## EditionText1('')
-## Section1('.')
-## Problem1('')
 ## KEYWORDS('prealgebra','common core','inequality')
 
-########################################################################
+DOCUMENT();
 
-DOCUMENT();      
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserPopUp.pl', 'PGcourse.pl');
 
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "parserPopUp.pl",
-  "problemRandomize.pl",
-  "PGchoicemacros.pl",
-  "PGcourse.pl"
+Context('Numeric');
+
+@slice = random_subset(6, 0 .. 5);
+
+@opts    = ('\(<\)', '\(\leq\)', '\(>\)', '\(\geq\)');
+@answers = (0, 1, 2, 3, 1, 3);
+@phrases = (
+    'Less than...',
+    'No more than...',
+    'More than...',
+    'No less than...',
+    'At most...',
+    'At least...'
 );
 
-# Print problem number and point value (weight) for the problem
-TEXT(beginproblem());
+@dd = map { DropDown([@opts], $answers[$_], useHTMLSelect => 0) } @slice;
 
-#  Allow for the user to try another version of the problem once they get it correct.
-ProblemRandomize(when=>"Correct",onlyAfterDue=>0);
+$exp[ $r[0] ]   = "Less than...";
+$popup[ $r[0] ] = PopUp([ "?", "<", "<=", ">", ">=" ], "<");
 
-# Show which answers are correct and which ones are incorrect
-$showPartialCorrectAnswers = 1;
+$exp[ $r[1] ]   = "No more than...";
+$popup[ $r[1] ] = PopUp([ "?", "<", "<=", ">", ">=" ], "<=");
 
-##############################################################
-#
-#  Setup
-#
-#
+$exp[ $r[2] ]   = "More than...";
+$popup[ $r[2] ] = PopUp([ "?", "<", "<=", ">", ">=" ], ">");
 
-Context()->variables->add(y => 'Real');
+$exp[ $r[3] ]   = "No Less than...";
+$popup[ $r[3] ] = PopUp([ "?", "<", "<=", ">", ">=" ], ">=");
 
-$a = random(2,6,1);
-$b = random(7,11,1);
-$c = random(2,20,1);
-$d = random(4,7,1);
-$apb = $a + $b;
+$exp[ $r[4] ]   = "At most...";
+$popup[ $r[4] ] = PopUp([ "?", "<", "<=", ">", ">=" ], "<=");
 
+$exp[ $r[5] ]   = "At least...";
+$popup[ $r[5] ] = PopUp([ "?", "<", "<=", ">", ">=" ], ">=");
 
-@r = NchooseK(6,6);
-
-$exp[$r[0]]  = "Less than...";
-$popup[$r[0]] = PopUp(["?", "<", "<=", ">", ">="], "<");
-
-$exp[$r[1]]  = "No more than...";
-$popup[$r[1]] = PopUp(["?", "<", "<=", ">", ">="], "<=");
-
-$exp[$r[2]]  = "More than...";
-$popup[$r[2]] = PopUp(["?", "<", "<=", ">", ">="], ">");
-
-$exp[$r[3]]  = "No Less than...";
-$popup[$r[3]] = PopUp(["?", "<", "<=", ">", ">="], ">=");
-
-$exp[$r[4]]  = "At most...";
-$popup[$r[4]] = PopUp(["?", "<", "<=", ">", ">="], "<=");
-
-$exp[$r[5]]  = "At least...";
-$popup[$r[5]] = PopUp(["?", "<", "<=", ">", ">="], ">=");
-##############################################################
-#
 #  Text
-#
-#
 
-Context()->texStrings;
-
-BEGIN_TEXT
+BEGIN_PGML
 Determine which inequality symbol matches each expression:
-$PAR
 
-\{ $popup[0]->menu() \}
-$exp[0] 
-$PAR
-\{ $popup[1]->menu() \}
-$exp[1] 
-$PAR
-\{ $popup[2]->menu() \}
-$exp[2] 
-$PAR
-\{ $popup[3]->menu() \}
-$exp[3]  
-$PAR
-\{ $popup[4]->menu() \}
-$exp[4] 
-$PAR
-\{ $popup[5]->menu() \}
-$exp[5] 
+a) [_]{$dd[0]} [$phrases[$slice[0]]]
+b) [_]{$dd[1]} [$phrases[$slice[1]]]
+c) [_]{$dd[2]} [$phrases[$slice[2]]]
+d) [_]{$dd[3]} [$phrases[$slice[3]]]
+e) [_]{$dd[4]} [$phrases[$slice[4]]]
+f) [_]{$dd[5]} [$phrases[$slice[5]]]
 
+END_PGML
 
-END_TEXT
-Context()->normalStrings;
-
-##############################################################
-#
-#  Answers
-#
-#
-
-ANS( $popup[0]->cmp() );
-ANS( $popup[1]->cmp() );
-ANS( $popup[2]->cmp() );
-ANS( $popup[3]->cmp() );
-ANS( $popup[4]->cmp() );
-ANS( $popup[5]->cmp() );
+BEGIN_PGML_SOLUTION
+a) [`[$dd[0]]`]
+b) [`[$dd[1]]`]
+c) [`[$dd[2]]`]
+d) [`[$dd[3]]`]
+e) [`[$dd[4]]`]
+f) [`[$dd[5]]`]
+END_PGML_SOLUTION
 
 ENDDOCUMENT();        

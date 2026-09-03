@@ -1,0 +1,77 @@
+# DESCRIPTION
+# Find the sample proportion, margin of error and confidence interval for a
+# sample survey of voters.
+# ENDDESCRIPTION
+
+# This problem is derived from a homework problem in Introductory Statistics,
+# licensed by OpenStax under a Creative Commons Attribution License (CC BY 4.0).
+# Modified for WeBWorK by Michael Stassen   mstassen(at)fitchburgstate(dot)edu
+
+## DBsubject('Introductory Statistics')
+## DBchapter('7')
+## DBsection('1')
+## KEYWORDS('sample survey', 'sample proportion', 'margin of error', 'confidence interval')
+## Author('Michael Stassen')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',        "PGML.pl",
+    "contextPercent.pl",    "PGchoicemacros.pl",
+    "PGnumericalmacros.pl", "PGstatisticsmacros.pl",
+    'PGcourse.pl'
+);
+
+Context("LimitedNumeric");
+loadMacros("fixedPrecision.pl");    # must come after Context is set.
+
+$conf = list_random(90, 95, 99);
+
+$alpha = 1 - $conf / 100;
+
+$x = random(310,  360);
+$n = random(1100, 1300, 50);
+
+Context("Percent");
+Context()->flags->set(
+    decimalPlaces => 1,
+    tolerance     => .0005,
+);
+$p    = Percent(Round($x / $n, 3));
+$pdec = Round($x / $n, 3);
+$q    = 1 - $p;
+
+$z = Round(normal_distr(0.5 - $alpha / 2), 4);
+
+$E = Percent($z * sqrt($p * $q / $n));
+
+$p1 = Percent($p - $E);
+$p2 = Percent($p + $E);
+
+BEGIN_PGML
+According to a recent survey of [$n] people, [$x] feel that the governor 
+of a particular state is doing an acceptable job. We wish to calculate a [$conf]% 
+confidence interval for the percent of people who feel the governor is doing an
+acceptable job. (Round percents to the nearest 0.1%)
+
+a. What is the sample proportion?[____]{$p} 
+b. What is the margin of error for a [$conf]% confidence interval?[____]{$E}  
+e. The [$conf]% confidence interval is from [____]{$p1} to [____]{$p2}.  
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) The sample proportion is the number of "successes" (in this case, those that feel
+the governor is doing an acceptable job) divided by the number in the survey.  In this case
+[``` \hat{p} = \frac{[$x]}{[$n]} = [$p]. ```]
+
+b) For a population proportion, the margin of error is 
+[``` ME = z_{1-\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}```]
+where [`z_{1-\alpha/2}`] is the [`z`]-score corresponding to the confidence interval given.  for a [$conf]% confidence interval this is [$z].
+[```ME = ([$z]) \sqrt{ \frac{([$pdec])([$pdec*(-1)+1])}{[$n]}} = [$E]```]
+
+c) The confidence interval then is 
+[```(\hat{p} - ME, \hat{p}+ME) = ([$p1],[$p2])```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

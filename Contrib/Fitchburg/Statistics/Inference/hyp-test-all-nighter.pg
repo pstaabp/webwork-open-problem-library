@@ -1,0 +1,90 @@
+# DESCRIPTION
+# Using study habits of college students, perform the initial steps of a two-sample t-test.
+# ENDDESCRIPTION
+
+## DBsubject('WeBWorK')
+## DBchapter('Nursing-Med Calc')
+## DBsection('Problem')
+## KEYWORDS('null hypothesis', 'alternative hypothesis', 'two-sample test')
+## Author('Catherine Buell')
+## Institution('Fitchburg State')
+
+DOCUMENT();
+
+loadMacros("PGstandard.pl", 'PGML.pl', "parserPopUp.pl", "PGcourse.pl");
+
+Context("Numeric")->flags->set(
+    tolerance => 0.02,
+    tolType   => "absolute",
+);
+
+@opts = ('\(<\)', '\(>\)', '\(=\)', '\(\neq\)');
+$dd1  = DropDown([@opts], 2, useHTMLSelect => 0);
+$dd2  = DropDown([@opts], 1, useHTMLSelect => 0);
+
+$n1 = random(50, 70);
+$n2 = random(20, 40);
+
+do {
+    $gpa1 = random(2.8, 3.5, 0.01);
+    $gpa2 = random(2.8, 3.5, 0.01);
+} until $gpa1 - $gpa2 > 0.05;
+
+$sig_level = list_random(1, 2, 5, 10);
+$pval      = random(1, 99) * list_random(0.001, 0.0001, 0.00001);
+
+$dd3 = DropDown(
+    [
+        "We will reject the null hypothesis.",
+        "We fail to reject the null hypothesis."
+    ],
+    $pval < $sig_level / 100 ? 0 : 1
+);
+
+BEGIN_PGML
+
+Researchers surveyed [$n1+$n2] students at Saint Lawrence University. They asked
+students whether or not they have ever pulled an all-nighter (stayed up all
+night studying), and they wanted to know if students who have never pulled
+an all-nighter have better grades on average. Researchers found that students
+who claimed to have never pulled an all-nighter (group 1, [$n1] students) had 
+an average GPA (grade point average) of [$gpa1], compared to [$gpa2] for students 
+who claimed to have pulled an all-nighter (group 2, [$n2] students). They do a 
+hypothesis test at a [$sig_level]% level of significance.
+
+a) The null hypothesis would be: [`H_0`]: [`\mu_{1}`] [_]{$dd1} [`\mu_{2}`]
+
+b) The alternative hypothesis would be: [`H_a`]:  [`\mu_{1}`] [_]{$dd2}   [`\mu_{2}`]
+
+c) What is [`n_1`]? [_]{$n1}
+
+d) What is [`n_2`]? [_]{$n2}
+
+e) What is [`\bar{x}_1 - \bar{x}_2`] (to two decimal places)? [_]{Real($gpa1-$gpa2) }
+
+f) If the p-value is [$pval], what should be our conclusion? [_]{$dd3}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) The null hypothesis is the neutral relationship and that is [`\mu_1=\mu_2`].
+
+b) Since the researchers want to know if student who have never pulled an all-nighter
+have better grades than since [`\mu_1`] is the mean GPA of these students and 
+[`\mu_2`] is the mean GPA of student who have.  Then the alternative hypothesis is
+ [`\mu_1 > \mu_2`].
+
+c) [`n_1`] is the number of sample in group 1 or [`[$n1]`].
+
+d) [`n_2`] is the number of sample in group 2 or [`[$n2]`].
+
+e) The problem states that [`\bar{x}_1=[$gpa1]`] and [`\bar{x}_2 = [$gpa2]`] so 
+    [`\bar{x}_1 - \bar{x}_2 = [$gpa1-$gpa2] `].
+f) Since the [`p`]-value is [@ $pval < $sig_level/100 ? 'smaller' : 'greater'@] than
+    the level of significant of [`\alpha = [$sig_level/100]`], converted to a 
+    fraction, the reserchers should 
+    *[@ $pval < $sig_level/100 ? '' : 'not '@]reject the null hypothesis*.
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

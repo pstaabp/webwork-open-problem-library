@@ -28,7 +28,8 @@ $stat_plot = StatPlot(
     yminor       => 0,
     aspect_ratio => 1 / 10,
     xtick_labels =>
-        { 2 => 'bookstore', 4 => 'library', 6 => 'friend', 8 => 'other' }
+        { 2 => 'bookstore', 4 => 'library', 6 => 'friend', 8 => 'other' },
+    rounded_corners => 1
 );
 $stat_plot->add_barplot(
     [ 2, 4, 6, 8 ], [ $b, $l, $f, $o ],

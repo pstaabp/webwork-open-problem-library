@@ -1,0 +1,56 @@
+##DESCRIPTION
+## How does adding a number change the mean and standard deviation?
+##ENDDESCRIPTION
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summary statistics)
+## Institution(Fitchburg State University)
+## Author(Jessie Oehrlein)
+## MLT(stat-des-mean-stdev)
+## Level(3)
+## KEYWORDS('mean', 'standard deviation')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',  'PGML.pl',
+    'parserPopUp.pl', 'PGstatisticsmacros.pl',
+    'PGcourse.pl'
+);
+
+Context('Numeric');
+
+$n = random(5, 7);
+
+$opt = random(0, 1);
+
+@dat  = map { random(25, 100) } (1 .. $n);
+$mean = stats_mean(@dat);
+
+$K = $opt == 0 ? min(@dat) - random(1, 5) : int($mean);
+
+$dd = DropDown([ 'increase', 'decrease', 'stays the same' ], $opt);
+
+BEGIN_PGML
+  
+Consider the following data set.  Find the mean.  
+
+Data set: [@ join ", ", @dat; @]*
+
+a) Find the mean: [_]{$mean}{10} 
+
+b) If the data value [$K] was added to the set, the standard deviation would [_]{$dd}
+
+*You do not need to calculate the standard deviation to answer this question.* 
+END_PGML
+
+$sum = 0;
+$sum += $_ for (@dat);
+
+BEGIN_PGML_SOLUTION
+a) for the mean, we use the sum of the data values divided by the number of points or 
+[```\frac{[$sum]}{[$n]} = [@ Round($mean,3) @]```]
+
+b) Note that in this case, the new value is [@ $opt == 0 ? 'less than the minimum, therefore the spread of the data increases' : 'very close to the mean, so the dataset is more concentrated to the middle' @]. Therefore the standard deviation would [$dd].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

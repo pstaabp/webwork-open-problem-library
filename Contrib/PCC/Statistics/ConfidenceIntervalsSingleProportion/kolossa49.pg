@@ -2,120 +2,72 @@
 ## Statistics: Confidence intervals
 ##ENDDESCRIPTION
 
-##KEYWORDS('large sample','confidence interval','statistics', 'population proportion')
 ## Tagged by sawblade
 
-## DBsubject('Statistics')
-## DBchapter('Estimation')
-## DBsection('Large-Sample Confidence Intervals')
-## Date('')
-## Author('')
-## Institution('ASU')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+## DBsubject(Statistics)
+## DBchapter(Confidence intervals)
+## DBsection(One sample proportion)
+## Institution(ASU)
+## MLT(CI_1p_04)
+## MLTleader(1)
+## Level(2)
+## KEYWORDS('large sample','confidence interval','statistics', 'population proportion')
 
-DOCUMENT();        # This should be the first executable line in the problem.
+DOCUMENT();    # This should be the first executable line in the problem.
 
 loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl",
-"MathObjects.pl",
-"contextPercent.pl",
+    'PGstandard.pl',         'PGML.pl',
+    'parserRadioButtons.pl', 'PGstatisticsmacros.pl',
+    'contextPercent.pl',     'PGcourse.pl'
 );
 
-TEXT(beginproblem());
+Context('Numeric');
 
-Context("Percent");
+$a  = random(300, 400);
+$b  = random(500, 600, 25);
+$p0 = $a / $b;
 
-$showPartialCorrectAnswers = 1;
+$conf  = list_random(90, 95, 98, 99);
+$alpha = (100 - $conf) / 100;
+$z     = normal_distr(0.5 - $alpha / 2);
 
-$a = random(300,400,1);
-$b = random(500,600,25);
+$ME = sqrt($p0 * (1 - $p0) / $b);
+($p1, $p2) = ($p0 - $ME, $p0 + $ME);
 
-@conf = ("\(99$PERCENT\)",
-	 "\(90$PERCENT\)",
-	 "\(95$PERCENT\)",
-	 "\(98$PERCENT\)",
-	 "\(99$PERCENT\)");
-@slice = NchooseK(5,1);
-@sconf = @conf[@slice];
+Context('Percent');
+$p2pct = Percent($p2);
 
-$z1 = normal_distr(.495);
-$z2 = normal_distr(.45);
-$z3 = normal_distr(.475);
-$z4 = normal_distr(.49);
-$z5 = normal_distr(.495);
+$rb = RadioButtons([ 'larger', 'smaller', 'same' ], 1, labels => 'ABC');
 
-@z = ($z1, $z2, $z3, $z4, $z5);
-@sz = Real(@z[@slice]);
-$p = Real($a/$b);
-$q = (1-($a/$b));
-$moe = (sqrt($p*(1-$p)/$b)*$sz[0]);
-$moeper = Percent(sqrt($p*(1-$p)/$b)*$sz[0]);
-$lower = Percent($p - $moe);
-$upper = Percent($p + $moe);
+BEGIN_PGML
+A poll is taken in which [$a] out of [$b] randomly selected voters indicated
+their preference for a certain candidate. Round answers to three digits 
+(e.g. 0.352 or 35.2%). 
 
-$ans1 = ($p)-$sz[0]*sqrt($p*(1-$p)/$b);
-$ans2 = ($p)+$sz[0]*sqrt($p*(1-$p)/$b);
-$ans3 = $sz[0]*sqrt($p*(1-$p)/$b);
+a) Find the margin of error for this [$conf]% confidence interval for [`p`]:
 
- 
-BEGIN_TEXT
-A poll is taken in which \($a\) out of \($b\) randomly selected voters indicated their preference for a certain
-candidate. $BR $BR (a) Find a $sconf[0] confidence interval for \(p\). $BR $BR
-\{ans_rule(20)\} \(\leq p \leq\) \{ans_rule(20)\}
-$BR $BR
-(b) Find the margin of error for this $sconf[0] confidence interval for \(p\). $BR $BR
-\{ans_rule(20)\}  $BR $BR
+    [`ME=`] [_]{$ME}
 
-END_TEXT
-Context("Percent");
+b) Find a [$conf]% confidence interval for [`p`].  
 
-ANS(Percent($ans1)->cmp);
-ANS(Percent($ans2)->cmp);
-ANS(Percent($ans3)->cmp);
+    [_]{Percent($p1)} [`\leq p \leq`] [_]{$p2pct}
 
+c) Without doing any calculations, indicate whether the margin of error is larger or smaller or the same for an 80% confidence interval. [_]{$rb}
 
-$mc = new_multiple_choice();
+END_PGML
 
-$mc->qa("(c) Without doing any calculations, indicate whether the margin of error is larger or smaller or the same for an 80$PERCENT confidence interval.", "smaller");
-$mc->extra("larger");
-$mc->makeLast("same");
+$p00 = Round($p0, 4);
 
-BEGIN_TEXT
+BEGIN_PGML_SOLUTION
+First, note that the sample proportion is [`` \hat{p} = \frac{[$a]}{[$b]} = [$p00]. ``]
 
-\{ $mc->print_q \}
-\{ $mc->print_a \}
-$BR $BR
-END_TEXT
-ANS(radio_cmp($mc->correct_ans));
+a) The margin of error for a proportion is given by 
+[``` ME = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} = \sqrt{\frac{([$p00])(1-[$p00])}{[$b]}} = [@ Round($ME,4) @] ```]
 
-#################################################
-#  Answers
-#################################################
+b) The [$conf]% confidence interval is given by [`(\hat{p}-ME, \hat{p}+ME)`] 
+or [` ([@Round($p1,4)@],[@ Round($p2,4)@])`]
 
-BEGIN_SOLUTION
-
-(a)  We know that \(\hat{p}=$p\) and for $sconf[0] confidence we have \(z^{*}\approx $sz[0]\).  
-$PAR
-To create a confidence interval for \(p\) we need the margin of error, which is \(\text{MOE} = z^{*}\sqrt{\frac{\hat{p}\hat{q}}{n}}\).  Using this, we obtain,
-$PAR 
-\(\text{MOE} = $sz[0]\sqrt{\frac{($p)($q)}{$b}} \approx $moe\).  
-$PAR
-Therefore, our interval is \($lower \leq p \leq $upper\).
-$PAR
-(b) Using our work from the previous question we know that \(\text{MOE} \approx $moeper\).
-$PAR
-(c) Option \(A\). Without doing work, we know that a smaller level of confidence, assuming all other variables stay the same, will result in a smaller confidence interval.  A smaller confidence interval means we have a smaller margin of error.
-
-END_SOLUTION
+c) If a smaller confidence level is sought, the the margin of error is *smaller*. 
+END_PGML_SOLUTION
 
 ENDDOCUMENT();       # This should be the last executable line in the problem.
-

@@ -31,7 +31,8 @@ $stat_plot = StatPlot(
     ylabel          => '',
     ytick_labels    => { map { 2 + 2 * $_ => $animals[$_] } (0 .. 4) },
     show_grid       => 0,
-    aspect_ratio    => 6
+    aspect_ratio    => 6, 
+    rounded_corners => 1
 );
 $stat_plot->add_barplot(
     ~~@w, [ 2, 4, 6, 8, 10 ],

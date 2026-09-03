@@ -1,0 +1,82 @@
+# DESCRIPTION
+# Perform a hypothesis test for proportions based on the fraction of family-friendly
+# roller coasters.
+# ENDDESCRIPTION
+
+## DBsubject(Statistics)
+## DBchapter(Hypothesis tests)
+## DBsection(One sample proportion)
+## KEYWORDS('sample proportion', 'hypothesis test')
+## Author('Catherine Buell')
+## Institution('Fitchburg State')
+
+DOCUMENT();
+
+loadMacros(
+    "PGstandard.pl",         'PGML.pl',
+    'PGstatisticsmacros.pl', "parserPopUp.pl",
+    "PGcourse.pl"
+);
+
+Context("Numeric")->flags->set(
+    tolerance => 0.02,
+    tolType   => "absolute",
+);
+
+do {
+    $pct  = random(70, 85, 5);
+    $num  = random(40, 60, 5);
+    $s    = int($pct / 100 * $num) + non_zero_random(-5, 5);
+    $phat = $s / $num;
+    $p0   = $pct / 100;
+
+    $zscore    = abs($phat - $p0) / sqrt($p0 * (1 - $p0) / $num);
+    $pval      = 2 * normal_prob($zscore, 'inf');
+    $sig_level = list_random(0.01, 0.05, 0.1, 0.15, 0.20);
+} until $pct / 100 != $phat && abs($pval - $sig_level) < 0.05;
+
+@opts   = ('\(<\)', '\(>\)', '\(=\)', '\(\neq\)');
+$popup1 = DropDown([@opts], 2, useHTMLSelect => 0);
+$popup2 = DropDown([@opts], 3, useHTMLSelect => 0);
+$popup3 = DropDown([ "Left-tailed", "Right-tailed", "Two-tailed" ], 2);
+$popup4 = DropDown(
+    [
+        "We will reject the null hypothesis.",
+        "We fail to reject the null hypothesis."
+    ],
+    $pval < $sig_level ? 0 : 1
+);
+
+$grade = random(1, 5);
+
+BEGIN_PGML
+
+A teacher believes that [$pct]% of students in grade [$grade] will want to go on a field trip to the local zoo. She performs a hypothesis test to determine if the percentage is the same or different from [$pct]%. The teacher samples [$num] students from grade [$grade] and [$s] reply that they would want to go to the zoo. For the hypothesis test, use a [$sig_level*100]% level of significance.
+
+a) The null hypothesis would be: [`H_0`]: p [_]{$popup1} [____________]{Real($p0)}
+
+b) The alternative hypothesis would be: [`H_a`]:  p [_]{$popup2}   [____________]{Real($pct/100)}
+
+c) What type of test is being asked? [_]{$popup3}
+
+d) What is the alpha level? [`\alpha`] = [__]{Real($sig_level)}{10}
+
+e) What is [`n`]? [_]{Real($num)}{10}
+
+f) What is [`\hat{p}`] (to two decimal places)? [____________]{Real($s/$num)}
+
+g) If the [`p`]-value is [@ Round($pval,3) @], what should be our conclusion? [_]{$popup4}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) Since we are testing whether or not [$pct]% of all grade [$grade] students want to go on the field trip, the null hypothesis would be [` H_0: \; p = [$p0] `].
+b) In the problem, the teacher wants to test if the number is different from [$pct]%, so the alternative is not equal or [`H_a: \; p \neq [$p0] `]. 
+c) Since in the alternative hypothesis is not equal, this is a *two-tailed test*. 
+d) The [`\alpha`]-level is the level of significance as a fraction or [$sig_level]. 
+e) The value of [`n`] is the number of samples or in this case [$num].
+f) The sample proportion [`\hat{p}`] is the fraction of "successes" or in this case, the number students in the sample who want to go to the zoo or [`[$s]/[$num] = [@ Round($s/$num,2) @]`].
+g) Recall that we reject the null hypothesis only when the [`p`]-value is less than [`\alpha`] and in this case it [@ $pval < $sig_level ? 'is' : 'is not' @], therefore:  [$popup4] 
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

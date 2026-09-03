@@ -67,11 +67,9 @@ $ansDen = $answ[1];
 BEGIN_PGML
 
 Multiply: [``-\frac{[$num1]}{[$den1]} \cdot \frac{[$num2]}{[$den2]}``]
-
-[@KeyboardInstructions("If needed, use an improper fraction in your answer. Don't use a mixed number.")@]**
-
     [_________]{$ans} 
 
+*If needed, use an improper fraction in your answer. Don't use a mixed number.*
 END_PGML
 
 ##############################################

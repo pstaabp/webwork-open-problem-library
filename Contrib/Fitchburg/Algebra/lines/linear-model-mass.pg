@@ -40,8 +40,7 @@ parser::Assignment->Function("P");
     [ 2020, 7.029 ]
 );
 
-$i = random(0,  $#pop - 1);
-$j = random($i, $#pop);
+($i,$j) = num_sort(random_subset(2,0..$#pop));
 ($year1, $year2) = ($pop[$i]->[0], $pop[$j]->[0]);
 ($pop1, $pop2)   = ($pop[$i]->[1], $pop[$j]->[1]);
 

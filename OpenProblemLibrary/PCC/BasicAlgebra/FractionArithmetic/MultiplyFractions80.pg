@@ -55,7 +55,6 @@ $ans3 = Fraction($num * ($multiple + 2), 1)->reduce;
 
 $checker = sub {
     my $ansHash = shift;
-    warn 'here';
     if ($ansHash->{score}) {
         my $sfrac = $ansHash->{student_value};
         if ($sfrac->class eq 'Fraction') {
@@ -73,8 +72,6 @@ $checker = sub {
 BEGIN_PGML
 
 Do the following multiplications.
-a. [` [$integer1] \cdot \frac{[$num]}{[$den]}  `]  
-   [___________]
 
 a) [`` [$integer1] \cdot \frac{[$num]}{[$den]} = ``]
     [___________]{$ans1->cmp()->withPostFilter($checker)}

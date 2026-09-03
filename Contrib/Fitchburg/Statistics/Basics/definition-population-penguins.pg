@@ -1,0 +1,80 @@
+## DESCRIPTION
+# A problem that asks students to identify the Population, Parameter, Statistic,
+# Variable, Sample and Data for a problem with penguins.
+## ENDDESCRIPTION
+
+# This problem is derived from a homework problem in Introductory Statistics,
+# licensed by OpenStax under a Creative Commons Attribution License (CC BY 4.0).
+# Modified for WeBWorK by Michael Stassen   mstassen(at)fitchburgstate(dot)edu
+
+## DBsubject('Introductory Statistics')
+## DBchapter('1')
+## DBsection('1')
+## KEYWORDS('Statistics', 'defintitions', 'skiing')
+## Author('Michael Stassen')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+
+loadMacros("PGstandard.pl", "PGML.pl", 'parserMatchList.pl', 'PGcourse.pl');
+
+Context('Numeric');
+
+$num = random(25, 75);
+
+$ml = MatchList(
+    [
+        [ "Population", "All penguins on these Antarctic islands" ],
+        [ "Variable",   "Flipper length of a penguin" ],
+        [ "Sample",     "The $num randomly selected penguins" ],
+        [
+            "Parameter",
+            "The mean flipper length of penguins on these islands"
+        ],
+        [ "Data", "The $num flipper lengths" ],
+        [
+            "Statistic",
+            "The mean flipper length of the $num selected penguins"
+        ]
+    ],
+    extra => [ "All penguins", "All birds", $num ],
+    last  => ['None of the above']
+);
+
+$showPartialCorrectAnswers = 0;
+
+BEGIN_PGML
+
+Data were collected on [$num] random penguins on Antarctic islands. The scientists
+studying the penguins record the length of the penguins' flippers. 
+They are interested in mean flipper length of penguins on these islands.
+Match each term with the corresponding part of the study.
+
+[_]*{$ml}
+
+END_PGML
+
+$explanations = {
+    Population => "the population is the complete group of interest",
+    Variable   =>
+        "each member of the population or sample has a value of the variable",
+    Sample    => "the sample is the selected subset of the population",
+    Parameter => "a parameter is a descriptive measure of the population",
+    Data      => "the data is the set of recorded values of the variable",
+    Statistic => "a statistic is a descriptive measure of the sample data"
+};
+
+$questions = $ml->questions;
+$answers   = $ml->choices;
+
+BEGIN_PGML_SOLUTION
+1. For [$questions->[0]], the answer is *[$answers->[0]]****, because [$explanations->{$questions->[0]}].
+2. For [$questions->[1]], the answer is *[$answers->[1]]****, because [$explanations->{$questions->[1]}].
+3. For [$questions->[2]], the answer is *[$answers->[2]]****, because [$explanations->{$questions->[2]}].
+4. For [$questions->[3]], the answer is *[$answers->[3]]****, because [$explanations->{$questions->[3]}].
+5. For [$questions->[4]], the answer is *[$answers->[4]]****, because [$explanations->{$questions->[4]}].
+6. For [$questions->[5]], the answer is *[$answers->[5]]****, because [$explanations->{$questions->[5]}].
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

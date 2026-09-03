@@ -92,8 +92,7 @@ Find the perimeter and area of the right triangle.
 
     Its perimeter is [_____________]{$ansP} and its area is [_____________]{$ansA}. 
 
-[@KeyboardInstructions(q!(Use [|cm|]* for centimeters and [|cm^2|]* for square centimeters.)!)@]**
-
+*Note: you should inlcude proper units for this problem.*
 END_PGML
 
 ##############################################
