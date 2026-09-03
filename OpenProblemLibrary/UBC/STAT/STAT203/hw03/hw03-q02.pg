@@ -34,6 +34,101 @@ $mc2 = RadioButtons($days,               'Wednesday');
 $mc3 = RadioButtons($days,               'Monday');
 $mc4 = RadioButtons([ 'True', 'False' ], 'False');
 
+loadMacros('PGstandard.pl', 'PGML.pl', 'StatisticalPlots.pl');
+
+$params = [
+    {
+        min    => 500,
+        q1     => 900,
+        median => 1100,
+        q3     => 1400,
+        max    => 1950
+
+    },
+    {
+        min    => 400,
+        q1     => 850,
+        median => 1150,
+        q3     => 1350,
+        max    => 2000
+    },
+    {
+        min      => 600,
+        q1       => 950,
+        median   => 1175,
+        q3       => 1250,
+        max      => 1600,
+        outliers => [450]
+    },
+    {
+        min    => 350,
+        q1     => 950,
+        median => 1050,
+        q3     => 1300,
+        max    => 1700
+    },
+    {
+        min      => 475,
+        q1       => 900,
+        median   => 1050,
+        q3       => 1250,
+        max      => 1450,
+        outliers => [250]
+    },
+    {
+        min      => 200,
+        q1       => 300,
+        median   => 350,
+        q3       => 375,
+        max      => 525,
+        outliers => [ 150, 575, 800 ]
+    },
+    {
+        min    => 150,
+        q1     => 300,
+        median => 475,
+        q3     => 525,
+        max    => 700
+    }
+];
+
+$boxplot = StatPlot(
+    xmin         => 0,
+    xmax         => 8,
+    xtick_delta  => 1,
+    xminor       => 0,
+    xlabel       => '',
+    xlocation    => 'bottom',
+    xtick_labels => {
+        1 => 'Mon.',
+        2 => 'Tue.',
+        3 => 'Wed.',
+        4 => 'Thu.',
+        5 => 'Fri.',
+        6 => 'Sat.',
+        7 => 'Sun.'
+    },
+    show_grid       => 0,
+    ymin            => 0,
+    ymax            => 2100,
+    ytick_delta     => 500,
+    ylabel          => 'hits',
+    ylocation       => 'left',
+    aspect_ratio    => 0.0025,
+    rounded_corners => 1
+);
+
+$boxplot->add_boxplot(
+    $params,
+    orientation  => 'vertical',
+    box_center   => [ 1 .. 7 ],
+    box_width    => 0.5,
+    fill_color   => 'LightBlue',
+    whisker_cap  => 1,
+    stroke_width => 1,
+    outlier_mark => 'open_circle'
+);
+
 $alt_text =
     'The graph shows seven vertical box plots, one for each day of '
     . 'the week, that represent the number of website hits that day. On Monday, '
@@ -138,7 +233,7 @@ BEGIN_PGML
 The following are boxplots of the numbers of hits at a
 certain website for the different days of the week.
 
->> [! [$alt_text]!]{$boxplot}{600} <<
+>> [! [$alt_text]!]{$boxplot}{640} <<
 
 1. Which days had outliers?
 

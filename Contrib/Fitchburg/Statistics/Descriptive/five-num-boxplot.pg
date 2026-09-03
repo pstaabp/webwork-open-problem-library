@@ -1,0 +1,94 @@
+##DESCRIPTION
+# Ask the student to read the five number summary from a boxplot. 
+##ENDDESCRIPTION
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Graphical representations)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
+## Level(2)
+## KEYWORDS('boxplot', 'five number summary')
+
+# Adapted from a Northern Arizona University (Edgar Fisher)
+
+DOCUMENT();
+loadMacros("PGstandard.pl", "PGML.pl", 'StatisticalPlots.pl', "PGcourse.pl",);
+
+$min    = random(15, 30);
+$q1     = random(35, 43);
+$median = random(45, 70);
+$q3     = random(72, 85);
+$max    = random(89, 100);
+
+$stat_plot = StatPlot(
+    xmin        => 10 * int($min / 10) - 5,
+    xmax        => 10 * int($max / 10 + 1) + 5,
+    xtick_delta => 5,
+    xminor   =>  4,
+    ymin     => -2,
+    ymax     =>  10,
+    yvisible => 0,
+    show_grid => 0,
+    aspect_ratio => 2,
+    rounded_corners => 1
+);
+
+$stat_plot->add_boxplot({
+    min    => $min,
+    q1     => $q1,
+    median => $median,
+    q3     => $q3,
+    max    => $max
+}, stroke_width => 1);
+
+$stat_plot->add_dataset([[$min,-0.25], [$min,0.35], color => 'blue'],
+                        [[$q1,-0.25], [$q1,0.35], color => 'blue'],
+                        [[$median,-0.25], [$median,0.35], color => 'blue'],
+                        [[$q3,-0.25], [$q3,0.35], color => 'blue'],
+                        [[$max,-0.25], [$max,0.35], color => 'blue'],
+);
+
+@slice = num_sort(random_subset(2,0..4));
+
+@labels = ("Minimum", "First quartile", "Median", "Third quartile", "Maximum");
+@questions = @labels[@slice];
+
+$alt = "A boxplot with the end of the left whisker at $min, the left side of the "
+    . "box is at $q1, the line in the middle of the box at $median," 
+    . "the right side of the box is at $q3 and the right whisker ends at $max.";
+
+@dat = ($min, $q1, $median, $q3, $max);
+
+BEGIN_PGML
+
+Consider the following boxplot.  Find the indicated values of the represented data.
+
+>>[![$alt]!]{$stat_plot}{500}<<
+
+a) [$questions[0]] = [____]{$dat[$slice[0]]}  
+b) [$questions[1]] = [____]{$dat[$slice[1]]}  
+c) The bottom 25% of the data values are between [____]{$dat[0]} and [____]{$dat[1]}  
+d) The middle 50% of the data values are between [____]{$dat[1]} and [____]{$dat[3]}  
+e) The top 25% of the data values are between [____]{$dat[3]} and [____]{$dat[4]}  
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Recall that the left whisker starts at the minimum of the data, the right edge of the box is at the first quartile, the vertical line in the box is the median, the right edge of the box is the 3rd quartile, and the right edge of the right whisker is the maximum. 
+
+So for this problem, reading off the boxplot
+
+- Minimum: [$min]
+- 1st quartile: [$q1]
+- Median: [$median]
+- 3rd quartile: [$q3]
+- Maximum: [$max]
+
+a) [$questions[0]] = [$dat[$slice[0]]]
+b) [$questions[1]] = [$dat[$slice[1]]]
+c) The bottom 25% is between the minimum ([$min]) and the first quartile ([$q1])
+d) The middle 50% is between the minimum ([$q1]) and the first quartile ([$q3])
+e) The top 25% is between the third quartile ([$q3]) and the maximum ([$max])
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

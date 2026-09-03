@@ -33,7 +33,7 @@ $popup = DropDown([ 'linear', "exponential", "neither" ], "exponential");
 #  Main text
 
 BEGIN_PGML
-Determine whether the table could represent a function that is linear, exponential, or neither.  If the function is exponential or linear, find a function that passes through the points.  If the function is neither exponential nor linear, type 'NONE'. (if exponential, write the form [`f(x)=ab^x`], if linear, write the form [`f(x)=mx+b`])
+Determine whether the table could represent a function that is linear, exponential, or neither. Use the dropdown to select the type of function, then write a functional form of the function.  If it is exponential, write the form [`f(x)=ab^x`], if linear, write the form [`f(x)=mx+b`])
 
 [#
     [.[`x`].] [.[$x[0]].][.[$x[1]].][.[$x[2]].][.[$x[3]].]*

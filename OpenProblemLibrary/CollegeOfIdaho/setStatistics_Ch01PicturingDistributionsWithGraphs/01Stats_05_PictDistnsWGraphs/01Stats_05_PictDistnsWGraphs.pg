@@ -9,104 +9,82 @@
 ## AuthorText1('David Moore')
 ## EditionText1('5e')
 ## Section1('1')
-## Problem1('')
 ## KEYWORDS('statistics', 'time plot')
 
-DOCUMENT();        # This should be the first executable line in the problem.
+DOCUMENT();    # This should be the first executable line in the problem.
 
 loadMacros(
-  "PGstandard.pl",
-  "PGgraphmacros.pl",
-  "PGchoicemacros.pl",
-  "PGcourse.pl"
+    'PGstandard.pl',         'PGML.pl',
+    'parserRadioButtons.pl', 'PGchoicemacros.pl',
+    'PGcourse.pl'
 );
 
-TEXT(beginproblem());
+Context('Numeric');
 
-######################################
-#  Setup
+@questions = (
+    'The maximum price per share for this time period was about',
+    'Which of the following is a true statement?',
+    'If you bought a single share of stock at the maximum price and sold it at the '
+        . 'minimum price during this one-year period, you would have lost about'
+);
 
-@ThreeProblems = (0,1,2);  #Order the problems
-@scramble = NchooseK(3,3);
-@order = @ThreeProblems[@scramble];
+@options = (
+    [ [ '$41', '$45', '$25', '$20' ], 'None of the above.' ],
+    [
+        [
+            "There has been a general downward trend in the stock price over this time period.",
+            "The price of General Electric stock has been stable for this year. ",
+            "The price should return to 40 dollars within six months because of the cycle. ",
+            "There has been a general upward trend in the stock price over this time period. "
+        ],
+        'None of the above.'
+    ],
+    [ [ '$15', '$25', '$35', '$45' ], 'None of the above.' ]
+);
 
-$mc[0] = new_multiple_choice();
-     $mc[0]->qa("The maximum price per share for this time period was about "," 41 dollars. "); 
-     $mc[0]->extra("45 dollars. ", 
-	"25 dollars. ", 
-        "20 dollars. ");
-     $mc[0]->makeLast("None of the above. ");
+@order = random_subset(3, 0 .. 2);
 
-$mc[1] = new_multiple_choice();
-     $mc[1] ->qa("Which of the following is a true statement? ",
-	"There has been a general downward trend in the stock price over this time period."); 
-     $mc[1]->extra("The price of General Electric stock has been stable for this year. ", 
-	"The price should return to 40 dollars within six months because of the cycle. ", 
-            "There has been a general upward trend in the stock price over this time period. ");
-     $mc[1]->makeLast("None of the above. ");
-
-$mc[2] = new_multiple_choice();
-     $mc[2] ->qa("If you bought a single share of stock at the maximum price and sold it at the 
-               minimum price during this one-year period, you would have lost about",
-		"15 dollars."); 
-     $mc[2]->extra("25 dollars.", 
-	"35 dollars.", 
-        "45 dollars.");
-     $mc[2]->makeLast("Cannot be determined from the graph. ");
-
-######################################
-#  Main text
-
-BEGIN_TEXT
-The timeplot below gives the share price in dollars of General Electric stock, 
-with the bar chart giving the volume in millions of shares.  The plots are 
-for the one-year period September 2001-September 2002.
-($BBOLD Click on the image for a larger view. $EBOLD)
-$PAR
-\{ image("Ref_1_1.gif", height=>300, width=>400, tex_size => 200) \}
-
-$PAR
-(a)   \{ $mc[$order[0]] -> print_q() \}
-$BR
-\{$mc[$order[0]] -> print_a() \}
-
-$PAR
-(b)   \{ $mc[$order[1]] -> print_q() \}
-$BR
-\{$mc[$order[1]] -> print_a() \}
-
-$PAR
-(c)   \{ $mc[$order[2]] -> print_q() \}
-$BR
-\{$mc[$order[2]] -> print_a() \}
-END_TEXT
-
-######################################
-#  Answers
+@rb = map { RadioButtons($options[$_], 0, labels => 'ABC') } @order;
 
 $showPartialCorrectAnswers = 0;
 
-ANS(radio_cmp($mc[$order[0]]->correct_ans));
-ANS(radio_cmp($mc[$order[1]]->correct_ans));
-ANS(radio_cmp($mc[$order[2]]->correct_ans));
+BEGIN_PGML
+The timeplot below gives the share price in dollars of General Electric stock, 
+with the bar chart giving the volume in millions of shares.  The plots are 
+for the one-year period September 2001-September 2002.
+(*Click on the image for a larger view.*)
+
+>>[!!]{'Ref_1_1.gif'}{400}<<
+
+a) [$questions[$order[0]]]
+
+    [_]{$rb[0]}
+
+b) [$questions[$order[1]]]
+
+    [_]{$rb[1]}
+
+c) [$questions[$order[2]]]
+
+    [_]{$rb[2]}
+
+
+END_PGML
+
+@explanations = (
+    'The largest value is about $41',
+    'From the graph the curve is generally trending down left to right.',
+    'The lowest value during the year was about $25, so the difference is $15.'
+);
+
+BEGIN_PGML_SOLUTION
+
+a) [$explanations[$order[0]]]  Answer [$rb[0]]
+
+b) [$explanations[$order[1]]]  Answer [$rb[1]]
+
+c) [$explanations[$order[2]]]  Answer [$rb[2]]
+
+END_PGML_SOLUTION
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

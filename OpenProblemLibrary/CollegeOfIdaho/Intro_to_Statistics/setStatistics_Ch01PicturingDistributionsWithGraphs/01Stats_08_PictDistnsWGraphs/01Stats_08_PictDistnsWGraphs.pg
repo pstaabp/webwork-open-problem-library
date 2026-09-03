@@ -7,7 +7,7 @@
 # for modification.
 
 DOCUMENT();
-includePGproblem("Library/CollegeOfIdaho/setStatistics_Ch01PicturingDistributionsWithGraphs/01Stats_08_PictDistnsWGraphs/01Stats_08_PictDistnsWGraphs.pg");
+includePGproblem("Library/CollegeOfIdaho/setStatistics_Ch01PicturingDistributionsWithGraphs/01Stats_08_PictDistnsWGraphs.pg");
 ENDDOCUMENT();
 
 ## These tags keep this problem from being added to the NPL database

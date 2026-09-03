@@ -33,7 +33,9 @@ BEGIN_PGML
 
 Find an equivalent fraction to [`\frac{[$num1]}{[$den1]}`] with denominator [`[$den2]`].
 
-[________]{$evaluator}
+[# [. [``\frac{[$num1]}{[$den1]} =``] .] 
+[. [# [. [_]{$num2} .]{bottom=>1}* [.[_]{$den2} .] #]{padding => 0.2} .]{valign=>'middle'}
+#]
 
 END_PGML
 

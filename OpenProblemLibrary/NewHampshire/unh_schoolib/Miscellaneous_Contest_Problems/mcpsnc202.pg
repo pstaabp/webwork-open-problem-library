@@ -27,7 +27,7 @@ do {
         && $math_num != $sci_num);
 
 BEGIN_PGML
-In a junior high school, [$math_pct]% of the students in the Math Club are in the Science Club and [$sci_pct]% of the students in the Science Club are in the Math Club.  There are [$sci_num] students in the Science Club.
+In a junior high school, [$math_pct]% of the students in the Science Club are in the Math Club and [$sci_pct]% of the students in the Math Club are in the Science Club.  There are [$sci_num] students in the Science Club.
 
 The number of students in the Math Club is [_]{$math_club}
 

@@ -1,0 +1,76 @@
+# DESCRIPTION
+# Using accidents at two intersections, set up a hypothesis test for a
+# sample mean difference.
+# ENDDESCRIPTION
+
+## DBsubject('WeBWorK')
+## DBchapter('Nursing-Med Calc')
+## DBsection('Problem')
+## KEYWORDS('null hypothesis', 'alternative hypothesis', 'two-sample test')
+## Author('Catherine Buell')
+## Institution('Fitchburg State')
+
+DOCUMENT();
+
+loadMacros("PGstandard.pl", 'PGML.pl', "parserPopUp.pl", "PGcourse.pl");
+
+Context("Numeric");
+
+@opts = ('\(<\)', '\(>\)', '\(=\)', '\(\neq\)');
+$dd1  = DropDown([@opts], 2, useHTMLSelect => 0);
+$dd2  = DropDown([@opts], 0, useHTMLSelect => 0);
+
+$n = random(10,  20);
+$x = random(0.2, 0.5, 0.01);
+
+$sig_level = list_random(1, 2, 5, 10);
+$pval      = random(1, 99) * list_random(0.001, 0.0001, 0.00001);
+$dd3       = DropDown(
+    [
+        "We will reject the null hypothesis.",
+        "We fail to reject the null hypothesis."
+    ],
+    $pval < $sig_level / 100 ? 0 : 1
+);
+
+BEGIN_PGML
+
+Police in a particular town suspect that major intersection A has a lower mean 
+number of accidents on bad weather days than major intersection B. They take a 
+random sample of [$n] bad weather days from recent records and find a sample mean
+difference of [$x] fewer accidents at intersection A than intersection B. They
+do a hypothesis test at a [$sig_level]% level of significance.
+
+a) The null hypothesis would be: [`H_0`]: [`\mu_{1}`] [_]{$dd1} [_]{Real(0)}
+
+b) The alternative hypothesis would be: [`H_a`]:  [`\mu_{1}`] [_]{$dd2}  [_]{Real(0)}
+
+c) What is [`n`]? [_]{$n}
+
+d) What is the alpha level? [`\alpha = `] [_]{Real($sig_level/100)}
+
+e) What is [`\bar{x}`]? [_]{Real($x) }
+
+f) If the p-value is [$pval], what should be our conclusion? [_]{$dd3}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) Since the mean [`\mu`] is interpreted as the difference between then, the null hypothesis is the neutral relationship and that is [`\mu=0`] (there is no difference in their ratings.)
+
+b) Since the researchers want to know if intersection A has lower accident rate than
+intersection B, the alternative hypothesis is [`\mu < 0 `].
+
+c) [`n`] is the number of samples  or [`[$n]`].
+
+d) The alpha level is the significance level as a fraction or [`\alpha = [$sig_level/100]`].
+
+d) The sample mean difference is [`\bar{x} = [$x]`].
+
+e) Since the [`p`]-value is [@ $pval < $sig_level/100 ? 'smaller' : 'greater'@] than
+    the level of significant of [`\alpha = [$sig_level/100]`], converted to a 
+    fraction, the reserchers should 
+    *[@ $pval < $sig_level/100 ? '' : 'not '@]reject the null hypothesis*.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

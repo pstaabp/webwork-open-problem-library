@@ -1,0 +1,78 @@
+# DESCRIPTION
+# Using movies genres, perform the initial steps of a two-sample t-test.
+# ENDDESCRIPTION
+
+## DBsubject('WeBWorK')
+## DBchapter('Nursing-Med Calc')
+## DBsection('Problem')
+## KEYWORDS('null hypothesis', 'alternative hypothesis', 'two-sample test')
+## Author('Catherine Buell')
+## Institution('Fitchburg State')
+
+DOCUMENT();
+
+loadMacros(
+    "PGstandard.pl",   'PGML.pl',
+    'randomPerson.pl', "parserPopUp.pl",
+    "PGcourse.pl"
+);
+
+Context("Numeric")->flags->set(
+    tolerance => 0.02,
+    tolType   => "absolute",
+);
+
+@opts = ('\(<\)', '\(>\)', '\(=\)', '\(\neq\)');
+$dd1  = DropDown([@opts], 2, useHTMLSelect => 0);
+$dd2  = DropDown([@opts], 0, useHTMLSelect => 0);
+
+do {
+    $n1 = random(20, 40);
+    $n2 = random(20, 40);
+} until $n1 != $n2;
+
+do {
+    $x1 = random(4.5, 6.5, 0.01);
+    $x2 = random(5.5, 7.8, 0.01);
+} until $x2 - $x1 > 0.05;
+
+$p = randomPerson();
+
+BEGIN_PGML
+
+[$p] wants to know whether romance movies are more highly rated on average than 
+action movies on a movie review website. [$p->They] [$p->verb('take')] a 
+random sample of [$n1] action movies (group 1) and [$p->verb('find')] a 
+sample mean rating of [$x1] on a 0-10 scale, and [$p->they] [$p->verb('take')] 
+a random sample of [$n2] romance movies (group 2) and [$p->verb('find')] a 
+sample mean rating of [$x2].
+
+a) The null hypothesis would be: [`H_0`]: [`\mu_{1}`] [_]{$dd1} [`\mu_{2}`]
+
+b) The alternative hypothesis would be: [`H_a`]:  [`\mu_{1}`] [_]{$dd2}   [`\mu_{2}`]
+
+c) What is [`n_1`]? [_]{$n1}
+
+d) What is [`n_2`]? [_]{$n2}
+
+e) What is [`\bar{x}_1 - \bar{x}_2`] (to two decimal places)? [_]{Real($x1-$x2) }
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) The null hypothesis is the neutral relationship and that is [`\mu_1=\mu_2`].
+
+b) Since [$p] wants to know if romance movies rank higher than action movies, 
+then if [`\mu_1`] is the mean of the action movies and [`\mu_2`] is the mean 
+of the rating of the romance movies, then [$p->they] [$p->verb('want')] to 
+test that [`\mu_1 < \mu_2`], so this is the alternative hypothesis.
+
+c) [`n_1`] is the number of sample in group 1 or [`[$n1]`].
+
+d) [`n_2`] is the number of sample in group 2 or [`[$n2]`].
+
+e) The problem states that [`\bar{x}_1=[$x1]`] and [`\bar{x}_2 = [$x2]`] so 
+    [`\bar{x}_1 - \bar{x}_2 = [$x1-$x2] `].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

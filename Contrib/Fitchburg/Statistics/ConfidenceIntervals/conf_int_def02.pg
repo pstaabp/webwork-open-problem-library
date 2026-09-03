@@ -1,0 +1,43 @@
+##DESCRIPTION
+##   This problem asks a student to switch a confindence interval from plus/minus form.
+##ENDDESCRIPTION
+
+## DBsubject(Statistics)
+## DBchapter(Confidence intervals)
+## DBsection(Concepts)
+## Institution(Fitchburg State University)
+## Author(Jessie Oehrlein)
+## Level(3)
+## KEYWORDS('confidence interval')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros(
+    'PGstandard.pl', 'PGML.pl', 'PGchoicemacros.pl', 'PGasu.pl',
+    'PGcourse.pl'
+);
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context('Numeric');
+
+$showPartialCorrectAnswers = 0;
+
+$pe = random(35, 45, .1);
+$me = random(2,  8,  .1);
+
+$lb = $pe - $me;
+$ub = $pe + $me;
+
+BEGIN_PGML
+Suppose you have an interval of [`[$pe] \pm [$me]`]. Rewrite this interval in lower bound and upper bound form. Do not round. 
+
+    [`(`] [_]{$lb} , [_]{$ub} [`)`]
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The lower bound is [`[$pe]-[$me] = [$lb]`] and the upper bound is [`[$pe]+[$me] = [$ub]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();       # This should be the last executable line in the problem.

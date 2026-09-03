@@ -1,61 +1,74 @@
 ##DESCRIPTION
+##ENDDESCRIPTION
 ## DBsubject('Statistics')
 ## DBchapter('What is Statistics?')
 ## DBsection('Characterizing a Set of Measurements: Graphical Methods')
 ## KEYWORDS('boxplot', 'five number summary')
 ## Author('Edgar Fisher')
 ## Institution('NAU')
-##ENDDESCRIPTION
 
 # File Created: 6/6/05
 # Location: Northern Arizona University
 
-DOCUMENT();     
-loadMacros("PGstandard.pl",
-           "extraAnswerEvaluators.pl",
-           "PGnauStats.pl",
-           "MathObjects.pl",
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'StatisticalPlots.pl', 'PGcourse.pl');
+
+$statPlot = StatPlot(
+    xmin         => 10,
+    xmax         => 110,
+    xtick_delta  => 10,
+    xminor       => 9,
+    xlabel       => '',
+    ymin         => -1,
+    ymax         =>  3,
+    show_grid    =>  0,
+    aspect_ratio => 10
+
 );
 
-TEXT(&beginproblem) ;
-$showPartialCorrectAnswers = 1;
+($min, $q1, $median, $q3, $max) = (
+    random(15, 30),
+    random(35, 43),
+    random(45, 70),
+    random(72, 85),
+    random(89, 100)
+);
 
-push @dat, random(15, 30,1);
-push @dat, random(35, 43,1);
-push @dat, random(45, 70,1);
-push @dat, random(72, 85,1);
-push @dat, random(89, 100,1);
+$statPlot->add_boxplot(
+    {
+        min    => $min,
+        q1     => $q1,
+        median => $median,
+        q3     => $q3,
+        max    => $max
+    },
+    fill_color   => 'lightyellow',
+    stroke_width => 1
+);
 
-$graph = BoxPlot(@dat, @dat);
-
-@slice = num_sort(NchooseK(5,2));
+@slice = num_sort(random_subset(2, 0 .. 4));
 
 @labels = ("Minimum", "First quartile", "Median", "Third quartile", "Maximum");
-@questions = @labels[@slice];
 
-BEGIN_TEXT
-Consider the following box and whisker plot.  Find the indicated values of the represented data.$PAR
-$BCENTER
-\{Plot($graph);\}
-$ECENTER
-$PAR
-$questions[0]: \{ans_rule(5) \}$BR
-$questions[1]: \{ans_rule(5) \}$BR
+@dat = ($min, $q1, $median, $q3, $max);
 
-END_TEXT
+BEGIN_PGML
+Consider the following box and whisker plot.  Find the indicated values of the represented data.
 
-ANS(Compute($dat[$slice[0]])->cmp);
-ANS(Compute($dat[$slice[1]])->cmp);
+>>[!!]{$statPlot}{600}<<
 
+a) [$labels[$slice[0]]]: [_]{$dat[$slice[0]]}
+a) [$labels[$slice[1]]]: [_]{$dat[$slice[1]]}
 
-#############################
-BEGIN_SOLUTION
+END_PGML
 
-The markers from left to right on a boxplot are the minimum, quartile \(1\), the median, quartile \(3\) and the maximum.  As such, we have the following,
-$PAR
-(a) The $questions[0] is \($dat[$slice[0]]\)
-$PAR
-(b) The $questions[1] is \($dat[$slice[1]]\)
-END_SOLUTION
-#############################
+BEGIN_PGML_SOLUTION
+
+The markers from left to right on a boxplot are the minimum, quartile [`1`], the median, quartile [`3`] and the maximum.  As such, we have the following,
+
+a) The [$labels[$slice[0]]] is [`[$dat[$slice[0]]]`]
+
+b) The [$labels[$slice[1]]] is [`[$dat[$slice[1]]]`]
+END_PGML_SOLUTION
+
 ENDDOCUMENT();

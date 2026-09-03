@@ -23,8 +23,8 @@ Context('Fraction');
 ($color1, $color2) =
     random_subset(2, 'red', 'gray', 'yellow', 'blue', 'purple');
 
-$num1  = random(5, 11,);
-$num2  = random(3, $gray);
+$num1  = random(5, 11);
+$num2  = random(3, 6);
 $total = $num1 + $num2;
 
 $ans1 = Fraction($num1**2,             $total**2);

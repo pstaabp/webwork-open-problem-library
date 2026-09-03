@@ -5,6 +5,7 @@
 ## DBsubject(Algebra)
 ## DBchapter(Polynomial equations and functions)
 ## DBsection(Zeros and multiplicities)
+## KEYWORDS('polynomial', 'zeros', 'degree', 'leading term', 'sign chart')
 ## Date(7/10/2022)
 ## Institution(Fitchburg State University)
 ## Author(Peter Staab)
@@ -37,7 +38,7 @@ $intpos   = Interval("{}");
 $intneg   = Interval("{}");
 @allroots = ($root1, $root2);
 
-for $i (0 .. scalar(@allroots)) {
+for my $i (0 .. scalar(@allroots)) {
     $x = $i == scalar(@allroots) ? $allroots[$i] + 0.5 : $allroots[$i] - 0.5;
     if ($i == 0) {
         $int = Interval("(-Infinity, $allroots[$i])");
@@ -54,7 +55,6 @@ for $i (0 .. scalar(@allroots)) {
     }
 }
 
-TEXT(beginproblem());
 BEGIN_PGML
 
 Consider the polynomial [`p(x)=[$poly]`]

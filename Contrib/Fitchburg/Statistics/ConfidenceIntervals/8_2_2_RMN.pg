@@ -1,0 +1,67 @@
+## DESCRIPTION
+## A problem that asks students to find the margin of error and confidence interval for 
+## number of unoccupied seats on a flight. 
+## ENDDESCRIPTION
+
+# This problem is derived from a homework problem in Introductory Statistics,
+# licensed by OpenStax under a Creative Commons Attribution License (CC BY 4.0).
+# Modified for WeBWorK by Michael Stassen   mstassen(at)fitchburgstate(dot)edu
+
+
+## DBsubject('Introductory Statistics')
+## DBchapter('7')
+## DBsection('1')
+## KEYWORDS('confidence interval','margin of error')
+## Author('Michael Stassen')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',     "PGML.pl",
+    "contextPercent.pl", "PGstatisticsmacros.pl",
+    'PGcourse.pl'
+);
+
+Context("LimitedNumeric");
+loadMacros("fixedPrecision.pl");    # must come after Context is set.
+
+$conf  = list_random(90, 95, 99);
+$alpha = 1 - $conf / 100;
+
+$n    = random(85,   95,   1);
+$Xbar = random(11.2, 11.8, 0.2);
+$s    = random(3.7,  4.7,  0.2);
+
+$t = round(tdistr($n - 1, $alpha / 2), 3);
+
+$E = FixedPrecision($t * $s / sqrt($n), 1);
+
+$X1 = FixedPrecision($Xbar - $E, 1);
+$X2 = FixedPrecision($Xbar + $E, 1);
+
+BEGIN_PGML
+Unoccupied seats on flights cause airlines to lose revenue. Suppose a large
+airline wants to estimate its mean number of unoccupied seats per flight over
+the past year. To accomplish this, the records of [$n] flights are randomly
+selected and the number of unoccupied seats is noted for each of the sampled
+flights. The sample mean is [$Xbar] seats and the sample standard deviation is
+[$s] seats.
+
+We wish to calculate a [$conf]% confidence interval for the mean number of
+unoccupied seats per flight. (Round to the nearest 0.1 seats. Include a decimal point *even* if your answer is a whole number: for example, 12 should be 12.0.)  
+
+a. What is the margin of error for a [$conf]% confidence interval?[____]{$E} seats.  
+b. The [$conf]% confidence interval is from [____]{$X1} to [____]{$X2} seats.  
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+For this problem, the population standard deviation is *not* known so the [`t`]-distribution is used, however, because the samples size is fairly large, using the [`z`]-distribution should be nearly the same answer. 
+
+a) The margin of error for this is 
+[``` ME = t_{\alpha/2,n} \frac{s}{\sqrt{n}} = [$t] \frac{[$s]}{\sqrt{[$n]}} = [$E] ```]
+
+b) The confidence interval is from [`\bar{x}-ME`] to [`\bar{x}+ME`] or [`[$X1]`] to [`[$X2]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -13,84 +13,63 @@
 ## Level(3)
 ## KEYWORDS('Statistics')
 
-#
-# First comes some stuff that appears at the beginning of every problem
-#
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioButtons.pl', 'PGcourse.pl');
 
-DOCUMENT();        # This should be the first executable line in the problem.
-
-loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl",
-  "PGasu.pl",
-  "PGcourse.pl"
+$rb1 = RadioButtons(
+    [
+        [ 'marital status', 'mean TV viewing time', 'TV viewing time' ],
+        'None of the above'
+    ],
+    2,
+    labels => 'ABC'
 );
 
-TEXT(beginproblem());
+$rb2 = RadioButtons(
+    [
+        [
+            'married people and single people',
+            'married men and married women',
+            'men and women'
+        ],
+        'None of the above'
+    ],
+    1,
+    labels => 'ABC'
+);
 
-$mc = new_multiple_choice();
+$rb3 = RadioButtons(
+    [ [ 'men and women', 'married couples' ], 'None of the above' ],
+    1, labels => 'ABC');
 
-$mc->qa("What is the variable under consideration?", 
-"TV viewing time");
-$mc->extra("mean TV viewing time", "marital status");
-$mc->makeLast("None of the above");
+$rb4 = RadioButtons(
+    [
+        [
+            'the difference between the TV viewing times of a married couple',
+            'the difference between the TV viewing times of men and women'
+        ],
+        'None of the above'
+    ],
+    0,
+    labels => 'ABC'
+);
 
-BEGIN_TEXT
-Suppose you want to use a paired sample to compare the mean TV viewing times of married men and married women.  $PAR
+BEGIN_PGML
+Suppose you want to use a paired sample to compare the mean TV viewing times of married men and married women. 
 
-$BR
-\{ $mc->print_q \}
-\{ $mc->print_a \}
-
-END_TEXT
-ANS(radio_cmp($mc->correct_ans));
-
-$mc = new_multiple_choice();
-
-$mc->qa("What are the two populations under consideration?", "married men and married women");
-$mc->extra("married people and single people", "men and women");
-$mc->makeLast("None of the above");
-
-BEGIN_TEXT
-
-$BR
-\{ $mc->print_q \}
-\{ $mc->print_a \}
-
-END_TEXT
-ANS(radio_cmp($mc->correct_ans));
-
-$mc = new_multiple_choice();
-
-$mc->qa("What are the pairs?", "married couples");
-$mc->extra("men and women");
-$mc->makeLast("None of the above");
-
-BEGIN_TEXT
-
-$BR
-\{ $mc->print_q \}
-\{ $mc->print_a \}
-
-END_TEXT
-ANS(radio_cmp($mc->correct_ans));
+a) What is the variable under consideration? [_]{$rb1}
+b) What are the two populations under consideration? [_]{$rb2}
+c) What are the pairs? [_]{$rb3}
+d) What is the paired-difference variable? [_]{$rb4}
 
 
-$mc = new_multiple_choice();
+END_PGML
 
-$mc->qa("What is the paired-difference variable?", "the difference between the TV viewing times of a married couple");
-$mc->extra("the difference between the TV viewing times of men and women");
-$mc->makeLast("None of the above");
-
-BEGIN_TEXT
-
-$BR
-\{ $mc->print_q \}
-\{ $mc->print_a \}
-
-END_TEXT
-ANS(radio_cmp($mc->correct_ans));
-
+BEGIN_PGML_SOLUTION
+a) Because you want to study the TV viewing time, then this is the variable. *[$rb1]****
+b) The two populations are married men and married women. *[$rb2]****
+c) The pairs are married couples.  *[$rb3]****
+d) The paired-difference variable is the difference between the TV viewing times of a married couple. *[$rb4]****
+END_PGML_SOLUTION
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.
-

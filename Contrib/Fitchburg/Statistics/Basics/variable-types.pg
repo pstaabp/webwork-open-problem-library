@@ -1,0 +1,78 @@
+# DESCRIPTION
+# A problem that asks students to ...
+
+# This problem is derived from a homework problem in Introductory Statistics,
+# licensed by OpenStax under a Creative Commons Attribution License (CC BY 4.0).
+# Modified for WeBWorK by Michael Stassen   mstassen(at)fitchburgstate(dot)edu
+# ENDDESCRIPTION
+
+## DBsubject('Introductory Statistics')
+## DBchapter('1')
+## DBsection('1')
+## Author('Michael Stassen')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserPopUp.pl', 'PGcourse.pl');
+
+@opts = (
+    'number of competing computer spreadsheet software packages',
+    "Level of education (high school, some college, associate's, etc.)",
+    'age of executives in Fortune 500 companies (years)',
+    'number of students enrolled at Fitchburg State',
+    'number of tickets sold to a concert',
+    'brand of toothpaste',
+    'most-watched television show',
+    'time in line to buy groceries (minutes)',
+    'favorite baseball team',
+);
+
+@types = (
+    'Categorical-Ordinal',  'Categorical-Nominal',
+    'Numerical-Continuous', 'Numerical-Discrete'
+);
+
+@answers = (3, 0, 3, 3, 3, 1, 1, 2, 1);
+
+@slice = random_subset(scalar(@opts), 0 .. $#opts);
+
+@dd = map { DropDown([ [@types] ], $answers[$_], labels => 'ABC') } @slice;
+
+BEGIN_PGML
+Identify the type of data for each variable:
+
+a) [$opts[$slice[0]]] [_]{$dd[0]}
+a) [$opts[$slice[1]]] [_]{$dd[1]}
+a) [$opts[$slice[2]]] [_]{$dd[2]}
+a) [$opts[$slice[3]]] [_]{$dd[3]}
+a) [$opts[$slice[4]]] [_]{$dd[4]}
+a) [$opts[$slice[5]]] [_]{$dd[5]}
+a) [$opts[$slice[6]]] [_]{$dd[6]}
+a) [$opts[$slice[7]]] [_]{$dd[7]}
+a) [$opts[$slice[8]]] [_]{$dd[8]}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+Recall that 
+* A *categorical* variable is non numeric.  The values are categories
+    - An *ordinal* categorical variable can be ranked. 
+    - A *nomial* categorical variable cannot be ranked.
+* A *numerical* variable take on numbers as values. 
+    - A *discrete* variable is a whole number (0,1,2,...)
+    - A *continuous* variable can take on any number between the whole numbers.  Examples include weight, distance and time:
+
+a) [$opts[$slice[0]]] [$dd[0]]
+a) [$opts[$slice[1]]] [$dd[1]]
+a) [$opts[$slice[2]]] [$dd[2]]
+a) [$opts[$slice[3]]] [$dd[3]]
+a) [$opts[$slice[4]]] [$dd[4]]
+a) [$opts[$slice[5]]] [$dd[5]]
+a) [$opts[$slice[6]]] [$dd[6]]
+a) [$opts[$slice[7]]] [$dd[7]]
+a) [$opts[$slice[8]]] [$dd[8]]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

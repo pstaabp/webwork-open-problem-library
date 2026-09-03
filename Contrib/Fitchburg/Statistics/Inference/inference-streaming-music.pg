@@ -1,0 +1,43 @@
+## DESCRIPTION
+## Determine how the center and spread of a sampling distribution changes for sampling
+## distributions with different sample sizes.
+## ENDDESCRIPTION
+
+## DBsubject(Statistics)
+## DBchapter(Sampling distributions)
+## DBsection(Sample mean)
+## Institution(Fitchburg State University)
+## Author(Jessie Oehrlein)
+## Level(1)
+## MO(1)
+## KEYWORDS('statistic', 'parameter', 'sampling distribution', 'sample')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserPopUp.pl', 'PGcourse.pl');
+
+Context('Numeric');
+$showPartialCorrectAnswers = 0;
+
+$n = random(100, 300, 10);
+$m = $n + 50;
+
+@opts = ('greater than', 'equal to', 'less than', 'not enough information');
+$dd1  = DropDown([@opts], 1);
+$dd2  = DropDown([@opts], 2);
+
+BEGIN_PGML
+
+Across all US adults, the proportion of people who pay for a music streaming service is [` p `].  A study will ask a sample of adults whether they pay for a music streaming service.
+
+a)    The center of the sampling distribution is [_]{$dd1} the population proportion [` p `]. 
+
+b)   The spread of the sampling distribution for samples of size [$m] is [_]{$dd2} the spread of the sampling distribution for samples of size [$n]. 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) For the distribution of sampling proportions, the center is always *equal to* the population proportion. 
+b) The spread of the sample proportion is inversely proportional to the square root of the size of the sample. Therefore a larger sample size has a smaller spread or standard deviation than that of a smaller sample size, so the answer is *less than*.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();  
