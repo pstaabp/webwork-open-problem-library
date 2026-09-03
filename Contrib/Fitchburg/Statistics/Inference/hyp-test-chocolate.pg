@@ -1,0 +1,65 @@
+# DESCRIPTION
+# Using chocolate bar ratings, set up a hypothesis test for a sample mean difference.
+# ENDDESCRIPTION
+
+## DBsubject('WeBWorK')
+## DBchapter('Nursing-Med Calc')
+## DBsection('Problem')
+## KEYWORDS('null hypothesis', 'alternative hypothesis', 'two-sample test')
+## Author('Catherine Buell')
+## Institution('Fitchburg State')
+
+DOCUMENT();
+
+loadMacros(
+    "PGstandard.pl",   'PGML.pl',
+    'randomPerson.pl', "parserPopUp.pl",
+    "PGcourse.pl"
+);
+
+Context("Numeric")->flags->set(
+    tolerance => 0.02,
+    tolType   => "absolute",
+);
+
+@opts = ('\(<\)', '\(>\)', '\(=\)', '\(\neq\)');
+$dd1  = DropDown([@opts], 2, useHTMLSelect => 0);
+$dd2  = DropDown([@opts], 3, useHTMLSelect => 0);
+
+$n = random(10, 20);
+
+$mean_diff = random(0.20, 0.50, 0.05);
+
+($p1, $p2) = randomPerson(n => 2);
+
+BEGIN_PGML
+
+[$p1] and [$p2] both really like chocolate, and their hobby is trying
+different chocolate bars and giving them a rating on a 0-20 scale where 0
+is worst and 20 is best. They suspect that [$p1]'s mean rating is different
+from [$p2]'s, so they decide to test this. They try the same [$n] chocolate 
+bars and each give them ratings. They find a sample mean difference 
+([$p1] -[$p2]) of [$mean_diff].
+
+a) The null hypothesis would be: [`H_0`]: [`\mu_{1}`] [_]{$dd1} [_]{Real(0)}
+
+b) The alternative hypothesis would be: [`H_a`]:  [`\mu_{1}`] [_]{$dd2}  [_]{Real(0)}
+
+c) What is [`n`]? [_]{$n}
+
+d) What is [`\bar{x}`] (to two decimal places)? [_]{Real($mean_diff) }
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) Since the mean [`\mu`] is interpreted as the difference between then, the null hypothesis is the neutral relationship and that is [`\mu=0`] (there is no difference in their ratings.)
+
+b) Since [$p1] and [$p2] want to know if their ratings are different, the alternative
+hypothesis is [`\mu \neq 0 `].
+
+c) [`n`] is the number of samples  or [`[$n]`].
+
+d) The sample mean difference is [`\bar{x} = [$mean_diff]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

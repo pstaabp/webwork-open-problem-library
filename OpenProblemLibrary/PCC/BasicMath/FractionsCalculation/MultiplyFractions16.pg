@@ -52,11 +52,10 @@ do {
 BEGIN_PGML
 
 Multiply these two fractions: [`` \frac{[$num1]}{[$den1]} \cdot \frac{[$num2]}{[$den2]} ``]
+[_______]{$ans}
 
-[@KeyboardInstructions("If needed, use an improper fraction in your answer. Don't use a mixed number.")@]**
 
-    [_______]{$ans}
-
+*If needed, use an improper fraction in your answer. Don't use a mixed number.*
 END_PGML
 
 ##############################################

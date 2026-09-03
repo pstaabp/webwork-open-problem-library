@@ -25,9 +25,8 @@
 DOCUMENT();
 
 loadMacros(
-    "PGstandard.pl", 'PGML.pl', 'plots.pl',
-
-    "parserNumberWithUnits.pl",
+    "PGstandard.pl", 'PGML.pl',
+    'plots.pl',      "parserNumberWithUnits.pl",
     "PGcourse.pl"
 );
 
@@ -119,7 +118,7 @@ $text =
 
 BEGIN_PGML
 
-Find the perimeter and area of the triangle.$PAR
+Find the perimeter and area of the triangle.
 
 The height is rounded off to the nearest meter, so if you use it to compute the area your result will only be correct to within 2 or 3 percent of the true area.
 
@@ -127,7 +126,7 @@ The height is rounded off to the nearest meter, so if you use it to compute the 
 
 Its perimeter is [_____________]{$ansP} and its area is [_____________]{$ansA->cmp(tolerance=>0.03,tolType=>'relative')} [`\pm 3 \%`]. 
 
-[@KeyboardInstructions(q!(Use [|m|]* for meters and [|m^2|]* for square meters.)!)@]**
+*Note: use the proper units for this problem*
 
 END_PGML
 

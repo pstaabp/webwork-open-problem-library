@@ -11,61 +11,42 @@
 ## AuthorText1('David Moore')
 ## EditionText1('5e')
 ## Section1('2')
-## Problem1('')
 ## KEYWORDS('statistics', 'mean', 'median')
 
-DOCUMENT();        # This should be the first executable line in the problem.
+DOCUMENT();    # This should be the first executable line in the problem.
 
-loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl",
-  "MathObjects.pl",
-  "PGcourse.pl"
-);
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGchoicemacros.pl', 'PGcourse.pl');
 
-TEXT(beginproblem());
+@data         = map { random(10, 60) } (1 .. 8);
+@ordered_data = num_sort(@data);
 
-######################################
-#  Setup
+$sum = 0;
+$sum += $_ for (@data);
+$mean   = $sum / scalar(@data);
+$median = 0.5 * ($ordered_data[3] + $ordered_data[4]);
 
-$a1 = Real(random(10,20,1));
-$a2 = $a1+random(0,10,1);
-$a3 = $a2+random(2,10,1);
-$a4 = $a3+random(5,15,1);
-$a5 = $a4+random(2,10,1);
-$a6 = $a5+random(0,5,1);
-$a7 = $a6+random(1,10,1);
-$a8 = $a7+random(0,5,1);
-
-$mean = ($a1 + $a2 + $a3 + $a4 + $a5 + $a6 + $a7 + $a8)/8;
-$median = ($a4+$a5)/2;
-
-@data = ($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8);  #Scramble the data for display
-@slice = NchooseK(8,8);
-@sdata = @data[@slice];
-
-#################################################
-#  Main
-
-BEGIN_TEXT
+BEGIN_PGML
 Calculate the mean and median of the following data: 
-\[ $sdata[0], \ $sdata[1], \ $sdata[2], \ $sdata[3], \ $sdata[4], \ $sdata[5], \ $sdata[6], \ $sdata[7] \]
+[``` [@ join(', ', @data) @] ```]
 
-$PAR
-Mean = \{ans_rule(10)\}
+a) Mean = [_]{$mean}
 
-$PAR
-Median = \{ans_rule(10)\}
-END_TEXT
+b) Median = [_]{$median}
 
-######################################
-#  Answers
+END_PGML
 
-$showPartialCorrectAnswers = 1;
+BEGIN_PGML_SOLUTION
+a) First find the sum of all of the data or [$sum].
 
-ANS($mean->cmp);
-ANS($median->cmp);
+    The mean is [`` \frac{[$sum]}{8} = [$mean] ``]
 
-ENDDOCUMENT();       # This should be the last executable line in the problem.
+b) To find the median, first order the data from smallest to largest or 
 
+    [``` [@ join(', ', @ordered_data) @] ```]
 
+    Since there is an even number of data points, the median is the average of the middle two or
+
+    median: [`` \frac{[$ordered_data[3]]+[$ordered_data[4]]}{2} = [$median] ``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

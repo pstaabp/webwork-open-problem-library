@@ -1,5 +1,5 @@
 ## DESCRIPTION
-##   Continuous versus Discrete
+##   For a set of statistics variables determin if each is continuous or discrete.
 ## ENDDESCRIPTION
 
 ## Tagged by nhamblet
@@ -18,11 +18,7 @@
 
 DOCUMENT();    # This should be the first executable line in the problem.
 
-loadMacros(
-    'PGstandard.pl',     'PGML.pl',
-    'PGchoicemacros.pl', 'parserPopUp.pl',
-    'PGcourse.pl'
-);
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserPopUp.pl', 'PGcourse.pl');
 
 @event = (
     "The number of voters who vote Democratic.",

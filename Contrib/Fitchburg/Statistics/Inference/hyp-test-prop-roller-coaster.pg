@@ -1,0 +1,79 @@
+# DESCRIPTION
+# Perform a hypothesis test for proportions based on the fraction of family-friendly
+# roller coasters. 
+# ENDDESCRIPTION
+
+## DBsubject(Statistics)
+## DBchapter(Hypothesis tests)
+## DBsection(One sample proportion)
+## KEYWORDS('sample proportion', 'hypothesis test')
+## Author('Catherine Buell')
+## Institution('Fitchburg State')
+
+DOCUMENT();
+
+loadMacros(
+    "PGstandard.pl",         'PGML.pl',
+    'PGstatisticsmacros.pl', "parserPopUp.pl",
+    "PGcourse.pl"
+);
+
+Context("Numeric")->flags->set(
+    tolerance => 0.02,
+    tolType   => "absolute",
+);
+
+do {
+    $pct  = random(25, 40, 5);
+    $num  = random(20, 30, 5);
+    $s    = int($pct / 100 * $num) + non_zero_random(-5, 5);
+    $phat = $s / $num;
+    $p0   = $pct / 100;
+
+    $zscore    = ($phat - $p0) / sqrt($p0 * (1 - $p0) / $num);
+    $pval      = normal_prob($zscore, 'inf');
+    $sig_level = list_random(0.01, 0.05, 0.1, 0.15, 0.20);
+} until abs($pval - $sig_level) < 0.05;
+
+@opts   = ('\(<\)', '\(>\)', '\(=\)', '\(\neq\)');
+$popup1 = DropDown([@opts], 2, useHTMLSelect => 0);
+$popup2 = DropDown([@opts], 1, useHTMLSelect => 0);
+$popup3 = DropDown([ "Left-tailed", "Right-tailed", "Two-tailed" ], 1);
+$popup4 = DropDown(
+    [
+        "We will reject the null hypothesis.",
+        "We fail to reject the null hypothesis."
+    ],
+    $pval < $sig_level ? 0 : 1
+);
+
+BEGIN_PGML
+An article claims that [$pct]% of new roller coasters are family coasters, not too intense and designed to be ridden by people of many ages. A roller coaster enthusiast believes that number is low, so she performs a hypothesis test to determine if the percentage is actually higher. She samples [$num] random new roller coasters and finds that [$s] of them are family coasters. For the hypothesis test, use a [$sig_level*100]% level of significance.
+
+a) The null hypothesis would be: [`H_0`]: p [_]{$popup1} [____________]{Real($p0)}
+
+b) The alternative hypothesis would be: [`H_a`]:  p [_]{$popup2}   [____________]{Real($pct/100)}
+
+c) What type of test is being asked? [_]{$popup3}
+
+d) What is the alpha level? [`\alpha`] = [__]{Real($sig_level)}{10}
+
+e) What is [`n`]? [_]{Real($num)}{10}
+
+f) What is [`\hat{p}`] (to two decimal places)? [____________]{Real($s/$num)}
+
+g) If the [`p`]-value is [@ Round($pval,3) @], what should be our conclusion? [_]{$popup4}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) Since we are testing whether or not [$pct]% of all new roller coaster are family friendly, the null hypothesis would be [` H_0: \; p = [$p0] `].
+b) In the problem, the enthusiast believes that number is low, so the alternative is the opposite of this or [`H_a: \; p > [$p0] `]. 
+c) Since in the alternative hypothesis there is a greater than, this is a *right-tailed test*. 
+d) The [`\alpha`]-level is the level of significance as a fraction or [$sig_level]. 
+e) The value of [`n`] is the number of samples or in this case [$num].
+f) The sample proportion [`\hat{p}`] is the fraction of "successes" or in this case, the number of family roller coasters or [`[$s]/[$num] = [@ Round($s/$num,2) @]`].
+g) Recall that we reject the null hypothesis only when the [`p`]-value is less than [`\alpha`] and in this case it [@ $pval < $sig_level ? 'is' : 'is not' @], therefore:  [$popup4] 
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

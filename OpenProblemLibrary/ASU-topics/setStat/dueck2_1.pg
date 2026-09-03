@@ -18,6 +18,7 @@ DOCUMENT();    # This should be the first executable line in the problem.
 loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
 Context('Numeric');
+loadMacros("fixedPrecision.pl");  # must come after Context is set.
 
 @freq = (
     random(1,  10),
@@ -43,7 +44,9 @@ BEGIN_PGML
     [. 90-100 .] [. [$freq[5] .]*
 #]{horizontalrules => 1}
  
-Given the frequency table above, construct the relative frequency table that corresponds with the above table.
+Given the frequency table above, construct the relative frequency table that 
+corresponds with the above table. Write your answers as proportions rounded 
+to two decimal places.
 
 [# [. Grade on Statistics Exam .] [. Relative Frequency .]*{headerrow => 1}
     [. Below 50 .] [. [_]{$rel_freq[0]} .]*
@@ -59,12 +62,12 @@ BEGIN_PGML_SOLUTION
 First, we need to know the total number of observations.  The is the sum of the second column or [$total].  Next, for each number in the top table, divide by [$total].  The result is:
 
 [# [. Grade on Statistics Exam .] [. Relative Frequency .]*{headerrow => 1}
-    [. Below 50 .] [. [$rel_freq[0]] .]*
-    [. 50-59 .] [. [$rel_freq[1]]  .]*
-    [. 60-59 .] [. [$rel_freq[2]]  .]*
-    [. 70-59 .] [. [$rel_freq[3]]  .]*
-    [. 80-59 .] [. [$rel_freq[4]] .]*
-    [. 90-100 .] [. [$rel_freq[5]] .]*
+    [. Below 50 .] [. [@ Round($rel_freq[0],2) @] .]*
+    [. 50-59 .] [. [@ Round($rel_freq[1],2) @]  .]*
+    [. 60-59 .] [. [@ Round($rel_freq[2],2) @]  .]*
+    [. 70-59 .] [. [@ Round($rel_freq[3],2) @]  .]*
+    [. 80-59 .] [. [@ Round($rel_freq[4],2) @] .]*
+    [. 90-100 .] [. [@ Round($rel_freq[5],2) @] .]*
 #]{horizontalrules => 1, padding => [0.25, 0.25]}
 
 END_PGML_SOLUTION

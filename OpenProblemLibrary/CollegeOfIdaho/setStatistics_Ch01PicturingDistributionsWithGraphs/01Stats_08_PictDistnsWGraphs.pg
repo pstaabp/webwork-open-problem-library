@@ -15,49 +15,53 @@ DOCUMENT();
 
 loadMacros(
     'PGstandard.pl',         'PGML.pl',
-    'PGtikz.pl',             'parserPopUp.pl',
+    'StatisticalPlots.pl',   'parserPopUp.pl',
     'PGstatisticsmacros.pl', 'PGcourse.pl'
 );
 
 # generate some data is is skewed right
 
 do {
-    $n          = random(5, 15);
-    @norm_rands = urand(5, 20, 150, 1);
-    @unif_rands = map { random(25, 99); } (1 .. $n);
-    @h          = ();
-    for $i (0 .. 9) {
-        $h[$i] = scalar(grep { $_ >= 10 * $i && $_ < 10 * ($i + 1) }
-                (@norm_rands, @unif_rands));
+    @rand_nums = urand(5, 20, 150, 1);
+    push(@rand_nums, random(25, 99)) for (1 .. random(8, 15));
+    @rand_nums = grep { $_ > 0 } @rand_nums;
+
+    @h = ();
+    for my $i (0 .. 9) {
+        $h[$i] =
+            scalar(grep { $_ >= 10 * $i && $_ < 10 * ($i + 1) } @rand_nums);
     }
+
 } until $h[0] <= 30 && $h[1] <= 30;
 
-$num_students = 0;
-$num_students += $h[$_] for (0 .. 9);
+$num_students = scalar(@rand_nums);
 
-# generate the rectangles
-$rects = '';
-for $i (0 .. 9) {
-    $rects .=
-        "\\filldraw[fill=Goldenrod] ({$i+0.5},0) rectangle ({$i+1.5},{0.35*$h[$i]});\n";
-}
+$stat_plot = StatPlot(
+    xmin            => 0,
+    xmax            => 100,
+    xtick_delta     => 10,
+    xminor          => 4,
+    xmajor          => 0,
+    xlabel          => 'amount of money (dollars)',
+    xlocation       => 'bottom',
+    ymin            => 0,
+    ymax            => 35,
+    ytick_delta     => 5,
+    yminor          => 4,
+    ylabel          => 'Number of Students',
+    ylocation       => 'left',
+    rounded_corners => 1,
+    aspect_ratio    => 2
+);
 
-$graph = createTikZImage();
-$graph->tikzLibraries('arrows.meta');
-$graph->BEGIN_TIKZ
-\tikzset{>={Stealth[scale=1.5]}}
-\filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-1,-1) rectangle (11.5,11.5);
-$rects;
-\draw (0.5,0) rectangle (11.5,11);
-\foreach \x in {10,20,...,100} \draw ({0.1*\x+0.5},0) -- ({0.1*\x+0.5},-0.1) node [scale=1.5, below] {\x};
-\foreach \y in {1,2,...,29} \draw(0.5,{0.35*\y}) -- (0.4,{0.35*\y});
-\foreach \y in {5,10,15,20,25,30} \draw (0.5,{0.35*\y}) -- (0.3,{0.35*\y}) node [scale=1.5, left] {\y};
-END_TIKZ
+$stat_plot->add_histogram(
+    [@rand_nums],
+    min          => 0,
+    max          => 100,
+    bins         => 10,
+    fill_color   => 'goldenrod',
+    stroke_width => 1
+);
 
 $dol   = random(30, 60, 10);
 $num_b = 0;
@@ -71,7 +75,7 @@ In a statistics class with [$num_students] students, the professor records
 how much money each student has in their possession during the first class
 of the semester. The histogram below is of the data collected.
 
->> [! alt text !]{$graph}{400} <<
+>> [! alt text !]{$stat_plot}{400} <<
 
 a) The number of students with less than ten dollars in their posession is
 [_]{Real($h[0])}

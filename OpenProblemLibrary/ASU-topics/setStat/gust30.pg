@@ -18,7 +18,7 @@ DOCUMENT();
 loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioButtons.pl', 'PGcourse.pl');
 
 $rb = RadioButtons(
-    [ [ "Bar Graph", "Histogram", "Dot Plot" ], "None of the Above" ], 0);
+    [ [ "Bar Graph", "Histogram", "Dot Plot" ], "None of the Above" ], 0, labels => 'ABC');
 
 BEGIN_PGML
 Which of the following is useful for qualitative data?

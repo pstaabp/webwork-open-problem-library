@@ -1,0 +1,83 @@
+## DESCRIPTION
+##   Mean, Standard Deviation, and z Scores
+## ENDDESCRIPTION
+
+## Tagged by nhamblet
+
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summary statistics)
+## Date(6/3/2002)
+## AUTHOR(Jessie Oehrlein)
+## INSTITUTION(Fitchburg State University)
+## MLT(stat-des-z-score)
+## KEYWORDS('measures','mean','standard deviation','z score')
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',   'PGML.pl',
+    'randomPerson.pl', 'parserRadioButtons.pl',
+    'PGcourse.pl'
+);
+
+$p = randomPerson();
+
+@slice = num_sort(random_subset(4, 0 .. 4));
+@sub   = ('100m', '200m', '400m', '800m', '1500m')[@slice];
+
+@mean = (
+    random(10.8, 11.6, 0.1),
+    random(23,   27,   0.25),
+    random(49,   60,   0.5),
+    random(120,  130),
+    random(260,  280)
+)[@slice];
+
+@sd = (0.2, 3, 4, 8, 14, 8)[@slice];
+@z  = random_subset(4, -1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5,
+    1.75, 2);
+@time = map { $mean[$_] + $sd[$_] * $z[$_] } (0 .. 3);
+
+($best, $zmax) = (0, $z[0]);
+for (1 .. 3) { ($best, $zmax) = ($_, $z[$_]) if $z[$_] > $zmax; }
+
+$rb = RadioButtons([@sub], $best, labels => 'ABC');
+
+BEGIN_PGML
+
+[$p] has run 4 track distances this year: [$sub[0]], [$sub[1]], [$sub[2]], and [$sub[3]].
+The means and standard deviations for the race times in seconds, and [$p->their]
+times are given in the table below. Convert [$p]'s score into [`z`]-scores. 
+
+[#
+    [.Race.][.Mean.][. Std. Dev. .] [. [$p]'s time .] [. [`z`]-score .]{headerrow => 1}*
+    [.[$sub[0]].] [. [$mean[0]] .] [. [$sd[0]] .] 
+    [. [$time[0]] .] [. [_]{$z[0]} .]*
+    [.[$sub[1]].] [. [$mean[1]] .] [. [$sd[1]] .] 
+    [. [$time[1]] .] [. [_]{$z[1]} .]*
+    [.[$sub[2]].] [. [$mean[2]] .] [. [$sd[2]] .] 
+    [. [$time[2]] .] [. [_]{$z[2]} .]*
+    [.[$sub[3]].] [. [$mean[3]] .] [. [$sd[3]] .] 
+    [. [$time[3]] .] [. [_]{$z[3]} .]*
+    #]{align => '|c|c|c|c|c|', horizontalrules =>1, padding => 0.4}
+
+On which race did [$p] have [$p->their] worst relative time? (Remember that in this case, longer times are worse.) [_]{$rb}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Recall that for a value [`x`] from a data set with mean [`\bar{x}`] and standard deviation [`s`] that the [`z`]-score can be calculated with:
+[``` z  = \frac{x-\bar{x}}{s}```]
+
+For the given table, [$p]'s [`z`]-score for each race is
+
+- [$sub[0]]: [`z = [$z[0]] `]
+- [$sub[1]]: [`z = [$z[1]] `]
+- [$sub[2]]: [`z = [$z[2]] `]
+- [$sub[3]]: [`z = [$z[3]] `]
+
+And looking at the largest [`z`] score this occured in the [$sub[$best]] race. 
+END_PGML_SOLUTION
+
+ENDDOCUMENT();       # This should be the last executable line in the problem.

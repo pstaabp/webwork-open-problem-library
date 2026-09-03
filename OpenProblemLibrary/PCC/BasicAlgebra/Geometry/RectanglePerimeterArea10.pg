@@ -30,20 +30,22 @@ loadMacros(
 
 Context("Numeric");
 
-$xmin = 0;    #The viewing window
-$xmax = 20;
-$ymin = 0;
-$ymax = $xmax*$height/$base;
+$xmin   = 0;                         #The viewing window
+$xmax   = 20;
+$base   = 16;
+$height = 10;
+$ymin   = 0;
+$ymax   = $xmax * $height / $base;
 
-$base   = random(13, 18, 1);
-$height = random(8,  12, 1);
+$base   = random(13, 18);
+$height = random(8,  12);
 
 @x = (($xmax - $base) / 2, ($xmax + $base) / 2);
 @y = (($ymax - $height) / 2, ($ymax + $height) / 2);
 
 $plot = Plot(
     xmin            => -1,
-    xmax            => $base + 1.5,
+    xmax            => $xmax,
     ymin            => -1,
     ymax            => $height + 1,
     aspect_ratio    => 1,
@@ -52,13 +54,15 @@ $plot = Plot(
     show_grid       => 0,
     rounded_corners => 1
 );
-$plot->add_rectangle([ 0,   0 ],   [ $base,  $height ],   color => 'blue');
-$plot->add_rectangle([ 0,   0 ],   [ 0.5, 0.5 ], color => 'blue');
-$plot->add_rectangle([ $base,  0 ],   [ $base-0.5, 0.5 ], color => 'blue');
-$plot->add_rectangle([ 0,   $height-0.5 ], [ 0.5, $height ],   color => 'blue');
-$plot->add_rectangle([ $base-0.5, $height-0.5 ], [$base,  $height ],   color => 'blue');
-$plot->add_label($base/2,  0,   "$base m",   v_align => 'bottom');
-$plot->add_label($base, $height/2, "$height m", h_align => 'left');
+$plot->add_rectangle(
+    [ [ 0,     0 ],             [ $base,       $height ], color => 'blue' ],
+    [ [ 0,     0 ],             [ 0.5,         0.5 ],     color => 'blue' ],
+    [ [ $base, 0 ],             [ $base - 0.5, 0.5 ],     color => 'blue' ],
+    [ [ 0,     $height - 0.5 ], [ 0.5,         $height ], color => 'blue' ],
+    [ [ $base - 0.5, $height - 0.5 ], [ $base, $height ], color => 'blue' ]
+);
+$plot->add_label($base / 2, 0,           "$base m",   v_align => 'bottom');
+$plot->add_label($base,     $height / 2, "$height m", h_align => 'left');
 
 $perimeter = 2 * ($base + $height);
 $area      = $base * $height;

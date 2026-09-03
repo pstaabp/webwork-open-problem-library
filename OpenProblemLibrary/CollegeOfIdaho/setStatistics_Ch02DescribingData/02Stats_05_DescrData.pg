@@ -14,76 +14,60 @@
 ## Problem1('')
 ## KEYWORDS('statistics', 'mean', 'variance', 'standard deviation')
 
-DOCUMENT();        # This should be the first executable line in the problem.
+DOCUMENT();    # This should be the first executable line in the problem.
 
-loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl",
-  "MathObjects.pl",
-  "PGcourse.pl"
-);
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGstatisticsmacros.pl', 'PGcourse.pl');
 
-TEXT(beginproblem());
+@a = map { random(5, 50) } (1 .. 9);
 
-######################################
-#  Setup
+$mean     = stats_mean(@a);
+$sd       = stats_sd(@a);
+$variance = $sd**2;
+$range    = max(@a) - min(@a);
 
-$a[0] = Real(random(5,10,1));
-$a[1] = $a[0]+random(1,10,1);
-$a[2] = $a[1]+random(0,3,1);;
-$a[3] = $a[2]+random(3,6,1);
-$a[4] = $a[3]+random(2,6,1);
-$a[5] = $a[4]+random(1,6,1);
-$a[6] = $a[5]+random(5,10,1);
-$a[7] = $a[6]+random(0,6,1);
-$a[8] = $a[7]+random(2,10,1);
-
-$mean = ($a[0]+$a[1]+$a[2]+$a[3]+$a[4]+$a[5]+$a[6]+$a[7]+$a[8])/9;
-
-$var = 0;
-for ($i=0; $i<9; $i+=1) {
-	$b = ($a[$i] - $mean)**2;
-	$var = $var+$b;
-}
-
-$range =$a[8]-$a[0] ;
-$variance = $var/8;
-$sd = sqrt($variance);
-
-@slice = NchooseK(9,9); #Scramble the numbers for display
-@sset = @a[@slice]; 
-
-#################################################
-#  Main
-
-BEGIN_TEXT
+BEGIN_PGML
 Given the data set below, calculate the range, mean, sample variance, and sample standard deviation.
-$PAR
-\[  $sset[0], \ $sset[1], \ $sset[2], \ $sset[3], \ $sset[4], \ $sset[5], \
-$sset[6], \ $sset[7], \ $sset[8] \] 
 
-$PAR
-Range \(=\) \{ans_rule(20)\}
+[```  [@ join(', ', @a) @] ```] 
 
-$PAR
-Mean \(=\) \{ans_rule(20)\}
+a) Range [`=`] [_]{$range}
 
-$PAR
-Variance \(=\) \{ans_rule(20)\}
+b) Mean [`=`] [_]{$mean}
 
-$PAR
-Standard deviation \(=\) \{ans_rule(20)\}
-END_TEXT
+c) Variance [`=`] [_]{$variance}
 
-######################################
-#  Answers
+d) Standard deviation [`=`] [_]{$sd}
 
-$showPartialCorrectAnswers = 1;
+END_PGML
 
-ANS($range->cmp);
-ANS($mean->cmp);
-ANS($variance->cmp);
-ANS($sd->cmp);
+BEGIN_PGML_SOLUTION
+a) the range is the difference of the largest value, [@max(@a)@] and the smallest [@ min(@a) @] or range = [$range]
+
+b) The mean is the sum of the values over the number of values or 
+
+    [```\bar{x} = \frac{[@ join('+',@a) @]}{[@scalar(@a) @]} = [@ Round($mean,3) @] ```]
+
+c) The variable is found with the formula
+
+    [``` 
+    \begin{aligned}
+    s^2 & = \frac{(x_1-\bar{x})^2 + (x_2-\bar{x})^2 + \cdot (x_n-\bar{x})^2 }{n-1} \\
+    & = \frac{ ([$a[0]]-[@ Round($mean,3) @])^2 + ([$a[1]]-[@ Round($mean,3) @])^2 + \cdots + ([$a[8]]-[@ Round($mean,3) @])^2}{7} = [@ Round($variance,3) @] 
+    \end{aligned}
+    ```]
+
+    Alternatively, one can use the formula
+
+    [``` \begin{aligned}
+    s^2 & = \frac{x_1^2 + x_2^2 + \cdots + x_n^2}{n} - \frac{n}{n-1} (\bar{x})^2 \\
+     & = \frac{[$a[0]]^2 + [$a[1]]^2 + \cdots + [$a[8]]^2}{8- 9/8*(26.2222^2)} - \frac{9}{8} ([$mean])^2 \\
+     & = [$variance]
+    \end{aligned}```]
+
+d) The standard deviation is the square root of the variance or 
+
+    [``` s = \sqrt{[$variance]} = [@Round($sd,3)@] ```]
+    
+END_PGML_SOLUTION
 
 ENDDOCUMENT();       # This should be the last executable line in the problem.
-

@@ -11,130 +11,95 @@
 ## AuthorText1('David Moore')
 ## EditionText1('5e')
 ## Section1('5')
-## Problem1('')
 ## KEYWORDS('statistic', 'regression','correlation')
 
-DOCUMENT();        # This should be the first executable line in the problem.
+DOCUMENT();
 
 loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "answerHints.pl",
-  "contextCurrency.pl",
-  "PGchoicemacros.pl",
-  "PGcourse.pl"
+    'PGstandard.pl',         'PGML.pl',
+    'answerHints.pl',        'contextCurrency.pl',
+    'PGstatisticsmacros.pl', 'parserPopUp.pl',
+    'PGcourse.pl'
 );
 
-TEXT(beginproblem());
+do {
+    @bill        = map { random(50, 120, 0.01) } (1 .. 6);
+    $avg_tip_pct = random(0.15, 0.20, 0.1);
+    @tip         = map { random(-3, 15, 0.01) + $avg_tip_pct * $_ } @bill;
+    # round some of the tips to the nearest dollar
+    @tip = map { random(1, 4) < 4 ? Round($_, 0) : Round($_, 2) } @tip;
 
-#################################################
-#  Set-up
+    $r = sample_correlation(~~@bill, ~~@tip);
+    ($b1, $b0) = linear_regression(~~@bill, ~~@tip);
+} until $r > 0.85 && $b0 > -3;
 
-@b = (32.98,  49.72,    88.01,   97.34,   64.30,   106.27,   52.44,   70.29,   43.58);
-@ab=('32.98', '49.72', '88.01', '97.34', '64.30', '106.27', '52.44', '70.29', '43.58');
-@t = ( 4.50,   5.28,    10.00,   16.00,    7.70,    16.00,    7.00,   10.00,    5.50); 
-@at =('4.50', '5.28',  '10.00', '16.00',  '7.70',  '16.00',  '7.00', '10.00',  '5.50');
+Context('Currency');
+@bill_c = map { Currency($_) } @bill;
+@tip_c  = map { Currency($_) } @tip;
 
-@slice = NchooseK(9,6);
+$bill = random(40, 100, 5);
+$tip  = $b0 + $b1 * $bill;
 
-@sb = @b[@slice];
-@sab = @ab[@slice];
-@st = @t[@slice];
-@sat = @at[@slice];
-
-$sx = 0;
-$sy = 0;
-$sxy = 0;
-$sx2 = 0;
-$sy2 = 0;
-
-for($i=0;$i<6;$i++){
-        $sx = $sx + $sb[$i];
-        $sy = $sy + $st[$i];
-        $sxy = $sxy + $sb[$i] * $st[$i];
-        $sx2 = $sx2 + ($sb[$i])**2;
-        $sy2 = $sy2 + ($st[$i])**2;
-}
-$ssxy = $sxy-(($sx*$sy)/6);
-$ssx = $sx2-(($sx**2)/6);
-$ssy = $sy2-(($sy**2)/6);
-
-$r = $ssxy/sqrt($ssx*$ssy);
-
-$mc = new_multiple_choice();
-$mc -> qa('Does there appear to be a significant correlation?', 'Yes');
-$mc -> extra('No');
-
-$b0 = ($sy * $sx2 - $sx * $sxy)/(6 * $sx2 - ($sx)**2);
-
-$b1 = (6 * $sxy - $sx * $sy)/(6 * $sx2 - ($sx)**2);
-
-$bill = random(40,100,5);
-$tip =  $b0 + $b1*$bill;
-
-$increase = random(5,10,5);
+$increase  = random(5, 10, 5);
 $changetip = $increase * $b1;
 
-#################################################
-#  Main
+Context('Numeric');
 
-BEGIN_TEXT
-The amounts of 6 restaurant bills and the corresponding amounts of the tips are given in 
-the below. Assume that bill amount is the explanatory variable and tip amount the response variable. 
+$ans_a = Compute($r)->with(tolType => 'absolute', tolerance => '0.005');
+$cmp_a = $ans_a->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student - $correct) < .02;
+    } => ["Your answer is close.  Try the calculation using more accuracy."]
+));
 
-\[ \begin{array}{c|cccccc}
-\mbox{Bill} & $sab[0] & $sab[1] & $sab[2] & $sab[3] & $sab[4] & $sab[5] \cr
-\mbox{Tip}  & $sat[0] & $sat[1] & $sat[2] & $sat[3] & $sat[4] & $sat[5] \cr
-\end{array} \]
-
-$PAR
-(a)  Find the correlation: \( r =\) \{ans_rule(15)\} 
-
-$PAR
-(b)  \{$mc->print_q()\} 
-$BR
-\{$mc->print_a()\} 
-
-$PAR
-(c)  The regression equation is \(\hat{y}=\) \{ans_rule(15)\}. 
-
-$PAR
-(d)  If the amount of the bill is $DOLLAR\($bill,\) the best prediction for the amount of the tip is 
- \{ans_rule(10)\}.
-$BR
-Note: Enter your answer in dollars: $DOLLAR xx.xx
-
-$PAR
-(e)  According to the regression equation, for every $DOLLAR\($increase \) increase in the bill, the
-tip should \{ans_rule(20)\} (Enter INCREASE or DECREASE) by \{ans_rule(10)\}.
-END_TEXT
-
-#################################################
-#  Answers
-
-$showPartialCorrectAnswers = 1;
-
-$ans_a = Compute($r)->with(tolType=>'absolute', tolerance=>'0.005');
-  ANS($ans_a->cmp->withPostFilter(AnswerHints(
-            sub {
-                my ($correct,$student,$anshash) = @_;
-                return abs($student-$correct) < .02;
-                } => ["Your answer is close.  Try the calculation using more accuracy."])));
-
-ANS(radio_cmp($mc->correct_ans));
+$dd_b = DropDown([ 'yes', 'no' ], 0);
 
 $ans_c = Formula("$b0 + $b1 x");
-ANS($ans_c->with(tolType=>'absolute', tolerance=>'0.0005')->cmp);
 
 Context("Currency");
 $ans_d = Currency($tip);
-ANS($ans_d->with(tolType=>'absolute', tolerance=>'0.04')->cmp);
 
-Context()->strings->add("INCREASE"=>{},"DECREASE"=>{});
-$ans_e1 = String("INCREASE");
-ANS($ans_e1->cmp);
+$dd_e = DropDown([ 'increase', 'decrease' ], 0);
 
-$ans_e2 = Currency($changetip);
-ANS($ans_e2->with(tolType=>'absolute', tolerance=>'0.04')->cmp);
+$tab = DataTable([ [ 'Bill', @bill_c ], [ 'Tip', @tip_c ] ]);
 
-ENDDOCUMENT();       # This should be the last executable line in the problem.
+$ans_e = Currency($changetip);
+
+BEGIN_PGML
+The amounts of 6 restaurant bills and the corresponding amounts of the tips are given in the below. Assume that bill amount is the explanatory variable and tip amount the response variable.
+
+[$tab]*
+
+a)  Find the correlation: [` r =`] [_]{$cmp_a}
+
+b)  Does there appear to be a significant correlation? [_]{$dd_b}
+
+c)  The regression equation is [`\hat{y}=`] [_]{$ans_c->with(tolType=>'absolute', tolerance=>'0.0005')}
+
+d)  If the amount of the bill is $[`[$bill],`] the best prediction for the amount of the tip is 
+
+    [_]{$ans_d->with(tolType=>'absolute', tolerance=>'0.04');}
+
+e)  According to the regression equation, for every $[` [$increase] `] increase in the bill, the
+tip should [_]{$dd_e} by [_]{$ans_e}
+
+*Note: for d) and e), the answers should be in dollars in the form $xx.xx*
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) using software, the correlation coefficient is [$r].
+
+b) Since this is close to 1, this is a significant correlation.
+
+c) using software, the slope is [@Round($b1,5)@] and the intercept is  [@ Round($b0,5) @]. Therefore the regression line is 
+    [``` \hat{y} = [$ans_c]```]
+
+d) Use the line in part c) to find 
+    [``` [$bill]([@Round($b1,4)@]) + [@ Round($b0,3) @] = [$ans_d]```]
+
+e) The answer to this is an interpretation of the regression line.  Since the slope of the regression line is positive, the tip should increase and increase by [`[$increase]\cdot [@ Round($b1,4)@] = [$ans_e]`]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

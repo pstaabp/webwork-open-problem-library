@@ -5,7 +5,7 @@
 ## Institution(NAU)
 ## Author(N.Spencer Sitton)
 ## Level(2)
-## KEYWORDS('Confidence Intervals')
+## KEYWORDS('linear regression')
 ##ENDDESCRIPTION
 
 # File Created: 07/08/05
@@ -14,30 +14,28 @@
 
 DOCUMENT();
 
-loadMacros(
-    'PGstandard.pl',         'PGML.pl', 'PGcourse.pl'
-);
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
-@list1 = ('airline', 'bus station', 'train station');
-@list2 = ('flight',  'bus',         'train');
-$ind   = random(0,   2   );
-$num   = random(25,  150);
-$line = Compute(random(100,250). "x + " . random(100,250))->reduce; 
+$index = random(0, 2);
+$loc   = ('An airline', 'A bus station', 'A train station')[$index];
+$type  = ('flight',     'bus',           'train')[$index];
 
+$num  = $index == 1 ? random(10,40) : random(25, 150);
+$line = Compute(random(100, 250) . "x + " . random(100, 250))->reduce;
 
 BEGIN_PGML
 
-An [$list1[$ind]] has determined that the relationship between the number of passengers on a [$list2[$ind]] and the total
-weight of luggage stored in the baggage compartment can be estimated by the least squares 
-regression equation [` y = [$line] `]. Predict the weight of luggage for a flight with [$num] passengers.
+[$loc] has determined that the relationship between the number of passengers on a 
+[$type] and the total weight of luggage stored in the baggage compartment can be
+estimated by the least squares regression equation [` y = [$line] `]. 
+Predict the weight of luggage for a [$type] with [$num] passengers.
 
 Answer: [_]{$line->eval(x => $num)}{20} pounds
 
 END_PGML
 
 BEGIN_PGML_SOLUTION
-This is found by subsitutine [`x= [$num]`] into the line [`y=[$line]`] or [` [$line->eval(x => $num)]`] pounds.
+This is found by substituting [`x= [$num]`] into the line [`y=[$line]`] or [` [$line->eval(x => $num)]`] pounds.
 END_PGML_SOLUTION
-
 
 ENDDOCUMENT();      

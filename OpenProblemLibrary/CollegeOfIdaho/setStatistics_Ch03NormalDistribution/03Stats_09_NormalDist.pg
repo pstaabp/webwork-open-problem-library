@@ -14,74 +14,60 @@
 ## Problem1('')
 ## KEYWORDS('statistic', 'normal distribution', 'z score')
 
-DOCUMENT();        # This should be the first executable line in the problem.  
+DOCUMENT();    # This should be the first executable line in the problem.
 
 loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "answerHints.pl",
-  "PGnumericalmacros.pl",
-  "PGstatisticsmacros.pl",
-  "PGcourse.pl"
+    'PGstandard.pl',  'PGML.pl',
+    'answerHints.pl', 'PGstatisticsmacros.pl',
+    'PGcourse.pl'
 );
 
-TEXT(beginproblem());
+Context('Numeric')->flags->set(tolerance => 0.007, tolType => 'absolute');
 
-######################################
-#  Setup
+$pval1 = random(0.01, 0.48, 0.0001);
+$pval2 = random(0.01, 0.48, 0.0001);
 
-@p=(.0125, .0505, .0901, .1151, .1515, .1401, .1841, .0209, .0281, .0409) ;
-$choose = random(0,9,1);
+$ans_a = Compute(-1 * normal_distr(.5 - $pval1));
+$cmp_a = $ans_a->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student - $correct) < .007;
+    } => ["Close!"],
+    -1 * $ans_a => [
+        "It might help to sketch the Normal curve and mark the area representing the proportion less than the z score."
+    ]
+));
 
-$pval1 = $p[$choose];
-$pval2 = random(0.0019,0.4602,0.0001);
-$showpval1 = $pval1 * 100;
-$showpval2 = $pval2 * 100;
+$ans_b = Compute(normal_distr(.5 - $pval2));
+$cmp_b = $ans_b->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student - $correct) < .007;
+    } => ["You are close."],
+    -1 * $ans_b => [
+        "It might help to sketch the Normal curve and mark the area representing the proportion greater than the z score."
+    ]
+));
 
-$zscore1 = -1 * normal_distr(.5-$pval1);
-$zscore2 = normal_distr(.5-$pval2);
-
-#################################################
-#  Main
-
-BEGIN_TEXT
+BEGIN_PGML
 Find the z-score from a standard normal distribution that
 satisfies each of the following statements.
 
-$PAR
-(a)  The point $BITALIC z $EITALIC with $showpval1 percent of the observations falling below it.
-$BR
-\(z=\) \{ ans_rule(10) \}
+a)  The point _z_ with [$pval1*100] percent of the observations falling below it.
 
-$PAR
-(b)  The closest point $BITALIC z $EITALIC with $showpval2 percent of the observations falling above it.
-$BR
-\(z=\) \{ ans_rule(10) \}
-END_TEXT
+    [`z=`] [_]{$cmp_a}
 
-######################################
-#  Answers
+b)  The closest point _z_ with [$pval2*100] percent of the observations falling above it.
+  
+    [`z=`] [_]{$cmp_b}
+END_PGML
 
-$showPartialCorrectAnswers = 1;
+BEGIN_PGML_SOLUTION
+For this, we look up the values on a standard normal table or use software:
 
-Context()->flags->set(tolerance=>0.007, tolType=> 'absolute');
+a) [`` P(Z < z_0) = [$pval1] ``] results in [` z_0 = [$ans_a] `].
 
-$ans_a = Compute($zscore1); 
-ANS($ans_a->cmp->withPostFilter(AnswerHints(
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return abs($student-$correct) < .007;
-         } => ["Close!"],
-      -1*$ans_a => ["It might help to sketch the Normal curve and mark the area representing the proportion less than the z score."])));
+a) [`` P(Z > z_0) = [$pval2] ``] results in [` z_0 = [$ans_b] `].
+END_PGML_SOLUTION
 
-$ans_b = Compute($zscore2);
-ANS($ans_b->cmp->withPostFilter(AnswerHints(
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return abs($student-$correct) < .007;
-         } => ["You are close."],
-      -1*$ans_b => ["It might help to sketch the Normal curve and mark the area representing the proportion greater than the z score."])));
-
-ENDDOCUMENT();       # This should be the last executable line in the problem.
-
-
+ENDDOCUMENT();

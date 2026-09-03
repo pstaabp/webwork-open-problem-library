@@ -8,88 +8,79 @@
 ## AuthorText1('David Moore')
 ## EditionText1('5e')
 ## Section1('4')
-## Problem1('')
 ## KEYWORDS('statistic', 'correlation')
 
-DOCUMENT();        # This should be the first executable line in the problem.
+DOCUMENT();
 
-loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl",
-  "PGcourse.pl"
-);
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioButtons.pl', 'PGcourse.pl');
 
-TEXT(beginproblem());
-
-######################################
-#  Setup
-
-
-@ThreeProblems = (0,1,2);  #Order the problems
-@scramble = NchooseK(3,3);
-@order = @ThreeProblems[@scramble];
-
-$mc[0] = new_multiple_choice();
-     $mc[0]->qa("The Columbus Zoo conducts a study to determine whether a household's income can be 
+@questions = (
+    "The Columbus Zoo conducts a study to determine whether a household's income can be 
 	used to predict the amount of money the household will give to the zoo's annual fund drive. 
 	The response variable in this study is ",
-	"the amount of money a household gives to the zoo's annual fund drive. "); 
-     $mc[0]->extra("the Columbus Zoo. ", 
-	"a household's income. ", 
-        "all households in Columbus. ");
-     $mc[0]->makeLast("None of the above. ");
-
-$mc[1] = new_multiple_choice();
-     $mc[1] ->qa("A researcher wishes to determine whether the rate of water flow (in liters
+    'A researcher wishes to determine whether the rate of water flow (in liters
 	per second) over an experimental soil bed can be used to predict the amount of soil 
-	washed away (in kilograms). In this study, the explanatory variable is the",
-	"rate of water flow."); 
-     $mc[1]->extra("amount of eroded soil. ", 
-	"size of the soil bed. ", 
-        "depth of the soil bed. ");
-     $mc[1]->makeLast("None of the above. ");
+	washed away (in kilograms). In this study, the explanatory variable is the',
+    'A researcher measures the correlation between two variables.  This correlation tells us',
+);
 
-$mc[2] = new_multiple_choice();
-     $mc[2] ->qa("A researcher measures the correlation between two variables.  This correlation tells us",
-	"the strength of a straight line relation between two variables."); 
-     $mc[2]->extra("whether there is a relation between two variables.", 
-	"whether or not a scatterplot shows an interesting pattern. ", 
-        "whether a cause-and-effect relation exists between two variables.");
-     $mc[2]->makeLast("None of the above. ");
+@opts = (
+    [
+        [
+            "the amount of money a household gives to the zoo's annual fund drive. ",
+            "the Columbus Zoo. ",
+            "a household's income. ",
+            "all households in Columbus. "
+        ],
+        'None of the above. '
+    ],
 
-######################################
-#  Main text	
+    [
+        [
+            "rate of water flow.",
+            "amount of eroded soil. ",
+            "size of the soil bed. ",
+            "depth of the soil bed. "
+        ],
+        'None of the above. '
+    ],
 
-BEGIN_TEXT
+    [
+        [
+            "the strength of a straight line relation between two variables.",
+            "whether there is a relation between two variables.",
+            "whether or not a scatterplot shows an interesting pattern. ",
+            "whether a cause-and-effect relation exists between two variables."
+        ],
+        'None of the above. '
+    ]
+);
+
+@order = random_subset(3, 0 .. 2);
+@rb    = map { RadioButtons($opts[$_], 0, labels => 'ABC') } @order;
+
+BEGIN_PGML
 For each problem, select the best response.
 
-$PAR
-(a)   \{ $mc[$order[0]] -> print_q() \}
-$BR
-\{$mc[$order[0]] -> print_a() \}
+a) [$questions[$order[0]]]
 
-$PAR
-(b)   \{ $mc[$order[1]] -> print_q() \}
-$BR
-\{$mc[$order[1]] -> print_a() \}
+    [_]{$rb[0]}
 
-$PAR
-(c)   \{ $mc[$order[2]] -> print_q() \}
-$BR
-\{$mc[$order[2]] -> print_a() \}
-END_TEXT
+b) [$questions[$order[1]]]
 
-######################################
-#  Answers
+    [_]{$rb[1]}
 
-$showPartialCorrectAnswers = 0;
+c) [$questions[$order[2]]]
 
-ANS(radio_cmp($mc[$order[0]]->correct_ans));
-ANS(radio_cmp($mc[$order[1]]->correct_ans));
-ANS(radio_cmp($mc[$order[2]]->correct_ans));
+    [_]{$rb[2]}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) [$rb[0]]
+
+b) [$rb[1]]
+
+c) [$rb[2]]
+END_PGML_SOLUTION
 
 ENDDOCUMENT();       # This should be the last executable line in the problem.
-
-
-
-

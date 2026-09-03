@@ -14,101 +14,110 @@
 ## Problem1('')
 ## KEYWORDS('statistic', 'normal distribution', 'z score')
 
-DOCUMENT();        # This should be the first executable line in the problem.  
+DOCUMENT();
 
 loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "answerHints.pl",
-  "PGstatisticsmacros.pl",
-  "PGcourse.pl"
+    'PGstandard.pl',  'PGML.pl',
+    'answerHints.pl', 'PGstatisticsmacros.pl',
+    'PGcourse.pl'
 );
 
-TEXT(beginproblem());
+Context('Numeric')->flags->set(tolerance => 0.02, tolType => 'absolute');
 
-######################################
-#  Setup
-
-$zscore1 = random(-2.3,-0.01,0.01);
-$z1 = sprintf("%0.2f", $zscore1 );  #Note: For display
-$zscore2 = random(0.00,2.3,0.01);
-$z2 = sprintf("%0.2f", $zscore2 );  #Note: For display
+$zscore1 = random(-2.3, -0.01, 0.01);
+$z1      = sprintf("%0.2f", $zscore1);    #Note: For display
+$zscore2 = random(0.00, 2.3, 0.01);
+$z2      = sprintf("%0.2f", $zscore2);    #Note: For display
 
 $pval1 = uprob(abs($zscore2));
-$pval2=1-$pval1;
+$pval2 = 1 - $pval1;
 $pval3 = uprob($zscore1);
 $pval4 = $pval3 - $pval1;
 
-#################################################
-#  Main
+$ans_a = Compute(.01 * int(10000 * ($pval1 + .00005)));
+$cmp_a = $ans_a->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student - $correct) < .5;
+    } => ["Close! Did you use the correct column in the table?"],
+    100 - $ans_a =>
+        ["The question asks for the proportion greater than $zscore2."],
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student) < 1;
+    } => ["Enter the answer as a percent."]
+));
 
-BEGIN_TEXT
-Find the percent of observations 
-from a standard normal distribution that satisfies each of the 
-following statements.  Note: Enter your answers in the form, 74.22, not 0.7422.
-$PAR
-\( z > $z2 \): \{ ans_rule(10) \} $PERCENT
-$PAR
-\( z < $z2 \): \{ ans_rule(10) \} $PERCENT
-$PAR
-\( z > $z1 \): \{ ans_rule(10) \}  $PERCENT
-$PAR
-\( $z1 < z < $z2 \): \{ ans_rule(10) \}  $PERCENT
-END_TEXT
+$ans_b = Compute(.01 * int(10000 * ($pval2 + .00005)));
+$cmp_b = $ans_b->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student - $correct) < .5;
+    } => ["Close!  Check the table again."],
+    100 -
+        $ans_b => ["The question asks for the proportion less than $zscore2."],
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student) < 1;
+    } => ["The problem asked for your answer in percent form."]
+));
 
-######################################
-#  Answers 
+$ans_c = Compute(.01 * int(10000 * ($pval3 + .00005)));
+$cmp_c = $ans_c->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student - $correct) < .5;
+    } => ["Your answer is close.  Perhaps you got off by a column."],
+    100 - $ans_c =>
+        ["The question asks for the proportion greater than $zscore1."],
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student) < 1;
+    } => ["Enter the answer as a percent."]
+));
 
-$showPartialCorrectAnswers = 1;
+$ans_d = Compute(.01 * int(10000 * ($pval4 + .00005)));
+$cmp_d = $ans_d->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student - $correct) < .5;
+    } => ["Not quite -- Check the column you used."],
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student) < 1;
+    } => ["Enter the answer in percent form."]
+));
 
-Context()->flags->set(tolerance=>0.02, tolType=>'absolute');
+BEGIN_PGML
+Find the percent of observations from a standard normal distribution that satisfies each of the following statements.  *Note: Enter your answers in the form, 74.22, not 0.7422.*
 
-$ans_a = Compute(.01*int(10000*($pval1+.00005)));
-ANS($ans_a->cmp->withPostFilter(AnswerHints(
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return abs($student-$correct) < .5;
-         }      => ["Close! Did you use the correct column in the table?"],
-     100-$ans_a => ["The question asks for the proportion greater than $zscore2."],
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return abs($student) < 1;
-         }      => ["Enter the answer as a percent."])));
+a) [` z > [$z2] `]: [_]{$cmp_a}%
 
-$ans_b = Compute(.01*int(10000*($pval2+.00005)));
-ANS($ans_b->cmp->withPostFilter(AnswerHints(
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return abs($student-$correct) < .5;
-         }      => ["Close!  Check the table again."],
-     100-$ans_b => ["The question asks for the proportion less than $zscore2."],
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return abs($student) < 1;
-         }      => ["The problem asked for your answer in percent form."])));
+b) [` z < [$z2] `]: [_]{$cmp_b}%
 
-$ans_c = Compute(.01*int(10000*($pval3+.00005)));
-ANS($ans_c->cmp->withPostFilter(AnswerHints(
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return abs($student-$correct) < .5;
-         }      => ["Your answer is close.  Perhaps you got off by a column."],
-     100-$ans_c => ["The question asks for the proportion greater than $zscore1."],
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return abs($student) < 1;
-         }      => ["Enter the answer as a percent."])));
+c) [` z > [$z1] `]: [_]{$cmp_c}%
 
-$ans_d = Compute(.01*int(10000*($pval4+.00005)));
-ANS($ans_d->cmp->withPostFilter(AnswerHints(
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return abs($student-$correct) < .5;
-         }      => ["Not quite -- Check the column you used."],
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return abs($student) < 1;
-         }      => ["Enter the answer in percent form."])));
+d) [` [$z1] < z < [$z2] `]: [_]{$cmp_d}%
+END_PGML
 
-ENDDOCUMENT();       # This should be the last executable line in the problem.
+BEGIN_PGML_SOLUTION
+These just need to be looked up on a standard normal table or using software and then converted to a percent. 
 
+a) [`P(Z>[$z2]) = [$ans_a/100]`]
+
+    Answer: [$ans_a]
+
+b) [`P(Z<[$z2]) = [$ans_b/100]`]
+
+    Answer: [$ans_b]
+
+c) [`P(Z>[$z1]) = [$ans_c/100]`]
+
+    Answer: [$ans_c]
+
+d) [`P([$z1] < Z < [$z2]) = [$ans_b/100] - [$ans_b*-0.01+1] = [$ans_d/100]`]
+
+    Answer: [$ans_d]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

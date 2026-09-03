@@ -1,0 +1,120 @@
+##DESCRIPTION
+## perform a proportional hypothesis test of the proportion of flights arriving on time.
+##ENDDESCRIPTION
+## DBsubject('Statistics')
+## DBchapter('Hypothesis tests')
+## DBsection('One sample proportion')
+## Level(3)
+## KEYWORDS('sample proportion', 'hypothesis tests', 'airline flights')
+## AUTHOR(Jessie Oehrlein)
+## INSTITUTION(Fitchburg State University)
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',         'PGML.pl',
+    'parserRadioButtons.pl', 'parserCheckboxList.pl',
+    'PGcourse.pl'
+);
+
+Context("Numeric");
+
+$rb1 = RadioButtons(
+    [ [
+        'Whether a BlueSky Air flight arrives on time.',
+        'The proportion of the 160 BlueSky Air flights that arrive on time.',
+        'All BlueSky Air flights.',
+        'The proportion of all BlueSky Air flights that arrive on time.'
+    ] ],
+    3,
+    labels => 'ABC'
+);
+
+$rb2 = RadioButtons(
+    [ [
+        "Null: \( p = 0.80 \). Alternative: \( p   < 0.80 \).",
+        "Null: \( p < 0.80 \). Alternative: \( p \ge 0.80 \).",
+        "Null: \( p > 0.80 \). Alternative: \( p \le  0.80 \).",
+        "Null: \( p = 0.80 \). Alternative: \( p   >  0.80 \).",
+        "Null: \( p = 0.80 \). Alternative: \( p \ne  0.80 \).",
+        "Null: \( p = 115/160 \). Alternative: \( p \ne  115/160 \)."
+    ] ],
+    0,
+    labels => 'ABC'
+);
+
+$cb3 = CheckboxList(
+    [
+        'The observed proportion of flights that arrive on time is unusually '
+            . "low if BlueSky Air's claim is true.",
+        "Assuming BlueSky's claim is true, there is a 0.0051 probability that "
+            . 'in a random sample of 160 flights, 115 or fewer flights arrive on time.',
+        'The observed proportion of flights that arrive on time is unusually high '
+            . "if BlueSky Air's claim is true.",
+        'The observed proportion of flights that arrive on time is unusually high '
+            . "if BlueSky Air's claim is false.",
+        "Assuming BlueSky's claim is false, there is a 0.0051 probability that in "
+            . ' a random sample of 160 flights, 115 or fewer flights arrive on time.',
+        "There is a 0.0051 probability that BlueSky Air's claim is true."
+    ],
+    [ 0, 1 ],
+    labels => 'ABC'
+);
+
+$rb4 = RadioButtons(
+    [
+        'we should reject the null hypothesis',
+        'we should not reject the null hypothesis'
+    ],
+    0,
+     labels => 'ABC'
+);
+
+$rb5 = RadioButtons(
+    [ [
+        "BlueSky Air's claim is false.",
+        "BlueSky Air's claim is true.",
+        "There is sufficient evidence to contradict BlueSky Air's claim.",
+        "There is sufficient evidence to support BlueSky Air's claim."
+    ] ],
+    2,  labels => 'ABC'
+);
+
+BEGIN_PGML
+BlueSky Air claims that at least 80% of its flights arrive on time. A random sample of 
+160 BlueSky Air flights revealed that 115 arrive on time. Do the data provide sufficient 
+evidence to contradict the claim by BlueSky Air?
+
+1) What is the parameter of interest? [_]{$rb1}
+
+2) Let [`p`] be the population proportion of flights that arrive on time. What are the null and alternative hypotheses? [_]{$rb2}
+
+3) The [`p`]-value is computed to be 0.0051. Using all of the information available to you, 
+which of the following is/are correct?  (check all that apply) [_]{$cb3}
+
+4) Based on the [`p`]-value (0.0051) obtained, at the 1% significance level, ... [_]{$rb4}
+
+5) What is an appropriate conclusion for the hypothesis test at the 1% significance level?
+[_]{$rb5}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+1) The parameter is the population proportion of all BlueSky flights arriving on time. 
+  
+2) The claim of the company is not sensibly
+negated by a higher proportion of flights than claimed arriving on time.
+Hence a one-sided alternative is reasonable.
+  
+3) The low P-value suggests data that are unlikely if the companys
+claims are true. 
+  
+4) Since the P-value is lower than 1%, we reject the
+null hypothesis at the 1% significance level.
+  
+5) Rejecting the null hypothesis does not prove the claim is false, but
+does provide strong evidence against it.
+  
+END_PGML_SOLUTION
+
+ENDDOCUMENT(); 

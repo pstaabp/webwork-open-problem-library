@@ -19,9 +19,9 @@
 DOCUMENT();    # This should be the first executable line in the problem.
 
 loadMacros(
-    'PGstandard.pl',  'PGML.pl',
-    'PGtikz.pl',      'PGstatisticsmacros.pl',
-    'parserPopUp.pl', 'PGcourse.pl'
+    'PGstandard.pl',       'PGML.pl',
+    'StatisticalPlots.pl', 'PGstatisticsmacros.pl',
+    'parserPopUp.pl',      'PGcourse.pl'
 );
 
 $s = random(0, 2);
@@ -34,28 +34,32 @@ for $i (0 .. 20) {
     $h[$i] = scalar(grep { $_ == $i } (@norm_rands, @unif_rands));
 }
 
-# generate the rectangles
-$rects = '';
-for $i (1 .. 20) {
-    $rects .=
-        "\\filldraw[fill=Goldenrod] ({$i-0.5},0) rectangle ({$i+0.5},$h[$i]);\n";
-}
+$stat_plot = StatPlot(
+    xmin            => 0,
+    xmax            => 20,
+    xtick_delta     => 5,
+    xminor          => 4,
+    xmajor          => 0,
+    xlocation       => 'bottom',
+    xlabel          => '',
+    ymin            => 0,
+    ymax            => 25,
+    ytick_delta     => 5,
+    yminor          => 4,
+    ylocation       => 'left',
+    ylabel          => '',
+    rounded_corners => 1,
+    aspect_ratio    => 0.6
+);
 
-$graph = createTikZImage();
-$graph->tikzLibraries('arrows.meta');
-$graph->BEGIN_TIKZ
-\tikzset{>={Stealth[scale=1.5]}}
-\filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-1,-1) rectangle (21,21);
-$rects;
-\draw (0.5,0) rectangle (20.5,21);
-\foreach \x in {5,10,15,20} \draw (\x,0) -- (\x,-0.1) node [scale=2, below] {\x};
-\foreach \y in {5,10,15,20} \draw (0.5,\y) -- (0.3,\y) node [scale=2, left] {\y};
-END_TIKZ
+$stat_plot->add_histogram(
+    [ @norm_rands, @unif_rands ],
+    min          => 0,
+    max          => 20,
+    bins         => 20,
+    stroke_width => 1,
+    fill_color   => 'thistle'
+);
 
 $skew   = DropDown([ 'right', 'symmetric',   'left' ],   $s);
 $middle = DropDown([ 'mean',  'about equal', 'median' ], $s);
@@ -63,7 +67,7 @@ $middle = DropDown([ 'mean',  'about equal', 'median' ], $s);
 BEGIN_PGML
 Consider the histogram shown below.
 
-[! alttest !]{$graph}{400}
+>>[! !]{$stat_plot}{400}<<
 
 a) Is this data skewed to the right, close to symmetric, or skewed to the left? [_]{$skew}
 

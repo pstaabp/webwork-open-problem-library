@@ -11,57 +11,56 @@
 ## AuthorText1('David Moore')
 ## EditionText1('5e')
 ## Section1('3')
-## Problem1('')
 ## KEYWORDS('statistic', 'normal distribution', 'z score')
 
-DOCUMENT();        # This should be the first executable line in the problem.  
+DOCUMENT();
 
 loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "answerHints.pl",
-  "PGstatisticsmacros.pl",
-  "PGcourse.pl"
+    'PGstandard.pl',  'PGML.pl',
+    'answerHints.pl', 'PGstatisticsmacros.pl',
+    'PGcourse.pl'
 );
 
-TEXT(beginproblem());
-
-######################################
 #  Setup
 
-$meanF = random(900,1050,25);
-$sigmaF = random(40,60,10);
+$meanF  = random(900, 1050, 25);
+$sigmaF = random(40,  60,   10);
 
-$temp1 = random(1090,1150,5);
+$temp1   = random(1090, 1150, 5);
 $zscore4 = ($temp1 - $meanF) / $sigmaF;
-$pval2 = .0001*int(10000*(uprob(abs($zscore4))+.00005));
+$pval2   = .0001 * int(10000 * (uprob(abs($zscore4)) + .00005));
 
-#################################################
-#  Main
+$ans = Compute($pval2)->with(tolerance => 0.005, tolType => 'absolute');
+$cmp = $ans->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student - $correct) < .01;
+    } => ["Close!"]
+));
 
-BEGIN_TEXT
+BEGIN_PGML
 The temperature at any random location in a kiln used in the manufacture of bricks 
-is normally distributed with a mean of $meanF and a standard deviation of $sigmaF degrees.
-$BR
-If bricks are fired at a temperature above $temp1, they will crack and must 
+is normally distributed with a mean of [$meanF] and a standard deviation of [$sigmaF] degrees.
+
+If bricks are fired at a temperature above [$temp1], they will crack and must 
 be disposed of.  If the bricks are placed randomly throughout the kiln, the 
 proportion of bricks that crack during the firing process is closest to
-\{ ans_rule(10) \}.
-$BR
-(Note: Please enter your answer in decimal form. For example, 5.02$PERCENT should be entered as 0.0502.) 
-END_TEXT
+[_]{$cmp}
 
-######################################
-#  Answers
+*Note: Please enter your answer in decimal form. For example, 5.02% should be entered as 0.0502.*
+END_PGML
 
-$showPartialCorrectAnswers = 1;
+BEGIN_PGML_SOLUTION
+There are a number of ways to do this problem. We will find the [`z`]-score and then look up the value on a standard normal table or using software.
 
-$ans = Compute($pval2)->with(tolerance=>0.005, tolType=> 'absolute');
-ANS($ans->cmp->withPostFilter(AnswerHints(
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return abs($student-$correct) < .01;
-         } => ["Close!"])));
+Recall that a [`z`]-score for a give data value [`x`] that comes from a normal distribution with mean [`\mu`] and standard deviation [`\sigma`] is 
+
+[``` z = \frac{x-\mu}{\sigma}```]
+
+Therefore for this problem,
+[``` z = \frac{[$temp1]-[$meanF]}{[$sigmaF]} = [$zscore4] ```]
+and then we seek the value:
+[``` P(Z > [$zscore4]) = [$ans] ```]
+END_PGML_SOLUTION
 
 ENDDOCUMENT();       # This should be the last executable line in the problem.
-

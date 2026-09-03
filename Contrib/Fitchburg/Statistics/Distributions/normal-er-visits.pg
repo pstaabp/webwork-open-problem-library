@@ -1,0 +1,95 @@
+# DESCRIPTION
+# Find the probability and lengths of ER visits given mean and standard deviation in a
+# normal distribution.
+# ENDDESCRIPTION
+
+## DBsubject('WeBWorK')
+## DBchapter('Nursing-Med Calc')
+## DBsection('Problem')
+## KEYWORDS('normal distribution', 'mean','standard deviation', 'emergency room', 'ER')
+## Author('Catherine Buell')
+## Institution('Fitchburg State')
+
+DOCUMENT();
+
+loadMacros(
+    "PGstandard.pl",     "PGML.pl",
+    'contextPercent.pl', 'PGstatisticsmacros.pl',
+    "PGcourse.pl",
+);
+
+Context('Numeric');
+
+$mean = random(150, 250, 0.1);
+$sd   = random(50,  75,  0.1);
+
+$z1   = (180 - $mean) / $sd;
+$ansa = normal_prob('-inf', $z1);
+
+$z2   = (120 - $mean) / $sd;
+$ansb = normal_prob($z2, 'inf');
+
+$z3 = (150 - $mean) / $sd;
+$z4 = (210 - $mean) / $sd;
+
+$prob3 = normal_prob('-inf', $z3);
+$prob4 = normal_prob('-inf', $z4);
+
+Context("Percent")->flags->set(
+    tolerance => 0.2,
+    tolType   => "absolute",
+);
+$ansc = Percent(normal_prob($z3, $z4));
+
+$p4 = random(5, 25, 5);
+
+$z5   = -normal_distr(0.5 - $p4 / 100);
+$x5   = $mean + $z5 * $sd;
+$ansd = Real(Round($x5));
+
+BEGIN_PGML
+
+Data collected on the total number of minutes people revealed that patients spent on average [$mean] minutes in the Emergency Room (ER), with a standard deviation of [$sd] minutes. Assume the times collected are normally distributed.
+
+a) Find the probability that the an ER patient spent less than 3 hours there (3 hours = 180 minutes).
+
+    [_]{$ansa }{10}
+
+b) Find the probability that the an ER patient spent more than 2 hours there (2 hours = 120 minutes).
+
+    [_]{$ansb}{10}
+
+c) What PERCENTAGE of the ER patient population spent between 2.5 and 3.5 hours there (between 150 and 210 minutes)? Enter your answer as a percentage rounded to the nearest tenth. 
+
+    [_]{$ansc}{10}
+
+d) How long are the shortest [$p4]% of visits to the ER? Round to the nearest whole minute.
+
+    [_]{$ansd} minutes
+
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) For [`P(X <180)`], first find [``z=\frac{180-[$mean]}{[$sd]} = [$z1]``]. Using a table or software, this corresponds to the value of [$ansa].
+
+b) For [`P(X > 120)`]. We need to find the [`z`]-score.  [``z=\frac{120-[$mean]}{[$sd]} = [$z2]``]. Using a table or software, this corresponds to the value of [$ansb].
+
+
+c) For [`P(150 < X < 210)`]. We need to find two z-scores.
+    [```\begin{aligned}
+    z_1 &= \frac{150-[$mean]}{[$sd]} = [$z3] &
+    z_2 &= \frac{210-[$mean]}{[$sd]} = [$z4]
+    \end{aligned}```]
+
+    If you have software that can handle two [`z`]-scores, then use the software and you will get the answer [$ansc].  If you only have left tails, then you should get the normal probabality values [$prob3] and [$prob4] and the difference is the probability or [$ansc]. 
+
+d) The area of [$p4/100] corresponds to the [`z`]-score of [$z5].  Rearranging the [`z`]-score formula to 
+[``` x = \bar{x}+ z \cdot s = [$mean] + ([$z5])([$sd]) = [$x5] ```]
+
+    Rounding this to the nearest integer results in [$ansd], which is the number of minutes of the shortest [$p4]% visits to the ER.
+
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -14,85 +14,40 @@
 ## Problem1('')
 ## KEYWORDS('statistic', 'regression')
 
-DOCUMENT();        # This should be the first executable line in the problem.
+DOCUMENT();    # This should be the first executable line in the problem.
 
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGcourse.pl"
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGstatisticsmacros.pl', 'PGcourse.pl');
+
+Context('Numeric')->flags->set(
+    tolerance => 0.5,
+    tolType   => 'absolute'
 );
 
-TEXT(beginproblem());
+@x = map { random(36,  55,   0.1) } (1 .. 12);
+@y = map { random(900, 1600, 10) } (1 .. 12);
 
-#################################################
-#  Set-up
+($b1, $b0) = linear_regression(~~@x, ~~@y);
 
+$tab = DataTable([
+    [PGML('*Mass*'), @x],
+    [PGML('*Rate*'), @y]
+], align => '|c' x 13 . '|', horizontalrules => 1);
 
-for($i=0;$i<12;$i++) {
-$x[$i] = random(36,55,0.1);
-$y[$i] = random(900,1600,10);
-} 
+$f = Formula("$b0 + $b1 x");
 
-for($i=0;$i<12;$i++) {
-$sum_x += $x[$i];
-$sum_y += $y[$i];
-}
-
-$mean_x = $sum_x/12;
-$mean_y = $sum_y/12;
-
-for ($i=0; $i<12; $i++) {
-$sx_squared += ($x[$i] - $mean_x)*($x[$i] - $mean_x);}
-
-$sx = sqrt($sx_squared/11);
-
-for ($i=0; $i<12; $i++) {
-$sy_squared += ($y[$i] - $mean_y)*($y[$i] - $mean_y);}
-
-$sy = sqrt($sy_squared/11);
-
-for ($i=0; $i<12; $i++) {
-$sum_r += (($x[$i] - $mean_x)/$sx)*(($y[$i] - $mean_y)/$sy);}
-
-$r = $sum_r/11;
-
-$b1 = $r*($sy/$sx);
-$a = $mean_y - ($b1*$mean_x); 
-#$b1 = .1*int(10*($b1+0.05));
-#$a = .1*int(10*($a+0.05));
-#$r = .001*int(1000*($r+0.0005));
-
-######################################
-#  Main text
-
-BEGIN_TEXT
+BEGIN_PGML
 We have data on the lean body mass and resting metabolic rate for 12 women who are subjects in a study of dieting. Lean body mass, given in kilograms, is a person's weight leaving out all fat. Metabolic rate, in calories burned per 24 hours, is the rate at which the body consumes energy.
-$PAR
-$BCENTER
-\{begintable(13)\}
-\{row('$BBOLD Mass $EBOLD $SPACE ',$x[0],$x[1],$x[2],$x[3],$x[4],$x[5],$x[6],$x[7],$x[8],$x[9],$x[10],$x[11])\}
-\{row('$BBOLD Rate $EBOLD $SPACE ',$y[0],$y[1],$y[2],$y[3],$y[4],$y[5],$y[6],$y[7],$y[8],$y[9],$y[10],$y[11])\}
-\{endtable()\}
-$ECENTER
-$BR
+
+[$tab]*
+
 Find the least-squares regression line for predicting metabolic rate from body mass.
-$BR
-ANSWER: $SPACE \( \hat{y} = \) \{ans_rule(40)\}
-END_TEXT
 
-######################################
-#  Answers
+    [` \hat{y} = `] [_]{$f}{20}
+END_PGML
 
-$showPartialCorrectAnswers = 1;
+BEGIN_PGML_SOLUTION
+Using software, the slope is [@Round($b1, 4)@] and the intercept is [@ Round($b0,4) @].  Therefore the regression line is 
+[``` \hat{y} = [$f] ```]
+END_PGML_SOLUTION
 
-Context()->flags->set(
-   tolerance=>0.5,
-   tolType=> 'absolute'
-   );
-
-$ans_a = Formula("$a + $b1 x");
-ANS($ans_a->cmp);
-
-######################################
-
-ENDDOCUMENT(); # This should be the last executable line in the problem.
+ENDDOCUMENT();

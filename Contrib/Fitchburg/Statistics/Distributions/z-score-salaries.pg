@@ -1,0 +1,96 @@
+# DESCRIPTION
+# A problem that asks students to ...
+#
+# ENDDESCRIPTION
+
+## DBsubject('Introductory Statistics')
+## DBchapter('3')
+## DBsection('1')
+## KEYWORDS('z-score', 'salaries')
+## Author('Michael Stassen')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',         "PGML.pl",
+    "contextPercent.pl",     "PGnumericalmacros.pl",
+    "PGstatisticsmacros.pl", 'randomPerson.pl', "fixedPrecision.pl",
+    'PGcourse.pl'
+);
+
+sub salary {
+    my ($a, $b, $p) = @_;
+    my $x   = round(chisqrdistr(7, 1 - $p), 0);   #chidistr(df, right_tail_size)
+    my $sal = $a * $x + $b;
+    return $sal;
+}
+
+Context("LimitedNumeric");
+
+$base = random(31000, 33000, 50);
+$a    = random(2500,  3500,  50);
+
+$mean = $base + $a * 7;
+$sd   = round($a * sqrt(2 * 7), 0);
+
+@emp = randomPerson(n => 3);
+
+$x[0] = salary($a, $base, random(.85, .95, .01));
+$x[1] = $mean;
+$x[2] = salary($a, $base, random(.35, .45, .01));
+
+@z    = map { FixedPrecision(($x[$_] - $mean) / $sd, 2) } (0 .. 2);
+$z2   = FixedPrecision(-$z[2], 2);
+$z[1] = 0;
+
+$z[3] = random(.75,  1.45, .02);
+$z[4] = random( 2.5,  3.1, .2);
+$z[5] = random(-2.3, -1.1, .2);
+$z5   = -$z[5];
+
+$x[$_] = FixedPrecision(round($mean + $z[$_] * $sd, 0), 0) for (3 .. 5);
+
+BEGIN_PGML
+
+Salaries at XS Pharmaceuticals have a right-skewed distribution with a mean of [` $[$mean] `] and a standard deviation of [` $[$sd] `]. Include two decimal points on all z-score or standard deviation answers.
+
+a) [$emp[0]]'s salary is $[$x[0]].
+    What is [$emp[0]]'s z-score? z = [______]{$z[0]}  
+b) How many standard deviations above the mean is [$emp[0]]'s salary? [______]{$z[0]}  
+
+c) [$emp[1]]' salary is $[$x[1]]. What is [$emp[1]]'s z-score? z =  [______]{$z[1]}
+
+d) [$emp[2]]'s salary is $[$x[2]].
+    What is [$emp[2]]'s z-score? z =  [______]{$z[2]}  
+e) How many standard deviations below the mean is [$emp[2]]'s salary? [______]{$z2}
+
+f) What salary (to the nearest dollar) is [$z[3]] standard deviations above the mean? $[______]{$x[3]}  
+
+g) What salary (to the nearest dollar) is [$z[4]] standard deviations above the mean? $[______]{$x[4]}  
+
+h) What salary (to the nearest dollar) is [$z5] standard deviations below the mean? $[______]{$x[5]}  
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+First, recall that a [`z`]-score for a variables [`x`] that comes from a distribution with mean [`\bar{x}`] and standard deviation [`s`] is found with 
+[``` z = \frac{x-\bar{x}}{s} ```]
+
+And this can be interpreted as the number of standard deviations to the left or right of the mean. 
+
+a) [`` z = \frac{[$x[0]] - [$mean]}{[$sd]} = [$z[0]] ``]
+b) This means that [$emp[0]]'s salary is [$z[0]] above the mean.
+c) [`` z = \frac{[$x[1]] - [$mean]}{[$sd]} = [$z[1]] ``].  *Note:* since this value is the mean, the [`z`]-score is 0. 
+d) [`` z = \frac{[$x[2]] - [$mean]}{[$sd]} = [$z[2]] ``]
+e) This means that [$emp[1]]'s salary is [$z2] below the mean.
+
+    Additionally, we can rearrange this to find the value of [`x`] given 
+    the [`z`]-score, mean and standard deviation as 
+    [```x = \bar{x} + s z```]
+
+f) This salary is [`[$mean] + [$sd] ([$z[3]]) = [$x[3]] `].
+g) This salary is [`[$mean] + [$sd] ([$z[4]]) = [$x[4]] `].
+h) This salary is [`[$mean] + [$sd] ([$z[5]]) = [$x[5]] `].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

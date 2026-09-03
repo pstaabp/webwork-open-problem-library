@@ -20,23 +20,23 @@
 DOCUMENT();    # This should be the first executable line in the problem.
 
 loadMacros(
-    "PGstandard.pl",         "PGML.pl",
-    "answerHints.pl",        "niceTables.pl",
-    'PGstatisticsmacros.pl', "PGcourse.pl"
+    "PGstandard.pl",  "PGML.pl",
+    "answerHints.pl", 'PGstatisticsmacros.pl',
+    "PGcourse.pl"
 );
 
-for $i (0 .. 7) {
+for my $i (0 .. 7) {
     $x[$i] = random(259, 320, 1);
     $y[$i] = random(30,  50,  1);
+    push(@rows, [ $i, "0.$x[$i]", $y[$i] ]);
 }
-
-push(@rows, [ $_, $x[$_], $y[$_] ]) for (0 .. 7);
 
 $r = sample_correlation(~~@x, ~~@y);
 ($m, $b) = linear_regression(~~@x, ~~@y);
 
 $ans_a =
-    Compute($r)->with(tolType => 'absolute', tolerance => '0.005')
+    Compute($r)
+    ->with(tolType => 'absolute', tolerance => '0.005')
     ->cmp->withPostFilter(AnswerHints(
         sub {
             my ($correct, $student, $anshash) = @_;
@@ -62,6 +62,15 @@ b) Find the equation of the least squares line [`\hat{y} = `][___]{$ans_b}
 What do you think?  In this case was a higher batting average associated with winning more games, or were other things involved?
 
 END_PGML
+
+BEGIN_PGML_SOLUTION
+This is best done with a calculator or computer.  The results are 
+
+a) [$r]
+b) [``[$ans_b]``]
+
+Since the value of [`r`] is fairly small (close to 0), there is a weak relationship between batting average and winning.
+END_PGML_SOLUTION
 
 ENDDOCUMENT();    # This should be the last executable line in the problem.
 

@@ -13,79 +13,48 @@
 ## Problem1('')
 ## KEYWORDS('statistic', 'parameter', 'sampling distribution', 'sample')
 
-DOCUMENT();        # This should be the first executable line in the problem.
+DOCUMENT();    # This should be the first executable line in the problem.
 
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "answerHints.pl",
-  "PGcourse.pl"
-);
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserPopUp.pl', 'PGcourse.pl');
 
-TEXT(beginproblem());
-
-######################################
 #  Setup
 
-$mu = random(0.7, 0.9, 0.1);
-$sigma = random(0.15,0.2,0.01);
+$mu    = random(0.7,  0.9, 0.1);
+$sigma = random(0.15, 0.2, 0.01);
 
-$n = ($sigma / 0.01) ** 2;
+$n = ($sigma / 0.01)**2;
 
-@a = ("larger", "smaller");
-@answer = ("SMALLER", "LARGER");
-$choose = random(0,1,1);
+@a      = ("larger", "smaller");
+$choose = random(0, 1);
 
-######################################
-#  Main text
+$dd = DropDown([ 'smaller', 'larger', 'equal', 'the same' ], $choose);
 
-BEGIN_TEXT
-The level of nitrogen oxides (NOX) in the exhaust of a particular car model varies with mean $mu 
-grams per mile  and standard deviation $sigma grams per mile . 
+BEGIN_PGML
+The level of nitrogen oxides (NOX) in the exhaust of a particular car model
+varies with mean [$mu] grams per mile  and standard deviation [$sigma] grams
+per mile . 
 
-$PAR
-(a)  What sample size is needed so that the standard deviation of the sampling
+a)  What sample size is needed so that the standard deviation of the sampling
 distribution is 0.01 grams per mile ?
-$BR
-ANSWER: \{ans_rule(10)\} 
 
-$PAR
-(b)    If a $a[$choose] sample is considered, the standard deviation for \( \bar x\)  
-would be \{ans_rule(20)\}.  (NOTE:  Enter  ''SMALLER'',''LARGER'' or ''THE SAME'' without the quotes.)
-$BR
-END_TEXT
+    ANSWER: [_]{$n}
 
-######################################
-#  Answers
+b)    If a [$a[$choose]] sample is considered, the standard deviation for [` \bar x`]  
+would be [_]{$dd}
 
-$showPartialCorrectAnswers = 1;
+END_PGML
 
-Context()->strings->add("SMALLER"=>{},"LARGER"=>{}, 
-                        "EQUAL"=>{},"THE SAME"=>{});
+BEGIN_PGML_SOLUTION
+a) Recall that the standard deviation of the sample distribution [`\sigma_s`] is related
+    to the population standard deviation using [``` \sigma_s = \frac{\sigma}{\sqrt{n}}```]
+    Solving this for [`n`] results in 
+    [``` n  = \left(\frac{\sigma}{\sigma_s}\right)^2 
+        = \left(\frac{[$sigma]}{0.01}\right)^2 = [$n]```]
 
-$ans_a = Compute($n)->with(tolType=>'absolute', tolerance=>'0.001');
-ANS($ans_a->cmp(showTypeWarnings=>0)->withPostFilter(AnswerHints(
-#     sub {
-#         my ($correct,$student,$anshash) = @_;
-#         return abs($student-$correct) < .4;
-#         } => ["Your answer should be a number."],
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return if ($student =~ /a..z,A..Z/);
-         return abs($student-$correct) < .4;
-         } => ["Your answer is close.  Use more accuracy in your calculation."])));
+b) Note that since the standard deviation of the sample distribution is inversely
+    proportional to the square root of [`n,`] then a [$a[$choose]]
+    sample size results in a [$a[1-$choose]] standard deviation.
 
-$ans_b = String($answer[$choose]);
-ANS($ans_b->cmp);
+END_PGML_SOLUTION
 
 ENDDOCUMENT();       # This should be the last executable line in the problem.
-
-
-
-
-
-
-
-
-
-

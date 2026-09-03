@@ -1,4 +1,5 @@
 ## DESCRIPTION
+## ENDDESCRIPTIOIN
 ## DBsubject(Probability)
 ## DBchapter(Continuous distributions)
 ## DBsection(Application of a normal distribution)
@@ -11,75 +12,99 @@
 ## AuthorText1('David Moore')
 ## EditionText1('5e')
 ## Section1('3')
-## Problem1('')
 ## KEYWORDS('statistic', 'normal distribution', 'z score')
 
-DOCUMENT();        # This should be the first executable line in the problem.  
+DOCUMENT();
 
 loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "answerHints.pl",
-  "PGstatisticsmacros.pl",
-  "PGcourse.pl"
+    'PGstandard.pl',  'PGML.pl',
+    'answerHints.pl', 'PGstatisticsmacros.pl',
+    'PGcourse.pl'
 );
 
-TEXT(beginproblem());
+$mean_all = random(8.9, 9.9, 0.1);
+$sd_all   = random(2.0, 2.6, 0.1);
 
-######################################
-#  Setup
+$mean_med = random(10.1, 10.9, 0.1);
+$sd_med   = random(1.4,  1.8,  0.1);
 
-$mean_all = random(8.9,9.9,0.1);
-$sd_all = random(2.0,2.6,0.1);
+do {
+    $cutoff_b1 = random(8,  10);
+    $cutoff_b2 = random(11, 12);
+    $cutoff_a  = random(11, 13);
+} until $cutoff_a != $cutoff_b_2;
 
-$mean_med = random(10.1,10.9,0.1);
-$sd_med = random(1.4,1.8,0.1);
+$z_a  = ($cutoff_a - $mean_all) / $sd_all;
+$z_b1 = ($cutoff_b1 - $mean_med) / $sd_med;
+$z_b2 = ($cutoff_b2 - $mean_med) / $sd_med;
 
-$cutoff_b1 = random(8,10,1);
-$cutoff_b2 = random(11,12,1);
-$cutoff_a = random(11,13,1);
-if ($cutoff_a==$cutoff_b2) {$cutoff_a=1+$cutoff_b2};
+$pval_a = normal_prob($z_a,   'inf');
+$p_b1   = normal_prob('-inf', $z_b1);
+$p_b2   = normal_prob('-inf', $z_b2);
+$pval_b = $p_b2 - $p_b1;
 
-$pval_a = uprob(($cutoff_a - $mean_all)/$sd_all);
-$p_b1 = 1-uprob(abs(($cutoff_b1 - $mean_med)/$sd_med));
-$p_b2 = uprob(($cutoff_b2 - $mean_med)/$sd_med);
-$pval_b = $p_b1 - $p_b2;
+Context()->flags->set(tolerance => 0.25, tolType => 'absolute');
 
-#################################################
-#  Main
+$ans_a = Compute(.01 * int(10000 * ($pval_a + .00005)));
+$cmp_a = $ans_a->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student - $correct) < .5;
+    } => ["Close!  Try using more accuracy."],
+    100 - $ans_a =>
+        ["The question asks for the percent who scored $cutoff_a or better."]
+));
 
-BEGIN_TEXT
-Almost all medical schools in the United States require applicants to take the Medical College Admission Test (MCAT). On one exam, the scores of all applicants on the biological sciences part of the MCAT were approximately Normal with mean $mean_all and standard deviation $sd_all. For applicants who actually entered medical school, the mean score was $mean_med and the standard deviation was $sd_med.
+$ans_b = Compute(.01 * int(10000 * ($pval_b + .00005)));
+$cmp_b = $ans_b->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student - $correct) < .5;
+    } => ["Close!  Try using more accuracy."]
+));
 
-$PAR
-(a) What percent of all applicants had scores higher than $cutoff_a?
-$BR $SPACE $SPACE ANSWER: $SPACE \{ans_rule(5)\} %
+BEGIN_PGML
+Almost all medical schools in the United States require applicants to take the Medical College Admission Test (MCAT). On one exam, the scores of all applicants on the biological sciences part of the MCAT were approximately Normal with mean [$mean_all] and standard deviation [$sd_all]. For applicants who actually entered medical school, the mean score was [$mean_med] and the standard deviation was [$sd_med].
 
-$PAR
-(b) What percent of those who entered medical school had scores between $cutoff_b1 and $cutoff_b2? 
-$BR $SPACE $SPACE ANSWER: $SPACE \{ans_rule(5)\} %
-END_TEXT
+a) What percent of all applicants had scores higher than [$cutoff_a]?
 
-#################################################
-#  Answers
+    ANSWER:  [_]{$cmp_a}%
 
-$showPartialCorrectAnswers = 1;
+b) What percent of those who entered medical school had scores between [$cutoff_b1] and [$cutoff_b2]? 
 
-Context()->flags->set(tolerance=>0.25, tolType=> 'absolute');
+    ANSWER: [_]{$cmp_b}%
 
-$ans_a = Compute(.01*int(10000*($pval_a+.00005)));
-ANS($ans_a->cmp->withPostFilter(AnswerHints(
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return abs($student-$correct) < .5;
-         }      => ["Close!  Try using more accuracy."],
-     100-$ans_a => ["The question asks for the percent who scored $cutoff_a or better."])));
+END_PGML
 
-$ans_b = Compute(.01*int(10000*($pval_b+.00005)));
-ANS($ans_b->cmp->withPostFilter(AnswerHints(
-     sub {
-         my ($correct,$student,$anshash) = @_;
-         return abs($student-$correct) < .5;
-         } => ["Close!  Try using more accuracy."])));
+BEGIN_PGML_SOLUTION
+There are a number of ways to find the answers to these problem.  Here, we will calculate [`z`]-scores and using a standard normal table or software to find the answers. 
+
+Recall that a [`z`]-score for a give data value [`x`] that comes from a normal distribution with mean [`\mu`] and standard deviation [`\sigma`] is 
+
+[``` z = \frac{x-\mu}{\sigma}```]
+
+a) [`` z = \frac{[$cutoff_a]-[$mean_all]}{[$sd_all]} = [@ Round($z_a,3) @] ``]
+and then using a table or software:
+    [``` P(Z > [@ Round($z_a,3) @]) = [$ans_a/100] ```]
+    and converting to percent the answer is [$ans_a].
+
+b)  First calculate the [`z`]-scores for the values [$cutoff_b1] and [$cutoff_b2]:
+
+[``` \begin{aligned}
+z_1 & = \frac{[$cutoff_b1]-[$mean_med]}{[$sd_med]} = [$z_b1] \\
+z_2 & = \frac{[$cutoff_b2]-[$mean_med]}{[$sd_med]} = [$z_b2]
+\end{aligned}
+```]
+
+Then we calculate 
+[``` \begin{aligned}
+p_1 & = P(Z < [$z_b1]) = [$p_b1] \\
+p_2 & = P(Z < [$z_b2]) = [$p_b2]
+\end{aligned} ```]
+and then the fraction that scored between [$cutoff_b1] and [$cutoff_b2] is
+[``` p_2 - p_1 = [$p_b2]-[$p_b1] = [$p_b2-$p_b1] ```]
+
+So the percent is [$ans_b]%.
+END_PGML_SOLUTION
 
 ENDDOCUMENT();       # This should be the last executable line in the problem.

@@ -11,76 +11,65 @@
 ## AuthorText1('David Moore')
 ## EditionText1('5e')
 ## Section1('3')
-## Problem1('')
+
 ## KEYWORDS('statistic', 'normal distribution', 'z score')
 
-DOCUMENT();        # This should be the first executable line in the problem.  
+DOCUMENT();
 
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGchoicemacros.pl",
-  "PGcourse.pl"
-);
-
-TEXT(beginproblem());
-
-######################################
-#  Setup
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
 Context("Numeric");
 
-@question = ("About what percent of men are taller than 74?",
-	  "Between what approximate heights do the middle 95 percent of men fall?",
-	  "About what percent of men are shorter than 66.5 inches?",
-	  "About what percent of men are taller than 69 inches?",
-	  "About what percent of men are between 69 and 74 inches?",
-	  "About what percent of men are between 64 and 66.5 inches?",
-	  protect_underbar("Fill in the blank: About 2.5 percent of all men are shorter than ________.") );
-@ans = ("2.5 PERCENT", "64 TO 74 INCHES", "16 PERCENT", "50 PERCENT", "47.5 PERCENT", "13.5 PERCENT", "64 INCHES");
+@question = (
+    "About what percent of men are taller than 74?",
+    "Between what approximate heights do the middle 95 percent of men fall?",
+    "About what percent of men are shorter than 66.5 inches?",
+    "About what percent of men are taller than 69 inches?",
+    "About what percent of men are between 69 and 74 inches?",
+    "About what percent of men are between 64 and 66.5 inches?",
+    "Fill in the blank: About 2.5 percent of all men are shorter than ________."
+);
 
-@slice = NchooseK(7,3);
-@squestion = (@question[@slice]);
-@sans = (@ans[@slice]);
+@ans = (
+    PGML('[_]{2.5} %'),  PGML('[_]{64} to [_]{74} inches'),
+    PGML('[_]{16} %'),   PGML('[_]{50} %'),
+    PGML('[_]{47.5} %'), PGML('[_]{13.5} %'),
+    PGML('[_]{64} in')
+);
 
-#################################################
-#  Main
+@slice = random_subset(3, 0 .. 6);
 
-BEGIN_TEXT
+## @rb = map { RadioButtons([ $opts[$_], 'None of these' ], 0, labels => 'ABC') }
+## @slice;
+
+BEGIN_PGML
 The distribution of heights of adult men in the U.S. is approximately normal with mean 69 inches and 
 standard deviation 2.5 inches.  Use what you know about a normal distribution and the 68-95-99.7 
-rule to answer the questions in parts (a),(b),(c) below. 
-$PAR
-Your answer must be entered in the correct format. If your answer is a percent, such as 25 percent, enter: "25 PERCENT" (without the quotes).  If your answer is in inches, such as 10 inches, enter: "10 
-INCHES" (without the quotes and with a
-space between the number and the INCHES).  If your answer is an interval, such as 14 to 15 inches, then enter:
- "14 TO 15 INCHES" (without the quotes).  ${BBOLD}Don't report accuracy greater than what comes from the 68-95-99.7 rule!$EBOLD For example, if the rule says "10 INCHES" then "10.0 INCHES" is wrong because the extra decimal place claims too much accuracy. If the rule says "1.2 INCHES" then "1.20 INCHES" is wrong.   
-$PAR
+rule to answer the questions below. 
 
+a) [$question[$slice[0]]] 
 
+    [$ans[$slice[0]]]*
 
-(a) $squestion[0] 
-$BR
-Answer: \{ans_rule(20)\} 
+b) [$question[$slice[1]]]
 
-$PAR
-(b) $squestion[1] 
-$BR
-Answer: \{ans_rule(20)\} 
+    [$ans[$slice[1]]]*
 
-$PAR
-(c) $squestion[2] 
-$BR
-Answer: \{ans_rule(20)\} 
-END_TEXT
+c) [$question[$slice[2]]]
 
-######################################
-#  Answers
+    [$ans[$slice[2]]]*
 
-$showPartialCorrectAnswers = 1;
+END_PGML
 
-ANS(std_str_cmp($sans[0]));
-ANS(std_str_cmp($sans[1]));
-ANS(std_str_cmp($sans[2]));
+BEGIN_PGML_SOLUTION
+For the 68-95-99.7 percent rule recall that 
+
+- 68% fall within 1 standard deviation of the mean
+- 95% fall within 2 standard deviations of the mean
+- 99.7% fall within 3 standard deviations of the mean.
+
+Since the distribution is symmetric, this also means that half of 95%-68% = 13.5% fall between 1 and 2 standard devations of the mean (one sided).  There are similar calculations that can be done. 
+
+END_PGML_SOLUTION
 
 ENDDOCUMENT();       # This should be the last executable line in the problem.

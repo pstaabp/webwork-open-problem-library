@@ -9,83 +9,81 @@
 ## AuthorText1('David Moore')
 ## EditionText1('5e')
 ## Section1('5')
-## Problem1('')
 ## KEYWORDS('statistic', 'regression','correlation')
 
-DOCUMENT();        # This should be the first executable line in the problem.
+DOCUMENT();
 
-loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl",
-  "PGcourse.pl"
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioButtons.pl', 'PGcourse.pl');
+
+Context('Numeric');
+
+@order = random_subset(3, 0 .. 2);
+
+@questions = (
+    'Suppose a straight line is fit to data having response variable \( y \) and
+	explanatory variable \( x \).  Predicting  values of \( y \) for values of \( x \)
+     	outside the range of the observed data is called',
+    'A plot of the residuals will indicate if a line is a good fit to the data if the plot ',
+    'A lurking variable is',
 );
 
-TEXT(beginproblem());
+# --- RadioButtons Array ---
+@opts = (
+    [
+        [ "extrapolation.", "contingency.", "causation.", "correlation." ],
+        'None of the above. '
+    ],
 
-#################################################
-#  Set-up
+    [
+        [
+            "has no
+	systematic pattern.",
+            "shows a curved pattern.",
+            "shows increasing or decreasing spread about a line.",
+            "shows large residuals in a symmetric pattern."
+        ],
+        'None of the above.'
+    ],
 
-@ThreeProblems = (0,1,2);  #Order the problems
-@scramble = NchooseK(3,3);
-@order = @ThreeProblems[@scramble];
+    [
+        [
+            "a variable that is not among the variables studied but that affects the response variable.",
+            "the true cause of a response.",
+            "and variable that produces a large residual.",
+            "the true variable that is explained by the explanatory variable."
+        ],
+        'None of the above.'
+    ]
+);
 
-$mc[0] = new_multiple_choice();
-     $mc[0]->qa("Suppose a straight line is fit to data having response variable \( y \) and
-	explanatory variable \( x \).  Predicting  values of \( y \) for values of \( x \)
-     	outside the range of the observed data is called","extrapolation."); 
-     $mc[0]->extra("contingency.", 
-            "causation.", 
-            "correlation.");
-     $mc[0]->makeLast("None of the above. ");
+@rb = map { RadioButtons($opts[$_], 0, labels => 'ABC') } @order;
 
-$mc[1] = new_multiple_choice();
-     $mc[1] ->qa("A plot of the residuals will indicate if a line is a good fit to the data if the plot ","has no
-	systematic pattern."); 
-     $mc[1]->extra("shows a curved pattern.", 
-            "shows increasing or decreasing spread about a line.", 
-            "shows large residuals in a symmetric pattern.");
-     $mc[1]->makeLast("None of the above.");
-
-$mc[2] = new_multiple_choice();
-     $mc[2] ->qa("A lurking variable is","a variable that is not among the variables studied but that affects the response variable."); 
-$mc[2]->extra("the true cause of a response.", 
-            "and variable that produces a large residual.", 
-            "the true variable that is explained by the explanatory variable.");
-$mc[2]->makeLast("None of the above.");
-
-#################################################
 #  Main
 
-BEGIN_TEXT
+BEGIN_PGML
 For each problem, select the best response.
 
-$PAR
-(a)   \{ $mc[$order[0]] -> print_q() \}
-$BR
-\{$mc[$order[0]] -> print_a() \}
+a) [$questions[$order[0]]]*
 
-$PAR
-(b)   \{ $mc[$order[1]] -> print_q() \}
-$BR
-\{$mc[$order[1]] -> print_a() \}
+    [_]{$rb[0]}
 
-$PAR
-(c)   \{ $mc[$order[2]] -> print_q() \}
-$BR
-\{$mc[$order[2]] -> print_a() \}
-END_TEXT
+b) [$questions[$order[1]]]*
 
-#################################################
-#  Answers
+    [_]{$rb[1]}
 
-$showPartialCorrectAnswers = 0;
+c) [$questions[$order[2]]]*
 
-ANS(radio_cmp($mc[$order[0]]->correct_ans));
-ANS(radio_cmp($mc[$order[1]]->correct_ans));
-ANS(radio_cmp($mc[$order[2]]->correct_ans));
+    [_]{$rb[2]}
 
-ENDDOCUMENT();       # This should be the last executable line in the problem.
+END_PGML
 
+BEGIN_PGML_SOLUTION
 
+a) [$rb[0]]
 
+b) [$rb[1]]
 
+c) [$rb[2]]
+END_PGML_SOLUTION
+
+ENDDOCUMENT(); 

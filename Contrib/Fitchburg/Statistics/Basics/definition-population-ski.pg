@@ -1,0 +1,93 @@
+# DESCRIPTION
+# A problem that asks students to ...
+#
+# This problem is derived from a homework problem in Introductory Statistics,
+# licensed by OpenStax under a Creative Commons Attribution License (CC BY 4.0).
+# Modified for WeBWorK by Michael Stassen   mstassen(at)fitchburgstate(dot)edu
+# ENDDESCRIPTION
+
+## DBsubject('Introductory Statistics')
+## DBchapter('1')
+## DBsection('1')
+## KEYWORDS('Statistics', 'defintitions', 'skiing')
+## Author('Michael Stassen')
+## Institution('Fitchburg State University')
+
+DOCUMENT();
+
+loadMacros("PGstandard.pl", "PGML.pl", 'parserMatchList.pl', 'PGcourse.pl');
+
+$num = random(40,70);
+
+$ml = MatchList(
+    [
+        [ 'Population', 'All children who take ski or snowboard lessons' ],
+        [
+            'Variable',
+            'The age of a child taking his or her first ski or snowboard lesson'
+        ],
+        [
+            'Sample',
+            "$num randomly selected children taking their first ski or snowboard "
+            . "lessons"
+        ],
+        [
+            'Parameter',
+            'The mean age of children taking their first ski or snowboard lesson'
+        ],
+        [
+            'Data',
+            "The $num recorded ages of the selected children taking their first "
+            . "ski or snowboard lesson"
+        ],
+        [
+            'Statistic',
+            "The mean age of the $num selected children taking their first ski "
+            . "or snowboard lesson"
+        ]
+    ],
+    extra => [
+        'The ages of children taking their first ski or snowboard lesson',
+        'All children', '70'
+    ]
+);
+
+$showPartialCorrectAnswers = 0;
+
+BEGIN_PGML
+
+Ski resorts are interested in the mean age that children take their first ski
+and snowboard lessons. They need this information to plan their ski classes
+optimally. They record the ages of 70 randomly selected children taking their
+first ski or snowboard lessons.
+Match each term with the corresponding part of the study.
+
+[_]*{$ml}
+
+END_PGML
+
+
+$explanations = {
+    Population => "the population is the complete group of interest",
+    Variable   =>
+        "each member of the population or sample has a value of the variable",
+    Sample    => "the sample is the selected subset of the population",
+    Parameter => "a parameter is a descriptive measure of the population",
+    Data      => "the data is the set of recorded values of the variable",
+    Statistic => "a statistic is a descriptive measure of the sample data"
+};
+
+$questions = $ml->questions;
+$answers   = $ml->choices;
+
+BEGIN_PGML_SOLUTION
+1. For [$questions->[0]], the answer is *[$answers->[0]]****, because [$explanations->{$questions->[0]}].
+2. For [$questions->[1]], the answer is *[$answers->[1]]****, because [$explanations->{$questions->[1]}].
+3. For [$questions->[2]], the answer is *[$answers->[2]]****, because [$explanations->{$questions->[2]}].
+4. For [$questions->[3]], the answer is *[$answers->[3]]****, because [$explanations->{$questions->[3]}].
+5. For [$questions->[4]], the answer is *[$answers->[4]]****, because [$explanations->{$questions->[4]}].
+6. For [$questions->[5]], the answer is *[$answers->[5]]****, because [$explanations->{$questions->[5]}].
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

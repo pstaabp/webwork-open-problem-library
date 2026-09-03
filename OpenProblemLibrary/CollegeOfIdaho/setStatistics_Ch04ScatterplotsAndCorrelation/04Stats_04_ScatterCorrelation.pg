@@ -11,121 +11,131 @@
 ## AuthorText1('David Moore')
 ## EditionText1('5e')
 ## Section1('4')
-## Problem1('')
 ## KEYWORDS('statistic', 'correlation')
 
-DOCUMENT();        # This should be the first executable line in the problem.
+DOCUMENT();    # This should be the first executable line in the problem.
 
 loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "answerHints.pl",
-  "PGcourse.pl"
+    'PGstandard.pl',  'PGML.pl',
+    'answerHints.pl', 'PGstatisticsmacros.pl',
+    'PGcourse.pl'
 );
 
-TEXT(beginproblem());
+Context('Numeric')->flags->set(tolType => 'absolute', tolerance => '0.05');
 
-######################################
-#  Setup
+@x = (
+    random(1, 4),
+    random(2, 5),
+    random(3, 7),
+    random(3, 7),
+    random(3, 7),
+    random(5, 9)
+);
 
-@x = (random(1,4,1),random(2,5,1),random(3,7,1),random(3,7,1),random(3,7,1),random(5,9,1));
+@y = (
+    random(2,  6),
+    random(17, 23),
+    random(28, 36),
+    random(35, 45),
+    random(40, 48),
+    random(45, 50)
+);
 
-@y = (random(2,6,1),random(17,23,1),random(28,36,1),random(35,45,1),random(40,48,1),random(45,50,1));  
+$mean_x = ($x[0] + $x[1] + $x[2] + $x[3] + $x[4] + $x[5]) / 6;
+$mean_y = ($y[0] + $y[1] + $y[2] + $y[3] + $y[4] + $y[5]) / 6;
 
-$mean_x = ($x[0] + $x[1] + $x[2] + $x[3] + $x[4] + $x[5])/6;
-$mean_y = ($y[0] + $y[1] + $y[2] + $y[3] + $y[4] + $y[5])/6;
+$mean_x = stats_mean(@x);
+$mean_y = stats_mean(@y);
+$sx     = stats_sd(@x);
+$sy     = stats_sd(@y);
 
-for ($i=0; $i<6; $i++) {
-$sx_squared += ($x[$i] - $mean_x)*($x[$i] - $mean_x);}
+$r = sample_correlation(~~@x, ~~@y);
 
-$sx = sqrt($sx_squared/5);
+$close_msg =
+    ["Your answer is close.  Try the calculation using more accuracy."];
+$ans_a1 = Real($mean_x);
+$cmp_a1 = $ans_a1->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $ans) = @_;
+        return abs($student - $correct) < .2;
+    } => $close_msg
+));
 
-for ($i=0; $i<6; $i++) {
-$sy_squared += ($y[$i] - $mean_y)*($y[$i] - $mean_y);}
+$ans_a2 = Real($sx);
+$cmp_a2 = $ans_a2->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $ans) = @_;
+        return abs($student - $correct) < .2;
+    } => ["Your answer is close.  Try the calculation using more accuracy."]
+));
 
-$sy = sqrt($sy_squared/5);
+$ans_b1 = Real($mean_y);
+$cmp_b1 = $ans_b1->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student - $correct) < .2;
+    } => $close_msg
+));
 
-for ($i=0; $i<6; $i++) {
-$sum_r += (($x[$i] - $mean_x)/$sx)*(($y[$i] - $mean_y)/$sy);}
+$ans_b2 = Real($sy);
+$cmp_b2 = $ans_b2->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student - $correct) < .2;
+    } => $close_msg
+));
 
-$r = $sum_r/5;
+$ans_c = Compute($r);
+$cmp_c = $ans_c->cmp->withPostFilter(AnswerHints(
+    sub {
+        my ($correct, $student, $anshash) = @_;
+        return abs($student - $correct) < .01;
+    } => $close_msg
+));
 
-$b1 = $r*($sy/$sx);
-$a = $mean_y - ($b1*$mean_x); 
-$b1 = .1*int(10*($b1+0.05));
-$a = .1*int(10*($a+0.05));
+BEGIN_PGML
+An outbreak of the deadly Ebola virus in 2002 and 2003 killed 91 of the 95 gorillas in 7 home ranges in the Congo. To study the spread of the virus, measure "distance" by the number of home ranges separating a group of gorillas from the first group infected. Here are data on distance and number of days until deaths began in each later group:
 
-######################################
-#  Main text
+[#
+    [.*Distance*.] [.[`x`].] [.[$x[0]].]
+    [.[$x[1]].][.[$x[2]].][.[$x[3]].][.[$x[4]].][.[$x[5]].]*
+    [.*Days*.] [.[`y`].] [.[$y[0]].]
+    [.[$y[1]].][.[$y[2]].][.[$y[3]].][.[$y[4]].][.[$y[5]].]*
+#]{horizontalrules=>1, align => '|c|c|c|c|c|c|c|c|', padding => 0.225}
 
-BEGIN_TEXT
-An outbreak of the deadly Ebola virus in 2002 and 2003 killed 91 of the 95 gorillas in 7 home ranges in the Congo. To study the spread of the virus, measure $LQ distance$RQ by the number of home ranges separating a group of gorillas from the first group infected. Here are data on distance and number of days until deaths began in each later group: $PAR
-$BCENTER
-\{begintable(7)\}
-\{row('$BBOLD Distance $EBOLD $SPACE \( x \) $SPACE ',$x[0],$x[1],$x[2],$x[3],$x[4],$x[5])\}
-\{row('$BBOLD Days $EBOLD $SPACE \( y \) $SPACE',$y[0],$y[1],$y[2],$y[3],$y[4],$y[5])\}
-\{endtable()\}
-$ECENTER
 Use a calculator or software to find the following values. 
 
-$PAR
-(a) Find the mean and standard deviation of $SPACE \( x \).
-$PAR
-MEAN: $SPACE \{ ans_rule(5) \}
-$BR
-STANDARD DEVIATION: $SPACE \{ ans_rule(5) \}
+a) Find the mean and standard deviation of  [` x `].
 
-$PAR
-(b) Find the mean and standard deviation of $SPACE \( y \).
-$PAR
-MEAN: $SPACE \{ ans_rule(5) \}
-$BR
-STANDARD DEVIATION: $SPACE \{ ans_rule(5) \}
+    mean:  [_]{$cmp_a1}
 
-$PAR
-(c) Find the correlation \(r\) between \( x \) and \( y\).
-$PAR
-r: $SPACE \{ ans_rule(5) \}
-END_TEXT
+    standard deviaiton:  [_]{$cmp_a2}
 
-######################################
-#  Answers
+b) Find the mean and standard deviation of  [` y `].
 
-$showPartialCorrectAnswers = 1;
+    mean:  [_]{$cmp_b1}
 
-$ans_a1 = Real($mean_x)->with(tolType=>'absolute', tolerance=>'0.05');
-ANS($ans_a1->cmp->withPostFilter(AnswerHints(
-            sub {
-                my ($correct,$student,$ans) = @_;
-                return abs($student-$ans_a1) < .2;
-                } => ["Your answer is close.  Try the calculation using more accuracy."])));
+    standard deviation:  [_]{$cmp_b2}
 
-$ans_a2 = Real($sx)->with(tolType=>'absolute', tolerance=>'0.05');
-ANS($ans_a2->cmp->withPostFilter(AnswerHints(
-            sub {
-                my ($correct,$student,$ans) = @_;
-                return abs($student-$ans_a2) < .2;
-                } => ["Your answer is close.  Try the calculation using more accuracy."])));
+c) Find the correlation [`r`] between [` x `] and [` y`].
 
-$ans_b1 = Real($mean_y)->with(tolType=>'absolute', tolerance=>'0.05');
-ANS($ans_b1->cmp->withPostFilter(AnswerHints(
-            sub {
-                my ($correct,$student,$anshash) = @_;
-                return abs($student-$correct) < .2;
-                } => ["Your answer is close.  Try the calculation using more accuracy."])));
+    r:  [_]{$cmp_c}
+END_PGML
 
-$ans_b2 = Real($sy)->with(tolType=>'absolute', tolerance=>'0.05');
-ANS($ans_b2->cmp->withPostFilter(AnswerHints(
-            sub {
-                my ($correct,$student,$anshash) = @_;
-                return abs($student-$correct) < .2;
-                } => ["Your answer is close.  Try the calculation using more accuracy."])));
+BEGIN_PGML_SOLUTION
+All of the computation are doing using software or a calculator:
+a) For [`x`]
+    
+    mean: [`` \bar{x} = [$ans_a1] ``]
 
-$ans_c = Compute($r)->with(tolType=>'absolute', tolerance=>'0.005');
-  ANS($ans_c->cmp->withPostFilter(AnswerHints(
-            sub {
-                my ($correct,$student,$anshash) = @_;
-                return abs($student-$correct) < .01;
-                } => ["Your answer is close.  Try the calculation using more accuracy."])));
+    standard deviation [`` s = [$ans_a2] ``]
+
+a) For [`y`]
+    
+    mean: [`` \bar{y} = [$ans_b1] ``]
+
+    standard deviation [`` s = [$ans_b2] ``]
+c) [`r = [$ans_c] `]
+END_PGML_SOLUTION
 
 ENDDOCUMENT(); # This should be the last executable line in the problem.

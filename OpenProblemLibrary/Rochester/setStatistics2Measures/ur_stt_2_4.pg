@@ -65,10 +65,4 @@ the median the data is
 [@ $sym == 0 ? 'skewed left' : $sym == 1 ? 'skewed right' : 'symmetric' @].
 END_PGML_SOLUTION
 
-ENDDOCUMENT();    # This should be the last executable line in the problem.
-
-Since the median is [$order[$index]], the data set is [$skewed[$index]].
-
-END_PGML_SOLUTION
-
-ENDDOCUMENT();       # This should be the last executable line in the problem.
+ENDDOCUMENT(); 
