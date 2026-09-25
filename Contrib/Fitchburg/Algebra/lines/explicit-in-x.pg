@@ -1,32 +1,39 @@
 ## DBsubject(Algebra)
 ## DBchapter(Linear equations and functions)
 ## DBsection(Linear functions)
+## Institution(Fitchburg State University)
+## Author(Peter Staab)
 ## Level(1)
-DOCUMENT();    # This should be the first executable line in the problem.
+## KEYWORDS('graph, lines, linear functions')
 
-loadMacros(
-    'PGstandard.pl',      'PGML.pl',
-    'contextFraction.pl', 'niceTables.pl',
-    'PGcourse.pl'
-);
-Context("Fraction");
+DOCUMENT();
 
-$slope = Fraction(non_zero_random(-1, 1) * random(2, 5), random(2, 5));
-$yint  = Fraction(non_zero_random(-1, 1) * random(2, 5), random(2, 5));
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextFraction.pl', 'PGcourse.pl');
+Context("LimitedFraction")->flags->set(showMixedNumbers => 0);
 
-$f = Formula("$slope*x+$yint")->reduce;
+$d1    = random(2, 5);
+$n1    = non_zero_random(-1, 1) * random(2, 5);
+$d2    = random(2, 5);
+$n2    = non_zero_random(-1, 1) * random(2, 5);
+$slope = Fraction($n1, $d1);
+$yint  = Fraction($n2, $d2);
+@y = map { Fraction($n1*$d2*$_ + $n2*$d1, $d1*$d2) } (-2..2);
 
-$y[$_] = $f->eval(x => $_ - 2) for (0 .. 4);
-
-@rows = ([ '`x`', '`y`' ]);
-push(@rows, [ $_ - 2, PGML("[_]{" . $y[$_] . "}") ]) for (0 .. 4);
-$tab = DataTable([@rows]);
+Context('Fraction');
+$f     = Formula("$slope*x+$yint")->reduce;
 
 BEGIN_PGML
-Consider the equation [`y=[$f]`].  If [`x=-2,-1,0,1,2`], complete the
+Consider the equation [``y=[$f]``].  If [`x=-2,-1,0,1,2`], complete the
 following table of points for [`y`]
 
-[$tab]*
+[#
+    [.[`x`].][.[`y`].]*{headerrow => 1}
+    [. [`-2`].] [.[_]{$y[0]}.]*
+    [. [`-1`].] [.[_]{$y[1]}.]*
+    [. [`0`].] [.[_]{$y[2]}.]*
+    [. [`1`].] [.[_]{$y[3]}.]*
+    [. [`2`].] [.[_]{$y[4]}.]*
+#]{padding => 0.25}
 
 For this problem, you need to enter answers in as fractions, not decimals.
 

@@ -16,7 +16,7 @@ DOCUMENT();
 loadMacros(
     'PGstandard.pl',         'PGML.pl',
     'PGstatisticsmacros.pl', 'parserAssignment.pl',
-    'niceTables.pl',         'PGcourse.pl'
+    'PGcourse.pl'
 );
 
 Context("Numeric");
@@ -49,13 +49,11 @@ parser::Assignment->Function("P");
     [ 2020, 331.449 ]
 );
 
+# take 5 random years.
 @years = num_sort(random_subset(5, 0 .. $#pop));
+@rows = map {$pop[$_]} @years;
 
-@rows = ([ 'year', 'Population (in millions)' ]);
-for $y (@years) {
-    push(@rows, [ $pop[$y]->[0], $pop[$y]->[1] ]);
-}
-$tab = DataTable([@rows], horizontalrules => 1, align => '|c|c|');
+$tab = DataTable([@rows], );
 
 $year0 = $pop[ $years[0] ]->[0];
 
@@ -66,30 +64,53 @@ $year0 = $pop[ $years[0] ]->[0];
 $P = Formula("P(x) = $m x + $b");
 $f = Formula("$m x + $b");
 
-$rand_year = random($y[0] + 2, $y[$#y] - 2);
-$pop2      = $f->eval(x => $rand_year - $y[0]);
+$rand_year = random($year0 + 2, $pop[ $years[-1] ]->[0] - 2);
+$pop2      = $f->eval(x => $rand_year - $year0);
 
-$rand_pop  = random(Round($y[0]) + 2, Round($y[$#y]) - 2);
+$rand_pop  = random(Round($y[0]) + 2, Round($y[-1]) - 2);
 $predict_y = Real(Round(($rand_pop - $b) / $m)) + $year0;
 
 BEGIN_PGML
 The population of the United States from some years from the census is given in the table below:
 
-[$tab]*
+[#
+    [.year.][.Population (in millions).]{headerrow => 1}*
+    [. .] {rows => ~~@rows}
+#]{horizontalrules => 1, align => '|c|c|'}
 
-Let [`x`] be the number of years since [$year0].  Find a linear model 
+a) Let [`x`] be the number of years since [$year0].  Find a linear model 
 for [`P(x)`], the population (in Millions) that best fits this data.
 Write your answer in the form [`P(x) = m x + b`].  ( Use software and 
 write the slope and y-intercept to at least 4 decimal places.)
 
-[_]{$P}{30}
+    [_]{$P}{30}
 
-Use the linear model developed above to determine population (in Millions) 
-of the United State in [$rand_year] [_]{$pop2}{10}
+b) Use the linear model developed above to determine population (in Millions) 
+of the United States in [$rand_year] [_]{$pop2}{10}
 
-Use the linear model developed above to determine the year that the 
+c) Use the linear model developed above to determine the year that the 
 U.S. had [$rand_pop] million people. [_]{$predict_y}{10}
 
 END_PGML
+
+BEGIN_PGML_SOLUTION
+a) In this case, use software to find the least-square/linear regression to the data in the table.  One should get [`m=[@Round($m,5)@]`] and [`b = [@ Round($b,5)@]`], so the linear model should be [``` [$P] ```]
+b) Evaluate the model above for [`x = [$rand_year]-[$year0] = [$rand_year-$year0] `], which is the number of years since [$year0]. 
+
+    [``` P = [@Round($m,5)@] \cdot [$rand_year-$year0] + [@ Round($b,5)@] = [$pop2] ```]
+
+c) In the model above, let [`P=[$rand_pop]`] and solve for [`x`]:
+
+    [```
+    \begin{aligned}
+    [$rand_pop] & = [@Round($m,5)@] x + [@ Round($b,5)@] \\
+    [$rand_pop] - [@ Round($b,5)@] & =  [@Round($m,5)@] x  \\
+    \frac{ [@ Round($rand_pop - $b,5)@]}{[@Round($m,5)@]} & = x \\
+     & = x
+    \end{aligned}
+    ```]
+
+    We round this to the nearest whole number so [`x = [@Round(($rand_pop-$b)/$m, 0)@]`] and then to find the year add [$year0] to get [$predict_y].
+END_PGML_SOLUTION
 
 ENDDOCUMENT();

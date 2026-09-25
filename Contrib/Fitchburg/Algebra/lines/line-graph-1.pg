@@ -6,7 +6,7 @@
 ## DBsubject(Algebra)
 ## DBchapter(Linear equations and functions)
 ## DBsection(Graphs of lines)
-## Institution(Fitchburg State College)
+## Institution(Fitchburg State University)
 ## Author(Peter Staab)
 ## Level(1)
 ## KEYWORDS('graph, lines, linear functions')
@@ -14,96 +14,77 @@
 DOCUMENT();    # This should be the first executable line in the problem.
 
 loadMacros(
-    'PGstandard.pl',      'PGML.pl',
-    'PGunion.pl',         'PGtikz.pl',
-    'contextFraction.pl', 'PGcourse.pl'
+    'PGstandard.pl', 'PGML.pl',
+    'plots.pl',      'contextFraction.pl',
+    'PGcourse.pl'
 );
 
 Context("Fraction");
-Context()->noreduce('(-x)-y','(-x)+y');
+Context()->noreduce('(-x)-y', '(-x)+y');
 
-$a = random(-5, 5);
-$b = random(-5, 5);
-$c = $a;
-while ($c == $a) {
-    $c = random(-5, 5);
-}
-$d = random(-5, 5);
+do {
+    ($x0, $y0) = (random(-5, 5), random(-5, 5));
+    ($x1, $y1) = (random(-5, 5), random(-5, 5));
+} until $x0 != $x1;
 
-$top    = $b - $d;
-$bottom = $a - $c;
-$slope  = Fraction($top, $bottom);
+$m = Fraction($y0 - $y1, $x0 - $x1);
+$b = Compute($y0 - $x0 * $m);
+$f = Formula("$m x + $b")->reduce;
 
-$yint = Compute($b - $a * $slope);
+$plot = Plot(
+    xmin            => -6.5,
+    xmax            =>  6.5,
+    xtick_delta     =>  1,
+    xminor          =>  0,
+    ymin            => -6.5,
+    ymax            =>  6.5,
+    ytick_delta     =>  1,
+    yminor          =>  0,
+    rounded_corners => 1
+);
+$plot->add_function("$f", 'x', -6.5, 6.5, color => 'darkblue');
 
-$f = Formula("$slope*x+$yint")->reduce;
-
-$s1 = Real($slope);
-$yi = Real($yint);
-
-$f1 = Formula("$s1*x+$yi");
-
-$graph = createTikZImage();
-$graph->tikzLibraries('arrows.meta');
-$graph->BEGIN_TIKZ
-\tikzset{>={Stealth[scale=1.5]}}
-\filldraw[
-    draw=LightBlue,
-    fill=white,
-    rounded corners=10pt,
-    thick,use as bounding box
-] (-7,-7) rectangle (7,7);
-\draw[lightgray] (-6,-6) grid (6,6);
-\draw[->,thick] (-6.5,0) -- (6.5,0) node[above left,outer sep=3pt] {\(x\)};
-\foreach \x in {-6,...,-1,1,2,...,6}
-    \draw(\x,5pt) -- (\x,-5pt) node [below] {\(\x\)};
-\draw[->,thick] (0,-6.5) -- (0,6.5) node[below right,outer sep=3pt] {\(y\)};
-\foreach \y in {-6,...,-1,1,2,...,6}
-    \draw (5pt,\y) -- (-5pt,\y) node[left] {\(\y\)};
-\draw[blue,ultra thick] plot[domain=-6:6,smooth] (\x,{$top*(\x-$a)/$bottom+$b});
-END_TIKZ
-
-$alttext = "graph of a line through ([$a],[$b]) and ([$c],[$d]).";
+$alttext = "graph of a line through ($x0,$y0) and ($x1,$y1).";
 BEGIN_PGML
 Consider the graph
 
->>[! [$alttext] !]{$graph}{300} <<
+>>[! [$alttext] !]{$plot}{300} <<
 
 What is the formula of this line?
-[`y=`] [_]{$f1}{35}
+[`y=`] [_]{$f}{35}
 END_PGML
 
 BEGIN_PGML_SOLUTION
 
 In this case, we need to find the equation of the line based on the graph.
 It's generally easiest to find the equation in slope-intercept form, so we
-will need both the slope and the y-intercept.  It hard to just look at the
-line to get either the slope or the y-intercept, but it appears that there
+will need both the slope and the [`y`]-intercept.  It hard to just look at the
+line to get either the slope or the [`y`]-intercept, but it appears that there
 are two points that are easy to see on the graph (since they fall on integer
 coordinates).
 
-These points appear to be [` ([$a],[$b])`] and [` ([$c],[$d])`], so we will
+These points appear to be [` ([$x0],[$y0])`] and [` ([$x1],[$y1])`], so we will
 find the line that passes through these points.  First, find the slope from
 the two points:
 
-[`` m = \frac{[$b]-[$d]}{[$a]-[$c]} = [$slope] ``]
+[`` m = \frac{[$y1]-[$y0]}{[$x1]-[$x0]} = [$m] ``]
 
 Then substitute this into the slope-intercept form of the line:
 
-[`` y = [$slope] x + b ``]
+[`` y = [$m] x + b ``]
 
-Next, substitute in the point [` ([$a],[$b])`] or
+Next, substitute in the point [` ([$x0],[$y0])`] or
 
 [``
 \begin{aligned}
-[$b] & = ([$slope])([$a]) + b \\
-[$b] & = [$q] + b
+[$y0] & = ([$m])([$x0]) + b \\
+[$y0] & = [$m*$x0] + b
 \end{aligned}
 ``]
 
-Next, subtract [` [$q] `] from both sides:
+Then, [@ $m*$x0 > 0 ? 'subtract' : 'add' @]  [` [@abs($m*$x0)@] `] [@ $m*$x0 > 0 ? 'from' : 'to' @] both sides:
 
-[`` [$yint] = b``]
+[`` [$b] = b``]
  and finally plug this value of b into the equation:
 
 [`` y = [$f] ``]

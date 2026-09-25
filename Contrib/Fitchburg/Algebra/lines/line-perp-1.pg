@@ -2,7 +2,6 @@
 # A problem that asks for the equation of a line perpendicular to a horizontal line.
 # ENDDESCRIPTION
 
-
 ## DBsubject(Algebra)
 ## DBchapter(Linear equations and functions)
 ## DBsection(Parallel and perpendicular lines)
@@ -13,20 +12,10 @@
 ## MO(1)
 ## KEYWORDS('lines, linear functions', 'perpendicular', 'horizontal line')
 
-## updated 2022.12.10 by pstaab
-
-DOCUMENT();    # This should be the first executable line in the problem.
+DOCUMENT();
 
 loadMacros('PGstandard.pl', 'PGML.pl', 'parserAssignment.pl', 'PGcourse.pl');
 
-TEXT(beginproblem);
-
-##############################
-#
-#  Setup
-#
-
-Context('Numeric');
 Context('Numeric')->variables->add(y => 'Real');
 parser::Assignment->Allow;
 
