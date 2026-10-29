@@ -17,23 +17,17 @@
 ## KEYWORDS('vectors')
 
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-);
+loadMacros("PGstandard.pl", "PGML.pl", "PGcourse.pl",);
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
-$a=random(1,20);
-$b=random(1,20);
-$mag=sqrt($a**2+$b**2);
-$smag=sprintf("%.5f",$mag);
-@dir=($a/$mag,$b/$mag);
-@sdir=(sprintf("%.5f",$dir[0]),sprintf("%.5f",$dir[1]));
 
-TEXT(beginproblem());
+$a    = random(1, 20);
+$b    = random(1, 20);
+$mag  = sqrt($a**2 + $b**2);
+$smag = sprintf("%.5f", $mag);
+@dir  = ($a / $mag, $b / $mag);
+@sdir = (sprintf("%.5f", $dir[0]), sprintf("%.5f", $dir[1]));
+
 BEGIN_PGML
 Consider the vector [`\vec v=\langle [$a],[$b] \rangle`].
 

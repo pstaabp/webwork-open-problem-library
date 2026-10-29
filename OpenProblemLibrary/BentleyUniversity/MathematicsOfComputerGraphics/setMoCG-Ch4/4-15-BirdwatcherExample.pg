@@ -17,34 +17,28 @@
 ## KEYWORDS('vectors')
 
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-);
+loadMacros("PGstandard.pl", "PGML.pl", "PGcourse.pl",);
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
-$x1=random(1,10);
-$y1=random(1,10);
-$z1=random(2,10);
-$x2=random(-10,$x1-1);
-$y2=random(-10,$y1-1);
-$z2=random(0.5,1,0.1);
-$l=random(0.2,0.5,0.01);
-$mag=sqrt(($x1-$x2)**2 + ($y1-$y2)**2 + ($z1-$z2)**2);
-$ux=($x1-$x2)/$mag;
-$uy=($y1-$y2)/$mag;
-$uz=($z1-$z2)/$mag;
-$sux=sprintf("%.5f",$ux);
-$suy=sprintf("%.5f",$uy);
-$suz=sprintf("%.5f",$uz);
-$sfinx=sprintf("%.5f",$x2+$l*$ux);
-$sfiny=sprintf("%.5f",$y2+$l*$uy);
-$sfinz=sprintf("%.5f",$z2+$l*$uz);
 
-TEXT(beginproblem());
+$x1    = random( 1,  10);
+$y1    = random( 1,  10);
+$z1    = random( 2,  10);
+$x2    = random(-10, $x1 - 1);
+$y2    = random(-10, $y1 - 1);
+$z2    = random(0.5, 1,   0.1);
+$l     = random(0.2, 0.5, 0.01);
+$mag   = sqrt(($x1 - $x2)**2 + ($y1 - $y2)**2 + ($z1 - $z2)**2);
+$ux    = ($x1 - $x2) / $mag;
+$uy    = ($y1 - $y2) / $mag;
+$uz    = ($z1 - $z2) / $mag;
+$sux   = sprintf("%.5f", $ux);
+$suy   = sprintf("%.5f", $uy);
+$suz   = sprintf("%.5f", $uz);
+$sfinx = sprintf("%.5f", $x2 + $l * $ux);
+$sfiny = sprintf("%.5f", $y2 + $l * $uy);
+$sfinz = sprintf("%.5f", $z2 + $l * $uz);
+
 BEGIN_PGML
 Imagine a scene in which a birdwatcher, whose eye is located at [`([$x2],[$y2],[$z2])`], is watching a bird located at [`([$x1],[$y1],[$z1])`].
 

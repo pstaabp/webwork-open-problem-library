@@ -15,40 +15,84 @@
 ## Problem1('11')
 ## KEYWORDS('Bezier curves','maxima')
 
-########################################################################
-
 DOCUMENT();
 loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-  "PGessaymacros.pl",
-  "PGgraphmacros.pl",
+    "PGstandard.pl", "PGML.pl", "PGessaymacros.pl", 'plots.pl',
+    "PGcourse.pl"
 );
 
 Context("Numeric");
-Context()->variables->add(t=>Real);
-$showPartialCorrectAnswers = 1;
+Context()->variables->add(t => Real);
 
 $e = "&eacute;";
 
-$graph1 = init_graph(-0.25,-0.25,1.25,1.25,axes=>[0,0],grid=>[6,6],size=>[400,400]); # xmin,ymin,xmax,ymax
-add_functions($graph1, "1-x for x in <0,1> using weight:2");
-add_functions($graph1, "x for x in <0,1> using weight:2");
+$plot1 = Plot(
+    xmin            => -0.25,
+    xmax            =>  1.25,
+    xtick_delta     =>  0.25,
+    xminor          =>  0,
+    ymin            => -0.25,
+    ymax            =>  1.25,
+    ytick_delta     =>  0.25,
+    yminor          =>  0,
+    rounded_corners => 1
+);
+$plot1->add_function(
+    [ 'x',   'x', 0, 1, color => 'red' ],
+    [ '1-x', 'x', 0, 1, color => 'green' ],
+);
 
-$graph2 = init_graph(-0.25,-0.25,1.25,1.25,axes=>[0,0],grid=>[6,6],size=>[400,400]); # xmin,ymin,xmax,ymax
-add_functions($graph2, "(1-x)^2 for x in <0,1> using weight:2");
-add_functions($graph2, "2x(1-x) for x in <0,1> using weight:2");
-add_functions($graph2, "x^2 for x in <0,1> using weight:2");
+$alt1 =
+    "The red curve starts at (0,0) and increases linearly to (1,1). "
+    . 'The green curve starts at (1,0) and decreases linearly to (1,0).';
 
-$graph3 = init_graph(-0.25,-0.25,1.25,1.25,axes=>[0,0],grid=>[6,6],size=>[400,400]); # xmin,ymin,xmax,ymax
-add_functions($graph3, "(1-x)^3 for x in <0,1> using weight:2");
-add_functions($graph3, "3x(1-x)^2 for x in <0,1> using weight:2");
-add_functions($graph3, "3x^2(1-x) for x in <0,1> using weight:2");
-add_functions($graph3, "x^3 for x in <0,1> using weight:2");
+$plot2 = Plot(
+    xmin            => -0.25,
+    xmax            =>  1.25,
+    xtick_delta     =>  0.25,
+    xminor          =>  0,
+    ymin            => -0.25,
+    ymax            =>  1.25,
+    ytick_delta     =>  0.25,
+    yminor          =>  0,
+    rounded_corners => 1
+);
+$plot2->add_function(
+    [ '(1-x)^2', 'x', 0, 1, color => 'red' ],
+    [ 'x*(1-x)', 'x', 0, 1, color => 'green' ],
+    [ 'x^2',     'x', 0, 1, color => 'blue' ]
+);
 
-TEXT(beginproblem());
+$alt2 =
+    "The red curve starts at (0,1) and decreases like a concave up quadratic "
+    . ' to (1,0). The green curve starts at (0,0), increases to (0.5, 0.25), '
+    . ' then decreases to (1,0).';
+
+$plot3 = Plot(
+    xmin            => -0.25,
+    xmax            =>  1.25,
+    xtick_delta     =>  0.25,
+    xminor          =>  0,
+    ymin            => -0.25,
+    ymax            =>  1.25,
+    ytick_delta     =>  0.25,
+    yminor          =>  0,
+    rounded_corners => 1
+);
+$plot3->add_function(
+    [ '(1-x)^3',    'x', 0, 1, color => 'red' ],
+    [ '3x*(1-x)^2', 'x', 0, 1, color => 'green' ],
+    [ '3x^2*(1-x)', 'x', 0, 1, color => 'blue' ],
+    [ 'x^3',        'x', 0, 1, color => 'magenta' ]
+);
+
+$alt3 =
+    "The red curve starts at (0,1) and decreases to (1,0). "
+    . 'The green curve starts at (0,0) rises to about (0.3,0.4), then '
+    . 'decreases to (1,0). The blue curve starts at (0,0) rises to about '
+    . '(0.7,0.4), then decreases to (1,0).  The magenta curve starts at '
+    . '(0,0) and rises to (1,1)';
+
 BEGIN_PGML
 At what [`t`] value does each linear Bernstein polynomial achieve its maximum on the interval [`[0,1]`]?
 
@@ -84,17 +128,17 @@ In each case, the answer is either one extreme end of the interval (which can be
 
 In the linear case, the graph clearly shows there are no local maxima, but only maxima on the endpoints of the interval.  Thus the maximum for [`1-t`] is at [`t=0`] and for [`t`] is at [`t=1`].
 
-[@ image(insertGraph($graph1), width=>400, height=>400, tex_size=>480) @]*
+>>[![$alt1]!]{$plot1}{400}<<
 
 In the quadratic case, the graph clearly shows there are no local maxima for [`(1-t)^2`] or [`t^2`], but only maxima on the endpoints of the interval.  Thus the maximum for [`(1-t)^2`] is at [`t=0`] and for [`t^2`] is at [`t=1`].
 
-[@ image(insertGraph($graph2), width=>400, height=>400, tex_size=>480) @]*
+>>[![$alt2]!]{$plot2}{400}<<
 
 That leaves us with [`2t(1-t)`].  We simplify it to [`2t-2t^2`], compute its derivative as [`2-4t`], and ask where that derivative is zero.  The answer is at [`t=\frac12`], which fits with the graph we see above.
 
 In the cubic case, the graph clearly shows there are no local maxima for [`(1-t)^3`] or [`t^3`], but only maxima on the endpoints of the interval.  Thus the maximum for [`(1-t)^3`] is at [`t=0`] and for [`t^3`] is at [`t=1`].
 
-[@ image(insertGraph($graph3), width=>400, height=>400, tex_size=>480) @]*
+>>[![$alt3]!]{$plot3}{400}<<
 
 That leaves us with [`3t(1-t)^2`] and [`3t^2(1-t)`].  We simplify the first of these to [`3t-6t^2+3t^3`], compute its derivative as [`3-12t+9t^2`], and ask where that derivative is zero.  The quadratic formula tells us it happens at [`t=\frac13`] and [`t=1`], and [`t=\frac13`] is the maximum in the graph we see above.
 

@@ -17,25 +17,19 @@
 ## KEYWORDS('vector-valued function','acceleration','velocity','derivatives')
 
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-);
+loadMacros("PGstandard.pl", "PGML.pl", "PGcourse.pl",);
 
 Context("Numeric");
-Context()->variables->add(t=>Real);
-$showPartialCorrectAnswers = 1;
-$a = random(2,10) * random(-1,1,2);
-$b = random(2,10) * random(-1,1,2);
-$c = random(2,10) * random(-1,1,2);
-$d = random(2,10) * random(-1,1,2);
-$e = random(2,10) * random(-1,1,2);
-$f = random(2,10) * random(-1,1,2);
-$g = random(2,10) * random(-1,1,2);
+Context()->variables->add(t => Real);
 
-TEXT(beginproblem());
+$a = random(2, 10) * random(-1, 1, 2);
+$b = random(2, 10) * random(-1, 1, 2);
+$c = random(2, 10) * random(-1, 1, 2);
+$d = random(2, 10) * random(-1, 1, 2);
+$e = random(2, 10) * random(-1, 1, 2);
+$f = random(2, 10) * random(-1, 1, 2);
+$g = random(2, 10) * random(-1, 1, 2);
+
 BEGIN_PGML
 An animation has two scenes, each of them being one second long. In the first scene, an object moves along the path
 

@@ -16,34 +16,43 @@
 ## Problem1('5')
 ## KEYWORDS('Bernstein polynomials','cubic')
 
-########################################################################
-
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-  "PGgraphmacros.pl",
-);
+loadMacros("PGstandard.pl", "PGML.pl", 'plots.pl', "PGcourse.pl");
 
 Context("Numeric");
-Context()->variables->add(t=>Real);
-$showPartialCorrectAnswers = 1;
+Context()->variables->add(t => Real);
 
 $e = "&eacute;";
 
-$graph = init_graph(-0.2,-0.2,1.2,1.2,axes=>[0,0],grid=>[6,6],size=>[400,400]); # xmin,ymin,xmax,ymax
-add_functions($graph, "(1-x)^3 for x in <0,1> using color:red and weight:2");
-add_functions($graph, "3*x*(1-x)^2 for x in <0,1> using color:green and weight:2");
-add_functions($graph, "3*x^2*(1-x) for x in <0,1> using color:blue and weight:2");
-add_functions($graph, "x^3 for x in <0,1> using color:black and weight:2");
+$plot = Plot(
+    xmin            => -0.25,
+    xmax            =>  1.25,
+    xtick_delta     =>  0.25,
+    xminor          =>  0,
+    ymin            => -0.25,
+    ymax            =>  1.25,
+    ytick_delta     =>  0.25,
+    yminor          =>  0,
+    rounded_corners => 1
+);
+$plot->add_function(
+    [ '(1-x)^3',    'x', 0, 1, color => 'red' ],
+    [ '3x*(1-x)^2', 'x', 0, 1, color => 'green' ],
+    [ '3x^2*(1-x)', 'x', 0, 1, color => 'blue' ],
+    [ 'x^3',        'x', 0, 1, color => 'magenta' ]
+);
 
-TEXT(beginproblem());
+$alt =
+    "The red curve starts at (0,1) and decreases to (1,0). "
+    . 'The green curve starts at (0,0) rises to about (0.3,0.4), then '
+    . 'decreases to (1,0). The blue curve starts at (0,0) rises to about '
+    . '(0.7,0.4), then decreases to (1,0).  The magenta curve starts at '
+    . '(0,0) and rises to (1,1)';
+
 BEGIN_PGML
-The four Bernstein polynomials of degree 3 are shown in the following graph.  Red shows [`(1-t)^3`], green shows [`3t(1-t)^2`], blue shows [`3t^2(1-t)`], and black shows [`t^3`].
+The four Bernstein polynomials of degree 3 are shown in the following graph.  Red shows [`(1-t)^3`], green shows [`3t(1-t)^2`], blue shows [`3t^2(1-t)`], and magenta shows [`t^3`].
 
-[@ image(insertGraph($graph), width=>400, height=>400, tex_size=>480) @]*
+>>[![$alt]!]{$plot}{400} <<
 
 On which interval is the first polynomial the greatest of the four?
 

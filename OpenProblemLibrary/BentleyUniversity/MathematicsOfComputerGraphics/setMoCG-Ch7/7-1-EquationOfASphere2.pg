@@ -17,47 +17,45 @@
 ## KEYWORDS('sphere','equation')
 
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-  "parserPopUp.pl",
-);
+loadMacros("PGstandard.pl", "PGML.pl", "PGcourse.pl", "parserPopUp.pl",);
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
-$a = non_zero_random( -10, 10 );
-$b = non_zero_random( -10, 10 );
-$c = random( 10, 15 );
-$r = random( 5, 9 );
-$dx1 = random( 1, $r-3, 0.01 );
-$dy1 = random( 1, sqrt( $r**2 - $dx1**2 ), 0.01 );
-$dz1 = sqrt( $r**2 - $dx1**2 - $dy1**2 );
-$dx2 = random( 1, $r-3, 0.01 );
-$dy2 = random( 1, sqrt( $r**2 - $dx2**2 ), 0.01 );
-$dz2 = sqrt( $r**2 - $dx2**2 - $dy2**2 );
-$wrongOne = random( 1, 2 );
-$error = non_zero_random( 1.5, 2.5, 0.1 );
-$origdz1 = $dz1;
-$origdz2 = $dz2;
-if ( $wrongOne == 1 ) {
+
+$a        = non_zero_random(-10, 10);
+$b        = non_zero_random(-10, 10);
+$c        = random(10, 15);
+$r        = random(5,  9);
+$dx1      = random(1,  $r - 3,                0.01);
+$dy1      = random(1,  sqrt($r**2 - $dx1**2), 0.01);
+$dz1      = sqrt($r**2 - $dx1**2 - $dy1**2);
+$dx2      = random(1, $r - 3,                0.01);
+$dy2      = random(1, sqrt($r**2 - $dx2**2), 0.01);
+$dz2      = sqrt($r**2 - $dx2**2 - $dy2**2);
+$wrongOne = random(1, 2);
+$error    = non_zero_random(1.5, 2.5, 0.1);
+$origdz1  = $dz1;
+$origdz2  = $dz2;
+
+if ($wrongOne == 1) {
     $dz1 += $error;
-    $explain1 = "This equation is not true, so the point is not on the sphere.  (The discrepancy is more than just one or two decimal points.)";
-    $explain2 = "This equation is true (within one or two decimal points), so the point is on the sphere.";
+    $explain1 =
+        "This equation is not true, so the point is not on the sphere.  (The discrepancy is more than just one or two decimal points.)";
+    $explain2 =
+        "This equation is true (within one or two decimal points), so the point is on the sphere.";
 } else {
     $dz2 += $error;
-    $explain1 = "This equation is true (within one or two decimal points), so the point is on the sphere.";
-    $explain2 = "This equation is not true, so the point is not on the sphere.  (The discrepancy is more than just one or two decimal points.)";
+    $explain1 =
+        "This equation is true (within one or two decimal points), so the point is on the sphere.";
+    $explain2 =
+        "This equation is not true, so the point is not on the sphere.  (The discrepancy is more than just one or two decimal points.)";
 }
-$dz1str = sprintf( "%0.2f", $dz1 );
-$dz2str = sprintf( "%0.2f", $dz2 );
-$cdz1str = sprintf( "%0.2f", $c+$dz1 );
-$cdz2str = sprintf( "%0.2f", $c+$dz2 );
-$lhs1str = sprintf( "%0.2f", $dx1**2+$dy1**2+(floor($dz1*100)/100)**2 );
-$lhs2str = sprintf( "%0.2f", $dx2**2+$dy2**2+(floor($dz2*100)/100)**2 );
+$dz1str  = sprintf("%0.2f", $dz1);
+$dz2str  = sprintf("%0.2f", $dz2);
+$cdz1str = sprintf("%0.2f", $c + $dz1);
+$cdz2str = sprintf("%0.2f", $c + $dz2);
+$lhs1str = sprintf("%0.2f", $dx1**2 + $dy1**2 + (floor($dz1 * 100) / 100)**2);
+$lhs2str = sprintf("%0.2f", $dx2**2 + $dy2**2 + (floor($dz2 * 100) / 100)**2);
 
-TEXT(beginproblem());
 BEGIN_PGML
 Consider a sphere with center [`([$a],[$b],[$c])`] and radius [`[$r]`].
 

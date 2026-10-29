@@ -17,35 +17,29 @@
 ## KEYWORDS('vectors')
 
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-);
+loadMacros("PGstandard.pl", "PGML.pl", "PGcourse.pl",);
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 Context()->variables->add(a => 'Real');
 Context()->variables->add(b => 'Real');
 Context()->variables->add(c => 'Real');
-$a=non_zero_random(-10,10);
-$b=non_zero_random(-10,10);
-$c=non_zero_random(-10,10);
-$d=non_zero_random(-10,10);
-$e=non_zero_random(-10,10);
-$f=non_zero_random(-10,10);
-$A1=($a*Formula("a"))->reduce;
-$B1=($b*Formula("b"))->reduce;
-$C1=($c*Formula("c"))->reduce;
-$A2=($d*Formula("a"))->reduce;
-$B2=($e*Formula("b"))->reduce;
-$C2=($f*Formula("c"))->reduce;
-$A=(($d+$a)*Formula("a"))->reduce;
-$B=(($e+$b)*Formula("b"))->reduce;
-$C=(($f+$c)*Formula("c"))->reduce;
+$a  = non_zero_random(-10, 10);
+$b  = non_zero_random(-10, 10);
+$c  = non_zero_random(-10, 10);
+$d  = non_zero_random(-10, 10);
+$e  = non_zero_random(-10, 10);
+$f  = non_zero_random(-10, 10);
+$A1 = ($a * Formula("a"))->reduce;
+$B1 = ($b * Formula("b"))->reduce;
+$C1 = ($c * Formula("c"))->reduce;
+$A2 = ($d * Formula("a"))->reduce;
+$B2 = ($e * Formula("b"))->reduce;
+$C2 = ($f * Formula("c"))->reduce;
+$A  = (($d + $a) * Formula("a"))->reduce;
+$B  = (($e + $b) * Formula("b"))->reduce;
+$C  = (($f + $c) * Formula("c"))->reduce;
 
-TEXT(beginproblem());
 BEGIN_PGML
 Let [`\vec v`] be the vector [`\langle [$A1],[$B1],[$C1] \rangle`] and [`A`] be the point [`([$A2],[$B2],[$C2])`].
 

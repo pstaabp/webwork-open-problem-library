@@ -17,21 +17,14 @@
 ## KEYWORDS('vectors')
 
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-  "PGessaymacros.pl",
-);
+loadMacros("PGstandard.pl", "PGML.pl", "PGcourse.pl", "PGessaymacros.pl",);
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
-$a=random(1,20);
-$b=random(1,20);
+
+$a = random(1, 20);
+$b = random(1, 20);
 
 COMMENT("Essay question");
-TEXT(beginproblem());
 BEGIN_PGML
 Describe the relationship between [`([$a],[$b])`] and [`\langle [$a],[$b] \rangle`].
 

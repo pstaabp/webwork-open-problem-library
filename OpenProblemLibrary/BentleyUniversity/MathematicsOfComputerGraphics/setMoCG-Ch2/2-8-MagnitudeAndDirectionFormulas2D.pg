@@ -17,36 +17,30 @@
 ## KEYWORDS('vectors')
 
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-);
+loadMacros("PGstandard.pl", "PGML.pl", "PGcourse.pl",);
 
 Context("Numeric");
 Context()->variables->add(a => 'Real');
 Context()->variables->add(b => 'Real');
-$showPartialCorrectAnswers = 1;
-$aindex = random(0,2);
-do { $bindex = random(0,2); } until ($aindex+$bindex > 0);
-$a = ("0","-a","a")[$aindex];
-$b = ("0","-a","a")[$bindex];
-$signa = (0,-1,1)[$aindex];
-$signb = (0,-1,1)[$bindex];
-if ($aindex*$bindex > 0) {
-  $num=2;
-  $coeff=sprintf("%.5f",1/sqrt(2));
-  $mag=Formula("sqrt(2) * a");
+
+$aindex = random(0, 2);
+do { $bindex = random(0, 2); } until ($aindex + $bindex > 0);
+$a     = ("0", "-a", "a")[$aindex];
+$b     = ("0", "-a", "a")[$bindex];
+$signa = (0,   -1,   1)[$aindex];
+$signb = (0,   -1,   1)[$bindex];
+if ($aindex * $bindex > 0) {
+    $num   = 2;
+    $coeff = sprintf("%.5f", 1 / sqrt(2));
+    $mag   = Formula("sqrt(2) * a");
 } else {
-  $num=1;
-  $coeff=1;
-  $mag=Formula("a");
+    $num   = 1;
+    $coeff = 1;
+    $mag   = Formula("a");
 }
-@dir = ($coeff*$signa,$coeff*$signb);
+@dir          = ($coeff * $signa, $coeff * $signb);
 $intermediate = Formula("$num a^2")->reduce;
 
-TEXT(beginproblem());
 BEGIN_PGML
 Consider the vector [`\vec v=\langle [$a],[$b] \rangle`], with [`a>0`].
 

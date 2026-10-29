@@ -17,18 +17,11 @@
 ## KEYWORDS('transformations')
 
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-  "PGessaymacros.pl",
-);
+loadMacros("PGstandard.pl", "PGML.pl", "PGcourse.pl", "PGessaymacros.pl",);
 
 COMMENT("Essay question");
 Context("Numeric");
 
-TEXT(beginproblem());
 BEGIN_PGML
 Explain briefly why no combination of rotation and scaling transformations will ever equal a translation transformation.
 
