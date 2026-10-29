@@ -1,72 +1,17 @@
-## DESCRIPTION
-## College Algebra, finding midpoint
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/2.7/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_2_7_21.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Algebra)
-## DBchapter(Absolute value expressions and functions)
-## DBsection(Absolute value inequalities)
-## Date(6/9/2017)
-## Institution(Colorado Community College System)
-## Author(James Morski)
-## MO(1)
-## KEYWORDS('college algebra', 'absolute value linear inequality')
- 
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-"AnswerFormatHelp.pl",
-  "PGML.pl",
-  "contextFraction.pl",
-  "contextInequalitySetBuilder.pl",
-  "parserOneOf.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("Numeric");
-
-$c=random(2,15,1);
-$d=random(2,10);
-
-$rightint=$d+$c;
-$leftint=-$d+$c;
-
-Context("Interval");
-Context()->flags->set("formatStudentAnswer"=>'parsed');
-
-$intans =("(-inf,$leftint] U [$rightint,inf)");
-$f=Formula("abs(x-$c)");
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Solve the following inequality involving absolute value.  Enter the answer in interval notation.    
-
-[` [$f] \geq [$d] `]
-
-[_______________]{$intans} [@ AnswerFormatHelp("intervals") @]*
-
-
-END_PGML
-
-############################
-
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/2.7/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_2_7_21.pg");
 ENDDOCUMENT();
-

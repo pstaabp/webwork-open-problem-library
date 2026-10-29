@@ -1,69 +1,17 @@
-## DESCRIPTION
-## College Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/5.2/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_5_2_14.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Algebra)
-## DBchapter(Polynomial equations and functions)
-## DBsection(Polynomial functions)
-## Date(2/24/2017)
-## Institution(Red Rocks Community College, Colorado Community College System)
-## Author(Brenda Forland)
-## MO(1)
-## KEYWORDS('college algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"contextLimitedPoint.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-
-$showPartialCorrectAnswers = 1;
-
-###########################
-#  Setup
-Context("Numeric");
-
-$a=non_zero_random(2,10, 1);
-$b=non_zero_random(-10,10,1);
-$c=non_zero_random(-10,10,1);
-
-$f=Formula("$a*x^2+$b*x+$c")->reduce;
-
-$ans1=Compute(2);
-$ans2=Compute($a);
-
-
-###########################
-#  Main text
-
-BEGIN_PGML
-Find the degree and leading coefficient for [`y=[$f]`].
-
-+ Degree: [___]{$ans1} [@ AnswerFormatHelp("numbers") @]*
-
-+ Leading Coefficient:  [____]{$ans2} [@ AnswerFormatHelp("numbers") @]*
-
-END_PGML
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/5.2/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_5_2_14.pg");
 ENDDOCUMENT();

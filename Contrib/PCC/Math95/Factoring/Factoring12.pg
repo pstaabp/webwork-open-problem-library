@@ -1,95 +1,17 @@
-# WeBWorK problem written by Alex Jordan 
-# Portland Community College
-# ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/Math95/Factoring/Factoring12.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGpolynomialmacros.pl",
-  "contextPolynomialFactors.pl",
-  "contextLimitedPowers.pl",
-  
-);
-
-TEXT(beginproblem());
-##############################################
-
-
-Context("Numeric");
-Context()->reduction->set('(-x)-y'=>0, '(-x)+y'=>0); 
-$var = 'z';
-Context()->variables->are($var=>'Real');
-Context()->strings->add('prime'=>{}, 'it is prime'=>{alias=>'prime'});
-
-$r1 = non_zero_random(-10,10,1);
-$r2 = non_zero_random(-20,20,1);
-while ($r1 == $r2) {$r2 = non_zero_random(-10,10,1);}
-
-
-$t1 = Compute("$r1");
-$t2 = Compute("$r2");
-
-$b = $t1+$t2;
-$c = $t1*$t2;
-
-$polynomial = Formula("$var^2+$b*$var+$c")->reduce;
-
-
-
-Context("PolynomialFactors-Strict");
-Context()->variables->are($var=>'Real');
-Context()->flags->set(singleFactors=>0);
-LimitedPowers::OnlyIntegers(
-minPower => 0, maxPower => 1,
-message => "either 0 or 1",
-);
-$factored = Compute("($var+$t1)($var+$t2)")->reduce;
-
-
-Context()->variables->are($var=>'Real');
-Context()->strings->add('prime'=>{}, 'it is prime'=>{alias=>'prime'});
-
-
-##############################################
-
-Context()->texStrings;
-
-BEGIN_TEXT
-
-Factor the polynomial.
-$PAR
-
-
-$SPACE $SPACE $SPACE \( $polynomial \)
-
-$PAR
-
-
-\{ans_rule(20)\}
-
-
-
- 
-
-
-
-
-END_TEXT
-
-Context()->normalStrings;
-
-##############################################
-$showPartialCorrectAnswers = 1;
-
-
-ANS($factored->cmp());
-
-
+includePGproblem("./OpenProblemLibrary/PCC/Math95/Factoring/Factoring12.pg");
 ENDDOCUMENT();

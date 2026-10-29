@@ -1,73 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Teaching basics of using TI-89 or Casio ClassPad 330.
-# How to get decimal answers in a graphing calculator.
+# "./OpenProblemLibrary/PCC/BasicAlgebra/Calculator/CalculatorBasics90.pg"
 #
-# Last edited: Yao 5/17/2014
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Algebraic Expressions')
-## KEYWORDS('calculator')
-## DBCCSS('')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao')
-## Institution('PCC')
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-#  "PCCmacros.pl",
-#  "contextFraction.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("LimitedNumeric");
-
-do {$num = random(1,10,1);
-$den = list_random(2,4,5,8);} until (gcd($num,$den)==1);
-$ans = $num/$den;
-
-##############################################
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Use a TI-89 or Casio ClassPad 330 graphing calculator to evaluate this expression, and express the answer in *decimals*. Don't round your answers.
-
-    [`` [$num] \div [$den] ``] = [__________]{$ans}
-
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-By default, a graphing calculator gives accurate answers, like fractions. If we simply input [` [$num]/[$den] `], we would get [` \frac{[$num]}{[$den]} `] as the answer.
-
-For TI-89, to get a decimal answer, press the Diamond button, and then press ENTER.
-
-For Casio ClassPad 330, to get a decimal answer, tap to highlight the answer, and then tap the "0.5 to [`\frac{1}{2}`]" button on top.
-
-We could change a calculator's settings to always give decimal answers. However, in most cases, we do need accurate answers.
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicAlgebra/Calculator/CalculatorBasics90.pg");
 ENDDOCUMENT();
-
-

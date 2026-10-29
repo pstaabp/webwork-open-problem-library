@@ -1,85 +1,17 @@
-# WeBWorK problem written by Alex Jordan 
-# Portland Community College
-# ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/Math95/Factoring/Factoring4.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-
-
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "contextLimitedPolynomial.pl",
-  
-);
-
-TEXT(beginproblem());
-##############################################
-
-Context("Numeric");
-$var = 'y';
-Context()->variables->are($var=>'Real');
-Context()->strings->add("cannot be factored"=>{},
-    "cannot be factored."=>{alias=>"cannot be factored"});
-Context()->flags->set(partialCredit=>0);
-
-$a = random(1,20,1);
-$b = random(1,20,1);
-while (gcd($a,$b) != 1)
-{$b = random(1,20,1);}
-
-
-$exp = Compute("$a y^2-$b y")->reduce;
-
-$fac1 = Compute("y");
-$fac2 = Compute("($a y-$b)")->reduce;
-
-$fctd = Compute("$fac1  $fac2");
-$fctd2 = Compute("$fac2  $fac1");
-
-##############################################
-
-Context()->texStrings;
-
-BEGIN_TEXT
-
-
-Factor the polynomial.
-$PAR
-
-
-$SPACE $SPACE $SPACE \( $exp \)
-
-$PAR
-
-
-\{ans_rule(20)\}
-
-
-
- 
-
-
-
-
-END_TEXT
-
-Context()->normalStrings;
-
-##############################################
-$showPartialCorrectAnswers = 1;
-
-
-ANS($fctd->cmp(typeMatch=>Formula($var), checker => sub {
-      my ($correct,$student,$ans) = @_;
-      if (($student eq $correct) || ($student eq $fctd2))
-      {return 1};
-    }));
-
-
+includePGproblem("./OpenProblemLibrary/PCC/Math95/Factoring/Factoring4.pg");
 ENDDOCUMENT();

@@ -1,67 +1,17 @@
-# WeBWorK problem written by Alex Jordan, 2011
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Evaluate a function. Function is linear.
+# "./OpenProblemLibrary/PCC/Math95/OldFilesAlreadyRepresentedInPrecollegeAlgebra/Functions2.pg"
 #
-# Last updated: Jordan 12/22/13;
-# ENDDESCRIPTION
- 
-## DBsubject('')
-## DBchapter('')
-## DBsection('')
-## KEYWORDS('')
-## DBCCSS('')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Alex Jordan')
-## Institution('PCC')
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PCCmacros.pl",
-  "PGcourse.pl",
-  
-);
-
-
-
-##############################################
-TEXT(beginproblem());
-
-do {
-$var1 = RandomVariableName();
-$var2 = RandomVariableName();
-} until ($var1 ne $var2);
-
-Context("Point");
-Context()->variables->are($var1=>'Real',$var2=>'Real');
-
-$P = Point("($var1,$var2)");
-
-
-
-##############################################
-
-BEGIN_PGML
-If [`f([$var1])=[$var2]`], then the point [__________]{$P} is on the graph of [`f`].  
-
-END_PGML
-
-
-##############################################
-
-
-
-
+includePGproblem("./OpenProblemLibrary/PCC/Math95/OldFilesAlreadyRepresentedInPrecollegeAlgebra/Functions2.pg");
 ENDDOCUMENT();

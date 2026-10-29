@@ -1,76 +1,17 @@
-## DESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/PreCalculus/08.1/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_8_1_39.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
 ## 
-## ENDDESCRIPTION
-
-
-## DBsubject(Trigonometry)
-## DBchapter(Analytic trigonometry)
-## DBsection(Solving trigonometric equations exactly)
-## Date(7/1/2018)
-## Institution(Community College of Denver, Colorado Community College System)
-## Author(Michael Sulock)
-## MO(1)
-## KEYWORDS('college algebra')
-
-
-###########################
-#  Initialization
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGcourse.pl",
-"contextTrigDegrees.pl",
-"contextFraction.pl", 
-"PGgraphmacros.pl",
-"parserPopUp.pl"
-);
-
-
-TEXT(beginproblem());
-
-###########################
-
-$a = random(0.5, 1, 0.5);
-
-if ( $a == .5 ) {
-    $ans = List("pi/3, 5*pi/3");
-} else {
-    $ans = Compute("0");
-}
-
-
-###########################
-#  Main text
-
-BEGIN_PGML
-
-
-Find all the solutions to [`\cos(x) = [$a]`] on the interval [` [0, 2\pi)`]. 
-
-If there is more than one answer, enter as a comma separated list. 
-
-[`x=`][_________]{$ans}
-
-
-
-END_PGML
-
-
-
-
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/PreCalculus/08.1/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_8_1_39.pg");
 ENDDOCUMENT();

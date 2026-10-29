@@ -1,73 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Change percent to decimal.
-# Problems like 16% = ?
-# 
-# Last updated: Hughes 7/3/13,  Carl Yao, 6/27/13
-# ENDDESCRIPTION
+# "./OpenProblemLibrary/PCC/BasicAlgebra/NumberBasics/PercentDecimalConversion10.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBCCSS('6.RP.3c')
-## KEYWORDS('percent','decimal','convert')
-## DBsection('')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Alex Jordan, Carl Yao, Chris Hughes')
-## Institution('PCC')
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("Numeric");
-
-$a=random(11,19,1);
-$b=random(51,59,1);
-
-Context("LimitedNumeric");
-$ans1 = Compute($a/100);
-$ans2 = Compute($b/100);
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Write the following percentages as decimals.
-
-a. [`` [$a]% = ``] [_______]{$ans1}
-
-a. [`` [$b]% = ``] [_______]{$ans2}
-
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-To change a percentage to a decimal, we move the decimal point to the left twice.
-
-    [`` [$a]% = [$ans1] ``]
-
-    [`` [$b]% = [$ans2] ``]
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicAlgebra/NumberBasics/PercentDecimalConversion10.pg");
 ENDDOCUMENT();
-
-

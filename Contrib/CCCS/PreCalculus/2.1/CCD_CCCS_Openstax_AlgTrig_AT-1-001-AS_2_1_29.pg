@@ -1,59 +1,17 @@
-## DESCRIPTION
-## College Algebra, coordinates
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/2.1/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_2_1_29.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject(Algebra)
-## DBchapter(Cartesian coordinate system)
-## DBsection(Plotting points)
-## Date(12/202106)
-## Institution(Colorado Community College System)
-## Author(Brenda Forland; Edit: James Morski, 5/19/2017)
-## MO(1)
-## KEYWORDS('college algebra', 'coordinates')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"contextLimitedPoint.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-
-
-###########################
-#  Setup
-
-Context("Numeric");
-$ans=Compute(0);
-
-
-###########################
-#  Main text
-
-BEGIN_PGML
-If a point is located on the x-axis, what is the y-coordinate?
-
-[_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
-
-END_PGML
-
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/2.1/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_2_1_29.pg");
 ENDDOCUMENT();

@@ -1,68 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# 
-# Compute absolute value. 
+# "./OpenProblemLibrary/PCC/BasicAlgebra/NumberBasics/AbsoluteValue10.pg"
 #
-# Last edited: Jordan 6/20/13
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Middle School')
-## DBchapter('')
-## DBsection('')
-## KEYWORDS('absolute value')
-## DBCCSS('6.NS.7')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Alex Jordan, Carl Yao, Chris Hughes')
-## Institution('PCC')
-
-
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "contextFraction.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("LimitedNumeric");
-$num = random(-10,10,1);
-$absnum = abs($num);
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Evaluate the following.
-
-    [`` |{[$num]}|= ``] [______]{$absnum}
-
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-The absolute value of [`[$num]`] is the distance between [`[$num]`] and [`0`] on the number line. In this case, since [`[$num]`] is [`[$absnum]`] units away from 0, the answer is [`[$absnum]`].
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicAlgebra/NumberBasics/AbsoluteValue10.pg");
 ENDDOCUMENT();
-
-
-

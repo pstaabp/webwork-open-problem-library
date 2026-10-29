@@ -1,86 +1,17 @@
-## DESCRIPTION
-## College Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/6.4/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_4_7.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Algebra)
-## DBchapter(Exponential and logarithmic expressions and functions)
-## DBsection(Logarithmic functions)
-## Date(04/03/2017)
-## Institution(Red Rocks Community College)
-## Author(Brenda Forland)
-## MO(1)
-## KEYWORDS('college algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-$showPartialCorrectAnswers = 1;
-
-###########################
-#  Setup
-
-
-$a=non_zero_random(1,10);
-
-$f=Formula("ln($a-x)")->reduce;
-
-Context("Interval");
-$ans1=Compute("(-infinity,$a)");
-$ans2=Compute("(-infinity,infinity)");
-
-
-$video = MODES(
-HTML=> 
-'<iframe width="420" height="315" src="//www.youtube.com/embed/_Om0ZMzIgUk"frameborder="0" allowfullscreen></iframe>', 
-TeX =>
-"An embedded YouTube video."
-);
-
-
-###########################
-#  Main text
-
-BEGIN_PGML
-
-Find the domain and range of [`` f(x)=[$f] ``]. Enter your solutions in interval notation.
-
-Domain: [_______________]{$ans1} [@ AnswerFormatHelp("intervals") @]*
-
-Range: [_______________]{$ans2} [@ AnswerFormatHelp("intervals") @]*
-
-
-[$video]*
-END_PGML
-
-
-BEGIN_TEXT
-$BR
-
-If the video does not work, \{ htmlLink ("https://www.youtube.com/watch?v=_Om0ZMzIgUk", "click here to watch on YouTube.", "TARGET='_blank'")\}
-$BR
-END_TEXT
-
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/6.4/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_4_7.pg");
 ENDDOCUMENT();

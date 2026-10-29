@@ -1,93 +1,17 @@
-## DESCRIPTION
-## Solving Radical Equations
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/AlgebraicLiteracy/IA_8.6/OpenStax_IA_8.6_319.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Algebra)
-## DBchapter()
-## DBsection()
-## Date(6/2019)
-## Institution(Red Rocks Community College)
-## Author(Martha Stevens)
-## MO(1)
-## KEYWORDS()
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-$showPartialCorrectAnswers = 1;
-
-###########################
-#  Setup
-Context("Numeric");
-$var = list_random('b','d','m','n','u','v','x','y','p','q');
-Context()->variables->are($var=>'Real');
-
-$s = random(1, 5);
-$c = random(2, 5);
-$d = random(1, 10);
-$e = $c*$s - $d;
-$a = random(2, 8);
-$b = non_zero_random(-10, 10);
-
-$f = Formula("$c*sqrt($a*$var + $b)-$d")->reduce;
-$ans = Compute("($s**2 - $b)/$a");
-
-$sum = $e+$d;
-$sq = $s**2;
-$rhs = $s**2-$b;
-
-###########################
-#  Main text
-
-BEGIN_PGML
-Solve the radical equation.  Be sure to check for extraneous solutions.
-
-If you find more than one solution, give your answer as a comma-separated list. If there is no solution enter "NONE".
-
-[`` [$f] = [$e] ``].
-
-[`[$var] =`] [_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
-
-
-END_PGML
-
-
-############################
-#  Solution
-
-BEGIN_PGML_SOLUTION
-[`[$f] = [$e]`]
-
-[`[$c]\sqrt{[$a][$var] + [$b]} = [$diff]`]
-
-[`\sqrt{[$a][$var] + [$b]} = [$s]`]
-
-[`(\sqrt{[$a][$var]+[$b]})^2 = [$s]^2`]
-
-[`[$a][$var]+[$b] = [$sq]`]
-
-[`[$a][$var] = [$rhs]`]
-
-[`[$var] = [$ans]`]
-
-Check:  If we plug this solution into the original equation, we get a true statement.
-
-
-END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/AlgebraicLiteracy/IA_8.6/OpenStax_IA_8.6_319.pg");
 ENDDOCUMENT();

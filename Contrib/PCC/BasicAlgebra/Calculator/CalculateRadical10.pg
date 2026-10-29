@@ -1,77 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Estimate the value of a radical.
+# "./OpenProblemLibrary/PCC/BasicAlgebra/Calculator/CalculateRadical10.pg"
 #
-# Last edited: Carl Yao 8/31/13,
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Exponents and Radicals')
-## KEYWORDS('simplify','radical','square root','estimate')
-## DBCCSS('8.EE')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Alex Jordan, Carl Yao, Chris Hughes')
-## Institution('PCC')
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
- 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "contextFraction.pl",
-  "contextLimitedRadical.pl",
-  "PCCmacros.pl",
-  "PGcourse.pl",
-);
-
-######################################
-
-TEXT(beginproblem());
-Context("LimitedNumeric");
-
-$a = list_random(16,25,36,49,64,81,100);
-$rad = $a+random(1,3,1)*random(-1,1,2);
-$lower = int(sqrt($rad));
-$upper = ceil(sqrt($rad));
-$lower2 = $lower**2;
-$upper2 = $upper**2;
-
-$ans = sqrt($rad);
-$ans = Real($ans);
-
-#####################################################
-
-BEGIN_PGML
-
-Evaluate the following.
-
-Use a calculator to approximate with a decimal.
-
-  [`\sqrt{[$rad]}\approx`][__________]{$ans}
-
-
-END_PGML
-
-############################################################
-
-
-BEGIN_PGML_SOLUTION
-
-A calcultaor shows that [`\sqrt{[$rad]}\approx[$ans]`].
-
-END_PGML_SOLUTION
-
-######################################
-
-
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicAlgebra/Calculator/CalculateRadical10.pg");
 ENDDOCUMENT();

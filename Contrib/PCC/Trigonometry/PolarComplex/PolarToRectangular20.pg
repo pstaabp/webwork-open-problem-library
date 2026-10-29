@@ -1,86 +1,17 @@
-# DESCRIPTION
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# ENDDESCRIPTION
+# "./OpenProblemLibrary/PCC/Trigonometry/PolarComplex/PolarToRectangular20.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('')
-## DBchapter('')
-## DBsection('')
-## KEYWORDS('')
-## DBCCSS('')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao','Alex Jordan')
-## Institution('PCC')
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
-##############################################
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "contextLimitedRadical.pl",
-  "PGML.pl",
-  "PCCmacros.pl",
-  "specialTrigValues.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("Complex");
-
-do {
-  $den = list_random(3,4,6);
-  $num = non_zero_random(-(2*$den-1),(2*$den-1));
-} until gcd($den,$num)==1;
-$angle = specialAngle($num*pi/$den);
-
-$r = random(2,10,1);
-
-$ans = Formula(specialRadical("$r*cos($angle)+$r*i sin($angle)"));
-
-Context("LimitedRadical");
-Context()->noreduce('(-x)-y','(-x)+y');
-Context()->variables->are(i=>"Real");
-
-$ans = Formula("$ans");
-
-##############################################
-
-TEXT(beginproblem());
-BEGIN_PGML
-
-Convert from polar form to rectangular form.
-
-[@KeyboardInstructions(
-"\n"
-.'* Use fractions in your answer.'
-."\n"
-.'* Use [|sqrt( )|]* for "square root". For example, [|sqrt(2)|]* represents [`\sqrt{2}`].'
-)@]**
-
-     [`` [$r] \left( \cos\left([$angle]\right) +i\sin\left([$angle]\right) \right)= ``][_______________________]{$ans}
-
-END_PGML
-
-##############################################
-
-
-BEGIN_PGML_SOLUTION
-
-    [``\begin{aligned}
-  [$r] \left( \cos\left([$angle]\right) +i\sin\left([$angle]\right) \right) 
-  &= [$r] \left([$a]+i\left([$b]\right)\right) \\
-  &= [$ans]
-    \end{aligned}``]
-
-END_PGML_SOLUTION
-
-##############################################
-
+includePGproblem("./OpenProblemLibrary/PCC/Trigonometry/PolarComplex/PolarToRectangular20.pg");
 ENDDOCUMENT();

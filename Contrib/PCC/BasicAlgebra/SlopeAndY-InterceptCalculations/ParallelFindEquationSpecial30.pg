@@ -1,73 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Given a point and its perpendicular line, find the line's equation. The line is x=a. 
-# 
-# Last updated: Yao 10/18/2016
-# ENDDESCRIPTION
+# "./OpenProblemLibrary/PCC/BasicAlgebra/SlopeAndY-InterceptCalculations/ParallelFindEquationSpecial30.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Lines')
-## KEYWORDS('linear','equation','slope','zero')
-## DBCCSS('F-LE.2','8.F.3','A-CED')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Alex Jordan, Carl Yao, Chris Hughes')
-## Institution('PCC')
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "parserImplicitPlane.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("ImplicitPlane");
-Context()->flags->set(showExtraParens=>0);
-Context()->variables->are(x=>'Real', y=>'Real');
-Context()->noreduce('(-x)-y','(-x)+y');
-Context()->flags->set(showExtraParens=>0);
-
-$b0 = random(-10,10,1);
-$a1 = random(-10,10,1);
-$x1 = $a1;
-do {$y1 = non_zero_random(-10,10,1);} until ($y1!=$x1);
-
-$ans = ImplicitPlane("x=$a1");
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-A line passes through the point [`([$x1],[$y1])`], and it's perpendicular to the line [`y=[$b0]`]. Find an equation for this line.
-
-    An equation for this line is [______________]{$ans}.
-
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-Since [`y=[$b0]`] is horizontal, the unknown line must be vertical (because they are perpendicular). Assume its equation is [`x=a`].
-
-Since the unknown line passes through [`([$x1],[$y1])`], [`a`]'s value must be [`[$x1]`]. The unknown line's equation is [`[$ans]`]
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicAlgebra/SlopeAndY-InterceptCalculations/ParallelFindEquationSpecial30.pg");
 ENDDOCUMENT();
-
-

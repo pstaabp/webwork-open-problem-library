@@ -1,78 +1,17 @@
-## DESCRIPTION
-## Elementary Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/AlgebraicLiteracy/Rational_Expressions/Divide_Rational_Expressions_2.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Elementary Algebra)
-## DBchapter()
-## DBsection()
-## Date(10/27/2018)
-## Institution(Red Rocks Community College)
-## Author(Craig Faulhaber)
-## MO(1)
-## KEYWORDS('elementary algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGgraphmacros.pl",
-  "PGcourse.pl",
-  "contextRationalFunction.pl",
-  "contextPolynomialFactors.pl",
-
-);
-
-##############################################
-
-#simplify bx(x-a)/(a-x)
-
-Context("Numeric");
-
-$a = non_zero_random(2,5);
-$b = list_random(2,3,5);
-$c = list_random(7,11,13);
-$d = random(6,9);
-
-$ab=$a*$b;
-
-##############################################
-
-TEXT(beginproblem());
-
-Context("PolynomialFactors-Strict");
-
-$ans1 = Formula("$c");
-$ans2 = Formula("$b*x(x+$d)");
-
-
-BEGIN_PGML
-
-Simplify the rational expression. Enter the numerator and denominator of your simplified answer below. Leave any negatives in your numerator.
-
-[` \dfrac{\dfrac{x-[$a]}{-[$ab]x+[$b]x^2}}{\dfrac{x+[$d]}{[$c]}} =`] 
-
-Numerator:   [________]{$ans1}  
-Denominator: [_________]{$ans2}
- 
-END_PGML
-
-##############################################
-
-
-
-BEGIN_PGML_SOLUTION
-
-END_PGML_SOLUTION
-
+includePGproblem("./Contrib/CCCS/AlgebraicLiteracy/Rational_Expressions/Divide_Rational_Expressions_2.pg");
 ENDDOCUMENT();
-
-
-
-

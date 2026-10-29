@@ -1,49 +1,17 @@
-#DESCRIPTION
-## DBsubject('Statistics')
-## DBchapter('Exploratory data analysis')
-## DBsection('Relationship')
-## level(2)
-##ENDDESCRIPTION
-##KEYWORDS('statistics', 'multiple choice', 'display methods')
-##Tagged by Nelson Chen, May 14, 2016.
+# This file is just a pointer to the file
+#
+# "./Contrib/UBC/STAT/Archive_old_questions/STAT203_2016W1/HW04/hw04-q1.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl",
-  "PGcourse.pl"
-);
-
-#######
-
-TEXT(  beginproblem() );
-
-$mc = new_multiple_choice();
-$mc->qa(
-"The first step in analyzing the relationship between any two quantitative variables is to",
-"Create a scatterplot"
-);
-$mc->extra(
-"Calculate the correlation coefficient",
-"Model the linear relationship with a regression line",
-"Measure the strength of the linear relationship",
-"Construct a contingency table",
-);
-
-
-#######
-
-BEGIN_TEXT
-\{ $mc->print_q() \}
-$BR
-\{ $mc->print_a() \}
-END_TEXT
-
-#######
-
-$showPartialCorrectAnswers = 0;
-
-ANS( radio_cmp( $mc->correct_ans() ) );
-
+includePGproblem("./Contrib/UBC/STAT/Archive_old_questions/STAT203_2016W1/HW04/hw04-q1.pg");
 ENDDOCUMENT();

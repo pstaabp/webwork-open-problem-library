@@ -1,95 +1,17 @@
-## DESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/3.7/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_3_7_7_box.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
 ## 
-## ENDDESCRIPTION
-
-## DBsubject(Algebra)
-## DBchapter()
-## DBsection()
-## Date(02/06/2017)
-## Institution(Red Rocks Community College, Colorado Community College System)
-## Author(Brenda Forland)
-## MO(1)
-## KEYWORDS('algebra' )
-
-
-###########################
-#  Initialization
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGchoicemacros.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-
-$showPartialCorrectAnswers = 1;
-
-
-###########################
-#  Setup
-
-$mc = new_checkbox_multiple_choice();
-$mc -> qa (
-"", 
-"\( f^{-1}(x) \)$BR",                
-);
-$mc -> extra(
-"\( f(x) \)$BR",
-"\( y \)$BR",
-"\( x \)$BR",
-);
-$mc -> makeLast("None of the above");
-
-Context("Numeric");
-Context()->noreduce('(-x)-y','(-x)+y');
-
-$a = non_zero_random(-9,9,1);
-do { $b = non_zero_random(-9,9,1); } until ( $b != $a );
-
-$f=Formula("$a*x+$b")->reduce();;
-
-$ans1 = Formula("(x-$b)/$a")->reduce();
-
-
-###########################
-#  Main text
-
-BEGIN_PGML
-Let [`f(x) = [$f]`]. Find and enter the inverse of [`f(x)`]
-
-[_______________]{$ans1} [@ AnswerFormatHelp("formulas") @]*
-
-Select the correct notation for the inverse of [`f(x)`].
-END_PGML
-
-BEGIN_TEXT
-\{ $mc -> print_q() \}
-$BR
-\{ $mc -> print_a() \}
-$BR
-END_TEXT
-
-#  Answer evaluation
-
-install_problem_grader(~~&std_problem_grader);
-
-$showPartialCorrectAnswers = 0;
-
-ANS( checkbox_cmp( $mc->correct_ans() ) );
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/3.7/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_3_7_7_box.pg");
 ENDDOCUMENT();

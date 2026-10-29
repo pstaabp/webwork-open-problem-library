@@ -1,48 +1,17 @@
-## level(3)
-## DBsubject(Probability)
-## DBchapter(Continuous distributions)
-## DBsection(Application of a normal distribution)
-## Date(08/27/2014)
-## Institution(University of BC)
-## Author(Andy Leung)
-## Level(2)
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/UBC/STAT/Archive_old_questions/STAT203/hw03/hw03-q06.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
-DOCUMENT();     
-loadMacros(
-  "PGstandard.pl",
-  "PGcourse.pl"
-);
-
-TEXT( &beginproblem );
-# adapted from Library/NAU/setStatistics/empirical_rule1.pg
-do{$mean = random(2, 10, 1);
-  $sd = random( 0.1, 1, 0.1);
-} until( $mean - 3 * $sd > 0);
-
-@aboveBelow = ("above", "below");
-@answers = ($mean+$sd, $mean-$sd);
-$i = random(0,1,1);	 # determine which question student receives
-$string = $aboveBelow[$i];
-$ans = $answers[$i];
-
-BEGIN_TEXT
-
-The shelf life of a battery produced by one major company is known 
-to be Normally distributed, with a mean life of $mean years and a standard deviation of $sd years.
-
-$PAR
-
-What value of shelf life do 16${PERCENT} of the battery shelf lives fall $string? Round your answer to one decimal place.
-$BR $BR
-
-Answer: \{ ans_rule( 15 ) \} years.
-
-END_TEXT
-
-ANS( 
-    num_cmp( $ans, tol => 0.05, tolType => "absolute")
-);
-
-
+DOCUMENT();
+includePGproblem("./OpenProblemLibrary/UBC/STAT/Archive_old_questions/STAT203/hw03/hw03-q06.pg");
 ENDDOCUMENT();

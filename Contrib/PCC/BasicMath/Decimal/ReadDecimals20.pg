@@ -1,84 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Template
+# "./OpenProblemLibrary/PCC/BasicMath/Decimal/ReadDecimals20.pg"
 #
-# Given a decimal in words, write the decimal.
-# Decimals are like 6.22 and 6.022
-# 
-# Last updated: Yao, 10/19/2013
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('')
-## KEYWORDS('decimal')
-## DBCCSS('4.NF')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao')
-## Institution('PCC')
-
-##############################################
-
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-  "PCCmacros.pl",
-);
-
-##############################################
-
-Context("LimitedNumeric");
-
-$int=random(10,99,1);
-$intWord = numberWord($int);
-
-$dec=random(1,9,1)*10+random(1,9,1);
-$decWord = numberWord($dec);
-
-$ans1 = $int+$dec/100;
-$ans2 = $int+$dec/1000;
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Write the following decimals:
-
-a.    [$intWord] and [$decWord] hundredths = [_________]{$ans1}
-
-a.    [$intWord] and [$decWord] thousandths = [_________]{$ans2}
-
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-If a decimal reads "## hundredths", it implies two decimal places.
-
-If a decimal reads "## thousandths", it implies three decimal places.
-
-*Solutions:*
-
-a.    [$intWord] and [$decWord] hundredths = [`[$ans1]`]
-
-a.    [$intWord] and [$decWord] thousandths = [`[$ans2]`]
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicMath/Decimal/ReadDecimals20.pg");
 ENDDOCUMENT();
-
-

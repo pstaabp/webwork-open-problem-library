@@ -1,52 +1,17 @@
-## DBsubject('Statistics')
-## DBchapter('Exploratory data analysis/descriptive statistics')
-## DBsection('Classifying data')
-## level(3)
-## Date('05/02/2012')
-## Author('Lance R')
-## Institution('University of BC')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
+# This file is just a pointer to the file
+#
+# "./Contrib/UBC/STAT/Archive_old_questions/STAT203/hw01/hw01-q01.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl",
-  "PGcourse.pl"
-);
-
-TEXT(  beginproblem() );
-
-#######
-
-$mc = new_multiple_choice();
-$mc->qa(
-"You are doing a survey on UBC students.  Participating students come from different majors and years. The participants are asked how much they pay for tuition this academic year.  What is the variable of interest?",
-"Tuition fee paid by a student"
-);
-$mc->extra(
-"UBC students",
-"Study year of a student",
-"Major of a student",
-);
-
-#######
-
-BEGIN_TEXT
-\{ $mc->print_q() \}
-$BR
-\{ $mc->print_a() \}
-END_TEXT
-
-#######
-
-$showPartialCorrectAnswers = 0;
-
-ANS( radio_cmp( $mc->correct_ans() ) );
-
+includePGproblem("./Contrib/UBC/STAT/Archive_old_questions/STAT203/hw01/hw01-q01.pg");
 ENDDOCUMENT();

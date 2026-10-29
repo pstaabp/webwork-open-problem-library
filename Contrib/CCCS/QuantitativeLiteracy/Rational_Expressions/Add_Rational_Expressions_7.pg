@@ -1,85 +1,17 @@
-## DESCRIPTION
-## Elementary Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/AlgebraicLiteracy/Rational_Expressions/Add_Rational_Expressions_7.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Elementary Algebra)
-## DBchapter()
-## DBsection()
-## Date(10/27/2018)
-## Institution(Red Rocks Community College)
-## Author(Craig Faulhaber)
-## MO(1)
-## KEYWORDS('elementary algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGgraphmacros.pl",
-  "PGcourse.pl",
-  "contextRationalFunction.pl",
-  "contextPolynomialFactors.pl",
-
-);
-
-##############################################
-
-#like denominators, a factor should cancel leaving (x+c)/(x+a)
-
-Context("Numeric");
-
-$a=non_zero_random(-6,6);
-do {$b=non_zero_random(-6,6)} until abs($a)!=abs($b);
-
-$ab = $a*$b;
-$aplusb = $a + $b;
-
-do {$c=random(1,6)} until abs($c)!=abs($b) && abs($c)!=abs($a);
-
-$bc = $b*$c;
-$bplusc = $b + $c;
-
-
-##############################################
-
-TEXT(beginproblem());
-
-Context("PolynomialFactors-Strict");
-
-Context()->variables->add(z => 'Real');
-
-$ans1 = Formula("x+$c");
-$ans2 = Formula("x+$a");
-
-
-BEGIN_PGML
-
-Subtract the rational expressions and simplify. Enter the numerator and denominator of your simplified answer below. 
-
-[` \dfrac{[$bplusc]x+[$bc]}{x^2+[$aplusb]x+[$ab]} + \dfrac{x^2}{x^2+[$aplusb]x+[$ab]} =`] 
-
-Numerator:   [________]{$ans1}  
-Denominator: [_________]{$ans2}
- 
-END_PGML
-
-##############################################
-
-
-
-BEGIN_PGML_SOLUTION
-
-END_PGML_SOLUTION
-
+includePGproblem("./Contrib/CCCS/AlgebraicLiteracy/Rational_Expressions/Add_Rational_Expressions_7.pg");
 ENDDOCUMENT();
-
-
-
-

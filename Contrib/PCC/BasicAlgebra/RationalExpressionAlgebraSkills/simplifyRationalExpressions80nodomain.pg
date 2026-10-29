@@ -1,79 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Template:
-# Simplify the rational expression like (2x-x^2) / (x^2-5x+6)
+# "./OpenProblemLibrary/PCC/BasicAlgebra/RationalExpressionAlgebraSkills/simplifyRationalExpressions80nodomain.pg"
 #
-# Last updated: Carl Yao 08/14/2015
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBCC('A-APR.1','A-SSE.2')
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Exponents', 'Factoring')
-## KEYWORDS('polynomial','exponents','factoring','simplify','rational')
-## Author('Alex Jordan, Carl Yao, Chris Hughes')
-## Institution('PCC')
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
-##############################################
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PCCmacros.pl",
-  "contextLimitedFactor.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("LimitedFactor");
-Context()->noreduce('(-x)-y','(-x)+y');
-$var = RandomVariableName(type=>'variable');
-Context()->variables->are($var=>'Real');
-Context()->noreduce('(-x)-y', '(-x)+y'); 
-
-$a = random(1,6,1);
-do {$b = random(1,6,1)*random(-1,1,2);} until ($a!=$b);
-
-$num = Formula("$a*$var-$var**2")->reduce;
-$den = Formula("$var**2+(-$a+$b)*$var+(-$a*$b)")->reduce;
-$numFactored = Formula("$var*($a-$var)")->reduce;
-$denFactored = Formula("($var-$a)*($var+$b)")->reduce;
-$numFactoredOrdered = Formula("-$var*($var-$a)")->reduce;
-
-$question = Formula("$num/$den")->reduce;
-$ans = Formula("-$var/($var+$b)")->reduce;
-
-##############################################
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Simplify this expression.
-
-    [``[$question]=``] [___________________]{$ans}
-
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-To simplify the expression, we first factor both the numerator and denominator, and then cross out common terms:
-
-    [``
-\begin{aligned}
-   [$question] &= \frac{[$numFactored]}{[$denFactored]} \\
-                     &= \frac{[$numFactoredOrdered]}{[$denFactored]} \\
-                     &= [$ans]
-\end{aligned}
-    ``]
-
-
-END_PGML_SOLUTION
-##############################################
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicAlgebra/RationalExpressionAlgebraSkills/simplifyRationalExpressions80nodomain.pg");
 ENDDOCUMENT();

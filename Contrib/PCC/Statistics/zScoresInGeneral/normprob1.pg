@@ -1,63 +1,17 @@
-##DESCRIPTION
-## DBsubject('Probability')
-## DBchapter('Distributions')
-## DBsection('Normal Distribution')
-## KEYWORDS('probability','statistics','normal','normal distribution')
-## Author('Michael Ratliff')
-## Institution('NAU')
-##ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/Statistics/zScoresInGeneral/normprob1.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-# File Created: 7/1/05
-# from pl/setProbability10NormalDist/ur_pb_10_10.pg
-# Location: Northern Arizona University
-# Course: MAT 119 - Finite Mathematics
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PG.pl",
-"PGbasicmacros.pl",
-"PGchoicemacros.pl",
-"PGanswermacros.pl",
-"PGgraphmacros.pl",
-"PGnumericalmacros.pl",
-"PGstatisticsmacros.pl",
-"MathObjects.pl",
-"contextPercent.pl",
-);
-
-TEXT(beginproblem());
-$showPartialCorrectAnswers = 1;
-
-$s = random(800,1100,25);
-do {$mu = random(500,1.1*$s,10);} until (abs($mu-$s)>10);
-$sig = random(150,300,10);
-
-$z = Real(($s-$mu)/$sig);
-$ans = Real(100*normal_prob('-infty', $s, mean=>$mu, deviation=>$sig));
-
-BEGIN_TEXT
-
-The combined math and verbal scores for students taking a national standardized examination for college admission, is Normally distributed with a mean of \($mu\) and a standard deviation of \($sig\). If a college requires a minimum score of \($s\)
-for admission, what percentage of students do not satisfy that requirement? $PAR
-
-\{ans_rule(10)\} of students do not satisfy that requirement.
-
-END_TEXT
-
-Context("Percent");
-ANS(Percent("$ans %")->cmp());
-
-######################################################Solution
-####################################################
-
-BEGIN_SOLUTION
-
-To find what percentage of students do not satisfy that requirement, we will need to find a \(z\)-score for a test score of \($s\).
-$PAR
-Thus, we find \(z=\frac{$s-$mu}{$sig}=$z\).  Using technology we find that \(\text{P}(z<$z)\approx $ans$PERCENT\).
-
-END_SOLUTION
-
-ENDDOCUMENT();       # This should be the last executable line in the problem.
-
+includePGproblem("./OpenProblemLibrary/PCC/Statistics/zScoresInGeneral/normprob1.pg");
+ENDDOCUMENT();

@@ -1,79 +1,17 @@
-## DESCRIPTION
-## Elementary Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/AlgebraicLiteracy/Percents/Convert_Percents_4.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Elementary Algebra)
-## DBchapter()
-## DBsection()
-## Date(06/15/2018)
-## Institution(Red Rocks Community College)
-## Author(Craig Faulhaber)
-## MO(1)
-## KEYWORDS('elementary algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGgraphmacros.pl",
-  "PGcourse.pl",
-  "AnswerFormatHelp.pl",
-  "fixedPrecision.pl",
-);
-
-##############################################
-
-#Convert a fraction to a percent 
-
-Context("LimitedNumeric");
-Context()->{format}{number} = "%.1f";
-
-Context()->flags->set(
-
-  tolerance => 0.05,
-
-  tolType => "absolute",
-
-);
-
-$a = random(1,4);
-$b = random(5,11);
-
-#$answer = $a/$b*100;
-#$ans = FixedPrecision($answer,1);
-
-$ans = $a/$b*100;
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Convert the following fraction to a percent without using a calculator. Round your answer to the nearest tenth of a percent.
-
-[` [$a]/[$b]= `]  [________]{$ans}`%` 
-
- 
-END_PGML
-
-##############################################
-
-
-
-BEGIN_PGML_SOLUTION
-
-END_PGML_SOLUTION
-
+includePGproblem("./Contrib/CCCS/AlgebraicLiteracy/Percents/Convert_Percents_4.pg");
 ENDDOCUMENT();
-
-
-
-

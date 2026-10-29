@@ -1,84 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# 
-# Compute absolute value. 
+# "./OpenProblemLibrary/PCC/BasicMath/IntegerAndSquareRoot/AbsoluteValue11.pg"
 #
-# Last edited: Carl Yao 02/25/2014
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Middle School')
-## DBchapter('')
-## DBsection('')
-## KEYWORDS('absolute value')
-## DBCCSS('6.NS.7')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao')
-## Institution('PCC')
-
-
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "contextFraction.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("LimitedNumeric");
-$num1 = random(2,10,1);
-$num2 = -$num1;
-$ans1 = abs($num1);
-$ans2 = $ans1;
-$ans3 = -$ans1;
-$ans4 = $ans3;
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Evaluate the following.
-
-a.    [`` |{[$num1]}|= ``] [______]{$ans1}
-
-a.    [`` |{[$num2]}|= ``] [______]{$ans2}
-
-a.    [`` -|{[$num1]}|= ``] [______]{$ans3}
-
-a.    [`` -|{[$num2]}|= ``] [______]{$ans4}
-
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-a.    The absolute value of [`[$num1]`] measures how many units are between [`[$num1]`] and [`0`] on the number line, so [` |{[$num1]}|=[$ans1] `].
-
-a.    The absolute value of [`[$num2]`] measures how many units are between [`[$num2]`] and [`0`] on the number line, so [` |{[$num2]}|=[$ans2] `].
-
-a.    The absolute value symbols cannot affect what are outside them, so we have [` -|{[$num1]}|=[$ans3] `].
-
-a.    Similar to Part c, we have [` -|{[$num2]}|=[$ans4] `].
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicMath/IntegerAndSquareRoot/AbsoluteValue11.pg");
 ENDDOCUMENT();
-
-
-

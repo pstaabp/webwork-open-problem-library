@@ -1,81 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Addition/subtraction word problem.
+# "./OpenProblemLibrary/PCC/BasicMath/AdditionSubtraction/AdditionSubtractionApplications10.pg"
 #
-# Last edited: Yao 09/29/16
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Elementary School')
-## DBchapter('')
-## DBsection('')
-## KEYWORDS('division','application')
-## DBCCSS('3.OA','4.OA')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao')
-## Institution('PCC')
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-  "contextCurrency.pl",
-  "PCCmacros.pl",
-);
-
-##############################################
-
-Context("LimitedNumeric");
-
-$a = random(10,30,1);
-$b = random(5,$a-1,1);
-$c = random(10,30,1);
-$ans = $a-$b+$c;
-
-$sex = list_random('male','female');
-$pronoun = 'he' if ($sex eq 'male');
-$pronoun = 'she' if ($sex eq 'female');
-$name = RandomName(sex=>$sex);
-
-Context("Currency");
-$aC = Currency($a);
-$bC = Currency($b);
-$cC = Currency($c);
-$ansC = Currency($ans);
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-[$name] is gambling. [@ucfirst($pronoun)@] won [`[$aC]`] in the first game, lost [`[$bC]`] in the second game, and won [`[$cC]`] in the third game. Altogether, how much money did [$pronoun] win?
-
-Altogether, [$name] won [__________]{$ansC}.
-
-END_PGML
-
-#############################################
-
-BEGIN_PGML_SOLUTION
-
-    [`` [$a] - [$b] +[$c] = [$ans] ``]
-
-Altogether, [$name] won [`[$ansC]`].
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicMath/AdditionSubtraction/AdditionSubtractionApplications10.pg");
 ENDDOCUMENT();
-
-

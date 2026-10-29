@@ -1,87 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Template
+# "./OpenProblemLibrary/PCC/BasicMath/FractionPercentDecimal/DecimalToFraction10.pg"
 #
-# Change decimal to fraction. Decimals are like 0.2, 0.02, 0.002.
-# 
-# Last updated: Yao, 10/19/2013
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('')
-## KEYWORDS('decimal','fraction','convert')
-## DBCCSS('4.NF')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao')
-## Institution('PCC')
-
-##############################################
-
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-  "contextFraction.pl",
-  "PCCmacros.pl",
-);
-
-##############################################
-
-Context("LimitedFraction");
-
-do {$int=random(2,8,1);} until (gcd($int,1000)!=1);
-
-$dec1 = $int/10;
-$dec2 = $int/100;
-$dec3 = $int/1000;
-
-$dec1Word = numberWord($int).' tenths';
-$dec2Word = numberWord($int).' hundredths';
-$dec3Word = numberWord($int).' thousandths';
-
-$frac1 = Fraction($int,10);
-$frac2 = Fraction($int,100);
-$frac3 = Fraction($int,1000);
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Change the following decimals to fractions:
-
-a.    [`[$dec1]`] = [___________]{$frac1}
-
-a.    [`[$dec2]`] = [___________]{$frac2}
-
-a.    [`[$dec3]`] = [___________]{$frac3}
-
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-a.    [`[$dec1]`] is read as [$dec1Word], so it can be written as [`\frac{[$int]}{10}`], which can be reduced to [`[$frac1]`].
-
-a.    [`[$dec2]`] is read as [$dec2Word], so it can be written as [`\frac{[$int]}{100}`], which can be reduced to [`[$frac2]`].
-
-a.    [`[$dec3]`] is read as [$dec3Word], so it can be written as [`\frac{[$int]}{1000}`], which can be reduced to [`[$frac3]`].
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicMath/FractionPercentDecimal/DecimalToFraction10.pg");
 ENDDOCUMENT();
-
-

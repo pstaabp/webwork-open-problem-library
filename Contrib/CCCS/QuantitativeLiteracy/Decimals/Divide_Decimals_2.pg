@@ -1,78 +1,17 @@
-## DESCRIPTION
-## Elementary Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/AlgebraicLiteracy/Decimals/Divide_Decimals_2.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Elementary Algebra)
-## DBchapter()
-## DBsection()
-## Date(06/13/2018)
-## Institution(Red Rocks Community College)
-## Author(Craig Faulhaber)
-## MO(1)
-## KEYWORDS('elementary algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGgraphmacros.pl",
-  "PGcourse.pl",
-  "fixedPrecision.pl",
-);
-
-##############################################
-
-#Divide two decimals. Round to the hundredths place
-
-Context("LimitedNumeric");
-Context()->{format}{number} = "%.2f";
-
-Context()->flags->set(
-
-  tolerance => 0.005,
-
-  tolType => "absolute",
-
-);
-
-$a = random(1001,9999);
-$b = random(2,9);
-
-#$answer = ($a/1000)/($b/100);
-#$ans = FixedPrecision($answer,2);
-
-$ans = ($a/1000)/($b/100);
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Divide without using a calculator. Round your answer to the nearest hundredth:
-
-[` [$a/1000] \div [$b/100]  = `]  [________]{$ans} 
-
- 
-END_PGML
-
-##############################################
-
-
-
-BEGIN_PGML_SOLUTION
-
-END_PGML_SOLUTION
-
+includePGproblem("./Contrib/CCCS/AlgebraicLiteracy/Decimals/Divide_Decimals_2.pg");
 ENDDOCUMENT();
-
-
-
-

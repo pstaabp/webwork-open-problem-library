@@ -1,71 +1,17 @@
-## DESCRIPTION
-## College Algebra
-## ENDDESCRIPTION
- 
- 
-## DBsubject(Algebra)
-## DBchapter(Exponential and logarithmic expressions and functions)
-## DBsection(Exponential and logarithmic equations)
-## Date(6/21/2017)
-## Institution(Community College of Denver)
-## Author(Michael Sulock)
-## MO(1)
-## KEYWORDS('college algebra')
- 
- 
-###########################
-#  Initialization
- 
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/PreCalculus/6.3/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_3_35.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
+
 DOCUMENT();
- 
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"contextLimitedPoint.pl",
-"parserOneOf.pl",
-"parserMultiAnswer.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
- 
-TEXT(beginproblem());
-
- 
-###########################
-#  Setup
-Context("Numeric");
-
-
-$exponent = non_zero_random(2, 8, 1);
- 
-# The two sides of the correct answer
-$ans=Formula("e^$exponent");
- 
- 
-###########################
-#  Main text
- 
-BEGIN_PGML
-
-
-Solve for [`x`] by converting the logarithmic equation to exponential form. 
-
- [`\ln(x) = [$exponent] `] 
- 
- [`x =`] [____]{$ans} [@ AnswerFormatHelp("numbers") @]*
-  
-END_PGML
- 
-
-
-############################
-#  Solution
- 
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
- 
-COMMENT('MathObject version. Uses PGML.');
- 
+includePGproblem("./Contrib/CCCS/PreCalculus/6.3/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_3_35.pg");
 ENDDOCUMENT();

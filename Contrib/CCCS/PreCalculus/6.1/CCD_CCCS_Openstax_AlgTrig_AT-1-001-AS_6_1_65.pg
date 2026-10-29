@@ -1,78 +1,17 @@
-## DESCRIPTION
-## Algebra, exponential function
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/6.1/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_1_65.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Algebra)
-## DBchapter(Exponential and logarithmic expressions and functions)
-## DBsection(Applications and models - general)
-## Date(06/16/2017)
-## Institution(Colorado Community College System)
-## Author(James Morski)
-## MO(1)
-## KEYWORDS(algebra, exponential function)
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"contextFraction.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGcourse.pl",
-"contextCurrency.pl",
-);
-
-TEXT(beginproblem());
-
-$showPartialCorrectAnswers = 1;
-
-
-###########################
-#  Setup
-
-Context("Numeric");
-
-
-$a=random(5,9,.1);
-$b=random(3,10);
-$c=random(30000,60000,1000);
-$name = list_random(James, Michael, Steven, Adam, Craig);
-
-$formula=Compute("$c/(1+(($a*.01)/365))^(365*$b)");
-$ans =Compute("$formula") ;
-
-Context("Currency");
-$c= Currency($c);
-
-
-$formula=Compute("$c/(1+(($a*.01)/365))^(365*$b)");
-$ans =Compute("$formula") ;
-
-###########################
-#  Main text
-
-BEGIN_PGML
-
-[$name] wants to save [$c] for a down payment on a home.  How much will he need to invest in an account with [$a]% APR, compounding daily, in order to reach his goal in [$b] years?  Round the answer to the nearest cent.  Also, include a dollar sign ($).
-
-[_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
-
-
-END_PGML
-
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-
-#END_PGML_SOLUTION
-
-
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/6.1/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_1_65.pg");
 ENDDOCUMENT();

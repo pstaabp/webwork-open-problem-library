@@ -1,67 +1,17 @@
-## DESCRIPTION
-## Elementary Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/AlgebraicLiteracy/Decimals/Adding_Decimals_1.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Elementary Algebra)
-## DBchapter()
-## DBsection()
-## Date(06/13/2018)
-## Institution(Red Rocks Community College)
-## Author(Craig Faulhaber)
-## MO(1)
-## KEYWORDS('elementary algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGgraphmacros.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-#adding positive decimals of the form .12 + 3.45
-
-Context("LimitedNumeric");
-Context()->noreduce('x+(-y)');
-
-$a = random(11,99);
-$b = random(101,999);
-
-$ans = $a/100 + $b/100;
-
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Add the following decimals without using a calculator:
-
-[` [$a/100]+[$b/100]= `]  [________]{$ans} 
-
- 
-END_PGML
-
-##############################################
-
-
-
-BEGIN_PGML_SOLUTION
-
-END_PGML_SOLUTION
-
+includePGproblem("./Contrib/CCCS/AlgebraicLiteracy/Decimals/Adding_Decimals_1.pg");
 ENDDOCUMENT();
-
-
-
-

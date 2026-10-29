@@ -1,94 +1,17 @@
-## DESCRIPTION
-## College Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/AlgebraicLiteracy/IA_4.1/OpenStax_IA_4.1_44.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Algebra)
-## DBchapter(Systems of equations and inequalities)
-## DBsection(Linear systems)
-## Date(07/05/2017)
-## Institution(Red Rocks Community College, Colorado Community College System)
-## Author(Brenda Forland, edited for 055 Martha Stevens 6/2019)
-## MO(1)
-## KEYWORDS('college algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"contextLimitedPoint.pl",
-"PGML.pl",
-"PGcourse.pl",
-"parserRadioButtons.pl",
-"parserMultiAnswer.pl",
-);
-
-TEXT(beginproblem());
-
-$showPartialCorrectAnswers = 1;
-
-
-###########################
-#  Setup
-
-Context("LimitedPoint");
-
-$a = non_zero_random(-5,5,1);
-$b = non_zero_random(-5,5,1);
-$c = non_zero_random(-5,5,1);
-$d = non_zero_random(-5,-2,1);
-$mult = non_zero_random(1,5,1);
-$multc = $c*$mult;
-
-Context()->variables->add(y => 'Real');
-Context()->noreduce('(-x)-y','(-x)+y');
-$f = Formula("$a*x+$b*y")->reduce;
-$g = Formula("$d*$a*x+$d*$b*y")->reduce;
-
-
-$radio = RadioButtons(
-  ["There is one solution at","There is no solution","There are infinitely many solutions"],
-  "There is no solution", # correct answer
-last => ["There is one solution at"], # can be a list
-);
-
-$ans = String("");
-
-
-
-###########################
-#  Main text
-
-BEGIN_PGML
-Solve the system using the substitution method.  
-
->>[` [$f]  = [$c]  `]<<  
->>[` [$g] = [$multc] `]<<
-
- 
-Select the number of solutions.  If there is one solution, enter it as a point (a, b), in the answer blank.
-
-[___]{$radio}
-[___]{$ans}
-
-END_PGML
-
-
-############################
-
-#  Solution
-
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/AlgebraicLiteracy/IA_4.1/OpenStax_IA_4.1_44.pg");
 ENDDOCUMENT();

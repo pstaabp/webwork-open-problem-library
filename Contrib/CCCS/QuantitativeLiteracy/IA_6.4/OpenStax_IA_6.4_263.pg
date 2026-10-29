@@ -1,74 +1,17 @@
-#Factor by grouping that contains a difference of squares
+# This file is just a pointer to the file
 #
-# ENDDESCRIPTION
+# "./Contrib/CCCS/AlgebraicLiteracy/IA_6.4/OpenStax_IA_6.4_263.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject(Algebra)
-## DBchapter(Factoring)
-## DBsection(Factoring: special forms)
-## Institution(Red Rocks Community College)
-## Author(Martha Stevens)
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
-
-##############################################
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PCCmacros.pl",
-  "contextLimitedFactor.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("LimitedFactor");
-Context()->noreduce('(-x)-y','(-x)+y');
-
-Context()->strings->add("cannot be factored"=>{},
-    "cannot be factored."=>{alias=>"cannot be factored"});
-Context()->strings->add('prime'=>{}, 'it is prime'=>{alias=>'prime'});
-Context()->noreduce('(-x)-y', '(-x)+y'); 
-
-# the coefficients
-$a = random(2, 6);
-$b = non_zero_random(-5, 5);
-
-
-$question = Formula("x^3 + $b*x^2 - $a**2*x - $a**2*$b")->reduce;
-$ans = Formula("(x + $a)(x - $a)(x + $b)")->reduce;
-
-#For Solution
-$asq = $a**2;
-
-
-##############################################
-TEXT(beginproblem());
-
-BEGIN_PGML
-Factor the given polynomial 
-
-    [`[$question]=`] [___________________]{$ans}
-
-If the expression cannot be factored then answer with *prime*.
-
-END_PGML
-
-
-
-BEGIN_PGML_SOLUTION
-There is no GCF and four terms--factor by grouping:
-
-[`x^2(x + [$b]) - [$asq](x + [$b])`]
-
-[`(x + [$b])(x^2 - [$asq])`]
-
-We can factor further since [`x^2 - [$asq]`] is a difference of perfect squares.
-
-[`(x + [$b])(x + [$a])(x - [$a])`]
-
-END_PGML_SOLUTION
-##############################################
-
+includePGproblem("./Contrib/CCCS/AlgebraicLiteracy/IA_6.4/OpenStax_IA_6.4_263.pg");
 ENDDOCUMENT();

@@ -1,67 +1,17 @@
-##DESCRIPTION
+# This file is just a pointer to the file
 #
-# File Created: 5/29/2008
-# Last Modified: 5/29/2008
-# Problem Author: Juan Marin, Jr
-# WeBWorK Entry: Victoria Sweetser
-# Location: Alfred University
+# "./Contrib/AlfredUniv/gateway/calcI/chain/prob8.pg"
 #
-##ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-##KEYWORDS('Derivative','Polynomial', 'Logarithm')
-##
-## DBsubject('Calculus')
-## DBchapter('Differentiation')
-## DBsection('Gateway')
-## Date('5/29/2008')
-## Author('Juan Marin')
-## Institution('Alfred University')
-## TitleText1('Calculus: with Early Transcendentals')
-## EditionText1('8')
-## AuthorText1('Anton')
-## Section1('3.3')
-## Problem1('1')
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-# Load whatever macros you need for the problem
-loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl",
-  "PGgraphmacros.pl",
-  "MathObjects.pl",
-  "PGcourse.pl"
-);
- 
-## Show partial correct answers
-$showPartialCorrectAnswers = 1;
-## Display the problem information
-#TEXT(beginproblem());
-
-## Declare Variables
-Context()->variables->are(x=>'Real');
-
-## Function Definition
-$a0 = non_zero_random(-10,10);
-$a1 = random(2,9);
-
-
-$f = Formula("ln($a0*x^2+$a1*x)")->reduce;
-$df = $f->D('x');
-
-Context()->texStrings;
-BEGIN_TEXT
-
-$BR
-Find \(\>dy/dx\>\) if  \(\>y = $f\).
-$BR
-$BR
-$BR
-\(\>dy/dx\> =\) \{ans_rule(80)\}
-
-END_TEXT
-Context()->normalStrings;
-ANS($df->cmp);
-
-
+includePGproblem("./Contrib/AlfredUniv/gateway/calcI/chain/prob8.pg");
 ENDDOCUMENT();

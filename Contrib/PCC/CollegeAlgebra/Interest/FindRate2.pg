@@ -1,77 +1,17 @@
-# WeBWorK problem written by Alex Jordan 
-# Portland Community College
-# ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/CollegeAlgebra/Interest/FindRate2.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Exponential')
-## KEYWORDS()
-## TitleText1()
-## EditionText1()
-## AuthorText1()
-## Section1()
-## Problem1()
-## Author('Alex Jordan')
-## Institution('PCC')
-
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-
-);
-
-
-TEXT(beginproblem());
-
-##############################################
-
-
-Context("Numeric");
-
-
-
-$multiYearRate = random(20,40,1);
-$time = random(4,10,1);
-
-$r = ((1+$multiYearRate/100)**(1/$time)-1)*100;
-
-
-
-
-##############################################
-
-Context()->texStrings;
-
-BEGIN_TEXT
-
-An investment grows by $multiYearRate$PERCENT over a $time-year period.  What is its effective annual interest rate?
-
-$PAR
-
-$SPACE $SPACE $SPACE \{ans_rule(4)\}$PERCENT
-
-
-
-
-END_TEXT
-
-Context()->normalStrings;
-
-##############################################
-
-$showPartialCorrectAnswers = 1;
-
-Context("Numeric");
-Context()->flags->set(tolType=>absolute,tolerance=>0.05);
-
-
-
-ANS( Compute($r)->cmp() );
-
+includePGproblem("./OpenProblemLibrary/PCC/CollegeAlgebra/Interest/FindRate2.pg");
 ENDDOCUMENT();

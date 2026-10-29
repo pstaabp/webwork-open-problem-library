@@ -1,85 +1,17 @@
-## DESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/3.5/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_3_5_13.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
 ## 
-## ENDDESCRIPTION
-
-## DBsubject(Algebra)
-## DBchapter(Transformations of functions and graphs)
-## DBsection(Shifts: vertical and horizontal)
-## Date(05/28/2017)
-## Institution(Red Rocks Community College, Colorado Community College System)
-## Author(Brenda Forland)
-## MO(1)
-## KEYWORDS('algebra'])
-
-###########################
-#  Initialization
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserRadioButtons.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-
-
-###########################
-#  Setup
-
-Context("Numeric");
-$a=random(2,10,1);
-do { $b = random(2,10,1); } until ( $b != $a );
-
-$radio1 = RadioButtons(
-  ["left $a units","right $a units", "up $a units", "down $a units"],
-  "left $a units", # correct answer
-  last => ["down $a units"], # can be a list
-);
-
-$radio2 = RadioButtons(
-  ["left $a units and up $b units","right $a units and up $b units", "left $a units and down $b units", "right $a units and down $b units"],
-  "left $a units and up $b units", # correct answer
-  last => ["right $a units and down $b units"], # can be a list
-);
-###########################
-#  Main text
-
-BEGIN_PGML
-Describe how the given equation represents a transformation of the function [`f(x)`]:
-
-+ [`y=f(x+[$a])`] 
-
-              [@ $radio1->buttons() @]*  
-
-
-+ [`y=f(x+[$a])+[$b]`] 
-
-              [@ $radio2->buttons() @]* 
-
-
-END_PGML
-
-############################
-#  Answer evaluation
-
-install_problem_grader(~~&std_problem_grader);
-
-$showPartialCorrectAnswers = 0;
-
-ANS( $radio1->cmp() );
-ANS( $radio2->cmp() );
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#The correct answer is [$radio->correct_ans()].
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/3.5/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_3_5_13.pg");
 ENDDOCUMENT();

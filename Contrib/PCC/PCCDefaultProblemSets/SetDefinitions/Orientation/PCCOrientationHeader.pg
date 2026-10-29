@@ -1,14 +1,17 @@
-DOCUMENT();        # This should be the first executable line in the problem.
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/PCCDefaultProblemSets/SetDefinitions/Orientation/PCCOrientationHeader.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-loadMacros(
-  "PGstandard.pl",
-  "PGML.pl",
-);
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
-BEGIN_PGML
-This set of exercises is designed to orient you to WeBWorK. You will learn
-how to enter answers to math problems, and you will learn how to use WeBWorK
-feedback and tools to help you as you go.
-END_PGML
-
-ENDDOCUMENT();        # This should be the last executable line in the problem.
+DOCUMENT();
+includePGproblem("./OpenProblemLibrary/PCC/PCCDefaultProblemSets/SetDefinitions/Orientation/PCCOrientationHeader.pg");
+ENDDOCUMENT();

@@ -1,70 +1,17 @@
-## DESCRIPTION
-## ENTER DESCRIPTION HERE
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/BrockPhysics/College_Physics_Urone/5.Friction_Drag_and_Elasticity/5-01.Friction/NU_U17_05_01_017/.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject(Mechanics)
-## DBchapter(Friction, Drag and Elasticity)
-## DBsection(Friction)
-## Date(November 2017)
-## Institution(Brock University)
-## Author(Caroline Promnitz)
-## Edited (Connor Wilson, May 1, 2018)
-## TitleText1('College Physics')
-## AuthorText1('Urone et. al')
-## EditionText1('2017')
-## Section1('5.1')
-## Problem1('17')
-## KEYWORDS(Acceleration, Applied, Friction, Law, Mass, Motion, Newton)
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-loadMacros( "PGbasicmacros.pl",
-                     "MathObjects.pl",
-                     "BrockPhysicsMacros.pl",
-	             "PGauxiliaryFunctions.pl",
-	             "PGchoicemacros.pl",
-	             "PGanswermacros.pl",
-                     "PG_CAPAmacros.pl"
-);
-
-TEXT(beginproblem());
-
-# Show which answers are correct and which ones are incorrect
-$showPartialCorrectAnswers = 1;
-
-##############################################################
-#
-#  Setup
-#
-#
-Context("Numeric");
-
-$pi = Real("pi");
-
-##############################################################
-#
-#  Text
-#
-#
-
-Context()->texStrings;
-BEGIN_TEXT
-
-
-Enter a value for \(\pi\)
-
-\{$pi->ans_rule\}
-END_TEXT
-Context()->normalStrings;
-
-##############################################################
-#
-#  Answers
-#
-#
-
-ANS($pi->with(tolerance=>.0001)->cmp);
-# relative tolerance --3.1412 is incorrect but 3.1413 is correct
-# default tolerance is .01 or one percent.
-
-
-ENDDOCUMENT();        
+includePGproblem("./Contrib/BrockPhysics/College_Physics_Urone/5.Friction_Drag_and_Elasticity/5-01.Friction/NU_U17_05_01_017/.pg");
+ENDDOCUMENT();

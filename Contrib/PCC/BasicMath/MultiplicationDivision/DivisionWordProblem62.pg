@@ -1,81 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Division word problem.
+# "./OpenProblemLibrary/PCC/BasicMath/MultiplicationDivision/DivisionWordProblem62.pg"
 #
-# Last edited: Yao 10/8/13
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Elementary School')
-## DBchapter('')
-## DBsection('')
-## KEYWORDS('division','application')
-## DBCCSS('3.OA','4.OA')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao')
-## Institution('PCC')
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-  "PCCmacros.pl",
-  "parserNumberWithUnits.pl",
-);
-
-##############################################
-
-Context("LimitedNumeric");
-
-$rate= random(30,50,1);
-$minutes = random(20,50,1);
-$total = $rate*$minutes;
-
-$rateU = NumberWithUnits("$rate L/min");
-$minutesU = NumberWithUnits("$minutes min");
-$totalU = NumberWithUnits("$total L");
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-A tank drains [`[$rate]`] liters of water per minute. How many minutes does it take to drain [`[$totalU]`] (liters) of water?
-
-It takes [____________]{$minutesU} to drain [`[$totalU]`] of water.
-
-Use *L* for liters, *min* for minutes, and *L/min* for liters per minute.
-
-END_PGML
-
-#############################################
-
-BEGIN_PGML_SOLUTION
-
-We can address this problem as "repeatedly taking away [`[$rate]`] liters of water from [`[$total]`] liters," which implies a division problem:
-
-    [`` [$total] \div [$rate] = [$minutes] ``]
-
-It takes [`[$minutesU]`] to drain [`[$totalU]`] of water.
-
-We should get used to using the fraction line instead of the division symbol:
-
-    [`` \frac{[$total]}{[$rate]}=[$minutes] ``]
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicMath/MultiplicationDivision/DivisionWordProblem62.pg");
 ENDDOCUMENT();
-
-

@@ -1,66 +1,17 @@
-## DESCRIPTION
-## Elementary Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/AlgebraicLiteracy/Percents/Convert_Percents_2.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Elementary Algebra)
-## DBchapter()
-## DBsection()
-## Date(06/15/2018)
-## Institution(Red Rocks Community College)
-## Author(Craig Faulhaber)
-## MO(1)
-## KEYWORDS('elementary algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGgraphmacros.pl",
-  "PGcourse.pl",
-  "AnswerFormatHelp.pl",
-);
-
-##############################################
-
-#Convert a one digit percent to a decimal.
-
-Context("LimitedNumeric");
-
-$a = random(1,9);
-
-$ans = $a/100;
-
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Convert the following percent to a decimal:
-
-[` [$a]%= `]  [________]{$ans} [@ AnswerFormatHelp("numeric") @]*
-
- 
-END_PGML
-
-##############################################
-
-
-
-BEGIN_PGML_SOLUTION
-
-END_PGML_SOLUTION
-
+includePGproblem("./Contrib/CCCS/AlgebraicLiteracy/Percents/Convert_Percents_2.pg");
 ENDDOCUMENT();
-
-
-
-

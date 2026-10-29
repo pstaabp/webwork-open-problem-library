@@ -1,93 +1,17 @@
-# WeBWorK problem written by Carl Yao, 2013
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Solve linear inequality, and write solution in both set notation 
-# and interval notation.
-# There is no solution.
+# "./OpenProblemLibrary/PCC/BasicAlgebra/LinearInequalities/backup/SolveSpecialInequality50.pg"
 #
-# Last updated: Kling, 7/24/13; Hughes 7/15/2013, Yao, 6/26/13
-# ENDDESCRIPTION
- 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Inequalities')
-## KEYWORDS('inequality','linear','set notation','interval notation','combine','no solution')
-## DBCCSS('7.EE.4','A-REI.3')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Alex Jordan, Carl Yao, Chris Hughes')
-## Institution('PCC')
- 
-##############################################
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PCCmacros.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("Interval");
-Context()->strings->add(
-  "no solution"=>{},
-  "no solutions"=>{alias=>'no solution'},
-  "none"=>{alias=>'no solution'},
-  "all real numbers"=>{},
-  "infinite number of solutions"=>{'all real numbers'},
-  "infinite"=>{alias=>'all real numbers'},
-  "infinite solutions"=>{alias=>'all real numbers'});
-
-$a=random(5,10,1);
-$b=random(5,10,1);
-$c=random(1,$a,1);
-$e=random(-$a+$c+1,20,1);
-$f=$b-1;
-
-$ans = Compute("no solution");
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Solve this inequality. [@KeyboardInstructions(q!Answer using interval notation. If there is no solution, you may enter [|no solution|]*. If the solution set is all real numbers, you may enter [|(-inf,inf)|]* or [|all real numbers|]*.!)@]**
-
-    [`` -[$a]-[$b]z+[$c] > -z+[$e]-[$f]z ``]
-
-    [_____________]{$ans->cmp(typeMatch=>Interval("(0,1)"))} 
-
-END_PGML
-
-##############################################
-
-$s1 = abs(-$a+$c);
-$s2 = $e+$s1;
-
-BEGIN_PGML_SOLUTION
-
-[`
-\begin{aligned}
- -[$a]-[$b]z+[$c]   &> -z+[$e]-[$f]z \\
- (-[$a]+[$c])-[$b]z &> (-1-[$f])z+[$e] \\
- (-[$a]+[$c])-[$b]z &> (-1-[$f])z+[$e] \\
-  -[$s1]     -[$b]z &> -[$b]z+[$e] \\
-  -[$s1]-[$b]z\mathbf{{}+[$b]z+[$s1]} &> -[$b]z+[$e]\mathbf{{}+[$b]z+[$s1]} \\
-  0                 &> [$s2]
-\end{aligned}
-`]
-
-Since [`0 > [$s2] `] is not true, this inequality has *no solution*.
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicAlgebra/LinearInequalities/backup/SolveSpecialInequality50.pg");
 ENDDOCUMENT();
-

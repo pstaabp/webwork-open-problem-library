@@ -1,60 +1,17 @@
-##BMCC
-##MATH0301
-##Calculus
-
-########################################################################
-
-DOCUMENT();      
-
-loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   "PGML.pl",
-   "contextInequalities.pl",
-   "PGgraphmacros.pl",
-   "contextFraction.pl",
-   "scaffold.pl",
-   "contextLimitedPolynomial.pl",
-    "parserRadioButtons.pl"
-);
-
-# Print problem number and point value (weight) for the problem
-TEXT(beginproblem());
-
-# Show which answers are correct and which ones are incorrect
-$showPartialCorrectAnswers = 1;
-##############################################################
+# This file is just a pointer to the file
 #
-#  Setup
+# "./Contrib/CUNY/BMCC/CALC1/Sums/03.pg"
 #
-#
-Context("Numeric");
-Context()->variables->add(n => 'Real');
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-$ANS1=Formula("n**2*(n+1)**2/(4*n**4)")->reduce;
-$ANS2=1/4;
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
-##############################################################
-#
-#  Text
-#
-#
-BEGIN_PGML
-Consider the sum.
-
-
-[`` \sum_{k=1}^{n}\frac{k^3}{n^4}``]
-
-
-Write a formula to compute the sum for any natural number [`n`].
-
-
-Answer:[________________________________________]{$ANS1}
-
-
-Compute the limit.
-
-
-[`` \lim_{n\to\infty}\sum_{k=1}^{n}\frac{k^3}{n^4}=``][________________________________________]{$ANS2}
-END_PGML
-ENDDOCUMENT();        
+DOCUMENT();
+includePGproblem("./Contrib/CUNY/BMCC/CALC1/Sums/03.pg");
+ENDDOCUMENT();

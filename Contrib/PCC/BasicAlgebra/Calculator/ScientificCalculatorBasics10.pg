@@ -1,81 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Teaching basics of using a scientific calculator.
-# Differentiate between minus sign and negative sign.
+# "./OpenProblemLibrary/PCC/BasicAlgebra/Calculator/ScientificCalculatorBasics10.pg"
 #
-# Last edited: Yao 11/10/17
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Algebraic Expressions')
-## KEYWORDS('calculator')
-## DBCCSS('')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao')
-## Institution('PCC')
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PCCmacros.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("LimitedNumeric");
-
-$a=random(1,5,1);
-$b=random(1,5,1);
-$ans=-$a-$b;
-
-
-##############################################
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-The purpose of this problem is to differentiate between the negative symbol and the subtraction symbol.
-
-Use a scientific calculator to evaluate this expression:
-
-    [`` -[$a]-[$b] ``] = [__________]{$ans}
-
-END_PGML
-
-##############################################
-
-$wrong = $a*$b;
-
-BEGIN_PGML_SOLUTION
-
-On your scientific calculator, there is a button for the subtraction symbol, and another button for the negative symbol. They are different!
-
-For this problem, we should first use the negative symbol to input [`-[$a]`], and then use the subtraction symbol for [`-[$b]`]: 
-
-    [``^{-}[$a]-[$b]``]
-
-and we would get the correct answer, [`[$ans]`].
-
-If you use the subtraction symbol for [`-[$a]`], most likely, the calculator will assume you will subtract something from the last answer, and either "ans" or "ans(1)" would automatically pop up in the input line, even though you don't need it.
-
-Now, use the negative symbol for both symbols: [` ^{-}[$a]^{-}[$b] `]. The calculator would interpret this expression as [`(-[$a])\cdot(-[$b]) `], and we would get [`[$wrong]`].
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicAlgebra/Calculator/ScientificCalculatorBasics10.pg");
 ENDDOCUMENT();
-
-

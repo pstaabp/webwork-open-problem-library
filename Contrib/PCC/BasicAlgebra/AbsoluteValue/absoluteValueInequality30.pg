@@ -1,86 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Solve absolute value inequality like |x|>-2
+# "./OpenProblemLibrary/PCC/BasicAlgebra/AbsoluteValue/absoluteValueInequality30.pg"
 #
-# Last edited by Carl Yao 07/30/2014
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Inequalities')
-## KEYWORDS('linear','inequality', 'number line','absolute value','interval notation')
-## DBCCSS('7.EE.4')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Alex Jordan, Carl Yao, Chris Hughes')
-## Institution('PCC')
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGgraphmacros.pl",
-#  "PCCgraphMacros.pl",
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-#  "parserPopUp.pl",
-#  "contextInequalitySetBuilder.pl",
-  "PCCmacros.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-TEXT(beginproblem());
-
-
-Context("Numeric");
-#$reach is the maximum value shown on the graph.
-$reach = 7;
-
-$func = Compute("x");
-$symbol = (random(-1,1,2)>0) ? '>' : '\geq';
-$a = random(-$reach+2,-1,1);
-$right = Compute("$a");
-
-Context("Interval");
-Context()->flags->set("formatStudentAnswer"=>'parsed');
-$ans = Compute("(-inf, inf)");
-
-Context("Numeric");
-
-##############################################
-
-
-
-BEGIN_PGML
-
-Solve this inequality, and write your answer in *interval notation*.
-
-    [`` | [$func] | [$symbol] [$right] ``]
-
-[@KeyboardInstructions(q!Please type [|INF|]* for [`\infty`], [|U|]* for the union symbol [`\cup`], and [|no solution|]* if there are no real solutions.!)@]**
-
-    [__________________________________]{$ans}
-
-
-END_PGML
-
-
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-Since the absolute value of a number is always positive or [`0`], the solution of [` | [$func] | [$symbol] [$right] `] is [`[$ans]`].
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicAlgebra/AbsoluteValue/absoluteValueInequality30.pg");
 ENDDOCUMENT();
-

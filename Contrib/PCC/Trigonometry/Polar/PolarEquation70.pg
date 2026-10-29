@@ -1,91 +1,17 @@
-# DESCRIPTION
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# ENDDESCRIPTION
+# "./OpenProblemLibrary/PCC/Trigonometry/Polar/PolarEquation70.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('')
-## DBchapter('')
-## DBsection('')
-## KEYWORDS('')
-## DBCCSS('')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao','Alex Jordan')
-## Institution('PCC')
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PCCmacros.pl",
-  "PGML.pl",
-  "parserAssignment.pl",
-  "parserImplicitPlane.pl",
-  "specialTrigValues.pl",
-  "PGcourse.pl",
-);
-$refreshCachedImages=1;
-TEXT(beginproblem());
-
-$m = non_zero_random(-10,10,1);
-$b = non_zero_random(-10,10,1);
-
-Context("Numeric");
-Context()->variables->add(y=>"Real");
-parser::Assignment->Allow;
-$ansShow = Compute("y=$m*x+$b")->reduce;
-
-Context("ImplicitPlane");
-Context()->variables->add(r=>"Real");
-Context()->variables->add(t=>['Real',TeX=>'\theta']);
-Context()->noreduce("(-x)-y","(-x)+y");
-$left = Compute("r");
-$right = Compute("$b/(sin(t)-$m*cos(t))")->reduce;
-
-$ans = ImplicitPlane("y=$m*x+$b")->reduce;
-
-##############################################
-
-BEGIN_PGML
-
-Convert polar equation [`[$left]=[$right]`] to Cartesian equation.
-
-    Cartesian equation: [______________________]{$ans->cmp(correct_ans_latex_string=> $ansShow->TeX)}
-
-END_PGML
-
-##############################################
-
-$s1 = Compute("y-$m*x")->reduce;
-$s2 = Compute("r*sin(t)-$m*r*cos(t)")->reduce;
-$s3 = Compute("r*(sin(t)-$m*cos(t))")->reduce;
-$s4 = Compute("$m*x+$b")->reduce;
-
-BEGIN_PGML_SOLUTION
-
-To convert between Cartesian equation and polar equation, use the following formulas:
-
-    [``\begin{aligned}
-  r^2 &= x^2+y^2 \\
-  x &= r\cos(\theta) \\
-  y &= r\sin(\theta)
-    \end{aligned}``]
-
-We have:
-
-    [``\begin{aligned}
-  [$left] &= [$right] \\
-  [$s3] &= [$b] \\
-  [$s2]  &= [$b] \\
-  [$s1] &= [$b] \\
-  y &= [$s4]
-    \end{aligned}``]
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/Trigonometry/Polar/PolarEquation70.pg");
 ENDDOCUMENT();

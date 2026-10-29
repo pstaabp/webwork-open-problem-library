@@ -1,70 +1,17 @@
-# WeBWorK problem written by Alex Jordan 
-# Portland Community College
-# ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/Math95/ParabolaVertex/ParabolaVertex3.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "contextFraction.pl",  
-
-);
-
-TEXT(beginproblem());
-
-##############################################
-
-Context("Fraction");
-
-$a = non_zero_random(-10,10,1);
-$h = non_zero_random(-10,10,1);
-$k = non_zero_random(-10,10,1);
-
-Context()->noreduce('(-x)-y','(-x)+y');
-$f = Formula("$a (x-$h)^2+$k")->reduce;
-
-
-
-Context("Point");
-Context()->flags->set(reduceConstants=>0);
-
-$v = Compute("($h,$k)");
-
-
-
-##############################################
-
-
-
-Context()->texStrings;
-
-BEGIN_TEXT
-
-Find the vertex of the graph of \(y=$f \).
-
-$PAR
-
-
-
-$SPACE $SPACE $SPACE \{ans_rule(20)\}
-
-
-
-END_TEXT
-
-Context()->normalStrings;
-
-##############################################
-
-ANS( $v->cmp());
-
-
-
-
-
+includePGproblem("./OpenProblemLibrary/PCC/Math95/ParabolaVertex/ParabolaVertex3.pg");
 ENDDOCUMENT();

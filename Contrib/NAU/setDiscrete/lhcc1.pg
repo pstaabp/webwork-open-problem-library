@@ -1,81 +1,17 @@
-##DESCRIPTION
-##  Combinatorics: Recurrence relations.
-##ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/NAU/setDiscrete/lhcc1.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## Author1('Monika Keindl')
-## Author2('Terry Blows')
-## DBsubject(Combinatorics)
-## DBchapter(Recurrence relations)
-## DBsection(Solving homogeneous)
-## Date(December 2018)
-## Institution(Northern Arizona University)
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGcourse.pl",
-);
-
-TEXT(beginproblem());
-
-# Show which answers are correct and which ones are incorrect
-$showPartialCorrectAnswers = 1;
-
-##############################################################
-#
-#  Setup
-#
-
-Context("Numeric");
-
-{
-$x = non_zero_random(-7,7,1);
-$y = non_zero_random(-7,7,1);
-redo if ($x==$y );
-}
-
-$answer1 = Compute("$x+2*$y");
-$answer2 = Compute("-(2*$x * $y+($y)^2)");
-$answer3 = Compute("$x*($y)^2");
-
-
-##############################################################
-#
-#  Text
-#
-
-Context()->texStrings;
-BEGIN_TEXT
-
-
-
-What linear, constant-coefficient homogeneous recurrence relation has its general solution given by:
-
-
-\[ a_n=\alpha_1($x)^n+\alpha_2($y)^n+\alpha_3n($y)^n
-\]
-
-$PAR
-
-\( a_n = \) \{ans_rule(2)\} \(a_{n-1}+\)\{ans_rule(2)\}\(a_{n-2}+\)\{ans_rule(2)\}\(a_{n-3}\)
-
-
-
-END_TEXT
-Context()->normalStrings;
-
-
-##############################################################
-#
-#  Answers
-#
-
-ANS(Compute($answer1)->cmp);
-ANS(Compute($answer2)->cmp);
-ANS(Compute($answer3)->cmp);
-
-
-
+includePGproblem("./OpenProblemLibrary/NAU/setDiscrete/lhcc1.pg");
 ENDDOCUMENT();

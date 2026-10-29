@@ -1,111 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Template
+# "./OpenProblemLibrary/PCC/BasicMath/AdditionSubtraction/Addition20.pg"
 #
-# Basic addition problems
-# 
-# Last updated: Yao, 09/27/2016
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Algebraic Expressions')
-## KEYWORDS('evaluate','divide','zero')
-## DBCCSS('4.OA')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao')
-## Institution('PCC')
-
-##############################################
-
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "niceTables.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("LimitedNumeric");
-
-@a = ( );
-@b = ( );
-
-$num11 = 0;
-$num12 = 0; 
-for (my $i=0; $i<3; $i++) {
-   do {
-      $a[$i] = random(0,9,1);
-      $b[$i] = random(0,9,1);
-   } until ($a[$i]+$b[$i]<10);
-   $num11 += $a[$i]*10**$i;
-   $num12 += $b[$i]*10**$i;
-}
-$ans1 = $num11+$num12;
-
-do {
-   $num21 = random(101,999,1);
-   $num22 = random(101,999,1);
-   $ans2 = $num21+$num22;
-} until ($ans2>1000);
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Do the following additions without using a calculator.
-
-END_PGML
-
-Context()->texStrings;
-BEGIN_TEXT
-$PAR
-\{ 
-DataTable([[{data=>"",header=>"CH"},{data=>"",header=>"CH"},],
-["\( $num11\)","\( $num21\)"],
-["\( \underline{+$num12} \)","\( \underline{+$num22} \)"],
-[ans_rule(1),ans_rule(1)],
-], allcellcss=>"border:0px solid;", align=>rr);
-\}  
-
-$PAR
-END_TEXT
-Context()->normalStrings;
-
-ANS( Compute("$ans1") -> cmp);
-ANS( Compute("$ans2") -> cmp);
-
-##############################################
-
-Context()->texStrings;
-BEGIN_SOLUTION
-
-$PAR
-\{ 
-DataTable([[{data=>"",header=>"CH"},{data=>"",header=>"CH"},],
-["\( $num11\)","\( $num21\)"],
-["\( \underline{+$num12} \)","\( \underline{+$num22} \)"],
-["\( $ans1 \)","\( $ans2 \)"],
-], tablecss=>"border:0px solid;", align=>rr);
-\}  
-
-$PAR
-END_SOLUTION
-Context()->normalStrings;
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicMath/AdditionSubtraction/Addition20.pg");
 ENDDOCUMENT();
-
-

@@ -1,69 +1,17 @@
-## DESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/PreCalculus/09.5/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_9_5_100.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
 ## 
-## ENDDESCRIPTION
-
-
-## DBsubject(Trigonometry)
-## DBchapter(Analytic trigonometry)
-## DBsection(Solving trigonometric equations exactly)
-## Date(7/5/2018)
-## Institution(Red Rocks Community College, Colorado Community College System)
-## Author(Brenda Forland)
-## MO(1)
-## KEYWORDS('trigonometry')
-
-
-###########################
-#  Initialization
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGcourse.pl",
-"contextTrigDegrees.pl",
-);
-
-TEXT(beginproblem());
-
-###########################
-
-# Setup
-
-Context("TrigDegrees");
-
-$a = random(20,40,5);
-$b = random(55,85,1);
-
-$ans = Compute("arctan($a/$b)");
-
-Context()->flags->set(
-  tolerance => 0.05,
-  tolType => "absolute",
-);
-
-###########################
-#  Main text
-
-BEGIN_PGML
-A [`[$a]`] foot tall building has a shadow that is [`[$b]`] feet long. What is the angle of elevation of the sun? Round answer to the nearest tenth of a degree.
-
-
-[_________________]{$ans} [@ AnswerFormatHelp("angles") @]*
-
-END_PGML
-
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/PreCalculus/09.5/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_9_5_100.pg");
 ENDDOCUMENT();

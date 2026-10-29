@@ -1,65 +1,17 @@
-## DESCRIPTION
-## Algebra: fraction answer
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/6.1/RRCC_Openstax_Alg_Section6.1_Num6_64.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(WeBWorK)
-## DBchapter(WeBWorK tutorial)
-## DBsection(PGML tutorial 2015)
-## Date(06/01/2015)
-## Institution(Hope College)
-## Author(Paul Pearson)
-## MO(1)
-## KEYWORDS('algebra', 'fraction answer')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"contextFraction.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-
-$showPartialCorrectAnswers = 1;
-
-
-###########################
-#  Setup
-
-Context("Fraction-NoDecimals");
-
-$answer = Compute("3/2");
-
-
-###########################
-#  Main text
-
-BEGIN_PGML
-A car was valued at $38,000 in the year 2007. By 2013, the value had depreciated to $11,000. If the car's value continues to drop by the same percentage, what will it be worth by 2017?
-
-[_______________]{$answer}
-[@ AnswerFormatHelp("numbers") @]*  
-
-For more questions like this, go to section 6.1 numbers 61-68.
-END_PGML
-
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Factor and cancel to obtain [` \displaystyle [$answer]  `].
-#END_PGML_SOLUTION
-
-COMMENT('Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/6.1/RRCC_Openstax_Alg_Section6.1_Num6_64.pg");
 ENDDOCUMENT();

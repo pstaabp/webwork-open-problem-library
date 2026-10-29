@@ -1,73 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
-# ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/CollegeAlgebra/Logarithms/LogarithmCalculatorValue10.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Exponential')
-## KEYWORDS()
-## TitleText1()
-## EditionText1()
-## AuthorText1()
-## Section1()
-## Problem1()
-## Author('Carl Yao')
-## Institution('PCC')
-
-
-
-##############################################
-
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-TEXT(beginproblem());
-Context("Numeric");
-Context()->reduction->set('(-x)-y'=>0);
-Context()->reduction->set('(-x)+y'=>0);
-
-do {
-   $base = random(2,9,1);
-   $value = random(2,100,1);
-   $ex = ln($value)/ln($base);
-} until ($ex != int($ex));
-
-
-##############################################
-
-BEGIN_PGML
-
-Use a scientific calculator to find the value of the logarithm expression. Round your answer to four significant digits.
-
-    [`` \log_{[$base]}([$value])\approx``] [__________]{$ex}
-    
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-To use a scientific calculator to calculate the value of a logarithm with a base other than [`e`] and [`10`], we can use the change base formula:
-
-    [`` \log_{a}(M)=\frac{\log_{b}(M)}{\log_{b}(a)} ``]
-    
-For the given problem, we can change the base to either [`e`] or [`10`]:
-
-    [`` \log_{[$base]}([$value])=\frac{\ln([$value])}{\ln([$base])}\approx[$ex] ``]
-
-or
-
-    [`` \log_{[$base]}([$value])=\frac{\log([$value])}{\log([$base])}\approx[$ex] ``]
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/CollegeAlgebra/Logarithms/LogarithmCalculatorValue10.pg");
 ENDDOCUMENT();

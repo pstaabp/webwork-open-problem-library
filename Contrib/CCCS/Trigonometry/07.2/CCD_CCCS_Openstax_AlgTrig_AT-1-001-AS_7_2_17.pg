@@ -1,86 +1,17 @@
-## DESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/PreCalculus/07.2/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_7_2_17.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
 ## 
-## ENDDESCRIPTION
-
-
-## DBsubject(Trigonometry)
-## DBchapter(Triangle trigonometry)
-## DBsection(Sine, cosine, and tangent of an angle in a right triangle)
-## Date(6/11/2018)
-## Institution(Community College of Denver, Colorado Community College System)
-## Author(Michael Sulock)
-## MO(1)
-## KEYWORDS('college algebra')
-
-
-###########################
-#  Initialization
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"PGML.pl"
-);
-
-TEXT(beginproblem());
-
-###########################
-
-# Setup
-
-
-
-$a = random (3,14,1);
-
-
-do { $b = random(2, 14,1); } until ($b < $a);
-
-
-$c = Compute(sqrt($a**2+$b**2));
-
-$ans= Compute( "$a/$c");
-
-$video = MODES(
-HTML=> 
-'<iframe width="420" height="315" src="//www.youtube.com/embed/65_o6v56aT8" frameborder="0" allowfullscreen></iframe>', 
-TeX =>
-"An embedded YouTube video."
-);
-
-
-
-###########################
-#  Main text
-
-BEGIN_PGML
-
->>[@ image("07_2_Problem_6_Diagram.png", width=>796/2, height=>540/2)  @]*<<
-
-Use the above diagram to evaluate the following trigonometric function of angle [`A`] given [`a =[$a]`] and [`b= [$b]`] .
-
-
-sin [`(A)=`] [____________]{$ans}
-
-
-[$video]*
-END_PGML
-BEGIN_TEXT
-$BR
-
-If the video does not work, \{ htmlLink ("https://www.youtube.com/watch?v=65_o6v56aT8", "click here to watch on YouTube.", "TARGET='_blank'")\}
-$BR
-END_TEXT
-
-
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/PreCalculus/07.2/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_7_2_17.pg");
 ENDDOCUMENT();

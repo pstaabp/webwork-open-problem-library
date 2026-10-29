@@ -1,29 +1,17 @@
-##DESCRIPTION
-##  Statistics problem: parameter identification, hypothesis testing, p-values and interpretation
-##  This is just a skeleton - it randomly chooses one of four similar problems 
-##ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/UBC/STAT/Archive_old_questions/STAT200/hw10/hw10-q02.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-##KEYWORDS('statistics', 'statistical inference', 'hypothesis test', 'parameter identification', 'errors', 'p-values', 'interpretation')
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
-## DBsubject('Statistics')
-## DBchapter('Hypothesis Testing')
-## DBsection('One Sample - Means, Sigma not known')
-## Level(5)
-## Date('7/13/2012')
-## Author('Djun Kim')
-## Institution('UBC')
-
-
-########################################################################
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "PGcourse.pl"
-);
-$choice = random(0, 2, 1);
-@problems=('w13stat200/hw10/hw10-q02a.pg', 'w13stat200/hw10/hw10-q02b.pg', 'w13stat200/hw10/hw10-q02c.pg');
-$problem = $problems[$choice];
-
-
-includePGproblem($problem);
+includePGproblem("./Contrib/UBC/STAT/Archive_old_questions/STAT200/hw10/hw10-q02.pg");
 ENDDOCUMENT();

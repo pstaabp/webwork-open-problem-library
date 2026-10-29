@@ -1,45 +1,17 @@
-##DESCRIPTION
-## DBsubject('Statistics')
-## DBchapter('Sampling Distributions and the Central Limit Theorem')
-## DBsection('Central Limit Theorem')
-## KEYWORDS('central limit')
-## Author('N.Spencer Sitton')
-## Institution('NAU')
-##ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/Statistics/CentralLimitTheorem/central_limit_theorem2.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-# File Created: 06/20/05
-# Location: Northern Arizona University
-# Course: Qauntitative Reasoning
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
-DOCUMENT();     
-loadMacros("PGstandard.pl",  
-           "PGauxiliaryFunctions.pl",
-"MathObjects.pl",
-"contextPercent.pl",
-          
-);     
-
-TEXT(&beginproblem);
-
-$n = random( 50, 100, 1);
-$newn = random(2* $n, 300, 1 );
-$per = random( 20, 50, 1 );
-$p1 = $per +non_zero_random(-10,30,5);
-$psd = floor(100*sqrt($p1/100*(1-$p1/100)/$n));
-$job = list_random ( 'pave new parking lots', 'build a new math building', ' build a new recreation center',
-'build a new football stadium');
-
-$ans = $psd * sqrt($n/$newn ); 
-
-BEGIN_TEXT
-
-A poll of $n students found that $per$PERCENT were in favor of raising tuition to $job.
-The standard deviation of this poll is $psd$PERCENT. What would be the standard deviation
-if the sample size were increased from $n to $newn? $PAR
- \{ans_rule( 15 ) \}
-
-END_TEXT
-Context("Percent");
-ANS( Percent( $ans/100)->cmp );
-
-ENDDOCUMENT();      
+DOCUMENT();
+includePGproblem("./OpenProblemLibrary/PCC/Statistics/CentralLimitTheorem/central_limit_theorem2.pg");
+ENDDOCUMENT();

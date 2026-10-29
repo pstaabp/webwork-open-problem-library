@@ -1,80 +1,17 @@
-## DESCRIPTION
-##   Solve Equation with Absolute Value
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/Math95/AbsValueEquations/lh1-6_66.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## Tagged by nhamblet
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
-## DBsubject(Algebra)
-## DBchapter(Absolute value expressions and functions)
-## DBsection(Solving equations with absolute values)
-## Date(6/3/2002)
-## MLT(AbsVal1)
-## Level(2)
-## TitleText1('College Algebra')
-## AuthorText1('Stewart, Redlin, Watson')
-## EditionText1('3')
-## Section1('3.8')
-## Problem1('7')
-## KEYWORDS('Solve', 'Equation', 'Absolute Value','algebra', 'Other types of equations')
-
-DOCUMENT();        # This should be the first executable line in the problem.
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PCCmacros.pl",
-  "PGchoicemacros.pl",
-  "contextFraction.pl",
-  "contextFiniteSolutionSets.pl",
-  "PGcourse.pl"
-);
-
-TEXT(beginproblem());
-$showPartialCorrectAnswers = 1;
-
-$a=random(2,5,1);
-$b=non_zero_random(-4,4,1);
-$c=random(10,20,1);
-
-Context("Fraction");
-$ans1=Fraction(-$c-$b,$a);
-$ans2=Fraction($c-$b,$a);
-Context("FiniteSolutionSets");
-$answer = Formula("{$ans1,$ans2}");
-
-BEGIN_PGML
-
-Solve the equation.
-
-[``\left\lvert [$a] x ? {[$b]}\right\rvert =[$c] ``]
-
-[@KeyboardInstructions("If there are no solutions, you may type [|no solutions|]*.")@]**
-
-[__]{$answer}{width=>20}
-END_PGML
-
-###################################
-
-$cN = -$c;
-$d1 = $c - $b;
-$d2 = $cN - $b;
-
-BEGIN_PGML_SOLUTION
-
-    [``
-\begin{aligned}[t]
-   \left\lvert [$a] x ? {[$b]}\right\rvert &=[$c] \\
-   [$a] x ? {[$b]} &=[$c] &\text{ or }&& [$a] x ? {[$b]} &=[$cN] \\
-   [$a] x &=[$d1] &\text{ or }&& [$a] x &=[$d2] \\
-   r &= [$ans2] &\text{ or }&& r &= [$ans1] \\
-\end{aligned}
-    ``]
-
-The solutions are [`[$answer]`] in set notation.
-
-END_PGML_SOLUTION
-
-###################################
-
-ENDDOCUMENT();        # This should be the last executable line in the problem.
+DOCUMENT();
+includePGproblem("./OpenProblemLibrary/PCC/Math95/AbsValueEquations/lh1-6_66.pg");
+ENDDOCUMENT();

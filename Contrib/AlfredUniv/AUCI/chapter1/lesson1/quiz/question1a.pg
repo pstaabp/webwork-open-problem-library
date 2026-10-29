@@ -1,72 +1,17 @@
-# Last Modified: 5/15/2012
-# Problem Author: Darwyn Cook
-# WeBWorK Entry: 
-# Location: Alfred University
+# This file is just a pointer to the file
 #
-##ENDDESCRIPTION
+# "./Contrib/AlfredUniv/AUCI/chapter1/lesson1/quiz/question1.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-##KEYWORDS()
-##
-
-## DBsubject('Calculus')
-## DBchapter('Differentiation')
-## DBsection('Rates of Change')
-## Date('5/15/2012')
-## Author('Darwyn Cook')
-## Institution('Alfred University')
-## TitleText1('AUCI')
-## EditionText1('1')
-## AuthorText1('Cook' 'Frey' 'Petrillo')
-## Section1('1.1')
-## Problem1('1')
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-
-# Load whatever macros you need for the problem
-loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl",
-  "MathObjects.pl",
-  "parserPopUp.pl",
-  "PGcourse.pl"
-);
- 
-## Show partial correct answers
-$showPartialCorrectAnswers = 0;
-
-## Display the problem information
-TEXT(beginproblem());
-Context()->strings->add("?"=>{},"<"=>{},">"=>{},"="=>{});
-
-$blank = String("?");
-$less = String("<");
-$greater = String(">");
-$equal = String("=");
-
-$rateofchange = Compute(non_zero_random(-9,9));
-if($rateofchange > 0){
-$correct = $less;
-$popup = PopUp(["?", " is less than ", " is greater than ", " is equal to "], " is less than ");
-}
-else{
-$correct = $greater;
-$popup = PopUp(["?", " is less than ", " is greater than ", " is equal to "], " is greater than ");
-}
-
-$a = Compute(random(-9,9));
-$b = Compute(random(2,8))+$a;
-
-
-Context()->texStrings;
-BEGIN_TEXT
-Suppose that the function \(y = f(x)\) has an average rate of change of $rateofchange over the interval \([$a,$b]\). Then \(f($a) \) \{ $popup->menu() \} \(f($b)\).
-$BR
-$BR
-This problem demonstrates that the sign of an average rate of change on an interval tells whether the function has experienced a net increase or net decrease on the interval.  Note that it does not describe the behavior of the function within the interval.  
-END_TEXT
-Context()->normalStrings;
-
-ANS($popup->cmp() );
-
+includePGproblem("./Contrib/AlfredUniv/AUCI/chapter1/lesson1/quiz/question1.pg");
 ENDDOCUMENT();

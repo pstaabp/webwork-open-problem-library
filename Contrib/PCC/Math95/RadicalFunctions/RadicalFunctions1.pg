@@ -1,82 +1,17 @@
-# WeBWorK problem written by Alex Jordan 
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Template:
-# Find the domain of the function f where
+# "./OpenProblemLibrary/PCC/Math95/RadicalFunctions/RadicalFunctions1.pg"
 #
-#       f(x) = sqrt(x-a)
-#
-#
-# Last updated: Spoddeck 11/12/15
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-##############################################
-
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-      "PGstandard.pl", 
-      "MathObjects.pl",
-      "PGML.pl",
-      "PCCmacros.pl",
-      "PGcourse.pl",
-    );
-
-
-##############################################
-
-
-TEXT(beginproblem());
-
-Context("Numeric");
-$a = non_zero_random(-10,10,1);
-$f = Formula("sqrt(x-$a)")->reduce;
-
-
-Context("Interval");
-$domain = Compute("[$a,inf)");
-
-
-##############################################
-
-
-BEGIN_PGML
-
-Find the domain of the function.
-
-[`f(x)=[$f]`]
-
-[@KeyboardInstructions('Use interval notation. If you need to enter [`\infty`], you can type  [|inf|]* or  [|infinity|]*.  If you need to union two (or more) intervals, use the letter [|U|]*.  For example, to enter [`(\infty,5)\cup(5,10]`] you can type [|(-inf,5) U (5,10]|]*.')@]**
-
-[____________________]{$domain}
-
-
-END_PGML
-
-
-##############################################
-
-
-BEGIN_PGML_SOLUTION
-
-For this function, the domain is restricted by the square root. The radicand must not be negative. Therefore, we will find all the [`x`] for which that is true:
-
-    [``
-\begin{aligned}
-   x-[$a] &\geq 0 \\
-   x-[$a]+[$a] &\geq 0+[$a] \\
-   x &\geq [$a] \\
-\end{aligned}
-    ``]
-
-So only the [`x`] that are greater than or equal to [`[$a]`] are part of the domain. In interval notation, the domain can be written as [`[[$a],\infty)`]. In WeBWorK, we enter the answer as [`[[$a],\text{inf})`].
-
-END_PGML_SOLUTION
-
-
-##############################################
-
-
+includePGproblem("./OpenProblemLibrary/PCC/Math95/RadicalFunctions/RadicalFunctions1.pg");
 ENDDOCUMENT();

@@ -1,71 +1,17 @@
-## DESCRIPTION
-## Algebra, Exponential Function
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/PreCalculus/6.1/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_1_16.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Algebra)
-## DBchapter(Exponential and logarithmic expressions and functions)
-## DBsection(Exponential functions)
-## Date(06/16/2017)
-## Institution(Colorado Community College System)
-## Author(ames Morski)
-## MO(1)
-## KEYWORDS('algebra', 'exponential function')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserPopUp.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-
-
-###########################
-#  Setup
-
-Context("Numeric");
-
-$a = non_zero_random(10,20,.1);
-$b = non_zero_random(1,1.5,.001);
-$c = random(2,9,1);
-
-$popup = PopUp(
-  ["?","Growth","Decay","Neither"],
-  "Neither",
-);
-
-
-###########################
-#  Main text
-
-BEGIN_PGML
-
-Determine whether the following equation represents exponential growth, exponential decay, or neither.
-
-[`y=[$a]([$b])^{\frac{1}{x}}`]
-
-[_________________]{$popup}
-
-
-END_PGML
-
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/PreCalculus/6.1/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_1_16.pg");
 ENDDOCUMENT();

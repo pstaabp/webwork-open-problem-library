@@ -1,88 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Problems like: 200% of what number is 10? (mental math)
-# 
-# Last updated: Carl Yao, 11/11/13
-# ENDDESCRIPTION
+# "./OpenProblemLibrary/PCC/BasicMath/Percent/MTH20PercentOfNumberType3_60.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBCCSS('7.RP.3','6.RP.3c')
-## KEYWORDS('percent')
-## DBsection('')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao')
-## Institution('PCC')
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("LimitedNumeric");
-
-%frac = (
-   200 => 'twice of the number',
-   300 => 'three times of the number',
-   400 => 'four times of the number',
-   500 => 'five times of the number',
-   600 => 'six times of the number',
-   700 => 'seven times of the number',
-   800 => 'eight times of the number',
-   900 => 'nine times of the number',
-);
-
-$per0 = random(200,900,100);
-$whole0 = random(2,9,1);
-$part0 = $whole0*$per0/100;
-
-do {$per1 = random(200,900,100);} until ($per0!=$per1);
-$whole1 = random(2,9,1);
-$part1 = $whole1*$per1/100;
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Fill in the blanks. Don't use calculators or paper/pencil. Use mental math.
-
-a. [` [$per0]% `] of [__________]{$whole0} is [`[$part0]`].
-a. [` [$per1]% `] of [__________]{$whole1} is [`[$part1]`].
-
-END_PGML
-
-##############################################
-
-$s0 = $per0/100;
-$s1 = $per1/100;
-
-BEGIN_PGML_SOLUTION
-
-*Part a:* Recognize that "[`[$per0]%`] of a number" is the same as "[@$frac{$per0}@]," so we do [`[$part0]\div[$s0]=[$whole0]`].
-
-[` [$per0]% `] of [`[$whole0]`] is [`[$part0]`].
-
-*Part b:* Recognize that "[`[$per1]%`] of a number" is the same as "[@$frac{$per1}@]," so we do [`[$part1]\div[$s1]=[$whole1]`].
-
-[` [$per1]% `] of [`[$whole1]`] is [`[$part1]`].
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicMath/Percent/MTH20PercentOfNumberType3_60.pg");
 ENDDOCUMENT();
-
-

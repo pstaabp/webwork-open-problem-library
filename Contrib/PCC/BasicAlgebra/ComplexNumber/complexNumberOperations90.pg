@@ -1,74 +1,17 @@
-# WeBWorK problem written by Carl Yao, 2014
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Divide a number by i
+# "./OpenProblemLibrary/PCC/BasicAlgebra/ComplexNumber/complexNumberOperations90.pg"
 #
-#
-# Last updated: Carl Yao 10/16/14
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBCCSS('A-REI.4.b')
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Algebraic Expressions','Equivalent Expressions','Reordering and Regrouping')
-## KEYWORDS('complex','multiply')
-## Author('Alex Jordan, Carl Yao, Chris Hughes')
-## Institution('PCC')
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
-##############################################
 DOCUMENT();
-
-loadMacros(
-      "PGstandard.pl",
-      "MathObjects.pl",
-      "answerHints.pl",
-      "PGML.pl",
-      "PCCmacros.pl",
-      "PGcourse.pl",
-);
-
-##############################################
-    
-Context("LimitedComplex");
-Context()->flags->set(reduceConstants=>0, reduceConstantFunctions=>0, formatStudentAnswer=>parsed);
-Context()->noreduce('(-x)-y','(-x)+y');
-
-
-$a = random(-1,1,2)*random(2,12,1);
-
-$ans = Complex("-$a i")->reduce;
-
-##############################################
-
-TEXT(beginproblem());
-BEGIN_PGML
-
-Rewrite the following expression into the form of a+b[`i`]:
-
-     [`` \frac{[$a]}{i} = ``][___________]{$ans}
-
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-By definition, [`i=\sqrt{-1}`], so we have [`i^{2}=-1`].
-
-To get rid of *[`i`]* in the denominator, we do.
-
-    [`` 
-\begin{aligned}
-   &\phantom{{}=} \frac{[$a]}{i} \\
-   &= \frac{[$a]\cdot i}{i \cdot i} \\
-   &= \frac{[$a] i}{i^{2}} \\
-   &= \frac{[$a] i}{-1} \\
-   &= [$ans]
-\end{aligned}
-    ``]
-
-END_PGML_SOLUTION
-
-##############################################
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicAlgebra/ComplexNumber/complexNumberOperations90.pg");
 ENDDOCUMENT();

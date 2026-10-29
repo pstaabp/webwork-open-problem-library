@@ -1,94 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Template
+# "./OpenProblemLibrary/PCC/BasicMath/OrderOfOperations_More/orderOfOperations48.pg"
 #
-# Evaluate these expressions:
-#
-# a)   [$a]-[$b]([$c]) =  
-# b)   [$a](-[$b])([$c]) =  
-# 
-# Last updated: Carl Yao 12/20/2013
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Algebraic Expressions')
-## KEYWORDS('integer','order of operations','multiply','subtract','negative','evaluate')
-## DBCCSS('6.EE.1')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao')
-## Institution('PCC')
-
-##############################################
-
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "answerHints.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("LimitedNumeric");
-
-$a=random(2,5,1);
-$b=random(2,5,1);
-$c=random(2,5,1);
-
-$ans1=Compute($a-$b*$c);
-$ans2=Compute($a*(-$b)*$c);
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Evaluate these expressions:
-
-a.   [`` [$a]-[$b]([$c]) =  ``]  [________]{$ans1}
-a.   [`` [$a](-[$b])([$c]) =  ``]  [________]{$ans2}
-
-
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-a.  Since there is no operation symbol between [`[$b]`] and [`([$c])`], it implies multiplication. Multiplication needs to be done before subtraction.  
-[``
-  \begin{aligned}[t]
-  [$a]-[$b]([$c])  
-  &= [$a]-[$b]\cdot[$c] \\
-  &= [$a]-[$b*$c] \\  
-  & = [$ans1] 
-  \end{aligned}
-  ``]
-
-a. Notice the difference from Part a. This problem has two multiplication operations, and we need to do the first multiplication first:  
-[``
-   \begin{aligned}[t]
-   [$a](-[$b])([$c]) 
-   &= [$a] \cdot (-[$b]) \cdot [$c] \\
-   &= -[$a*$b] \cdot [$c] \\
-   & = [$ans2] 
-   \end{aligned}
-  ``]
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicMath/OrderOfOperations_More/orderOfOperations48.pg");
 ENDDOCUMENT();
-
-

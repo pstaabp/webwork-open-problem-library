@@ -1,62 +1,17 @@
-# WeBWorK problem written by Alex Jordan 
-# Portland Community College
-# ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/Math95/PolynomialFunctions/PolynomialFunctions3.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  
-);
-
-
-
-TEXT(beginproblem());
-##############################################
-
-
-Context("Numeric");
-
-$a = non_zero_random(-3,3,1);
-
-$c = random(2,5,1)*random(-1,1,2);
-
-$f = Formula("$a x^3")->reduce;
-
-$answer = $f->eval(x=>$c);
-
-
-
-##############################################
-
-Context()->texStrings;
-
-BEGIN_TEXT
-Evaluate \(f\) at the given value of \(x\). $BR
-
-\[f(x)=$f \] $PAR
-
-\(f($c) = \) \{ans_rule(5)\}.
-
-
-
-
-
-
-END_TEXT
-
-Context()->normalStrings;
-
-##############################################
-
-ANS($answer->cmp);
-
-
-
-
+includePGproblem("./OpenProblemLibrary/PCC/Math95/PolynomialFunctions/PolynomialFunctions3.pg");
 ENDDOCUMENT();

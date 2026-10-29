@@ -1,69 +1,17 @@
-## DESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/PreCalculus/07.4_Other_Trigonometric_Functions/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_7_4_44.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
 ## 
-## ENDDESCRIPTION
-
-
-## DBsubject(Trigonometry)
-## DBchapter(Trigonometric functions)
-## DBsection(Sine & cosine functions - definitions, graphs, & properties)
-## Date(6/11/2018)
-## Institution(Community College of Denver, Colorado Community College System)
-## Author(James Morski)
-## MO(1)
-## KEYWORDS('trigonometry')
-
-
-###########################
-#  Initialization
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGcourse.pl",
-"parserRadioButtons.pl",
-"contextFraction.pl",
-);
-
-TEXT(beginproblem());
-
-###########################
-
-# Setup
-
-Context("Numeric");
-
-$num=random(2,8,2);
-$den=list_random(9,11,13,15,17);
-
-Context("Fraction-NoDecimals");
-
-$cos=Fraction($num,$den);
-
-
-###########################
-#  Main text
-
-BEGIN_PGML
-If [`\cos(\theta)=[$cos]`], what is the value of [`\cos(-\theta)`]?
-
-
-[`\cos(-\theta)=`][_______________]{$cos}
-
-END_PGML
-
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/PreCalculus/07.4_Other_Trigonometric_Functions/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_7_4_44.pg");
 ENDDOCUMENT();
-

@@ -1,69 +1,17 @@
-## DESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/5.5/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_5_5_17.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
 ## 
-## ENDDESCRIPTION
-
-## DBsubject(Algebra)
-## DBchapter(Polynomial equations and functions)
-## DBsection(Remainder and factor theorems)
-## Date(02/24/2017)
-## Institution(Red Rocks Community College, Colorado Community College System)
-## Author(Brenda Forland)
-## MO(1)
-## KEYWORDS('algebra')
-
-
-###########################
-#  Initialization
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-
-$showPartialCorrectAnswers = 1;
-
-
-###########################
-#  Setup
-
-Context("Numeric");
-Context()->noreduce('(-x)-y','(-x)+y');
-
-$a=non_zero_random(1,5,1);
-do { $b = non_zero_random(-5,5,1); } until ( $b != $a );
-
-#f=(x-a)(x-b)(x-b) expanded
-$f=Formula("x^3+(-2*$b-$a)*x^2+($b*$b+2*$a*$b)*x+(-$a*$b*$b)")->reduce;
-
-$ans1=List($a,$b);
-
-###########################
-#  Main text
-
-BEGIN_PGML
-Use the Factor Theorem to find all the zeros of [`f(x)=[$f]`] given that [`(x-[$b])`] is a factor. Enter all the zeros as a comma separated list.
-
-
-+ Zeros: [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
-
-
-END_PGML
-
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/5.5/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_5_5_17.pg");
 ENDDOCUMENT();

@@ -1,73 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Given total lbs of oil used in a certain number of days, find rate of use.
+# "./OpenProblemLibrary/PCC/BasicMath/Rate/FindRateOfChange70.pg"
 #
-# Last edited: Carl Yao 10/25/13
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Real Numbers')
-## KEYWORDS('rate')
-## DBCCSS('6.RP')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao')
-## Institution('PCC')
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-#  "parserNumberWithUnits.pl",
-#  "PCCmacros.pl",
-#  "contextCurrency.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-TEXT(beginproblem());
-
-Context("LimitedNumeric");
-
-$rate = random(20,40,1)+random(1,9,1)/10;
-$days = random(20,40,1);
-$total = $rate*$days;
-
-#$rateU = NumberWithUnits("$rate lb");
-
-##############################################
-
-BEGIN_PGML
-
-A restaurant used [`[$total]`] lb of vegetable oil in [`[$days]`] days. On average, how many lb of vegetable oil does the restaurant use every day?
-
-On average, the restaurant uses [__________]{$rate} lb of vegetable oil every day.
-
-END_PGML
-
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-It's given that [`[$total]`] lb of vegetable oil were used in [`[$days]`] days. The rate's unit is "lb per day," so we divide the number of lb by the number of days:
-
-    [`` \frac{[$total]\text{ lb}}{[$days]\text{ days}} = [$rate]\text{ lb per day} ``]
-
-On average, the restaurant uses [`[$rate]`] lb of vegetable oil every day.
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicMath/Rate/FindRateOfChange70.pg");
 ENDDOCUMENT();

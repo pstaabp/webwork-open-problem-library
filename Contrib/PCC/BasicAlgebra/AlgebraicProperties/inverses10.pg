@@ -1,71 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# 
-# Find a number's additive inverse.
+# "./OpenProblemLibrary/PCC/BasicAlgebra/AlgebraicProperties/inverses10.pg"
 #
-# Last edited: Yao 2/2/2017
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Algebraic Expressions','Equivalent Expressions','Reordering and Regrouping')
-## KEYWORDS('distributive','expression','linear','negative')
-## DBCCSS('6.NS.3')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Alex Jordan, Carl Yao, Chris Hughes')
-## Institution('PCC')
-
-
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-
-Context("Numeric");
-Context()->noreduce('(-x)-y','(-x)+y');
-
-$a = non_zero_random(-10,10,1);
-$ans = -$a;
-
-
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-What is the additive inverse of [`[$a]`]?
-
-[_____]{$ans} 
-
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-The additive inverse of [`[$a]`] is [`[$ans]`] because [`[$a]+[$ans]=0`].
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicAlgebra/AlgebraicProperties/inverses10.pg");
 ENDDOCUMENT();
-
-

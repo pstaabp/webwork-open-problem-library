@@ -1,65 +1,17 @@
-## DESCRIPTION
-## College Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/6.6/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_6_37.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Algebra)
-## DBchapter(Exponential and logarithmic expressions and functions)
-## DBsection(Exponential and logarithmic equations)
-## Date(04/11/2017)
-## Institution(Red Rocks Community College)
-## Author(Brenda Forland)
-## MO(1)
-## KEYWORDS('college algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-$showPartialCorrectAnswers = 1;
-
-###########################
-#  Setup
-
-$b = random(11,18,1);
-$a = random(5,10,1);
-$c = random(2,4,1);
-$d = random(5,10,1);
-$e = random(2,4,1);
-
-$ans=List(" ($d+$c)/($a+$e) ");
-
-###########################
-#  Main text
-
-BEGIN_PGML
-
-Solve [` \log_{[$b]}([$a]*x-[$c])= \log_{[$b]}([$d]-[$e]*x) `]. If there is more than one solution, enter them as a comma separated list. If there is no solution, enter "NONE".
-
-[`x=`] [________]{$ans} [@ AnswerFormatHelp("numbers") @]*
-
-
-END_PGML
-
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/6.6/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_6_37.pg");
 ENDDOCUMENT();

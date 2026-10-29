@@ -1,83 +1,17 @@
-## DESCRIPTION
-## Elementary Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/AlgebraicLiteracy/Exponents/Exponent_Rules_Integers_10.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Elementary Algebra)
-## DBchapter()
-## DBsection()
-## Date(07/24/2018)
-## Institution(Red Rocks Community College)
-## Author(Craig Faulhaber)
-## MO(1)
-## KEYWORDS('elementary algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGgraphmacros.pl",
-  "PGcourse.pl",
-  "contextRationalFunction.pl",
- 
-);
-
-##############################################
-
-#Product rule for exponents, negative exponent and a positive power of 1 (student must enter in the denominator)
-
-Context("Numeric");
-
-$a = random(2,10);
-do {$b = random(-8,-1)} until abs($a) != abs($b);
-
-$ab=$a-$b;
-
-Context("RationalFunction-Strict");
-
-$ans = Formula("1/x^$ab");
-
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Simplify. Use only positive exponents in your answer.
-
-[` \dfrac{x^{[$b]}}{x^{[$a]}} = `]  [________]{$ans} 
-
- 
-END_PGML
-
-##############################################
-
-
-
-BEGIN_PGML_SOLUTION
-The quotient rule is:
-
-[``\frac{x^n}{x^m} = x^{n-m}``]
-
-To simplify, subtract the exponents:
-
-[``\frac{x^{[$b]}}{x^{[$a]}} = x^{[$b] - [$a]}``]
-
-Now we can rewrite the answer using a positive exponent.
-
-[``x^{-[$ab]} = [$ans]``]
-
-END_PGML_SOLUTION
-
+includePGproblem("./Contrib/CCCS/AlgebraicLiteracy/Exponents/Exponent_Rules_Integers_10.pg");
 ENDDOCUMENT();
-
-
-
-

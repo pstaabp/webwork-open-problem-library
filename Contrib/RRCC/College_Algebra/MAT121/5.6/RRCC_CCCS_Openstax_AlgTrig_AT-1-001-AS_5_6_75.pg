@@ -1,67 +1,17 @@
-## DESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/PreCalculus/5.6/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_5_6_75.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
 ## 
-## ENDDESCRIPTION
-
-
-## DBsubject(Algebra)
-## DBchapter(Rational equations and functions)
-## DBsection(Rational functions)
-## Date(06/20/2017)
-## Institution(Red Rocks Community College, Colorado Community College System)
-## Author(Brenda Forland)
-## MO(1)
-## KEYWORDS('college algebra')
-
-
-###########################
-#  Initialization
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-$showPartialCorrectAnswers = 1;
-
-###########################
-#  Setup
-
-
-$a=non_zero_random(-10,10,1);
-
-$f=Formula("(x^2-($a)^2)/(x-$a)")->reduce;
-
-$ans=Compute("$a");
-
-
-
-###########################
-#  Main text
-
-BEGIN_PGML
-
-Let [`` f(x)=[$f] ``]. Identify the removable discontinuity. 
-
-
-+ Removable Discontinuity: [`x=`] [_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
-
-
-END_PGML
-
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/PreCalculus/5.6/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_5_6_75.pg");
 ENDDOCUMENT();

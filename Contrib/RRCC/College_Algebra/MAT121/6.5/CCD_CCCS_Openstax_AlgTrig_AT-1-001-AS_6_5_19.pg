@@ -1,83 +1,17 @@
-## DESCRIPTION
-## College Algebra
-## ENDDESCRIPTION
- 
- 
-## DBsubject(Algebra)
-## DBchapter(Exponential and logarithmic expressions and functions)
-## DBsection(Properties of logarithms)
-## Date(6/30/2017)
-## Institution(Community College of Denver, Colorado Community College System)
-## Author(Michael Sulock)
-## MO(1)
-## KEYWORDS('college algebra')
- 
- 
-###########################
-#  Initialization
- 
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/PreCalculus/6.5/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_5_19.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
+
 DOCUMENT();
- 
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"PGchoicemacros.pl",,
-"parserAssignment.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGgraphmacros.pl",
-"parserPopUp.pl",
-"PGcourse.pl",
-"contextLimitedPoint.pl",
-);
- 
-TEXT(beginproblem());
-
- 
-###########################
-#  Setup
-Context("Numeric");
-Context()->operators->undefine("^");
-
-Context()->variables->add(y => 'Real');
-Context()->variables->add(z => 'Real');
-
-$expX = random(3,9,1); 
-$expY = random(5,7,1); 
-$expX2 = random(3,9,1); 
-$expY2 = random(5,7,1); 
-$root = random(3,9,1);
-
-
-$expXA = Formula($expX+$expX2/$root);
-$expYA = Formula($expY+$expY2/$root);
-
-
-
-$ans = Formula("$expXA*log(x)+$expYA*log(y)");
-$ans->{test_points} = [[1,1,1], [2,2,2]];
-
-
-###########################
-#  Main text
- 
-BEGIN_PGML
-Use the properties of logarithms to expand the following logarithm as much as possible. Rewrite as a sum, difference, or product of logs.
-
-[`\log{\left( x^[$expX]y^[$expY]\sqrt[[$root]]{x^[$expX2]y^[$expY2]}\right)}`]
-
- [___________________________]{$ans}
-
-
-END_PGML
- 
-############################
-#  Solution
- 
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
- 
-COMMENT('MathObject version. Uses PGML.');
- 
+includePGproblem("./Contrib/CCCS/PreCalculus/6.5/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_5_19.pg");
 ENDDOCUMENT();

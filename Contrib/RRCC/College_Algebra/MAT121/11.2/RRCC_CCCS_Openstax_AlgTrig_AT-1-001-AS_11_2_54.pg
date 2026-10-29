@@ -1,70 +1,17 @@
-## DESCRIPTION
-## College Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/11.2/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_11_2_54.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Algebra)
-## DBchapter(Systems of equations and inequalities)
-## DBsection(Linear systems)
-## Date(07/05/2017)
-## Institution(Red Rocks Community College, Colorado Community College System)
-## Author(Brenda Forland)
-## MO(1)
-## KEYWORDS('college algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-
-$showPartialCorrectAnswers = 1;
-
-###########################
-#  Setup
-
-Context("Numeric");
-
-$b = random(10,30,2);
-$a = 5*$b;
-
-$c = (2/5)*($a+25);
-$d = (2/5)*$a-10;
-$r = (1/5)*$a;
-
-
-###########################
-#  Main text
-
-BEGIN_PGML
-An animal shelter has a total of [`[$a]`] animals comprised of cats, dogs, and rabbits. If the number of rabbits is 5 less than one-half the number of cats, and there are 20 more cats than dogs, how many of each animal are at the shelter? 
-
-cats: [_______________]{$c} [@ AnswerFormatHelp("numbers") @]*  
-
-dogs: [_______________]{$d} [@ AnswerFormatHelp("numbers") @]*
-
-rabbits: [_______________]{$r} [@ AnswerFormatHelp("numbers") @]*
-END_PGML
-
-
-############################
-
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/11.2/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_11_2_54.pg");
 ENDDOCUMENT();

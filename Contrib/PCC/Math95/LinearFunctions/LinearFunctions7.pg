@@ -1,54 +1,17 @@
-# WeBWorK problem written by Alex Jordan 
-# Portland Community College
-# ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/Math95/LinearFunctions/LinearFunctions7.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "parserAssignment.pl",
-  "PGML.pl",
-  "PCCmacros.pl",
-  
-);
-
-
-
-##############################################
-
-
-TEXT(beginproblem());
-Context("Numeric");
-parser::Assignment->Allow;
-parser::Assignment->Function("f");
-
-$fun = Formula("f(x)=500");
-
-
-##############################################
-
-
-BEGIN_PGML
-Suppose that [`f`] is the function that gives the total cost (in dollars) of downhill skiing [`x`] times during a season with a $500 season pass.  Write a formula for [`f`].  [@KeyboardInstructions('You need to write the entire formula, including [|f(x)=|]*.)@]**
-
-
-[__]{$fun}{width=>20}
-
-
-
-END_PGML
-
-
-##############################################
-
-
-
-
-
-
+includePGproblem("./OpenProblemLibrary/PCC/Math95/LinearFunctions/LinearFunctions7.pg");
 ENDDOCUMENT();

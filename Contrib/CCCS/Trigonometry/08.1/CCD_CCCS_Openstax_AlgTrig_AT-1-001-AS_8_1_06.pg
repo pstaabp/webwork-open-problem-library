@@ -1,95 +1,17 @@
-## DESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/PreCalculus/08.1/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_8_1_06.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
 ## 
-## ENDDESCRIPTION
-
-
-## DBsubject(Trigonometry)
-## DBchapter(Trigonometric functions)
-## DBsection(Sine & cosine functions - definitions, graphs, & properties)
-## Date(7/1/2018)
-## Institution(Community College of Denver, Colorado Community College System)
-## Author(Michael Sulock)
-## MO(1)
-## KEYWORDS('college algebra')
-
-
-###########################
-#  Initialization
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGcourse.pl",
-"contextTrigDegrees.pl",
-"contextFraction.pl", 
-"PGgraphmacros.pl",
-"parserPopUp.pl"
-);
-
-TEXT(beginproblem());
-
-###########################
-
-$showPartialCorrectAnswers = 1;
-
-
-# Setup
-
-#  Graph canvas
-
-$a = random(2,6,1);
-
-
-Context("Point");
-
-$pix = 400;
-
-
-$in=time();
-
-$popup2 = PopUp(["?", "y=","x="], "y=");
-
-$period = Compute(2*pi);
-
-$min = Compute(-$a);
-
-###########################
-#  Main text
-
-BEGIN_PGML
-
-Use the trigonometric function [`f(x) = [$a]\sin(x)`] to answer the following questions.
-
-
-What is the amplitude of [`f(x)`]?[___________]{$a}
-
-What the period of [`f(x)`]?[___________]{$period}
-
-What is the maximum value of [`f(x)`]? [_________]{$a}
-
-What is the minimum value of [`f(x)`]? [_______]{$min}
-
-What is the midline of [`f(x)`]?[______]{$popup2} [_______]{0}
-
-
-
-END_PGML
-
-
-
-
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/PreCalculus/08.1/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_8_1_06.pg");
 ENDDOCUMENT();

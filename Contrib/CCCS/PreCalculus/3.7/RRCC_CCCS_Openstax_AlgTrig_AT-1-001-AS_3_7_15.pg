@@ -1,84 +1,17 @@
-## DESCRIPTION
-## CLOs
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/3.7/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_3_7_15.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Algebra)
-## DBchapter()
-## DBsection()
-## Date(06/06/2017)
-## Institution(Red Rocks Community College, Colorado Community College System)
-## Author(Craig Faulhaber)
-## MO(1)
-## KEYWORDS('college algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGgraphmacros.pl",
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"contextLimitedPoint.pl",
-"PGML.pl",
-"contextPiecewiseFunction.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-
-###########################
-#  Setup
-
-$a = random(4,10);
-$b = random(3,5);
-
-Context("Interval");
-$domain = Interval("[0,$a]");
-
-Context("Numeric");
-$fun = Formula("(x^2-$b)")->reduce;  
-$inv  = Formula("sqrt(x+$b)");
-$inv->{limits} = [-$b+2,-$b+10];
-
-$g = $fun->eval(x => 0);
-
-
-###########################
-#  Main text
-
-
-BEGIN_PGML
-
-Find the largest domain for [` f(x)=[$fun] `], with upper [`x`]  bound [$a], such that the function [`f`] is one-to one and non-decreasing . 
-
-    One-to-one domain: [_________________]{$domain} [@ AnswerFormatHelp("intervals") @]*
-
-Your answers must be in interval notation.
-
-Find the inverse of [`f`] restricted to that domain.
-
-   [`f^{-1}(x) = `] [___________________]{$inv} [@ AnswerFormatHelp("formulas") @]*
-
-END_PGML
-
-
-$showPartialCorrectAnswers = 1;
-
-############################
-#  Solution
-
-#Context()->texStrings;
-#BEGIN_SOLUTION
-
-#Solution explanation goes here.
-#END_SOLUTION
-
-;
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/3.7/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_3_7_15.pg");
 ENDDOCUMENT();

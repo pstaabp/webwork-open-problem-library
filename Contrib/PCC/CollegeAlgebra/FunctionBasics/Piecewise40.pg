@@ -1,86 +1,17 @@
-## DESCRIPTION
-##   Find a Constant to Make a Function Continuous
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/CollegeAlgebra/FunctionBasics/Piecewise40.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## Tagged by nhamblet
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
-## DBsubject(Calculus - single variable)
-## DBchapter(Limits and continuity)
-## DBsection(Continuity - concept of)
-## Date(8/23/07)
-## Institution(Union College)
-## Author(K. Lesh)
-## MLT(cc-m1)
-## MLTleader(1)
-## Level(4)
-## KEYWORDS('Continuous', 'Piecewise')
-
-DOCUMENT();        # This should be the first executable line in the problem.
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "contextPiecewiseFunction.pl",
-  "PGcourse.pl",
-);
-
-TEXT(beginproblem());
-
-###################################
-# Setup
-
-Context("PiecewiseFunction")->variables->add(b=>'Real');
-
-$m1 = random(2,8,1);
-$b1 = random(1,6,1);
-$m2 = random(2,8,1);
-$x = random(2,10,1);
-
-$f = PiecewiseFunction(
-  "${m1}x-$b1 if x <= $x else
-  -${m2}x+b if x > $x"
-);
-
-Context("Numeric");
-
-$ans = Real($m1*$x+$m2*$x-$b1);
-
-###################################
-# Main text
-
-BEGIN_PGML
-Find the value of the constant [`b`] that makes the function [`f`] continuous on [`(-\infty,\infty)`]. [`f`] is defined by 
-
-    [`f(x) = [$f]`]
-
-
-    [`b={}`][__________]{$ans}
-
-Now check a graph of [`f`] to confirm.
-
-END_PGML
-
-###################################
-# Answers
-
-$showPartialCorrectAnswers = 1;
-
-###################################
-
-BEGIN_PGML_SOLUTION
-
-For [`f`] to be continuous, we'd need 
-
-    [`\begin{aligned}
-[$m1]([$x])-[$b1]&=-[$m2]([$x])+b\\
-[$m1*$x]-[$b1]&=[$m2*$x*-1]+b\\
-[$m1*$x-$b1]&=[$m2*$x*-1]+b\\
-[$ans]&=b\\
-b&=[$ans]\\
-\end{aligned}`]
-
-END_PGML_SOLUTION
-
-
+DOCUMENT();
+includePGproblem("./OpenProblemLibrary/PCC/CollegeAlgebra/FunctionBasics/Piecewise40.pg");
 ENDDOCUMENT();

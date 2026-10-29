@@ -1,50 +1,17 @@
-#DESCRIPTION
-## DBsubject('Statistics')
-## DBchapter('Regression', 'Data Analysis')
-## DBsection('Least Squares')
-##ENDDESCRIPTION
-##KEYWORDS('statistics', 'regression', 'least squares')
-##Tagged by Nelson Chen, May 14, 2016. 
+# This file is just a pointer to the file
+#
+# "./Contrib/UBC/STAT/Archive_old_questions/STAT203_2016W1/HW05/hw05-q1.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGchoicemacros.pl",
-  "PGcourse.pl"
-);
-
-#######
-
-TEXT(  beginproblem() );
-
-$meanGrad = random(4, 8, 0.5);
-$meanDonate = random(150, 250, 1);
-$slope = random(20, 40, 1);
-$predictTime = random(3, 7, 1);
-
-$ans = $meanDonate - $slope * ($predictTime - $meanGrad);
-
-#######
-
-BEGIN_TEXT
-The director of an alumni association for a university wants to look at 
-the relationship between the number of years since graduation and the amount of monetary contribution an alumnus makes to the university. He collects data on 50 alumni who have made contributions this year. The number of years since graduation has a mean of $meanGrad, and the amount of contribution has a mean of $meanDonate dollars. Based on the least squares regression line fitted to the data, it is found that for every year increase since graduation, the contribution is expected to drop by $slope dollars.
-
-$PAR
-Predict the amount of contribution made by an alumnus who graduated $predictTime years ago. Do not round in intermediate steps.
-$PAR
-
-The predicted contribution of an alumnus who graduated $predictTime years ago is: \{ ans_rule(10)\} (in dollars, rounded to one decimal place.)
-
-END_TEXT
-
-#######
-
-ANS( num_cmp($ans,   
-  tolType => "absolute",
-  tol => 0.051) 
-);
-
+includePGproblem("./Contrib/UBC/STAT/Archive_old_questions/STAT203_2016W1/HW05/hw05-q1.pg");
 ENDDOCUMENT();

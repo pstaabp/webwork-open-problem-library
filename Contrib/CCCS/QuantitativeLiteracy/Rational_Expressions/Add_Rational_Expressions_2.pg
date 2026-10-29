@@ -1,74 +1,17 @@
-## DESCRIPTION
-## Elementary Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/AlgebraicLiteracy/Rational_Expressions/Add_Rational_Expressions_2.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Elementary Algebra)
-## DBchapter()
-## DBsection()
-## Date(10/27/2018)
-## Institution(Red Rocks Community College)
-## Author(Craig Faulhaber)
-## MO(1)
-## KEYWORDS('elementary algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGgraphmacros.pl",
-  "PGcourse.pl",
-  "contextRationalFunction.pl",
-
-);
-
-##############################################
-
-#simplify x/(x+a) - (2bx+2c)/(x+a) 
-
-Context("Numeric");
-
-$a=non_zero_random(-10,10);
-$b=2*random(2,7); #guarantees even number so that the numerator won't factor
-$c=2*random(2,7); #ditto
-
-
-##############################################
-
-TEXT(beginproblem());
-
-$ans = Formula("((1-$b)x-$c)/(x+$a)");
-
-Context("RationalFunction-Strict");
-
-
-
-
-BEGIN_PGML
-
-Simplify the rational expression. Use only positive exponents in your answer.
-
-[` \dfrac{x}{x+[$a]} - \dfrac{[$b]x+[$c]}{x+[$a]}=`]  [________]{$ans} 
-
- 
-END_PGML
-
-##############################################
-
-
-
-BEGIN_PGML_SOLUTION
-
-END_PGML_SOLUTION
-
+includePGproblem("./Contrib/CCCS/AlgebraicLiteracy/Rational_Expressions/Add_Rational_Expressions_2.pg");
 ENDDOCUMENT();
-
-
-
-

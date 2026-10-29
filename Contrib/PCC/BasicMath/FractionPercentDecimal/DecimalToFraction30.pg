@@ -1,75 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Template
+# "./OpenProblemLibrary/PCC/BasicMath/FractionPercentDecimal/DecimalToFraction30.pg"
 #
-# Change decimal to fraction. Decimal is like 0.15
-# 
-# Last updated: Yao, 10/19/2013
-#
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('')
-## KEYWORDS('decimal','fraction','convert')
-## DBCCSS('4.NF')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao')
-## Institution('PCC')
-
-##############################################
-
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-  "contextFraction.pl",
-  "PCCmacros.pl",
-);
-
-##############################################
-
-Context("LimitedFraction");
-
-do {$int=random(1,9,1)*10+5;} until (gcd($int,100)!=1);
-
-$factor=gcd($int,100);
-
-$dec = $int/100;
-
-$decWord = numberWord($int).' hundredth';
-
-$frac = Fraction($int,100);
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Write the decimal number as a fraction.
-
-[`[$dec]`] = [___________]{$frac}
-
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-[`[$dec]`] is read as [$decWord], so it can be written as [`\frac{[$int]}{100}`], which can be reduced to [`[$frac]`] by dividing [`[$factor]`] in both the numerator and denominator.
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicMath/FractionPercentDecimal/DecimalToFraction30.pg");
 ENDDOCUMENT();
-
-

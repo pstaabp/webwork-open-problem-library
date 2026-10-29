@@ -1,82 +1,17 @@
-# WeBWorK problem written by Alex Jordan 
-# Portland Community College
-# ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/CollegeAlgebra/ExponentialFunctions/Percentage10.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject('Algebra')
-## DBchapter('Functions')
-## DBsection('Exponential')
-## KEYWORDS()
-## TitleText1()
-## EditionText1()
-## AuthorText1()
-## Section1()
-## Problem1()
-## Author('Alex Jordan')
-## Institution('PCC')
-
-
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-
-);
-
-
-TEXT(beginproblem());
-
-##############################################
-
-
-Context("Numeric");
-
-
-$initial = Real(random(400,900,100));
-
-$percent = Real(random(40,65,1));
-
-$incDec = random(-1,1,2);
-if ($incDec == -1) {
-$incDecString = "decrease";
-}
-else {$incDecString = "increase";};
-
-
-$final = $initial*(1+$incDec*$percent/100);
-
-
-
-
-##############################################
-
-BEGIN_PGML
-
-If you start with [`[$initial]`] items, how many do you have after a [`[$percent]%`] [$incDecString]?
-
-    [__________________]{ $final}
-
-
-END_PGML
-
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-[`[$percent]%`] of [`[$initial]`] is found by multiplying:
-
-    [`\begin{aligned}
-[@$percent/100@]\cdot[$initial] & = [@$percent/100*$initial@] 
-\end{aligned}`]
-
-And if we start with [`[$initial]`] items and have a [$incDecString] of [`[@$percent/100*$initial@] `], we end up with [`[$final]`] items.
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/CollegeAlgebra/ExponentialFunctions/Percentage10.pg");
 ENDDOCUMENT();

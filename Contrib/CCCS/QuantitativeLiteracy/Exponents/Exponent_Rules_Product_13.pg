@@ -1,71 +1,17 @@
-## DESCRIPTION
-## Elementary Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/AlgebraicLiteracy/Exponents/Exponent_Rules_Product_13.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Elementary Algebra)
-## DBchapter()
-## DBsection()
-## Date(05/23/2019)
-## Institution(Red Rocks Community College)
-## Author(Craig Faulhaber)
-## MO(1)
-## KEYWORDS('elementary algebra')
-
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGgraphmacros.pl",
-  "PGcourse.pl",
-  "contextRationalFunction.pl",
-
-);
-
-##############################################
-
-#Power rule for exponents, dividing with positive exponents 
-
-Context("Numeric");
-
-$b = random(2,5);
-$c = random(6,10);
-
-$cb=Compute($c-$b);
-
-##############################################
-
-TEXT(beginproblem());
-
-Context("RationalFunction-Strict");
-
-Context()->variables->add(y => 'Real');
-
-$ans = Formula("1/y^($cb)");
-
-
-BEGIN_PGML
-
-Simplify. Use only positive exponents in your answer.
-
-[`  \dfrac{y^[$b]}{y^[$c]}   =`]  [________]{$ans} 
-
- 
-END_PGML
-
-##############################################
-
-
-
-BEGIN_PGML_SOLUTION
-
-END_PGML_SOLUTION
-
+includePGproblem("./Contrib/CCCS/AlgebraicLiteracy/Exponents/Exponent_Rules_Product_13.pg");
 ENDDOCUMENT();

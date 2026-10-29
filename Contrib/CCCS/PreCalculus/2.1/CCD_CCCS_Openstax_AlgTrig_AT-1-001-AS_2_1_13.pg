@@ -1,84 +1,17 @@
-## DESCRIPTION
-## College Algebra, solving for y as a function of x
-## ENDDESCRIPTION
- 
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/2.1/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_2_1_13.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBsubject(Algebra)
-## DBchapter(Linear equations and functions)
-## DBsection(Equations of lines: slope-intercept form)
-## Date(12/20/2016)
-## Institution(Colorado Community College System)
-## Author(Brenda Forland; Edit: James Morski, 5/19/2017)
-## MO(1)
-## KEYWORDS('college algebra', 'y as a function of x')
- 
- 
-###########################
-#  Initialization
- 
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
+
 DOCUMENT();
- 
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"parserAssignment.pl",
-"parserImplicitEquation.pl",
-"contextFraction.pl",
-"AnswerFormatHelp.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
- 
-TEXT(beginproblem());
- 
-$showPartialCorrectAnswers = 1;
- 
-##########################
-#  Setup
- 
- 
-Context("Numeric");
-Context()->noreduce('(-x)-y','(-x)+y');
-Context()->variables->add(y => 'Real');
- 
-$a=random(2,10);
-$b=random(1,10);
-$c=random(1,10);
- 
- 
-$f = Formula("$a*x")->reduce;
-$g = Formula("$c-$b*y")->reduce;
- 
-$frac1=Compute("$a/$b");
-$frac2=Compute("$c/$b");
- 
- 
-$ans = Formula("-$frac1*x+$frac2");
- 
- 
-#################################
-#  Main text
- 
- 
-BEGIN_PGML
-Solve the equation [` [$f]=[$g] `] for [` y `] in terms of [`x`]. 
- 
-[`y=`]  [_______________]{$ans} [@ AnswerFormatHelp("formulas") @]* 
- 
- 
- 
-END_PGML
- 
- 
- 
-#################################
- 
-#  Solution
- 
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
- 
-COMMENT('MathObject version. Uses PGML.');
- 
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/2.1/CCD_CCCS_Openstax_AlgTrig_AT-1-001-AS_2_1_13.pg");
 ENDDOCUMENT();

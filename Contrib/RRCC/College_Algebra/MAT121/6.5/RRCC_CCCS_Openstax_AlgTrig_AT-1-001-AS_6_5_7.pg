@@ -1,80 +1,17 @@
-## DESCRIPTION
-## College Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/6.5/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_5_7.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
-## DBsubject(Algebra)
-## DBchapter(Exponential and logarithmic expressions and functions)
-## DBsection(Properties of logarithms)
-## Date(04/04/2017)
-## Institution(Red Rocks Community College, Colorado Community College System)
-## Author(Brenda Forland)
-## MO(1)
-## KEYWORDS('college algebra')
-
-
-#######################################
-#  Initialization
-
-
-DOCUMENT();  
-
-loadMacros(
-"PGstandard.pl",
-"PGchoicemacros.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-
-###########################
-#  Setup
-
-
-$mc = new_checkbox_multiple_choice();
-$mc -> qa (
-"Expand \( \displaystyle \ln\left(\frac{1}{4^k}\right) \) to rewrite as a sum, difference, or product of logarithms. Choose all correct answers.  There may be more than one way to rewrite the expression.", 
-
-"\( \ln(1)-k\ln(4) \)$BR $BR", 
-"\( -k\ln(4) \)$BR $BR", 
-"\( \ln(1)-\ln(4^k) \)$BR $BR",                
-);
-$mc -> extra(
-"\( \ln(1)+\ln(4^k) \)$BR $BR",
-"\( \ln(4)+\ln(k) \)$BR $BR",
-);
-$mc -> makeLast("None of the above");
-
-
-###########################
-#  Main text
-
-BEGIN_TEXT
-
-\{ $mc -> print_q() \}
-$BR
-\{ $mc -> print_a() \}
-$BR
-$BR
-
-END_TEXT
-
-############################
-#  Answer evaluation
-
-install_problem_grader(~~&std_problem_grader);
-
-$showPartialCorrectAnswers = 0;
-
-ANS( checkbox_cmp( $mc->correct_ans() ) );
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('Uses PGML.');
-
+DOCUMENT();
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/6.5/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_6_5_7.pg");
 ENDDOCUMENT();

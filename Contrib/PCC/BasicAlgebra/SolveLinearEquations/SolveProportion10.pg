@@ -1,92 +1,17 @@
-# WeBWorK problem written by Carl Yao, 2013
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Solve proportions given in x/b=c/d.
+# "./OpenProblemLibrary/PCC/BasicAlgebra/SolveLinearEquations/SolveProportion10.pg"
 #
-# Last updated: Jordan 8/4/13; Yao, 6/26/13
-# ENDDESCRIPTION
- 
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Real Numbers')
-## KEYWORDS('rate','ratio','proportion','solve')
-## DBCCSS('6.RP','7.RP.2')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Alex Jordan, Carl Yao, Chris Hughes')
-## Institution('PCC')
- 
-##############################################
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
+
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "parserAssignment.pl",
-  "PCCmacros.pl",
-  "answerHints.pl",
-  "contextFraction.pl",
-  "SolveLinearEquationPCC.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-$var = 'x';
-
-$d = random(2,10,1);
-
-$factor=list_random((4..9));
-$b = $d*$factor;
-$c = random(2,10,1);
-while (gcd($c,$d)!=1) {$c = random(2,10,1);}
-
-$ans = $b*$c/$d;
-
-@vArray = ($var);
-@aArray = ($ans);
-($ansEqRef, $eqTypesRef) = contextSetup(~~@vArray, ~~@aArray);
-
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Solve the equation.
-
-    [`` \frac{x}{[$b]}=\frac{[$c]}{[$d]} ``]
-
-    [_________________]
-
-END_PGML
-
-answerCheck($ansEqRef, $eqTypesRef);
-
-
-
-##############################################
-
-
-BEGIN_PGML_SOLUTION
-
-    [``
-\begin{aligned}
-   \frac{x}{[$b]} &= \frac{[$c]}{[$d]} \\
-   [$b]\cdot[$d]\cdot\frac{x}{[$b]} &= [$b]\cdot[$d]\cdot\frac{[$c]}{[$d]} \\
-   x \cdot [$d] &= [$b] \cdot [$c] \\
-   [$d]x &= [$b*$c] \\
-   \frac{[$d]x}{[$d]} &= \frac{[$b*$c]}{[$d]} \\
-   x &= [$ans]
-\end{aligned}
-``]
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicAlgebra/SolveLinearEquations/SolveProportion10.pg");
 ENDDOCUMENT();

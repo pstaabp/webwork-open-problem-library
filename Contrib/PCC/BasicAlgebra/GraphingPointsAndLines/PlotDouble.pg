@@ -1,68 +1,17 @@
-# Plot a point where one coordinate is doubled from a given plotted point.
-# Author: Alex Jordan
+# This file is just a pointer to the file
+#
+# "./OpenProblemLibrary/PCC/BasicAlgebra/GraphingPointsAndLines/PlotDouble.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-###################################################################################
-# Setup and Macros
-###################################################################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
+
 DOCUMENT();
-
-loadMacros(
-	"PGstandard.pl",
-	"MathObjects.pl",
-	"PGML.pl",
-	"PGchoicemacros.pl",
-	"parserGraphTool.pl",
-	"PGcourse.pl",
-);
-
-###################################################################################
-# Variables and Formulas
-###################################################################################
-TEXT(beginproblem());
-
-Context("Numeric");
-
-@xy = (1..7)[NchooseK(7,2)];
-$point = Point(@xy);
-$reflection = list_random(
-	['first',Point(2*$xy[0],$xy[1])],
-	['second',Point($xy[0],2*$xy[1])]
-);
-
-$gt = GraphTool("{point,$reflection->[1]}")->with(
-	availableTools => ["PointTool"],
-	showCoordinateHints => 0,
-	bBox => [-1, 15, 15, -1],
-	staticObjects => [ "{point,$point}"],
-	cmpOptions => {
-		list_checker => sub {
-			my ($correct, $student, $ans, $value) = @_;
-			my $score = 0;
-			my @errors;
-			my $count = 0;
-			for my $j (@$student) {
-				my $nth = Value::List->NameForNumber(++$count);
-				if ($j->extract(1) eq $correct->[0]->extract(1) && $j->extract(2) eq $correct->[0]->extract(2)) {
-					$score += 1;
-					next;
-				}
-				push(@errors, "The $nth plotted point is incorrect.");
-			}
-			return ($score, @errors);
-		}
-	}
-);
-
-###################################################################################
-# Main Text
-###################################################################################
-
-BEGIN_PGML
-A point is plotted. Graph the point that comes from doubling the [@$reflection->[0]@] coordinate.
-
-[_]{$gt}
-END_PGML
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicAlgebra/GraphingPointsAndLines/PlotDouble.pg");
 ENDDOCUMENT();
-
-

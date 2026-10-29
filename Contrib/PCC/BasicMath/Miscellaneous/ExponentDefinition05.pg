@@ -1,87 +1,17 @@
-# WeBWorK problem written by Carl Yao
-# Portland Community College
+# This file is just a pointer to the file
 #
-# Template
-# Evaluate exponent expressions. No negative numbers are involved.
+# "./OpenProblemLibrary/PCC/BasicMath/Miscellaneous/ExponentDefinition05.pg"
 #
-#
-# Last updated: Yao 02/25/2014
-# ENDDESCRIPTION
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-## DBCC('6.EE.1')
-## DBsubject('Algebra')
-## DBchapter('Basic Algebra')
-## DBsection('Algebraic Expressions')
-## KEYWORDS('integer','operation','integer exponent','evaluate')
-## TitleText1('')
-## EditionText1('')
-## AuthorText1('')
-## Section1('')
-## Problem1('')
-## Author('Carl Yao')
-## Institution('PCC')
-
-##############################################
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-);
-
-##############################################
-
-Context("LimitedNumeric");
-
-$a = random(2,5,1);
-$b = random(2,5,1);
-while ($b==$a) {$b = random(2,5,1);}
-
-$ans1 = Compute(($a)**2);
-$ans2 = Compute(($b)**3);
-
-
-##############################################
-
-TEXT(beginproblem());
-
-BEGIN_PGML
-
-Evaluate the following expressions that have integer exponents:
-
-a.    [`` [$a]^{2}=  ``]  [________]{$ans1} 
-
-a.    [`` [$b]^{3}=  ``]  [________]{$ans2} 
-
-END_PGML
-
-##############################################
-
-BEGIN_PGML_SOLUTION
-
-The answers can be computed as follows:
-
-a.
-
-    [` 
-         \begin{aligned}[t]
-             [$a]^{2}&=[$a]\cdot[$a]\\
-                     &=[$ans1]  
-          \end{aligned}`]
-
-b.
-    
-    [`
-          \begin{aligned}[t]
-              [$b]^{3}&=[$b]\cdot[$b]\cdot[$b]\\
-                      &=[$ans2]
-           \end{aligned}`]
-
-
-END_PGML_SOLUTION
-
+includePGproblem("./OpenProblemLibrary/PCC/BasicMath/Miscellaneous/ExponentDefinition05.pg");
 ENDDOCUMENT();
-

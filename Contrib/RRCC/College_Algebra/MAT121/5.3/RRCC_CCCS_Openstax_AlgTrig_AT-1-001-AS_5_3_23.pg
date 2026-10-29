@@ -1,67 +1,17 @@
-## DESCRIPTION
-## College Algebra
-## ENDDESCRIPTION
+# This file is just a pointer to the file
+#
+# "./Contrib/CCCS/CollegeAlgebra/5.3/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_5_3_23.pg"
+#
+# You may want to change your problem set to use that problem
+# directly, especially if you want to make a copy of the problem
+# for modification.
 
-
-## DBsubject(Algebra)
-## DBchapter(Polynomial equations and functions)
-## DBsection(Zeros and multiplicities)
-## Date(6/14/2017)
-## Institution(Red Rocks Community College, Colorado Community College System)
-## Author(Craig Faulhaber)
-## MO(1)
-## KEYWORDS('college algebra')
-
-
-###########################
-#  Initialization
+## These tags keep this problem from being added to the OPL database
+## 
+## DBsubject('ZZZ-Inserted Text')
+## DBchapter('ZZZ-Inserted Text')
+## DBsection('ZZZ-Inserted Text')
 
 DOCUMENT();
-
-loadMacros(
-"PGstandard.pl",
-"MathObjects.pl",
-"AnswerFormatHelp.pl",
-"contextLimitedPoint.pl",
-"PGML.pl",
-"PGcourse.pl",
-);
-
-TEXT(beginproblem());
-
-$showPartialCorrectAnswers = 1;
-
-###########################
-#  Setup
-Context("Numeric");
-
-$b=list_random(1,4);
-do {$c=random(1,4);} until ($b != $c);
-
-
-$f=Formula("x**5-($b+$c)*x**3+$b*$c*x")->reduce;
-
-Context("LimitedPoint");
-
-$xint = List(Point("(0,0)"),Point("(sqrt($b),0)"), Point("(-sqrt($b),0)"),Point("(sqrt($c),0)"),Point("(-sqrt($c),0)"));
-###########################
-#  Main text
-
-BEGIN_PGML
-Find the [`x`]-intercept(s) of  [`f(x)=[$f]`]. Enter intercept(s) as points. If there is more than one point, enter them as a comma separated list.
-
-+ [`x`]-intercept(s):  [_____________________________]{$xint} [@ AnswerFormatHelp("points") @]*
-
-
-END_PGML
-
-############################
-#  Solution
-
-#BEGIN_PGML_SOLUTION
-#Solution explanation goes here.
-#END_PGML_SOLUTION
-
-COMMENT('MathObject version. Uses PGML.');
-
+includePGproblem("./Contrib/CCCS/CollegeAlgebra/5.3/RRCC_CCCS_Openstax_AlgTrig_AT-1-001-AS_5_3_23.pg");
 ENDDOCUMENT();
