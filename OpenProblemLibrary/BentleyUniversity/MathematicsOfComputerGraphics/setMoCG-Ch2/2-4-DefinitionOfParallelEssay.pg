@@ -26,10 +26,10 @@ loadMacros(
 );
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 
 COMMENT("Essay Question");
-TEXT(beginproblem());
+
 BEGIN_PGML
 What does it mean for two vectors to be parallel?
 

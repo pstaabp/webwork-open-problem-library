@@ -28,7 +28,7 @@ loadMacros(
 COMMENT("Essay question");
 Context("Numeric");
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 Explain briefly why no combination of rotation and scaling transformations will ever equal a translation transformation.
 

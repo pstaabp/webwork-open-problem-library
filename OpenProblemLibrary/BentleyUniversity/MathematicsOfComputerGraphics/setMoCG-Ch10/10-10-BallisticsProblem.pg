@@ -26,7 +26,7 @@ loadMacros(
 
 Context("Numeric");
 Context()->variables->add(t=>Real);
-$showPartialCorrectAnswers = 1;
+
 $coeff1 = random( 100, 900, 100 );
 $coeff2 = random( 10, 90, 10 );
 $coeff3 = random( 100, 900, 100 );
@@ -48,7 +48,7 @@ $v3 = $f3->D('t')->eval(t=>$ans1);
 $speed = sqrt( $v1**2 + $v2**2 + $v3**2 );
 $momentum = $speed * $mass;
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 Consider a cannonball launched along the path
 

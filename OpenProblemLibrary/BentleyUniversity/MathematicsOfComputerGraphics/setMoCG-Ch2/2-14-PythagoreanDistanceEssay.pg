@@ -26,10 +26,10 @@ loadMacros(
 );
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 
 COMMENT("Essay question");
-TEXT(beginproblem());
+
 BEGIN_PGML
 Use the Pythagorean Theorem to explain why the formula [`||\langle x,y \rangle||=\sqrt{x^2+y^2}`] makes sense.
 

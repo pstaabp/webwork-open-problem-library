@@ -26,7 +26,7 @@ loadMacros(
 );
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 
 $A=non_zero_random(0,10);
 $B=non_zero_random(-1,10);
@@ -40,7 +40,7 @@ $p3=random(-10,10);
 $D=-($A*$p1+$B*$p2+$C*$p3);
 
 COMMENT("Essay question");
-TEXT(beginproblem());
+
 BEGIN_PGML
 Let us assume we have the line whose parametric equations are [`x=[$p1]+[$v1]t, y=[$p2]+[$v2]t, z=[$p3]+[$v3]t`] and the plane with equation [`[$A]x+[$B]y+[$C]z+[$D]=0`].
 

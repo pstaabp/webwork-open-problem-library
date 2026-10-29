@@ -25,13 +25,13 @@ loadMacros(
 );
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 $a=random(-20,20);
 $b=random(-20,20);
 $c=random(-20,20);
 $d=random(-20,20);
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 Assume we wish to make an animation that moves an object from the point [`A=([$a],[$b])`] to the point [`B=([$c],[$d])`].
 

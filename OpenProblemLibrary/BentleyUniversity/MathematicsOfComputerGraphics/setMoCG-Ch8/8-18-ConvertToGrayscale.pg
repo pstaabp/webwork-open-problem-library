@@ -26,12 +26,12 @@ loadMacros(
 );
 
 Context("Matrix");
-$showPartialCorrectAnswers = 1;
+
 Context()->variables->add(r => 'Real');
 Context()->variables->add(g => 'Real');
 Context()->variables->add(b => 'Real');
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 Write the formula for the mathematical function that takes as input an RGB color vector [`\langle r,g,b \rangle`] and yields as output the RGB color vector that is the unique shade of gray whose total amount of light [`(r +g+b)`] is equal to that of the input.
 

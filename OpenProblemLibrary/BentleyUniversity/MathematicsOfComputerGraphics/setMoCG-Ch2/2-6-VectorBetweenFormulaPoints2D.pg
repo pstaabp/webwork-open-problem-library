@@ -25,7 +25,7 @@ loadMacros(
 );
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 Context()->variables->add(a => 'Real');
 Context()->variables->add(b => 'Real');
 $a=non_zero_random(-10,10);
@@ -39,7 +39,7 @@ $rhs2=($d*Formula("b"))->reduce;
 $lhs=(($c-$a)*Formula("a"))->reduce;
 $rhs=(($d-$b)*Formula("b"))->reduce;
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 What is the vector between the point [`([$lhs1],[$rhs1])`] and the point [`([$lhs2],[$rhs2])`]?
 

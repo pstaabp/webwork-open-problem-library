@@ -27,7 +27,7 @@ loadMacros(
 
 Context("Numeric");
 Context()->variables->add(t=>'Real');
-$showPartialCorrectAnswers = 1;
+
 $deg1 = random( 2, 3 );
 $deg2 = $deg1 + random( 0, 1 );
 $deg3 = $deg2 + random( 0, 1 );
@@ -77,7 +77,7 @@ $ans3 = Formula("$c3(t^$i3)(1-t)^($deg3-$i3)");
 $ans4 = Formula("$c4(t^$i4)(1-t)^($deg4-$i4)");
 $ans5 = Formula("$c5(t^$i5)(1-t)^($deg5-$i5)");
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 Write the formula for the [$ith1] Bernstein polynomial of degree [$deg1].  For all parts, express your answer in the variable [`t`].
 

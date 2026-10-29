@@ -25,7 +25,7 @@ loadMacros(
 );
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 $a=random(2,4);
 $b=random(5,7);
 $c=random(8,10);
@@ -36,7 +36,7 @@ $z=random(-10,10);
 
 $m=max($a,$b);
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 What center should a sphere of radius [$a] have so that it sits on the xy plane with its bottom (lowest point in the z direction) just touching the origin?
 
@@ -69,7 +69,7 @@ A sphere centered at [`(0,0,[$a])`] will have its lowest point at the origin (an
 
 A sphere centered at [`(0,0,[$a*2]+[$b])`], which is [`(0,0,[$a*2+$b])`], will have its lowest point at [`(0,0,[$a*2])`], which therefore just touches the previous sphere.
 
-The larger of the two radii is [$m], and thus in the x and y directions, the sphere reach out as far as [`\pm [$m]`].  We know that their lowest point in z is at [`z=0`] and their highest point will be the top of the second sphere, or [`z=[$a*2+b]+[$b]=[$a*2+$b*2]`].  Thus the corners of the box go as high as [`([$m],[$m],[$a*2+$b*2])`] and as low as [`(-[$m],-[$m],0)`].
+The larger of the two radii is [$m], and thus in the x and y directions, the sphere reach out as far as [`\pm [$m]`].  We know that their lowest point in z is at [`z=0`] and their highest point will be the top of the second sphere, or [`z=[$a*2+$b]+[$b]=[$a*2+$b*2]`].  Thus the corners of the box go as high as [`([$m],[$m],[$a*2+$b*2])`] and as low as [`(-[$m],-[$m],0)`].
 
 A sphere centered at [`([$x],[$y],[$z+$c])`] will have its lowest point at [`([$x],[$y],[$z])`].
 

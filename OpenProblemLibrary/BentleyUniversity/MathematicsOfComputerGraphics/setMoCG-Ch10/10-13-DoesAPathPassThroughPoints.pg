@@ -17,67 +17,63 @@
 ## KEYWORDS('vector-valued function','points','intersection')
 
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "PGML.pl",
-  "PGcourse.pl",
-);
+loadMacros("PGstandard.pl", "MathObjects.pl", "PGML.pl", "PGcourse.pl",);
 
 Context("Numeric");
-Context()->variables->add(t=>Real);
-$showPartialCorrectAnswers = 1;
-$a1 = random( 2, 4 ) * random( -1, 1, 2 );
-$b1 = random( 2, 4 ) * random( -1, 1, 2 );
-$c1 = random( 2, 4 ) * random( -1, 1, 2 );
-$f1 = Formula( "$a1*t^2+$b1*t+$c1" )->reduce();
-$a2 = random( 2, 4 ) * random( -1, 1, 2 );
-$b2 = random( 2, 4 ) * random( -1, 1, 2 );
-$c2 = random( 2, 4 ) * random( -1, 1, 2 );
-$f2 = Formula( "$a2*t^2+$b2*t+$c2" )->reduce();
-$t1 = random( -3, 0 );
-$t2 = random( 1, 4 );
-$t3 = random( 5, 8 );
-$whichOneIsNone = random( 0, 2 );
-$p1x = $f1->eval(t=>$t1);
-$p1y = $f2->eval(t=>$t1);
-$ans1 = $t1;
-$explain1 = "In this case, $t1 also satisfies the second equation.";
-if ( $whichOneIsNone == 0 ) {
-    $p1y += non_zero_random( -3, 3 );
-    $ans1 = 'NONE';
+Context()->variables->add(t => Real);
+
+$a1             = random(2, 4) * random(-1, 1, 2);
+$b1             = random(2, 4) * random(-1, 1, 2);
+$c1             = random(2, 4) * random(-1, 1, 2);
+$f1             = Formula("$a1*t^2+$b1*t+$c1")->reduce();
+$a2             = random(2, 4) * random(-1, 1, 2);
+$b2             = random(2, 4) * random(-1, 1, 2);
+$c2             = random(2, 4) * random(-1, 1, 2);
+$f2             = Formula("$a2*t^2+$b2*t+$c2")->reduce();
+$t1             = random(-3, 0);
+$t2             = random( 1, 4);
+$t3             = random( 5, 8);
+$whichOneIsNone = random( 0, 2);
+$p1x            = $f1->eval(t => $t1);
+$p1y            = $f2->eval(t => $t1);
+$ans1           = $t1;
+$explain1       = "In this case, $t1 also satisfies the second equation.";
+
+if ($whichOneIsNone == 0) {
+    $p1y += non_zero_random(-3, 3);
+    $ans1     = 'NONE';
     $explain1 = "In this case, neither value satisfies the second equation.";
 }
-$p2x = $f1->eval(t=>$t2);
-$p2y = $f2->eval(t=>$t2);
-$ans2 = $t2;
+$p2x      = $f1->eval(t => $t2);
+$p2y      = $f2->eval(t => $t2);
+$ans2     = $t2;
 $explain2 = "In this case, $t2 also satisfies the second equation.";
-if ( $whichOneIsNone == 1 ) {
-    $p2y += non_zero_random( -3, 3 );
-    $ans2 = 'NONE';
+if ($whichOneIsNone == 1) {
+    $p2y += non_zero_random(-3, 3);
+    $ans2     = 'NONE';
     $explain2 = "In this case, neither value satisfies the second equation.";
 }
-$p3x = $f1->eval(t=>$t3);
-$p3y = $f2->eval(t=>$t3);
-$ans3 = $t3;
+$p3x      = $f1->eval(t => $t3);
+$p3y      = $f2->eval(t => $t3);
+$ans3     = $t3;
 $explain3 = "In this case, $t3 also satisfies the second equation.";
-if ( $whichOneIsNone == 2 ) {
-    $p3y += non_zero_random( -3, 3 );
-    $ans3 = 'NONE';
+if ($whichOneIsNone == 2) {
+    $p3y += non_zero_random(-3, 3);
+    $ans3     = 'NONE';
     $explain3 = "In this case, neither value satisfies the second equation.";
 }
-$ans4a = -$b1/(2*$a1);
-$ans4b = -$b2/(2*$a2);
-if ( $ans4a == $ans4b ) { $ans4 = $ans4a; } else { $ans4 = 'NONE'; }
+$ans4a = -$b1 / (2 * $a1);
+$ans4b = -$b2 / (2 * $a2);
+if   ($ans4a == $ans4b) { $ans4 = $ans4a; }
+else                    { $ans4 = 'NONE'; }
 
-$sol1a = (-$b1-sqrt($b1**2-4*$a1*($c1-$p1x)))/(2*$a1);
-$sol1b = (-$b1+sqrt($b1**2-4*$a1*($c1-$p1x)))/(2*$a1);
-$sol2a = (-$b1-sqrt($b1**2-4*$a1*($c1-$p2x)))/(2*$a1);
-$sol2b = (-$b1+sqrt($b1**2-4*$a1*($c1-$p2x)))/(2*$a1);
-$sol3a = (-$b1-sqrt($b1**2-4*$a1*($c1-$p3x)))/(2*$a1);
-$sol3b = (-$b1+sqrt($b1**2-4*$a1*($c1-$p3x)))/(2*$a1);
+$sol1a = (-$b1 - sqrt($b1**2 - 4 * $a1 * ($c1 - $p1x))) / (2 * $a1);
+$sol1b = (-$b1 + sqrt($b1**2 - 4 * $a1 * ($c1 - $p1x))) / (2 * $a1);
+$sol2a = (-$b1 - sqrt($b1**2 - 4 * $a1 * ($c1 - $p2x))) / (2 * $a1);
+$sol2b = (-$b1 + sqrt($b1**2 - 4 * $a1 * ($c1 - $p2x))) / (2 * $a1);
+$sol3a = (-$b1 - sqrt($b1**2 - 4 * $a1 * ($c1 - $p3x))) / (2 * $a1);
+$sol3b = (-$b1 + sqrt($b1**2 - 4 * $a1 * ($c1 - $p3x))) / (2 * $a1);
 
-TEXT(beginproblem());
 BEGIN_PGML
 Consider an object following the path of the two-dimensional vector-valued function [`\vec p(t)=\left( [$f1],[$f2] \right)`].
 

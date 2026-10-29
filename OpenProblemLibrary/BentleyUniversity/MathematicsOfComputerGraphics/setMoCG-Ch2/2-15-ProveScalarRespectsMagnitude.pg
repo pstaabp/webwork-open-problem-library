@@ -26,10 +26,10 @@ loadMacros(
 );
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 
 COMMENT("Essay question");
-TEXT(beginproblem());
+
 BEGIN_PGML
 Prove that for any scalar [`s>0`] and any vector [`\vec v`] in [`\mathbb{R}^2`], [`||s\vec v||=s||\vec v||`].
 

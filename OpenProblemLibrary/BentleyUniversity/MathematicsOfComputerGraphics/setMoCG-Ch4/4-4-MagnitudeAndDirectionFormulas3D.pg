@@ -28,7 +28,7 @@ Context("Numeric");
 Context()->variables->add(a => 'Real');
 Context()->variables->add(b => 'Real');
 Context()->variables->add(c => 'Real');
-$showPartialCorrectAnswers = 1;
+
 $aindex = random(0,2);
 do { $bindex = random(0,2); } until ($aindex+$bindex > 0);
 $a = ("0","-a","a")[$aindex];
@@ -51,7 +51,7 @@ if ($aindex*$bindex > 0) {
 @dir = ($coeff*$signa,$coeff*$signb,$coeff*$signa);
 $intermediate = Formula("$num a^2")->reduce;
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 Consider the vector [`\vec v=\langle [$a],[$b],[$a] \rangle`], with [`a>0`].
 

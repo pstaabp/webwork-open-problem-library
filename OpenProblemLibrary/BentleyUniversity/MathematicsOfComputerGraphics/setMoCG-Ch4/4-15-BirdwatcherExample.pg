@@ -25,7 +25,7 @@ loadMacros(
 );
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 $x1=random(1,10);
 $y1=random(1,10);
 $z1=random(2,10);
@@ -44,7 +44,7 @@ $sfinx=sprintf("%.5f",$x2+$l*$ux);
 $sfiny=sprintf("%.5f",$y2+$l*$uy);
 $sfinz=sprintf("%.5f",$z2+$l*$uz);
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 Imagine a scene in which a birdwatcher, whose eye is located at [`([$x2],[$y2],[$z2])`], is watching a bird located at [`([$x1],[$y1],[$z1])`].
 

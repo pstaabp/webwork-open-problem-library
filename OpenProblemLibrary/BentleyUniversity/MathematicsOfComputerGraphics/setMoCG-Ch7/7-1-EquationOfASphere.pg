@@ -27,7 +27,7 @@ loadMacros(
 Context("Numeric");
 Context()->variables->add(y => 'Real');
 Context()->variables->add(z => 'Real');
-$showPartialCorrectAnswers = 1;
+
 $a = non_zero_random( -10, 10 );
 $b = non_zero_random( -10, 10 );
 $c = random( 10, 15 );
@@ -43,7 +43,7 @@ $C = $c**2-$r**2+$xma2+$ymb2;
 $botsol = $c-sqrt($r**2-($x-$a)**2-($y-$b)**2);
 $topsol = $c+sqrt($r**2-($x-$a)**2-($y-$b)**2);
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 Consider a sphere with center [`([$a],[$b],[$c])`] and radius [`[$r]`].
 

@@ -25,7 +25,7 @@ loadMacros(
 );
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 $a=non_zero_random(-20,20,0.01);
 $b=non_zero_random(-20,20,0.01);
 $c=non_zero_random(-20,20,0.01);
@@ -34,7 +34,7 @@ $smag=sprintf("%.6f",$mag);
 @dir=($a/$mag,$b/$mag,$c/$mag);
 @sdir=(sprintf("%.6f",$dir[0]),sprintf("%.6f",$dir[1]),sprintf("%.6f",$dir[2]));
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 What is the unit vector for the vector [`\langle [$a],[$b],[$c] \rangle`]?
 

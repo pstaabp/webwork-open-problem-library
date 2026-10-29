@@ -25,12 +25,12 @@ loadMacros(
 );
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 $theta = random(0.1,2*3.14,0.01);
 $x = round(cos($theta)*100)/100;
 $y = round(sin($theta)*100)/100;
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 Consider the (approximate) unit vector [`\langle [$x],[$y] \rangle`].  Give another unit vector different from it, but still parallel to it.
 

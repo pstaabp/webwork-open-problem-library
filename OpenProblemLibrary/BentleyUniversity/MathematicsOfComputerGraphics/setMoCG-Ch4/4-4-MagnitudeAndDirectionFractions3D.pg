@@ -25,7 +25,7 @@ loadMacros(
 );
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 $adenom=random(2,10);
 $bdenom=random(2,10);
 $cdenom=random(2,10);
@@ -43,7 +43,7 @@ $smag=sprintf("%.5f",$mag);
 @dir=($a/$mag,$b/$mag,$c/$mag);
 @sdir=(sprintf("%.5f",$dir[0]),sprintf("%.5f",$dir[1]),sprintf("%.5f",$dir[2]));
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 Consider the vector [`\vec v=\left\langle -\frac{1}{[$adenom]},-\frac{1}{[$bdenom]},-\frac{1}{[$cdenom]} \right\rangle`].
 

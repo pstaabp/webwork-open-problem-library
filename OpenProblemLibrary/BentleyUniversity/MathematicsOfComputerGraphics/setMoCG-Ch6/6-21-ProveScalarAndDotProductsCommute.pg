@@ -26,10 +26,10 @@ loadMacros(
 );
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 
 COMMENT("Essay question");
-TEXT(beginproblem());
+
 BEGIN_PGML
 Use some algebra to demonstrate why the following equation is true, for any scalars [`s`] and [`t`] and any vectors [`\vec u`] and [`\vec v`] in [`\mathbb{R}^3`].
 

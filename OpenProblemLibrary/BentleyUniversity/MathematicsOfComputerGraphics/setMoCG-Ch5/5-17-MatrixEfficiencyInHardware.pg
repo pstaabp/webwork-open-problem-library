@@ -21,12 +21,11 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "PGML.pl",
-  "PGcourse.pl",
-  "AnswerFormatHelp.pl",
+  "PGcourse.pl"
 );
 
 Context("Matrix");
-$showPartialCorrectAnswers = 1;
+
 $nmats = random(7,10);
 $npts = random(2000,10000,1000);
 
@@ -36,7 +35,7 @@ $ans3 = 28*$nmats;
 $ans4 = $ans3 * $npts;
 $ans5 = ($nmats-1)*112 + 28*$npts;
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 Suppose a computer program needs to apply an affine transformation to a complex three-dimensional object made up of [$npts] points. The transformation is composed of [$nmats] matrices (call them [`M_1`] through [`M_{[$nmats]}`]), so for each point [`(x, y, z)`] in the object, the following operation is performed.
 

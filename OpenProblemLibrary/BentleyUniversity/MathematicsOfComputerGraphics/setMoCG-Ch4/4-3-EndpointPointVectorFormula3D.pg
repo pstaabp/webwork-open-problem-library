@@ -25,7 +25,7 @@ loadMacros(
 );
 
 Context("Numeric");
-$showPartialCorrectAnswers = 1;
+
 Context()->variables->add(a => 'Real');
 Context()->variables->add(b => 'Real');
 Context()->variables->add(c => 'Real');
@@ -45,7 +45,7 @@ $A=(($d+$a)*Formula("a"))->reduce;
 $B=(($e+$b)*Formula("b"))->reduce;
 $C=(($f+$c)*Formula("c"))->reduce;
 
-TEXT(beginproblem());
+
 BEGIN_PGML
 Let [`\vec v`] be the vector [`\langle [$A1],[$B1],[$C1] \rangle`] and [`A`] be the point [`([$A2],[$B2],[$C2])`].
 
