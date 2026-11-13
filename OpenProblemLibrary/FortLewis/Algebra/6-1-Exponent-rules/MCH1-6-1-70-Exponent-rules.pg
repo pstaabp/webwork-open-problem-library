@@ -2,7 +2,6 @@
 ## exponents
 ## ENDDESCRIPTION
 
-
 ## BookTitle('Algebra: Form and Function')
 ## BookChapter('Rules for Exponents and the Reasons for Them')
 ## DBsubject(Algebra)
@@ -20,23 +19,10 @@
 ## Problem1('70')
 ## KEYWORDS('exponents')
 
-##############################################
-#  Initialization
 
 DOCUMENT();
 
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "AnswerFormatHelp.pl",
-  "parserMultiAnswer.pl",
-  "PGcourse.pl"
-);
-
-TEXT(beginproblem());
-
-##############################################
-#  Setup
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserMultiAnswer.pl', 'PGcourse.pl');
 
 Context("Numeric")->variables->are(t=>"Real");
 
@@ -79,30 +65,21 @@ $multians = MultiAnswer($fac1,$fac2)->with(
 
 
 
-##############################################
-#  Main text
-
-Context()->texStrings;
-BEGIN_TEXT
+BEGIN_PGML
 Using laws of exponents, rewrite the following expression as a product.
-$BR
-$BR
-\( $a \big( 10 t e^{$b t} \big)^2 \) = 
-\{$multians->ans_rule(10)\}
-\( \cdot \) 
-\{$multians->ans_rule(10)\}
-\{ AnswerFormatHelp("formulas") \}
-END_TEXT
-Context()->normalStrings;
+  
+[` [$a] \big( 10 t e^{[$b] t} \big)^2 `] = 
+[@ $multians->ans_rule(10) @]*
+[` \cdot `] 
+[@ $multians->ans_rule(10) @]*
+[@  helpLink('formulas')  @]*
+END_PGML
 
 
-#############################################
-#  Answer evaluation
 
-$showPartialCorrectAnswers = 1;
+
 
 ANS($multians->cmp() );
-
 
 ;
 ENDDOCUMENT();

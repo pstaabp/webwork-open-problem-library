@@ -13,195 +13,159 @@
 ## KEYWORDS('calculus', 'derivatives', 'optimization')
 ## RESOURCES('question4-6-9.png')
 
-
 DOCUMENT();
 
-loadMacros(
-                "PG.pl",
-                "PGgraphmacros.pl",
-                "freemanMacros.pl",
-                "PGbasicmacros.pl",
-                "PGchoicemacros.pl",
-                "PGanswermacros.pl",
-                "PGauxiliaryFunctions.pl",
-                "MathObjects.pl",
-                "PGstandard.pl",
-                "imageChoice.pl",
-                "scaffold.pl"
-               );
+loadMacros('PGstandard.pl', 'PGML.pl', 'scaffold.pl', 'plots.pl',
+    'PGcourse.pl');
 
-## Show partial correct answers
-TEXT(beginproblem());
-$showPartialCorrectAnswers = 1;
-
-
-
-###########################################
-#
 #  The scaffold
-#
-
 Scaffold::Begin(
-      can_open => "when_previous_correct",
-      is_open  => "always" ,
-      instructor_can_open => "always",
-      after_AnswerDate_can_open => "always",
-      hardcopy_is_open  => "always",
-    );
+    can_open                  => "when_previous_correct",
+    is_open                   => "always",
+    instructor_can_open       => "always",
+    after_AnswerDate_can_open => "always",
+    hardcopy_is_open          => "always",
+);
 
-Context ("Numeric");
-Context() -> variables -> add(y => 'Real');
+Context("Numeric");
+Context()->variables->add(y => 'Real');
 
+$p = random(100, 700, 1);
+$d = Formula("x*y +pi*x^2/8");
+$C = Formula("2*y+(1+pi/2)x");
+$r = Formula("1/2*($p-(1+pi/2)x)");
+$t = Formula("x*$r+pi*x^2/8");
+$k = Formula("-x(1+pi/4) + $p/2");
+$a = $p / 2 / (1 + pi / 4);
+$b = 1 / 2 * ($p - (1 + pi / 2) * $a);
 
-$p=random(100,700,1);
-$d= Formula("x*y +pi*x^2/8");
-$C= Formula("2*y+(1+pi/2)x");
-$r= Formula("1/2*($p-(1+pi/2)x)");
-$t= Formula("x*$r+pi*x^2/8");
-$k= Formula("-x(1+pi/4) + $p/2");
-$a=$p/2/(1+pi/4);
-$b=1/2*($p-(1+pi/2)*$a);
+$plot = Plot(
+    xmin            => -1,
+    xmax            =>  5,
+    xvisible        =>  0,
+    ymin            => -1,
+    ymax            =>  8,
+    yvisible        =>  0,
+    show_grid       =>  0,
+    rounded_corners =>  1,
+    aspect_ratio    => 1
+);
+$plot->add_dataset(
+    [ [ 0, 5 ], [ 0, 0 ], [ 4, 0 ], [ 4, 5 ] ],
+    [ [ 0, 5 ], [ 4, 5 ], linestyle => 'dashed' ]
+);
+$plot->add_label(
+    [ 2, 0,   "\\(x\\)", v_align => 'top' ],
+    [ 4, 2.5, "\\(y\\)", h_align => 'left' ]
+);
+$plot->add_arc([ 2, 5 ], [ 4, 5 ], [ 0, 5 ]);
 
+BEGIN_PGML
+Suppose that [$p] ft of fencing are used to enclose a corral in the shape of a rectangle with a semicircle whose diameter is a side of the rectangle as shown in the following figure:  
 
-TEXT(EV2(<<EOT));
-\{ textbook_ref_exact("Rogawski ET 2e", "4.7","7") \}$BR
-Suppose that $p ft of fencing are used to enclose a corral in the shape of a rectangle with a semicircle whose diameter is a side of the rectangle as shown in the following figure:$BR
-
-\{ image("Corral.png")\} $BR
+>>[!A rectangle of height y and width x. At the top of the rectangle is a dashed line and a semicircle.!]{$plot}{150}<<
 
 Find the dimensions of the corral with maximum area.
-$PAR
-EOT
 
+END_PGML
 
-####################################################
 Section::Begin("Part 1: Find the area of this corral.");
 
-BEGIN_TEXT
-$BR
-\(A =\) \{ans_rule(20)\}
-END_TEXT
-
-ANS($d -> cmp );
+BEGIN_PGML
+  
+[`A =`]  [_]{$d}
+END_PGML
 
 Section::End();
 
-
-
-####################################################
 Section::Begin("Part 2: Find the perimeter of this corral.");
 
-BEGIN_TEXT
+BEGIN_PGML
 
-$BR
- \(P =\) \{ans_rule(20)\}
-END_TEXT
+ [`P =`]  [_]{$C}
 
-ANS($C-> cmp );
+END_PGML
 
 Section::End();
 
+Section::Begin(
+    "Part 3: Find the value of y as a function of x, using the given value of the perimeter."
+);
 
+BEGIN_PGML
 
-####################################################
-Section::Begin("Part 3: Find the value of y as a function of x, using the given value of the perimeter.");
-
-BEGIN_TEXT
-
-$BR
- \( y =\) \{ans_rule(20)\}
-END_TEXT
-
-ANS($r-> cmp );
+ [` y =`]  [_]{$r}
+END_PGML
 
 Section::End();
 
-
-
-####################################################
 Section::Begin("Part 4: Rewrite the area A of the corral as a function of x");
 
-BEGIN_TEXT
+BEGIN_PGML
 
-$BR \( A(x)=\) \{ans_rule(20)\}
-END_TEXT
+[` A(x)=`]  [_]{$t}
 
-ANS($t-> cmp );
-
-Section::End();
-
-####################################################
-Section::Begin("Part 5: Find the derivative of the area A of the corral with respect to x");
-
-BEGIN_TEXT
-
-$BR \( A'(x)=\) \{ans_rule(20)\}
-END_TEXT
-
-ANS($k-> cmp );
+END_PGML
 
 Section::End();
 
-####################################################
-Section::Begin("Part 6: Find the x and y values that maximize the area of the corral.");
+Section::Begin(
+    "Part 5: Find the derivative of the area A of the corral with respect to x"
+);
 
-BEGIN_TEXT
+BEGIN_PGML
+ [` A'(x)=`]  [_]{$k}
+END_PGML
 
-$BR
-\( x = \) \{ ans_rule() \} ft. $BR
-END_TEXT
+Section::End();
 
-ANS(num_cmp($a));
+Section::Begin(
+    "Part 6: Find the x and y values that maximize the area of the corral."
+);
 
-BEGIN_TEXT
-\( y = \) \{ ans_rule() \} ft. $BR
-END_TEXT
+BEGIN_PGML
 
-BEGIN_HINT
+- [` x = `]  [_]{$a} ft.   
+
+- [` y = `]  [_]{$b} ft.   
+END_PGML
+
+BEGIN_PGML_HINT
 Remember that extreme values will sometimes appear at endpoints.
-END_HINT
-
-ANS(num_cmp($b));
+END_PGML_HINT
 
 Section::End();
 
 Scaffold::End();
 
-###################################################################
+$p_2 = $p / 2;
 
-$p_2= $p / 2;
+$a_half = $p_2 * $a - (1 / 2 + pi / 8) * ($a**2);
 
-$a_half=$p_2 * $a - (1/2 + pi/8)* ($a**2);
-
-$a2= $p / (1+ pi/2);
+$a2 = $p / (1 + pi / 2);
 ##$a2_half= $p_2 * $a2 - (1/2 + pi/8)* ({$a2}**2);
 ##$a2_half= (pi/8) * (($p**2) / (1 + pi/2)**2);
-$a2_half= (pi/8) * $a2**2;
+$a2_half = (pi / 8) * $a2**2;
 
-SOLUTION(EV3(<<'END_SOLUTION'));
-$PAR$BBOLD Solution:$EBOLD
-$PAR
+BEGIN_PGML_SOLUTION
+From the picture, we see that [`x`] is the width of the corral, and therefore the diameter of the semicircle, 
 
-From the picture, we see that \(x\) is the width of the corral, and therefore the diameter of the semicircle, $BR and that \(y\) is the height of the rectangular section. Thus the perimeter of the corral can be expressed $BR
-by the equation \(2y+ x+ \frac{\pi}{2}x= 2y + (1+ \frac{\pi}{2})x= $p\) ft or equivalently, $BR
-\(y=\frac{1}{2}($p - (1+ \frac{\pi}{2})x)\). Since \(x\) and \(y\) must both be nonnegative, it follows that \(x\) must $BR
-be restricted to the interval \([0, \frac{$p}{1+ \pi/2}]\). The area of the corral is the sum of the area of the $BR
-rectangle and semicircle, \(A= xy + \frac{\pi}{8}x^2\). Making the substitution for \(y\) from the $BR
-constraint equation, $PAR
+ and that [`y`] is the height of the rectangular section. Thus the perimeter of the corral can be expressed   
+by the equation [`2y+ x+ \frac{\pi}{2}x= 2y + (1+ \frac{\pi}{2})x= [$p]`] ft or equivalently,   
+[`y=\frac{1}{2}([$p] - (1+ \frac{\pi}{2})x)`]. Since [`x`] and [`y`] must both be nonnegative, it follows that [`x`] must   
+be restricted to the interval [`[0, \frac{[$p]}{1+ \pi/2}]`]. The area of the corral is the sum of the area of the   
+rectangle and semicircle, [`A= xy + \frac{\pi}{8}x^2`]. Making the substitution for [`y`] from the   
+constraint equation, 
 
-\(A(x)=\frac{1}{2}x($p - (1+ \frac{\pi}{2})x) + \frac{\pi}{8}x^2 = $p_2 x - \frac{1}{2}(1+ \frac{\pi}{2})x^2 + \frac{\pi}{8}x^2\). $BR
-Now, \(A'(x) = $p_2 - (1 + \frac{\pi}{2})x + \frac{\pi}{4}x = 0\) implies \(x= \frac{$p_2}{(1+ \frac{\pi}{4})} \approx $a\).  $BR
-With \(A(0)=0\), $PAR
+[`A(x)=\frac{1}{2}x([$p] - (1+ \frac{\pi}{2})x) + \frac{\pi}{8}x^2 = [$p_2] x - \frac{1}{2}(1+ \frac{\pi}{2})x^2 + \frac{\pi}{8}x^2`].   
+Now, [`A'(x) = [$p_2] - (1 + \frac{\pi}{2})x + \frac{\pi}{4}x = 0`] implies [`x= \frac{[$p_2]}{(1+ \frac{\pi}{4})} \approx [$a]`].    
+With [`A(0)=0`], 
 
-\(A(\frac{$p_2}{(1+ \frac{\pi}{4})}) \approx $a_half \qquad\) and \(\qquad A(\frac{$p}{1+ \frac{\pi}{2}}) \approx $a2_half \), $BR
-it follows that the corral of maximum area has dimensions $PAR
+[`A(\frac{[$p_2]}{(1+ \frac{\pi}{4})}) \approx [$a_half] \qquad`] and [`\qquad A(\frac{[$p]}{1+ \frac{\pi}{2}}) \approx [$a2_half] `],   
+it follows that the corral of maximum area has dimensions 
 
-\(x= \frac{$p_2}{1+ \frac{\pi}{4}} \qquad\) and \(\qquad y= \frac{1}{2}($p - (1+ \frac{\pi}{2}) \frac{$p_2}{1+ \frac{\pi}{4}}) \approx $b\).
+[`x= \frac{[$p_2]}{1+ \frac{\pi}{4}} \qquad`] and [`\qquad y= \frac{1}{2}([$p] - (1+ \frac{\pi}{2}) \frac{[$p_2]}{1+ \frac{\pi}{4}}) \approx [$b]`].
 
-END_SOLUTION
-
-###################################################################
-
-
+END_PGML_SOLUTION
 
 ENDDOCUMENT();

@@ -2,7 +2,6 @@
 ## exponents
 ## ENDDESCRIPTION
 
-
 ## BookTitle('Algebra: Form and Function')
 ## BookChapter('Rules for Exponents and the Reasons for Them')
 ## DBsubject(Algebra)
@@ -20,64 +19,30 @@
 ## KEYWORDS('exponents')
 ## MLT(Algebra_PropExp_PropExp)
 
-##############################################
-#  Initialization
 
 DOCUMENT();
-
-loadMacros(
-  "PGstandard.pl",
-  "PGchoicemacros.pl",
-  "PGgraders.pl",
-  "PGcourse.pl"
-);
-
-TEXT(beginproblem());
-
-
-##############################################
-#  Setup
+loadMacros('PGstandard.pl', 'PGML.pl',  'parserCheckboxList.pl', 'PGcourse.pl');
 
 $a = random(3,9,2);
 $b = 2;
-
 $adb = $a / $b;
 
-$mc = new_checkbox_multiple_choice();
-$mc -> qa (
-"Select all expressions that are equivalent to  
-\( \displaystyle \frac{$a^n}{$b^n} \).  There may be more than
-one correct answer.", 
-"\( \displaystyle \left( \frac{$a}{$b} \right)^{n} \)$BR",
-"\( \displaystyle \left( \frac{$b}{$a} \right)^{-n} \)$BR",
-"\( \displaystyle \left( \frac{1}{ \frac{$b}{$a} } \right)^{n} \)$BR",
-"\( \displaystyle \frac{$b^{-n}}{$a^{-n}} \)$BR",
-"\( \displaystyle \left( $adb \right)^{n} \)$BR",
-);
-$mc -> extra(
-"\( \displaystyle -\left( \frac{$a}{$b} \right)^{n} \)$BR",
-);
-#$mc -> makeLast("None of the above");
-
-
-
-##############################################
-#  Main text
-
-BEGIN_TEXT
-\{ $mc -> print_q() \}
-$BR
-\{ $mc -> print_a() \}
-END_TEXT
-
-
-#############################################
-#  Answer evaluation
-
-install_problem_grader(~~&std_problem_grader);
+$cb = CheckboxList([[
+    "\( \displaystyle \left( \frac{$a}{$b} \right)^{n}\)",
+    "\( \displaystyle \left( \frac{$b}{$a} \right)^{-n}\)",
+    "\( \displaystyle \left( \frac{1}{ \frac{$b}{$a} } \right)^{n} \)",
+    "\( \displaystyle \frac{$b^{-n}}{$a^{-n}} \)",
+    "\( \displaystyle \left( $adb \right)^{n} \)",
+    "\( \displaystyle -\left( \frac{$a}{$b} \right)^{n} \)"
+]],[0..4], labels => 'ABC', separator => '<div style="height: 11px"></div>');
 
 $showPartialCorrectAnswers = 0;
+BEGIN_PGML
+"Select all expressions that are equivalent to
+[`` \frac{[$a]^n}{[$b]^n}``].  There may be more than one correct answer."
 
-ANS(checkbox_cmp( $mc->correct_ans() ) );
+[_]{$cb}
 
-ENDDOCUMENT(); 
+END_PGML
+
+ENDDOCUMENT();

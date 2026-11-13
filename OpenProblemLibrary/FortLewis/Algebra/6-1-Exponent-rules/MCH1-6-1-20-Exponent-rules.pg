@@ -2,7 +2,6 @@
 ## exponents
 ## ENDDESCRIPTION
 
-
 ## BookTitle('Algebra: Form and Function')
 ## BookChapter('Rules for Exponents and the Reasons for Them')
 ## DBsubject(Algebra)
@@ -20,75 +19,38 @@
 ## Problem1('20 22')
 ## KEYWORDS('exponents')
 
-##############################################
-#  Initialization
-
 DOCUMENT();
 
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "AnswerFormatHelp.pl",
-  "contextFraction.pl",
-  "alignedChoice.pl",
-  "PGcourse.pl"
-);
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextFraction.pl', 'PGcourse.pl');
 
-TEXT(beginproblem());
+Context('Fraction-NoDecimals');
 
-##############################################
-#  Setup
-
-#Context("Numeric")->variables->remove('x');
-Context("Fraction-NoDecimals");
-
-$x = 2; #random(2,3,1);
-$y = random(-4,-2,1);
-while (abs($y) == $x) { $y = random(-4,-2,1); }
-$z = random(-5,-3,1);
+$x = 2;                   #random(2,3,1);
+$y = random(-4, -2, 1);
+while (abs($y) == $x) { $y = random(-4, -2, 1); }
+$z = random(-5, -3, 1);
 if ($y == $z) { $z = -5; }
 
-$ansanum = ($x)**6 * ($y)**2;
-$ansaden = (2 * $z)**2;
-
-$ansbnum = ($x + $y)**($x);
-$ansbden = ($x - $z)**($x);
-
-Context()->texStrings;
-$al = new_aligned_list(ans_rule_len=>20, numbered=>0, tex_spacing=>"5pt");
-$al->qa(
-"\( \displaystyle \left( \frac{x^3 y}{2z} \right)^2 \)", Compute("$ansanum/$ansaden")->cmp(),
-"\( \displaystyle \left( \frac{x+y}{x-z} \right)^x \)", Compute("$ansbnum/$ansbden")->cmp(),
+@ans = (
+    Fraction($x**6 * $y**2, 4 * $z**2),
+    Fraction(($x + $y)**$x, ($x - $z)**$x)
 );
-Context()->normalStrings;
 
-Context()->operators->undefine("+","-","*","^","**");
+Context()->operators->undefine("+", "-", "*", "^", "**");
 Context()->functions->disable("All");
 
-
-##############################################
-#  Main text
-
-Context()->texStrings;
-BEGIN_TEXT
-Evaluate the following expressions for \( x = $x \),
-\( y = $y \), and \( z = $z \) without using
+BEGIN_PGML
+Evaluate the following expressions for [` x = [$x] `],
+[` y = [$y] `], and [` z = [$z] `] without using
 a calculator.  Simplify your answers as much
 as possible, and enter your answers as fractions.  
-\{ AnswerFormatHelp("fractions") \}
-$BR
-\{ $al->print_q() \}
-END_TEXT
-Context()->normalStrings;
 
 
-#############################################
-#  Answer evaluation
+a) [``\left( \frac{x^3 y}{2z} \right)^2 =\;``][_]{$ans[0]}
 
-$showPartialCorrectAnswers = 1;
+b) [``\left( \frac{x+y}{x-z} \right)^x =\; ``] [_]{$ans[1]}
 
-ANS($al->correct_ans );
+[@  helpLink('fractions')  @]*
+END_PGML
 
-
-;
 ENDDOCUMENT();

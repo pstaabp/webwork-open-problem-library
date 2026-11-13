@@ -2,7 +2,6 @@
 ## exponents
 ## ENDDESCRIPTION
 
-
 ## BookTitle('Algebra: Form and Function')
 ## BookChapter('Rules for Exponents and the Reasons for Them')
 ## DBsubject(Algebra)
@@ -20,78 +19,23 @@
 ## Problem1('40')
 ## KEYWORDS('exponents')
 
-##############################################
-#  Initialization
 
 DOCUMENT();
 
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "AnswerFormatHelp.pl",
-  "unionTables.pl",
-  "PGcourse.pl"
-);
-
-TEXT(beginproblem());
-
-##############################################
-#  Setup
+loadMacros('PGstandard.pl', 'PGML.pl','PGcourse.pl');
 
 Context("Numeric")->variables->are(x=>"Real",y=>"Real");
 
-$a = random(2,9,1);
-
-# TeX
-$expression = "(x^2+y)^{$a} (x+y^2)^{$a}";
-
+$a = random(2,9);
 $base = Formula("(x^2+y)*(x+y^2)");
 $exponent = Formula("$a");
 
-
-#
-#  Display exponents nicely
-#
-$w1 = 20; # width of 1st answer blank
-$w2 = 10; # width of 2nd answer blank
-
-Context()->texStrings;
-if ($displayMode eq 'TeX') {
-  $showpower =
-  "\( \displaystyle $expression = (" . ans_rule($w1) . ")^{" . ans_rule($w2) . "}\)";
-} else {
-  $showpower =
-  ColumnTable(
-  "\( \displaystyle $expression = \Big( \) " . ans_rule($w1) . " \( \Big) \)",
-  ans_rule($w2).$BR.$BR,
-  indent => 0, separation => 0, valign => "BOTTOM"
-  );
-}
-Context()->normalStrings;
-
-
-##############################################
-#  Main text
-
-Context()->texStrings;
-BEGIN_TEXT
+BEGIN_PGML
 Rewrite the following using a single exponent.
-\{ AnswerFormatHelp("formulas") \}
-$BR
-$BR
-$showpower
-END_TEXT
-Context()->normalStrings;
-
-
-#############################################
-#  Answer evaluation
-
-$showPartialCorrectAnswers = 1;
-
-ANS($base->cmp() );
-ANS($exponent->cmp() );
-
-
-;
+[@  helpLink('formulas')  @]*
+  
+[# [. [`(x^2+y)^{[$a]} (x+y^2)^{[$a]}=\;`] .] [.[`(`] [_]{$base} [`)`] .] 
+   [.[# [. [_]{$exponent} .]* [. [`\phantom{I}`].]* #]{valign => 'top'}
+ .]*#]{align => 'rcl', valign => 'bottom', padding => 0}
+END_PGML
 ENDDOCUMENT();

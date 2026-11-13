@@ -1,11 +1,9 @@
-# ************************************
 #   Comments + Keyword Clarification
-#
+
 #    Anton, Calculus, 2.6.50
-# ************************************
 # DESCRIPTION
 # Find the derivative of a function using the chain rule
-#
+
 # ENDDESCRIPTION
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Differentiation)
@@ -19,111 +17,64 @@
 ## Section1('2.6')
 ## Problem1('50')
 ## KEYWORDS('Derivative', 'Chain rule', 'tangent line')
-#***************************************************************
-#   Initialization - Load standard PG and MathObjects macros   
-#***************************************************************
 
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "contextFraction.pl",
-  "alignedChoice.pl",
-  "littleneck.pl",
-  "PGcourse.pl"
-);
-#
-rand_button();
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextFraction.pl', 'PGcourse.pl');
 
+Context("Numeric")->variables->add(u => 'Real');
 
-#
-# Set Up - Set up variable context and formulation of problem
-#
-Context("Numeric");
-Context()->variables->add(u=>'Real');
+$a   = random(2, 8);
+$b   = random(1, 4, 3);
+$sqb = $b == 1 ? 1 : 2;
 
-
-$a = random(2,8,1);
-$b = 3*random(1,2,1)-2;
-
-if($b==1) {$sqb=1;} else{$sqb=2;}
-
-if(2*int($a/$sqb) == $a/$sqb) {$mdisp=$a/$sqb;} else{$mdisp ='\frac{$a}{$sqb}';}
+$mdisp = 2 * int($a / $sqb) == $a / $sqb ? $a / $sqb : '\frac{$a}{$sqb}';
 
 $x0 = 0;
 $y0 = 0;
-$m = Compute("$a/$sqb"); if($m==1) {$mdisp='';} else{$mdisp =$m;}
+$m  = Compute("$a/$sqb");
+
+$mdisp = $m == 1 ? '' : $m;
 
 $f = Formula(" $a*x/sqrt($b-x^2) ")->reduce;
 $g = Formula(" $b-x^2 ");
 
-$CTF = Context("Fraction");
-  $CTF->flags->set(reduceConstants=>1);
-Context()->variables->add(u=>'Real');
-$h = Formula(" u**(-1/2)");
-$num=Formula("$a*x")->reduce;
-$ntx=Formula("-2*x");
-$nhalf=Formula("-(1/2)");
-$first=Formula(" $a/sqrt($b-x^2)")->reduce;
-$Df1 = Formula("  ($b-x^2)^((-3)/(2))")->reduce;
-$Df = Formula(" $a/sqrt($b-x^2)+ $a*x^2/($b-x^2)^(3/2)");
+Context("Fraction")->flags->set(reduceConstants => 1);
+Context()->variables->add(u => 'Real');
+
+$h     = Formula(" u**(-1/2)");
+$num   = Formula("$a*x")->reduce;
+$ntx   = Formula("-2*x");
+$nhalf = Formula("-(1/2)");
+$first = Formula(" $a/sqrt($b-x^2)")->reduce;
+$Df1   = Formula("  ($b-x^2)^((-3)/(2))")->reduce;
+$Df    = Formula(" $a/sqrt($b-x^2)+ $a*x^2/($b-x^2)^(3/2)");
 
 Context("Numeric");
 $line = Formula("$y0+$m*(x-$x0)")->reduce;
 
-#**************
-#   Answers
-#**************
+BEGIN_PGML
 
-$ans=$line;
+Find the equation of the tangent line to the graph of  [`` y(x) =[$f] ``] at [`` x = [$x0] ``].
 
-
-# *********************
-#   Problem Statement
-# *********************
-
-Context()->texStrings;
-TEXT(beginproblem());
-#
-#
-
-BEGIN_TEXT
-
-Find the equation of the tangent line to the graph of  \( y(x) =$f \) at \( x = $x0 \).
-$PAR
-Equation of the tangent line is \( y = \) \{ans_rule(50) \}
+Equation of the tangent line is [` y = `] [_]{$line}{50}
  
-END_TEXT
+END_PGML
 
-#
-# Expect strings in standard form
-#
-Context()->normalStrings;
+BEGIN_PGML_SOLUTION
 
-# *******************************
-#   Answer and Solution section
-# *******************************
-#
-# Check student solution
-#
-ANS($ans->cmp());
+Using the product rule and [`  \small{u(x) = [$g]} `] in the generalized derivative formula for [` [$h] `] yields
 
+ [``` 
+ \begin{aligned}
+ y'(x) & = \frac{d}{dx}\left[ [$f] \right] \\
+ & =[$first]+\left([$num]\right)\left([$nhalf]\right)[$Df1]\left([$ntx]\right) \\
+ & =  [$Df].
+ \end{aligned}
+ ```]
 
-#***************************
-#  Explanation of solution  
-#***************************
-Context()->texStrings;
-SOLUTION(EV3(<<'END_SOLUTION'));
-$PAR SOLUTION $PAR
+Now, when [` x = [$x0] `], [` y =  [$y0] `] and [` y'([$x0]) =  [$m] `]
 
-Using the product rule and \(  \small{u(x) = $g} \) in the generalized derivative formula for \( $h \) yields
-$PAR
- \( y'(x)=\displaystyle \frac{d}{dx}\left[ $f \right]  = $first+\left($num\right)\left($nhalf\right)$Df1\left($ntx\right) =  $Df \).
-$PAR
+Hence, equation of tangent line is [` y = [$mdisp] x `]
+END_PGML_SOLUTION
 
-Now, when \( x = $x0 \), \( y =  $y0 \) and \( y'($x0) =  $m \)
-$PAR
-Hence, equation of tangent line is \( y = $mdisp x \)
-END_SOLUTION
-Context()->normalStrings;
 ENDDOCUMENT();

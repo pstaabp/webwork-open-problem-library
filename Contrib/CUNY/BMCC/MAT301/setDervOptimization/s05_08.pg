@@ -16,12 +16,10 @@
 ## AuthorText1('Rogawski')
 ## EditionText1('1')
 ## Section1('4.6')
-## Problem1('')
 ## TitleText2('Calculus: Early Transcendentals')
 ## AuthorText2('Stewart')
 ## EditionText2('5')
 ## Section2('4.7')
-## Problem2('')
 ## TitleText3('Calculus: Early Transcendentals')
 ## AuthorText3('Stewart')
 ## EditionText3('6')
@@ -30,8 +28,6 @@
 ## TitleText4('Calculus I')
 ## AuthorText4('Jerrold Marsden and Alan Weinstein')
 ## EditionText4('2')
-## Section4('.')
-## Problem4('')
 ## TitleText5('Calculus')
 ## AuthorText5('Dale Varberg, Edwin J. Purcell, and Steven E. Rigdon')
 ## EditionText5('9')
@@ -42,216 +38,193 @@
 ## EditionText6('4 Custom UMTYMP Ed.')
 ## Section6('4.6')
 ## Problem6('11')
-## KEYWORDS('maximization' 'minimization' 'derivatives' 'optimization','Optimization', 'Box','Differentiation','Calculus','Derivatives', 'derivative', 'optimization')
+## KEYWORDS('maximization' 'minimization' 'derivatives' 'optimization', 'Box','Differentiation','Calculus')
 
 ## Original: /Library/Indiana/Indiana_setDerivatives10_5Optim/nsc4_6_3.pg
 
-DOCUMENT();        # This should be the first executable line in the problem.
-
-
+DOCUMENT();
 loadMacros(
-                "PG.pl",
-                "PGgraphmacros.pl",
-                "freemanMacros.pl",
-                "PGbasicmacros.pl",
-                "PGchoicemacros.pl",
-                "PGanswermacros.pl",
-                "PGauxiliaryFunctions.pl",
-                "MathObjects.pl",
-                "PGstandard.pl",
-                "parserNumberWithUnits.pl",
-                "scaffold.pl"
-               );
+    'PGstandard.pl',            'PGML.pl',
+    'plots.pl',                 'PGchoicemacros.pl',
+    'parserNumberWithUnits.pl', 'scaffold.pl',
+    'PGcourse.pl'
+);
 
-## Show partial correct answers
-TEXT(beginproblem());
-$showPartialCorrectAnswers = 1;
-
-
-
-###########################################
-#
 #  The scaffold
-#
-
 Scaffold::Begin(
-      can_open => "when_previous_correct", 
-      is_open  => "always" ,
-      instructor_can_open => "always", 
-      after_AnswerDate_can_open => "always", 
-      hardcopy_is_open  => "always",
-    );
+    can_open                  => "when_previous_correct",
+    is_open                   => "always",
+    instructor_can_open       => "always",
+    after_AnswerDate_can_open => "always",
+    hardcopy_is_open          => "always",
+);
 
-Context ("Numeric");
-Context() -> variables -> add(h => 'Real');
+Context("Numeric");
+Context()->variables->add(h => 'Real');
 
-# Setup
+$a = random(900, 1800, 100);
 
-$a=random(900,1800,100);
+$V = Formula("x**2*h");
 
-$V= Formula("x**2*h");
+$b   = Formula("x**2 ");
+$S   = Formula("$a - $b");
+$s   = Formula("x*h");
+$st  = Formula("4*$s");
+$h   = Formula("($a - x**2)/(4*x)");
+$v   = Formula("1/4*($a*x -x**3)");
+$dv  = $v->D('x');
+$c   = ($a / 3)**(1 / 2);
+$k   = NumberWithUnits("($a/3)**(1/2)",         "cm");
+$vol = NumberWithUnits("1/4*($a*$c - ($c)**3)", "cm^3");
 
-$b= Formula("x**2 ");
-$S= Formula("$a - $b");
-$s= Formula("x*h");
-$st= Formula("4*$s");
-$h= Formula("($a - x**2)/(4*x)");
-$v= Formula("1/4*($a*x -x**3)");
-$dv= $v->D('x');
-$c=($a/3)**(1/2);
-$k= NumberWithUnits("($a/3)**(1/2)","cm");
-$vol = NumberWithUnits("1/4*($a*$c - ($c)**3)","cm^3");
-
-
-
-TEXT(EV2(<<EOT));
-If $a square centimeters of material is available to make a box
+BEGIN_PGML
+If [$a] square centimeters of material is available to make a box
 with a square base and an open top, find the largest possible volume
 of the box.
-EOT
+END_PGML
 
-BEGIN_HINT
+$plot = Plot(
+    xmin            => -1,
+    xmax            =>  8,
+    xvisible        =>  0,
+    ymin            => -1,
+    ymax            =>  7,
+    yvisible        =>  0,
+    show_grid       =>  0,
+    rounded_corners =>  1,
+    aspect_ratio    => 1
+);
+$plot->add_rectangle([ 0, 0 ], [ 7, 6 ]);
+$plot->add_dataset(
+    [ [ 0,   4 ], [ 7,   4 ] ],
+    [ [ 4,   0 ], [ 4,   6 ] ],
+    [ [ 5.5, 0 ], [ 5.5, 4 ] ]
+);
+
+$plot->add_label(
+    [ 0,    2, "\\(x\\)", h_align => 'right' ],
+    [ 0,    5, "\\(h\\)", h_align => 'right' ],
+    [ 2,    0, "\\(x\\)", v_align => 'top' ],
+    [ 4.75, 0, "\\(h\\)", v_align => 'top' ],
+    [ 6.25, 0, "\\(h\\)", v_align => 'top' ],
+);
+
+BEGIN_PGML_HINT
 Use this image to build the box and find the dimensions that will maximize the volume of the open box.
-$PAR \{ image( "P6sect47.png", width=>400, height=>400) \} $BR
-END_HINT
 
+>>[!A rectangle that is subdivided.  The lower left is a square, with both sides labelled x. Above the square is a rectangle of height h.  To the right of the square, there are two rectangles of height x and width h.!]{$plot}{300}<<
 
+END_PGML_HINT
 
-####################################################
-Section::Begin("Part 1: Find the volume of the open box as a function of x and h, where x represents the length of the sides of the square base and h the height of the open box.");
+Section::Begin(
+    "Part 1: Find the volume of the open box as a function of x and h, where x represents the length of the sides of the square base and h the height of the open box."
+);
 
-BEGIN_TEXT
-$BR
-\(V(x,h) =\) \{ans_rule(20)\}
-END_TEXT
-
-ANS($V -> cmp );
-
-Section::End();
-
-
-
-####################################################
-Section::Begin("Part 2: Find the  area of the base of this open box as a function of x.");
-
-BEGIN_TEXT
-
-$BR
- \(A(x) =\) \{ans_rule(20)\}
-END_TEXT
-
-ANS($b-> cmp );
+BEGIN_PGML
+  
+[`V(x,h) =`] [_]{$V}
+END_PGML
 
 Section::End();
 
-####################################################
-Section::Begin("Part 3: Find the area of the four sides as a function of x using the difference between 1800 square centimeters and the base area.");
+Section::Begin(
+    "Part 2: Find the  area of the base of this open box as a function of x.");
 
-BEGIN_TEXT
+BEGIN_PGML
 
-$BR
- \( S(x) =\) \{ans_rule(20)\}
-END_TEXT
-
-ANS($S-> cmp );
+ [`A(x) =`] [_]{$b}
+ 
+END_PGML
 
 Section::End();
 
-####################################################
+Section::Begin(
+    "Part 3: Find the area of the four sides as a function of x using the difference between $a square centimeters and the base area."
+);
+
+BEGIN_PGML
+
+ [` S(x) =`] [_]{$S}
+END_PGML
+
+Section::End();
+
 Section::Begin("Part 4: Find the area of one side as a function of x and h.");
 
-BEGIN_TEXT
+BEGIN_PGML
 
-$BR
- \( s(x) =\) \{ans_rule(20)\}
-END_TEXT
+ [` s(x) =`] [_]{$s}
 
-ANS($s-> cmp );
+END_PGML
 
 Section::End();
 
-####################################################
-Section::Begin("Part 5: Find the area of the four sides using the area of one side.");
+Section::Begin(
+    "Part 5: Find the area of the four sides using the area of one side.");
 
-BEGIN_TEXT
+BEGIN_PGML
 
-$BR
- \( S(x) =\) \{ans_rule(20)\}
-END_TEXT
+[` S(x) =`] [_]{$st}
 
-ANS($st-> cmp );
+END_PGML
 
 Section::End();
 
-####################################################
-Section::Begin("Part 6: Find the height of the open box (using Part 3 and Part 5) as a function of x.");
+Section::Begin(
+    "Part 6: Find the height of the open box (using Part 3 and Part 5) as a function of x."
+);
 
-BEGIN_TEXT
+BEGIN_PGML
 
-$BR
- \( h(x) =\) \{ans_rule(20)\}
-END_TEXT
-
-ANS($h-> cmp );
-
-Section::End();
-
-####################################################
-Section::Begin("Part 7: Rewrite the volume of the open box as a function of x.");
-
-BEGIN_TEXT
-
-$BR
- \( V(x) =\) \{ans_rule(20)\}
-END_TEXT
-
-ANS($v-> cmp );
+[` h(x) =`] [_]{$h}
+ 
+END_PGML
 
 Section::End();
 
-####################################################
-Section::Begin("Part 8: Find the first derivative of the volume with respect to x.");
+Section::Begin(
+    "Part 7: Rewrite the volume of the open box as a function of x.");
 
-BEGIN_TEXT
+BEGIN_PGML
 
-$BR
- \( V'(x) =\) \{ans_rule(20)\}
-END_TEXT
+[` V(x) =`] [_]{$v}
 
-ANS($dv-> cmp );
+END_PGML
 
 Section::End();
 
-####################################################
+Section::Begin(
+    "Part 8: Find the first derivative of the volume with respect to x.");
+
+BEGIN_PGML
+
+[` V'(x) =`] [_]{$dv}
+
+END_PGML
+
+Section::End();
+
 Section::Begin("Part 9: Find the value of x that maximizes the volume.");
 
-BEGIN_TEXT
+BEGIN_PGML
 
-$BR 
-\( x=\) \{ans_rule(20)\}
-(include \{ helpLink('units') \})
-END_TEXT
+[` x=`] [_]{$k}
 
-ANS($k-> cmp );
+(include [@  helpLink('units')  @]*)
+END_PGML
 
 Section::End();
 
-####################################################
 Section::Begin("Part 10: Find the maximum volume of the open box.");
 
-BEGIN_TEXT
+BEGIN_PGML
 
-$BR \( Volume=\) \{ans_rule(20)\}
-(include \{ helpLink('units') \})
-END_TEXT
-
-ANS($vol-> cmp );
+[` V=`] [_]{$vol}
+(include [@  helpLink('units')  @]*)
+END_PGML
 
 Section::End();
-
 
 Scaffold::End();
 
-
-ENDDOCUMENT();  # This should be the last executable line in the problem.
-
+ENDDOCUMENT();

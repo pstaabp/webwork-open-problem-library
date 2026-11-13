@@ -2,7 +2,6 @@
 ## exponents
 ## ENDDESCRIPTION
 
-
 ## BookTitle('Algebra: Form and Function')
 ## BookChapter('Rules for Exponents and the Reasons for Them')
 ## DBsubject(Algebra)
@@ -21,23 +20,10 @@
 ## Problem1('72')
 ## KEYWORDS('exponents')
 
-##############################################
-#  Initialization
 
 DOCUMENT();
 
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "AnswerFormatHelp.pl",
-  "parserMultiAnswer.pl",
-  "PGcourse.pl"
-);
-
-TEXT(beginproblem());
-
-##############################################
-#  Setup
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserMultiAnswer.pl', 'PGcourse.pl');
 
 Context("Numeric")->variables->are(x=>"Real",n=>"Real");
 
@@ -69,33 +55,26 @@ $multians = MultiAnswer($fac1, $fac2)->with(
   }
 );
 
-##############################################
-#  Main text
 
-Context()->texStrings;
-BEGIN_TEXT
+
+BEGIN_PGML
 Rewrite the following expression without the existing 
 parentheses.
 Simplify your answer as much as possible, and 
 assume that all variables are positive.
-\{ AnswerFormatHelp("formulas") \}
-$BR
-$BR
-\( \big( $a x^{$b} \big)^{$c n} \) = 
-\{$multians->ans_rule(6)\}
-\( \cdot \) 
-\{$multians->ans_rule(6)\}
-END_TEXT
-Context()->normalStrings;
+[@  helpLink('formulas')  @]*
+  
+[` \big( [$a] x^{[$b]} \big)^{[$c] n} `] = 
+[@ $multians->ans_rule(6) @]*
+[` \cdot `] 
+[@ $multians->ans_rule(6) @]*
+END_PGML
 
 
-#############################################
-#  Answer evaluation
 
-$showPartialCorrectAnswers = 1;
+
 
 ANS($multians->cmp() );
-
 
 ;
 ENDDOCUMENT();

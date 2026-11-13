@@ -1,11 +1,9 @@
-# ************************************
 #   Comments + Keyword Clarification
-#
+
 #    Anton, Calculus, 2.6.34
-# ************************************
 # DESCRIPTION
 # Find the derivative of a function using the product rule and chain rule
-#
+
 # ENDDESCRIPTION
 ## DBsubject(Calculus - single variable)
 ## DBchapter(Differentiation)
@@ -19,28 +17,13 @@
 ## Section1('2.6')
 ## Problem1('34')
 ## KEYWORDS('Derivative', 'quotient rule', 'Chain rule')
-#***************************************************************
-#   Initialization - Load standard PG and MathObjects macros   
-#***************************************************************
 
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "alignedChoice.pl",
-  "littleneck.pl",
-  "PGcourse.pl"
-);
-#
-rand_button();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
 
-#
-# Set Up - Set up variable context and formulation of problem
-#
 Context("Numeric");
 Context()->variables->add(u=>'Real');
-
 
 $p = random(2,9,1);$pm1=$p-1;
 
@@ -60,53 +43,40 @@ $fpdisp=$fpudisp->substitute(u=>$u);
 $Df = $f->D('x');
 $Df = Formula(" -$p*x^$pm1*$fpdisp ")->reduce;
 
-
-# *********************
 #   Problem Statement
-# *********************
 
-Context()->texStrings;
-TEXT(beginproblem());
-#
-#
+BEGIN_PGML
 
-BEGIN_TEXT
+Let [` \small{f(x)} =\displaystyle [$f] `].  Find [` \small{f'(x)} `].
 
-Let \( \small{f(x)} =\displaystyle $f \).  Find \( \small{f'(x)} \).
-$PAR
-\( \small{f'(x) =} \) \{ans_rule(50) \}
+[` \small{f'(x) =} `] [@ ans_rule(50)  @]*
  
-END_TEXT
+END_PGML
 
-#
 # Expect strings in standard form
-#
-Context()->normalStrings;
 
-# *******************************
 #   Answer and Solution section
-# *******************************
-#
+
 # Check student solution
-#
+
 ANS($Df->cmp());
 
-
-#***************************
 #  Explanation of solution  
-#***************************
-Context()->texStrings;
-SOLUTION(EV3(<<'END_SOLUTION'));
-$PAR SOLUTION $PAR
 
-Using the chain rule with \( u=$u\)and the quotient rule gives us:
-$PAR
- \(\displaystyle \frac{d}{dx}\left($f \right) = \frac{d}{du}\left($fu\right)\cdot \frac{du}{dx}\)
-$PAR
- \(\displaystyle  =\frac{\left($h\right)\left($gp\right)-\left($g\right)\left($hp\right)}{\left($h\right)^2}\cdot \left($up\right) \)
-$PAR
- \( \displaystyle =-$up $fpdisp \) $BR where we expanded the numerator and used \(\cot^2(u)-\csc^2(u) =-1\).
+BEGIN_PGML_SOLUTION
 
-END_SOLUTION
-Context()->normalStrings;
+ SOLUTION 
+
+Using the chain rule with [` u=[$u]`]and the quotient rule gives us:
+
+ [`\displaystyle \frac{d}{dx}\left([$f] \right) = \frac{d}{du}\left([$fu]\right)\cdot \frac{du}{dx}`]
+
+ [`\displaystyle  =\frac{\left([$h]\right)\left([$gp]\right)-\left([$g]\right)\left([$hp]\right)}{\left([$h]\right)^2}\cdot \left([$up]\right) `]
+
+ [` \displaystyle =-[$up] [$fpdisp] `] 
+
+ where we expanded the numerator and used [`\cot^2(u)-\csc^2(u) =-1`].
+
+END_PGML_SOLUTION
+
 ENDDOCUMENT();

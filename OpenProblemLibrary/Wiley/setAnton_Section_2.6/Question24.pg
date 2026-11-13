@@ -1,8 +1,6 @@
-# ************************************
 #   Comments + Keyword Clarification
 
 #    Anton, Calculus, 2.6.24
-# ************************************
 # DESCRIPTION
 # Find the derivative of a function using the chain rule
 
@@ -19,14 +17,9 @@
 ## Section1('2.6')
 ## Problem1('24')
 ## KEYWORDS('Derivative', 'Chain rule')
-#***************************************************************
-#   Initialization - Load standard PG and MathObjects macros   
-#***************************************************************
 
 DOCUMENT();
 loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
-
-# Set Up - Set up variable context and formulation of problem
 
 Context("Numeric");
 
@@ -36,15 +29,11 @@ $bsq = $b**2;
 
 $f = Compute("sqrt($a*x-sin^2($b*x) )");
 
-#**************
 #   Answers
-#**************
 
 $Df = $f->D('x');
 
-# *********************
 #   Problem Statement
-# *********************
 
 BEGIN_PGML
 

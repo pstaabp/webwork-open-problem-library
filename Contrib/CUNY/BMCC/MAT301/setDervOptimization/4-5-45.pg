@@ -26,130 +26,130 @@
 ## Problem2('')
 ## KEYWORDS('derivative' 'extrema' 'optimization','Optimization Problems','Optimization' 'Maximum' 'Minimum')
 
-
-
-DOCUMENT();        # This should be the first executable line in the problem.
-
+DOCUMENT();    # This should be the first executable line in the problem.
 
 loadMacros(
-                "PG.pl",
-                "PGgraphmacros.pl",
-                "freemanMacros.pl",
-                "PGbasicmacros.pl",
-                "PGchoicemacros.pl",
-                "PGanswermacros.pl",
-                "PGauxiliaryFunctions.pl",
-                "MathObjects.pl",
-                "PGunion.pl",            # Union College utilities
-                "parserMultiAnswer.pl",
-                "PGcourse.pl",           # Customization file for the course
-                "PGstandard.pl",
-                "scaffold.pl"
-               );
-
-## Show partial correct answers
-TEXT(beginproblem());
-$showPartialCorrectAnswers = 1;
-
-
-
-###########################################
-#
-#  The scaffold
-#
-
-Scaffold::Begin(
-      can_open => "when_previous_correct", 
-      is_open  => "always" ,
-      instructor_can_open => "always", 
-      after_AnswerDate_can_open => "when_previous_correct", 
-      hardcopy_is_open  => "always",
-    );
-
-Context ("Numeric");
-Context() -> variables -> add(y => 'Real');
-
-# Setup
-
-$a = random(6,12,2);
-$b = random(14,20,2);
-$c = (($a + $b)-sqrt(($a+$b)**2 - 3*$a*$b))/6;
-$v= Formula("($a-2*x)*($b-2*x)*x");
-$dv=$v->D('x');
-
-$length = $b - 2*$c;
-$width = $a - 2*$c;
-
-$ma = MultiAnswer(Real($length),Real($width))->with(
-  singleResult => 1, separator => " x ", tex_separator => '\times',
-  checker => sub {
-    my $correct = shift; my $student = shift;
-    my ($a,$b) = @{$correct}; my ($A,$B) = @{$student};
-    return ($a == $A && $b == $B) || ($a == $B && $b == $A);
-  }
+    'PGstandard.pl', 'PGML.pl',
+    'plots.pl',      'parserMultiAnswer.pl',
+    'scaffold.pl',   'PGcourse.pl'
 );
 
+#  The scaffold
+Scaffold::Begin(
+    can_open                  => "when_previous_correct",
+    is_open                   => "always",
+    instructor_can_open       => "always",
+    after_AnswerDate_can_open => "when_previous_correct",
+    hardcopy_is_open          => "always",
+);
 
+Context("Numeric");
+Context()->variables->add(y => 'Real');
 
-TEXT(EV2(<<EOT));
-An open box is to be made out of a $a-inch by $b-inch piece of
+$a  = random(6,  12, 2);
+$b  = random(14, 20, 2);
+$c  = (($a + $b) - sqrt(($a + $b)**2 - 3 * $a * $b)) / 6;
+$v  = Formula("($a-2*x)*($b-2*x)*x");
+$dv = $v->D('x');
+
+$length = $b - 2 * $c;
+$width  = $a - 2 * $c;
+
+$ma = MultiAnswer(Real($length), Real($width))->with(
+    singleResult  => 1,
+    separator     => " x ",
+    tex_separator => '\times',
+    checker       => sub {
+        my $correct = shift;
+        my $student = shift;
+        my ($a, $b) = @{$correct};
+        my ($A, $B) = @{$student};
+        return ($a == $A && $b == $B) || ($a == $B && $b == $A);
+    }
+);
+
+BEGIN_PGML
+An open box is to be made out of a [$a]-inch by [$b]-inch piece of
 cardboard by cutting out squares of equal size from the four corners
 and bending up the sides.  Find the dimensions of the resulting box
 that has the largest volume.
-$PAR
-EOT
 
+END_PGML
 
-BEGIN_HINT
+$plot = Plot(
+    xmin            => -1,
+    xmax            =>  5,
+    xvisible        =>  0,
+    ymin            => -1,
+    ymax            =>  8,
+    yvisible        =>  0,
+    show_grid       =>  0,
+    rounded_corners =>  1,
+    aspect_ratio    => 1
+);
+$plot->add_rectangle([ 0, 0 ], [ 4, 7 ]);
+$plot->add_rectangle(
+    [ [ 0, 0 ], [ 1, 1 ], linestyle => 'dotted' ],
+    [ [ 3, 0 ], [ 4, 1 ], linestyle => 'dotted' ],
+    [ [ 0, 6 ], [ 1, 7 ], linestyle => 'dotted' ],
+    [ [ 3, 6 ], [ 4, 7 ], linestyle => 'dotted' ]
+);
+$plot->add_label(
+    [ 0.5, 1,   '\\(x\\)', v_align => 'bottom' ],
+    [ 0.5, 6,   '\\(x\\)', v_align => 'top' ],
+    [ 3.5, 1,   '\\(x\\)', v_align => 'bottom' ],
+    [ 3.5, 6,   '\\(x\\)', v_align => 'top' ],
+    [ 1,   0.5, '\\(x\\)', h_align => 'left' ],
+    [ 1,   6.5, '\\(x\\)', h_align => 'left' ],
+    [ 3,   6.5, '\\(x\\)', h_align => 'right' ],
+    [ 3,   0.5, '\\(x\\)', h_align => 'right' ],
+    [ 2,   0,   "$a",          v_align => 'top' ],
+    [ 4,   3.5, "$b",          h_align => 'left' ]
+);
+
+BEGIN_PGML_HINT
 Use this image to build and find the dimensions of this open box that maximize the volume of the open box.
-$PAR \{ image( "P3.png", width=>400, height=>400) \} $BR
-END_HINT
 
+>>[!A rectangle of height [$b] and width [$a].  Each corner has a square labelled with each side x.!]{$plot}{200}<<
 
-####################################################
-Section::Begin("Part 1: Find the volume of the open box as a function of x, where x represents the height of the open box.");
+END_PGML_HINT
 
-BEGIN_TEXT
-$BR
-\(V(x) =\) \{ans_rule(20)\}
-END_TEXT
+Section::Begin(
+    "Part 1: Find the volume of the open box as a function of x, where x represents the height of the open box."
+);
 
-ANS($v -> cmp );
+BEGIN_PGML
 
-Section::End();
+[`V(x) =`] [_]{$v}
 
-
-
-####################################################
-Section::Begin("Part 2: Find the first derivative of the open box, with respect to x.");
-
-BEGIN_TEXT
-
-$BR
- \(V'(x) =\) \{ans_rule(20)\}
-END_TEXT
-
-ANS($dv-> cmp );
+END_PGML
 
 Section::End();
 
+Section::Begin(
+    "Part 2: Find the first derivative of the open box, with respect to x."
+);
 
+BEGIN_PGML
 
-####################################################
-Section::Begin("Part 3: Find the dimensions of the resulting box
-that has the largest volume.");
+ [`V'(x) =`] [_]{$dv}
 
-BEGIN_TEXT
+END_PGML
 
-$BR
-Dimensions of the bottom of the box: \{$ma->ans_rule(10)\} x \{$ma->ans_rule(10)\}$BR
-Height of the box: \{ans_rule(10)\}
-END_TEXT
+Section::End();
 
-$showPartialCorrectAnswers = 1;
+Section::Begin(
+    "Part 3: Find the dimensions of the resulting box
+that has the largest volume."
+);
 
-ANS($ma->cmp);
-ANS(Real($c)->cmp);
+BEGIN_PGML
+
+- Dimensions of the bottom of the box: [_]{$ma} x [_]{$ma}
+
+- Height of the box: [_]{$c}
+
+END_PGML
 
 Section::End();
 

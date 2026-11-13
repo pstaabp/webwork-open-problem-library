@@ -2,7 +2,6 @@
 ## exponents
 ## ENDDESCRIPTION
 
-
 ## BookTitle('Algebra: Form and Function')
 ## BookChapter('Rules for Exponents and the Reasons for Them')
 ## DBsubject(Algebra)
@@ -21,22 +20,10 @@
 ## Problem1('32')
 ## KEYWORDS('exponents')
 
-##############################################
-#  Initialization
 
 DOCUMENT();
 
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "AnswerFormatHelp.pl",
-  "PGcourse.pl"
-);
-
-TEXT(beginproblem());
-
-##############################################
-#  Setup
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
 Context("Numeric")->variables->are(n=>"Real");
 
@@ -47,28 +34,20 @@ $b = random(3,9,1);
 #$answerb = Formula("$b");
 
 
-##############################################
-#  Main text
 
-Context()->texStrings;
-BEGIN_TEXT
+BEGIN_PGML
 Rewrite the following using a single exponent.
-$BR
-$BR
-\( 4^{$a} \cdot 4^n = 4^x \) for \( x \) = \{ ans_rule(10) \}
-\{ AnswerFormatHelp("formulas") \}
-END_TEXT
-Context()->normalStrings;
+  
+[` 4^{[$a]} \cdot 4^n = 4^x `] for [` x `] = [@  ans_rule(10)  @]*
+[@  helpLink('formulas')  @]*
+END_PGML
 
 
-#############################################
-#  Answer evaluation
 
-$showPartialCorrectAnswers = 1;
+
 
 ANS($answera->cmp() );
 #ANS($answerb->cmp() );
-
 
 ;
 ENDDOCUMENT();

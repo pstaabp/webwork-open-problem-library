@@ -1,11 +1,11 @@
 # ************************************
 #   Comments + Keyword Clarification
-#
+
 #    Anton, Calculus, 0.1.9a
 # ************************************
 # DESCRIPTION
 # Determine the domain and range of f(x) = B/x-A
-#
+
 # ENDDESCRIPTION
 ## DBsubject('Calculus')
 ## DBchapter('Before Calculus')
@@ -18,94 +18,61 @@
 ## Problem1('9a')
 ## Author('')
 ## Institution('John Wiley & Sons')
-#***************************************************************
-#   Initialization - Load standard PG and MathObjects macros   
-#***************************************************************
+
 DOCUMENT();
-loadMacros(
-  "PGstandard.pl",
-  "MathObjects.pl",
-  "alignedChoice.pl",
-  "littleneck.pl",
-  "PGcourse.pl"
-);
-#
-rand_button();
-#
-# Set Up - Set up variable context and formulation of problem
-#
-$CT = Context("Numeric");
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("Numeric");
 #****************************************************
 #  Create function of form A/(x - B)
 #****************************************************
-$A = non_zero_random(-9,9,1);
-$B = non_zero_random(-9,9,1);
+$A    = non_zero_random(-9, 9);
+$B    = non_zero_random(-9, 9);
 $Func = Formula("$A/(x - $B)")->reduce;
 #**************
 #   Answers
 #**************
 Context("Interval");
 $Domain = Compute("(-inf,$B) U ($B,inf)");
-$Range = Compute("(-inf,0) U (0,inf)");
+$Range  = Compute("(-inf,0) U (0,inf)");
 #*******************
 #   Display stuff
 #*******************
-$CT = Context("Numeric");
-$CT->variables->add(y=>'Real');
+Context("Numeric")->variables->add(y => 'Real');
 $XofY = Formula("($A + $B y)/y")->reduce;
-# *********************
-#   Problem Statement
-# *********************
-$Qlist = new_aligned_list(ans_rule_len=>15, numbered=>0, tex_spacing=>"3pt");
-$Qlist->qa("Domain", $Domain->cmp,
-           "Range",  $Range->cmp);
-#Context("Numeric");
-TEXT(beginproblem());
-#
-# Strings in Tex form (formula)
-#
-Context()->texStrings;
-BEGIN_TEXT
-Find the domain and range of the function \( \small{f(x) =} \large{$Func} \). Express with
-interval notation, using ${BBOLD}U$EBOLD for the union of sets and ${BBOLD}inf$EBOLD
-for \( \small{\infty} \).
-$PAR
-\{ $Qlist->print_q \}
-$PAR
-END_TEXT
-#
-# Expect strings in standard form
-#
-Context()->normalStrings;
-# *******************************
-#   Answer and Solution section
-# *******************************
-#
-# Check student solution
-#
-ANS($Qlist->correct_ans);
-#***************************
-#  Explanation of solution  
-#***************************
-Context()->texStrings;
-SOLUTION(EV3(<<'END_SOLUTION'));
-$PAR SOLUTION $PAR
-For a rational function such as \( \small{f(x) =} \large{$Func} \), the domain is restricted to
-all values of \( \small{x} \) that do not produce a zero in the denominator.
-$PAR
-For this function, the domain may include all real values of \( \small{x} \) except for 
-\( \small{x = $B} \). In interval notation, this is \( \scriptsize{$Domain} \).
-$PAR
-To determine the range of this function, note that since the numerator is fixed at $A the function 
-can never equal 0. Alternatively, if you solve this equation for \( \small{x} \) in terms of
-\( \small{y} \),
-\[ \small{y = $Func} \]
-\[ \small{y(x - $B) = $A} \]
-\[ \small{yx - $B y = $A} \]
-\[ \small{x =} $XofY  \]
-It is now evident that \( \small{y = 0} \) is not in the range of the function. Expressed using
-interval notation, this is \( \scriptsize{$Range} \).
-$PAR
-END_SOLUTION
-Context()->normalStrings;
+
+BEGIN_PGML
+Find the domain and range of the function [``f(x) = [$Func] ``]. Express each in
+interval notation.
+
+a) Domain: [_]{$Domain}
+
+b) Range: [_]{$Range}
+
+[@ helpLink('interval') @]*
+END_PGML
+
+BEGIN_PGML_SOLUTION
+For a rational function such as [``f(x) =[$Func] ``], the domain is restricted to
+all values of [`x`] that do not produce a zero in the denominator.
+
+For this function, the domain may include all real values of [`x`] except for 
+[`x = [$B]`]. In interval notation, this is [`[$Domain]`].
+
+To determine the range of this function, note that since the numerator is fixed at [$A] the function 
+can never equal 0. Alternatively, if you solve this equation for [`x`] in terms of
+[`y`],
+[```
+\begin{aligned}
+y & = [$Func]\\
+y(x - [$B]) &= [$A]\\
+yx - [$B] y &= [$A]\\
+yx & = [$B]y + [$A] \\
+x &=[$XofY]
+\end{aligned}```]
+It is now evident that [`y = 0`] is not in the range of the function. Expressed using
+interval notation, this is [`[$Range]`].
+
+END_PGML_SOLUTION
+
 ENDDOCUMENT();

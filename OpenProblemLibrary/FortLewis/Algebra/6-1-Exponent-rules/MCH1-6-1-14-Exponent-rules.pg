@@ -19,8 +19,6 @@
 ## Problem1('14 16 18')
 ## KEYWORDS('exponents')
 
-#  Initialization
-
 DOCUMENT();
 
 loadMacros('PGstandard.pl', 'PGML.pl', 'contextFraction.pl', 'PGcourse.pl');

@@ -20,75 +20,61 @@
 ## Problem1('39')
 ## KEYWORDS('derivative' 'extrema' 'optimization','Optimization', 'Absolute', 'Extrema')
 
-DOCUMENT();        # This should be the first executable line in the problem.
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
 
-loadMacros(
-  "PGstandard.pl",
-  "PGunion.pl",            # Union College utilities
-  "MathObjects.pl",
-  "alignedChoice.pl",      # for aligned answer blanks
-  "PGcourse.pl",           # Customization file for the course
-);
+$a = random(2, 8);
 
-TEXT(beginproblem());
+$f  = Formula("$a x / (x^2+1)")->reduce;
+$df = $f->D('x')->reduce;
 
-###################################
-# Setup
+($c0, $c1) = (random(-5, 1), random(0, 3));
 
-$f=Formula("{4x} / {x^2+1}")->reduce;
-$derivF = $f->D('x')->reduce;
-$I="[-4,0]";
-###################################
-#  Make an aligned list to present Q and A.
-###################################
+@xvals = ($c0, $c1, 1, -1);
+# remove any duplicates.
+@xvals = num_sort(grep { !$seen{$_}++ } @xvals);
 
-$al = new_aligned_list(ans_rule_len=>15, numbered=>1, tex_spacing=>"3pt", align => LEFT);
-$al->qa(
-  "The absolute maximum occurs at \(x\)", Real(0)->cmp,
-  "The absolute minimum occurs at \(x\)", Real(-1)->cmp,
-);
+# find the max/min at the critical points/endpoints.
+($xmin, $xmax) = ($c0, $c0);
+($min, $max) = (Compute('inf'), Compute('-inf'));
+for my $x (@xvals) {
+    ($xmin, $min) = ($x, $f->eval(x => $x)) if ($f->eval(x => $x) < $min);
+    ($xmax, $max) = ($x, $f->eval(x => $x)) if ($f->eval(x => $x) > $max);
+}
 
-###################################
-# Main text
+BEGIN_PGML
+Determine where the absolute extrema of [`` f(x)=[$f]  ``] on the interval [` [[$c0],[$c1]] `] occur.
 
-Context()->texStrings;
-BEGIN_TEXT
-Determine where the absolute extrema of \( \displaystyle f(x)=$f  \) on the interval \( $I \) occur.
-$PAR
-\{$al->print_q\}
-END_TEXT
+a) The absolute maximum occurs at [`x=`] [_]{$xmax}
 
-BEGIN_SOLUTION
-Since the function \( \displaystyle f(x)=$f  \) is defined at every \(x\) between [-4, 0], we simply take derivative of the function to find the critical points, we obtain:
-\[f'(x) = $derivF\]
-$PAR
+b) The absolute minimum occurs at [`x=`] [_]{$xmin}
+
+END_PGML
+
+@rows = map { [ $_, $f->eval(x => $_) ] } @xvals;
+
+BEGIN_PGML_SOLUTION
+Since the function [`` f(x)=[$f]  ``] is defined at every [`x`] on the interval [`[[$c0],[$c1]]`], we simply take derivative of the function to find the critical points, we obtain:
+
+[```f'(x) = [$df]```]
+
 Set the function f'(x) to 0, we get:
-\[0 = $derivF \]
-$PAR
+[```0 = [$df] ```]
+
 Simplify the function we get:
-\[0 = \frac{-4x^2 + 4}{(x^2+1)^2} \]
-$PAR
+[```0 = \frac{-[$a]x^2 + [$a]}{(x^2+1)^2} ```]
+
 For the function to be equal to 0, we only need the numerator to be 0, therefore:
-$BR
-\[0 = -4x^2 + 4 = -4(x^2 - 1) = -4(x+1)(x-1)\]
-$BR now we get the critical points:
-$BR \(x = -4, x = -1\), and \(x = 0\). Notice that 1 is not included here because it is not on the interval [-4, 0].
-$BR Next, we substitute the value back to function f(x) to find extrema(s), we get
-\[f(-4) = -\frac{16}{17} \]
-$PAR
-\[f(-1) = -2 \]
-$PAR
-\[f(0) = 0 \]
-$PAR
-So the absolute maximum for the function \(f(x)\) is at \(x = 0\), and the absolute minimum is at \(x = -1\).
-END_SOLUTION
+  
+[```0 = -[$a]x^2 + [$a] = -[$a](x^2 - 1) = -[$a](x+1)(x-1)```]
 
-###################################
-# Answer checking
+or [`` x=1,-1``].  The critical points and the endparts are [` x= [@ join(', ', @xvals) @] `].  The following evaluates the function at these points: 
 
-$showPartialCorrectAnswers = 1;
-ANS($al->correct_ans);
+[# [.[`x_i`].][. [`f(x_i)`] .]*
+[..]*{rows => ~~@rows}
+#]
 
+So the absolute maximum for the function [`f(x)`] is at [`x = [$xmax]`], and the absolute minimum is at [`x = [$xmin]`]. 
+END_PGML_SOLUTION
 
-;
 ENDDOCUMENT();

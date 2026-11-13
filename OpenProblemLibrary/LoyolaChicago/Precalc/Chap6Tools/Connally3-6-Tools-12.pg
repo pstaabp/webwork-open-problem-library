@@ -1,0 +1,107 @@
+## DESCRIPTION
+## Trigonometric Functions
+
+## DBsubject(Trigonometry)
+## DBchapter(Triangle trigonometry)
+## DBsection(Applications of special triangles & right triangles)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(3)
+## MO(1)
+## TitleText1('Functions Modeling Change')
+## TitleText2('Functions Modeling Change')
+## AuthorText1('Connally')
+## AuthorText2('Connally')
+## EditionText1('3')
+## EditionText2('5')
+## Section1(6.Tools)
+## Section2('7.4')
+## Problem1(12)
+## Problem2('12')
+## KEYWORDS('trig')
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',         'PGML.pl',
+    'contextTrigDegrees.pl', 'plots.pl',
+    'PGcourse.pl'
+);
+
+Context("TrigDegrees");
+
+#  Begin trig functions in degrees
+
+$y = random(3, 7);
+do { $theta = random(10, 40, 1) } until $theta != 30;
+$phi = 90 - $theta;
+
+$ansz = Compute("$y / sin($theta)");
+$ansx = Compute("$y / tan($theta)");
+
+Context('Numeric');
+# Right Triangle Plot
+$plot = Plot(
+    xmin            => -1,
+    xmax            =>  6,
+    xvisible        =>  0,
+    ymin            => -1,
+    ymax            => 4.5,
+    yvisible        =>  0,
+    aspect_ratio    =>  1,
+    show_grid       =>  0,
+    rounded_corners => 1
+);
+$plot->add_multipath(
+    [ [ '(2/3)*cos(t)', '(2/3)*sin(t)', '0', atan(4 / 5) ], [ 0, 0 ], ],
+    't',
+    color => 'green',
+    fill  => 'self',
+    cycle => 1
+);
+$plot->add_rectangle([ 4.5, 0 ], [ 5, 0.5 ], fill_color => 'green');
+$plot->add_multipath(
+    [
+        [ '(2/3)*cos(t)+5', '(2/3)*sin(t)+4', pi + atan(4 / 5), '3pi/2' ],
+        [ 5, 4 ],
+    ],
+    't',
+    color => 'green',
+    fill  => 'self',
+    cycle => 1
+);
+$plot->add_dataset([ 0, 0 ], [ 5, 0 ], [ 5, 4 ], [ 0, 0 ]);
+$plot->add_label(
+    [ 0.95, 0.3,  '\\(\\theta\\)', fontsize => 'Large' ],
+    [ 4.5,  3,    '\\(\\phi\\)',   fontsize => 'Large' ],
+    [ 2.5,  0,    '\\(x\\)', fontsize => 'Large', v_align => 'top' ],
+    [ 5.2,  2,    '\\(y\\)', fontsize => 'Large', h_align => 'left' ],
+    [ 2.5,  2.75, '\\(z\\)', fontsize => 'Large' ]
+);
+
+Context()->functions->disable("All");
+
+$questionTable = LayoutTable(
+    [
+        [ 'a.', '&nbsp;', "\(x=\)", PGML('[_]{$ansx}') ],
+        [ 'b.', '&nbsp;', "\(z=\)", PGML('[_]{$ansz}') ],
+    ],
+    valign  => 'middle',
+    align   => 'lrl',
+    padding => [ 0.2, 0.1 ]
+);
+
+$altText =
+    "A right triangle with the hypotenuse labelled z, the two sides "
+    . "labelled x and y. The angle opposite x is phi and the one "
+    . "opposite y is theta.";
+
+BEGIN_PGML
+ 	Suppose [`y = [$y], \theta=[$theta]`], and [`\phi=[$phi]`] in the figure, which is not drawn to scale. Find the following. (All trig functions will be evaluated in degrees.)
+
+[# [. [$questionTable]* .] [. [!$altText!]{$plot}{300} .] #]{padding => [0,0.5]}
+
+END_PGML
+
+COMMENT("Trig functions to be in degrees (instead of the default radians)");
+ENDDOCUMENT();
